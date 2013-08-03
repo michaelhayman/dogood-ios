@@ -1,0 +1,3 @@
+@interface DGLogInViewController : PFLogInViewController
+
+@end

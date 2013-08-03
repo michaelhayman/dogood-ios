@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="B3V-44-aZC">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+    </dependencies>
+    <scenes>
+        <!--Welcome View Controller-->
+        <scene sceneID="vxe-8p-5Xo">
+            <objects>
+                <viewController storyboardIdentifier="Welcome" useStoryboardIdentifierAsRestorationIdentifier="YES" id="B3V-44-aZC" customClass="DGWelcomeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i7s-eQ-0lA">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="No excuses Michael." translatesAutoresizingMaskIntoConstraints="NO" id="zii-9T-n6O">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="QCD-Lr-jpd"/>
+                                    <constraint firstAttribute="width" constant="215" id="keC-Mb-NdF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ex7-ei-scE">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Register">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="register:" destination="B3V-44-aZC" eventType="touchUpInside" id="WrG-Ap-pMx"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNC-ep-nFj">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signIn:" destination="B3V-44-aZC" eventType="touchUpInside" id="DxC-57-Kdo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixy-cw-bOV">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOutButtonTapAction:" destination="B3V-44-aZC" eventType="touchUpInside" id="fBI-Oh-kET"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ixy-cw-bOV" firstAttribute="leading" secondItem="PNC-ep-nFj" secondAttribute="leading" type="default" id="2Ws-cg-dhn"/>
+                            <constraint firstAttribute="bottom" secondItem="ixy-cw-bOV" secondAttribute="bottom" constant="94" id="9cV-q9-PIP"/>
+                            <constraint firstItem="zii-9T-n6O" firstAttribute="top" secondItem="i7s-eQ-0lA" secondAttribute="top" constant="170" id="ISz-8w-VPv"/>
+                            <constraint firstItem="ixy-cw-bOV" firstAttribute="centerX" secondItem="i7s-eQ-0lA" secondAttribute="centerX" type="default" id="R3h-YD-88Z"/>
+                            <constraint firstItem="zii-9T-n6O" firstAttribute="leading" secondItem="i7s-eQ-0lA" secondAttribute="leading" constant="75" id="SPd-Go-Z08"/>
+                            <constraint firstAttribute="bottom" secondItem="PNC-ep-nFj" secondAttribute="bottom" constant="150" id="hLM-ZY-KbW"/>
+                            <constraint firstItem="PNC-ep-nFj" firstAttribute="top" secondItem="ex7-ei-scE" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="lyM-yw-gFb"/>
+                            <constraint firstItem="PNC-ep-nFj" firstAttribute="centerX" secondItem="ex7-ei-scE" secondAttribute="centerX" type="default" id="ngQ-zY-3AL"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cHv-7g-ztc"/>
+                    <connections>
+                        <outlet property="welcomeLabel" destination="zii-9T-n6O" id="fXD-Jn-gl2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Dw-tc-eD0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="585" y="46"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="DGWelcomeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGWelcomeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="logOutButtonTapAction:"/>
+                <relationship kind="action" name="register:"/>
+                <relationship kind="action" name="signIn:"/>
+                <relationship kind="outlet" name="welcomeLabel" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

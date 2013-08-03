@@ -1,0 +1,11 @@
+{
+    "applications": {
+        "Good": {
+            "applicationId": "yX6oa70RuofYiE2M63ip2Cn3kg5kzdaoYSyhqrc9", 
+            "masterKey": "tp3SZCM5MUMWTTe8qJ56eFRZBFKa5mhE8TMZICvA"
+        }, 
+        "_default": {
+            "link": "Good"
+        }
+    }
+}

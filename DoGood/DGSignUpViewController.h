@@ -1,0 +1,3 @@
+@interface DGSignUpViewController : PFSignUpViewController
+
+@end
