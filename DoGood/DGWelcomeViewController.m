@@ -15,7 +15,7 @@
     if ([PFUser currentUser]) {
         self.welcomeLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Welcome %@!", nil), [[PFUser currentUser] username]];
     } else {
-        self.welcomeLabel.text = NSLocalizedString(@"Not logged in", nil);
+        // self.welcomeLabel.text = NSLocalizedString(@"%@\nNot logged in", nil);
     }
 }
 

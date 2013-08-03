@@ -1,0 +1,37 @@
+PODS:
+  - AFNetworking (1.3.1)
+  - Facebook-iOS-SDK (3.6.0)
+  - JMTabView (0.0.1)
+  - MBProgressHUD (0.7)
+  - NUI (0.3.2)
+  - Parse (1.2.11):
+    - Facebook-iOS-SDK (~> 3.5)
+  - REMenu (1.3.5)
+  - SDSegmentedControl (1.0.2)
+  - STTweetLabel (2.2.2)
+  - TSMessages (0.9.3)
+
+DEPENDENCIES:
+  - AFNetworking (~> 1.3.1)
+  - JMTabView
+  - MBProgressHUD
+  - NUI
+  - Parse
+  - REMenu (~> 1.3.5)
+  - SDSegmentedControl
+  - STTweetLabel
+  - TSMessages
+
+SPEC CHECKSUMS:
+  AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
+  Facebook-iOS-SDK: 1c59b1f4838e5f8d3cb71943096673db3eefb15d
+  JMTabView: a0d3e005d9582b9f50b7f088d7a571276736b417
+  MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
+  NUI: bb0384fe33e0d6c49e6b605c9d2313fa31d1ded3
+  Parse: 4e4750205c339336efd11d2fe24e8ee3112fb3db
+  REMenu: 097c09787102e30f17f344386d12dbb3d723a43d
+  SDSegmentedControl: 165956a426f1fd7ff1eb486c4931241f12e0867e
+  STTweetLabel: 9d93c324a4ecf5b9e6d73b5ff2b4813e4a8adc91
+  TSMessages: e741d102e8291074b4ee7545b53c90ed5f220dd5
+
+COCOAPODS: 0.22.3

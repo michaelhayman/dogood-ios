@@ -1,5 +1,10 @@
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
 
-@interface DGGoodListViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@interface DGGoodListViewController : RootViewController <UITableViewDelegate, UITableViewDataSource> {
+    IBOutlet UITableView *tableView;
+    IBOutlet UIView *headerView;
+    NSArray *goods;
+}
 
 @end
