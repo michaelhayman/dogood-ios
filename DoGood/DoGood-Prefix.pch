@@ -16,3 +16,10 @@
     #import <Parse/Parse.h>
     #import "TSMessage.h"
 #endif
+
+#ifdef DEBUG
+// #define DebugLog( s, ... ) NSLog( @"<%@:%d (%@)> %@", [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__,  NSStringFromSelector(_cmd), [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#define DebugLog(...) NSLog(@"%s (%d) \n\t %@", __PRETTY_FUNCTION__, __LINE__, [NSString stringWithFormat:__VA_ARGS__])
+#else
+#define DebugLog( s, ... ) 
+#endif
