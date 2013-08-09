@@ -2,7 +2,8 @@
 @class DGGood;
 @class DGGoodListViewController;
 
-@interface GoodCell : UITableViewCell {
+@interface GoodCell : UITableViewCell <UIActionSheetDelegate> {
+    UIActionSheet *moreOptionsSheet;
 }
 
 @property (weak, nonatomic) IBOutlet PFImageView *overviewImage;
@@ -22,5 +23,6 @@
 @property (weak, nonatomic) DGGood *good;
 @property (weak, nonatomic) DGGoodListViewController *parent;
 @property (weak, nonatomic) UINavigationController *navigationController;
+
 
 @end
