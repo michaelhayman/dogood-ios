@@ -56,40 +56,8 @@
     }];
     cell.username.text = good.user.username;
     cell.likes.text = good.location.displayName;
-    // UITapGestureRecognizer* imageGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showComments:)];
-    // cell.comment.tag = indexPath.row;
-    // UITapGestureRecognizer* imageGesture = [[UITapGestureRecognizer alloc] init];
-    // [imageGesture performSelector:@selector(showComments) withObject:good];
-    // [cell.commentsCount setUserInteractionEnabled:YES];
-    // [cell.commentsCount addGestureRecognizer:imageGesture];
-
-    // [cell.comment addTarget:self action:@selector(addComment:) forControlEvents:UIControlEventTouchUpInside];
-    // [cell.comment performSelector:@selector(addComment:) withObject:good];
     return cell;
 }
-
-/*
--(void)addComment:(id)sender {
-    DebugLog(@"adding comment");
-    UIButton *commentButton = (UIButton *)sender;
-
-    UIStoryboard *goodS = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-    DGGoodCommentsViewController *comments = [goodS instantiateViewControllerWithIdentifier:@"GoodComments"];
-    comments.good = goods[commentButton.tag];
-    DebugLog(@"comments good %@", comments.good);
-    comments.makeComment = YES;
-    [self.navigationController pushViewController:comments animated:YES];
-}
-
--(void)showComments:(id)sender {
-    DebugLog(@"adding comment");
-    UIButton *commentButton = (UIButton *)sender;
-    UIStoryboard *goodS = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-    DGGoodCommentsViewController *comments = [goodS instantiateViewControllerWithIdentifier:@"GoodComments"];
-    comments.good = goods[commentButton.tag];
-    [self.navigationController pushViewController:comments animated:YES];
-}
-*/
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 573;
