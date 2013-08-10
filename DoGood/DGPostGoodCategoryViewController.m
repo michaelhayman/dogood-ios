@@ -21,10 +21,10 @@
     // [self.tableView setStyle:UITableViewStyleGrouped];
 
     // mock data
-    DGCategory * category = [DGCategory object];
+    DGCategory * category = [DGCategory new];
     category.displayName = @"Health";
 
-    DGCategory * category2 = [DGCategory object];
+    DGCategory * category2 = [DGCategory new];
     category2.displayName = @"Environment";
 
     categories = [[NSArray alloc] initWithObjects:category, category2, nil];

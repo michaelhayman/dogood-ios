@@ -61,12 +61,12 @@
         [locations removeAllObjects];
 
         for (NSDictionary *element in response) {
-            DGLocation * location = [DGLocation object];
+            DGLocation * location = [DGLocation new];
             location.displayName = element[@"name"];
-            location.point = [PFGeoPoint geoPointWithLatitude:[element[@"location"][@"lat"] floatValue] longitude:[element[@"location"][@"lng"] floatValue]];
+            // location.point = [PFGeoPoint geoPointWithLatitude:[element[@"location"][@"lat"] floatValue] longitude:[element[@"location"][@"lng"] floatValue]];
             [locations addObject:location];
-            DebugLog(@"location %f", location.point.latitude);
-            DebugLog(@"location %f", location.point.longitude);
+            // DebugLog(@"location %f", location.point.latitude);
+            // DebugLog(@"location %f", location.point.longitude);
         }
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

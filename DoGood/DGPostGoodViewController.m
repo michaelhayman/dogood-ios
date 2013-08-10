@@ -6,6 +6,7 @@
 #import "DGLocation.h"
 #import "DGPostGoodCategoryViewController.h"
 #import "DGPostGoodLocationViewController.h"
+#import "FBRequestConnection.h"
 
 @interface DGPostGoodViewController ()
 
@@ -49,8 +50,8 @@
 
     [self setUpActionSheets];
 
-    self.good = [DGGood object];
-    self.good.user = [PFUser currentUser];
+    self.good = [DGGood new];
+    self.good.user = [DGUser currentUser];
     // self.good.category = [DGCategory object];
 }
 
@@ -302,7 +303,8 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [self dismissViewControllerAnimated:YES completion:nil];
     imageToUpload = [info objectForKey:UIImagePickerControllerOriginalImage];
-    self.good.image = [PFFile fileWithData:UIImagePNGRepresentation(imageToUpload)];
+    // self.good.image = [PFFile fileWithData:UIImagePNGRepresentation(imageToUpload)];
+    self.good.image = imageToUpload;
     GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
     cell.image.image = imageToUpload;
 }
@@ -363,31 +365,20 @@
 
     if (!errors) {
         // [self.good saveInBackground];
-        [self.good saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!succeeded) {
-                [TSMessage showNotificationInViewController:self
-                                          withTitle:NSLocalizedString(@"Couldn't save", nil)
-                                        withMessage:NSLocalizedString([error description], nil)
-                                           withType:TSMessageNotificationTypeError];
+        [TSMessage showNotificationInViewController:self.navigationController.parentViewController
+                                  withTitle:NSLocalizedString(@"Saved!", nil)
+                                withMessage:NSLocalizedString(@"You made some points!", nil)
+                                   withType:TSMessageNotificationTypeSuccess];
 
-                DebugLog(@"error %@", [error description]);
-                return;
-            }
-            [TSMessage showNotificationInViewController:self.navigationController.parentViewController
-                                      withTitle:NSLocalizedString(@"Saved!", nil)
-                                    withMessage:NSLocalizedString(@"You made some points!", nil)
-                                       withType:TSMessageNotificationTypeSuccess];
+        if (self.good.shareTwitter) {
+            [self postToTwitter:[NSString stringWithFormat:@"I did some good! %@", self.good.caption]];
+        }
 
-            if (self.good.shareTwitter) {
-                [self postToTwitter:[NSString stringWithFormat:@"I did some good! %@", self.good.caption]];
-            }
+        if (self.good.shareFacebook) {
+            [self postToFacebook:self.good.caption andImage:self.good.image];
+        }
 
-            if (self.good.shareFacebook) {
-                [self postToFacebook:self.good.caption andImage:self.good.image];
-            }
-
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
+        [self.navigationController popViewControllerAnimated:YES];
      } else {
         [TSMessage showNotificationInViewController:self
                                   withTitle:NSLocalizedString(@"Couldn't save", nil)
@@ -407,37 +398,15 @@
 
 - (void)checkFacebook {
     // only activate when selected...
-    PFUser *user = [PFUser currentUser];
-    if (![PFFacebookUtils isLinkedWithUser:user]) {
-        [PFFacebookUtils linkUser:user permissions:nil block:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                DebugLog(@"Woohoo, user logged in with Facebook!");
-                DebugLog(@"Set the Facebook thing to on");
-            } else {
-                DebugLog(@"Set the facebook thing to off again %@", [error description]);
-            }
-        }];
-    } else {
-        DebugLog(@"user already linked");
-    }
+    DGUser *user = [DGUser currentUser];
 }
 
-- (void)postToFacebook:(NSString *)status andImage:(PFFile *)image {
-    DebugLog(@"image URL %@", image.url);
+- (void)postToFacebook:(NSString *)status andImage:(UIImage *)image {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"message"] = @"I did some good!";
     params[@"link"] = @"http://www.dogoodapp.com/";
     params[@"name"] = @"Do Good, get a high score and earn rewards.";
     params[@"caption"] = status;
-    /*
-    if (imageToUpload) {
-        [params setObject:UIImagePNGRepresentation(imageToUpload) forKey:@"picture"];
-    }
-    */
-    if (image.url) {
-        params[@"picture"] = image.url;
-        params[@"icon"] = image.url;
-    }
 
     [FBRequestConnection startWithGraphPath:@"me/feed" parameters:params HTTPMethod:@"POST" completionHandler:
      ^(FBRequestConnection *connection, id result, NSError *error) {
@@ -461,7 +430,7 @@
     tweetRequest.HTTPMethod = @"POST";
     tweetRequest.HTTPBody = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
 
-    [[PFTwitterUtils twitter] signRequest:tweetRequest];
+    // [[PFTwitterUtils twitter] signRequest:tweetRequest];
 
     NSURLResponse *response = nil;
     NSError *error = nil;

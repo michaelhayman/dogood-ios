@@ -26,7 +26,7 @@
     [tableView setTableHeaderView:headerView];
 
     UILabel *userName = (UILabel *)[headerView viewWithTag:201];
-    userName.text = [PFUser currentUser].username;
+    userName.text = [DGUser currentUser].username;
     UILabel *points = (UILabel *)[headerView viewWithTag:202];
     points.text = @"51,500";
 
@@ -49,11 +49,8 @@
     cell.navigationController = self.navigationController;
     cell.description.text = good.caption;
 
-    cell.overviewImage.file = good.image;
-    [cell.overviewImage loadInBackground];
-    [cell.overviewImage loadInBackground:^(UIImage *image, NSError *error) {
-        cell.imageHeight.constant = image.size.height;
-    }];
+    cell.overviewImage.image = good.image;
+
     cell.username.text = good.user.username;
     cell.likes.text = good.location.displayName;
     return cell;
@@ -75,30 +72,10 @@
     return @"";
 }
 
-#pragma mark - Retrieval methods
-- (void) getGood {
-    PFQuery *query = [PFQuery queryWithClassName:@"DGGood"];
-    [query includeKey:@"category"];
-    [query includeKey:@"user"];
-    [query includeKey:@"location"];
-    // [query whereKey:@"playerName" equalTo:@"Dan Stemkoski"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            // The find succeeded.
-            NSLog(@"Successfully retrieved %d goods", objects.count);
-            // Do something with the found objects
-            for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
-            }
-            goods = objects;
-            [tableView reloadData];
-        } else {
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
-}
 
+#pragma mark - Retrieval methods
+- (void)getGood {
+}
 
 @end
 

@@ -37,6 +37,7 @@
 		6355EC1217B0EDA300EE91C0 /* DGRewardsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC1117B0EDA300EE91C0 /* DGRewardsListViewController.m */; };
 		6355EC1417B0EE1E00EE91C0 /* Reward.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC1317B0EE1E00EE91C0 /* Reward.xib */; };
 		6355EC1717B0EF2700EE91C0 /* DGRewardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC1617B0EF2700EE91C0 /* DGRewardCell.m */; };
+		6355EC1C17B5BA4600EE91C0 /* DGUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC1B17B5BA4500EE91C0 /* DGUser.m */; };
 		636AEA5D17AD43CC002A3494 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA5B17AD43CC002A3494 /* Users.storyboard */; };
 		636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA5C17AD43CC002A3494 /* Good.storyboard */; };
 		636AEA6317AD4751002A3494 /* DGLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636AEA6017AD4751002A3494 /* DGLogInViewController.m */; };
@@ -174,6 +175,9 @@
 		6355EC1317B0EE1E00EE91C0 /* Reward.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Reward.xib; sourceTree = "<group>"; };
 		6355EC1517B0EF2700EE91C0 /* DGRewardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGRewardCell.h; sourceTree = "<group>"; };
 		6355EC1617B0EF2700EE91C0 /* DGRewardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRewardCell.m; sourceTree = "<group>"; };
+		6355EC1817B531C700EE91C0 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		6355EC1A17B5BA4500EE91C0 /* DGUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUser.h; sourceTree = "<group>"; };
+		6355EC1B17B5BA4500EE91C0 /* DGUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUser.m; sourceTree = "<group>"; };
 		636AEA5B17AD43CC002A3494 /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
 		636AEA5C17AD43CC002A3494 /* Good.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Good.storyboard; sourceTree = "<group>"; };
 		636AEA5F17AD4751002A3494 /* DGLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLogInViewController.h; sourceTree = "<group>"; };
@@ -296,6 +300,8 @@
 		633DBF9217AED2480038BC2D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6355EC1A17B5BA4500EE91C0 /* DGUser.h */,
+				6355EC1B17B5BA4500EE91C0 /* DGUser.m */,
 				633DBF5F17ADA5670038BC2D /* DGCategory.h */,
 				633DBF6017ADA5670038BC2D /* DGCategory.m */,
 				6355EC0817B0C84100EE91C0 /* DGComment.h */,
@@ -464,6 +470,7 @@
 		638647D517AC087A00167F15 = {
 			isa = PBXGroup;
 			children = (
+				6355EC1817B531C700EE91C0 /* Social.framework */,
 				638647E717AC087A00167F15 /* DoGood */,
 				6386480917AC087A00167F15 /* DoGoodTests */,
 				638647E017AC087A00167F15 /* Frameworks */,
@@ -768,6 +775,7 @@
 				6355EC0C17B0D4C300EE91C0 /* CommentCell.m in Sources */,
 				6355EC1217B0EDA300EE91C0 /* DGRewardsListViewController.m in Sources */,
 				6355EC1717B0EF2700EE91C0 /* DGRewardCell.m in Sources */,
+				6355EC1C17B5BA4600EE91C0 /* DGUser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

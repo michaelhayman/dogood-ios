@@ -33,7 +33,7 @@
 
 #pragma mark - Actions
 - (IBAction)signOut:(id)sender {
-    [PFUser logOut];
+    // [DGUser logOut];
     self.navigationController.navigationBarHidden = YES;
     UIStoryboard *storyboard;
     storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];

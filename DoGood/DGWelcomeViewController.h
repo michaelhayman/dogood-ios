@@ -1,9 +1,8 @@
 #import <UIKit/UIKit.h>
-#import <Parse/Parse.h>
 @class DGLogInViewController;
 @class DGSignUpViewController;
 
-@interface DGWelcomeViewController : UIViewController <PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate> {
+@interface DGWelcomeViewController : UIViewController {
     DGLogInViewController *logInViewController;
     DGSignUpViewController *signUpViewController;
 }

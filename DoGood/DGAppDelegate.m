@@ -59,10 +59,8 @@
     */
     DebugLog(@"test");
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
-    [self setupParse];
-    [self setupParseTracking:launchOptions];
-    [self setupParseUser];
     [self setupFoursquare];
+    [self setupViewsForUser];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -87,9 +85,9 @@
     */
 }
 
-- (void)setupParseUser {
+- (void)setupViewsForUser {
+    NSString* currentUser = nil;
 
-    PFUser *currentUser = [PFUser currentUser];
     if (currentUser) {
         UIStoryboard *storyboard;
         storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
@@ -110,57 +108,6 @@
     }
 }
 
-- (void)setupParse {
-    [DGCategory registerSubclass];
-    [DGLocation registerSubclass];
-    [DGGood registerSubclass];
-    [DGComment registerSubclass];
-
-    [Parse setApplicationId:@"yX6oa70RuofYiE2M63ip2Cn3kg5kzdaoYSyhqrc9"
-                 clientKey:@"KzCNmFesB2QbAVGMdnXlPd8tNxliGDFpor7rhC4Y"];
-
-    // 151726295032833
-    // 7897c383c114b23833ec5f74b2646ed3
-    [PFFacebookUtils initializeFacebook];
-    [PFTwitterUtils initializeWithConsumerKey:@"99pekoExHF1xHxkL962w"
-                               consumerSecret:@"kCIfoX8CdZjJh19NxGSHf4yt51szN2UpHBm9QZiK4"];
-
-    /*
-    [PFFacebookUtils unlinkUserInBackground:[PFUser currentUser] block:^(BOOL succeeded, NSError *error) {
-        if (!error && succeeded) {
-            NSLog(@"The user is no longer associated with their Facebook account.");
-        } else {
-            NSLog(@"%@", [error description]);
-        }
-    }];
-    */
-
-    DebugLog(@"Session %@", [PFFacebookUtils session]);
-
-    /*
-    [PFTwitterUtils unlinkUserInBackground:[PFUser currentUser] block:^(BOOL succeeded, NSError *error) {
-        if (!error && succeeded) {
-            NSLog(@"The user is no longer associated with their Twitter account.");
-        } else {
-            NSLog(@"%@", [error description]);
-        }
-    }];
-    */
-
-    PFQuery *query = [DGCategory query];
-    // [query whereKey:@"rupees" lessThanOrEqualTo:PFUser.currentUser.rupees];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            self.categories = objects;
-        }
-    }];
-}
-
-- (void)setupParseTracking:(NSDictionary *)launchOptions {
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-}
-							
-
 - (void)applicationWillResignActive:(UIApplication *)application {
 }
 
@@ -174,16 +121,6 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-}
-
-#pragma mark - Facebook
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    return [PFFacebookUtils handleOpenURL:url];
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [PFFacebookUtils handleOpenURL:url];
 }
 
 @end

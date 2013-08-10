@@ -38,54 +38,40 @@
 #pragma mark - Comment retrieval
 - (void)fetchComments {
     DebugLog(@"refresh comments");
-    PFQuery *query = [PFQuery queryWithClassName:@"DGComment"];
-    [query includeKey:@"user"];
-    [query orderByDescending:@"createdAt"];
 
     [comments removeAllObjects];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            DebugLog(@"Successfully retrieved %d comments", objects.count);
-            for (PFObject *object in objects) {
-                NSLog(@"%@", object.objectId);
-            }
-            [comments addObjectsFromArray:objects];
-            [tableView reloadData];
-        } else {
-            DebugLog(@"Error: %@ %@", error, [error userInfo]);
-        }
-    }];
+    [tableView reloadData];
 }
 
 #pragma mark - Comment posting
 - (IBAction)postComment:(id)sender {
     DebugLog(@"this part is fine.");
     DebugLog(@"this is fine %@", self.comment.body);
-    DGComment *newComment = [DGComment object];
+    DGComment *newComment = [DGComment new];
     newComment.body = commentInputField.text;
     newComment.good = self.good;
-    newComment.user = [PFUser currentUser];
+    newComment.user = [DGUser currentUser];
+    bool succeeded = YES;
+    NSError *error;
 
-    [newComment saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (!succeeded) {
-            [TSMessage showNotificationInViewController:self
-                                      withTitle:NSLocalizedString(@"Couldn't save", nil)
-                                    withMessage:NSLocalizedString([error description], nil)
-                                       withType:TSMessageNotificationTypeError];
-
-            DebugLog(@"error %@", [error description]);
-            return;
-        }
-
-        [commentInputView resignFirstResponder];
-        UITextField *commentText = (UITextField *)sender;
-        commentText.text = @"";
+    if (!succeeded) {
         [TSMessage showNotificationInViewController:self
-                                  withTitle:NSLocalizedString(@"Saved!", nil)
-                                withMessage:NSLocalizedString(@"Your comment was posted!", nil)
-                                   withType:TSMessageNotificationTypeSuccess];
-        [self fetchComments];
-    }];
+                                  withTitle:NSLocalizedString(@"Couldn't save", nil)
+                                withMessage:NSLocalizedString([error description], nil)
+                                   withType:TSMessageNotificationTypeError];
+
+        DebugLog(@"error %@", [error description]);
+        return;
+    }
+
+    [commentInputView resignFirstResponder];
+    UITextField *commentText = (UITextField *)sender;
+    commentText.text = @"";
+    [TSMessage showNotificationInViewController:self
+                              withTitle:NSLocalizedString(@"Saved!", nil)
+                            withMessage:NSLocalizedString(@"Your comment was posted!", nil)
+                               withType:TSMessageNotificationTypeSuccess];
+    [self fetchComments];
 }
 
 

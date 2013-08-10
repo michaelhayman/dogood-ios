@@ -1,6 +1,4 @@
-@interface DGCategory : PFObject <PFSubclassing>
-
-+ (NSString *)parseClassName;
+@interface DGCategory : NSObject
 
 @property (retain) NSString *displayName;
 

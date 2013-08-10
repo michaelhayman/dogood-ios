@@ -1,6 +1,6 @@
 platform :ios, '6.0'
-pod 'Parse'
 # pod 'Foursquare-API-v2'
+pod 'Facebook-iOS-SDK', '~> 3.5'
 pod 'AFNetworking', '~> 1.3.1'
 pod 'MBProgressHUD'
 pod 'TSMessages'

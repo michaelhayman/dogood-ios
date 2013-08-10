@@ -20,10 +20,34 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb151726295032833</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+	<key>FacebookAppID</key>
+	<string>151726295032833</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Calibre-Black.otf</string>
+		<string></string>
+		<string>Calibre-Bold.otf</string>
+		<string>Calibre-Light.otf</string>
+		<string>Calibre-Medium.otf</string>
+		<string>Calibre-Regular.otf</string>
+		<string>Calibre-Semibold.otf</string>
+		<string>Calibre-Thin.otf</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -38,35 +62,11 @@
 			<false/>
 		</dict>
 	</dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Calibre-Black.otf</string>
-		<string></string>
-		<string>Calibre-Bold.otf</string>
-		<string>Calibre-Light.otf</string>
-		<string>Calibre-Medium.otf</string>
-		<string>Calibre-Regular.otf</string>
-		<string>Calibre-Semibold.otf</string>
-		<string>Calibre-Thin.otf</string>
-	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
-	<key>FacebookAppID</key>
-	<string>151726295032833</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb151726295032833</string>
-			</array>
-		</dict>
 	</array>
 </dict>
 </plist>

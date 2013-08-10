@@ -37,18 +37,7 @@
 #pragma mark - Twitter
 - (void)checkTwitter {
     DebugLog(@"twitter");
-    PFUser *user = [PFUser currentUser];
-    if (![PFTwitterUtils isLinkedWithUser:user]) {
-        [PFTwitterUtils linkUser:user block:^(BOOL succeeded, NSError *error) {
-            if ([PFTwitterUtils isLinkedWithUser:user]) {
-                NSLog(@"Woohoo, user logged in with Twitter!");
-            } else {
-                NSLog(@"not linked with twitter inside block");
-            }
-        }];
-    } else {
-        NSLog(@"already linked with twitter");
-    }
+    DGUser *user = [DGUser currentUser];
 }
 
 /*
@@ -69,14 +58,11 @@
 }
 
 #pragma mark - Facebook methods
-- (BOOL)hasFacebookPermissions {
-    return [[PFFacebookUtils session].permissions indexOfObject:@"publish_actions"] != NSNotFound;
-}
-
+/*
 - (void)checkFacebook {
     if (self.share.on != NO) {
         DebugLog(@"Trying to check the box");
-        PFUser *user = [PFUser currentUser];
+        DGUser *user = [DGUser currentUser];
         if (![PFFacebookUtils isLinkedWithUser:user]) {
             DebugLog(@"Not linked with a user");
             NSArray *permissions = @[@"publish_actions"];
@@ -146,6 +132,7 @@
          }
     }];
 }
+*/
 
 - (void)facebook {
     [self.share addTarget:self action:@selector(checkFacebook) forControlEvents:UIControlEventValueChanged];

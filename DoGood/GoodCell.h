@@ -6,7 +6,7 @@
     UIActionSheet *moreOptionsSheet;
 }
 
-@property (weak, nonatomic) IBOutlet PFImageView *overviewImage;
+@property (weak, nonatomic) IBOutlet UIImageView *overviewImage;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeight;
 @property (weak, nonatomic) IBOutlet UILabel *regoods;
 @property (weak, nonatomic) IBOutlet UILabel *commentsCount;

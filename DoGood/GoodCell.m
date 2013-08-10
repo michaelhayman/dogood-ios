@@ -13,7 +13,7 @@
     [self.overviewImage setClipsToBounds:YES];
     [self.comment addTarget:self action:@selector(addComment) forControlEvents:UIControlEventTouchUpInside];
 
-    if ([[self.good objectForKey:@"likesByUser"] containsObject:[PFUser currentUser]]) {
+    if ([self.good.current_user_liked boolValue]) {
         self.like.highlighted = YES;
         [self.like setTitle:@"v" forState:UIControlStateNormal];
     }
@@ -69,29 +69,19 @@
 - (void)addUserLike {
     // maybe it's not working because it's not a pfobject
     // PFObject object
-    DebugLog(@"PFUser class %@", [[PFUser currentUser] class]);
     // this should work according to the docs.
-    PFUser *user = [PFUser currentUser];
+    DGUser *user = [DGUser currentUser];
     // PFUser *user = [PFUser objectWithoutDataWithClassName:@"_User" objectId:[[PFUser currentUser] objectId]];
     // NSArray *array = [[NSArray alloc] initWithObjects:user, nil];
     // DebugLog(@"add like? %@, %@", [PFUser currentUser], user);
     if (![self.like isHighlighted]) {
         DebugLog(@"add like");
-        [self.good addObject:user forKey:@"likesByUser"];
         // [self.good addUniqueObjectsFromArray:array forKey:@"likesByUser"];
         // [self.good addUniqueObject:user forKey:@"likesByUser"];
         self.like.highlighted = YES;
     } else {
-        DebugLog(@"add like");
-        [self.good removeObject:[PFUser currentUser] forKey:@"likesByUser"];
+        DebugLog(@"remove like");
     }
-    [self.good saveEventually:^(BOOL succeeded, NSError *error) {
-        if (!succeeded) {
-            DebugLog(@"error %@", [error description]);
-        } else {
-            DebugLog(@"success");
-        }
-    }];
 }
 
 -(void)addComment {

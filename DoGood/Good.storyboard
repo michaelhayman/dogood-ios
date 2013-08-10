@@ -227,7 +227,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="nw2-iT-ahJ">
                         <barButtonItem key="rightBarButtonItem" title="Post" id="Ben-4Z-yVl">
-                            <color key="tintColor" red="0.93725490199999995" green="0.31372549020000001" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.34901960780000002" green="0.68235294120000001" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="post:" destination="YhS-Q4-hGW" id="UWM-bY-7w4"/>
                             </connections>
@@ -286,45 +286,6 @@
             <point key="canvasLocation" x="1471" y="526"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="DGGoodCommentsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGGoodCommentsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="postComment:"/>
-                <relationship kind="outlet" name="commentFieldBottom" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="commentInputField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="commentInputView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tableViewBottom" candidateClass="NSLayoutConstraint"/>
-            </relationships>
-        </class>
-        <class className="DGGoodListViewController" superclassName="RootViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGGoodListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="headerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DGPostGoodCategoryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGPostGoodCategoryViewController.h"/>
-        </class>
-        <class className="DGPostGoodLocationViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGPostGoodLocationViewController.h"/>
-        </class>
-        <class className="DGPostGoodViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGPostGoodViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="post:"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="RootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

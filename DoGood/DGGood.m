@@ -1,4 +1,3 @@
-#import <Parse/PFObject+Subclass.h>
 #import "DGGood.h"
 
 @implementation DGGood
@@ -9,12 +8,9 @@
 @dynamic location;
 @dynamic point;
 @dynamic image;
+@dynamic current_user_liked;
 @dynamic shareDoGood;
 @dynamic shareFacebook;
 @dynamic shareTwitter;
-
-+ (NSString *)parseClassName {
-    return @"DGGood";
-}
 
 @end

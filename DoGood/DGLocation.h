@@ -1,9 +1,7 @@
-@interface DGLocation : PFObject <PFSubclassing>
-
-+ (NSString *)parseClassName;
+@interface DGLocation : NSObject
 
 @property (retain) NSString *displayName;
-@property (retain) PFGeoPoint *point;
+@property (retain) NSArray *point;
 @property (retain) NSString *fourSquareID;
 @property (retain) NSString *category;
 @property (retain) NSString *imageURL;
