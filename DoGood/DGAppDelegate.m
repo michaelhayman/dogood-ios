@@ -1,12 +1,13 @@
 #import "NavigationViewController.h"
 #import "DGAppDelegate.h"
 // #import "Foursquare-API-v2/Foursquare2.h"
-#import "DGWelcomeViewController.h"
 #import "DGGoodListViewController.h"
+#import "DGWelcomeViewController.h"
 #import "DGGood.h"
 #import "DGCategory.h"
 #import "DGComment.h"
 #import "DGLocation.h"
+#import "DGError.h"
 #import <NUI/NUIAppearance.h>
 
 @implementation DGAppDelegate
@@ -59,12 +60,29 @@
     */
     DebugLog(@"test");
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
+    [self setupRestKit];
     [self setupFoursquare];
     [self setupViewsForUser];
     [self.window makeKeyAndVisible];
     return YES;
 }
 
+- (void)applicationWillResignActive:(UIApplication *)application {
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+}
+
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+}
+
+#pragma mark - Things that don't really belong in here
 - (void)listFonts {
     for (NSString* family in [UIFont familyNames])
     {
@@ -86,41 +104,64 @@
 }
 
 - (void)setupViewsForUser {
-    NSString* currentUser = nil;
+    UIStoryboard *storyboard;
+    // storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+    // DGGoodListViewController *goodListController = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
+    storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+    DGGoodListViewController *goodListController = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
 
-    if (currentUser) {
-        UIStoryboard *storyboard;
-        storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-        DGGoodListViewController *wallViewController = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
-
-        UINavigationController *navController = [[NavigationViewController alloc] initWithRootViewController:wallViewController];
-        navController.navigationBarHidden = NO;
-        self.window.rootViewController = [[NavigationViewController alloc] initWithRootViewController:wallViewController];
-    }
-    else {
-        UIStoryboard *storyboard;
-        storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
-        DGWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
-
-        NavigationViewController *navController = [[NavigationViewController alloc] initWithRootViewController:welcomeViewController];
-        navController.navigationBarHidden = YES;
-        self.window.rootViewController = navController;
-    }
+    //    UINavigationController *navController = [[NavigationViewController alloc] initWithRootViewController:goodListController];
+    //    navController.navigationBarHidden = NO;
+    self.window.rootViewController = [[NavigationViewController alloc] initWithRootViewController:goodListController];
 }
 
-- (void)applicationWillResignActive:(UIApplication *)application {
-}
+- (void)setupRestKit {
+    RKLogConfigureByName("RestKit", RKLogLevelTrace);
+    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelInfo);
+    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
 
-- (void)applicationDidEnterBackground:(UIApplication *)application {
-}
+    [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
+    NSURL *baseURL = [NSURL URLWithString:JSON_API_HOST_ADDRESS];
+    AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
+    
+    [client setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
 
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-}
+    RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+    
+    // user
+    RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[DGUser class]];
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-}
+    [userMapping addAttributeMappingsFromDictionary:@{
+        @"id" : @"userID",
+        @"firstName" : @"first_name",
+        @"lastName" : @"last_name",
+        @"email" : @"email",
+        // @"password" : @"password",
+        @"contactable" : @"contactable",
+        @"message" : @"message"
+     }];
 
-- (void)applicationWillTerminate:(UIApplication *)application {
+    RKResponseDescriptor *userResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping
+method:RKRequestMethodAny
+                                                                                           pathPattern:nil
+                                                                                           keyPath:@"ZAPI.response.users"
+                                                                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:userResponseDescriptor];
+
+    RKObjectMapping* userRequestMapping = [RKObjectMapping requestMapping ];
+    [userRequestMapping addAttributeMappingsFromArray:@[ @"email", @"password", @"first_name", @"last_name", @"contactable" ]];
+    RKRequestDescriptor *userRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:userRequestMapping objectClass:[DGUser class] rootKeyPath:@"user" method:RKRequestMethodAny];
+    [objectManager addRequestDescriptor:userRequestDescriptor];
+    
+    // error
+    RKObjectMapping *errorMapping = [RKObjectMapping mappingForClass:[DGError class]];
+    [errorMapping addAttributeMappingsFromDictionary:@{
+        @"messages" : @"messages",
+     }];
+    RKResponseDescriptor *errorResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:errorMapping
+method:RKRequestMethodAny
+                                                                                            pathPattern:nil keyPath:@"ZAPI.response.errors" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
+    [objectManager addResponseDescriptor:errorResponseDescriptor];
 }
 
 @end

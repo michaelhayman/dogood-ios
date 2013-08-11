@@ -38,10 +38,13 @@
 		6355EC1417B0EE1E00EE91C0 /* Reward.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC1317B0EE1E00EE91C0 /* Reward.xib */; };
 		6355EC1717B0EF2700EE91C0 /* DGRewardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC1617B0EF2700EE91C0 /* DGRewardCell.m */; };
 		6355EC1C17B5BA4600EE91C0 /* DGUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC1B17B5BA4500EE91C0 /* DGUser.m */; };
-		636AEA5D17AD43CC002A3494 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA5B17AD43CC002A3494 /* Users.storyboard */; };
+		6355EC1F17B601BF00EE91C0 /* DGError.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC1E17B601BF00EE91C0 /* DGError.m */; };
+		6355EC2417B6723E00EE91C0 /* Users.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC2317B6723D00EE91C0 /* Users.storyboard */; };
+		6355EC2817B68F3200EE91C0 /* DGUpdatePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC2717B68F3200EE91C0 /* DGUpdatePasswordViewController.m */; };
+		6355EC2B17B690D800EE91C0 /* DGForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC2A17B690D800EE91C0 /* DGForgotPasswordViewController.m */; };
+		6355EC2E17B69F1E00EE91C0 /* DGSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC2D17B69F1D00EE91C0 /* DGSignInViewController.m */; };
+		6355EC3117B69F2800EE91C0 /* DGSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3017B69F2700EE91C0 /* DGSignUpViewController.m */; };
 		636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA5C17AD43CC002A3494 /* Good.storyboard */; };
-		636AEA6317AD4751002A3494 /* DGLogInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636AEA6017AD4751002A3494 /* DGLogInViewController.m */; };
-		636AEA6417AD4751002A3494 /* DGSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636AEA6217AD4751002A3494 /* DGSignUpViewController.m */; };
 		636AEA7C17AD4B95002A3494 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA6D17AD4B95002A3494 /* Default-568h@2x.png */; };
 		636AEA7D17AD4B95002A3494 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA6D17AD4B95002A3494 /* Default-568h@2x.png */; };
 		636AEA7E17AD4B95002A3494 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA6E17AD4B95002A3494 /* Default.png */; };
@@ -178,12 +181,19 @@
 		6355EC1817B531C700EE91C0 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		6355EC1A17B5BA4500EE91C0 /* DGUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUser.h; sourceTree = "<group>"; };
 		6355EC1B17B5BA4500EE91C0 /* DGUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUser.m; sourceTree = "<group>"; };
-		636AEA5B17AD43CC002A3494 /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
+		6355EC1D17B601BE00EE91C0 /* DGError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGError.h; sourceTree = "<group>"; };
+		6355EC1E17B601BF00EE91C0 /* DGError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGError.m; sourceTree = "<group>"; };
+		6355EC2317B6723D00EE91C0 /* Users.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Users.storyboard; sourceTree = "<group>"; };
+		6355EC2517B674E900EE91C0 /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
+		6355EC2617B68F3100EE91C0 /* DGUpdatePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUpdatePasswordViewController.h; sourceTree = "<group>"; };
+		6355EC2717B68F3200EE91C0 /* DGUpdatePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUpdatePasswordViewController.m; sourceTree = "<group>"; };
+		6355EC2917B690D700EE91C0 /* DGForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGForgotPasswordViewController.h; sourceTree = "<group>"; };
+		6355EC2A17B690D800EE91C0 /* DGForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGForgotPasswordViewController.m; sourceTree = "<group>"; };
+		6355EC2C17B69F1D00EE91C0 /* DGSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSignInViewController.h; sourceTree = "<group>"; };
+		6355EC2D17B69F1D00EE91C0 /* DGSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSignInViewController.m; sourceTree = "<group>"; };
+		6355EC2F17B69F2700EE91C0 /* DGSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSignUpViewController.h; sourceTree = "<group>"; };
+		6355EC3017B69F2700EE91C0 /* DGSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSignUpViewController.m; sourceTree = "<group>"; };
 		636AEA5C17AD43CC002A3494 /* Good.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Good.storyboard; sourceTree = "<group>"; };
-		636AEA5F17AD4751002A3494 /* DGLogInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLogInViewController.h; sourceTree = "<group>"; };
-		636AEA6017AD4751002A3494 /* DGLogInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGLogInViewController.m; sourceTree = "<group>"; };
-		636AEA6117AD4751002A3494 /* DGSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSignUpViewController.h; sourceTree = "<group>"; };
-		636AEA6217AD4751002A3494 /* DGSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSignUpViewController.m; sourceTree = "<group>"; };
 		636AEA6D17AD4B95002A3494 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		636AEA6E17AD4B95002A3494 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		636AEA6F17AD4B95002A3494 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -302,6 +312,8 @@
 			children = (
 				6355EC1A17B5BA4500EE91C0 /* DGUser.h */,
 				6355EC1B17B5BA4500EE91C0 /* DGUser.m */,
+				6355EC1D17B601BE00EE91C0 /* DGError.h */,
+				6355EC1E17B601BF00EE91C0 /* DGError.m */,
 				633DBF5F17ADA5670038BC2D /* DGCategory.h */,
 				633DBF6017ADA5670038BC2D /* DGCategory.m */,
 				6355EC0817B0C84100EE91C0 /* DGComment.h */,
@@ -332,12 +344,16 @@
 			children = (
 				633DBF7C17AE25CF0038BC2D /* DGUserProfileViewController.h */,
 				633DBF7D17AE25CF0038BC2D /* DGUserProfileViewController.m */,
-				636AEA5B17AD43CC002A3494 /* Users.storyboard */,
+				6355EC2617B68F3100EE91C0 /* DGUpdatePasswordViewController.h */,
+				6355EC2717B68F3200EE91C0 /* DGUpdatePasswordViewController.m */,
+				6355EC2917B690D700EE91C0 /* DGForgotPasswordViewController.h */,
+				6355EC2A17B690D800EE91C0 /* DGForgotPasswordViewController.m */,
+				6355EC2F17B69F2700EE91C0 /* DGSignUpViewController.h */,
+				6355EC3017B69F2700EE91C0 /* DGSignUpViewController.m */,
+				6355EC2C17B69F1D00EE91C0 /* DGSignInViewController.h */,
+				6355EC2D17B69F1D00EE91C0 /* DGSignInViewController.m */,
+				6355EC2317B6723D00EE91C0 /* Users.storyboard */,
 				636AEA5C17AD43CC002A3494 /* Good.storyboard */,
-				636AEA5F17AD4751002A3494 /* DGLogInViewController.h */,
-				636AEA6017AD4751002A3494 /* DGLogInViewController.m */,
-				636AEA6117AD4751002A3494 /* DGSignUpViewController.h */,
-				636AEA6217AD4751002A3494 /* DGSignUpViewController.m */,
 				6386481B17ACEF2100167F15 /* DGWelcomeViewController.h */,
 				6386481C17ACEF2100167F15 /* DGWelcomeViewController.m */,
 			);
@@ -512,6 +528,7 @@
 				636AEA6917AD4776002A3494 /* Do */,
 				636AEA6817AD4764002A3494 /* Users */,
 				633DBF7A17AE1E530038BC2D /* DoGood.nss */,
+				6355EC2517B674E900EE91C0 /* constants.h */,
 				638647F017AC087A00167F15 /* DGAppDelegate.h */,
 				638647F117AC087A00167F15 /* DGAppDelegate.m */,
 				638647E817AC087A00167F15 /* Supporting Files */,
@@ -628,7 +645,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				638647EC17AC087A00167F15 /* InfoPlist.strings in Resources */,
-				636AEA5D17AD43CC002A3494 /* Users.storyboard in Resources */,
 				636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */,
 				636AEA7C17AD4B95002A3494 /* Default-568h@2x.png in Resources */,
 				636AEA7E17AD4B95002A3494 /* Default.png in Resources */,
@@ -683,6 +699,7 @@
 				6355EC0D17B0D4C300EE91C0 /* CommentCell.xib in Resources */,
 				6355EC0F17B0E73C00EE91C0 /* DGRewardsListViewController.xib in Resources */,
 				6355EC1417B0EE1E00EE91C0 /* Reward.xib in Resources */,
+				6355EC2417B6723E00EE91C0 /* Users.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -754,8 +771,6 @@
 				6386481D17ACEF2100167F15 /* DGWelcomeViewController.m in Sources */,
 				638647EE17AC087A00167F15 /* main.m in Sources */,
 				638647F217AC087A00167F15 /* DGAppDelegate.m in Sources */,
-				636AEA6317AD4751002A3494 /* DGLogInViewController.m in Sources */,
-				636AEA6417AD4751002A3494 /* DGSignUpViewController.m in Sources */,
 				636AEA9F17AD66C8002A3494 /* GoodCell.m in Sources */,
 				636AEAA317AD77F0002A3494 /* DGPostGoodViewController.m in Sources */,
 				636AEAA717AD79AA002A3494 /* GoodOverviewCell.m in Sources */,
@@ -776,6 +791,11 @@
 				6355EC1217B0EDA300EE91C0 /* DGRewardsListViewController.m in Sources */,
 				6355EC1717B0EF2700EE91C0 /* DGRewardCell.m in Sources */,
 				6355EC1C17B5BA4600EE91C0 /* DGUser.m in Sources */,
+				6355EC1F17B601BF00EE91C0 /* DGError.m in Sources */,
+				6355EC2817B68F3200EE91C0 /* DGUpdatePasswordViewController.m in Sources */,
+				6355EC2B17B690D800EE91C0 /* DGForgotPasswordViewController.m in Sources */,
+				6355EC2E17B69F1E00EE91C0 /* DGSignInViewController.m in Sources */,
+				6355EC3117B69F2800EE91C0 /* DGSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

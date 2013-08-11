@@ -1,4 +1,3 @@
-#import <UIKit/UIKit.h>
 #import "DGComment.h"
 @class DGGood;
 @class DGComment;

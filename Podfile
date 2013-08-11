@@ -9,4 +9,9 @@ pod 'REMenu', '~> 1.3.5'
 pod 'NUI'
 pod 'SDSegmentedControl'
 pod 'JMTabView'
+pod 'RestKit'
+
+pod 'NSData+Base64'
+pod 'RFKeychain', '~> 0.1'
+
 

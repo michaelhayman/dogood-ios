@@ -17,9 +17,11 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    /*
     DebugLog(@"dispapeared");
     NavigationViewController *navigationController = (NavigationViewController *)self.navigationController;
     [navigationController.menu close];
+    */
 }
 
 #pragma mark - Custom button

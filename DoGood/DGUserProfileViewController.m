@@ -33,14 +33,34 @@
 
 #pragma mark - Actions
 - (IBAction)signOut:(id)sender {
-    // [DGUser logOut];
+    [[DGUser currentUser] signOutWithMessage:YES];
     self.navigationController.navigationBarHidden = YES;
     UIStoryboard *storyboard;
     storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
     DGWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
     self.navigationController.navigationBarHidden = YES;
-    [self.navigationController pushViewController:welcomeViewController animated:NO];
+    // [self.navigationController pushViewController:welcomeViewController animated:NO];
 }
 
+#pragma mark - Update Account
+- (void)updateFirstName:(NSString *)firstName andLastName:(NSString *)lastName andContactable:(NSNumber *)contactable {
+    DGUser *user;
+    user.first_name = firstName;
+    user.last_name = lastName;
+    user.contactable = contactable;
+    [[RKObjectManager sharedManager] putObject:user path:user_registration_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [TSMessage showNotificationInViewController:self
+                              withTitle:NSLocalizedString(@"Saved!", nil)
+                            withMessage:NSLocalizedString(@"Your profile was updated.", nil)
+                               withType:TSMessageNotificationTypeSuccess];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateAccountNotification object:self];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [TSMessage showNotificationInViewController:self
+                              withTitle:NSLocalizedString(@"Oops", nil)
+                            withMessage:NSLocalizedString(@"Couldn't update your profile.", nil)
+                               withType:TSMessageNotificationTypeSuccess];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailUpdateAccountNotification object:self];
+    }];
+}
 
 @end

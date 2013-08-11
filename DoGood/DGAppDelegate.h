@@ -1,5 +1,3 @@
-#import <UIKit/UIKit.h>
-
 /*
 // Notification names:
 static NSString * const kPAWFilterDistanceChangeNotification = @"kPAWFilterDistanceChangeNotification";

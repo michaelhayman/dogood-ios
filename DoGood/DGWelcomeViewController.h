@@ -1,11 +1,10 @@
-#import <UIKit/UIKit.h>
-@class DGLogInViewController;
-@class DGSignUpViewController;
-
+@class DGGoodListViewController;
 @interface DGWelcomeViewController : UIViewController {
-    DGLogInViewController *logInViewController;
-    DGSignUpViewController *signUpViewController;
+    __weak IBOutlet UIButton *signInButton;
+    __weak IBOutlet UIButton *signUpButton;
+    
 }
 @property (weak, nonatomic) IBOutlet UITextView *welcomeLabel;
+@property (weak, nonatomic) DGGoodListViewController* goodList;
 
 @end

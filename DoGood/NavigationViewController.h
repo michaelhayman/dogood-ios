@@ -1,4 +1,3 @@
-#import <UIKit/UIKit.h>
 #import "REMenu.h"
 
 @interface NavigationViewController : UINavigationController

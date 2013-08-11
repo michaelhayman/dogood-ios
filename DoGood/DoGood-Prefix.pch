@@ -15,6 +15,8 @@
     #import <Foundation/Foundation.h>
     #import "TSMessage.h"
     #import "DGUser.h"
+    #import "constants.h"
+    #import <RestKit/RestKit.h>
 #endif
 
 #ifdef DEBUG

@@ -1,4 +1,3 @@
-#import <UIKit/UIKit.h>
 
 @interface DGRewardsListViewController : UIViewController {
     __weak IBOutlet UISegmentedControl *tabs;

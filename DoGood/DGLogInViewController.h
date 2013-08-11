@@ -1,3 +1,0 @@
-@interface DGLogInViewController : UIViewController
-
-@end

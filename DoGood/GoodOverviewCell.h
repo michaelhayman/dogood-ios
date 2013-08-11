@@ -1,5 +1,3 @@
-#import <UIKit/UIKit.h>
-
 @interface GoodOverviewCell : UITableViewCell <UITextViewDelegate> {
 }
 

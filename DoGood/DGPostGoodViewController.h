@@ -1,7 +1,3 @@
-//
-//  DGPostGoodViewController.h
-//  DoGood
-#import <UIKit/UIKit.h>
 @class DGGood;
 
 @interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {

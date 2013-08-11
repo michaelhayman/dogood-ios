@@ -1,10 +1,8 @@
 #import "DGGoodListViewController.h"
-#import "DGWelcomeViewController.h"
-#import "DGUserProfileViewController.h"
 #import "GoodCell.h"
 #import "DGGood.h"
 #import "DGLocation.h"
-#import "DGGoodCommentsViewController.h"
+#import "DGWelcomeViewController.h"
 
 @interface DGGoodListViewController ()
 
@@ -34,6 +32,13 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    if (![[DGUser currentUser] isSignedIn]) {
+        UIStoryboard *storyboard;
+        storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+        DGWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
+        [self presentViewController:navController animated:NO completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

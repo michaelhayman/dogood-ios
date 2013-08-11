@@ -74,7 +74,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    DebugLog(@"dispapeared");
+    DebugLog(@"dispapeared nv");
     [_menu close];
 }
 
