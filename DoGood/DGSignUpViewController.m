@@ -2,6 +2,7 @@
 
 @interface DGSignUpViewController ()
 
+@property (strong, nonatomic) IBOutlet UITextField *usernameField;
 @property (strong, nonatomic) IBOutlet UITextField *emailField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
 @property (strong, nonatomic) IBOutlet UISwitch *contactable;
@@ -32,14 +33,13 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
 - (IBAction)createAccount:(id)sender {
     // can we present a modal and do this in a callback once dismissed?
-    [self createAccountWithEmail:self.emailField.text andPassword:self.passwordField.text andContactable:@(self.contactable.selected)];
+    [self createAccountWithUsername:self.usernameField.text andEmail:self.emailField.text andPassword:self.passwordField.text andContactable:@(self.contactable.selected)];
 }
 
 - (void)dealloc {
@@ -48,7 +48,9 @@
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (textField == _emailField) {
+    if (textField == _usernameField) {
+        [_emailField becomeFirstResponder];
+    } else if (textField == _emailField) {
         [_passwordField becomeFirstResponder];
     } else if (textField == _passwordField) {
         [self createAccount:textField];
@@ -58,21 +60,30 @@
 }
 
 #pragma mark - Create Account
-- (void)createAccountWithEmail:(NSString *)email andPassword:(NSString*)password andContactable:(NSNumber *)contactable {
-    DGUser *user;
+- (void)createAccountWithUsername:(NSString *)username andEmail:(NSString *)email andPassword:(NSString*)password andContactable:(NSNumber *)contactable {
+    DGUser *user = [DGUser new];
+    user.username = username;
     user.email = email;
     user.password = password;
-    user.contactable = contactable;
+    // user.contactable = contactable;
     
     [[RKObjectManager sharedManager] postObject:user path:user_registration_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         DGUser * user = (mappingResult.array)[0];
         [DGUser setCurrentUser:user];
         [DGUser signInWasSuccessful];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidCreateAccountNotification object:self];
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        [TSMessage showNotificationInViewController:self.presentingViewController
+                                  withTitle:nil
+                                withMessage:NSLocalizedString(@"Welcome to Do Good!", nil)
+                                   withType:TSMessageNotificationTypeSuccess];
         DebugLog(@"success");
-        // [[zoocasaAppDelegate getAppDelegateInstance] showMessage:user.message withTitle:@"Sign Up Successful"];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"fail");
+        [TSMessage showNotificationInViewController:self
+                                  withTitle:nil
+                                withMessage:[error localizedDescription]
+                                   withType:TSMessageNotificationTypeError];
         // [[zoocasaAppDelegate getAppDelegateInstance] showMessage:[error localizedDescription] withTitle:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailCreateAccountNotification object:self];
     }];

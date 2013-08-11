@@ -9,19 +9,6 @@
 
 @implementation DGUpdatePasswordViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-    }
-    return self;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:YES];
-    
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -31,8 +18,7 @@
                                                object:nil];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 

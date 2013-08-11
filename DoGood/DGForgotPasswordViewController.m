@@ -43,7 +43,8 @@
 }
 
 - (IBAction)forgotPassword:(id)sender {
-    [[DGUser currentUser] sendPasswordToEmail:self.emailField.text];
+    DebugLog(@"email %@", self.emailField.text);
+    [self sendPasswordToEmail:self.emailField.text];
 }
 
 - (void)dealloc {
@@ -60,20 +61,24 @@
 }
 
 - (void)sendPasswordToEmail:(NSString*)email {
-    DGUser *user;
+    DGUser *user = [DGUser new];
     user.email = email;
     user.password = nil;
 
     [[RKObjectManager sharedManager] postObject:user path:user_password_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         DGUser *user = (mappingResult.array)[0];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSendPasswordNotification object:nil];
-        DebugLog(@"password sent");
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        DebugLog(@"Operation failed with error: %@", error);
-        [TSMessage showNotificationInViewController:self
+        DebugLog(@"password sent %@ %@", self.parentViewController, self.navigationController.parentViewController);
+        [TSMessage showNotificationInViewController:self.parentViewController
                                   withTitle:NSLocalizedString(@"Password sent.", nil)
                                 withMessage:user.message
                                    withType:TSMessageNotificationTypeSuccess];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        DebugLog(@"Operation failed with error: %@", error);
+        [TSMessage showNotificationInViewController:self
+                                  withTitle:NSLocalizedString(@"Password not sent.", nil)
+                                withMessage:[error description]
+                                   withType:TSMessageNotificationTypeError];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailSendPasswordNotification object:nil];
     }];
 }

@@ -113,6 +113,7 @@
     //    UINavigationController *navController = [[NavigationViewController alloc] initWithRootViewController:goodListController];
     //    navController.navigationBarHidden = NO;
     self.window.rootViewController = [[NavigationViewController alloc] initWithRootViewController:goodListController];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 
 - (void)setupRestKit {
@@ -133,6 +134,7 @@
 
     [userMapping addAttributeMappingsFromDictionary:@{
         @"id" : @"userID",
+        @"username" : @"username",
         @"firstName" : @"first_name",
         @"lastName" : @"last_name",
         @"email" : @"email",
@@ -141,15 +143,11 @@
         @"message" : @"message"
      }];
 
-    RKResponseDescriptor *userResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping
-method:RKRequestMethodAny
-                                                                                           pathPattern:nil
-                                                                                           keyPath:@"ZAPI.response.users"
-                                                                                       statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *userResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:userResponseDescriptor];
 
     RKObjectMapping* userRequestMapping = [RKObjectMapping requestMapping ];
-    [userRequestMapping addAttributeMappingsFromArray:@[ @"email", @"password", @"first_name", @"last_name", @"contactable" ]];
+    [userRequestMapping addAttributeMappingsFromArray:@[ @"email", @"username", @"password", @"first_name", @"last_name", @"contactable" ]];
     RKRequestDescriptor *userRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:userRequestMapping objectClass:[DGUser class] rootKeyPath:@"user" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:userRequestDescriptor];
     
@@ -158,9 +156,7 @@ method:RKRequestMethodAny
     [errorMapping addAttributeMappingsFromDictionary:@{
         @"messages" : @"messages",
      }];
-    RKResponseDescriptor *errorResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:errorMapping
-method:RKRequestMethodAny
-                                                                                            pathPattern:nil keyPath:@"ZAPI.response.errors" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
+    RKResponseDescriptor *errorResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:errorMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"errors" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
     [objectManager addResponseDescriptor:errorResponseDescriptor];
 }
 

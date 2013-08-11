@@ -9,13 +9,25 @@
 
 @implementation NavigationViewController
 
+- (void)showGoodList {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+    DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
+    __typeof (&*self) __weak weakSelf = self;
+    [weakSelf setViewControllers:@[controller] animated:NO];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationBar.tintColor = [UIColor blueColor];
     self.navigationBar.tintColor = [UIColor colorWithRed:0 green:179/255.0 blue:134/255.0 alpha:1];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showGoodList)
+                                                 name:@"SignOut"
+                                               object:nil];
+
     __typeof (&*self) __weak weakSelf = self;
-    
+
     REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"Do Good"
                                                     subtitle:nil
                             //image:[UIImage imageNamed:@"Icon_Home"]
@@ -53,9 +65,8 @@
                                                highlightedImage:nil
                                                          action:^(REMenuItem *item) {
                                                              NSLog(@"Item: %@", item);
-                                                             // UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-                                                             //DGGoodListViewController *wallViewController = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
-                                                             DGUserProfileViewController *controller = [[DGUserProfileViewController alloc] init];
+                                                             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+                                                             DGUserProfileViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
                                                              [weakSelf setViewControllers:@[controller] animated:NO];
                                                          }];
     homeItem.tag = 0;
@@ -75,7 +86,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     DebugLog(@"dispapeared nv");
-    [_menu close];
+    if (_menu && _menu.isOpen) {
+        [_menu close];
+    }
+    DebugLog(@"not the cause");
 }
 
 - (void)toggleMenu {

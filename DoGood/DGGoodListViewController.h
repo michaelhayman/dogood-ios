@@ -6,4 +6,6 @@
     NSArray *goods;
 }
 
+- (void)showWelcome;
+
 @end

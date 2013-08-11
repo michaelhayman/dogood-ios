@@ -29,20 +29,34 @@
     points.text = @"51,500";
 
     [self getGood];
-}
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(showWelcome)
+                                                 name:@"SignOut"
+                                               object:nil];
+     }
 
 - (void)viewWillAppear:(BOOL)animated {
+    DebugLog(@"appeared");
+    DebugLog(@"notification post to here, %@", DGUserDidSignOutNotification);
+    // [[NSNotificationCenter defaultCenter] postNotificationName:@"SignOut" object:self];
+    [self showWelcome];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    DebugLog(@"disappeared");
+    // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SignOut" object:nil];
+}
+
+- (void)showWelcome {
+    DebugLog(@"show welcome");
     if (![[DGUser currentUser] isSignedIn]) {
+        DebugLog(@"shouldn't be signed in");
         UIStoryboard *storyboard;
         storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
         DGWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
-        [self presentViewController:navController animated:NO completion:nil];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
+        [self presentViewController:navigationController animated:NO completion:nil];
     }
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 #pragma mark - UITableView delegate methods

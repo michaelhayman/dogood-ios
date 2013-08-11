@@ -51,27 +51,27 @@ static DGUser* currentUser = nil;
     if ([currentUser isSignedIn]) {
         [[RKObjectManager sharedManager] postObject:self path:user_session_path parameters:nil success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
             if ([currentUser isSignedIn]) {
-                [currentUser signOutWithMessage:NO];
+                [[DGUser currentUser] signOutWithMessage:NO];
             }
         }];
     }
 }
 
 + (void)signInWasSuccessful {
-    [currentUser assignDefaults];
+    [self assignDefaults];
 
     [[RKObjectManager sharedManager].HTTPClient setAuthorizationHeaderWithUsername:currentUser.email password:currentUser.password];
 
 	[[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSignInNotification object:self];
 }
 
-- (void) assignDefaults {
-	[[NSUserDefaults standardUserDefaults] setObject:self.userID forKey:kDGUserCurrentUserIDDefaultsKey];
-	[[NSUserDefaults standardUserDefaults] setObject:self.first_name forKey:kDGUserCurrentUserFirstName];
-	[[NSUserDefaults standardUserDefaults] setObject:self.last_name forKey:kDGUserCurrentUserLastName];
-	[[NSUserDefaults standardUserDefaults] setObject:self.email forKey:kDGUserCurrentUserEmail];
-	[[NSUserDefaults standardUserDefaults] setObject:self.email forKey:kDGUserCurrentUserContactable];
-    [RFKeychain setPassword:self.password account:kDoGoodAccount service:kDoGoodService];
++ (void) assignDefaults {
+	[[NSUserDefaults standardUserDefaults] setObject:currentUser.userID forKey:kDGUserCurrentUserIDDefaultsKey];
+	[[NSUserDefaults standardUserDefaults] setObject:currentUser.first_name forKey:kDGUserCurrentUserFirstName];
+	[[NSUserDefaults standardUserDefaults] setObject:currentUser.last_name forKey:kDGUserCurrentUserLastName];
+	[[NSUserDefaults standardUserDefaults] setObject:currentUser.email forKey:kDGUserCurrentUserEmail];
+	[[NSUserDefaults standardUserDefaults] setObject:currentUser.contactable forKey:kDGUserCurrentUserContactable];
+    [RFKeychain setPassword:currentUser.password account:kDoGoodAccount service:kDoGoodService];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -85,7 +85,7 @@ static DGUser* currentUser = nil;
 
 #pragma mark - Send Password
 #pragma mark - Sign Out
-+ (void)signOutWithMessage:(BOOL)showMessage {
+- (void)signOutWithMessage:(BOOL)showMessage {
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserIDDefaultsKey];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserFirstName];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserLastName];
@@ -93,24 +93,25 @@ static DGUser* currentUser = nil;
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserContactable];
     [[NSUserDefaults standardUserDefaults] synchronize];
  
-    currentUser.userID = nil;
-    currentUser.email = nil;
-    currentUser.password = nil;
-    currentUser.password_confirmation = nil;
-    currentUser.first_name = nil;
-    currentUser.last_name = nil;
-    currentUser.contactable = nil;
-    currentUser.terms_accepted = nil;
+    self.userID = nil;
+    self.email = nil;
+    self.password = nil;
+    self.password_confirmation = nil;
+    self.first_name = nil;
+    self.last_name = nil;
+    self.contactable = nil;
+    self.terms_accepted = nil;
 
     [RFKeychain deletePasswordForAccount:kDoGoodAccount service:kDoGoodService];
-    [self setAuthorizationHeader];
+    [DGUser setAuthorizationHeader];
 
     if (showMessage) {
     }
 
-    [[RKObjectManager sharedManager].HTTPClient getPath:user_end_session_path parameters:nil success:nil failure:nil];
+    [[RKObjectManager sharedManager].HTTPClient deletePath:user_end_session_path parameters:nil success:nil failure:nil];
+    DebugLog(@"why isn't notification posting, %@", DGUserDidSignOutNotification);
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSignOutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SignOut" object:self];
 }
 
 @end

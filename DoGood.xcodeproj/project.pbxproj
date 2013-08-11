@@ -44,6 +44,10 @@
 		6355EC2B17B690D800EE91C0 /* DGForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC2A17B690D800EE91C0 /* DGForgotPasswordViewController.m */; };
 		6355EC2E17B69F1E00EE91C0 /* DGSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC2D17B69F1D00EE91C0 /* DGSignInViewController.m */; };
 		6355EC3117B69F2800EE91C0 /* DGSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3017B69F2700EE91C0 /* DGSignUpViewController.m */; };
+		6355EC3317B75EB600EE91C0 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3217B75EB300EE91C0 /* constants.m */; };
+		6355EC3817B8505A00EE91C0 /* DGUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3717B8505900EE91C0 /* DGUserSettingsViewController.m */; };
+		6355EC3A17B8680300EE91C0 /* SignUpOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC3917B8680300EE91C0 /* SignUpOverviewCell.xib */; };
+		6355EC3D17B86B8400EE91C0 /* SignUpOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3C17B86B7B00EE91C0 /* SignUpOverviewCell.m */; };
 		636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA5C17AD43CC002A3494 /* Good.storyboard */; };
 		636AEA7C17AD4B95002A3494 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA6D17AD4B95002A3494 /* Default-568h@2x.png */; };
 		636AEA7D17AD4B95002A3494 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA6D17AD4B95002A3494 /* Default-568h@2x.png */; };
@@ -193,6 +197,12 @@
 		6355EC2D17B69F1D00EE91C0 /* DGSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSignInViewController.m; sourceTree = "<group>"; };
 		6355EC2F17B69F2700EE91C0 /* DGSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSignUpViewController.h; sourceTree = "<group>"; };
 		6355EC3017B69F2700EE91C0 /* DGSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSignUpViewController.m; sourceTree = "<group>"; };
+		6355EC3217B75EB300EE91C0 /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
+		6355EC3617B8505800EE91C0 /* DGUserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSettingsViewController.h; sourceTree = "<group>"; };
+		6355EC3717B8505900EE91C0 /* DGUserSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSettingsViewController.m; sourceTree = "<group>"; };
+		6355EC3917B8680300EE91C0 /* SignUpOverviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpOverviewCell.xib; sourceTree = "<group>"; };
+		6355EC3B17B86B7800EE91C0 /* SignUpOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpOverviewCell.h; sourceTree = "<group>"; };
+		6355EC3C17B86B7B00EE91C0 /* SignUpOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpOverviewCell.m; sourceTree = "<group>"; };
 		636AEA5C17AD43CC002A3494 /* Good.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Good.storyboard; sourceTree = "<group>"; };
 		636AEA6D17AD4B95002A3494 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		636AEA6E17AD4B95002A3494 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -342,8 +352,13 @@
 		636AEA6817AD4764002A3494 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				6355EC3917B8680300EE91C0 /* SignUpOverviewCell.xib */,
+				6355EC3B17B86B7800EE91C0 /* SignUpOverviewCell.h */,
+				6355EC3C17B86B7B00EE91C0 /* SignUpOverviewCell.m */,
 				633DBF7C17AE25CF0038BC2D /* DGUserProfileViewController.h */,
 				633DBF7D17AE25CF0038BC2D /* DGUserProfileViewController.m */,
+				6355EC3617B8505800EE91C0 /* DGUserSettingsViewController.h */,
+				6355EC3717B8505900EE91C0 /* DGUserSettingsViewController.m */,
 				6355EC2617B68F3100EE91C0 /* DGUpdatePasswordViewController.h */,
 				6355EC2717B68F3200EE91C0 /* DGUpdatePasswordViewController.m */,
 				6355EC2917B690D700EE91C0 /* DGForgotPasswordViewController.h */,
@@ -529,6 +544,7 @@
 				636AEA6817AD4764002A3494 /* Users */,
 				633DBF7A17AE1E530038BC2D /* DoGood.nss */,
 				6355EC2517B674E900EE91C0 /* constants.h */,
+				6355EC3217B75EB300EE91C0 /* constants.m */,
 				638647F017AC087A00167F15 /* DGAppDelegate.h */,
 				638647F117AC087A00167F15 /* DGAppDelegate.m */,
 				638647E817AC087A00167F15 /* Supporting Files */,
@@ -700,6 +716,7 @@
 				6355EC0F17B0E73C00EE91C0 /* DGRewardsListViewController.xib in Resources */,
 				6355EC1417B0EE1E00EE91C0 /* Reward.xib in Resources */,
 				6355EC2417B6723E00EE91C0 /* Users.storyboard in Resources */,
+				6355EC3A17B8680300EE91C0 /* SignUpOverviewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,6 +813,9 @@
 				6355EC2B17B690D800EE91C0 /* DGForgotPasswordViewController.m in Sources */,
 				6355EC2E17B69F1E00EE91C0 /* DGSignInViewController.m in Sources */,
 				6355EC3117B69F2800EE91C0 /* DGSignUpViewController.m in Sources */,
+				6355EC3317B75EB600EE91C0 /* constants.m in Sources */,
+				6355EC3817B8505A00EE91C0 /* DGUserSettingsViewController.m in Sources */,
+				6355EC3D17B86B8400EE91C0 /* SignUpOverviewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

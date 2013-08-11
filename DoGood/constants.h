@@ -13,34 +13,33 @@
 #define user_registration_path @"/users"
 #define user_password_path @"/users/password"
 
-
 // Constants
-static NSString* const kDGUserCurrentUserIDDefaultsKey = @"kDGUserCurrentUserIDDefaultsKey";
-static NSString* const kDGUserCurrentUserEmail = @"kDGUserCurrentUserEmail";
-static NSString* const kDGUserCurrentUserFirstName = @"kDGUserCurrentUserFirstName";
-static NSString* const kDGUserCurrentUserLastName = @"kDGUserCurrentUserLastName";
-static NSString* const kDGUserCurrentUserContactable = @"kDGUserCurrentUserContactable";
+extern NSString *const kDGUserCurrentUserIDDefaultsKey;
+extern NSString* const kDGUserCurrentUserEmail;
+extern NSString* const kDGUserCurrentUserFirstName;
+extern NSString* const kDGUserCurrentUserLastName;
+extern NSString* const kDGUserCurrentUserContactable;
 
 // Notifications
-static NSString* const DGUserDidSignOutNotification = @"DGUserDidSignOutNotification";
+extern NSString *const DGUserDidSignOutNotification;
 
-static NSString* const DGUserDidSignInNotification = @"DGUserDidSignInNotification";
-static NSString* const DGUserDidFailSignInNotification = @"DGUserDidFailSignInNotification";
+extern NSString* const DGUserDidSignInNotification;
+extern NSString* const DGUserDidFailSignInNotification;
 
-static NSString* const DGUserDidCreateAccountNotification = @"DGUserDidCreateAccountNotification";
-static NSString* const DGUserDidFailCreateAccountNotification = @"DGUserDidFailCreateAccountNotification";
+extern NSString* const DGUserDidCreateAccountNotification;
+extern NSString* const DGUserDidFailCreateAccountNotification;
 
-static NSString* const DGUserDidUpdateAccountNotification = @"DGUserDidUpdateAccountNotification";
-static NSString* const DGUserDidFailUpdateAccountNotification = @"DGUserDidFailUpdateAccountNotification";
+extern NSString* const DGUserDidUpdateAccountNotification;
+extern NSString* const DGUserDidFailUpdateAccountNotification;
 
-static NSString* const DGUserEmailIsUnique = @"DGUserEmailIsUnique";
-static NSString* const DGUserEmailIsNotUnique = @"DGUserEmailIsNotUnique";
+extern NSString* const DGUserEmailIsUnique;
+extern NSString* const DGUserEmailIsNotUnique;
 
-static NSString* const DGUserDidUpdatePasswordNotification = @"DGUserDidUpdatePasswordNotification";
-static NSString* const DGUserDidFailUpdatePasswordNotification = @"DGUserDidFailUpdatePasswordNotification";
+extern NSString* const DGUserDidUpdatePasswordNotification;
+extern NSString* const DGUserDidFailUpdatePasswordNotification;
 
-static NSString* const DGUserDidSendPasswordNotification = @"DGUserDidSendPasswordNotification";
-static NSString* const DGUserDidFailSendPasswordNotification = @"DGUserDidFailSendPasswordNotification";
+extern NSString* const DGUserDidSendPasswordNotification;
+extern NSString* const DGUserDidFailSendPasswordNotification;
 
-static NSString* const DGUserInfoDidLoad = @"DGUserInfoDidLoad";
+extern NSString* const DGUserInfoDidLoad;
 
