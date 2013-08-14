@@ -3,8 +3,17 @@
 #import "DGVote.h"
 #import "DGFollow.h"
 #import "DGGoodCommentsViewController.h"
-#import <STTweetLabel.h>
+#import <TTTAttributedLabel.h>
 
+static inline NSRegularExpression * NameRegularExpression() {
+    static NSRegularExpression *_nameRegularExpression = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _nameRegularExpression = [[NSRegularExpression alloc] initWithPattern:@"^\\w+" options:NSRegularExpressionCaseInsensitive error:nil];
+    });
+    
+    return _nameRegularExpression;
+}
 @implementation GoodCell
 
 #pragma mark - Initial setup
@@ -28,9 +37,12 @@
     UITapGestureRecognizer* commentsGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showComments)];
     [self.commentsCount setUserInteractionEnabled:YES];
     [self.commentsCount addGestureRecognizer:commentsGesture];
-    _commentBlock  = [[STTweetLabel alloc] init];
-    _commentBlock.numberOfLines = 0;
-    _commentBlock.lineBreakMode = NSLineBreakByWordWrapping;
+
+    self.commentBlock = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
+    self.commentBlock.font = [UIFont fontWithName:@"Calibre" size:12];
+    self.commentBlock.textColor = [UIColor darkGrayColor];
+    self.commentBlock.lineBreakMode = NSLineBreakByWordWrapping;
+    self.commentBlock.numberOfLines = 0;
 
     // re-goods
     [self.regood addTarget:self action:@selector(addUserRegood) forControlEvents:UIControlEventTouchUpInside];
@@ -38,6 +50,22 @@
     // more options
     [self.moreOptions addTarget:self action:@selector(openMoreOptions) forControlEvents:UIControlEventTouchUpInside];
     [self setupMoreOptions];
+}
+
+- (TTTAttributedLabel *)commentLabel {
+    TTTAttributedLabel *label = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
+    label.font = [UIFont fontWithName:@"Calibre" size:12];
+    label.textColor = [UIColor darkGrayColor];
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    label.numberOfLines = 0;
+    UIColor *color = [UIColor colorWithRed:5.0/255.0 green:171.0/255.0 blue:117.0/255.0 alpha:1.0];
+    NSArray *keys = [[NSArray alloc] initWithObjects:(id)kCTForegroundColorAttributeName,(id)kCTUnderlineStyleAttributeName
+                     , nil];
+    NSArray *objects = [[NSArray alloc] initWithObjects:color,[NSNumber numberWithInt:kCTUnderlineStyleNone], nil];
+    NSDictionary *linkAttributes = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
+
+    label.linkAttributes = linkAttributes;
+    return label;
 }
 
 #pragma mark - Set values when cell becomes visible
@@ -64,25 +92,48 @@
     }
     [self setCommentsText];
 
-    NSMutableArray *commentText = [[NSMutableArray alloc] init];
+    // comments list
+    CGFloat lastHeight = 0;
     for (DGComment *comment in [self.good.comments reverseObjectEnumerator]) {
-        [commentText addObject:[NSString stringWithFormat:@" @%@ %@ ", comment.user.username, comment.comment]];
-    }
-    NSString *allComments = [commentText componentsJoinedByString:@"\n"];
-    [commentText removeAllObjects];
+        TTTAttributedLabel *label = [self commentLabel];
+        NSString *text = [NSString stringWithFormat:@"%@ %@", comment.user.username, comment.comment];
 
-    UIFont *font = [UIFont fontWithName:@"Calibre" size:12];
-    CGSize size = [allComments sizeWithFont:font
-                          constrainedToSize:CGSizeMake(221, 118)
-                      lineBreakMode:NSLineBreakByWordWrapping];
-    _commentBlock.font = font;
-    _commentBlock.frame = CGRectMake(0, 0, 221, size.height);
-    _commentBlock.fontHashtag = [UIFont boldSystemFontOfSize:17.0];
-    _commentBlock.colorHashtag = [UIColor colorWithRed:5.0/255.0 green:171.0/255.0 blue:117.0/255.0 alpha:1.0];
-    [_commentBlock setText:allComments];
-    // [self setupCommentCallbacks:commentBlock];
-    [self.comments addSubview:_commentBlock];
-    commentBoxHeight.constant = size.height;
+        [label setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+            NSRange stringRange = NSMakeRange(0, [mutableAttributedString length]);
+            
+            // NSRegularExpression *regexp = NameRegularExpression();
+
+            NSRegularExpression *regexp = [[NSRegularExpression alloc] initWithPattern:[NSString stringWithFormat:@"%@+",comment.user.username] options:NSRegularExpressionCaseInsensitive error:nil];
+
+            [regexp enumerateMatchesInString:[mutableAttributedString string] options:0 range:stringRange usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {            
+                UIFont *italicSystemFont = [UIFont boldSystemFontOfSize:10];
+                CTFontRef italicFont = CTFontCreateWithName((__bridge CFStringRef)italicSystemFont.fontName, italicSystemFont.pointSize, NULL);
+                if (italicFont) {
+                    [mutableAttributedString removeAttribute:(NSString *)kCTFontAttributeName range:result.range];
+                    [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)italicFont range:result.range];
+                    CFRelease(italicFont);
+                    
+                    [mutableAttributedString removeAttribute:(NSString *)kCTForegroundColorAttributeName range:result.range];
+                    [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(__bridge id)[[UIColor grayColor] CGColor] range:result.range];
+                }
+            }];
+
+            return mutableAttributedString;
+        }];
+
+        NSRange r = [text rangeOfString:comment.user.username];
+        [label addLinkToURL:[NSURL URLWithString:[NSString stringWithFormat:@"dogood://users/%@", comment.user.userID]] withRange:r];
+        UIFont *font = [UIFont fontWithName:@"Calibre" size:12];
+        CGSize size = [text sizeWithFont:font
+                              constrainedToSize:CGSizeMake(221, 118)
+                          lineBreakMode:NSLineBreakByWordWrapping];
+        lastHeight = lastHeight + size.height;
+        label.frame = CGRectMake(0, lastHeight, 221, size.height);
+        label.delegate = self;
+        [self.comments addSubview:label];
+    }
+    commentBoxHeight.constant = lastHeight + 20;
+
     // regoods
     if ([self.good.current_user_regooded boolValue]) {
         [self.regood setSelected:YES];
@@ -90,6 +141,20 @@
         [self.regood setSelected:NO];
     }
     [self setRegoodsText];
+}
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    if ([[url scheme] hasPrefix:@"dogood"]) {
+        if ([[url host] hasPrefix:@"users"]) {
+            DebugLog(@"sup");
+            /* load help screen */
+        } else if ([[url host] hasPrefix:@"show-settings"]) {
+            /* load settings screen */
+        }
+    } else {
+        /* deal with http links here */
+        DebugLog(@"not sure what else to do");
+    }
 }
 
 /*
@@ -194,33 +259,6 @@
 
 - (void)setCommentsText {
     self.commentsCount.text = [NSString stringWithFormat:@"%@ comments", self.good.comments_count];
-}
-
-- (void)setupCommentCallbacks:(STTweetLabel *)commentBlock {
-    STLinkCallbackBlock callbackBlock = ^(STLinkActionType actionType, NSString *link) {
-
-        // NSString *displayString = NULL;
-
-        // determine what the user clicked on
-        switch (actionType) {
-
-            case STLinkActionTypeAccount:
-                DebugLog(@"%@", [NSString stringWithFormat:@"Twitter account:\n%@", link]);
-                break;
-
-            case STLinkActionTypeHashtag:
-                DebugLog(@"%@", [NSString stringWithFormat:@"Twitter hashtag:\n%@", link]);
-                break;
-
-            case STLinkActionTypeWebsite:
-                DebugLog(@"%@", [NSString stringWithFormat:@"Website:\n%@", link]);
-                break;
-        }
-
-        // [_displayLabel setText:displayString];
-
-    };
-    [commentBlock setCallbackBlock:callbackBlock];
 }
 
 #pragma mark - More options

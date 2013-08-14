@@ -78,11 +78,10 @@
 
 #pragma mark - UITableView delegate methods
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    GoodCell *cell = [aTableView dequeueReusableCellWithIdentifier:@"GoodCell"];
-    // all this stuff can move to the cell...
+    static NSString * reuseIdentifier = @"GoodCell";
+    GoodCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     DGGood *good = goods[indexPath.row];
     cell.good = good;
-    // [cell awakeFromNib];
     [cell setValues];
     cell.navigationController = self.navigationController;
     return cell;
