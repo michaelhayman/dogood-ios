@@ -1,5 +1,5 @@
 #import "DGPostGoodLocationViewController.h"
-#import "DGLocation.h"
+#import "FSLocation.h"
 #import "AFNetworking.h"
 
 @interface DGPostGoodLocationViewController ()
@@ -61,7 +61,7 @@
         [locations removeAllObjects];
 
         for (NSDictionary *element in response) {
-            DGLocation * location = [DGLocation new];
+            FSLocation * location = [FSLocation new];
             location.displayName = element[@"name"];
             // location.point = [PFGeoPoint geoPointWithLatitude:[element[@"location"][@"lat"] floatValue] longitude:[element[@"location"][@"lng"] floatValue]];
             [locations addObject:location];
@@ -88,7 +88,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"location";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    DGLocation *location = locations[indexPath.row];
+    FSLocation *location = locations[indexPath.row];
     cell.textLabel.text = location.displayName;
     return cell;
 }
@@ -98,7 +98,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DGLocation *location = locations[indexPath.row];
+    FSLocation *location = locations[indexPath.row];
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:location, @"location", nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DGUserDidUpdateGoodLocation"
                                                         object:nil

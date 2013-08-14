@@ -1,4 +1,4 @@
-@interface DGLocation : NSObject
+@interface FSLocation : NSObject
 
 @property (retain) NSString *displayName;
 @property (retain) NSArray *point;

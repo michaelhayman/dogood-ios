@@ -2,6 +2,4 @@
 
 @implementation DGCategory
 
-@dynamic displayName;
-
 @end

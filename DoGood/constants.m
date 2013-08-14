@@ -1,10 +1,13 @@
 #import "constants.h"
 
+#pragma mark - User
+
 // Constants
 NSString* const kDGUserCurrentUserIDDefaultsKey = @"kDGUserCurrentUserIDDefaultsKey";
 NSString* const kDGUserCurrentUserEmail = @"kDGUserCurrentUserEmail";
-NSString* const kDGUserCurrentUserFirstName = @"kDGUserCurrentUserFirstName";
-NSString* const kDGUserCurrentUserLastName = @"kDGUserCurrentUserLastName";
+NSString* const kDGUserCurrentUserUsername = @"kDGUserCurrentUserUsername";
+NSString* const kDGUserCurrentUserName = @"kDGUserCurrentUserName";
+NSString* const kDGUserCurrentUserPhone = @"kDGUserCurrentUserPhone";
 NSString* const kDGUserCurrentUserContactable = @"kDGUserCurrentUserContactable";
 
 // Notifications
@@ -30,3 +33,8 @@ NSString* const DGUserDidFailSendPasswordNotification = @"DGUserDidFailSendPassw
 
 NSString* const DGUserInfoDidLoad = @"DGUserInfoDidLoad";
 
+#pragma mark - Good
+
+// Notifications
+
+NSString* const DGUserDidPostGood = @"DGUserDidPostGood";

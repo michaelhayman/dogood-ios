@@ -20,10 +20,6 @@
     [self fetchComments];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 - (void)viewWillDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -38,42 +34,48 @@
 #pragma mark - Comment retrieval
 - (void)fetchComments {
     DebugLog(@"refresh comments");
+    NSDictionary *params = [NSDictionary dictionaryWithObject:self.good.goodID forKey:@"good_id"];
 
-    [comments removeAllObjects];
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/comments.json" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [comments removeAllObjects];
+        [comments addObjectsFromArray:mappingResult.array];
+        [tableView reloadData];
+        DebugLog(@"reloading data");
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        DebugLog(@"Operation failed with error: %@", error);
+    }];
     [tableView reloadData];
 }
 
 #pragma mark - Comment posting
 - (IBAction)postComment:(id)sender {
+    [commentInputView becomeFirstResponder];
     DebugLog(@"this part is fine.");
-    DebugLog(@"this is fine %@", self.comment.body);
+    DebugLog(@"this is fine %@", self.comment.comment);
     DGComment *newComment = [DGComment new];
-    newComment.body = commentInputField.text;
-    newComment.good = self.good;
-    newComment.user = [DGUser currentUser];
-    bool succeeded = YES;
-    NSError *error;
+    newComment.comment = commentInputField.text;
+    newComment.commentable_id = self.good.goodID;
+    newComment.commentable_type = @"Good";
+    newComment.user_id = [DGUser currentUser].userID;
+    
+    [[RKObjectManager sharedManager] postObject:newComment path:@"/comments" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 
-    if (!succeeded) {
+        [commentInputView becomeFirstResponder];
+        commentInputField.text = @"";
         [TSMessage showNotificationInViewController:self
-                                  withTitle:NSLocalizedString(@"Couldn't save", nil)
+                              withTitle:NSLocalizedString(@"Comment Saved!", nil)
+                            withMessage:nil
+                               withType:TSMessageNotificationTypeSuccess];
+        [self fetchComments];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [TSMessage showNotificationInViewController:self.presentingViewController
+                                  withTitle:NSLocalizedString(@"Couldn't save the comment", nil)
                                 withMessage:NSLocalizedString([error description], nil)
                                    withType:TSMessageNotificationTypeError];
 
         DebugLog(@"error %@", [error description]);
-        return;
-    }
-
-    [commentInputView resignFirstResponder];
-    UITextField *commentText = (UITextField *)sender;
-    commentText.text = @"";
-    [TSMessage showNotificationInViewController:self
-                              withTitle:NSLocalizedString(@"Saved!", nil)
-                            withMessage:NSLocalizedString(@"Your comment was posted!", nil)
-                               withType:TSMessageNotificationTypeSuccess];
-    [self fetchComments];
+    }];
 }
-
 
 #pragma mark - Keyboard management
 - (void)setupKeyboardBehaviour {
@@ -128,9 +130,10 @@
 
 #pragma mark - UITextField delegate methods
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
     if (![textField.text isEqualToString:@""]) {
         [self postComment:textField];
+    } else {
+        // [textField resignFirstResponder];
     }
     return NO;
 }
@@ -151,13 +154,19 @@
     CommentCell *cell = [aTableView dequeueReusableCellWithIdentifier:@"CommentCell"];
     cell.transform = CGAffineTransformMakeRotation(M_PI);
     DGComment * comment = comments[indexPath.row];
+    // DebugLog(@"comment %@ user %@", comment, comment.user);
     cell.user.text = comment.user.username;
-    cell.comment.text = comment.body;
+    cell.comment.text = comment.comment;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    DGComment * comment = comments[indexPath.row];
+    CGSize size = [comment.comment sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17]
+                  constrainedToSize:CGSizeMake(191, 100)
+                      lineBreakMode:NSLineBreakByWordWrapping];
+    DebugLog(@"comment %@ %f", comment.comment, size.height);
+    return size.height + 25;
 }
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
@@ -175,6 +184,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     // This will create a "invisible" footer
     return 0.01f;
+}
+
+#pragma mark - Retrieval methods
+- (void)getComments {
 }
 
 @end

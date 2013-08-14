@@ -3,6 +3,7 @@
 
 @interface GoodCell : UITableViewCell <UIActionSheetDelegate> {
     UIActionSheet *moreOptionsSheet;
+    UIActionSheet *shareOptionsSheet;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *overviewImage;
@@ -19,9 +20,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *comment;
 @property (weak, nonatomic) IBOutlet UIButton *regood;
 @property (weak, nonatomic) IBOutlet UIButton *moreOptions;
-@property (weak, nonatomic) DGGood *good;
+@property (retain, nonatomic) DGGood *good;
 @property (weak, nonatomic) DGGoodListViewController *parent;
 @property (weak, nonatomic) UINavigationController *navigationController;
 
+- (void)setValues;
 
 @end

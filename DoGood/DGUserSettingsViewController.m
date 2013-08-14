@@ -27,8 +27,8 @@
 #pragma mark - Update Account
 - (void)updateFirstName:(NSString *)firstName andLastName:(NSString *)lastName andContactable:(NSNumber *)contactable {
     DGUser *user;
-    user.first_name = firstName;
-    user.last_name = lastName;
+    user.name = firstName;
+    user.phone = lastName;
     user.contactable = contactable;
     [[RKObjectManager sharedManager] putObject:user path:user_registration_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [TSMessage showNotificationInViewController:self
@@ -60,11 +60,11 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
-*/
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return @"";
 }
+*/
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == signOut) {

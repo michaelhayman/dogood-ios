@@ -4,11 +4,11 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.description.backgroundColor = [UIColor clearColor];
     self.image.contentMode = UIViewContentModeScaleAspectFit;
     self.image.userInteractionEnabled = YES;
     self.image.image = [self defaultImage];
     self.image.highlightedImage = [self defaultHighlightedImage];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

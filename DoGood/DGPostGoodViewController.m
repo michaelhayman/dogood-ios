@@ -3,10 +3,13 @@
 #import "GoodShareCell.h"
 #import "DGGood.h"
 #import "DGCategory.h"
-#import "DGLocation.h"
+#import "FSLocation.h"
 #import "DGPostGoodCategoryViewController.h"
 #import "DGPostGoodLocationViewController.h"
 #import "FBRequestConnection.h"
+
+#import <UIImage+Resize.h>
+#import <MBProgressHUD.h>
 
 @interface DGPostGoodViewController ()
 
@@ -113,7 +116,7 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         if (self.good.location) {
             cell.imageView.image = [UIImage imageNamed:@"LocationIconOn.png"];
-            cell.textLabel.text = self.good.location.displayName;
+            cell.textLabel.text = self.good.location;
         } else {
             cell.textLabel.text = @"Add a location";
             cell.imageView.image = [UIImage imageNamed:@"LocationIconOff.png"];
@@ -305,6 +308,7 @@
     imageToUpload = [info objectForKey:UIImagePickerControllerOriginalImage];
     // self.good.image = [PFFile fileWithData:UIImagePNGRepresentation(imageToUpload)];
     self.good.image = imageToUpload;
+    DebugLog(@"imagetoupload");
     GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
     cell.image.image = imageToUpload;
 }
@@ -346,13 +350,14 @@
 - (IBAction)post:(id)sender {
     GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
     self.good.caption = cell.description.text;
+
     GoodShareCell *doGood = (GoodShareCell *)[self.tableView viewWithTag:share_do_good_cell_tag];
     self.good.shareDoGood = doGood.share.on;
     GoodShareCell *twitter = (GoodShareCell *)[self.tableView viewWithTag:share_twitter_cell_tag];
     self.good.shareTwitter = twitter.share.on;
     GoodShareCell *facebook = (GoodShareCell *)[self.tableView viewWithTag:share_facebook_cell_tag];
     self.good.shareFacebook = facebook.share.on;
-    DebugLog(@"post good %@ to Parse here", self.good);
+    DebugLog(@"post good %@", self.good);
 
     bool errors = YES;
     NSString *message;
@@ -363,28 +368,57 @@
         errors = NO;
     }
 
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Posting good...";
+
     if (!errors) {
-        // [self.good saveInBackground];
-        [TSMessage showNotificationInViewController:self.navigationController.parentViewController
-                                  withTitle:NSLocalizedString(@"Saved!", nil)
-                                withMessage:NSLocalizedString(@"You made some points!", nil)
-                                   withType:TSMessageNotificationTypeSuccess];
+        NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:self.good method:RKRequestMethodPOST path:@"/goods.json" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            if (self.good.image) {
+                UIImage *resizedImage = [self.good.image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 480) interpolationQuality:kCGInterpolationHigh];
 
-        if (self.good.shareTwitter) {
-            [self postToTwitter:[NSString stringWithFormat:@"I did some good! %@", self.good.caption]];
-        }
+                DebugLog(@"uiimage size %@", NSStringFromCGSize(resizedImage.size));
+                [formData appendPartWithFileData:UIImagePNGRepresentation(resizedImage)
+                                            name:@"good[evidence]"
+                                        fileName:@"evidence.png"
+                                        mimeType:@"image/png"];
+            }
+        }];
 
-        if (self.good.shareFacebook) {
-            [self postToFacebook:self.good.caption andImage:self.good.image];
-        }
+        RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [TSMessage showNotificationInViewController:self.navigationController.parentViewController
+                                      withTitle:NSLocalizedString(@"Saved!", nil)
+                                    withMessage:NSLocalizedString(@"You made some points!", nil)
+                                       withType:TSMessageNotificationTypeSuccess];
 
-        [self.navigationController popViewControllerAnimated:YES];
-     } else {
+            if (self.good.shareTwitter) {
+                [self postToTwitter:[NSString stringWithFormat:@"I did some good! %@", self.good.caption]];
+            }
+
+            if (self.good.shareFacebook) {
+                [self postToFacebook:self.good.caption andImage:self.good.image];
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+
+            hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+            // Set custom view mode
+            hud.mode = MBProgressHUDModeCustomView;
+            hud.labelText = @"Completed";
+            [hud hide:YES];
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [TSMessage showNotificationInViewController:self
+                                      withTitle:nil
+                                    withMessage:NSLocalizedString(message, nil)
+                                       withType:TSMessageNotificationTypeError];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        }];
+
+        [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
+    } else {
         [TSMessage showNotificationInViewController:self
-                                  withTitle:NSLocalizedString(@"Couldn't save", nil)
+                                  withTitle:nil
                                 withMessage:NSLocalizedString(message, nil)
                                    withType:TSMessageNotificationTypeError];
-     }
+    }
 }
 
 #pragma mark - Sharing methods

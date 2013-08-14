@@ -11,7 +11,7 @@
 		633DBF6417ADA61D0038BC2D /* DGGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6317ADA61C0038BC2D /* DGGood.m */; };
 		633DBF6717ADACEE0038BC2D /* DGPostGoodCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6617ADACEE0038BC2D /* DGPostGoodCategoryViewController.m */; };
 		633DBF6C17ADBF9F0038BC2D /* DGPostGoodLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6B17ADBF9F0038BC2D /* DGPostGoodLocationViewController.m */; };
-		633DBF6F17ADC0AF0038BC2D /* DGLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6E17ADC0AF0038BC2D /* DGLocation.m */; };
+		633DBF6F17ADC0AF0038BC2D /* FSLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6E17ADC0AF0038BC2D /* FSLocation.m */; };
 		633DBF7217ADC4E60038BC2D /* DGPostGoodImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF7117ADC4E50038BC2D /* DGPostGoodImageViewController.m */; };
 		633DBF7417ADD5360038BC2D /* GoodShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633DBF7317ADD5360038BC2D /* GoodShareCell.xib */; };
 		633DBF7717ADD57E0038BC2D /* GoodShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF7617ADD57E0038BC2D /* GoodShareCell.m */; };
@@ -122,6 +122,26 @@
 		6386481017AC087A00167F15 /* DoGoodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386480F17AC087A00167F15 /* DoGoodTests.m */; };
 		6386481D17ACEF2100167F15 /* DGWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386481C17ACEF2100167F15 /* DGWelcomeViewController.m */; };
 		6386481F17ACEFAE00167F15 /* DGGoodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386481E17ACEFAE00167F15 /* DGGoodListViewController.m */; };
+		639B88E417B9A25B005E2B62 /* DGVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B88E317B9A25A005E2B62 /* DGVote.m */; };
+		639B88EC17BA76A9005E2B62 /* UnCommentButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88E617BA76A9005E2B62 /* UnCommentButton.png */; };
+		639B88ED17BA76A9005E2B62 /* UnCommentButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88E717BA76A9005E2B62 /* UnCommentButton@2x.png */; };
+		639B88EE17BA76A9005E2B62 /* UnLikeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88E817BA76A9005E2B62 /* UnLikeButton.png */; };
+		639B88EF17BA76A9005E2B62 /* UnLikeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88E917BA76A9005E2B62 /* UnLikeButton@2x.png */; };
+		639B88F017BA76A9005E2B62 /* UnShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88EA17BA76A9005E2B62 /* UnShareButton.png */; };
+		639B88F117BA76A9005E2B62 /* UnShareButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88EB17BA76A9005E2B62 /* UnShareButton@2x.png */; };
+		639B88F417BA76C3005E2B62 /* ShareButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88F217BA76C3005E2B62 /* ShareButton.png */; };
+		639B88F517BA76C3005E2B62 /* ShareButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88F317BA76C3005E2B62 /* ShareButton@2x.png */; };
+		639B88F817BA76D1005E2B62 /* LikeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88F617BA76D1005E2B62 /* LikeButton.png */; };
+		639B88F917BA76D1005E2B62 /* LikeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88F717BA76D1005E2B62 /* LikeButton@2x.png */; };
+		639B88FC17BA76E0005E2B62 /* CommentButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88FA17BA76E0005E2B62 /* CommentButton.png */; };
+		639B88FD17BA76E0005E2B62 /* CommentButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88FB17BA76E0005E2B62 /* CommentButton@2x.png */; };
+		639B890217BA8660005E2B62 /* OptionsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88FE17BA8660005E2B62 /* OptionsButton.png */; };
+		639B890317BA8660005E2B62 /* OptionsButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88FF17BA8660005E2B62 /* OptionsButton@2x.png */; };
+		639B890417BA8660005E2B62 /* OptionsButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B890017BA8660005E2B62 /* OptionsButtonTap.png */; };
+		639B890517BA8660005E2B62 /* OptionsButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B890117BA8660005E2B62 /* OptionsButtonTap@2x.png */; };
+		639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B891017BAEC1D005E2B62 /* DGFollow.m */; };
+		63E4424917BBCCCC000224E8 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E4424717BBCCCC000224E8 /* 37x-Checkmark.png */; };
+		63E4424A17BBCCCC000224E8 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E4424817BBCCCC000224E8 /* 37x-Checkmark@2x.png */; };
 		EBCC96E10520469A951D5018 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0150758A9E934060AF039752 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -145,8 +165,8 @@
 		633DBF6617ADACEE0038BC2D /* DGPostGoodCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPostGoodCategoryViewController.m; sourceTree = "<group>"; };
 		633DBF6A17ADBF9F0038BC2D /* DGPostGoodLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPostGoodLocationViewController.h; sourceTree = "<group>"; };
 		633DBF6B17ADBF9F0038BC2D /* DGPostGoodLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPostGoodLocationViewController.m; sourceTree = "<group>"; };
-		633DBF6D17ADC0AF0038BC2D /* DGLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLocation.h; sourceTree = "<group>"; };
-		633DBF6E17ADC0AF0038BC2D /* DGLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGLocation.m; sourceTree = "<group>"; };
+		633DBF6D17ADC0AF0038BC2D /* FSLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLocation.h; sourceTree = "<group>"; };
+		633DBF6E17ADC0AF0038BC2D /* FSLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLocation.m; sourceTree = "<group>"; };
 		633DBF7017ADC4E50038BC2D /* DGPostGoodImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPostGoodImageViewController.h; sourceTree = "<group>"; };
 		633DBF7117ADC4E50038BC2D /* DGPostGoodImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPostGoodImageViewController.m; sourceTree = "<group>"; };
 		633DBF7317ADD5360038BC2D /* GoodShareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodShareCell.xib; sourceTree = "<group>"; };
@@ -269,6 +289,28 @@
 		6386481C17ACEF2100167F15 /* DGWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWelcomeViewController.m; sourceTree = "<group>"; };
 		6386481E17ACEFAE00167F15 /* DGGoodListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGGoodListViewController.m; sourceTree = "<group>"; };
 		6386482017ACEFBA00167F15 /* DGGoodListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGoodListViewController.h; sourceTree = "<group>"; };
+		639B88E217B9A25A005E2B62 /* DGVote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGVote.h; sourceTree = "<group>"; };
+		639B88E317B9A25A005E2B62 /* DGVote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGVote.m; sourceTree = "<group>"; };
+		639B88E617BA76A9005E2B62 /* UnCommentButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UnCommentButton.png; sourceTree = "<group>"; };
+		639B88E717BA76A9005E2B62 /* UnCommentButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UnCommentButton@2x.png"; sourceTree = "<group>"; };
+		639B88E817BA76A9005E2B62 /* UnLikeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UnLikeButton.png; sourceTree = "<group>"; };
+		639B88E917BA76A9005E2B62 /* UnLikeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UnLikeButton@2x.png"; sourceTree = "<group>"; };
+		639B88EA17BA76A9005E2B62 /* UnShareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UnShareButton.png; sourceTree = "<group>"; };
+		639B88EB17BA76A9005E2B62 /* UnShareButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UnShareButton@2x.png"; sourceTree = "<group>"; };
+		639B88F217BA76C3005E2B62 /* ShareButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShareButton.png; sourceTree = "<group>"; };
+		639B88F317BA76C3005E2B62 /* ShareButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShareButton@2x.png"; sourceTree = "<group>"; };
+		639B88F617BA76D1005E2B62 /* LikeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LikeButton.png; sourceTree = "<group>"; };
+		639B88F717BA76D1005E2B62 /* LikeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LikeButton@2x.png"; sourceTree = "<group>"; };
+		639B88FA17BA76E0005E2B62 /* CommentButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CommentButton.png; sourceTree = "<group>"; };
+		639B88FB17BA76E0005E2B62 /* CommentButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CommentButton@2x.png"; sourceTree = "<group>"; };
+		639B88FE17BA8660005E2B62 /* OptionsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OptionsButton.png; sourceTree = "<group>"; };
+		639B88FF17BA8660005E2B62 /* OptionsButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OptionsButton@2x.png"; sourceTree = "<group>"; };
+		639B890017BA8660005E2B62 /* OptionsButtonTap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OptionsButtonTap.png; sourceTree = "<group>"; };
+		639B890117BA8660005E2B62 /* OptionsButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OptionsButtonTap@2x.png"; sourceTree = "<group>"; };
+		639B890F17BAEC1D005E2B62 /* DGFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFollow.h; sourceTree = "<group>"; };
+		639B891017BAEC1D005E2B62 /* DGFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFollow.m; sourceTree = "<group>"; };
+		63E4424717BBCCCC000224E8 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
+		63E4424817BBCCCC000224E8 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
 		66189FDD6F34462B8CF25EBA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -322,6 +364,8 @@
 			children = (
 				6355EC1A17B5BA4500EE91C0 /* DGUser.h */,
 				6355EC1B17B5BA4500EE91C0 /* DGUser.m */,
+				639B890F17BAEC1D005E2B62 /* DGFollow.h */,
+				639B891017BAEC1D005E2B62 /* DGFollow.m */,
 				6355EC1D17B601BE00EE91C0 /* DGError.h */,
 				6355EC1E17B601BF00EE91C0 /* DGError.m */,
 				633DBF5F17ADA5670038BC2D /* DGCategory.h */,
@@ -330,8 +374,10 @@
 				6355EC0617B0C83100EE91C0 /* DGComment.m */,
 				633DBF6217ADA61C0038BC2D /* DGGood.h */,
 				633DBF6317ADA61C0038BC2D /* DGGood.m */,
-				633DBF6D17ADC0AF0038BC2D /* DGLocation.h */,
-				633DBF6E17ADC0AF0038BC2D /* DGLocation.m */,
+				633DBF6D17ADC0AF0038BC2D /* FSLocation.h */,
+				633DBF6E17ADC0AF0038BC2D /* FSLocation.m */,
+				639B88E217B9A25A005E2B62 /* DGVote.h */,
+				639B88E317B9A25A005E2B62 /* DGVote.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -428,6 +474,8 @@
 		636AEA6C17AD4B8A002A3494 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				63E4424617BBCCA1000224E8 /* Progress */,
+				639B88E517BA769E005E2B62 /* Activity */,
 				6355EBFA17B0921000EE91C0 /* Do */,
 				636AEACB17AD97A6002A3494 /* Fonts */,
 				636AEABB17AD8858002A3494 /* Navigation Icons */,
@@ -581,6 +629,38 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		639B88E517BA769E005E2B62 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				639B88FA17BA76E0005E2B62 /* CommentButton.png */,
+				639B88FB17BA76E0005E2B62 /* CommentButton@2x.png */,
+				639B88E617BA76A9005E2B62 /* UnCommentButton.png */,
+				639B88E717BA76A9005E2B62 /* UnCommentButton@2x.png */,
+				639B88F617BA76D1005E2B62 /* LikeButton.png */,
+				639B88F717BA76D1005E2B62 /* LikeButton@2x.png */,
+				639B88E817BA76A9005E2B62 /* UnLikeButton.png */,
+				639B88E917BA76A9005E2B62 /* UnLikeButton@2x.png */,
+				639B88F217BA76C3005E2B62 /* ShareButton.png */,
+				639B88F317BA76C3005E2B62 /* ShareButton@2x.png */,
+				639B88FE17BA8660005E2B62 /* OptionsButton.png */,
+				639B88FF17BA8660005E2B62 /* OptionsButton@2x.png */,
+				639B890017BA8660005E2B62 /* OptionsButtonTap.png */,
+				639B890117BA8660005E2B62 /* OptionsButtonTap@2x.png */,
+				639B88EA17BA76A9005E2B62 /* UnShareButton.png */,
+				639B88EB17BA76A9005E2B62 /* UnShareButton@2x.png */,
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
+		63E4424617BBCCA1000224E8 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				63E4424717BBCCCC000224E8 /* 37x-Checkmark.png */,
+				63E4424817BBCCCC000224E8 /* 37x-Checkmark@2x.png */,
+			);
+			name = Progress;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -717,6 +797,24 @@
 				6355EC1417B0EE1E00EE91C0 /* Reward.xib in Resources */,
 				6355EC2417B6723E00EE91C0 /* Users.storyboard in Resources */,
 				6355EC3A17B8680300EE91C0 /* SignUpOverviewCell.xib in Resources */,
+				639B88EC17BA76A9005E2B62 /* UnCommentButton.png in Resources */,
+				639B88ED17BA76A9005E2B62 /* UnCommentButton@2x.png in Resources */,
+				639B88EE17BA76A9005E2B62 /* UnLikeButton.png in Resources */,
+				639B88EF17BA76A9005E2B62 /* UnLikeButton@2x.png in Resources */,
+				639B88F017BA76A9005E2B62 /* UnShareButton.png in Resources */,
+				639B88F117BA76A9005E2B62 /* UnShareButton@2x.png in Resources */,
+				639B88F417BA76C3005E2B62 /* ShareButton.png in Resources */,
+				639B88F517BA76C3005E2B62 /* ShareButton@2x.png in Resources */,
+				639B88F817BA76D1005E2B62 /* LikeButton.png in Resources */,
+				639B88F917BA76D1005E2B62 /* LikeButton@2x.png in Resources */,
+				639B88FC17BA76E0005E2B62 /* CommentButton.png in Resources */,
+				639B88FD17BA76E0005E2B62 /* CommentButton@2x.png in Resources */,
+				639B890217BA8660005E2B62 /* OptionsButton.png in Resources */,
+				639B890317BA8660005E2B62 /* OptionsButton@2x.png in Resources */,
+				639B890417BA8660005E2B62 /* OptionsButtonTap.png in Resources */,
+				639B890517BA8660005E2B62 /* OptionsButtonTap@2x.png in Resources */,
+				63E4424917BBCCCC000224E8 /* 37x-Checkmark.png in Resources */,
+				63E4424A17BBCCCC000224E8 /* 37x-Checkmark@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,7 +894,7 @@
 				633DBF6417ADA61D0038BC2D /* DGGood.m in Sources */,
 				633DBF6717ADACEE0038BC2D /* DGPostGoodCategoryViewController.m in Sources */,
 				633DBF6C17ADBF9F0038BC2D /* DGPostGoodLocationViewController.m in Sources */,
-				633DBF6F17ADC0AF0038BC2D /* DGLocation.m in Sources */,
+				633DBF6F17ADC0AF0038BC2D /* FSLocation.m in Sources */,
 				633DBF7217ADC4E60038BC2D /* DGPostGoodImageViewController.m in Sources */,
 				633DBF7717ADD57E0038BC2D /* GoodShareCell.m in Sources */,
 				633DBF7E17AE25CF0038BC2D /* DGUserProfileViewController.m in Sources */,
@@ -816,6 +914,8 @@
 				6355EC3317B75EB600EE91C0 /* constants.m in Sources */,
 				6355EC3817B8505A00EE91C0 /* DGUserSettingsViewController.m in Sources */,
 				6355EC3D17B86B8400EE91C0 /* SignUpOverviewCell.m in Sources */,
+				639B88E417B9A25B005E2B62 /* DGVote.m in Sources */,
+				639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

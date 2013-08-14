@@ -1,7 +1,7 @@
 #import "DGGoodListViewController.h"
 #import "GoodCell.h"
 #import "DGGood.h"
-#import "DGLocation.h"
+#import "FSLocation.h"
 #import "DGWelcomeViewController.h"
 
 @interface DGGoodListViewController ()
@@ -29,15 +29,32 @@
     points.text = @"51,500";
 
     [self getGood];
+    UIRefreshControl *refreshControl = [UIRefreshControl new];
+
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [tableView addSubview:refreshControl];
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(showWelcome)
-                                                 name:@"SignOut"
+                                                 name:DGUserDidSignOutNotification
                                                object:nil];
-     }
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(getGood)
+                                                 name:DGUserDidSignInNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(getGood)
+                                                 name:DGUserDidPostGood
+                                               object:nil];
+}
+
+- (void)refresh:(UIRefreshControl *)refreshControl {
+    [self getGood];
+    [refreshControl endRefreshing];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     DebugLog(@"appeared");
-    DebugLog(@"notification post to here, %@", DGUserDidSignOutNotification);
     // [[NSNotificationCenter defaultCenter] postNotificationName:@"SignOut" object:self];
     [self showWelcome];
 }
@@ -63,15 +80,11 @@
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     GoodCell *cell = [aTableView dequeueReusableCellWithIdentifier:@"GoodCell"];
     // all this stuff can move to the cell...
-    DGGood * good = goods[indexPath.row];
+    DGGood *good = goods[indexPath.row];
     cell.good = good;
+    // [cell awakeFromNib];
+    [cell setValues];
     cell.navigationController = self.navigationController;
-    cell.description.text = good.caption;
-
-    cell.overviewImage.image = good.image;
-
-    cell.username.text = good.user.username;
-    cell.likes.text = good.location.displayName;
     return cell;
 }
 
@@ -91,9 +104,14 @@
     return @"";
 }
 
-
 #pragma mark - Retrieval methods
 - (void)getGood {
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/goods.json" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        goods = [[NSArray alloc] initWithArray:mappingResult.array];
+        [tableView reloadData];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        DebugLog(@"Operation failed with error: %@", error);
+    }];
 }
 
 @end

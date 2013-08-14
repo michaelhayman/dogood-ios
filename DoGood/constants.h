@@ -1,23 +1,33 @@
+#pragma mark - Convenience
+
 #define iPad    UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
-#define kDoGoodService @"DoGood"
-#define kDoGoodAccount @"DoGood"
+#pragma mark - Connectivity
 
 #define checkConnectivity NO
 #define checkAPI NO
 
 // Paths
 #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3002/"
+
+#pragma mark - User
+
+// Paths
 #define user_session_path @"/users/sign_in"
 #define user_end_session_path @"/users/sign_out"
 #define user_registration_path @"/users"
 #define user_password_path @"/users/password"
 
+// RKPassword
+#define kDoGoodService @"DoGood"
+#define kDoGoodAccount @"DoGood"
+
 // Constants
 extern NSString *const kDGUserCurrentUserIDDefaultsKey;
 extern NSString* const kDGUserCurrentUserEmail;
-extern NSString* const kDGUserCurrentUserFirstName;
-extern NSString* const kDGUserCurrentUserLastName;
+extern NSString* const kDGUserCurrentUserUsername;
+extern NSString* const kDGUserCurrentUserName;
+extern NSString* const kDGUserCurrentUserPhone;
 extern NSString* const kDGUserCurrentUserContactable;
 
 // Notifications
@@ -43,3 +53,7 @@ extern NSString* const DGUserDidFailSendPasswordNotification;
 
 extern NSString* const DGUserInfoDidLoad;
 
+#pragma mark - Good
+
+// Notifications
+extern NSString* const DGUserDidPostGood;
