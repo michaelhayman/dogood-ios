@@ -23,6 +23,7 @@ PODS:
   - STTweetLabel (2.2.2)
   - TransitionKit (1.1.1)
   - TSMessages (0.9.3)
+  - TTTAttributedLabel (1.7.1)
   - UIImage-Categories (0.0.1)
 
 DEPENDENCIES:
@@ -34,6 +35,7 @@ DEPENDENCIES:
   - RFKeychain (~> 0.1)
   - STTweetLabel (~> 2.2.2)
   - TSMessages
+  - TTTAttributedLabel
   - UIImage-Categories (~> 0.0.1)
 
 SPEC CHECKSUMS:
@@ -47,6 +49,7 @@ SPEC CHECKSUMS:
   STTweetLabel: 9d93c324a4ecf5b9e6d73b5ff2b4813e4a8adc91
   TransitionKit: d0e3344aac92991395d4c2e72d9c5a8ceeb12910
   TSMessages: e741d102e8291074b4ee7545b53c90ed5f220dd5
+  TTTAttributedLabel: e504133915a9b11de63cb470ffa2790383a3eb23
   UIImage-Categories: d9f10e0afb9b281b35a3c2b0c7d16d1ca251d824
 
 COCOAPODS: 0.23.0

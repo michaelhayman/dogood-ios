@@ -8,6 +8,7 @@ pod 'UIImage-Categories', '~> 0.0.1'
 pod 'MBProgressHUD'
 pod 'STTweetLabel', '~> 2.2.2'
 pod 'Facebook-iOS-SDK', '~> 3.5'
+pod 'TTTAttributedLabel'
 
 # not used yet
 # pod 'NSData+Base64'
