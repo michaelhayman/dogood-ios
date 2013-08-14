@@ -3,6 +3,7 @@
 #import "DGVote.h"
 #import "DGFollow.h"
 #import "DGGoodCommentsViewController.h"
+#import <STTweetLabel.h>
 
 @implementation GoodCell
 
@@ -27,6 +28,9 @@
     UITapGestureRecognizer* commentsGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showComments)];
     [self.commentsCount setUserInteractionEnabled:YES];
     [self.commentsCount addGestureRecognizer:commentsGesture];
+    _commentBlock  = [[STTweetLabel alloc] init];
+    _commentBlock.numberOfLines = 0;
+    _commentBlock.lineBreakMode = NSLineBreakByWordWrapping;
 
     // re-goods
     [self.regood addTarget:self action:@selector(addUserRegood) forControlEvents:UIControlEventTouchUpInside];
@@ -59,6 +63,26 @@
         [self.comment setSelected:NO];
     }
     [self setCommentsText];
+
+    NSMutableArray *commentText = [[NSMutableArray alloc] init];
+    for (DGComment *comment in [self.good.comments reverseObjectEnumerator]) {
+        [commentText addObject:[NSString stringWithFormat:@" @%@ %@ ", comment.user.username, comment.comment]];
+    }
+    NSString *allComments = [commentText componentsJoinedByString:@"\n"];
+    [commentText removeAllObjects];
+
+    UIFont *font = [UIFont fontWithName:@"Calibre" size:12];
+    CGSize size = [allComments sizeWithFont:font
+                          constrainedToSize:CGSizeMake(221, 118)
+                      lineBreakMode:NSLineBreakByWordWrapping];
+    _commentBlock.font = font;
+    _commentBlock.frame = CGRectMake(0, 0, 221, size.height);
+    _commentBlock.fontHashtag = [UIFont boldSystemFontOfSize:17.0];
+    _commentBlock.colorHashtag = [UIColor colorWithRed:5.0/255.0 green:171.0/255.0 blue:117.0/255.0 alpha:1.0];
+    [_commentBlock setText:allComments];
+    // [self setupCommentCallbacks:commentBlock];
+    [self.comments addSubview:_commentBlock];
+    commentBoxHeight.constant = size.height;
     // regoods
     if ([self.good.current_user_regooded boolValue]) {
         [self.regood setSelected:YES];
@@ -170,6 +194,33 @@
 
 - (void)setCommentsText {
     self.commentsCount.text = [NSString stringWithFormat:@"%@ comments", self.good.comments_count];
+}
+
+- (void)setupCommentCallbacks:(STTweetLabel *)commentBlock {
+    STLinkCallbackBlock callbackBlock = ^(STLinkActionType actionType, NSString *link) {
+
+        // NSString *displayString = NULL;
+
+        // determine what the user clicked on
+        switch (actionType) {
+
+            case STLinkActionTypeAccount:
+                DebugLog(@"%@", [NSString stringWithFormat:@"Twitter account:\n%@", link]);
+                break;
+
+            case STLinkActionTypeHashtag:
+                DebugLog(@"%@", [NSString stringWithFormat:@"Twitter hashtag:\n%@", link]);
+                break;
+
+            case STLinkActionTypeWebsite:
+                DebugLog(@"%@", [NSString stringWithFormat:@"Website:\n%@", link]);
+                break;
+        }
+
+        // [_displayLabel setText:displayString];
+
+    };
+    [commentBlock setCallbackBlock:callbackBlock];
 }
 
 #pragma mark - More options

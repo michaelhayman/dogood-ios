@@ -118,8 +118,7 @@
     [UIView commitAnimations];
 }
 
-- (void)keyboardWillHide:(NSNotification *)notification
-{
+- (void)keyboardWillHide:(NSNotification *)notification {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
     commentFieldBottom.constant = 0;

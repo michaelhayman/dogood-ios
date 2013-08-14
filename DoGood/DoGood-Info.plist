@@ -40,7 +40,6 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Calibre-Black.otf</string>
-		<string></string>
 		<string>Calibre-Bold.otf</string>
 		<string>Calibre-Light.otf</string>
 		<string>Calibre-Medium.otf</string>

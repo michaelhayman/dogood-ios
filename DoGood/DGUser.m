@@ -1,6 +1,5 @@
 #import "DGUser.h"
 #import "DGError.h"
-#import "NSData+Base64.h"
 #import "RFKeychain.h"
 
 // Current User singleton

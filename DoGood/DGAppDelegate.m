@@ -10,13 +10,13 @@
 #import "DGFollow.h"
 #import "DGVote.h"
 // libraries
-#import <NUI/NUIAppearance.h>
+// #import <NUI/NUIAppearance.h>
 // #import "Foursquare-API-v2/Foursquare2.h"
 
 @implementation DGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [NUIAppearance init];
+    // [NUIAppearance init];
     int imageSize = 20;
 
     UIImage *barBackBtnImg = [[UIImage imageNamed:@"BackButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, imageSize, 0, 0)];

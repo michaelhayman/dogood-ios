@@ -1,9 +1,11 @@
 @class DGGood;
 @class DGGoodListViewController;
+@class STTweetLabel;
 
 @interface GoodCell : UITableViewCell <UIActionSheetDelegate> {
     UIActionSheet *moreOptionsSheet;
     UIActionSheet *shareOptionsSheet;
+    __weak IBOutlet NSLayoutConstraint *commentBoxHeight;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *overviewImage;
@@ -11,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *regoods;
 @property (weak, nonatomic) IBOutlet UILabel *commentsCount;
 @property (weak, nonatomic) IBOutlet UIView *comments;
+@property (retain, nonatomic) STTweetLabel *commentBlock;
 
 @property (weak, nonatomic) IBOutlet UILabel *likes;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
