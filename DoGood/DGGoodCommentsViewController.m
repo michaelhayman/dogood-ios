@@ -164,16 +164,17 @@
     // DebugLog(@"comment %@ user %@", comment, comment.user);
     cell.user.text = comment.user.username;
     cell.comment.text = comment.comment;
+    [cell.avatar setImageWithURL:[NSURL URLWithString:comment.user.avatar]];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     DGComment * comment = comments[indexPath.row];
     CGSize size = [comment.comment sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17]
-                  constrainedToSize:CGSizeMake(191, 100)
+                  constrainedToSize:CGSizeMake(235, 300)
                       lineBreakMode:NSLineBreakByWordWrapping];
     DebugLog(@"comment %@ %f", comment.comment, size.height);
-    return size.height + 25;
+    return size.height + 42;
 }
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
