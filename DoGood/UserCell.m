@@ -25,8 +25,12 @@
 
 #pragma mark - Set values when cell becomes visible
 - (void)setValues {
+    // hide the follow button for the own user
+    if ([self.user.userID isEqualToNumber:[DGUser currentUser].userID]) {
+        self.follow.hidden = YES;
+    }
     // user
-    self.username.text = self.user.username;
+    self.username.text = self.user.full_name;
     [self.avatar setImageWithURL:[NSURL URLWithString:self.user.avatar]];
     // follows
     if ([self.user.current_user_following boolValue]) {
