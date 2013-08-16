@@ -7,6 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6319D38517BDA9A40071DA71 /* ProfileTabLeftOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D37D17BDA9A40071DA71 /* ProfileTabLeftOff.png */; };
+		6319D38617BDA9A40071DA71 /* ProfileTabLeftOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D37E17BDA9A40071DA71 /* ProfileTabLeftOff@2x.png */; };
+		6319D38717BDA9A40071DA71 /* ProfileTabLeftOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D37F17BDA9A40071DA71 /* ProfileTabLeftOn.png */; };
+		6319D38817BDA9A40071DA71 /* ProfileTabLeftOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D38017BDA9A40071DA71 /* ProfileTabLeftOn@2x.png */; };
+		6319D38917BDA9A40071DA71 /* ProfileTabRightOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D38117BDA9A40071DA71 /* ProfileTabRightOff.png */; };
+		6319D38A17BDA9A40071DA71 /* ProfileTabRightOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D38217BDA9A40071DA71 /* ProfileTabRightOff@2x.png */; };
+		6319D38B17BDA9A40071DA71 /* ProfileTabRightOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D38317BDA9A40071DA71 /* ProfileTabRightOn.png */; };
+		6319D38C17BDA9A40071DA71 /* ProfileTabRightOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D38417BDA9A40071DA71 /* ProfileTabRightOn@2x.png */; };
+		632A36BC17BCAEE8004EED26 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A36BA17BCAEE8004EED26 /* UserCell.m */; };
+		632A36BD17BCAEE8004EED26 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632A36BB17BCAEE8004EED26 /* UserCell.xib */; };
+		632A36C017BCAF00004EED26 /* DGUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A36BF17BCAF00004EED26 /* DGUserListViewController.m */; };
+		632A36CA17BCB29B004EED26 /* FollowButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 632A36C217BCB29B004EED26 /* FollowButton.png */; };
+		632A36CB17BCB29B004EED26 /* FollowButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 632A36C317BCB29B004EED26 /* FollowButton@2x.png */; };
+		632A36CC17BCB29B004EED26 /* FollowButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 632A36C417BCB29B004EED26 /* FollowButtonTap.png */; };
+		632A36CD17BCB29B004EED26 /* FollowButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 632A36C517BCB29B004EED26 /* FollowButtonTap@2x.png */; };
+		632A36CE17BCB29B004EED26 /* FollowingButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 632A36C617BCB29B004EED26 /* FollowingButton.png */; };
+		632A36CF17BCB29B004EED26 /* FollowingButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 632A36C717BCB29B004EED26 /* FollowingButton@2x.png */; };
+		632A36D017BCB29B004EED26 /* FollowingButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 632A36C817BCB29B004EED26 /* FollowingButtonTap.png */; };
+		632A36D117BCB29B004EED26 /* FollowingButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 632A36C917BCB29B004EED26 /* FollowingButtonTap@2x.png */; };
+		632A36D217BD1157004EED26 /* DGUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3717B8505900EE91C0 /* DGUserSettingsViewController.m */; };
 		633DBF6117ADA5670038BC2D /* DGCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6017ADA5670038BC2D /* DGCategory.m */; };
 		633DBF6417ADA61D0038BC2D /* DGGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6317ADA61C0038BC2D /* DGGood.m */; };
 		633DBF6717ADACEE0038BC2D /* DGPostGoodCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6617ADACEE0038BC2D /* DGPostGoodCategoryViewController.m */; };
@@ -45,7 +65,6 @@
 		6355EC2E17B69F1E00EE91C0 /* DGSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC2D17B69F1D00EE91C0 /* DGSignInViewController.m */; };
 		6355EC3117B69F2800EE91C0 /* DGSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3017B69F2700EE91C0 /* DGSignUpViewController.m */; };
 		6355EC3317B75EB600EE91C0 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3217B75EB300EE91C0 /* constants.m */; };
-		6355EC3817B8505A00EE91C0 /* DGUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3717B8505900EE91C0 /* DGUserSettingsViewController.m */; };
 		6355EC3A17B8680300EE91C0 /* SignUpOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC3917B8680300EE91C0 /* SignUpOverviewCell.xib */; };
 		6355EC3D17B86B8400EE91C0 /* SignUpOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3C17B86B7B00EE91C0 /* SignUpOverviewCell.m */; };
 		636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA5C17AD43CC002A3494 /* Good.storyboard */; };
@@ -140,8 +159,31 @@
 		639B890417BA8660005E2B62 /* OptionsButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B890017BA8660005E2B62 /* OptionsButtonTap.png */; };
 		639B890517BA8660005E2B62 /* OptionsButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B890117BA8660005E2B62 /* OptionsButtonTap@2x.png */; };
 		639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B891017BAEC1D005E2B62 /* DGFollow.m */; };
+		63E0797117BC3F6D006FC42E /* PoweredByFoursquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0796F17BC3F6D006FC42E /* PoweredByFoursquare.png */; };
+		63E0797217BC3F6D006FC42E /* PoweredByFoursquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0797017BC3F6D006FC42E /* PoweredByFoursquare@2x.png */; };
+		63E0797517BC4010006FC42E /* Textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0797317BC4010006FC42E /* Textfield.png */; };
+		63E0797617BC4010006FC42E /* Textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0797417BC4010006FC42E /* Textfield@2x.png */; };
+		63E0797B17BC4072006FC42E /* ProfileSettingsButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0797717BC4072006FC42E /* ProfileSettingsButton.png */; };
+		63E0797C17BC4072006FC42E /* ProfileSettingsButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0797817BC4072006FC42E /* ProfileSettingsButton@2x.png */; };
+		63E0797D17BC4072006FC42E /* ProfileSettingsButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0797917BC4072006FC42E /* ProfileSettingsButtonTap.png */; };
+		63E0797E17BC4072006FC42E /* ProfileSettingsButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0797A17BC4072006FC42E /* ProfileSettingsButtonTap@2x.png */; };
+		63E0798117BC4334006FC42E /* ProfilePhotoFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0797F17BC4334006FC42E /* ProfilePhotoFrame.png */; };
+		63E0798217BC4334006FC42E /* ProfilePhotoFrame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0798017BC4334006FC42E /* ProfilePhotoFrame@2x.png */; };
+		63E0798517BC4360006FC42E /* EditProfilePhotoFrame.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0798317BC4360006FC42E /* EditProfilePhotoFrame.png */; };
+		63E0798617BC4360006FC42E /* EditProfilePhotoFrame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0798417BC4360006FC42E /* EditProfilePhotoFrame@2x.png */; };
+		63E0798817BC59C7006FC42E /* UITextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E0798717BC59C7006FC42E /* UITextFieldCell.xib */; };
+		63E0798B17BC5A6F006FC42E /* UITextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E0798A17BC5A6F006FC42E /* UITextFieldCell.m */; };
+		63E0799517BC94BE006FC42E /* ProfileFollowButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0798D17BC94BE006FC42E /* ProfileFollowButton.png */; };
+		63E0799617BC94BE006FC42E /* ProfileFollowButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0798E17BC94BE006FC42E /* ProfileFollowButton@2x.png */; };
+		63E0799717BC94BE006FC42E /* ProfileFollowButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0798F17BC94BE006FC42E /* ProfileFollowButtonTap.png */; };
+		63E0799817BC94BE006FC42E /* ProfileFollowButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0799017BC94BE006FC42E /* ProfileFollowButtonTap@2x.png */; };
+		63E0799917BC94BE006FC42E /* ProfileFollowingButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0799117BC94BE006FC42E /* ProfileFollowingButton.png */; };
+		63E0799A17BC94BE006FC42E /* ProfileFollowingButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0799217BC94BE006FC42E /* ProfileFollowingButton@2x.png */; };
+		63E0799B17BC94BE006FC42E /* ProfileFollowingButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0799317BC94BE006FC42E /* ProfileFollowingButtonTap.png */; };
+		63E0799C17BC94BE006FC42E /* ProfileFollowingButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0799417BC94BE006FC42E /* ProfileFollowingButtonTap@2x.png */; };
 		63E4424917BBCCCC000224E8 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E4424717BBCCCC000224E8 /* 37x-Checkmark.png */; };
 		63E4424A17BBCCCC000224E8 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E4424817BBCCCC000224E8 /* 37x-Checkmark@2x.png */; };
+		63E4424D17BC3010000224E8 /* DGSignUpDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E4424C17BC3010000224E8 /* DGSignUpDetailsViewController.m */; };
 		EBCC96E10520469A951D5018 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0150758A9E934060AF039752 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +199,27 @@
 
 /* Begin PBXFileReference section */
 		0150758A9E934060AF039752 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6319D37D17BDA9A40071DA71 /* ProfileTabLeftOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileTabLeftOff.png; sourceTree = "<group>"; };
+		6319D37E17BDA9A40071DA71 /* ProfileTabLeftOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileTabLeftOff@2x.png"; sourceTree = "<group>"; };
+		6319D37F17BDA9A40071DA71 /* ProfileTabLeftOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileTabLeftOn.png; sourceTree = "<group>"; };
+		6319D38017BDA9A40071DA71 /* ProfileTabLeftOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileTabLeftOn@2x.png"; sourceTree = "<group>"; };
+		6319D38117BDA9A40071DA71 /* ProfileTabRightOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileTabRightOff.png; sourceTree = "<group>"; };
+		6319D38217BDA9A40071DA71 /* ProfileTabRightOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileTabRightOff@2x.png"; sourceTree = "<group>"; };
+		6319D38317BDA9A40071DA71 /* ProfileTabRightOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileTabRightOn.png; sourceTree = "<group>"; };
+		6319D38417BDA9A40071DA71 /* ProfileTabRightOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileTabRightOn@2x.png"; sourceTree = "<group>"; };
+		632A36B917BCAEE8004EED26 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
+		632A36BA17BCAEE8004EED26 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
+		632A36BB17BCAEE8004EED26 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
+		632A36BE17BCAF00004EED26 /* DGUserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserListViewController.h; sourceTree = "<group>"; };
+		632A36BF17BCAF00004EED26 /* DGUserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserListViewController.m; sourceTree = "<group>"; };
+		632A36C217BCB29B004EED26 /* FollowButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FollowButton.png; sourceTree = "<group>"; };
+		632A36C317BCB29B004EED26 /* FollowButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FollowButton@2x.png"; sourceTree = "<group>"; };
+		632A36C417BCB29B004EED26 /* FollowButtonTap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FollowButtonTap.png; sourceTree = "<group>"; };
+		632A36C517BCB29B004EED26 /* FollowButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FollowButtonTap@2x.png"; sourceTree = "<group>"; };
+		632A36C617BCB29B004EED26 /* FollowingButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FollowingButton.png; sourceTree = "<group>"; };
+		632A36C717BCB29B004EED26 /* FollowingButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FollowingButton@2x.png"; sourceTree = "<group>"; };
+		632A36C817BCB29B004EED26 /* FollowingButtonTap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FollowingButtonTap.png; sourceTree = "<group>"; };
+		632A36C917BCB29B004EED26 /* FollowingButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FollowingButtonTap@2x.png"; sourceTree = "<group>"; };
 		633DBF5F17ADA5670038BC2D /* DGCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCategory.h; sourceTree = "<group>"; };
 		633DBF6017ADA5670038BC2D /* DGCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCategory.m; sourceTree = "<group>"; };
 		633DBF6217ADA61C0038BC2D /* DGGood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGood.h; sourceTree = "<group>"; };
@@ -309,8 +372,33 @@
 		639B890117BA8660005E2B62 /* OptionsButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OptionsButtonTap@2x.png"; sourceTree = "<group>"; };
 		639B890F17BAEC1D005E2B62 /* DGFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFollow.h; sourceTree = "<group>"; };
 		639B891017BAEC1D005E2B62 /* DGFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFollow.m; sourceTree = "<group>"; };
+		63E0796F17BC3F6D006FC42E /* PoweredByFoursquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PoweredByFoursquare.png; sourceTree = "<group>"; };
+		63E0797017BC3F6D006FC42E /* PoweredByFoursquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PoweredByFoursquare@2x.png"; sourceTree = "<group>"; };
+		63E0797317BC4010006FC42E /* Textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Textfield.png; sourceTree = "<group>"; };
+		63E0797417BC4010006FC42E /* Textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Textfield@2x.png"; sourceTree = "<group>"; };
+		63E0797717BC4072006FC42E /* ProfileSettingsButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileSettingsButton.png; sourceTree = "<group>"; };
+		63E0797817BC4072006FC42E /* ProfileSettingsButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileSettingsButton@2x.png"; sourceTree = "<group>"; };
+		63E0797917BC4072006FC42E /* ProfileSettingsButtonTap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileSettingsButtonTap.png; sourceTree = "<group>"; };
+		63E0797A17BC4072006FC42E /* ProfileSettingsButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileSettingsButtonTap@2x.png"; sourceTree = "<group>"; };
+		63E0797F17BC4334006FC42E /* ProfilePhotoFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfilePhotoFrame.png; sourceTree = "<group>"; };
+		63E0798017BC4334006FC42E /* ProfilePhotoFrame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfilePhotoFrame@2x.png"; sourceTree = "<group>"; };
+		63E0798317BC4360006FC42E /* EditProfilePhotoFrame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EditProfilePhotoFrame.png; sourceTree = "<group>"; };
+		63E0798417BC4360006FC42E /* EditProfilePhotoFrame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "EditProfilePhotoFrame@2x.png"; sourceTree = "<group>"; };
+		63E0798717BC59C7006FC42E /* UITextFieldCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UITextFieldCell.xib; sourceTree = "<group>"; };
+		63E0798917BC5A6F006FC42E /* UITextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITextFieldCell.h; sourceTree = "<group>"; };
+		63E0798A17BC5A6F006FC42E /* UITextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextFieldCell.m; sourceTree = "<group>"; };
+		63E0798D17BC94BE006FC42E /* ProfileFollowButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileFollowButton.png; sourceTree = "<group>"; };
+		63E0798E17BC94BE006FC42E /* ProfileFollowButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileFollowButton@2x.png"; sourceTree = "<group>"; };
+		63E0798F17BC94BE006FC42E /* ProfileFollowButtonTap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileFollowButtonTap.png; sourceTree = "<group>"; };
+		63E0799017BC94BE006FC42E /* ProfileFollowButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileFollowButtonTap@2x.png"; sourceTree = "<group>"; };
+		63E0799117BC94BE006FC42E /* ProfileFollowingButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileFollowingButton.png; sourceTree = "<group>"; };
+		63E0799217BC94BE006FC42E /* ProfileFollowingButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileFollowingButton@2x.png"; sourceTree = "<group>"; };
+		63E0799317BC94BE006FC42E /* ProfileFollowingButtonTap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileFollowingButtonTap.png; sourceTree = "<group>"; };
+		63E0799417BC94BE006FC42E /* ProfileFollowingButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileFollowingButtonTap@2x.png"; sourceTree = "<group>"; };
 		63E4424717BBCCCC000224E8 /* 37x-Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark.png"; sourceTree = "<group>"; };
 		63E4424817BBCCCC000224E8 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
+		63E4424B17BC3010000224E8 /* DGSignUpDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSignUpDetailsViewController.h; sourceTree = "<group>"; };
+		63E4424C17BC3010000224E8 /* DGSignUpDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSignUpDetailsViewController.m; sourceTree = "<group>"; };
 		66189FDD6F34462B8CF25EBA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -339,6 +427,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		632A36C117BCB294004EED26 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				632A36C217BCB29B004EED26 /* FollowButton.png */,
+				632A36C317BCB29B004EED26 /* FollowButton@2x.png */,
+				632A36C417BCB29B004EED26 /* FollowButtonTap.png */,
+				632A36C517BCB29B004EED26 /* FollowButtonTap@2x.png */,
+				6319D37D17BDA9A40071DA71 /* ProfileTabLeftOff.png */,
+				6319D37E17BDA9A40071DA71 /* ProfileTabLeftOff@2x.png */,
+				6319D37F17BDA9A40071DA71 /* ProfileTabLeftOn.png */,
+				6319D38017BDA9A40071DA71 /* ProfileTabLeftOn@2x.png */,
+				6319D38117BDA9A40071DA71 /* ProfileTabRightOff.png */,
+				6319D38217BDA9A40071DA71 /* ProfileTabRightOff@2x.png */,
+				6319D38317BDA9A40071DA71 /* ProfileTabRightOn.png */,
+				6319D38417BDA9A40071DA71 /* ProfileTabRightOn@2x.png */,
+				632A36C617BCB29B004EED26 /* FollowingButton.png */,
+				632A36C717BCB29B004EED26 /* FollowingButton@2x.png */,
+				632A36C817BCB29B004EED26 /* FollowingButtonTap.png */,
+				632A36C917BCB29B004EED26 /* FollowingButtonTap@2x.png */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
 		633DBF5B17ADA08D0038BC2D /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +473,9 @@
 		633DBF9217AED2480038BC2D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				63E0798717BC59C7006FC42E /* UITextFieldCell.xib */,
+				63E0798917BC5A6F006FC42E /* UITextFieldCell.h */,
+				63E0798A17BC5A6F006FC42E /* UITextFieldCell.m */,
 				6355EC1A17B5BA4500EE91C0 /* DGUser.h */,
 				6355EC1B17B5BA4500EE91C0 /* DGUser.m */,
 				639B890F17BAEC1D005E2B62 /* DGFollow.h */,
@@ -401,8 +515,15 @@
 				6355EC3917B8680300EE91C0 /* SignUpOverviewCell.xib */,
 				6355EC3B17B86B7800EE91C0 /* SignUpOverviewCell.h */,
 				6355EC3C17B86B7B00EE91C0 /* SignUpOverviewCell.m */,
+				632A36B917BCAEE8004EED26 /* UserCell.h */,
+				632A36BA17BCAEE8004EED26 /* UserCell.m */,
+				632A36BB17BCAEE8004EED26 /* UserCell.xib */,
+				632A36BE17BCAF00004EED26 /* DGUserListViewController.h */,
+				632A36BF17BCAF00004EED26 /* DGUserListViewController.m */,
 				633DBF7C17AE25CF0038BC2D /* DGUserProfileViewController.h */,
 				633DBF7D17AE25CF0038BC2D /* DGUserProfileViewController.m */,
+				63E4424B17BC3010000224E8 /* DGSignUpDetailsViewController.h */,
+				63E4424C17BC3010000224E8 /* DGSignUpDetailsViewController.m */,
 				6355EC3617B8505800EE91C0 /* DGUserSettingsViewController.h */,
 				6355EC3717B8505900EE91C0 /* DGUserSettingsViewController.m */,
 				6355EC2617B68F3100EE91C0 /* DGUpdatePasswordViewController.h */,
@@ -474,6 +595,8 @@
 		636AEA6C17AD4B8A002A3494 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				632A36C117BCB294004EED26 /* Buttons */,
+				63E0798C17BC94B6006FC42E /* UserProfile */,
 				63E4424617BBCCA1000224E8 /* Progress */,
 				639B88E517BA769E005E2B62 /* Activity */,
 				6355EBFA17B0921000EE91C0 /* Do */,
@@ -482,6 +605,12 @@
 				636AEAAA17AD7D4D002A3494 /* Icons */,
 				636AEA6D17AD4B95002A3494 /* Default-568h@2x.png */,
 				636AEA6E17AD4B95002A3494 /* Default.png */,
+				63E0796F17BC3F6D006FC42E /* PoweredByFoursquare.png */,
+				63E0797017BC3F6D006FC42E /* PoweredByFoursquare@2x.png */,
+				63E0797F17BC4334006FC42E /* ProfilePhotoFrame.png */,
+				63E0798017BC4334006FC42E /* ProfilePhotoFrame@2x.png */,
+				63E0798317BC4360006FC42E /* EditProfilePhotoFrame.png */,
+				63E0798417BC4360006FC42E /* EditProfilePhotoFrame@2x.png */,
 				636AEA6F17AD4B95002A3494 /* Default@2x.png */,
 				636AEA7017AD4B95002A3494 /* Exit.png */,
 				636AEA7117AD4B95002A3494 /* ExitDown.png */,
@@ -502,6 +631,8 @@
 		636AEAAA17AD7D4D002A3494 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				63E0797317BC4010006FC42E /* Textfield.png */,
+				63E0797417BC4010006FC42E /* Textfield@2x.png */,
 				636AEAAB17AD7D57002A3494 /* CategoryIconOff.png */,
 				636AEAAC17AD7D57002A3494 /* CategoryIconOff@2x.png */,
 				636AEAAD17AD7D57002A3494 /* CategoryIconOn.png */,
@@ -650,6 +781,25 @@
 				639B88EB17BA76A9005E2B62 /* UnShareButton@2x.png */,
 			);
 			name = Activity;
+			sourceTree = "<group>";
+		};
+		63E0798C17BC94B6006FC42E /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				63E0798D17BC94BE006FC42E /* ProfileFollowButton.png */,
+				63E0798E17BC94BE006FC42E /* ProfileFollowButton@2x.png */,
+				63E0798F17BC94BE006FC42E /* ProfileFollowButtonTap.png */,
+				63E0799017BC94BE006FC42E /* ProfileFollowButtonTap@2x.png */,
+				63E0799117BC94BE006FC42E /* ProfileFollowingButton.png */,
+				63E0799217BC94BE006FC42E /* ProfileFollowingButton@2x.png */,
+				63E0799317BC94BE006FC42E /* ProfileFollowingButtonTap.png */,
+				63E0799417BC94BE006FC42E /* ProfileFollowingButtonTap@2x.png */,
+				63E0797717BC4072006FC42E /* ProfileSettingsButton.png */,
+				63E0797817BC4072006FC42E /* ProfileSettingsButton@2x.png */,
+				63E0797917BC4072006FC42E /* ProfileSettingsButtonTap.png */,
+				63E0797A17BC4072006FC42E /* ProfileSettingsButtonTap@2x.png */,
+			);
+			name = UserProfile;
 			sourceTree = "<group>";
 		};
 		63E4424617BBCCA1000224E8 /* Progress */ = {
@@ -815,6 +965,44 @@
 				639B890517BA8660005E2B62 /* OptionsButtonTap@2x.png in Resources */,
 				63E4424917BBCCCC000224E8 /* 37x-Checkmark.png in Resources */,
 				63E4424A17BBCCCC000224E8 /* 37x-Checkmark@2x.png in Resources */,
+				63E0797117BC3F6D006FC42E /* PoweredByFoursquare.png in Resources */,
+				63E0797217BC3F6D006FC42E /* PoweredByFoursquare@2x.png in Resources */,
+				63E0797517BC4010006FC42E /* Textfield.png in Resources */,
+				63E0797617BC4010006FC42E /* Textfield@2x.png in Resources */,
+				63E0797B17BC4072006FC42E /* ProfileSettingsButton.png in Resources */,
+				63E0797C17BC4072006FC42E /* ProfileSettingsButton@2x.png in Resources */,
+				63E0797D17BC4072006FC42E /* ProfileSettingsButtonTap.png in Resources */,
+				63E0797E17BC4072006FC42E /* ProfileSettingsButtonTap@2x.png in Resources */,
+				63E0798117BC4334006FC42E /* ProfilePhotoFrame.png in Resources */,
+				63E0798217BC4334006FC42E /* ProfilePhotoFrame@2x.png in Resources */,
+				63E0798517BC4360006FC42E /* EditProfilePhotoFrame.png in Resources */,
+				63E0798617BC4360006FC42E /* EditProfilePhotoFrame@2x.png in Resources */,
+				63E0798817BC59C7006FC42E /* UITextFieldCell.xib in Resources */,
+				63E0799517BC94BE006FC42E /* ProfileFollowButton.png in Resources */,
+				63E0799617BC94BE006FC42E /* ProfileFollowButton@2x.png in Resources */,
+				63E0799717BC94BE006FC42E /* ProfileFollowButtonTap.png in Resources */,
+				63E0799817BC94BE006FC42E /* ProfileFollowButtonTap@2x.png in Resources */,
+				63E0799917BC94BE006FC42E /* ProfileFollowingButton.png in Resources */,
+				63E0799A17BC94BE006FC42E /* ProfileFollowingButton@2x.png in Resources */,
+				63E0799B17BC94BE006FC42E /* ProfileFollowingButtonTap.png in Resources */,
+				63E0799C17BC94BE006FC42E /* ProfileFollowingButtonTap@2x.png in Resources */,
+				632A36BD17BCAEE8004EED26 /* UserCell.xib in Resources */,
+				632A36CA17BCB29B004EED26 /* FollowButton.png in Resources */,
+				632A36CB17BCB29B004EED26 /* FollowButton@2x.png in Resources */,
+				632A36CC17BCB29B004EED26 /* FollowButtonTap.png in Resources */,
+				632A36CD17BCB29B004EED26 /* FollowButtonTap@2x.png in Resources */,
+				632A36CE17BCB29B004EED26 /* FollowingButton.png in Resources */,
+				632A36CF17BCB29B004EED26 /* FollowingButton@2x.png in Resources */,
+				632A36D017BCB29B004EED26 /* FollowingButtonTap.png in Resources */,
+				632A36D117BCB29B004EED26 /* FollowingButtonTap@2x.png in Resources */,
+				6319D38517BDA9A40071DA71 /* ProfileTabLeftOff.png in Resources */,
+				6319D38617BDA9A40071DA71 /* ProfileTabLeftOff@2x.png in Resources */,
+				6319D38717BDA9A40071DA71 /* ProfileTabLeftOn.png in Resources */,
+				6319D38817BDA9A40071DA71 /* ProfileTabLeftOn@2x.png in Resources */,
+				6319D38917BDA9A40071DA71 /* ProfileTabRightOff.png in Resources */,
+				6319D38A17BDA9A40071DA71 /* ProfileTabRightOff@2x.png in Resources */,
+				6319D38B17BDA9A40071DA71 /* ProfileTabRightOn.png in Resources */,
+				6319D38C17BDA9A40071DA71 /* ProfileTabRightOn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -912,10 +1100,14 @@
 				6355EC2E17B69F1E00EE91C0 /* DGSignInViewController.m in Sources */,
 				6355EC3117B69F2800EE91C0 /* DGSignUpViewController.m in Sources */,
 				6355EC3317B75EB600EE91C0 /* constants.m in Sources */,
-				6355EC3817B8505A00EE91C0 /* DGUserSettingsViewController.m in Sources */,
 				6355EC3D17B86B8400EE91C0 /* SignUpOverviewCell.m in Sources */,
 				639B88E417B9A25B005E2B62 /* DGVote.m in Sources */,
 				639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */,
+				63E4424D17BC3010000224E8 /* DGSignUpDetailsViewController.m in Sources */,
+				63E0798B17BC5A6F006FC42E /* UITextFieldCell.m in Sources */,
+				632A36BC17BCAEE8004EED26 /* UserCell.m in Sources */,
+				632A36C017BCAF00004EED26 /* DGUserListViewController.m in Sources */,
+				632A36D217BD1157004EED26 /* DGUserSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

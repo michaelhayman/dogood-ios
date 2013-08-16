@@ -8,6 +8,9 @@
     UIActionSheet *moreOptionsSheet;
     UIActionSheet *shareOptionsSheet;
     __weak IBOutlet NSLayoutConstraint *commentBoxHeight;
+    __weak IBOutlet NSLayoutConstraint *commentsHeight;
+    __weak IBOutlet NSLayoutConstraint *regoodsHeight;
+    __weak IBOutlet NSLayoutConstraint *likesHeight;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *overviewImage;

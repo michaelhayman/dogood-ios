@@ -29,10 +29,7 @@
     points.text = @"51,500";
 
     [self getGood];
-    UIRefreshControl *refreshControl = [UIRefreshControl new];
-
-    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [tableView addSubview:refreshControl];
+    [self setupRefresh];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(showWelcome)
@@ -46,6 +43,13 @@
                                              selector:@selector(getGood)
                                                  name:DGUserDidPostGood
                                                object:nil];
+}
+
+- (void)setupRefresh {
+    UIRefreshControl *refreshControl = [UIRefreshControl new];
+
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [tableView addSubview:refreshControl];
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
@@ -64,6 +68,7 @@
     // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SignOut" object:nil];
 }
 
+#pragma mark - Points
 - (void)showWelcome {
     DebugLog(@"show welcome");
     if (![[DGUser currentUser] isSignedIn]) {

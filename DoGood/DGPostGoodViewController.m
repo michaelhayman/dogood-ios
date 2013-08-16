@@ -60,7 +60,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     DebugLog(@"good %@", self.good);
-    DebugLog(@"location %@", self.good.location);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,9 +113,9 @@
     } else if (indexPath.section == location) {
         static NSString *CellIdentifier = @"location";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        if (self.good.location) {
+        if (self.good.locationName) {
             cell.imageView.image = [UIImage imageNamed:@"LocationIconOn.png"];
-            cell.textLabel.text = self.good.location;
+            cell.textLabel.text = self.good.locationName;
         } else {
             cell.textLabel.text = @"Add a location";
             cell.imageView.image = [UIImage imageNamed:@"LocationIconOff.png"];
@@ -166,8 +165,8 @@
         }
         DebugLog(@"category");
     } else if (indexPath.section == location) {
-        DebugLog(@"good.location %@", self.good.location);
-        if (self.good.location != nil) {
+        DebugLog(@"good.location %@", self.good.locationName);
+        if (self.good.locationName != nil) {
             DebugLog(@"shouldn't be nil");
             [locationSheet showInView:self.view];
         } else {
@@ -254,7 +253,7 @@
             DebugLog(@"button index %d", buttonIndex);
             if (buttonIndex == remove_button) {
                 DebugLog(@"remove");
-                self.good.location = nil;
+                self.good.locationName = nil;
                 [self.tableView reloadData];
             } else if (buttonIndex == select_new_button) {
                 [self showLocationChooser];
@@ -284,10 +283,11 @@
 #pragma mark - Camera helpers
 - (void)showCameraRoll {
     DebugLog(@"show camera roll");
-    UIImagePickerController *pickerC = [[UIImagePickerController alloc] init];
-    pickerC.delegate = self;
-    pickerC.allowsEditing = YES;
-    [self presentViewController:pickerC animated:YES completion:nil];
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
 - (void)showCamera {
@@ -296,6 +296,7 @@
          UIImagePickerControllerSourceTypeCamera])
     {
         UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         imagePicker.delegate = self;
         imagePicker.allowsEditing = YES;
         [self presentViewController:imagePicker animated:YES completion:nil];
@@ -342,7 +343,8 @@
 
 - (void)receiveUpdatedLocation:(NSNotification *)notification {
     DebugLog(@"receiving");
-    self.good.location = [[notification userInfo] valueForKey:@"location"];
+    FSLocation *location = [[notification userInfo] valueForKey:@"location"];
+    [self.good setValuesForLocation:location];
     [self.tableView reloadData];
 }
 
@@ -409,7 +411,7 @@
                                       withTitle:nil
                                     withMessage:NSLocalizedString(message, nil)
                                        withType:TSMessageNotificationTypeError];
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [hud hide:YES];
         }];
 
         [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
@@ -432,7 +434,7 @@
 
 - (void)checkFacebook {
     // only activate when selected...
-    DGUser *user = [DGUser currentUser];
+    // DGUser *user = [DGUser currentUser];
 }
 
 - (void)postToFacebook:(NSString *)status andImage:(UIImage *)image {

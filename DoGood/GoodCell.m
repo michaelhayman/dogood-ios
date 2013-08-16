@@ -4,6 +4,8 @@
 #import "DGFollow.h"
 #import "DGGoodCommentsViewController.h"
 #import <TTTAttributedLabel.h>
+#import "DGUserProfileViewController.h"
+#import "DGUserListViewController.h"
 
 static inline NSRegularExpression * NameRegularExpression() {
     static NSRegularExpression *_nameRegularExpression = nil;
@@ -23,14 +25,24 @@ static inline NSRegularExpression * NameRegularExpression() {
 
     // user
     self.avatar.contentMode = UIViewContentModeScaleAspectFit;
+    UITapGestureRecognizer* userGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGoodUserProfile)];
+    [self.username setUserInteractionEnabled:YES];
+    [self.username addGestureRecognizer:userGesture];
+    self.username.textColor = LINK_COLOUR;
 
     // image
     self.overviewImage.contentMode = UIViewContentModeScaleAspectFill;
     // UIViewContentModeScaleAspectFit;
     [self.overviewImage setClipsToBounds:YES];
 
+    // description
+    self.description.contentInset = UIEdgeInsetsMake(-4,-8,0,0);
+
     // likes
     [self.like addTarget:self action:@selector(addUserLike) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer* likesGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showLikers)];
+    [self.likes setUserInteractionEnabled:YES];
+    [self.likes addGestureRecognizer:likesGesture];
 
     // comments
     [self.comment addTarget:self action:@selector(addComment) forControlEvents:UIControlEventTouchUpInside];
@@ -46,26 +58,13 @@ static inline NSRegularExpression * NameRegularExpression() {
 
     // re-goods
     [self.regood addTarget:self action:@selector(addUserRegood) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer* regoodsGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showRegooders)];
+    [self.regoods setUserInteractionEnabled:YES];
+    [self.regoods addGestureRecognizer:regoodsGesture];
 
     // more options
     [self.moreOptions addTarget:self action:@selector(openMoreOptions) forControlEvents:UIControlEventTouchUpInside];
     [self setupMoreOptions];
-}
-
-- (TTTAttributedLabel *)commentLabel {
-    TTTAttributedLabel *label = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
-    label.font = [UIFont fontWithName:@"Calibre" size:12];
-    label.textColor = [UIColor darkGrayColor];
-    label.lineBreakMode = NSLineBreakByWordWrapping;
-    label.numberOfLines = 0;
-    UIColor *color = [UIColor colorWithRed:5.0/255.0 green:171.0/255.0 blue:117.0/255.0 alpha:1.0];
-    NSArray *keys = [[NSArray alloc] initWithObjects:(id)kCTForegroundColorAttributeName,(id)kCTUnderlineStyleAttributeName
-                     , nil];
-    NSArray *objects = [[NSArray alloc] initWithObjects:color,[NSNumber numberWithInt:kCTUnderlineStyleNone], nil];
-    NSDictionary *linkAttributes = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
-
-    label.linkAttributes = linkAttributes;
-    return label;
 }
 
 #pragma mark - Set values when cell becomes visible
@@ -93,47 +92,7 @@ static inline NSRegularExpression * NameRegularExpression() {
     [self setCommentsText];
 
     // comments list
-    CGFloat lastHeight = 0;
-    for (DGComment *comment in [self.good.comments reverseObjectEnumerator]) {
-        TTTAttributedLabel *label = [self commentLabel];
-        NSString *text = [NSString stringWithFormat:@"%@ %@", comment.user.username, comment.comment];
-
-        [label setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
-            NSRange stringRange = NSMakeRange(0, [mutableAttributedString length]);
-            
-            // NSRegularExpression *regexp = NameRegularExpression();
-
-            NSRegularExpression *regexp = [[NSRegularExpression alloc] initWithPattern:[NSString stringWithFormat:@"%@+",comment.user.username] options:NSRegularExpressionCaseInsensitive error:nil];
-
-            [regexp enumerateMatchesInString:[mutableAttributedString string] options:0 range:stringRange usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {            
-                UIFont *italicSystemFont = [UIFont boldSystemFontOfSize:10];
-                CTFontRef italicFont = CTFontCreateWithName((__bridge CFStringRef)italicSystemFont.fontName, italicSystemFont.pointSize, NULL);
-                if (italicFont) {
-                    [mutableAttributedString removeAttribute:(NSString *)kCTFontAttributeName range:result.range];
-                    [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)italicFont range:result.range];
-                    CFRelease(italicFont);
-                    
-                    [mutableAttributedString removeAttribute:(NSString *)kCTForegroundColorAttributeName range:result.range];
-                    [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(__bridge id)[[UIColor grayColor] CGColor] range:result.range];
-                }
-            }];
-
-            return mutableAttributedString;
-        }];
-
-        NSRange r = [text rangeOfString:comment.user.username];
-        [label addLinkToURL:[NSURL URLWithString:[NSString stringWithFormat:@"dogood://users/%@", comment.user.userID]] withRange:r];
-        UIFont *font = [UIFont fontWithName:@"Calibre" size:12];
-        CGSize size = [text sizeWithFont:font
-                              constrainedToSize:CGSizeMake(221, 118)
-                          lineBreakMode:NSLineBreakByWordWrapping];
-        lastHeight = lastHeight + size.height;
-        label.frame = CGRectMake(0, lastHeight, 221, size.height);
-        label.delegate = self;
-        [self.comments addSubview:label];
-    }
-    commentBoxHeight.constant = lastHeight + 20;
-
+    [self setupCommentsList];
     // regoods
     if ([self.good.current_user_regooded boolValue]) {
         [self.regood setSelected:YES];
@@ -141,20 +100,6 @@ static inline NSRegularExpression * NameRegularExpression() {
         [self.regood setSelected:NO];
     }
     [self setRegoodsText];
-}
-
-- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
-    if ([[url scheme] hasPrefix:@"dogood"]) {
-        if ([[url host] hasPrefix:@"users"]) {
-            DebugLog(@"sup");
-            /* load help screen */
-        } else if ([[url host] hasPrefix:@"show-settings"]) {
-            /* load settings screen */
-        }
-    } else {
-        /* deal with http links here */
-        DebugLog(@"not sure what else to do");
-    }
 }
 
 /*
@@ -199,7 +144,15 @@ static inline NSRegularExpression * NameRegularExpression() {
 }
 
 - (void)setRegoodsText {
-    self.regoods.text = [NSString stringWithFormat:@"%@ regoods", self.good.regoods_count];
+    if ([self.good.regoods_count intValue] > 0) {
+        self.regoods.text = [NSString stringWithFormat:@"%@ regoods", self.good.regoods_count];
+    } else {
+        regoodsHeight.constant = 0.0;
+    }
+}
+
+- (void)showRegooders {
+    [self userListWithType:@"Good" typeID:self.good.goodID andQuery:@"followers"];
 }
 
 #pragma mark - Likes
@@ -238,7 +191,15 @@ static inline NSRegularExpression * NameRegularExpression() {
 }
 
 - (void)setLikesText {
-    self.likes.text = [NSString stringWithFormat:@"%@ likes", self.good.likes_count];
+    if ([self.good.likes_count intValue] > 0) {
+        self.likes.text = [NSString stringWithFormat:@"%@ likes", self.good.likes_count];
+    } else {
+        likesHeight.constant = 0.0;
+    }
+}
+
+- (void)showLikers {
+    [self userListWithType:@"Good" typeID:self.good.goodID andQuery:@"likers"];
 }
 
 #pragma mark - Comments
@@ -258,7 +219,68 @@ static inline NSRegularExpression * NameRegularExpression() {
 }
 
 - (void)setCommentsText {
-    self.commentsCount.text = [NSString stringWithFormat:@"%@ comments", self.good.comments_count];
+    if ([self.good.comments_count intValue] > 0) {
+        self.commentsCount.text = [NSString stringWithFormat:@"%@ comments", self.good.comments_count];
+    } else {
+        commentsHeight.constant = 0.0;
+    }
+}
+
+- (TTTAttributedLabel *)commentLabel {
+    TTTAttributedLabel *label = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
+    label.font = [UIFont fontWithName:@"Calibre" size:12];
+    label.textColor = [UIColor darkGrayColor];
+    label.lineBreakMode = NSLineBreakByWordWrapping;
+    label.numberOfLines = 0;
+    NSArray *keys = [[NSArray alloc] initWithObjects:(id)kCTForegroundColorAttributeName, (id)kCTUnderlineStyleAttributeName, nil];
+    NSArray *objects = [[NSArray alloc] initWithObjects:LINK_COLOUR, [NSNumber numberWithInt:kCTUnderlineStyleNone], nil];
+    NSDictionary *linkAttributes = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
+
+    label.linkAttributes = linkAttributes;
+    return label;
+}
+
+- (void)setupCommentsList {
+    CGFloat lastHeight = 0;
+    for (DGComment *comment in [self.good.comments reverseObjectEnumerator]) {
+        TTTAttributedLabel *label = [self commentLabel];
+        NSString *text = [NSString stringWithFormat:@"%@ %@", comment.user.username, comment.comment];
+
+        [label setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+            NSRange stringRange = NSMakeRange(0, [mutableAttributedString length]);
+            
+            // NSRegularExpression *regexp = NameRegularExpression();
+
+            NSRegularExpression *regexp = [[NSRegularExpression alloc] initWithPattern:[NSString stringWithFormat:@"%@+",comment.user.username] options:NSRegularExpressionCaseInsensitive error:nil];
+
+            [regexp enumerateMatchesInString:[mutableAttributedString string] options:0 range:stringRange usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {            
+                UIFont *italicSystemFont = [UIFont boldSystemFontOfSize:10];
+                CTFontRef italicFont = CTFontCreateWithName((__bridge CFStringRef)italicSystemFont.fontName, italicSystemFont.pointSize, NULL);
+                if (italicFont) {
+                    [mutableAttributedString removeAttribute:(NSString *)kCTFontAttributeName range:result.range];
+                    [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)italicFont range:result.range];
+                    CFRelease(italicFont);
+                    
+                    [mutableAttributedString removeAttribute:(NSString *)kCTForegroundColorAttributeName range:result.range];
+                    [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(__bridge id)[[UIColor grayColor] CGColor] range:result.range];
+                }
+            }];
+
+            return mutableAttributedString;
+        }];
+
+        NSRange r = [text rangeOfString:comment.user.username];
+        [label addLinkToURL:[NSURL URLWithString:[NSString stringWithFormat:@"dogood://users/%@", comment.user.userID]] withRange:r];
+        UIFont *font = [UIFont fontWithName:@"Calibre" size:12];
+        CGSize size = [text sizeWithFont:font
+                              constrainedToSize:CGSizeMake(221, 118)
+                          lineBreakMode:NSLineBreakByWordWrapping];
+        lastHeight = lastHeight + size.height;
+        label.frame = CGRectMake(0, lastHeight, 221, size.height);
+        label.delegate = self;
+        [self.comments addSubview:label];
+    }
+    commentBoxHeight.constant = lastHeight + 20;
 }
 
 #pragma mark - More options
@@ -320,8 +342,49 @@ static inline NSRegularExpression * NameRegularExpression() {
     }
 }
 
+#pragma mark - Report good
 - (void)reportGood {
     DebugLog(@"Report good");
+}
+
+#pragma mark - User profile helper
+- (void)openProfilePage:(NSNumber *)userID {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+    DGUserProfileViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
+    controller.userID = userID;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)showGoodUserProfile {
+    [self openProfilePage:self.good.user.userID];
+}
+
+#pragma mark - User list helper
+- (void)userListWithType:(NSString *)type typeID:(NSNumber *)typeID andQuery:(NSString *)query {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+    DGUserListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserList"];
+    controller.typeID = typeID;
+    controller.type = type;
+    controller.query = query;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+#pragma mark - TTTAttributedLabel delegate methods
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    if ([[url scheme] hasPrefix:@"dogood"]) {
+        if ([[url host] hasPrefix:@"users"]) {
+            NSArray *urlComponents = [url pathComponents];
+            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+            [f setNumberStyle:NSNumberFormatterDecimalStyle];
+            NSNumber * userID = [f numberFromString:urlComponents[1]];
+            [self openProfilePage:userID];
+        } else if ([[url host] hasPrefix:@"show-settings"]) {
+            /* load settings screen */
+        }
+    } else {
+        /* deal with http links here */
+        DebugLog(@"not sure what else to do");
+    }
 }
 
 @end

@@ -38,23 +38,30 @@
 #pragma mark - Find locations
 - (void)findLocations:(CLLocation *)location {
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
-    NSURL *baseURL = [NSURL URLWithString:@"https://api.foursquare.com"];
+    NSURL *baseURL = [NSURL URLWithString:FOURSQUARE_API_URL];
     AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     [client setDefaultHeader:@"Accept" value:@"application/json"];
 
+    // lat & lng
     NSString *ll = [NSString stringWithFormat:@"%f,%f", location.coordinate.latitude, location.coordinate.longitude];
+
+    // versioning date
+    NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyyMMdd"];
+    NSString* dateString = [formatter stringFromDate:[NSDate date]];
+
+    // path
     NSString* path = [NSString stringWithFormat:
         @"/v2/venues/search?client_id=%@&client_secret=%@&ll=%@&v=%@",
-        @"EWRCKLKQ4O2LVVYK1ADLNXHTBS3MTYY1JMNPNJCM3SZ1ATII",
-        @"VZGH0QRJFF4AOU3WTXON0XZZQJ3YKMYLEUQ3ZRCQ0HZBDVTP",
-        //@"40.7,-74",
+        FOURSQUARE_CLIENT_ID,
+        FOURSQUARE_CLIENT_SECRET,
         ll,
-        @"20130803"];
+        dateString];
     DebugLog(@"path 1 %@", path);
 
     [client getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        DebugLog(@"Request Successful, response '%@'", responseStr);
+        // NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        // DebugLog(@"Request Successful, response '%@'", responseStr);
         NSError *error;
         NSDictionary* jsonFromData = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:&error];
         NSArray *response = jsonFromData[@"response"][@"venues"];
@@ -62,11 +69,15 @@
 
         for (NSDictionary *element in response) {
             FSLocation * location = [FSLocation new];
+            DebugLog(@"location %@", location.displayName);
             location.displayName = element[@"name"];
-            // location.point = [PFGeoPoint geoPointWithLatitude:[element[@"location"][@"lat"] floatValue] longitude:[element[@"location"][@"lng"] floatValue]];
-            [locations addObject:location];
             // DebugLog(@"location %f", location.point.latitude);
             // DebugLog(@"location %f", location.point.longitude);
+            // Parse does this with one object, a 'point'
+            // location.point
+            // location.lat = [element[@"location"][@"lat"] floatValue];
+            // location.lng = [element[@"location"][@"lng"] floatValue];
+            [locations addObject:location];
         }
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -81,7 +92,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // hit up the cache only
     return [locations count];
 }
 

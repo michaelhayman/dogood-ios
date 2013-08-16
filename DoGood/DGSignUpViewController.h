@@ -1,19 +1,13 @@
-@interface DGSignUpViewController : UIViewController <UITextFieldDelegate> {
-    UITextField *activeField;
-    IBOutlet UITableView *tableView;
+@interface DGSignUpViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate> {
+    __weak IBOutlet UIImageView *avatar;
+    __weak IBOutlet UIImageView *avatarOverlay;
+    __weak IBOutlet UITextField *name;
+    UIActionSheet * photoSheet;
+    DGUser *user;
+    UIImage *imageToUpload;
 }
 
+- (void)showCamera;
+- (void)showCameraRoll;
+
 @end
-
-typedef enum {
-    signUpOverview,
-    details,
-    signUpNumRows
-} SignUpRowType;
-
-typedef enum {
-    email,
-    name,
-    phone,
-    signUpDetailsNumRows
-} SignUpDetailsRowType;

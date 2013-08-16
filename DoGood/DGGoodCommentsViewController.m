@@ -18,6 +18,16 @@
     [tableView registerNib:nib forCellReuseIdentifier:@"CommentCell"];
     comments = [[NSMutableArray alloc] init];
     [self fetchComments];
+
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+
+    [self.view addGestureRecognizer:tap];
+}
+
+- (void)dismissKeyboard {
+    [commentInputField resignFirstResponder];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -49,32 +59,30 @@
 
 #pragma mark - Comment posting
 - (IBAction)postComment:(id)sender {
-    [commentInputView becomeFirstResponder];
-    DebugLog(@"this part is fine.");
-    DebugLog(@"this is fine %@", self.comment.comment);
     DGComment *newComment = [DGComment new];
     newComment.comment = commentInputField.text;
     newComment.commentable_id = self.good.goodID;
     newComment.commentable_type = @"Good";
     newComment.user_id = [DGUser currentUser].userID;
-    
-    [[RKObjectManager sharedManager] postObject:newComment path:@"/comments" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    if (![commentInputField.text isEqualToString:@""]) {
+        [[RKObjectManager sharedManager] postObject:newComment path:@"/comments" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 
-        [commentInputView becomeFirstResponder];
-        commentInputField.text = @"";
-        [TSMessage showNotificationInViewController:self
-                              withTitle:NSLocalizedString(@"Comment Saved!", nil)
-                            withMessage:nil
-                               withType:TSMessageNotificationTypeSuccess];
-        [self fetchComments];
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [TSMessage showNotificationInViewController:self.presentingViewController
-                                  withTitle:NSLocalizedString(@"Couldn't save the comment", nil)
-                                withMessage:NSLocalizedString([error description], nil)
-                                   withType:TSMessageNotificationTypeError];
+            [commentInputView becomeFirstResponder];
+            commentInputField.text = @"";
+            [TSMessage showNotificationInViewController:self
+                                  withTitle:NSLocalizedString(@"Comment Saved!", nil)
+                                withMessage:nil
+                                   withType:TSMessageNotificationTypeSuccess];
+            [self fetchComments];
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [TSMessage showNotificationInViewController:self
+                                      withTitle:NSLocalizedString(@"Couldn't save the comment", nil)
+                                    withMessage:NSLocalizedString([error description], nil)
+                                       withType:TSMessageNotificationTypeError];
 
-        DebugLog(@"error %@", [error description]);
-    }];
+            DebugLog(@"error %@", [error description]);
+        }];
+    }
 }
 
 #pragma mark - Keyboard management
@@ -132,7 +140,7 @@
     if (![textField.text isEqualToString:@""]) {
         [self postComment:textField];
     } else {
-        // [textField resignFirstResponder];
+        [textField resignFirstResponder];
     }
     return NO;
 }

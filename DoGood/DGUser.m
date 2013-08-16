@@ -20,7 +20,7 @@ static DGUser* currentUser = nil;
 			currentUser = [[self alloc] init];
             currentUser.userID = userID;
             currentUser.username = [defaults objectForKey:kDGUserCurrentUserUsername];
-            currentUser.name = [defaults objectForKey:kDGUserCurrentUserName];
+            currentUser.full_name = [defaults objectForKey:kDGUserCurrentUserFullName];
             currentUser.phone = [defaults objectForKey:kDGUserCurrentUserPhone];
             currentUser.email = [defaults objectForKey:kDGUserCurrentUserEmail];
             currentUser.contactable = [defaults objectForKey:kDGUserCurrentUserContactable];
@@ -69,7 +69,7 @@ static DGUser* currentUser = nil;
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.email forKey:kDGUserCurrentUserEmail];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.username forKey:kDGUserCurrentUserUsername];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.phone forKey:kDGUserCurrentUserPhone];
-	[[NSUserDefaults standardUserDefaults] setObject:currentUser.name forKey:kDGUserCurrentUserName];
+	[[NSUserDefaults standardUserDefaults] setObject:currentUser.full_name forKey:kDGUserCurrentUserFullName];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.contactable forKey:kDGUserCurrentUserContactable];
     [RFKeychain setPassword:currentUser.password account:kDoGoodAccount service:kDoGoodService];
 	[[NSUserDefaults standardUserDefaults] synchronize];
@@ -87,7 +87,7 @@ static DGUser* currentUser = nil;
 #pragma mark - Sign Out
 - (void)signOutWithMessage:(BOOL)showMessage {
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserIDDefaultsKey];
-	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserName];
+	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserFullName];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserUsername];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserPhone];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserEmail];
@@ -99,7 +99,7 @@ static DGUser* currentUser = nil;
     self.username = nil;
     self.password = nil;
     self.password_confirmation = nil;
-    self.name = nil;
+    self.full_name = nil;
     self.phone = nil;
     self.contactable = nil;
 

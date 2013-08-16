@@ -40,7 +40,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Cxk-Ur-GNh">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="vaR-fS-HBJ">
+                        <barButtonItem key="rightBarButtonItem" title="Post Good" id="vaR-fS-HBJ">
                             <connections>
                                 <segue destination="YhS-Q4-hGW" kind="push" id="oJB-HK-VD6"/>
                             </connections>
@@ -92,7 +92,7 @@
                                             <constraint firstAttribute="width" constant="238" id="PHI-hQ-KbG"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" returnKeyType="done"/>
                                         <connections>
                                             <outlet property="delegate" destination="R0t-3B-2Xx" id="IN0-xv-4X4"/>
                                         </connections>
@@ -286,47 +286,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MVg-zl-kpj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1471" y="526"/>
+            <point key="canvasLocation" x="1615" y="527"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="DGGoodCommentsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGGoodCommentsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="commentFieldBottom" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="commentInputField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="commentInputView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tableViewBottom" candidateClass="NSLayoutConstraint"/>
-            </relationships>
-        </class>
-        <class className="DGGoodListViewController" superclassName="RootViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGGoodListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="headerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DGPostGoodCategoryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGPostGoodCategoryViewController.h"/>
-        </class>
-        <class className="DGPostGoodLocationViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGPostGoodLocationViewController.h"/>
-        </class>
-        <class className="DGPostGoodViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGPostGoodViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="post:"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="RootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

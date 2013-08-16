@@ -1,5 +1,6 @@
 @class DGCategory;
 @class DGUser;
+@class FSLocation;
 
 @interface DGGood : NSObject
 
@@ -25,9 +26,11 @@
 @property (retain) NSNumber *lat;
 @property (retain) NSNumber *lng;
 @property (retain) NSArray *point;
-@property (retain) NSString *location;
+@property (retain) NSString *locationName;
 @property BOOL shareDoGood;
 @property BOOL shareTwitter;
 @property BOOL shareFacebook;
+
+- (void)setValuesForLocation:(FSLocation *)location;
 
 @end

@@ -109,10 +109,16 @@
     [userMapping addAttributeMappingsFromDictionary:@{
         @"id" : @"userID",
         @"username" : @"username",
-        @"name" : @"name",
+        @"full_name" : @"full_name",
         @"phone" : @"phone",
         @"email" : @"email",
-        // @"password" : @"password",
+        @"avatar" : @"avatar",
+        @"followers_count" : @"followers_count",
+        @"following_count" : @"following_count",
+        @"current_user_following" : @"current_user_following",
+        @"liked_goods_count" : @"liked_goods_count",
+        @"posted_or_followed_goods_count" : @"posted_or_followed_goods_count",
+     // @"password" : @"password",
         @"contactable" : @"contactable",
         @"message" : @"message"
      }];
@@ -184,6 +190,7 @@
      }];
 
     RKResponseDescriptor *goodResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:goodMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"goods" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [goodMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:userMapping]];
     [goodMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"comments" toKeyPath:@"comments" withMapping:commentMapping]];
     [objectManager addResponseDescriptor:goodResponseDescriptor];
 

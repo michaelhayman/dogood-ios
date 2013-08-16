@@ -6,7 +6,7 @@
 NSString* const kDGUserCurrentUserIDDefaultsKey = @"kDGUserCurrentUserIDDefaultsKey";
 NSString* const kDGUserCurrentUserEmail = @"kDGUserCurrentUserEmail";
 NSString* const kDGUserCurrentUserUsername = @"kDGUserCurrentUserUsername";
-NSString* const kDGUserCurrentUserName = @"kDGUserCurrentUserName";
+NSString* const kDGUserCurrentUserFullName = @"kDGUserCurrentUserFullName";
 NSString* const kDGUserCurrentUserPhone = @"kDGUserCurrentUserPhone";
 NSString* const kDGUserCurrentUserContactable = @"kDGUserCurrentUserContactable";
 
