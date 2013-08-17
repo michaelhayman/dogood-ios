@@ -19,11 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [collectionView registerClass:[DGRewardCell class] forCellWithReuseIdentifier:@"RewardCell"];
-    UINib *nib = [UINib nibWithNibName:@"Reward" bundle:nil];
+    UINib *nib = [UINib nibWithNibName:@"RewardCell" bundle:nil];
     [collectionView registerNib:nib forCellWithReuseIdentifier:@"RewardCell"];
     collectionView.backgroundColor = [UIColor whiteColor];
-
-
+    self.title = @"Rewards";
 
     [self setupTabs];
 
@@ -31,8 +30,11 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    // move this into a notification
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRewards) name:DGUserDidUpdatePointsNotification object:nil];
+    if (!rewardsButton.selected && !claimedButton.selected) {
+        rewardsButton.selected = YES;
+    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshVisibleRewards) name:DGUserDidUpdatePointsNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePointsText) name:DGUserDidUpdatePointsNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePoints) name:DGUserUpdatePointsNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(claimReward:) name:DGUserClaimRewardNotification object:nil];
     [self updatePoints];
@@ -47,12 +49,14 @@
     [[DGUser currentUser] updatePoints];
 }
 
+- (void)updatePointsText {
+    points.text = [NSString stringWithFormat:@"%@ points", [DGUser currentUser].points];
+}
+
 #pragma mark - Tabs
 - (void)setupTabs {
     [rewardsButton addTarget:self action:@selector(showRewards) forControlEvents:UIControlEventTouchUpInside];
-    // [rewardsButton setTitle:[NSString stringWithFormat:@"%@ GOODS", user.posted_or_followed_goods_count] forState:UIControlStateNormal];
     [claimedButton addTarget:self action:@selector(showClaimed) forControlEvents:UIControlEventTouchUpInside];
-    // [claimedButton setTitle:[NSString stringWithFormat:@"%@ LIKES", user.liked_goods_count] forState:UIControlStateNormal];
 }
 
 #pragma mark - Retrieve rewards
@@ -74,8 +78,17 @@
     }
 }
 
+- (void)refreshVisibleRewards {
+    NSString *path;
+    if (rewardsButton.selected) {
+        path = [NSString stringWithFormat:@"/rewards"];
+    } else {
+        path = [NSString stringWithFormat:@"/rewards/claimed"];
+    }
+    [self getRewardsAtPath:path];
+}
+
 - (void)getRewardsAtPath:(NSString *)path {
-    points.text = [NSString stringWithFormat:@"%@ points", [DGUser currentUser].points];
     [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         rewards = [[NSArray alloc] initWithArray:mappingResult.array];
         [collectionView reloadData];
@@ -86,9 +99,7 @@
 
 #pragma mark - UICollectionView methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    DebugLog(@"rewards %@, %d", rewards, [rewards count]);
     return [rewards count];
-    // return 2;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)aCollectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -96,10 +107,13 @@
     DGRewardCell *cell = [aCollectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     DGReward *reward = rewards[indexPath.row];
     cell.reward = reward;
+    if (rewardsButton.selected) {
+        cell.type = @"Rewards";
+    } else {
+        cell.type = @"Claimed";
+    }
     [cell setValues];
     cell.navigationController = self.navigationController;
-    // cell.picture.image = [UIImage imageNamed:@"upload-image"];
-
     return cell;
 }
 
@@ -108,15 +122,12 @@
     DGReward *reward = [[notification userInfo] valueForKey:@"reward"];
 
     [[RKObjectManager sharedManager] postObject:reward path:@"/rewards/claim" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [TSMessage showNotificationInViewController:self withTitle:NSLocalizedString(@"Claimed reward!", nil) withMessage:[NSString stringWithFormat:@"%@ is yours", reward.title] withType:TSMessageNotificationTypeSuccess];
-        DebugLog(@"set claimed rewards tab");
+        [TSMessage showNotificationInViewController:self withTitle:NSLocalizedString(@"Reward claimed!", nil) withMessage:[NSString stringWithFormat:@"%@ is yours", reward.title] withType:TSMessageNotificationTypeSuccess];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserUpdatePointsNotification object:nil];
         [claimedButton sendActionsForControlEvents:UIControlEventTouchUpInside];
-        // [collectionView reloadData];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
         [TSMessage showNotificationInViewController:self withTitle:NSLocalizedString(@"Reward not claimed.", nil) withMessage:[error localizedDescription] withType:TSMessageNotificationTypeError];
-        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailSendPasswordNotification object:nil];
     }];
 }
 

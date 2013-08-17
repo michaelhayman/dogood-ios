@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6314DE6317C02BEA00DDE637 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6314DE6217C02BEA00DDE637 /* CoreImage.framework */; };
 		6319D38517BDA9A40071DA71 /* ProfileTabLeftOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D37D17BDA9A40071DA71 /* ProfileTabLeftOff.png */; };
 		6319D38617BDA9A40071DA71 /* ProfileTabLeftOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D37E17BDA9A40071DA71 /* ProfileTabLeftOff@2x.png */; };
 		6319D38717BDA9A40071DA71 /* ProfileTabLeftOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D37F17BDA9A40071DA71 /* ProfileTabLeftOn.png */; };
@@ -57,7 +58,7 @@
 		6355EC0D17B0D4C300EE91C0 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC0B17B0D4C300EE91C0 /* CommentCell.xib */; };
 		6355EC0F17B0E73C00EE91C0 /* DGRewardsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC0E17B0E73C00EE91C0 /* DGRewardsListViewController.xib */; };
 		6355EC1217B0EDA300EE91C0 /* DGRewardsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC1117B0EDA300EE91C0 /* DGRewardsListViewController.m */; };
-		6355EC1417B0EE1E00EE91C0 /* Reward.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC1317B0EE1E00EE91C0 /* Reward.xib */; };
+		6355EC1417B0EE1E00EE91C0 /* RewardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC1317B0EE1E00EE91C0 /* RewardCell.xib */; };
 		6355EC1717B0EF2700EE91C0 /* DGRewardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC1617B0EF2700EE91C0 /* DGRewardCell.m */; };
 		6355EC1C17B5BA4600EE91C0 /* DGUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC1B17B5BA4500EE91C0 /* DGUser.m */; };
 		6355EC1F17B601BF00EE91C0 /* DGError.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC1E17B601BF00EE91C0 /* DGError.m */; };
@@ -126,7 +127,6 @@
 		639B890417BA8660005E2B62 /* OptionsButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B890017BA8660005E2B62 /* OptionsButtonTap.png */; };
 		639B890517BA8660005E2B62 /* OptionsButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B890117BA8660005E2B62 /* OptionsButtonTap@2x.png */; };
 		639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B891017BAEC1D005E2B62 /* DGFollow.m */; };
-		63D15A8117BF0E840034881C /* Octocat.png in Resources */ = {isa = PBXBuildFile; fileRef = 63D15A8017BF0E840034881C /* Octocat.png */; };
 		63E0797117BC3F6D006FC42E /* PoweredByFoursquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0796F17BC3F6D006FC42E /* PoweredByFoursquare.png */; };
 		63E0797217BC3F6D006FC42E /* PoweredByFoursquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0797017BC3F6D006FC42E /* PoweredByFoursquare@2x.png */; };
 		63E0797517BC4010006FC42E /* Textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0797317BC4010006FC42E /* Textfield.png */; };
@@ -157,6 +157,7 @@
 
 /* Begin PBXFileReference section */
 		0150758A9E934060AF039752 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6314DE6217C02BEA00DDE637 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		6319D37D17BDA9A40071DA71 /* ProfileTabLeftOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileTabLeftOff.png; sourceTree = "<group>"; };
 		6319D37E17BDA9A40071DA71 /* ProfileTabLeftOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileTabLeftOff@2x.png"; sourceTree = "<group>"; };
 		6319D37F17BDA9A40071DA71 /* ProfileTabLeftOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileTabLeftOn.png; sourceTree = "<group>"; };
@@ -224,7 +225,7 @@
 		6355EC0E17B0E73C00EE91C0 /* DGRewardsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DGRewardsListViewController.xib; sourceTree = "<group>"; };
 		6355EC1017B0EDA300EE91C0 /* DGRewardsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DGRewardsListViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		6355EC1117B0EDA300EE91C0 /* DGRewardsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGRewardsListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		6355EC1317B0EE1E00EE91C0 /* Reward.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Reward.xib; sourceTree = "<group>"; };
+		6355EC1317B0EE1E00EE91C0 /* RewardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RewardCell.xib; sourceTree = "<group>"; };
 		6355EC1517B0EF2700EE91C0 /* DGRewardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGRewardCell.h; sourceTree = "<group>"; };
 		6355EC1617B0EF2700EE91C0 /* DGRewardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRewardCell.m; sourceTree = "<group>"; };
 		6355EC1817B531C700EE91C0 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -320,7 +321,6 @@
 		639B890117BA8660005E2B62 /* OptionsButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OptionsButtonTap@2x.png"; sourceTree = "<group>"; };
 		639B890F17BAEC1D005E2B62 /* DGFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFollow.h; sourceTree = "<group>"; };
 		639B891017BAEC1D005E2B62 /* DGFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFollow.m; sourceTree = "<group>"; };
-		63D15A8017BF0E840034881C /* Octocat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Octocat.png; sourceTree = "<group>"; };
 		63E0796F17BC3F6D006FC42E /* PoweredByFoursquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PoweredByFoursquare.png; sourceTree = "<group>"; };
 		63E0797017BC3F6D006FC42E /* PoweredByFoursquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PoweredByFoursquare@2x.png"; sourceTree = "<group>"; };
 		63E0797317BC4010006FC42E /* Textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Textfield.png; sourceTree = "<group>"; };
@@ -356,6 +356,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6314DE6317C02BEA00DDE637 /* CoreImage.framework in Frameworks */,
 				638647E417AC087A00167F15 /* CoreGraphics.framework in Frameworks */,
 				638647E617AC087A00167F15 /* UIKit.framework in Frameworks */,
 				638647E217AC087A00167F15 /* Foundation.framework in Frameworks */,
@@ -547,7 +548,7 @@
 				6355EC0E17B0E73C00EE91C0 /* DGRewardsListViewController.xib */,
 				6355EC1017B0EDA300EE91C0 /* DGRewardsListViewController.h */,
 				6355EC1117B0EDA300EE91C0 /* DGRewardsListViewController.m */,
-				6355EC1317B0EE1E00EE91C0 /* Reward.xib */,
+				6355EC1317B0EE1E00EE91C0 /* RewardCell.xib */,
 				6355EC1517B0EF2700EE91C0 /* DGRewardCell.h */,
 				6355EC1617B0EF2700EE91C0 /* DGRewardCell.m */,
 			);
@@ -564,7 +565,6 @@
 		636AEA6C17AD4B8A002A3494 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				63D15A8017BF0E840034881C /* Octocat.png */,
 				632A36C117BCB294004EED26 /* Buttons */,
 				63E0798C17BC94B6006FC42E /* UserProfile */,
 				63E4424617BBCCA1000224E8 /* Progress */,
@@ -631,6 +631,7 @@
 		638647D517AC087A00167F15 = {
 			isa = PBXGroup;
 			children = (
+				6314DE6217C02BEA00DDE637 /* CoreImage.framework */,
 				638647E717AC087A00167F15 /* DoGood */,
 				6386480917AC087A00167F15 /* DoGoodTests */,
 				638647E017AC087A00167F15 /* Frameworks */,
@@ -867,7 +868,7 @@
 				6355EC0217B0958100EE91C0 /* upload-image-active@2x.png in Resources */,
 				6355EC0D17B0D4C300EE91C0 /* CommentCell.xib in Resources */,
 				6355EC0F17B0E73C00EE91C0 /* DGRewardsListViewController.xib in Resources */,
-				6355EC1417B0EE1E00EE91C0 /* Reward.xib in Resources */,
+				6355EC1417B0EE1E00EE91C0 /* RewardCell.xib in Resources */,
 				6355EC2417B6723E00EE91C0 /* Users.storyboard in Resources */,
 				6355EC3A17B8680300EE91C0 /* SignUpOverviewCell.xib in Resources */,
 				639B88EC17BA76A9005E2B62 /* UnCommentButton.png in Resources */,
@@ -926,7 +927,6 @@
 				6319D38A17BDA9A40071DA71 /* ProfileTabRightOff@2x.png in Resources */,
 				6319D38B17BDA9A40071DA71 /* ProfileTabRightOn.png in Resources */,
 				6319D38C17BDA9A40071DA71 /* ProfileTabRightOn@2x.png in Resources */,
-				63D15A8117BF0E840034881C /* Octocat.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -26,10 +26,13 @@
     ownProfile = [self.userID isEqualToNumber:[DGUser currentUser].userID];
     DebugLog(@"own profile? %d %@ %@", ownProfile, self.userID, [DGUser currentUser].userID);
 
+    if (self.fromMenu) {
+        [self addMenuButton:@"MenuFromHomeIcon" withTapButton:@"MenuFromHomeIconTap"];
+    }
+
     // conditional settings on user
     UIBarButtonItem *connectButton;
     if (ownProfile) {
-        [self addMenuButton:@"MenuFromHomeIcon" withTapButton:@"MenuFromHomeIconTap"];
         connectButton = [[UIBarButtonItem alloc] initWithTitle:@"Find Friends" style: UIBarButtonItemStylePlain target:self action:@selector(findFriends:)];
         [centralButton addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
         [centralButton setTitle:@"Settings" forState:UIControlStateNormal];

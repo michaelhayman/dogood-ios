@@ -34,6 +34,8 @@
 //#define BUTTON_COLOR [UIColor colorWithRed:173.0/255.0 green:183.0/255.0 blue:36.0/255.0 alpha:1.0]
 // brown
 #define BUTTON_COLOR [UIColor colorWithRed:122.0/255.0 green:106.0/255.0 blue:83.0/255.0 alpha:1.0]
+#define GRAYED_OUT [UIColor colorWithRed:30.0/255.0 green:30.0/255.0 blue:30.0/255.0 alpha:0.3]
+#define ACTIVE [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
 
 
 // RKPassword

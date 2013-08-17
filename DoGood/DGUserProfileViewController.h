@@ -21,6 +21,7 @@
 }
 
 @property (weak, nonatomic) NSNumber *userID;
+@property bool fromMenu;
 
 - (void)toggleFollow;
 - (void)openSettings;
