@@ -7,6 +7,7 @@
 @property (nonatomic, copy) NSString* password_confirmation;
 @property (nonatomic, copy) NSString* full_name;
 @property (nonatomic, copy) NSString* phone;
+@property (nonatomic, copy) NSNumber* points;
 @property (nonatomic, copy) NSNumber* contactable;
 @property (nonatomic, copy) NSNumber* followers_count;
 @property (nonatomic, copy) NSNumber* following_count;
@@ -35,6 +36,9 @@
 
 #pragma mark - Sign Out
 - (void)signOutWithMessage:(BOOL)showMessage;
+
+#pragma mark - Points
+- (void)updatePoints;
 
 @end
 

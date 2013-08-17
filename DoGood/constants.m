@@ -33,6 +33,11 @@ NSString* const DGUserDidFailSendPasswordNotification = @"DGUserDidFailSendPassw
 
 NSString* const DGUserInfoDidLoad = @"DGUserInfoDidLoad";
 
+NSString* const DGUserUpdatePointsNotification = @"DGUserUpdatePointsNotification";
+NSString* const DGUserDidUpdatePointsNotification = @"DGUserDidUpdatePointsNotification";
+
+NSString* const DGUserClaimRewardNotification = @"DGUserClaimRewardNotification";
+
 #pragma mark - Good
 
 // Notifications

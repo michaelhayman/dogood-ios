@@ -1,5 +1,6 @@
 #import "DGUserSettingsViewController.h"
 #import "UITextFieldCell.h"
+#import "DGUserSearchViewController.h"
 
 @interface DGUserSettingsViewController ()
 
@@ -10,7 +11,6 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"Settings";
 
     // customize look
@@ -41,11 +41,20 @@
 }
 
 - (void)resetPassword {
-
+    if ([DGUser currentUser].email) {
+        [[RKObjectManager sharedManager] getObjectsAtPath:@"/users/password/send" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            DebugLog(@"You have been sent an email with instructions.");
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            DebugLog(@"Operation failed with error: %@", error);
+        }];
+    }
 }
 
 - (void)searchForFriends {
-
+    UIStoryboard *storyboard;
+    storyboard = [UIStoryboard storyboardWithName:@"User" bundle:nil];
+    DGUserSearchViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserSearch"];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - Update Account

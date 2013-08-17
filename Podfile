@@ -9,6 +9,7 @@ pod 'MBProgressHUD'
 pod 'STTweetLabel', '~> 2.2.2'
 pod 'Facebook-iOS-SDK', '~> 3.5'
 pod 'TTTAttributedLabel'
+pod 'CODialog'
 
 # not used yet
 # pod 'NSData+Base64'

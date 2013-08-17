@@ -115,4 +115,15 @@ static DGUser* currentUser = nil;
     [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSignOutNotification object:self];
 }
 
+#pragma mark - Points
+- (void)updatePoints {
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/users/points" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        DGUser *user = mappingResult.array[0];
+        self.points = user.points;
+        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdatePointsNotification object:self];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        DebugLog(@"Operation failed with error: %@", error);
+    }];
+}
+
 @end

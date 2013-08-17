@@ -244,7 +244,7 @@
         <!--Navigation Controller-->
         <scene sceneID="vqe-7J-oo0">
             <objects>
-                <navigationController id="CMy-ac-ifF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="BaseGoodController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="CMy-ac-ifF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ft8-r1-YAL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

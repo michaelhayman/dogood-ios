@@ -9,6 +9,7 @@
 #import "DGError.h"
 #import "DGFollow.h"
 #import "DGVote.h"
+#import "DGReward.h"
 // libraries
 // #import <NUI/NUIAppearance.h>
 // #import "Foursquare-API-v2/Foursquare2.h"
@@ -122,6 +123,7 @@
         @"contactable" : @"contactable",
         @"message" : @"message"
      }];
+    [userMapping addAttributeMappingsFromArray:@[ @"points" ]];
 
     RKResponseDescriptor *userResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:userResponseDescriptor];
@@ -173,6 +175,20 @@
     [commentRequestMapping addAttributeMappingsFromArray:@[ @"comment", @"commentable_id", @"commentable_type", @"user_id" ]];
     RKRequestDescriptor *commentRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:commentRequestMapping objectClass:[DGComment class] rootKeyPath:@"comment" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:commentRequestDescriptor];
+
+    // rewards
+    RKObjectMapping *rewardMapping = [RKObjectMapping mappingForClass:[DGReward class]];
+ 
+    [rewardMapping addAttributeMappingsFromDictionary:@{ @"id" : @"rewardID" }];
+    [rewardMapping addAttributeMappingsFromArray:@[ @"title", @"subtitle", @"teaser", @"full_description", @"user_id", @"cost", @"quantity", @"quantity_remaining" ]];
+    // [rewardMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:rewardMapping]];
+    RKResponseDescriptor *rewardResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:rewardMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"rewards" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:rewardResponseDescriptor];
+
+    RKObjectMapping* claimRewardRequestMapping = [RKObjectMapping requestMapping ];
+    [claimRewardRequestMapping addAttributeMappingsFromDictionary:@{ @"rewardID" : @"id" }];
+    RKRequestDescriptor *claimRewardRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:claimRewardRequestMapping objectClass:[DGReward class] rootKeyPath:@"reward" method:RKRequestMethodAny];
+    [objectManager addRequestDescriptor:claimRewardRequestDescriptor];
 
     // good
     RKObjectMapping *goodMapping = [RKObjectMapping mappingForClass:[DGGood class]];

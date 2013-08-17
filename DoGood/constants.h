@@ -71,6 +71,11 @@ extern NSString* const DGUserDidFailSendPasswordNotification;
 
 extern NSString* const DGUserInfoDidLoad;
 
+extern NSString* const DGUserUpdatePointsNotification;
+extern NSString* const DGUserDidUpdatePointsNotification;
+
+extern NSString* const DGUserClaimRewardNotification;
+
 #pragma mark - Good
 
 // Notifications

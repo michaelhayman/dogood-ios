@@ -188,6 +188,68 @@
             </objects>
             <point key="canvasLocation" x="1320" y="-213"/>
         </scene>
+        <!--User Searchviewcont-->
+        <scene sceneID="QP3-d8-uEQ">
+            <objects>
+                <viewController storyboardIdentifier="UserSearch" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qBz-P4-Iph" customClass="DGUserSearchviewcont" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LPH-bq-HTj">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DDO-O5-Gyd">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="434" type="user" id="G9Y-qp-7lc"/>
+                                </constraints>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Jpp-BJ-hgG">
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="qBz-P4-Iph" id="UhX-m6-jbm"/>
+                                </connections>
+                            </searchBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="kfb-1b-VgU">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="akv-PZ-Xg6"/>
+                                </constraints>
+                                <segments>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                    <segment title=""/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Jpp-BJ-hgG" firstAttribute="leading" secondItem="LPH-bq-HTj" secondAttribute="leading" type="default" id="AWG-iF-JXf"/>
+                            <constraint firstItem="kfb-1b-VgU" firstAttribute="leading" secondItem="LPH-bq-HTj" secondAttribute="leading" type="default" id="BcB-Fr-uRe"/>
+                            <constraint firstItem="DDO-O5-Gyd" firstAttribute="trailing" secondItem="LPH-bq-HTj" secondAttribute="trailing" type="default" id="T8g-Eq-Kwx"/>
+                            <constraint firstItem="Jpp-BJ-hgG" firstAttribute="trailing" secondItem="LPH-bq-HTj" secondAttribute="trailing" type="default" id="Xj9-Cy-MhE"/>
+                            <constraint firstItem="Jpp-BJ-hgG" firstAttribute="top" secondItem="LPH-bq-HTj" secondAttribute="top" type="user" id="Z9p-yv-6Nr"/>
+                            <constraint firstItem="kfb-1b-VgU" firstAttribute="top" secondItem="Jpp-BJ-hgG" secondAttribute="bottom" type="user" id="fGW-zF-0B1"/>
+                            <constraint firstItem="DDO-O5-Gyd" firstAttribute="top" secondItem="kfb-1b-VgU" secondAttribute="bottom" type="user" id="qSc-2t-hEV"/>
+                            <constraint firstItem="DDO-O5-Gyd" firstAttribute="leading" secondItem="LPH-bq-HTj" secondAttribute="leading" type="default" id="vZE-zm-LVs"/>
+                            <constraint firstItem="DDO-O5-Gyd" firstAttribute="bottom" secondItem="LPH-bq-HTj" secondAttribute="bottom" type="user" id="wRj-DT-hnX"/>
+                            <constraint firstItem="kfb-1b-VgU" firstAttribute="trailing" secondItem="LPH-bq-HTj" secondAttribute="trailing" type="default" id="wzJ-UW-Izr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="HN7-cv-drp" id="1vv-MS-yK3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kwh-Ra-eQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="HN7-cv-drp">
+                    <connections>
+                        <outlet property="delegate" destination="qBz-P4-Iph" id="LSz-Yk-aYU"/>
+                        <outlet property="searchBar" destination="Jpp-BJ-hgG" id="KbR-oo-Zp9"/>
+                        <outlet property="searchContentsController" destination="qBz-P4-Iph" id="h7e-rp-pj2"/>
+                        <outlet property="searchResultsDataSource" destination="qBz-P4-Iph" id="4sU-F3-Wf2"/>
+                        <outlet property="searchResultsDelegate" destination="qBz-P4-Iph" id="n5w-kz-fDE"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="1320" y="474"/>
+        </scene>
         <!--User List View Controller-->
         <scene sceneID="bc2-ii-Gms">
             <objects>
@@ -513,7 +575,7 @@
         <!--Update Password View Controller - Update Password-->
         <scene sceneID="ILZ-l3-PvW">
             <objects>
-                <viewController id="cCI-yD-Zl2" customClass="UpdatePasswordViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UpdatePassword" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cCI-yD-Zl2" customClass="UpdatePasswordViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1k2-rR-7KN">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
