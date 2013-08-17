@@ -40,7 +40,7 @@
     [weakSelf setViewControllers:@[controller] animated:NO];
                                                       }];
     
-    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"Find Good"
+    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"Ideas"
                                                        subtitle:nil
                                                           image:[UIImage imageNamed:@"Icon_Explore"]
                                                highlightedImage:nil
@@ -67,6 +67,7 @@
                                                              NSLog(@"Item: %@", item);
                                                              UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
                                                              DGUserProfileViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
+                                                             controller.fromMenu = YES;
                                                              [weakSelf setViewControllers:@[controller] animated:NO];
                                                          }];
     homeItem.tag = 0;
