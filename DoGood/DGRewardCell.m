@@ -32,8 +32,7 @@
 }
 
 - (void)setValues {
-    // [self.teaser setImageWithURL:[NSURL URLWithString:self.reward.teaser]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.reward.teaser] cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:60.0];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.reward.teaser] cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:15.0];
     [self.teaser setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         if (![self sufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
             self.teaser.image = [self convertImageToGrayscale:image];
@@ -61,9 +60,6 @@
         self.cost.textColor = ACTIVE;
     }
 
-    if(![self sufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
-        // [self contentView].alpha = 0.2;
-    }
     self.heading.text = self.reward.title;
     self.subheading.text = self.reward.subtitle;
     self.cost.text = [NSString stringWithFormat:@"%@ points", self.reward.cost];
