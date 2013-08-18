@@ -79,7 +79,7 @@
 							<object class="IBUILabel" id="186344058">
 								<reference key="NSNextResponder" ref="348261131"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{15, 12}, {95, 21}}</string>
+								<string key="NSFrame">{{15, 12}, {115, 21}}</string>
 								<reference key="NSSuperview" ref="348261131"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="926033934"/>
@@ -300,12 +300,12 @@
 								<int key="secondAttribute">0</int>
 								<float key="multiplier">1</float>
 								<object class="IBLayoutConstant" key="constant">
-									<double key="value">95</double>
+									<double key="value">115</double>
 								</object>
 								<float key="priority">1000</float>
 								<reference key="containingView" ref="186344058"/>
-								<int key="scoringType">3</int>
-								<float key="scoringTypeFloat">9</float>
+								<int key="scoringType">9</int>
+								<float key="scoringTypeFloat">40</float>
 								<int key="contentType">1</int>
 							</object>
 							<object class="IBNSLayoutConstraint" id="502660507">
@@ -406,7 +406,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">55</int>
+			<int key="maxID">75</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

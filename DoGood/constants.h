@@ -84,3 +84,6 @@ extern NSString* const DGUserDidUpdateFollowingsNotification;
 
 // Notifications
 extern NSString* const DGUserDidPostGood;
+
+// Text field cells
+extern NSString* const UITextFieldCellIdentifier;

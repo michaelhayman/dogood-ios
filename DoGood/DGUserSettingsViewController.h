@@ -1,4 +1,4 @@
-@interface DGUserSettingsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+@interface DGUserSettingsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
 
