@@ -129,7 +129,7 @@
     [objectManager addResponseDescriptor:userResponseDescriptor];
 
     RKObjectMapping* userRequestMapping = [RKObjectMapping requestMapping ];
-    [userRequestMapping addAttributeMappingsFromArray:@[ @"email", @"username", @"password", @"name", @"phone", @"contactable" ]];
+    [userRequestMapping addAttributeMappingsFromArray:@[ @"email", @"username", @"password", @"full_name", @"phone", @"contactable" ]];
     RKRequestDescriptor *userRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:userRequestMapping objectClass:[DGUser class] rootKeyPath:@"user" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:userRequestDescriptor];
 
