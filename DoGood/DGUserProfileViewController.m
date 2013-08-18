@@ -23,6 +23,8 @@
         self.userID = [DGUser currentUser].userID;
     }
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getProfile) name:DGUserDidUpdateFollowingsNotification object:nil];
+
     ownProfile = [self.userID isEqualToNumber:[DGUser currentUser].userID];
     DebugLog(@"own profile? %d %@ %@", ownProfile, self.userID, [DGUser currentUser].userID);
 
@@ -72,6 +74,11 @@
     [following addGestureRecognizer:followingGesture];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Tabs
 - (void)setupTabs {
     [goodsButton addTarget:self action:@selector(getUserGood) forControlEvents:UIControlEventTouchUpInside];
     [goodsButton setTitle:[NSString stringWithFormat:@"%@ GOODS", user.posted_or_followed_goods_count] forState:UIControlStateNormal];
@@ -79,6 +86,7 @@
     [likesButton setTitle:[NSString stringWithFormat:@"%@ LIKES", user.liked_goods_count] forState:UIControlStateNormal];
 }
 
+#pragma mark - User retrieval
 - (void)getProfile {
     [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/users/%@", self.userID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         user = [DGUser new];

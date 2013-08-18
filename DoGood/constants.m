@@ -43,3 +43,5 @@ NSString* const DGUserClaimRewardNotification = @"DGUserClaimRewardNotification"
 // Notifications
 
 NSString* const DGUserDidPostGood = @"DGUserDidPostGood";
+
+NSString* const DGUserDidUpdateFollowingsNotification = @"DGUserDidUpdateFollowingsNotification";

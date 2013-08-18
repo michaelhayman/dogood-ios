@@ -54,13 +54,17 @@
 
     if (self.follow.isSelected == NO) {
         [self increaseFollow];
-        [[RKObjectManager sharedManager] postObject:followUser path:@"/follows" parameters:nil success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [[RKObjectManager sharedManager] postObject:followUser path:@"/follows" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateFollowingsNotification object:nil];
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             DebugLog(@"failed to add follow");
             [self decreaseFollow];
         }];
     } else {
         [self decreaseFollow];
-        [[RKObjectManager sharedManager] postObject:followUser path:@"/follows/remove" parameters:nil success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [[RKObjectManager sharedManager] postObject:followUser path:@"/follows/remove" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateFollowingsNotification object:nil];
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [self increaseFollow];
             DebugLog(@"failed to remove regood");
         }];
@@ -75,6 +79,10 @@
 - (void)decreaseFollow {
     [self.follow setSelected:NO];
     self.user.current_user_following = [NSNumber numberWithBool:NO];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

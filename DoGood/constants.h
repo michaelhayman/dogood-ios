@@ -78,6 +78,8 @@ extern NSString* const DGUserDidUpdatePointsNotification;
 
 extern NSString* const DGUserClaimRewardNotification;
 
+extern NSString* const DGUserDidUpdateFollowingsNotification;
+
 #pragma mark - Good
 
 // Notifications
