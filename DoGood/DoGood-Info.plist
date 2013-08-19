@@ -25,6 +25,14 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>dogood</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.springbox.DoGood</string>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
 				<string>fb151726295032833</string>
 			</array>
 		</dict>
