@@ -7,6 +7,9 @@
 @property (nonatomic, copy) NSString* password_confirmation;
 @property (nonatomic, copy) NSString* full_name;
 @property (nonatomic, copy) NSString* phone;
+@property (nonatomic, copy) NSString* biography;
+@property (nonatomic, copy) NSString* location;
+
 @property (nonatomic, copy) NSNumber* points;
 @property (nonatomic, copy) NSNumber* contactable;
 @property (nonatomic, copy) NSNumber* followers_count;
@@ -30,6 +33,8 @@
 + (void)setAuthorizationHeader;
 
 - (BOOL)isSignedIn;
+
++ (void) assignDefaults;
 
 #pragma mark - Send Password
 + (void)setNewPassword:(NSString *)password;

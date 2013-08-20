@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */; };
+		6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */; };
 		6314DE6317C02BEA00DDE637 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6314DE6217C02BEA00DDE637 /* CoreImage.framework */; };
 		6319D38517BDA9A40071DA71 /* ProfileTabLeftOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D37D17BDA9A40071DA71 /* ProfileTabLeftOff.png */; };
 		6319D38617BDA9A40071DA71 /* ProfileTabLeftOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D37E17BDA9A40071DA71 /* ProfileTabLeftOff@2x.png */; };
@@ -30,6 +32,7 @@
 		632A36D017BCB29B004EED26 /* FollowingButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 632A36C817BCB29B004EED26 /* FollowingButtonTap.png */; };
 		632A36D117BCB29B004EED26 /* FollowingButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 632A36C917BCB29B004EED26 /* FollowingButtonTap@2x.png */; };
 		632A36D217BD1157004EED26 /* DGUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3717B8505900EE91C0 /* DGUserSettingsViewController.m */; };
+		63357AFE17C279F2007B5FD7 /* DGUserFindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63357AFD17C279F2007B5FD7 /* DGUserFindFriendsViewController.m */; };
 		633DBF6117ADA5670038BC2D /* DGCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6017ADA5670038BC2D /* DGCategory.m */; };
 		633DBF6417ADA61D0038BC2D /* DGGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6317ADA61C0038BC2D /* DGGood.m */; };
 		633DBF6717ADACEE0038BC2D /* DGPostGoodCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6617ADACEE0038BC2D /* DGPostGoodCategoryViewController.m */; };
@@ -113,6 +116,7 @@
 		6397318917C15EBE001B96BF /* SignOutButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6397318517C15EBE001B96BF /* SignOutButton@2x.png */; };
 		6397318A17C15EBE001B96BF /* SignOutButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 6397318617C15EBE001B96BF /* SignOutButtonTap.png */; };
 		6397318B17C15EBE001B96BF /* SignOutButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6397318717C15EBE001B96BF /* SignOutButtonTap@2x.png */; };
+		6397318E17C1733D001B96BF /* DGUserTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */; };
 		639B88E417B9A25B005E2B62 /* DGVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B88E317B9A25A005E2B62 /* DGVote.m */; };
 		639B88EC17BA76A9005E2B62 /* UnCommentButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88E617BA76A9005E2B62 /* UnCommentButton.png */; };
 		639B88ED17BA76A9005E2B62 /* UnCommentButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88E717BA76A9005E2B62 /* UnCommentButton@2x.png */; };
@@ -156,11 +160,17 @@
 		63E4424917BBCCCC000224E8 /* 37x-Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E4424717BBCCCC000224E8 /* 37x-Checkmark.png */; };
 		63E4424A17BBCCCC000224E8 /* 37x-Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E4424817BBCCCC000224E8 /* 37x-Checkmark@2x.png */; };
 		63E4424D17BC3010000224E8 /* DGSignUpDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E4424C17BC3010000224E8 /* DGSignUpDetailsViewController.m */; };
+		63EB262E17C2C8BC006D520A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EB262D17C2C8BC006D520A /* AddressBook.framework */; };
+		63EB263017C2F029006D520A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EB262F17C2F029006D520A /* MessageUI.framework */; };
 		EBCC96E10520469A951D5018 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0150758A9E934060AF039752 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0150758A9E934060AF039752 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		6308161017C3BB11004DE5D7 /* DGUserInvitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserInvitesViewController.h; sourceTree = "<group>"; };
+		6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserInvitesViewController.m; sourceTree = "<group>"; };
+		6308161317C3C19F004DE5D7 /* DGPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPhotoPickerViewController.h; sourceTree = "<group>"; };
+		6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPhotoPickerViewController.m; sourceTree = "<group>"; };
 		6314DE6217C02BEA00DDE637 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		6319D37D17BDA9A40071DA71 /* ProfileTabLeftOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileTabLeftOff.png; sourceTree = "<group>"; };
 		6319D37E17BDA9A40071DA71 /* ProfileTabLeftOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileTabLeftOff@2x.png"; sourceTree = "<group>"; };
@@ -187,6 +197,8 @@
 		632A36C717BCB29B004EED26 /* FollowingButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FollowingButton@2x.png"; sourceTree = "<group>"; };
 		632A36C817BCB29B004EED26 /* FollowingButtonTap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FollowingButtonTap.png; sourceTree = "<group>"; };
 		632A36C917BCB29B004EED26 /* FollowingButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FollowingButtonTap@2x.png"; sourceTree = "<group>"; };
+		63357AFC17C279F2007B5FD7 /* DGUserFindFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserFindFriendsViewController.h; sourceTree = "<group>"; };
+		63357AFD17C279F2007B5FD7 /* DGUserFindFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserFindFriendsViewController.m; sourceTree = "<group>"; };
 		633DBF5F17ADA5670038BC2D /* DGCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCategory.h; sourceTree = "<group>"; };
 		633DBF6017ADA5670038BC2D /* DGCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCategory.m; sourceTree = "<group>"; };
 		633DBF6217ADA61C0038BC2D /* DGGood.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGood.h; sourceTree = "<group>"; };
@@ -309,6 +321,8 @@
 		6397318517C15EBE001B96BF /* SignOutButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SignOutButton@2x.png"; path = "../../../../../Desktop/Vine 1.3.1/Payload/iphone.app/SignOutButton@2x.png"; sourceTree = "<group>"; };
 		6397318617C15EBE001B96BF /* SignOutButtonTap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SignOutButtonTap.png; path = "../../../../../Desktop/Vine 1.3.1/Payload/iphone.app/SignOutButtonTap.png"; sourceTree = "<group>"; };
 		6397318717C15EBE001B96BF /* SignOutButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SignOutButtonTap@2x.png"; path = "../../../../../Desktop/Vine 1.3.1/Payload/iphone.app/SignOutButtonTap@2x.png"; sourceTree = "<group>"; };
+		6397318C17C1733D001B96BF /* DGUserTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserTwitterViewController.h; sourceTree = "<group>"; };
+		6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserTwitterViewController.m; sourceTree = "<group>"; };
 		639B88E217B9A25A005E2B62 /* DGVote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGVote.h; sourceTree = "<group>"; };
 		639B88E317B9A25A005E2B62 /* DGVote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGVote.m; sourceTree = "<group>"; };
 		639B88E617BA76A9005E2B62 /* UnCommentButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UnCommentButton.png; sourceTree = "<group>"; };
@@ -356,6 +370,8 @@
 		63E4424817BBCCCC000224E8 /* 37x-Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "37x-Checkmark@2x.png"; sourceTree = "<group>"; };
 		63E4424B17BC3010000224E8 /* DGSignUpDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSignUpDetailsViewController.h; sourceTree = "<group>"; };
 		63E4424C17BC3010000224E8 /* DGSignUpDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSignUpDetailsViewController.m; sourceTree = "<group>"; };
+		63EB262D17C2C8BC006D520A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		63EB262F17C2F029006D520A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		66189FDD6F34462B8CF25EBA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -364,6 +380,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63EB263017C2F029006D520A /* MessageUI.framework in Frameworks */,
+				63EB262E17C2C8BC006D520A /* AddressBook.framework in Frameworks */,
 				6314DE6317C02BEA00DDE637 /* CoreImage.framework in Frameworks */,
 				638647E417AC087A00167F15 /* CoreGraphics.framework in Frameworks */,
 				638647E617AC087A00167F15 /* UIKit.framework in Frameworks */,
@@ -500,14 +518,20 @@
 				632A36B917BCAEE8004EED26 /* UserCell.h */,
 				632A36BA17BCAEE8004EED26 /* UserCell.m */,
 				632A36BB17BCAEE8004EED26 /* UserCell.xib */,
+				6308161017C3BB11004DE5D7 /* DGUserInvitesViewController.h */,
+				6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */,
 				632A36BE17BCAF00004EED26 /* DGUserListViewController.h */,
 				632A36BF17BCAF00004EED26 /* DGUserListViewController.m */,
+				63357AFC17C279F2007B5FD7 /* DGUserFindFriendsViewController.h */,
+				63357AFD17C279F2007B5FD7 /* DGUserFindFriendsViewController.m */,
 				633DBF7C17AE25CF0038BC2D /* DGUserProfileViewController.h */,
 				633DBF7D17AE25CF0038BC2D /* DGUserProfileViewController.m */,
 				63E4424B17BC3010000224E8 /* DGSignUpDetailsViewController.h */,
 				63E4424C17BC3010000224E8 /* DGSignUpDetailsViewController.m */,
 				6355EC3617B8505800EE91C0 /* DGUserSettingsViewController.h */,
 				6355EC3717B8505900EE91C0 /* DGUserSettingsViewController.m */,
+				6397318C17C1733D001B96BF /* DGUserTwitterViewController.h */,
+				6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */,
 				6355EC2617B68F3100EE91C0 /* DGUpdatePasswordViewController.h */,
 				6355EC2717B68F3200EE91C0 /* DGUpdatePasswordViewController.m */,
 				6355EC2917B690D700EE91C0 /* DGForgotPasswordViewController.h */,
@@ -643,6 +667,8 @@
 		638647D517AC087A00167F15 = {
 			isa = PBXGroup;
 			children = (
+				63EB262F17C2F029006D520A /* MessageUI.framework */,
+				63EB262D17C2C8BC006D520A /* AddressBook.framework */,
 				6314DE6217C02BEA00DDE637 /* CoreImage.framework */,
 				638647E717AC087A00167F15 /* DoGood */,
 				6386480917AC087A00167F15 /* DoGoodTests */,
@@ -687,6 +713,8 @@
 				633DBF7A17AE1E530038BC2D /* DoGood.nss */,
 				6355EC2517B674E900EE91C0 /* constants.h */,
 				6355EC3217B75EB300EE91C0 /* constants.m */,
+				6308161317C3C19F004DE5D7 /* DGPhotoPickerViewController.h */,
+				6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */,
 				638647F017AC087A00167F15 /* DGAppDelegate.h */,
 				638647F117AC087A00167F15 /* DGAppDelegate.m */,
 				638647E817AC087A00167F15 /* Supporting Files */,
@@ -1026,6 +1054,10 @@
 				632A36D217BD1157004EED26 /* DGUserSettingsViewController.m in Sources */,
 				6319D38F17BDED080071DA71 /* DGReward.m in Sources */,
 				6319D39517BE5A230071DA71 /* DGUserSearchViewController.m in Sources */,
+				6397318E17C1733D001B96BF /* DGUserTwitterViewController.m in Sources */,
+				63357AFE17C279F2007B5FD7 /* DGUserFindFriendsViewController.m in Sources */,
+				6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */,
+				6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

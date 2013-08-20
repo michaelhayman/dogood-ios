@@ -1,6 +1,19 @@
 #import "DGUserSettingsViewController.h"
 #import "UITextFieldCell.h"
-#import "DGUserSearchViewController.h"
+#import "DGUserFindFriendsViewController.h"
+#import "DGUserTwitterViewController.h"
+#import "DGUserInvitesViewController.h"
+#import <UIImage+Resize.h>
+#import <MBProgressHUD.h>
+
+#define full_name_tag 101
+#define biography_tag 102
+#define location_tag 103
+#define email_tag 104
+#define phone_tag 105
+
+#define twitter_connected_tag 601
+#define facebook_connected_tag 602
 
 @interface DGUserSettingsViewController ()
 
@@ -17,53 +30,247 @@
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundView = nil;
     self.tableView.opaque = NO;
-    // self.view.backgroundColor = GRAYED_OUT;
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = NEUTRAL_BACKGROUND_COLOUR;
 
     UINib *nib = [UINib nibWithNibName:UITextFieldCellIdentifier bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:UITextFieldCellIdentifier];
 
-    /*
-    UINib *nib = [UINib nibWithNibName:@"UITextFieldCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"UITextFieldCell"];
-    */
+    // setup avatar
+    avatar.contentMode = UIViewContentModeScaleAspectFit;
+    UITapGestureRecognizer* avatarGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoSheet)];
+    [avatar setUserInteractionEnabled:YES];
+    [avatar addGestureRecognizer:avatarGesture];
+    [self setupHeader];
 
-    // dismiss keyboard when view tapped
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(dismissKeyboard)];
+    // watch for events to change settings values
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterConnected) name:DGUserDidConnectToTwitter object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookConnected) name:DGUserDidConnectToFacebook object:nil];
+    // watch keyboard
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
-    [self.view addGestureRecognizer:tap];
+    // invites
+    invites = [[DGUserInvitesViewController alloc] init];
+    invites.parent = self;
 }
 
-#pragma mark - Actions
+- (void)setupHeader {
+    DebugLog(@"setting header %@", [DGUser currentUser].avatar);
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[DGUser currentUser].avatar] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        DebugLog(@"set avatar");
+        avatar.image = image;
+        // not sure I need this
+        // avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        DebugLog(@"failed to set avatar");
+    }];
+    DebugLog(@"gestures");
+}
+
+#pragma mark - Camera helpers
+- (void)openPhotoSheet {
+    NSString *destructiveButtonTitle;
+    // this wont work, unless i set the image some other time... in profile get
+    if (avatar.image) {
+        destructiveButtonTitle = @"Remove photo";
+    } else {
+        destructiveButtonTitle = nil;
+    }
+
+    photoSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                delegate:self
+                                       cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:destructiveButtonTitle
+                                       otherButtonTitles:@"Add from camera", @"Add from camera roll", nil];
+    [photoSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    [photoSheet showInView:self.view];
+}
+
+#define remove_button 0
+#define select_new_button 1
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != actionSheet.cancelButtonIndex) {
+        if (actionSheet == photoSheet) {
+            DebugLog(@"button index %d", buttonIndex);
+            if (buttonIndex == photoSheet.destructiveButtonIndex) {
+                DebugLog(@"remove");
+                [self deleteAvatar];
+            } else if (buttonIndex == photoSheet.firstOtherButtonIndex) {
+                [self showCamera];
+            } else if (buttonIndex == photoSheet.firstOtherButtonIndex + 1) {
+                [self showCameraRoll];
+            }
+        }
+    } else {
+        DebugLog(@"button index %d, %d", buttonIndex, actionSheet.cancelButtonIndex);
+        // [actionSheet dismissWithClickedButtonIndex:actionSheet.cancelButtonIndex animated:YES];
+    }
+}
+
+- (void)showCameraRoll {
+    DebugLog(@"show camera roll");
+    UIImagePickerController *pickerC = [[UIImagePickerController alloc] init];
+    pickerC.delegate = self;
+    pickerC.allowsEditing = YES;
+    [self presentViewController:pickerC animated:YES completion:nil];
+}
+
+- (void)showCamera {
+    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
+    {
+        DebugLog(@"show camera");
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.delegate = self;
+        imagePicker.allowsEditing = YES;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:imagePicker animated:YES completion:nil];
+    } else {
+        DebugLog(@"Camera not available.");
+    }
+}
+
+#pragma mark - UIImagePickerController delegate methods
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    imageToUpload = [info objectForKey:UIImagePickerControllerEditedImage];
+
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Changing avatar...";
+    NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:nil method:RKRequestMethodPUT path:user_update_path parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        resizedImage = [imageToUpload resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 480) interpolationQuality:kCGInterpolationHigh];
+
+            DebugLog(@"uiimage size %@", NSStringFromCGSize(resizedImage.size));
+            [formData appendPartWithFileData:UIImagePNGRepresentation(resizedImage)
+                                        name:@"user[avatar]"
+                                    fileName:@"avatar.png"
+                                    mimeType:@"image/png"];
+    }];
+
+    RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+
+        hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
+        hud.mode = MBProgressHUDModeCustomView;
+        hud.labelText = @"Completed";
+        [hud hide:YES];
+
+        avatar.image = resizedImage;
+        DGUser *user = (mappingResult.array)[0];
+        [DGUser currentUser].avatar = user.avatar;
+        [DGUser assignDefaults];
+        avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
+        // [avatar bringSubviewToFront:avatarOverlay];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateAccountNotification object:nil];
+
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [TSMessage showNotificationInViewController:self
+                                  withTitle:nil
+                                withMessage:NSLocalizedString(@"Avatar upload failed", nil)
+                                   withType:TSMessageNotificationTypeError];
+        [hud hide:YES];
+    }];
+
+    [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
+}
+
+- (void)deleteAvatar {
+    [[RKObjectManager sharedManager] deleteObject:nil path:user_remove_avatar_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        avatar.image = nil;
+        [DGUser currentUser].avatar = nil;
+        [DGUser currentUser].image = nil;
+        [DGUser assignDefaults];
+        [TSMessage showNotificationInViewController:self
+                              withTitle:NSLocalizedString(@"Profile photo updated", nil)
+                            withMessage:nil
+                               withType:TSMessageNotificationTypeSuccess];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateAccountNotification object:nil];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [TSMessage showNotificationInViewController:self
+                              withTitle:NSLocalizedString(@"Oops", nil)
+                            withMessage:NSLocalizedString(@"Couldn't remove your photo.", nil)
+                               withType:TSMessageNotificationTypeError];
+    }];
+}
+
+#pragma mark - UITextFieldDelegate methods
 - (void)dismissKeyboard {
-    [self.name resignFirstResponder];
     [self.view endEditing:YES];
 }
 
-#define full_name_tag 101
-#define biography_tag 102
-#define location_tag 103
-#define email_tag 104
-#define phone_tag 105
-
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    DebugLog(@"ended editing %d", textField.tag);
     if (textField.tag == full_name_tag) {
-        DebugLog(@"update full name");
+        if (![textField.text isEqualToString:[DGUser currentUser].full_name]) {
+            DGUser *user = [DGUser new];
+            user.full_name = textField.text;
+            [[RKObjectManager sharedManager] putObject:user path:user_update_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                [DGUser currentUser].full_name = textField.text;
+                [DGUser assignDefaults];
+                [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateAccountNotification object:nil];
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                [TSMessage showNotificationInViewController:self
+                                      withTitle:NSLocalizedString(@"Oops", nil)
+                                    withMessage:NSLocalizedString(@"Couldn't update your name.", nil)
+                                       withType:TSMessageNotificationTypeError];
+            }];
+            DebugLog(@"update full name");
+        } else {
+            DebugLog(@"don't update full name");
+        }
     }
     if (textField.tag == biography_tag) {
-        DebugLog(@"update bio");
+        if (![textField.text isEqualToString:[DGUser currentUser].biography]) {
+            DGUser *user = [DGUser new];
+            user.biography = textField.text;
+            [[RKObjectManager sharedManager] putObject:user path:user_update_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                [DGUser currentUser].biography = textField.text;
+                [DGUser assignDefaults];
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                [TSMessage showNotificationInViewController:self
+                                      withTitle:NSLocalizedString(@"Oops", nil)
+                                    withMessage:NSLocalizedString(@"Couldn't update your biography.", nil)
+                                       withType:TSMessageNotificationTypeError];
+            }];
+        } else {
+            DebugLog(@"don't update bio");
+        }
     }
     if (textField.tag == location_tag) {
-        DebugLog(@"update location");
+        if (![textField.text isEqualToString:[DGUser currentUser].location]) {
+            DebugLog(@"update location");
+            DGUser *user = [DGUser new];
+            user.location = textField.text;
+            [[RKObjectManager sharedManager] putObject:user path:user_update_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                [DGUser currentUser].location = textField.text;
+                [DGUser assignDefaults];
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                [TSMessage showNotificationInViewController:self
+                                      withTitle:NSLocalizedString(@"Oops", nil)
+                                    withMessage:NSLocalizedString(@"Couldn't update your biography.", nil)
+                                       withType:TSMessageNotificationTypeError];
+            }];
+        } else {
+            DebugLog(@"don't update location");
+        }
     }
     if (textField.tag == email_tag) {
-        DebugLog(@"update email");
+        DebugLog(@"prob won't let em update email");
     }
     if (textField.tag == phone_tag) {
-        DebugLog(@"update phone");
+        if (![textField.text isEqualToString:[DGUser currentUser].phone]) {
+            DGUser *user = [DGUser new];
+            user.phone = textField.text;
+            [[RKObjectManager sharedManager] putObject:user path:user_update_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                [DGUser currentUser].phone = textField.text;
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                [TSMessage showNotificationInViewController:self
+                                      withTitle:NSLocalizedString(@"Oops", nil)
+                                    withMessage:NSLocalizedString(@"Couldn't update your biography.", nil)
+                                       withType:TSMessageNotificationTypeError];
+            }];
+            DebugLog(@"update phone");
+        } else {
+            DebugLog(@"don't update phone");
+        }
     }
 }
 
@@ -72,47 +279,56 @@
     return YES;
 }
 
+#pragma mark - Keyboard handler
+- (void)keyboardWillShow:(NSNotification *)notification {
+    dismissTap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:dismissTap];
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    [self.view removeGestureRecognizer:dismissTap];
+}
+
+#pragma mark - Actions
 - (void)signOut {
-    [[DGUser currentUser] signOutWithMessage:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"SignOut" object:nil];
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:@"Are you sure you want to sign out?"
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"Yes", @"No", nil];
+    alert.cancelButtonIndex = 1;
+    alert.tag = 59;
+    [alert show];
 }
 
 - (void)resetPassword {
-    if ([DGUser currentUser].email) {
-        [[RKObjectManager sharedManager] getObjectsAtPath:@"/users/password/send" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            DebugLog(@"You have been sent an email with instructions.");
-        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            DebugLog(@"Operation failed with error: %@", error);
-        }];
-    }
-}
-
-- (void)searchForFriends {
+    DebugLog(@"reset password");
     UIStoryboard *storyboard;
-    storyboard = [UIStoryboard storyboardWithName:@"User" bundle:nil];
-    DGUserSearchViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserSearch"];
+    storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+    DGUserTwitterViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UpdatePassword"];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-#pragma mark - Update Account
-- (void)updateFirstName:(NSString *)firstName andLastName:(NSString *)lastName andContactable:(NSNumber *)contactable {
-    DGUser *user;
-    user.full_name = firstName;
-    user.phone = lastName;
-    user.contactable = contactable;
-    [[RKObjectManager sharedManager] putObject:user path:user_registration_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [TSMessage showNotificationInViewController:self
-                              withTitle:NSLocalizedString(@"Saved!", nil)
-                            withMessage:NSLocalizedString(@"Your profile was updated.", nil)
-                               withType:TSMessageNotificationTypeSuccess];
-        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateAccountNotification object:self];
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [TSMessage showNotificationInViewController:self
-                              withTitle:NSLocalizedString(@"Oops", nil)
-                            withMessage:NSLocalizedString(@"Couldn't update your profile.", nil)
-                               withType:TSMessageNotificationTypeSuccess];
-        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailUpdateAccountNotification object:self];
-    }];
+- (void)twitter {
+    UIStoryboard *storyboard;
+    storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+    DGUserTwitterViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"Twitter"];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)facebook {
+    DebugLog(@"Debugging: %@", @"facebook");
+}
+
+- (void)findFriendsSearch {
+    DebugLog(@"Debugging: %@", @"find friends search");
+
+    UIStoryboard *storyboard;
+    storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+    DGUserFindFriendsViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"FindFriends"];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - UITableView setup methods
@@ -137,12 +353,12 @@
         field.tag = full_name_tag;
     }
     if (indexPath.row == biography) {
-        field.text = [DGUser currentUser].phone;
-        field.placeholder = @"Bio";
+        field.text = [DGUser currentUser].biography;
+        field.placeholder = @"About me";
         field.tag = biography_tag;
     }
     if (indexPath.row == location) {
-        field.text = @"basimah";
+        field.text = [DGUser currentUser].location;
         field.placeholder = @"Location";
         field.tag = location_tag;
     }
@@ -150,36 +366,42 @@
 }
 
 - (UITableViewCell *)setupAccountDetails:(NSIndexPath *)indexPath {
-    UITextFieldCell *cell = [self.tableView dequeueReusableCellWithIdentifier:UITextFieldCellIdentifier forIndexPath:indexPath];
+    UITextFieldCell *cell = [self.tableView dequeueReusableCellWithIdentifier:UITextFieldCellIdentifier];
     cell.textField.delegate = self;
     if (indexPath.row == email) {
         cell.heading.text = @"Email";
         cell.textField.text = [DGUser currentUser].email;
         cell.textField.tag = email_tag;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if (indexPath.row == phone) {
         cell.heading.text = @"Phone";
         cell.textField.text = [DGUser currentUser].phone;
         cell.textField.tag = phone_tag;
+        cell.textField.placeholder = @"e.g. (555) 419-3902";
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     if (indexPath.row == resetPassword) {
         cell.heading.text = @"Reset password";
         [cell.heading sizeToFit];
-        cell.textField.userInteractionEnabled = NO;
+        [cell.textField removeFromSuperview];
         cell.userInteractionEnabled = YES;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     if (indexPath.row == yourContent) {
         cell.heading.text = @"Your content";
         cell.textField.userInteractionEnabled = NO;
         cell.userInteractionEnabled = YES;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
+    cell.userInteractionEnabled = YES;
     return cell;
 }
 
 - (UITableViewCell *)setupFindFriends:(NSIndexPath *)indexPath {
-    UITextFieldCell *cell = [self.tableView dequeueReusableCellWithIdentifier:UITextFieldCellIdentifier forIndexPath:indexPath];
+    UITextFieldCell *cell = [self.tableView dequeueReusableCellWithIdentifier:UITextFieldCellIdentifier];
     if (indexPath.row == bySearching) {
         cell.heading.text = @"Find Friends";
     }
@@ -195,14 +417,18 @@
 }
 
 - (UITableViewCell *)setupSocialNetworks:(NSIndexPath *)indexPath {
-    UITextFieldCell *cell = [self.tableView dequeueReusableCellWithIdentifier:UITextFieldCellIdentifier forIndexPath:indexPath];
+    UITextFieldCell *cell = [self.tableView dequeueReusableCellWithIdentifier:UITextFieldCellIdentifier];
     if (indexPath.row == twitter) {
         cell.heading.text = @"Twitter";
+        cell.textField.text = @"Not connected";
+        cell.textField.tag = twitter_connected_tag;
     }
     if (indexPath.row == facebook) {
         cell.heading.text = @"Facebook";
+        cell.textField.text = @"Not connected";
+        cell.textField.tag = facebook_connected_tag;
     }
-    DebugLog(@"bein social");
+    cell.textField.userInteractionEnabled = NO;
     return cell;
 }
 
@@ -291,50 +517,66 @@
     return sectionHeader;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 30.0;
-}
-
-/*
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case accountOverview:
-            return @"";
-        case accountDetails:
-            return @"ACCOUNT";
-        case findFriends:
-            return @"FRIENDS";
-        case socialNetworks:
-            return @"SOCIAL NETWORKS";
-        case session:
-            return @"";
-        default:
-            return @"";
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section == accountDetails || section == socialNetworks || section == findFriends) {
+        return 30.0;
+    } else {
+        return 0.0;
     }
 }
-*/
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DebugLog(@"selected a row");
     if (indexPath.section == accountDetails) {
         if (indexPath.row == resetPassword) {
+            DebugLog(@"trying to reset password");
             [self resetPassword];
         }
     }
     if (indexPath.section == findFriends) {
+        DebugLog(@"find friends");
         if (indexPath.row == bySearching) {
-            [self searchForFriends];
+            [self findFriendsSearch];
+        }
+        if (indexPath.row == byText) {
+            [invites inviteViaText:nil];
+        }
+        if (indexPath.row == byEmail) {
+            [invites inviteViaEmail:nil];
         }
     }
-    /*
-    if (indexPath.section == session) {
-        if (indexPath.row == signOut) {
-            [self signOut];
+    if (indexPath.section == socialNetworks) {
+        if (indexPath.row == twitter) {
+            [self twitter];
+        }
+        if (indexPath.row == facebook) {
+            [self facebook];
         }
     }
-    */
-    [tableView deselectRowAtIndexPath:indexPath animated:YES]; 
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+#pragma mark - Social Network Receivers
+- (void)twitterConnected {
+    DebugLog(@"settings twitter connected");
+    UITextField *textfield = (UITextField *)[self.view viewWithTag:twitter_connected_tag];
+    textfield.text = @"Connected";
+    // cell.textField.tag = twitter_connected_tag;
+}
+
+- (void)facebookConnected {
+    DebugLog(@"settings facebook connected");
+}
+
+#pragma mark - UIAlertViewDelegate methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(alertView.tag == 59) {
+        if(buttonIndex == 0) {
+            [[DGUser currentUser] signOutWithMessage:YES];
+        } else {
+            [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+        }
+    }
+}
 
 @end

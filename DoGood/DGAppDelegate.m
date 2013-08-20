@@ -112,6 +112,8 @@
         @"username" : @"username",
         @"full_name" : @"full_name",
         @"phone" : @"phone",
+        @"location" : @"location",
+        @"biography" : @"biography",
         @"email" : @"email",
         @"avatar" : @"avatar",
         @"followers_count" : @"followers_count",
@@ -129,7 +131,7 @@
     [objectManager addResponseDescriptor:userResponseDescriptor];
 
     RKObjectMapping* userRequestMapping = [RKObjectMapping requestMapping ];
-    [userRequestMapping addAttributeMappingsFromArray:@[ @"email", @"username", @"password", @"full_name", @"phone", @"contactable" ]];
+    [userRequestMapping addAttributeMappingsFromArray:@[ @"email", @"username", @"password", @"full_name", @"phone", @"contactable", @"location", @"biography" ]];
     RKRequestDescriptor *userRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:userRequestMapping objectClass:[DGUser class] rootKeyPath:@"user" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:userRequestDescriptor];
 
@@ -243,6 +245,21 @@
                                  secret:@"VZGH0QRJFF4AOU3WTXON0XZZQJ3YKMYLEUQ3ZRCQ0HZBDVTP"
                             callbackURL:@"app://dogood"];
     */
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    if ([[url scheme] isEqualToString:@"dogood"]) {
+        if ([[url host] hasPrefix:@"users"]) {
+            NSArray *urlComponents = [url pathComponents];
+            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+            [f setNumberStyle:NSNumberFormatterDecimalStyle];
+            NSNumber * userID = [f numberFromString:urlComponents[1]];
+            DebugLog(@"open profile page for %@", userID);
+            // [self openProfilePage:userID];
+        }
+        return YES;
+    }
+    return NO;
 }
 
 @end

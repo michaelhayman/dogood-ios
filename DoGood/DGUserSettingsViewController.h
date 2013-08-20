@@ -1,4 +1,14 @@
-@interface DGUserSettingsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@class DGUserInvitesViewController;
+@interface DGUserSettingsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIActionSheetDelegate, UIAlertViewDelegate> {
+    UITapGestureRecognizer *dismissTap;
+    
+    __weak IBOutlet UIImageView *avatar;
+    __weak IBOutlet UIImageView *avatarOverlay;
+    UIImage *imageToUpload;
+    UIImage *resizedImage;
+    UIActionSheet *photoSheet;
+    DGUserInvitesViewController *invites;
+}
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
 

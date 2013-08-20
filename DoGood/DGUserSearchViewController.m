@@ -1,43 +1,21 @@
-#import "DGUserListViewController.h"
+#import "DGUserSearchViewController.h"
 #import "UserCell.h"
 
-@interface DGUserListViewController ()
-
-@end
-
-@implementation DGUserListViewController
+@implementation DGUserSearchViewController
 
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [self.query capitalizedString];
+    self.title = @"Search for people";
 
     UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"UserCell"];
 
-    UIRefreshControl *refreshControl = [UIRefreshControl new];
-
-    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    [tableView addSubview:refreshControl];
-
-    /*
-    if ([self.query isEqualToString:@"following"]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getUsers) name:DGUserDidUpdateFollowingsNotification object:nil];
-    }
-    */
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [self getUsers];
+    DebugLog(@"frameage");
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)refresh:(UIRefreshControl *)refreshControl {
-    [self getUsers];
-    [refreshControl endRefreshing];
 }
 
 #pragma mark - UITableView delegate methods
@@ -64,13 +42,9 @@
     return 1;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"";
-}
-
 #pragma mark - Retrieval methods
-- (void)getUsers {
-    [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/users/%@?type=%@&id=%@", self.query, self.type, self.typeID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+- (void)getUsersByName:(NSString *)searchText {
+    [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/users/search?search=%@", searchText] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         users = [[NSArray alloc] initWithArray:mappingResult.array];
         [tableView reloadData];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -78,5 +52,13 @@
     }];
 }
 
-@end
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    if ([searchText length] > 1) {
+        [self getUsersByName:searchText];
+    } else {
+        users = [[NSArray alloc] init];
+        [tableView reloadData];
+    }
+}
 
+@end

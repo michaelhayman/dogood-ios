@@ -7,8 +7,11 @@ NSString* const kDGUserCurrentUserIDDefaultsKey = @"kDGUserCurrentUserIDDefaults
 NSString* const kDGUserCurrentUserEmail = @"kDGUserCurrentUserEmail";
 NSString* const kDGUserCurrentUserUsername = @"kDGUserCurrentUserUsername";
 NSString* const kDGUserCurrentUserFullName = @"kDGUserCurrentUserFullName";
+NSString* const kDGUserCurrentUserLocation = @"kDGUserCurrentUserLocation";
+NSString* const kDGUserCurrentUserBiography = @"kDGUserCurrentUserBiography";
 NSString* const kDGUserCurrentUserPhone = @"kDGUserCurrentUserPhone";
 NSString* const kDGUserCurrentUserContactable = @"kDGUserCurrentUserContactable";
+NSString* const kDGUserCurrentUserAvatar = @"kDGUserCurrentUserAvatar";
 
 // Notifications
 NSString* const DGUserDidSignOutNotification = @"DGUserDidSignOutNotification";
@@ -20,6 +23,7 @@ NSString* const DGUserDidCreateAccountNotification = @"DGUserDidCreateAccountNot
 NSString* const DGUserDidFailCreateAccountNotification = @"DGUserDidFailCreateAccountNotification";
 
 NSString* const DGUserDidUpdateAccountNotification = @"DGUserDidUpdateAccountNotification";
+NSString* const DGUserDidUpdateAvatarNotification = @"DGUserDidUpdateAvatarNotification";
 NSString* const DGUserDidFailUpdateAccountNotification = @"DGUserDidFailUpdateAccountNotification";
 
 NSString* const DGUserEmailIsUnique = @"DGUserEmailIsUnique";
@@ -38,6 +42,9 @@ NSString* const DGUserDidUpdatePointsNotification = @"DGUserDidUpdatePointsNotif
 
 NSString* const DGUserClaimRewardNotification = @"DGUserClaimRewardNotification";
 
+NSString* const DGUserDidAddPhotoNotification = @"DGUserDidAddPhotoNotification";
+NSString* const DGUserDidRemovePhotoNotification = @"DGUserDidRemovePhotoNotification";
+
 #pragma mark - Good
 
 // Notifications
@@ -45,3 +52,11 @@ NSString* const DGUserClaimRewardNotification = @"DGUserClaimRewardNotification"
 NSString* const DGUserDidPostGood = @"DGUserDidPostGood";
 
 NSString* const DGUserDidUpdateFollowingsNotification = @"DGUserDidUpdateFollowingsNotification";
+
+NSString* const DGUserDidConnectToTwitter = @"DGUserDidConnectToTwitter";
+NSString* const DGUserDidDisconnectFromTwitter = @"DGUserDidDisconnectFromTwitter";
+NSString* const DGUserDidConnectToFacebook = @"DGUserDidConnectToFacebook";
+NSString* const DGUserDidDisconnectFromFacebook = @"DGUserDidDisconnectFromFacebook";
+
+// UITableView cells
+NSString* const UITextFieldCellIdentifier = @"UITextFieldCell";

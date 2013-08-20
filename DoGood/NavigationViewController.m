@@ -23,7 +23,7 @@
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(showGoodList)
-                                                 name:@"SignOut"
+                                                 name:DGUserDidSignOutNotification
                                                object:nil];
 
     __typeof (&*self) __weak weakSelf = self;

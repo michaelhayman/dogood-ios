@@ -22,6 +22,8 @@
 #define user_end_session_path @"/users/sign_out"
 #define user_registration_path @"/users"
 #define user_password_path @"/users/password"
+#define user_update_path @"/users/update_profile"
+#define user_remove_avatar_path @"/users/remove_avatar"
 
 // Styles
 #define LINK_COLOUR [UIColor colorWithRed:5.0/255.0 green:171.0/255.0 blue:117.0/255.0 alpha:1.0]
@@ -34,9 +36,9 @@
 //#define BUTTON_COLOR [UIColor colorWithRed:173.0/255.0 green:183.0/255.0 blue:36.0/255.0 alpha:1.0]
 // brown
 #define BUTTON_COLOR [UIColor colorWithRed:122.0/255.0 green:106.0/255.0 blue:83.0/255.0 alpha:1.0]
-#define GRAYED_OUT [UIColor colorWithRed:30.0/255.0 green:30.0/255.0 blue:30.0/255.0 alpha:0.3]
+#define GRAYED_OUT [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.8]
 #define ACTIVE [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
-
+#define REALLY_LIGHT_GRAY [UIColor colorWithRed:233.0/255.0 green:238.0/255.0 blue:226.0/255.0 alpha:1.0]
 
 // RKPassword
 #define kDoGoodService @"DoGood"
@@ -47,8 +49,11 @@ extern NSString *const kDGUserCurrentUserIDDefaultsKey;
 extern NSString* const kDGUserCurrentUserEmail;
 extern NSString* const kDGUserCurrentUserUsername;
 extern NSString* const kDGUserCurrentUserFullName;
+extern NSString* const kDGUserCurrentUserLocation;
+extern NSString* const kDGUserCurrentUserBiography;
 extern NSString* const kDGUserCurrentUserPhone;
 extern NSString* const kDGUserCurrentUserContactable;
+extern NSString* const kDGUserCurrentUserAvatar;
 
 // Notifications
 extern NSString *const DGUserDidSignOutNotification;
@@ -60,6 +65,7 @@ extern NSString* const DGUserDidCreateAccountNotification;
 extern NSString* const DGUserDidFailCreateAccountNotification;
 
 extern NSString* const DGUserDidUpdateAccountNotification;
+extern NSString* const DGUserDidUpdateAvatarNotification;
 extern NSString* const DGUserDidFailUpdateAccountNotification;
 
 extern NSString* const DGUserEmailIsUnique;
@@ -78,7 +84,15 @@ extern NSString* const DGUserDidUpdatePointsNotification;
 
 extern NSString* const DGUserClaimRewardNotification;
 
+extern NSString* const DGUserDidAddPhotoNotification;
+extern NSString* const DGUserDidRemovePhotoNotification;
+
 extern NSString* const DGUserDidUpdateFollowingsNotification;
+
+extern NSString* const DGUserDidConnectToTwitter;
+extern NSString* const DGUserDidDisconnectFromTwitter;
+extern NSString* const DGUserDidConnectToFacebook;
+extern NSString* const DGUserDidDisconnectFromFacebook;
 
 #pragma mark - Good
 

@@ -28,6 +28,8 @@
     // hide the follow button for the own user
     if ([self.user.userID isEqualToNumber:[DGUser currentUser].userID]) {
         self.follow.hidden = YES;
+    } else {
+        self.follow.hidden = NO;
     }
     // user
     self.username.text = self.user.full_name;

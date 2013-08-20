@@ -3,8 +3,10 @@
 #import "DGUserSettingsViewController.h"
 #import "DGGoodListViewController.h"
 #import "DGUserListViewController.h"
+#import "DGUserFindFriendsViewController.h"
 #import "GoodCell.h"
 #import "DGGood.h"
+#import "DGFollow.h"
 
 @interface DGUserProfileViewController ()
 
@@ -22,11 +24,7 @@
     if (self.userID == nil) {
         self.userID = [DGUser currentUser].userID;
     }
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getProfile) name:DGUserDidUpdateFollowingsNotification object:nil];
-
     ownProfile = [self.userID isEqualToNumber:[DGUser currentUser].userID];
-    DebugLog(@"own profile? %d %@ %@", ownProfile, self.userID, [DGUser currentUser].userID);
 
     if (self.fromMenu) {
         [self addMenuButton:@"MenuFromHomeIcon" withTapButton:@"MenuFromHomeIconTap"];
@@ -46,22 +44,22 @@
         [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButtonTap"] forState:UIControlStateHighlighted];
         [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowingButton"] forState:UIControlStateSelected];
         [centralButton setTitle:@"Follow" forState:UIControlStateNormal];
+        [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [centralButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
     }
     self.navigationItem.rightBarButtonItem = connectButton;
-    [self getProfile];
 
-    /*
-    UIStoryboard *storyboard;
-    storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-    DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
-    tableView.delegate = controller;
-    tableView.dataSource = controller;
-     */
+    // retrieve profile
+    [self getProfile];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getProfile) name:DGUserDidUpdateAccountNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getProfile) name:DGUserDidUpdateFollowingsNotification object:nil];
+
+    // table set up
     [tableView setTableHeaderView:headerView];
     UINib *nib = [UINib nibWithNibName:@"GoodCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"GoodCell"];
-    // selectedTab = @"Goods";
+
+    // get good list
     [self getUserGood];
 
     // setup following / followers text
@@ -72,6 +70,18 @@
     UITapGestureRecognizer* followingGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFollowing)];
     [following setUserInteractionEnabled:YES];
     [following addGestureRecognizer:followingGesture];
+
+    avatar.contentMode = UIViewContentModeScaleAspectFit;
+
+    if (ownProfile) {
+        [avatarOverlay setUserInteractionEnabled:YES];
+        UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                       initWithTarget:self
+                                       action:@selector(openSettings)];
+        [avatarOverlay addGestureRecognizer:tap];
+    } else {
+        avatarOverlay.hidden = YES;
+    }
 }
 
 - (void)dealloc {
@@ -103,27 +113,52 @@
         }
         [self setupTabs];
 
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL
-
-                                                              URLWithString:user.avatar]
-
-                                                 cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                 
-                                             timeoutInterval:60.0];
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:user.avatar] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
         [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
             avatar.image = image;
             if (ownProfile) {
-                avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
+               avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
                 [avatar bringSubviewToFront:avatarOverlay];
             }
-        } failure:nil];
+            DebugLog(@"RETRIEVING IMAGE");
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+            DebugLog(@"FAILING RETRIEVE");
+        }];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
     }];
 }
 
 - (void)toggleFollow {
-    DebugLog(@"shoe goes on");
+    DGFollow *followUser = [DGFollow new];
+    followUser.followable_id = user.userID;
+    followUser.followable_type = @"User";
+
+    if (centralButton.isSelected == NO) {
+        [self increaseFollow];
+        [[RKObjectManager sharedManager] postObject:followUser path:@"/follows" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateFollowingsNotification object:nil];
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            DebugLog(@"failed to add follow");
+            [self decreaseFollow];
+        }];
+    } else {
+        [self decreaseFollow];
+        [[RKObjectManager sharedManager] postObject:followUser path:@"/follows/remove" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateFollowingsNotification object:nil];
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [self increaseFollow];
+            DebugLog(@"failed to remove follow");
+        }];
+    }
+}
+
+- (void)increaseFollow {
+    [centralButton setSelected:YES];
+}
+
+- (void)decreaseFollow {
+    [centralButton setSelected:NO];
 }
 
 - (void)openSettings {
@@ -135,7 +170,10 @@
 
 #pragma mark - Actions
 - (IBAction)findFriends:(id)sender {
-
+    UIStoryboard *storyboard;
+    storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+    DGUserFindFriendsViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"FindFriends"];
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (IBAction)openActionMenu:(id)sender {
@@ -192,16 +230,18 @@
     if (goodsButton.selected == NO) {
         [goodsButton setSelected:YES];
         [likesButton setSelected:NO];
-        NSString *path = [NSString stringWithFormat:@"/goods/liked_by?user_id=%@", self.userID];
+        DebugLog(@"get user good");
+        NSString *path = [NSString stringWithFormat:@"/goods/posted_or_followed_by?user_id=%@", self.userID];
         [self getGoodsAtPath:path];
     }
 }
 
 - (void)getUserLikes {
     if (likesButton.selected == NO) {
+        DebugLog(@"get user likes");
         [goodsButton setSelected:NO];
         [likesButton setSelected:YES];
-        NSString *path = [NSString stringWithFormat:@"/goods/posted_or_followed_by?user_id=%@", self.userID];
+        NSString *path = [NSString stringWithFormat:@"/goods/liked_by?user_id=%@", self.userID];
         [self getGoodsAtPath:path];
     }
 }

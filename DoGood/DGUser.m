@@ -21,9 +21,12 @@ static DGUser* currentUser = nil;
             currentUser.userID = userID;
             currentUser.username = [defaults objectForKey:kDGUserCurrentUserUsername];
             currentUser.full_name = [defaults objectForKey:kDGUserCurrentUserFullName];
+            currentUser.location = [defaults objectForKey:kDGUserCurrentUserLocation];
+            currentUser.biography = [defaults objectForKey:kDGUserCurrentUserBiography];
             currentUser.phone = [defaults objectForKey:kDGUserCurrentUserPhone];
             currentUser.email = [defaults objectForKey:kDGUserCurrentUserEmail];
             currentUser.contactable = [defaults objectForKey:kDGUserCurrentUserContactable];
+            currentUser.avatar = [defaults objectForKey:kDGUserCurrentUserAvatar];
             currentUser.password = [RFKeychain passwordForAccount:kDoGoodAccount service:kDoGoodService];
 		} else {
             currentUser = [[self alloc] init];
@@ -70,7 +73,10 @@ static DGUser* currentUser = nil;
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.username forKey:kDGUserCurrentUserUsername];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.phone forKey:kDGUserCurrentUserPhone];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.full_name forKey:kDGUserCurrentUserFullName];
+	[[NSUserDefaults standardUserDefaults] setObject:currentUser.biography forKey:kDGUserCurrentUserBiography];
+	[[NSUserDefaults standardUserDefaults] setObject:currentUser.location forKey:kDGUserCurrentUserLocation];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.contactable forKey:kDGUserCurrentUserContactable];
+	[[NSUserDefaults standardUserDefaults] setObject:currentUser.avatar forKey:kDGUserCurrentUserAvatar];
     [RFKeychain setPassword:currentUser.password account:kDoGoodAccount service:kDoGoodService];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
@@ -88,10 +94,13 @@ static DGUser* currentUser = nil;
 - (void)signOutWithMessage:(BOOL)showMessage {
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserIDDefaultsKey];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserFullName];
+	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserBiography];
+	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserLocation];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserUsername];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserPhone];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserEmail];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserContactable];
+	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserAvatar];
     [[NSUserDefaults standardUserDefaults] synchronize];
  
     self.userID = nil;
@@ -100,8 +109,11 @@ static DGUser* currentUser = nil;
     self.password = nil;
     self.password_confirmation = nil;
     self.full_name = nil;
+    self.biography = nil;
+    self.location = nil;
     self.phone = nil;
     self.contactable = nil;
+    self.avatar = nil;
 
     [RFKeychain deletePasswordForAccount:kDoGoodAccount service:kDoGoodService];
     [DGUser setAuthorizationHeader];
