@@ -10,26 +10,12 @@
 @implementation DGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // [NUIAppearance init];
-    int imageSize = 20;
-
-    UIImage *barBackBtnImg = [[UIImage imageNamed:@"BackButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, imageSize, 0, 0)];
-    UIImage *barBackBtnImgTap = [[UIImage imageNamed:@"BackButtonTap"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, imageSize, 0, 0)];
-
-    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:barBackBtnImg
-                                                      forState:UIControlStateNormal
-                                                    barMetrics:UIBarMetricsDefault];
-    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:barBackBtnImgTap
-                                                      forState:UIControlStateHighlighted
-                                                    barMetrics:UIBarMetricsDefault];
-
-    UIImage *image = [UIImage imageNamed:@"NavBar.png"];
-    [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
-
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
+    [self setupAppearance];
     [DGUser setUpUserAuthentication];
     [RestKit setupRestKit];
     [self setupFoursquare];
+
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self setupViewsForUser];
     [self.window makeKeyAndVisible];
     return YES;
@@ -60,6 +46,25 @@
 }
 
 #pragma mark - Things that don't really belong in here
+- (void)setupAppearance {
+    // [NUIAppearance init];
+    int imageSize = 20;
+
+    UIImage *barBackBtnImg = [[UIImage imageNamed:@"BackButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(20, imageSize, 0, 0)];
+    UIImage *barBackBtnImgTap = [[UIImage imageNamed:@"BackButtonTap"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, imageSize, 0, 0)];
+
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:barBackBtnImg
+                                                      forState:UIControlStateNormal
+                                                    barMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:barBackBtnImgTap
+                                                      forState:UIControlStateHighlighted
+                                                    barMetrics:UIBarMetricsDefault];
+
+    UIImage *image = [UIImage imageNamed:@"NavBar.png"];
+    [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
+
+}
+
 - (void)listFonts {
     for (NSString* family in [UIFont familyNames])
     {
