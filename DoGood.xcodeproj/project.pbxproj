@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */; };
 		6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */; };
+		6308161817C3DDD4004DE5D7 /* RestKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161717C3DDD4004DE5D7 /* RestKit.m */; };
 		6314DE6317C02BEA00DDE637 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6314DE6217C02BEA00DDE637 /* CoreImage.framework */; };
 		6319D38517BDA9A40071DA71 /* ProfileTabLeftOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D37D17BDA9A40071DA71 /* ProfileTabLeftOff.png */; };
 		6319D38617BDA9A40071DA71 /* ProfileTabLeftOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D37E17BDA9A40071DA71 /* ProfileTabLeftOff@2x.png */; };
@@ -171,6 +172,8 @@
 		6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserInvitesViewController.m; sourceTree = "<group>"; };
 		6308161317C3C19F004DE5D7 /* DGPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPhotoPickerViewController.h; sourceTree = "<group>"; };
 		6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPhotoPickerViewController.m; sourceTree = "<group>"; };
+		6308161617C3DDD4004DE5D7 /* RestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestKit.h; sourceTree = "<group>"; };
+		6308161717C3DDD4004DE5D7 /* RestKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestKit.m; sourceTree = "<group>"; };
 		6314DE6217C02BEA00DDE637 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		6319D37D17BDA9A40071DA71 /* ProfileTabLeftOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileTabLeftOff.png; sourceTree = "<group>"; };
 		6319D37E17BDA9A40071DA71 /* ProfileTabLeftOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileTabLeftOff@2x.png"; sourceTree = "<group>"; };
@@ -701,6 +704,8 @@
 		638647E717AC087A00167F15 /* DoGood */ = {
 			isa = PBXGroup;
 			children = (
+				6308161617C3DDD4004DE5D7 /* RestKit.h */,
+				6308161717C3DDD4004DE5D7 /* RestKit.m */,
 				6319D39017BDF05C0071DA71 /* Reusable Components */,
 				633DBF9217AED2480038BC2D /* Models */,
 				633DBF7F17AE92D20038BC2D /* Menu */,
@@ -1058,6 +1063,7 @@
 				63357AFE17C279F2007B5FD7 /* DGUserFindFriendsViewController.m in Sources */,
 				6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */,
 				6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */,
+				6308161817C3DDD4004DE5D7 /* RestKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
