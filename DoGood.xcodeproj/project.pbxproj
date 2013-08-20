@@ -10,7 +10,8 @@
 		6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */; };
 		6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */; };
 		6308161817C3DDD4004DE5D7 /* RestKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161717C3DDD4004DE5D7 /* RestKit.m */; };
-		6314DE6317C02BEA00DDE637 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6314DE6217C02BEA00DDE637 /* CoreImage.framework */; };
+		6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161E17C41E0D004DE5D7 /* DGAppearance.m */; };
+		6308162217C41EA0004DE5D7 /* ThirdParties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308162117C41EA0004DE5D7 /* ThirdParties.m */; };
 		6319D38517BDA9A40071DA71 /* ProfileTabLeftOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D37D17BDA9A40071DA71 /* ProfileTabLeftOff.png */; };
 		6319D38617BDA9A40071DA71 /* ProfileTabLeftOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D37E17BDA9A40071DA71 /* ProfileTabLeftOff@2x.png */; };
 		6319D38717BDA9A40071DA71 /* ProfileTabLeftOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 6319D37F17BDA9A40071DA71 /* ProfileTabLeftOn.png */; };
@@ -174,6 +175,10 @@
 		6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPhotoPickerViewController.m; sourceTree = "<group>"; };
 		6308161617C3DDD4004DE5D7 /* RestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestKit.h; sourceTree = "<group>"; };
 		6308161717C3DDD4004DE5D7 /* RestKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestKit.m; sourceTree = "<group>"; };
+		6308161D17C41E0D004DE5D7 /* DGAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAppearance.h; sourceTree = "<group>"; };
+		6308161E17C41E0D004DE5D7 /* DGAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAppearance.m; sourceTree = "<group>"; };
+		6308162017C41EA0004DE5D7 /* ThirdParties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdParties.h; sourceTree = "<group>"; };
+		6308162117C41EA0004DE5D7 /* ThirdParties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdParties.m; sourceTree = "<group>"; };
 		6314DE6217C02BEA00DDE637 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		6319D37D17BDA9A40071DA71 /* ProfileTabLeftOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileTabLeftOff.png; sourceTree = "<group>"; };
 		6319D37E17BDA9A40071DA71 /* ProfileTabLeftOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileTabLeftOff@2x.png"; sourceTree = "<group>"; };
@@ -385,7 +390,6 @@
 			files = (
 				63EB263017C2F029006D520A /* MessageUI.framework in Frameworks */,
 				63EB262E17C2C8BC006D520A /* AddressBook.framework in Frameworks */,
-				6314DE6317C02BEA00DDE637 /* CoreImage.framework in Frameworks */,
 				638647E417AC087A00167F15 /* CoreGraphics.framework in Frameworks */,
 				638647E617AC087A00167F15 /* UIKit.framework in Frameworks */,
 				638647E217AC087A00167F15 /* Foundation.framework in Frameworks */,
@@ -400,6 +404,8 @@
 			isa = PBXGroup;
 			children = (
 				63E0798717BC59C7006FC42E /* UITextFieldCell.xib */,
+				6308161317C3C19F004DE5D7 /* DGPhotoPickerViewController.h */,
+				6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */,
 				63E0798917BC5A6F006FC42E /* UITextFieldCell.h */,
 				63E0798A17BC5A6F006FC42E /* UITextFieldCell.m */,
 			);
@@ -670,8 +676,6 @@
 		638647D517AC087A00167F15 = {
 			isa = PBXGroup;
 			children = (
-				63EB262F17C2F029006D520A /* MessageUI.framework */,
-				63EB262D17C2C8BC006D520A /* AddressBook.framework */,
 				6314DE6217C02BEA00DDE637 /* CoreImage.framework */,
 				638647E717AC087A00167F15 /* DoGood */,
 				6386480917AC087A00167F15 /* DoGoodTests */,
@@ -692,6 +696,8 @@
 		638647E017AC087A00167F15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				63EB262F17C2F029006D520A /* MessageUI.framework */,
+				63EB262D17C2C8BC006D520A /* AddressBook.framework */,
 				6355EC1817B531C700EE91C0 /* Social.framework */,
 				638647E117AC087A00167F15 /* Foundation.framework */,
 				638647E317AC087A00167F15 /* CoreGraphics.framework */,
@@ -704,8 +710,6 @@
 		638647E717AC087A00167F15 /* DoGood */ = {
 			isa = PBXGroup;
 			children = (
-				6308161617C3DDD4004DE5D7 /* RestKit.h */,
-				6308161717C3DDD4004DE5D7 /* RestKit.m */,
 				6319D39017BDF05C0071DA71 /* Reusable Components */,
 				633DBF9217AED2480038BC2D /* Models */,
 				633DBF7F17AE92D20038BC2D /* Menu */,
@@ -716,10 +720,14 @@
 				636AEA6917AD4776002A3494 /* Do */,
 				636AEA6817AD4764002A3494 /* Users */,
 				633DBF7A17AE1E530038BC2D /* DoGood.nss */,
+				6308162017C41EA0004DE5D7 /* ThirdParties.h */,
+				6308162117C41EA0004DE5D7 /* ThirdParties.m */,
 				6355EC2517B674E900EE91C0 /* constants.h */,
 				6355EC3217B75EB300EE91C0 /* constants.m */,
-				6308161317C3C19F004DE5D7 /* DGPhotoPickerViewController.h */,
-				6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */,
+				6308161617C3DDD4004DE5D7 /* RestKit.h */,
+				6308161717C3DDD4004DE5D7 /* RestKit.m */,
+				6308161D17C41E0D004DE5D7 /* DGAppearance.h */,
+				6308161E17C41E0D004DE5D7 /* DGAppearance.m */,
 				638647F017AC087A00167F15 /* DGAppDelegate.h */,
 				638647F117AC087A00167F15 /* DGAppDelegate.m */,
 				638647E817AC087A00167F15 /* Supporting Files */,
@@ -1064,6 +1072,8 @@
 				6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */,
 				6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */,
 				6308161817C3DDD4004DE5D7 /* RestKit.m in Sources */,
+				6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */,
+				6308162217C41EA0004DE5D7 /* ThirdParties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
