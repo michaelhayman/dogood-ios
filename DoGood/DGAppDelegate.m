@@ -88,7 +88,7 @@
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
             NSNumber * userID = [f numberFromString:urlComponents[1]];
             DebugLog(@"open profile page for %@", userID);
-            // [self openProfilePage:userID];
+            [DGUser openProfilePage:userID inController:(UINavigationController *)self.window.rootViewController];
         }
         return YES;
     }

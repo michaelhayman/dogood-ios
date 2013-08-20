@@ -43,10 +43,7 @@
 }
 
 - (void)userProfile {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
-    DGUserProfileViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
-    controller.userID = self.user.userID;
-    [self.navigationController pushViewController:controller animated:YES];
+    [DGUser openProfilePage:self.user.userID inController:(UINavigationController *)self.window.rootViewController];
 }
 
 - (void)followUser {

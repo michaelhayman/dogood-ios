@@ -1,6 +1,7 @@
 #import "DGUser.h"
 #import "DGError.h"
 #import "RFKeychain.h"
+#import "DGUserProfileViewController.h"
 
 // Current User singleton
 static DGUser* currentUser = nil;
@@ -160,6 +161,14 @@ static DGUser* currentUser = nil;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
     }];
+}
+
+#pragma mark - Profile helper
++ (void)openProfilePage:(NSNumber *)userID inController:(UINavigationController *)nav  {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+    DGUserProfileViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
+    controller.userID = userID;
+    [nav pushViewController:controller animated:YES];
 }
 
 @end

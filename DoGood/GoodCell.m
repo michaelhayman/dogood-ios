@@ -348,15 +348,8 @@ static inline NSRegularExpression * NameRegularExpression() {
 }
 
 #pragma mark - User profile helper
-- (void)openProfilePage:(NSNumber *)userID {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
-    DGUserProfileViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
-    controller.userID = userID;
-    [self.navigationController pushViewController:controller animated:YES];
-}
-
 - (void)showGoodUserProfile {
-    [self openProfilePage:self.good.user.userID];
+    [DGUser openProfilePage:self.good.user.userID inController:self.navigationController];
 }
 
 #pragma mark - User list helper
@@ -377,7 +370,7 @@ static inline NSRegularExpression * NameRegularExpression() {
             NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
             [f setNumberStyle:NSNumberFormatterDecimalStyle];
             NSNumber * userID = [f numberFromString:urlComponents[1]];
-            [self openProfilePage:userID];
+            [DGUser openProfilePage:userID inController:self.navigationController];
         } else if ([[url host] hasPrefix:@"show-settings"]) {
             /* load settings screen */
         }

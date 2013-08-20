@@ -47,5 +47,8 @@
 #pragma mark - Points
 - (void)updatePoints;
 
+#pragma mark - Profile helpers
++ (void)openProfilePage:(NSNumber *)userID inController:(UINavigationController *)nav;
+
 @end
 
