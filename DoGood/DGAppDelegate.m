@@ -27,9 +27,8 @@
     [[UINavigationBar appearance] setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
-    [self setUpUserAuthentication];
+    [DGUser setUpUserAuthentication];
     [RestKit setupRestKit];
-    // [self setupRestKit];
     [self setupFoursquare];
     [self setupViewsForUser];
     [self.window makeKeyAndVisible];
@@ -59,31 +58,6 @@
     self.window.rootViewController = [[NavigationViewController alloc] initWithRootViewController:goodListController];
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
-
-#pragma mark - User authentication
-- (void)setUpUserAuthentication {
-    DebugLog(@"set up user auth");
-    // Register for authentication notifications
-	[[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(setBasicHTTPAccessFromAuthenticationNotification:)
-                                                 name:DGUserDidSignInNotification
-                                               object:nil];
-	[[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(setBasicHTTPAccessFromAuthenticationNotification:)
-                                                 name:DGUserDidSignOutNotification
-                                               object:nil];
-
-    // [[DGUser currentUser] verifySavedUser];
-    [DGUser currentUser];
-    [DGUser verifySavedUser];
-}
-
-- (void)setBasicHTTPAccessFromAuthenticationNotification:(NSNotification*)notification {
-    DebugLog(@"set basic access");
-    [DGUser setAuthorizationHeader];
-}
-
-#pragma mark - Model setup
 
 #pragma mark - Things that don't really belong in here
 - (void)listFonts {

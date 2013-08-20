@@ -39,12 +39,36 @@ static DGUser* currentUser = nil;
 	currentUser = user;
 }
 
-#pragma mark - Sign In
+#pragma mark - HTTP Headers
 + (void)setAuthorizationHeader {
     DebugLog(@"setting authorization header for %@ and %@", currentUser.username, currentUser.password);
     [[RKObjectManager sharedManager].HTTPClient setAuthorizationHeaderWithUsername:currentUser.username password:currentUser.password];
 }
 
++ (void)setUpUserAuthentication {
+    DebugLog(@"set up user auth");
+    // Register for authentication notifications
+	[[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(setBasicHTTPAccessFromAuthenticationNotification:)
+                                                 name:DGUserDidSignInNotification
+                                               object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(setBasicHTTPAccessFromAuthenticationNotification:)
+                                                 name:DGUserDidSignOutNotification
+                                               object:nil];
+
+    // [[DGUser currentUser] verifySavedUser];
+    [DGUser currentUser];
+    [DGUser verifySavedUser];
+}
+
++ (void)setBasicHTTPAccessFromAuthenticationNotification:(NSNotification*)notification {
+    DebugLog(@"set basic access");
+    // [self setAuthorizationHeader];
+    [DGUser setAuthorizationHeader];
+}
+
+#pragma mark - Sign In
 + (void)verifySavedUser {
     DebugLog(@"verify %@ %@", currentUser, currentUser.userID);
     if ([currentUser isSignedIn]) {

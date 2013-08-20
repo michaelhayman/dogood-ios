@@ -26,11 +26,13 @@
 + (void)setCurrentUser:(DGUser*)user;
 + (void)signInWasSuccessful;
 
-#pragma mark - Sign In
-
-+ (void)verifySavedUser;
-
+#pragma mark - HTTP Headers
 + (void)setAuthorizationHeader;
++ (void)setUpUserAuthentication;
++ (void)setBasicHTTPAccessFromAuthenticationNotification:(NSNotification*)notification;
+
+#pragma mark - Sign In
++ (void)verifySavedUser;
 
 - (BOOL)isSignedIn;
 
