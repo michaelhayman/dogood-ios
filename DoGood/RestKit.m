@@ -29,29 +29,40 @@
 
     [userMapping addAttributeMappingsFromDictionary:@{
         @"id" : @"userID",
-        @"username" : @"username",
-        @"full_name" : @"full_name",
-        @"phone" : @"phone",
-        @"location" : @"location",
-        @"biography" : @"biography",
-        @"email" : @"email",
-        @"avatar" : @"avatar",
-        @"followers_count" : @"followers_count",
-        @"following_count" : @"following_count",
-        @"current_user_following" : @"current_user_following",
-        @"liked_goods_count" : @"liked_goods_count",
-        @"posted_or_followed_goods_count" : @"posted_or_followed_goods_count",
-     // @"password" : @"password",
-        @"contactable" : @"contactable",
-        @"message" : @"message"
-     }];
-    [userMapping addAttributeMappingsFromArray:@[ @"points" ]];
+    }];
+    [userMapping addAttributeMappingsFromArray:@[
+     @"points",
+     @"username",
+     @"full_name",
+     @"phone",
+     @"location",
+     @"biography",
+     @"email",
+     @"avatar",
+     @"followers_count",
+     @"following_count",
+     @"current_user_following",
+     @"liked_goods_count",
+     @"posted_or_followed_goods_count",
+     @"contactable",
+     @"message"
+    ]];
 
     RKResponseDescriptor *userResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:userResponseDescriptor];
 
     RKObjectMapping* userRequestMapping = [RKObjectMapping requestMapping ];
-    [userRequestMapping addAttributeMappingsFromArray:@[ @"email", @"username", @"password", @"full_name", @"phone", @"contactable", @"location", @"biography" ]];
+    [userRequestMapping addAttributeMappingsFromArray:@[
+     @"email",
+     @"username",
+     @"password",
+     @"full_name",
+     @"phone",
+     @"contactable",
+     @"location",
+     @"biography"
+    ]];
+
     RKRequestDescriptor *userRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:userRequestMapping objectClass:[DGUser class] rootKeyPath:@"user" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:userRequestDescriptor];
 
@@ -65,7 +76,11 @@
     [objectManager addResponseDescriptor:voteResponseDescriptor];
 
     RKObjectMapping* voteRequestMapping = [RKObjectMapping requestMapping ];
-    [voteRequestMapping addAttributeMappingsFromArray:@[ @"voteable_id", @"voteable_type", @"user_id" ]];
+    [voteRequestMapping addAttributeMappingsFromArray:@[
+     @"voteable_id",
+     @"voteable_type",
+     @"user_id"
+    ]];
     RKRequestDescriptor *voteRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:voteRequestMapping objectClass:[DGVote class] rootKeyPath:@"vote" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:voteRequestDescriptor];
 
@@ -73,7 +88,9 @@
     RKObjectMapping *followMapping = [RKObjectMapping mappingForClass:[DGFollow class]];
 
     [followMapping addAttributeMappingsFromArray:@[
-        @"followable_id", @"followable_type", @"user_id"
+     @"followable_id",
+     @"followable_type",
+     @"user_id"
     ]];
     RKResponseDescriptor *followResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:followMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"follows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:followResponseDescriptor];
@@ -87,14 +104,20 @@
     RKObjectMapping *commentMapping = [RKObjectMapping mappingForClass:[DGComment class]];
  
     [commentMapping addAttributeMappingsFromArray:@[
-        @"comment", @"user_id"
+     @"comment",
+     @"user_id"
     ]];
     [commentMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:userMapping]];
     RKResponseDescriptor *commentResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:commentMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"comments" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:commentResponseDescriptor];
 
     RKObjectMapping* commentRequestMapping = [RKObjectMapping requestMapping ];
-    [commentRequestMapping addAttributeMappingsFromArray:@[ @"comment", @"commentable_id", @"commentable_type", @"user_id" ]];
+    [commentRequestMapping addAttributeMappingsFromArray:@[
+     @"comment",
+     @"commentable_id",
+     @"commentable_type",
+     @"user_id"
+    ]];
     RKRequestDescriptor *commentRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:commentRequestMapping objectClass:[DGComment class] rootKeyPath:@"comment" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:commentRequestDescriptor];
 
@@ -117,15 +140,17 @@
 
     [goodMapping addAttributeMappingsFromDictionary:@{
         @"id" : @"goodID",
-        @"caption" : @"caption",
-        @"current_user_liked" : @"current_user_liked",
-        @"current_user_commented" : @"current_user_commented",
-        @"current_user_regooded": @"current_user_regooded",
-        @"likes_count" : @"likes_count",
-        @"regoods_count" : @"regoods_count",
-        @"comments_count": @"comments_count",
-        @"evidence": @"evidence"
      }];
+    [goodMapping addAttributeMappingsFromArray:@[
+     @"caption",
+     @"current_user_liked",
+     @"current_user_commented",
+     @"current_user_regooded",
+     @"likes_count",
+     @"regoods_count",
+     @"comments_count",
+     @"evidence"
+    ]];
 
     RKResponseDescriptor *goodResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:goodMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"goods" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [goodMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:userMapping]];
