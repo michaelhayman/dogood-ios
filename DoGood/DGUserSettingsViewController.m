@@ -3,6 +3,7 @@
 #import "DGUserFindFriendsViewController.h"
 #import "DGUserTwitterViewController.h"
 #import "DGUserInvitesViewController.h"
+#import "DGPhotoPickerViewController.h"
 #import <UIImage+Resize.h>
 #import <MBProgressHUD.h>
 
@@ -35,12 +36,6 @@
     UINib *nib = [UINib nibWithNibName:UITextFieldCellIdentifier bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:UITextFieldCellIdentifier];
 
-    // setup avatar
-    avatar.contentMode = UIViewContentModeScaleAspectFit;
-    UITapGestureRecognizer* avatarGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoSheet)];
-    [avatar setUserInteractionEnabled:YES];
-    [avatar addGestureRecognizer:avatarGesture];
-    [self setupHeader];
 
     // watch for events to change settings values
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterConnected) name:DGUserDidConnectToTwitter object:nil];
@@ -52,6 +47,23 @@
     // invites
     invites = [[DGUserInvitesViewController alloc] init];
     invites.parent = self;
+
+    // photos
+    photos = [[DGPhotoPickerViewController alloc] init];
+    photos.parent = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadAvatar:) name:DGUserDidAddPhotoNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteAvatar) name:DGUserDidRemovePhotoNotification object:nil];
+    // setup avatar
+    avatar.contentMode = UIViewContentModeScaleAspectFit;
+    UITapGestureRecognizer* avatarGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoPicker)];
+    [avatar setUserInteractionEnabled:YES];
+    [avatar addGestureRecognizer:avatarGesture];
+    [self setupHeader];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidAddPhotoNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidRemovePhotoNotification object:nil];
 }
 
 - (void)setupHeader {
@@ -68,80 +80,20 @@
     DebugLog(@"gestures");
 }
 
-#pragma mark - Camera helpers
-- (void)openPhotoSheet {
-    NSString *destructiveButtonTitle;
-    // this wont work, unless i set the image some other time... in profile get
-    if (avatar.image) {
-        destructiveButtonTitle = @"Remove photo";
-    } else {
-        destructiveButtonTitle = nil;
-    }
-
-    photoSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                delegate:self
-                                       cancelButtonTitle:@"Cancel"
-                                  destructiveButtonTitle:destructiveButtonTitle
-                                       otherButtonTitles:@"Add from camera", @"Add from camera roll", nil];
-    [photoSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-    [photoSheet showInView:self.view];
+#pragma mark - Avatar
+- (void)openPhotoPicker {
+    [photos openPhotoSheet:avatar.image];
 }
 
-#define remove_button 0
-#define select_new_button 1
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex != actionSheet.cancelButtonIndex) {
-        if (actionSheet == photoSheet) {
-            DebugLog(@"button index %d", buttonIndex);
-            if (buttonIndex == photoSheet.destructiveButtonIndex) {
-                DebugLog(@"remove");
-                [self deleteAvatar];
-            } else if (buttonIndex == photoSheet.firstOtherButtonIndex) {
-                [self showCamera];
-            } else if (buttonIndex == photoSheet.firstOtherButtonIndex + 1) {
-                [self showCameraRoll];
-            }
-        }
-    } else {
-        DebugLog(@"button index %d, %d", buttonIndex, actionSheet.cancelButtonIndex);
-        // [actionSheet dismissWithClickedButtonIndex:actionSheet.cancelButtonIndex animated:YES];
-    }
-}
-
-- (void)showCameraRoll {
-    DebugLog(@"show camera roll");
-    UIImagePickerController *pickerC = [[UIImagePickerController alloc] init];
-    pickerC.delegate = self;
-    pickerC.allowsEditing = YES;
-    [self presentViewController:pickerC animated:YES completion:nil];
-}
-
-- (void)showCamera {
-    if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
-    {
-        DebugLog(@"show camera");
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.allowsEditing = YES;
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    } else {
-        DebugLog(@"Camera not available.");
-    }
-}
-
-#pragma mark - UIImagePickerController delegate methods
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    imageToUpload = [info objectForKey:UIImagePickerControllerEditedImage];
+- (void)uploadAvatar:(NSNotification *)notification  {
+    DebugLog(@"uploading");
+    imageToUpload = [[notification userInfo] objectForKey:UIImagePickerControllerEditedImage];
 
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Changing avatar...";
     NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:nil method:RKRequestMethodPUT path:user_update_path parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-        resizedImage = [imageToUpload resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 480) interpolationQuality:kCGInterpolationHigh];
 
-            DebugLog(@"uiimage size %@", NSStringFromCGSize(resizedImage.size));
-            [formData appendPartWithFileData:UIImagePNGRepresentation(resizedImage)
+            [formData appendPartWithFileData:UIImagePNGRepresentation(imageToUpload)
                                         name:@"user[avatar]"
                                     fileName:@"avatar.png"
                                     mimeType:@"image/png"];
@@ -154,7 +106,7 @@
         hud.labelText = @"Completed";
         [hud hide:YES];
 
-        avatar.image = resizedImage;
+        avatar.image = imageToUpload;
         DGUser *user = (mappingResult.array)[0];
         [DGUser currentUser].avatar = user.avatar;
         [DGUser assignDefaults];
