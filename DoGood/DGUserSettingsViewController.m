@@ -7,6 +7,8 @@
 #import <UIImage+Resize.h>
 #import <MBProgressHUD.h>
 
+#import "ThirdParties.h"
+
 #define full_name_tag 101
 #define biography_tag 102
 #define location_tag 103
@@ -36,10 +38,9 @@
     UINib *nib = [UINib nibWithNibName:UITextFieldCellIdentifier bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:UITextFieldCellIdentifier];
 
-
     // watch for events to change settings values
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterConnected) name:DGUserDidConnectToTwitter object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookConnected) name:DGUserDidConnectToFacebook object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterConnected:) name:DGUserDidCheckIfTwitterIsConnected object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookConnected:) name:DGUserDidCheckIfFacebookIsConnected object:nil];
     // watch keyboard
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -59,6 +60,13 @@
     [avatar setUserInteractionEnabled:YES];
     [avatar addGestureRecognizer:avatarGesture];
     [self setupHeader];
+
+    // connection status
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [ThirdParties checkTwitterAccess:NO];
+    [ThirdParties checkFacebookAccess];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -325,6 +333,7 @@
         cell.textField.text = [DGUser currentUser].email;
         cell.textField.tag = email_tag;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textField.userInteractionEnabled = NO;
     }
     if (indexPath.row == phone) {
         cell.heading.text = @"Phone";
@@ -369,15 +378,15 @@
 }
 
 - (UITableViewCell *)setupSocialNetworks:(NSIndexPath *)indexPath {
-    UITextFieldCell *cell = [self.tableView dequeueReusableCellWithIdentifier:UITextFieldCellIdentifier];
+    UITextFieldCell *cell = [self.tableView dequeueReusableCellWithIdentifier:UITextFieldCellIdentifier forIndexPath:indexPath];
     if (indexPath.row == twitter) {
         cell.heading.text = @"Twitter";
-        cell.textField.text = @"Not connected";
         cell.textField.tag = twitter_connected_tag;
+        cell.textField.text = twitterConnectedStatus;
     }
     if (indexPath.row == facebook) {
         cell.heading.text = @"Facebook";
-        cell.textField.text = @"Not connected";
+        cell.textField.text = facebookConnectedStatus;
         cell.textField.tag = facebook_connected_tag;
     }
     cell.textField.userInteractionEnabled = NO;
@@ -499,25 +508,39 @@
     }
     if (indexPath.section == socialNetworks) {
         if (indexPath.row == twitter) {
-            [self twitter];
+            [ThirdParties checkTwitterAccess:YES];
         }
         if (indexPath.row == facebook) {
-            [self facebook];
+            if ([facebookConnectedStatus isEqualToString:@"Connected"]) {
+                [ThirdParties removeFacebookAccess];
+            } else {
+                [ThirdParties checkFacebookAccessForPosting];
+            }
         }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Social Network Receivers
-- (void)twitterConnected {
-    DebugLog(@"settings twitter connected");
-    UITextField *textfield = (UITextField *)[self.view viewWithTag:twitter_connected_tag];
-    textfield.text = @"Connected";
-    // cell.textField.tag = twitter_connected_tag;
+- (void)twitterConnected:(NSNotification *)notification {
+    NSNumber* connected = [[notification userInfo] objectForKey:@"connected"];
+    if ([connected boolValue]) {
+        twitterConnectedStatus = @"Connected";
+    } else {
+        twitterConnectedStatus = @"Not connected";
+    }
+    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
-- (void)facebookConnected {
-    DebugLog(@"settings facebook connected");
+- (void)facebookConnected:(NSNotification *)notification {
+    NSNumber* connected = [[notification userInfo] objectForKey:@"connected"];
+    DebugLog(@"connected to fb? %@", connected);
+    if ([connected boolValue]) {
+        facebookConnectedStatus = @"Connected";
+    } else {
+        facebookConnectedStatus = @"Not connected";
+    }
+    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
 #pragma mark - UIAlertViewDelegate methods

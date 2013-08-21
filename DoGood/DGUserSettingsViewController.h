@@ -9,6 +9,9 @@
     UIActionSheet *photoSheet;
     DGUserInvitesViewController *invites;
     DGPhotoPickerViewController *photos;
+
+    NSString *twitterConnectedStatus;
+    NSString *facebookConnectedStatus;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *name;

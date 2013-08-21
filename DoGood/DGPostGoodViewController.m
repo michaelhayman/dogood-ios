@@ -6,7 +6,7 @@
 #import "FSLocation.h"
 #import "DGPostGoodCategoryViewController.h"
 #import "DGPostGoodLocationViewController.h"
-#import "FBRequestConnection.h"
+#import "ThirdParties.h"
 
 #import <UIImage+Resize.h>
 #import <MBProgressHUD.h>
@@ -133,11 +133,11 @@
     } else {
         GoodShareCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodShareCell"];
         if (indexPath.row == 0) {
-            cell.tag = share_facebook_cell_tag;
+            cell.share.tag = share_facebook_cell_tag;
             cell.type.text = @"Share on Facebook";
             [cell facebook];
         } else {
-            cell.tag = share_twitter_cell_tag;
+            cell.share.tag = share_twitter_cell_tag;
             cell.type.text = @"Share on Twitter";
             [cell twitter];
         }
@@ -353,12 +353,17 @@
     GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
     self.good.caption = cell.description.text;
 
-    GoodShareCell *doGood = (GoodShareCell *)[self.tableView viewWithTag:share_do_good_cell_tag];
-    self.good.shareDoGood = doGood.share.on;
-    GoodShareCell *twitter = (GoodShareCell *)[self.tableView viewWithTag:share_twitter_cell_tag];
-    self.good.shareTwitter = twitter.share.on;
-    GoodShareCell *facebook = (GoodShareCell *)[self.tableView viewWithTag:share_facebook_cell_tag];
-    self.good.shareFacebook = facebook.share.on;
+    // GoodShareCell *doGood = (GoodShareCell *)[self.tableView viewWithTag:share_do_good_cell_tag];
+    // self.good.shareDoGood = doGood.share.on;
+    // GoodShareCell *twitter = (GoodShareCell *)[self.tableView viewWithTag:share_twitter_cell_tag];
+    // self.good.shareTwitter = twitter.share.on;
+    UISwitch *twitter = (UISwitch *)[self.tableView viewWithTag:share_twitter_cell_tag];
+    self.good.shareTwitter = twitter.on;
+    DebugLog(@"sharin %d %d", twitter.on, self.good.shareTwitter);
+    // GoodShareCell *facebook = (GoodShareCell *)[self.tableView viewWithTag:share_facebook_cell_tag];
+    // self.good.shareFacebook = facebook.share.on;
+    UISwitch *facebook = (UISwitch *)[self.tableView viewWithTag:share_facebook_cell_tag];
+    self.good.shareFacebook = facebook.on;
     DebugLog(@"post good %@", self.good);
 
     bool errors = YES;
@@ -393,11 +398,14 @@
                                        withType:TSMessageNotificationTypeSuccess];
 
             if (self.good.shareTwitter) {
-                [self postToTwitter:[NSString stringWithFormat:@"I did some good! %@", self.good.caption]];
+                DebugLog(@"post to twitter");
+                [ThirdParties postToTwitter:[NSString stringWithFormat:@"I did some good! %@", self.good.caption]];
+            } else {
+                DebugLog(@"don't post to twitter");
             }
 
             if (self.good.shareFacebook) {
-                [self postToFacebook:self.good.caption andImage:self.good.image];
+                [ThirdParties postToFacebook:self.good.caption andImage:self.good.image];
             }
             [self.navigationController popViewControllerAnimated:YES];
 
@@ -409,7 +417,7 @@
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [TSMessage showNotificationInViewController:self
                                       withTitle:nil
-                                    withMessage:NSLocalizedString(message, nil)
+                                    withMessage:[error localizedDescription]
                                        withType:TSMessageNotificationTypeError];
             [hud hide:YES];
         }];
@@ -435,53 +443,6 @@
 - (void)checkFacebook {
     // only activate when selected...
     // DGUser *user = [DGUser currentUser];
-}
-
-- (void)postToFacebook:(NSString *)status andImage:(UIImage *)image {
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"message"] = @"I did some good!";
-    params[@"link"] = @"http://www.dogoodapp.com/";
-    params[@"name"] = @"Do Good, get a high score and earn rewards.";
-    params[@"caption"] = status;
-
-    [FBRequestConnection startWithGraphPath:@"me/feed" parameters:params HTTPMethod:@"POST" completionHandler:
-     ^(FBRequestConnection *connection, id result, NSError *error) {
-         if (!error) {
-             DebugLog(@"%@", [NSString stringWithFormat: @"Posted action, id: %@", result[@"id"]]);
-         } else {
-             DebugLog(@"error! %@", [error description]);
-         }
-     }];
-}
-
-- (void)postToTwitter:(NSString *)status {
-    // Construct the parameters string. The value of "status" is percent-escaped.
-    NSString *bodyString = [NSString stringWithFormat:@"status=%@", [status stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-
-    // Explicitly percent-escape the '!' character.
-    bodyString = [bodyString stringByReplacingOccurrencesOfString:@"!" withString:@"%21"];
-
-    NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/update.json"];
-    NSMutableURLRequest *tweetRequest = [NSMutableURLRequest requestWithURL:url];
-    tweetRequest.HTTPMethod = @"POST";
-    tweetRequest.HTTPBody = [bodyString dataUsingEncoding:NSUTF8StringEncoding];
-
-    // [[PFTwitterUtils twitter] signRequest:tweetRequest];
-
-    NSURLResponse *response = nil;
-    NSError *error = nil;
-
-    // Post status synchronously.
-    NSData *data = [NSURLConnection sendSynchronousRequest:tweetRequest
-                                         returningResponse:&response
-                                                     error:&error];
-
-    // Handle response.
-    if (!error) {
-        NSLog(@"Response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-    } else {
-        NSLog(@"Error: %@", error);
-    }
 }
 
 @end

@@ -3,6 +3,7 @@
 #import <AddressBook/AddressBook.h>
 #import "UserCell.h"
 #import "DGUserInvitesViewController.h"
+#import "ThirdParties.h"
 
 @interface DGUserFindFriendsViewController () <
     UINavigationControllerDelegate>
@@ -119,8 +120,26 @@
 
 - (void)findEmailsFromTwitter {
     DebugLog(@"find emails from twitter");
-    users = [[NSArray alloc] init];
-    [tableView reloadData];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(findDoGoodUsersOnTwitter:) name:DGUserDidFindFriendsOnTwitter object:nil];
+    [ThirdParties getTwitterFriendsOnDoGood];
+}
+
+
+- (void)findDoGoodUsersOnTwitter:(NSNotification *)notification {
+    NSArray *twitterUsers= [[notification userInfo] valueForKey:@"ids"];
+    NSString *path = [NSString stringWithFormat:@"/users/search_by_twitter_ids"];
+
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+    [dictionary setObject:twitterUsers forKey:@"twitter_ids"];
+
+    [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:dictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        users = [[NSArray alloc] initWithArray:mappingResult.array];
+        DebugLog(@"do good users on twitter %@", users);
+        [tableView reloadData];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        DebugLog(@"Operation failed with error: %@", error);
+    }];
 }
 
 - (IBAction)searchForPeople:(id)sender {

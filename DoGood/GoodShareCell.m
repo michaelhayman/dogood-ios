@@ -1,28 +1,24 @@
 #import "GoodShareCell.h"
+#import "ThirdParties.h"
 
-#define dogood_share_tag 501
-#define facebook_share_tag 502
-#define twitter_share_tag 503
+#define share_do_good_cell_tag 501
+#define share_facebook_cell_tag 502
+#define share_twitter_cell_tag 503
+
 @implementation GoodShareCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    DebugLog(@"self share %@", self.share);
     self.share.on = NO;
-    DebugLog(@"cell %d", self.tag);
-
-    if (self.tag == facebook_share_tag) {
-        [self.share addTarget:self action:@selector(checkFacebook) forControlEvents:UIControlEventValueChanged];
-    } else if (self.tag == dogood_share_tag) {
-        [self.share addTarget:self action:@selector(checkDoGood) forControlEvents:UIControlEventValueChanged];
-    } else if (self.tag == twitter_share_tag) {
-        [self.share addTarget:self action:@selector(checkTwitter) forControlEvents:UIControlEventValueChanged];
-    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidCheckIfTwitterIsConnected object:nil];
 }
 
 #pragma mark - Do Good
@@ -35,29 +31,80 @@
 }
 
 #pragma mark - Twitter
-- (void)checkTwitter {
-    DebugLog(@"twitter");
-    DGUser *user = [DGUser currentUser];
-}
-
-/*
-- (void)callTwitterAPI {
-    NSURL *verify = [NSURL URLWithString:@"https://api.twitter.com/1/account/verify_credentials.json"];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:verify];
-    [[PFTwitterUtils twitter] signRequest:request];
-    NSURLResponse *response = nil;
-        NSError *error;
-    NSData *data = [NSURLConnection sendSynchronousRequest:request
-                                         returningResponse:&response
-                                                     error:&error];
-    DebugLog(@"data %@", data);
-}
-*/
 - (void)twitter {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterConnected:) name:DGUserDidCheckIfTwitterIsConnected object:nil];
     [self.share addTarget:self action:@selector(checkTwitter) forControlEvents:UIControlEventValueChanged];
 }
 
+- (void)checkTwitter {
+    DebugLog(@"twitter %d", self.share.on);
+    if([self.share isOn]) {
+        DebugLog(@"tweeting");
+        [ThirdParties checkTwitterAccess:YES];
+    } else {
+        DebugLog(@"not tweeting");
+    }
+}
+
+- (void)twitterConnected:(NSNotification *)notification {
+    DebugLog(@"twitter connected?");
+    NSNumber* connected = [[notification userInfo] objectForKey:@"connected"];
+    if ([connected boolValue]) {
+        // [self.share performSelectorOnMainThread:@selector(setOn:) withObject:[NSNumber numberWithBool:YES] waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(shareOn) withObject:nil waitUntilDone:NO];
+        DebugLog(@"yes");
+    } else {
+        // [self.share performSelectorOnMainThread:@selector(setOn:) withObject:[NSNumber numberWithBool:NO] waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(shareOff) withObject:nil waitUntilDone:NO];
+        DebugLog(@"no %d", self.share.selected);
+    }
+}
+
+- (void)shareOn {
+    // [self.share setOn:YES];
+    UISwitch *shareTwitter = (UISwitch *)[[self contentView] viewWithTag:share_twitter_cell_tag];
+    [shareTwitter setOn:YES animated:YES];
+    UISwitch *shareFacebook = (UISwitch *)[[self contentView] viewWithTag:share_facebook_cell_tag];
+    [shareFacebook setOn:YES animated:YES];
+}
+
+- (void)shareOff {
+    UISwitch *shareTwitter = (UISwitch *)[[self contentView] viewWithTag:share_twitter_cell_tag];
+    [shareTwitter setOn:NO animated:YES];
+    UISwitch *shareFacebook = (UISwitch *)[[self contentView] viewWithTag:share_facebook_cell_tag];
+    [shareFacebook setOn:NO animated:YES];
+}
+
 #pragma mark - Facebook methods
+- (void)facebook {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookConnected:) name:DGUserDidCheckIfFacebookIsConnectedAndHasPermissions object:nil];
+    [self.share addTarget:self action:@selector(checkFacebook) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)checkFacebook {
+    DebugLog(@"facebook %d", self.share.on);
+    if([self.share isOn]) {
+        DebugLog(@"facebooking");
+        [ThirdParties checkFacebookAccessForPosting];
+    } else {
+        DebugLog(@"not facebookin, dont do anything");
+    }
+}
+
+- (void)facebookConnected:(NSNotification *)notification {
+    DebugLog(@"facebook connected?");
+    NSNumber* permission = [[notification userInfo] objectForKey:@"permission"];
+    if ([permission boolValue]) {
+        // [self.share performSelectorOnMainThread:@selector(setOn:) withObject:[NSNumber numberWithBool:YES] waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(shareOn) withObject:nil waitUntilDone:NO];
+        DebugLog(@"yes");
+    } else {
+        // [self.share performSelectorOnMainThread:@selector(setOn:) withObject:[NSNumber numberWithBool:NO] waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(shareOff) withObject:nil waitUntilDone:NO];
+        DebugLog(@"no %d", self.share.selected);
+    }
+}
+
 /*
 - (void)checkFacebook {
     if (self.share.on != NO) {
@@ -103,7 +150,9 @@
         DebugLog(@"share off");
     }
 }
+*/
 
+/*
 - (void)checkFacebookPublishPermissionWithBlock:(void (^)(BOOL canShare, NSError *error))completionBlock {
     NSString *permissionsString = @"publish_actions";
     DebugLog(@"inside here");
@@ -133,9 +182,5 @@
     }];
 }
 */
-
-- (void)facebook {
-    [self.share addTarget:self action:@selector(checkFacebook) forControlEvents:UIControlEventValueChanged];
-}
 
 @end

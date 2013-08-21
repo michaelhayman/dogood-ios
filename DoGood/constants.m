@@ -55,8 +55,15 @@ NSString* const DGUserDidUpdateFollowingsNotification = @"DGUserDidUpdateFollowi
 
 NSString* const DGUserDidConnectToTwitter = @"DGUserDidConnectToTwitter";
 NSString* const DGUserDidDisconnectFromTwitter = @"DGUserDidDisconnectFromTwitter";
+NSString* const DGUserIsConnectedToTwitter = @"DGUserIsConnectedToTwitter";
+NSString* const DGUserIsNotConnectedToTwitter = @"DGUserIsDisconnectedFromFromTwitter";
+NSString* const DGUserDidCheckIfTwitterIsConnected = @"DGUserDidCheckIfTwitterIsConnected";
+NSString* const DGUserDidFindFriendsOnTwitter = @"DGUserDidFindFriendsOnTwitter";
+
 NSString* const DGUserDidConnectToFacebook = @"DGUserDidConnectToFacebook";
 NSString* const DGUserDidDisconnectFromFacebook = @"DGUserDidDisconnectFromFacebook";
+NSString* const DGUserDidCheckIfFacebookIsConnectedAndHasPermissions = @"DGUserDidCheckIfFacebookIsConnectedAndHasPermissions";
+NSString* const DGUserDidCheckIfFacebookIsConnected = @"DGUserDidCheckIfFacebookIsConnected";
 
 // UITableView cells
 NSString* const UITextFieldCellIdentifier = @"UITextFieldCell";

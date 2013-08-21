@@ -1,15 +1,20 @@
 platform :ios, '6.0'
+# networking
 pod 'AFNetworking', '~> 1.3.1'
-pod 'TSMessages'
-pod 'REMenu', '~> 1.3.5'
 pod 'RestKit', '~> 0.20.3'
+# security
 pod 'RFKeychain', '~> 0.1'
-pod 'UIImage-Categories', '~> 0.0.1'
+# ui
+pod 'TSMessages'
 pod 'MBProgressHUD'
-pod 'Facebook-iOS-SDK', '~> 3.5'
+pod 'REMenu', '~> 1.3.5'
+pod 'UIImage-Categories', '~> 0.0.1'
 pod 'TTTAttributedLabel'
 pod 'CODialog'
-pod 'STTwitter'
+# social
+# pod 'STTwitter'
+# pod 'STTwitter', :head
+pod 'Facebook-iOS-SDK', '~> 3.7'
 
 # not used yet
 # pod 'NSData+Base64'

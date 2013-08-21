@@ -106,6 +106,9 @@
 		636AEAD717AD97B0002A3494 /* Calibre-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 636AEAD017AD97B0002A3494 /* Calibre-Regular.otf */; };
 		636AEAD817AD97B0002A3494 /* Calibre-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 636AEAD117AD97B0002A3494 /* Calibre-Semibold.otf */; };
 		636AEAD917AD97B0002A3494 /* Calibre-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 636AEAD217AD97B0002A3494 /* Calibre-Thin.otf */; };
+		637CC94217C5527E007619F5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637CC94117C5527E007619F5 /* Accounts.framework */; };
+		637CC94317C55290007619F5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6355EC1817B531C700EE91C0 /* Social.framework */; };
+		637CC94517C553D9007619F5 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637CC94417C553D9007619F5 /* Twitter.framework */; };
 		638647E217AC087A00167F15 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E117AC087A00167F15 /* Foundation.framework */; };
 		638647E417AC087A00167F15 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E317AC087A00167F15 /* CoreGraphics.framework */; };
 		638647E617AC087A00167F15 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E517AC087A00167F15 /* UIKit.framework */; };
@@ -179,7 +182,6 @@
 		6308161E17C41E0D004DE5D7 /* DGAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAppearance.m; sourceTree = "<group>"; };
 		6308162017C41EA0004DE5D7 /* ThirdParties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdParties.h; sourceTree = "<group>"; };
 		6308162117C41EA0004DE5D7 /* ThirdParties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdParties.m; sourceTree = "<group>"; };
-		6314DE6217C02BEA00DDE637 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		6319D37D17BDA9A40071DA71 /* ProfileTabLeftOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileTabLeftOff.png; sourceTree = "<group>"; };
 		6319D37E17BDA9A40071DA71 /* ProfileTabLeftOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ProfileTabLeftOff@2x.png"; sourceTree = "<group>"; };
 		6319D37F17BDA9A40071DA71 /* ProfileTabLeftOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ProfileTabLeftOn.png; sourceTree = "<group>"; };
@@ -308,6 +310,8 @@
 		636AEAD017AD97B0002A3494 /* Calibre-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-Regular.otf"; sourceTree = "<group>"; };
 		636AEAD117AD97B0002A3494 /* Calibre-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-Semibold.otf"; sourceTree = "<group>"; };
 		636AEAD217AD97B0002A3494 /* Calibre-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-Thin.otf"; sourceTree = "<group>"; };
+		637CC94117C5527E007619F5 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		637CC94417C553D9007619F5 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		638647DE17AC087A00167F15 /* DoGood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoGood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		638647E117AC087A00167F15 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		638647E317AC087A00167F15 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -388,6 +392,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				637CC94517C553D9007619F5 /* Twitter.framework in Frameworks */,
+				637CC94317C55290007619F5 /* Social.framework in Frameworks */,
+				637CC94217C5527E007619F5 /* Accounts.framework in Frameworks */,
 				63EB263017C2F029006D520A /* MessageUI.framework in Frameworks */,
 				63EB262E17C2C8BC006D520A /* AddressBook.framework in Frameworks */,
 				638647E417AC087A00167F15 /* CoreGraphics.framework in Frameworks */,
@@ -676,7 +683,6 @@
 		638647D517AC087A00167F15 = {
 			isa = PBXGroup;
 			children = (
-				6314DE6217C02BEA00DDE637 /* CoreImage.framework */,
 				638647E717AC087A00167F15 /* DoGood */,
 				6386480917AC087A00167F15 /* DoGoodTests */,
 				638647E017AC087A00167F15 /* Frameworks */,
@@ -696,6 +702,8 @@
 		638647E017AC087A00167F15 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				637CC94417C553D9007619F5 /* Twitter.framework */,
+				637CC94117C5527E007619F5 /* Accounts.framework */,
 				63EB262F17C2F029006D520A /* MessageUI.framework */,
 				63EB262D17C2C8BC006D520A /* AddressBook.framework */,
 				6355EC1817B531C700EE91C0 /* Social.framework */,

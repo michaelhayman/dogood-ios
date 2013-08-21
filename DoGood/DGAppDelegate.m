@@ -21,6 +21,15 @@
     return YES;
 }
 
+- (void)setupViewsForUser {
+    UIStoryboard *storyboard;
+    storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+    DGGoodListViewController *goodListController = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
+
+    self.window.rootViewController = [[NavigationViewController alloc] initWithRootViewController:goodListController];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application {
 }
 
@@ -31,21 +40,11 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    [ThirdParties facebookHandleDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
 }
-
-- (void)setupViewsForUser {
-    UIStoryboard *storyboard;
-    storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-    DGGoodListViewController *goodListController = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
-
-    self.window.rootViewController = [[NavigationViewController alloc] initWithRootViewController:goodListController];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-}
-
-#pragma mark - Things that don't really belong in here
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     if ([[url scheme] isEqualToString:@"dogood"]) {
@@ -60,6 +59,13 @@
         return YES;
     }
     return NO;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [ThirdParties facebookHandleOpenURL:url];
 }
 
 @end

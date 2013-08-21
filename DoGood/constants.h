@@ -7,10 +7,14 @@
 #define checkConnectivity NO
 #define checkAPI NO
 
-// Third parties
+#pragma mark - Third parties
+
 #define FOURSQUARE_API_URL       @"https://api.foursquare.com"
 #define FOURSQUARE_CLIENT_ID     @"EWRCKLKQ4O2LVVYK1ADLNXHTBS3MTYY1JMNPNJCM3SZ1ATII"
 #define FOURSQUARE_CLIENT_SECRET @"VZGH0QRJFF4AOU3WTXON0XZZQJ3YKMYLEUQ3ZRCQ0HZBDVTP"
+
+#define TWITTER_CONSUMER_KEY @"yT577ApRtZw51q4NPMPPOQ"
+#define TWITTER_CONSUMER_SECRET @"3neq3XqN5fO3obqwZoajavGFCUrC42ZfbrLXy5sCv8"
 
 // Paths
 #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3002/"
@@ -91,8 +95,19 @@ extern NSString* const DGUserDidUpdateFollowingsNotification;
 
 extern NSString* const DGUserDidConnectToTwitter;
 extern NSString* const DGUserDidDisconnectFromTwitter;
+
+extern NSString* const DGUserIsConnectedToTwitter;
+extern NSString* const DGUserIsNotConnectedToTwitter;
+
+extern NSString* const DGUserDidCheckIfTwitterIsConnected;
+
+extern NSString* const DGUserDidFindFriendsOnTwitter;
+
 extern NSString* const DGUserDidConnectToFacebook;
 extern NSString* const DGUserDidDisconnectFromFacebook;
+
+extern NSString* const DGUserDidCheckIfFacebookIsConnectedAndHasPermissions;
+extern NSString* const DGUserDidCheckIfFacebookIsConnected;
 
 #pragma mark - Good
 
