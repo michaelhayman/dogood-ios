@@ -12,6 +12,8 @@ NSString* const kDGUserCurrentUserBiography = @"kDGUserCurrentUserBiography";
 NSString* const kDGUserCurrentUserPhone = @"kDGUserCurrentUserPhone";
 NSString* const kDGUserCurrentUserContactable = @"kDGUserCurrentUserContactable";
 NSString* const kDGUserCurrentUserAvatar = @"kDGUserCurrentUserAvatar";
+NSString* const kDGUserCurrentUserTwitterID = @"kDGUserCurrentUserTwitterID";
+NSString* const kDGUserCurrentUserFacebookID = @"kDGUserCurrentUserFacebookID";
 
 // Notifications
 NSString* const DGUserDidSignOutNotification = @"DGUserDidSignOutNotification";
@@ -59,11 +61,15 @@ NSString* const DGUserIsConnectedToTwitter = @"DGUserIsConnectedToTwitter";
 NSString* const DGUserIsNotConnectedToTwitter = @"DGUserIsDisconnectedFromFromTwitter";
 NSString* const DGUserDidCheckIfTwitterIsConnected = @"DGUserDidCheckIfTwitterIsConnected";
 NSString* const DGUserDidFindFriendsOnTwitter = @"DGUserDidFindFriendsOnTwitter";
+NSString* const DGUserDidFailFindFriendsOnTwitter = @"DGUserDidFailFindFriendsOnTwitter";
 
 NSString* const DGUserDidConnectToFacebook = @"DGUserDidConnectToFacebook";
 NSString* const DGUserDidDisconnectFromFacebook = @"DGUserDidDisconnectFromFacebook";
 NSString* const DGUserDidCheckIfFacebookIsConnectedAndHasPermissions = @"DGUserDidCheckIfFacebookIsConnectedAndHasPermissions";
 NSString* const DGUserDidCheckIfFacebookIsConnected = @"DGUserDidCheckIfFacebookIsConnected";
+NSString* const DGUserDidFindFriendsOnFacebook = @"DGUserDidFindFriendsOnFacebook";
+
+NSString* const DGUserDidCheckIfAddressBookIsConnected = @"DGUserDidCheckIfAddressBookIsConnected";
 
 // UITableView cells
 NSString* const UITextFieldCellIdentifier = @"UITextFieldCell";

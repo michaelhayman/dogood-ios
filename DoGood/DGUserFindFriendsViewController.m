@@ -1,242 +1,135 @@
 #import "DGUserFindFriendsViewController.h"
 #import "DGUserSearchViewController.h"
-#import <AddressBook/AddressBook.h>
-#import "UserCell.h"
-#import "DGUserInvitesViewController.h"
-#import "ThirdParties.h"
+#import "DGUserSettingsViewController.h"
+#import "DGUserSearchAddressBookViewController.h"
+#import "DGUserSearchTwitterViewController.h"
+#import "DGUserSearchFacebookViewController.h"
+#import "DGUserSearchOtherViewController.h"
 
-@interface DGUserFindFriendsViewController () <
-    UINavigationControllerDelegate>
+#import "Arrow.h"
+#define kTabSelectionAnimationDuration 0.2
+
+@interface DGUserFindFriendsViewController ()
+    @property (nonatomic, retain) DGUserSearchAddressBookViewController *userAddressBook;
+    @property (nonatomic, retain) DGUserSearchTwitterViewController *userTwitter;
+    @property (nonatomic, retain) DGUserSearchFacebookViewController *userFacebook;
+    @property (nonatomic, retain) DGUserSearchOtherViewController *userOther;
 @end
 
 @implementation DGUserFindFriendsViewController
 
 - (void)viewDidLoad {
-    self.title = @"Find friends";
+    [super viewDidLoad];
+    self.userAddressBook = [[DGUserSearchAddressBookViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];
+    self.userTwitter = [[DGUserSearchTwitterViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];
+    self.userFacebook = [[DGUserSearchFacebookViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];
+    self.userOther = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchOther"];
 
-    // tabs
-    tabs.segmentedControlStyle = 7;
-    [tabs addTarget:self
-                         action:@selector(pickTab:)
-               forControlEvents:UIControlEventValueChanged];
-    tabs.selectedSegmentIndex = 0;
-    tabs.tintColor = [UIColor blackColor];
-    
-    UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
-    [tableView registerNib:nib forCellReuseIdentifier:@"UserCell"];
-    tableView.tableHeaderView = tableHeader;
-    tabs.selectedSegmentIndex = 0;
-    [tabs sendActionsForControlEvents:UIControlEventValueChanged];
+    // self.typeSegmentedControl.selectedSegmentIndex = 1;
+    segmentIndex = 1;
+    addressBook.selected = YES;
 
-    invites = [[DGUserInvitesViewController alloc] init];
-    invites.parent = self;
-    // show table by default
-    // [self showAddressBook];
-    // Request authorization to Address Book
+    UIViewController *vc = [self viewControllerForSegmentIndex:segmentIndex];
+    self.currentViewController = vc;
+    [self addChildViewController:vc];
+    [self.contentView addSubview:vc.view];
+
+    // arrow
+    CGFloat x = [self getX];
+    CGFloat y = buttonRow.frame.origin.y + buttonRow.frame.size.height;
+    arrow = [[Arrow alloc] initWithFrame:CGRectMake(x, y, 14, 8)];
+
+    [self.view addSubview:arrow];
 }
 
-- (IBAction)getAccessToContacts:(id)sender {
-   ABAddressBookRef addressBookRef = ABAddressBookCreateWithOptions(NULL, NULL);
+- (void)viewDidLayoutSubviews {
+    self.currentViewController.view.frame = self.contentView.bounds;
 
-    if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusNotDetermined) {
-        ABAddressBookRequestAccessWithCompletion(addressBookRef, ^(bool granted, CFErrorRef error) {
-            if (granted) {
-                [self findEmailsFromAddressBook];
-                DebugLog(@"can add contacts not determined");
-            } else {
-                DebugLog(@"can't add contacts");
-                [self promptForAddressBookAccess];
-            }
-            // First time access has been granted, add the contact
-        });
+    CGFloat y = buttonRow.frame.origin.y + buttonRow.frame.size.height - 2;
+    arrow.frame = CGRectMake([self getX], y, 14, 8);
+}
+
+- (CGFloat)getX {
+    CGFloat tabWidth = self.view.frame.size.width / 4;
+    return (tabWidth) * (segmentIndex) - (tabWidth / 2 + arrow.frame.size.width / 2);
+}
+
+- (IBAction)addressBook:(UIButton *)sender {
+    [self deselectButtons];
+    sender.selected = YES;
+    [self showSectionAtIndex:sender.tag];
+}
+
+- (IBAction)twitter:(UIButton *)sender {
+    [self deselectButtons];
+    sender.selected = YES;
+    [self showSectionAtIndex:sender.tag];
+}
+
+- (IBAction)facebook:(UIButton *)sender {
+    [self deselectButtons];
+    sender.selected = YES;
+    [self showSectionAtIndex:sender.tag];
+}
+
+- (IBAction)other:(UIButton *)sender {
+    [self deselectButtons];
+    sender.selected = YES;
+    [self showSectionAtIndex:sender.tag];
+}
+
+- (void)deselectButtons {
+    twitter.selected = NO;
+    other.selected = NO;
+    addressBook.selected = NO;
+    facebook.selected = NO;
+}
+
+- (void)showSectionAtIndex:(NSInteger)index {
+    if (index == segmentIndex) {
+        return;
     }
-    else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
-        // The user has previously given access, add the contact
-        DebugLog(@"can add contacts determined");
-        [self findEmailsFromAddressBook];
-    }
-    else {
-        [self promptForAddressBookAccess];
-        // The user has previously denied access
-        // Send an alert telling user to change privacy setting in settings app
-    }
-}
+    UIViewController *vc = [self viewControllerForSegmentIndex:index];
+    [UIView beginAnimations:@"kSelectionAnimation" context:(__bridge void *)(self.view)];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:kTabSelectionAnimationDuration];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+    arrow.frame = CGRectMake([self getX], arrow.frame.origin.y, arrow.frame.size.width, arrow.frame.size.height);
+    [UIView commitAnimations];
+    DebugLog(@"x %f", [self getX]);
 
-- (void)promptForAddressBookAccess {
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil message:@"Enable access to Contacts in Settings > Privacy." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    alert.tag = 59;
-    alert.delegate = self;
-    [alert show];
-}
+    [self addChildViewController:vc];
+    vc.view.frame = self.contentView.bounds;
 
-#pragma mark - UIAlertViewDelegate methods
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
-}
-
-#pragma mark - Tabs
-- (IBAction)pickTab:(id)sender {
-    NSString *choice = [tabs titleForSegmentAtIndex:[tabs selectedSegmentIndex]];
-    if ([choice isEqualToString:@"@"]) {
-        DebugLog(@"@");
-        [self showAddressBook];
-    }
-    if ([choice isEqualToString:@"T"]) {
-        DebugLog(@"T");
-        [self showTwitter];
-    }
-    if ([choice isEqualToString:@"S"]) {
-        [self showInternalSearchOptions];
-        DebugLog(@"S");
-    }
-}
-
-- (void)showInternalSearch {
-    tableView.hidden = YES;
-    internalSearch.hidden = NO;
-}
-
-- (void)showExternalSearch {
-    tableView.hidden = NO;
-    internalSearch.hidden = YES;
-}
-
-- (void)showAddressBook {
-    contentDescription.text = @"Find Friends from your address book";
-    [self showExternalSearch];
-    [self getAccessToContacts:nil];
-    // [self findEmailsFromAddressBook];
-}
-
-- (void)showTwitter {
-    contentDescription.text = @"Find Twitter friends on Do Good";
-    [self showExternalSearch];
-    [self findEmailsFromTwitter];
-}
-
-- (void)showInternalSearchOptions {
-    [self showInternalSearch];
-}
-
-- (void)findEmailsFromTwitter {
-    DebugLog(@"find emails from twitter");
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(findDoGoodUsersOnTwitter:) name:DGUserDidFindFriendsOnTwitter object:nil];
-    [ThirdParties getTwitterFriendsOnDoGood];
-}
-
-
-- (void)findDoGoodUsersOnTwitter:(NSNotification *)notification {
-    NSArray *twitterUsers= [[notification userInfo] valueForKey:@"ids"];
-    NSString *path = [NSString stringWithFormat:@"/users/search_by_twitter_ids"];
-
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    [dictionary setObject:twitterUsers forKey:@"twitter_ids"];
-
-    [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:dictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        users = [[NSArray alloc] initWithArray:mappingResult.array];
-        DebugLog(@"do good users on twitter %@", users);
-        [tableView reloadData];
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        DebugLog(@"Operation failed with error: %@", error);
+    [self transitionFromViewController:self.currentViewController toViewController:vc duration:0 options:UIViewAnimationOptionTransitionNone animations:^{
+        [self.currentViewController.view removeFromSuperview];
+        [self.contentView addSubview:vc.view];
+    } completion:^(BOOL finished) {
+        [vc didMoveToParentViewController:self];
+        [self.currentViewController removeFromParentViewController];
+        self.currentViewController = vc;
     }];
+    self.navigationItem.title = vc.title;
 }
 
-- (IBAction)searchForPeople:(id)sender {
-    UIStoryboard *storyboard;
-    storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
-    DGUserFindFriendsViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserSearch"];
-    [self.navigationController pushViewController:controller animated:YES];
-}
-
-- (IBAction)inviteViaText:(id)sender {
-    [invites inviteViaText:nil];
-}
-
-- (IBAction)inviteViaEmail:(id)sender {
-    [invites inviteViaEmail:nil];
-}
-
-#pragma mark - UITableView delegate methods
-- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString * reuseIdentifier = @"UserCell";
-    UserCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    DGUser *user = users[indexPath.row];
-    cell.user = user;
-    DebugLog(@"user %@", user);
-    [cell setValues];
-    cell.navigationController = self.navigationController;
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
-}
-
-- (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
-    return [users count];
-    /*
-    if (section == 0) {
-        return [users count];
-    } else if (section == 1) {
-        if (addressBookAccess) {
-            return 0;
-        } else {
-            return 1;
-        }
+- (UIViewController *)viewControllerForSegmentIndex:(NSInteger)index {
+    UIViewController *vc;
+    switch (index) {
+        case 1:
+            vc = self.userAddressBook;
+            break;
+        case 2:
+            vc = self.userTwitter;
+            break;
+        case 3:
+            vc = self.userFacebook;
+            break;
+        case 4:
+            vc = self.userOther;
+            break;
     }
-    */
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-#pragma mark - ABAddressBook methods
-- (void)findEmailsFromAddressBook {
-    ABAddressBookRef allPeople = ABAddressBookCreateWithOptions(NULL, NULL);
-    CFArrayRef allContacts = ABAddressBookCopyArrayOfAllPeople(allPeople);
-    CFIndex numberOfContacts  = ABAddressBookGetPersonCount(allPeople);
-
-    DebugLog(@"numberOfContacts: %ld",numberOfContacts);
-
-    NSMutableArray *emails = [[NSMutableArray alloc] init];
-
-    for(int i = 0; i < numberOfContacts; i++){
-        NSString* email = @"";
-
-        ABRecordRef aPerson = CFArrayGetValueAtIndex(allContacts, i);
-        ABMultiValueRef emailProperty = ABRecordCopyValue(aPerson, kABPersonEmailProperty);
-
-        NSArray *emailArray = (__bridge NSArray *)ABMultiValueCopyArrayOfAllValues(emailProperty);
-
-        if ([emailArray count] > 0) {
-            if ([emailArray count] > 1) {
-                for (int i = 0; i < [emailArray count]; i++) {
-                    email = [email stringByAppendingString:[NSString stringWithFormat:@"%@\n", [emailArray objectAtIndex:i]]];
-                }
-            }else {
-                email = [NSString stringWithFormat:@"%@", [emailArray objectAtIndex:0]];
-            }
-        }
-
-        DebugLog(@"EMAIL: %@",email);
-        DebugLog(@"\n");
-        [emails addObjectsFromArray:emailArray];
-    }
-
-    NSString *path = [NSString stringWithFormat:@"/users/search_by_emails"];
-
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    [dictionary setObject:emails forKey:@"emails"];
-
-    [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:dictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        users = [[NSArray alloc] initWithArray:mappingResult.array];
-        DebugLog(@"users %@", users);
-        [tableView reloadData];
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        DebugLog(@"Operation failed with error: %@", error);
-    }];
+    segmentIndex = index;
+    return vc;
 }
 
 @end

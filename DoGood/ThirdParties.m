@@ -14,11 +14,24 @@
 @implementation ThirdParties
 
 #pragma mark - Foursquare
+/*
 + (void)setupFoursquare {
-    /*
     [Foursquare2 setupFoursquareWithKey:@"EWRCKLKQ4O2LVVYK1ADLNXHTBS3MTYY1JMNPNJCM3SZ1ATII" secret:@"VZGH0QRJFF4AOU3WTXON0XZZQJ3YKMYLEUQ3ZRCQ0HZBDVTP" callbackURL:@"app://dogood"];
-    */
 }
+*/
+
+/*
+ + (ACAccount *)chooseAccountForAccountStore:(ACAccountStore *)accountStore ofType:(ACAccountType *)type {
+     NSArray *twitterAccounts =
+     [accountStore accountsWithAccountType:type];
+     [[accountStore accountsWithAccountType:type] lastObject];
+
+     // use the last account for now
+     return  [twitterAccounts lastObject];
+}
+NSNumber *tempUserID = [self getTwitterIDFromAccount:[[accountStore accountsWithAccountType:type] lastObject]];
+[self saveTwitterID:tempUserID];
+*/
 
 #pragma mark - Twitter
 + (void)checkTwitterAccess:(bool)prompt {
@@ -29,6 +42,8 @@
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
         if (granted == YES) {
             [dictionary setObject:[NSNumber numberWithBool:YES] forKey:@"connected"];
+            NSNumber *tempUserID = [self getTwitterIDFromAccount:[[accountStore accountsWithAccountType:accountType] lastObject]];
+            [self saveTwitterID:tempUserID];
         } else {
             [dictionary setObject:[NSNumber numberWithBool:NO] forKey:@"connected"];
             if ([error code] == ACErrorAccountNotFound) {
@@ -160,10 +175,15 @@
                  // use the last account for now
                  ACAccount * account = [twitterAccounts lastObject];
 
+                 NSString *tempUserID = [[self getTwitterIDFromAccount:account] stringValue];
+                 // [self saveTwitterID:tempUserID];
+
+                 /*
                  NSDictionary *tempDict = [[NSMutableDictionary alloc] initWithDictionary:
                                            [account dictionaryWithValuesForKeys:[NSArray arrayWithObject:@"properties"]]];
                  NSString *tempUserID = [[tempDict objectForKey:@"properties"] objectForKey:@"user_id"];
                  DebugLog(@"temp user id %@", tempUserID);
+                 */
 
                  NSURL *url = [NSURL URLWithString:@"https://api.twitter.com"
                                @"/1.1/friends/ids.json"];
@@ -179,7 +199,7 @@
                                        parameters:params];
 
                  //  Attach an account to the request
-                 [request setAccount:[twitterAccounts lastObject]];
+                 [request setAccount:account];
 
                  //  Step 3:  Execute the request
                  [request performRequestWithHandler:^(NSData *responseData,
@@ -207,6 +227,7 @@
                          else {
                              // The server did not respond successfully... were we rate-limited?
                              DebugLog(@"The response status code is %d", urlResponse.statusCode);
+                             [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailFindFriendsOnTwitter object:nil] ;
                          }
                      } else {
                          DebugLog(@"no response data");
@@ -222,9 +243,31 @@
         DebugLog(@"user doesn't have access");
     }
 }
-/*
-https://api.twitter.com/1.1/followers/list.json
-*/
+
++ (NSNumber *)getTwitterIDFromAccount:(ACAccount *)account {
+    NSDictionary *tempDict = [[NSMutableDictionary alloc] initWithDictionary:
+                               [account dictionaryWithValuesForKeys:[NSArray arrayWithObject:@"properties"]]];
+    NSString *tempUserID = [[tempDict objectForKey:@"properties"] objectForKey:@"user_id"];
+    DebugLog(@"temp twitter id %@", tempUserID);
+    NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    return [f numberFromString:tempUserID];
+}
+
++ (void)saveTwitterID:(NSNumber *)twitterID {
+    [[DGUser currentUser] saveSocialID:twitterID withType:@"twitter"];
+    /*
+        NSDictionary *userData = (NSDictionary *)data;
+        DebugLog(@"data about current user %@", userData);
+
+        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber * facebookID = [f numberFromString:userData[@"id"]];
+        DebugLog(@"fb id %@", facebookID);
+
+        [[DGUser currentUser] saveSocialID:facebookID withType:@"facebook"];
+    */
+}
 
 #pragma mark - Facebook
 + (void)postToFacebook:(NSString *)status andImage:(UIImage *)image {
@@ -275,6 +318,16 @@ https://api.twitter.com/1.1/followers/list.json
     }
 }
 
++ (void)checkFacebookAccessForFriends {
+    // See if the app has a valid token for the current state.
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+        DebugLog(@"authenticated, dont do any more");
+    } else {
+        DebugLog(@"not authenticated, display login");
+        [self openSession];
+    }
+}
+
 + (void)requestPermissions {
     DebugLog(@"requesting permissions");
     [FBSession.activeSession requestNewPublishPermissions:@[@"publish_actions"]
@@ -315,34 +368,49 @@ https://api.twitter.com/1.1/followers/list.json
     }];
 }
 
++ (void)getFacebookFriendsOnDoGood {
+    [FBSession openActiveSessionWithAllowLoginUI:NO];
+    [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id data, NSError *error) {
+        if (error) {
+            DebugLog(@"Error requesting /me/friends %@", error);
+            return;
+        }
+        DebugLog(@"data %@", data);
+
+        NSArray* friends = (NSArray*)[data data];
+        DebugLog(@"You have %d friends", [friends count]);
+        NSDictionary *friendsData = [NSDictionary dictionaryWithObject:NSNullIfNil(friends) forKey:@"facebook_ids"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFindFriendsOnFacebook object:nil userInfo:friendsData];
+    }];
+}
+
 + (void)checkFacebookPublishPermissionWithBlock:(void (^)(BOOL canShare, NSError *error))completionBlock {
     NSString *permissionsString = @"publish_actions";
-    DebugLog(@"inside here");
     DebugLog(@"fb session %u", FBSession.activeSession.state);
     DebugLog(@"fb session open %d", FBSession.activeSession.isOpen);
     [FBSession openActiveSessionWithAllowLoginUI:NO];
     [FBRequestConnection startWithGraphPath:@"/me/permissions" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-         if (!error) {
+        if (!error) {
             DebugLog(@"no error %@", result);
-             NSDictionary *data = [[result objectForKey:@"data"] objectAtIndex:0];
+            NSDictionary *data = [[result objectForKey:@"data"] objectAtIndex:0];
             DebugLog(@"data %@", data);
-             BOOL canSharePost;
+            BOOL canSharePost;
 
-             if ([[data objectForKey:permissionsString] integerValue] == NSNotFound ||
-                 [[data objectForKey:permissionsString]integerValue] == 0) {
-                 canSharePost = NO;
-                 if (completionBlock){
-                     completionBlock(canSharePost, error);
-                 }
-             } else {
-                 canSharePost = YES;
-                 if (completionBlock){
-                     completionBlock(canSharePost,error);
-                 }
-             }
-         } else {
+            if ([[data objectForKey:permissionsString] integerValue] == NSNotFound ||
+                [[data objectForKey:permissionsString]integerValue] == 0) {
+                canSharePost = NO;
+                if (completionBlock){
+                    completionBlock(canSharePost, error);
+                }
+            } else {
+                canSharePost = YES;
+                if (completionBlock){
+                    completionBlock(canSharePost,error);
+                }
+            }
+        } else {
             DebugLog(@"error %@", [error description]);
-         }
+        }
     }];
 }
 
@@ -351,15 +419,13 @@ https://api.twitter.com/1.1/followers/list.json
         case FBSessionStateOpen: {
             DebugLog(@"open");
             [self checkPermissions];
+            [self saveFacebookID];
             break;
-
         }
-
         case FBSessionStateClosed: {
             DebugLog(@"closed");
             break;
         }
-
         case FBSessionStateClosedLoginFailed: {
             DebugLog(@"login failed");
             [self removeFacebookAccess];
@@ -379,6 +445,25 @@ https://api.twitter.com/1.1/followers/list.json
                                   otherButtonTitles:nil];
         [alertView show];
     }    
+}
+
++ (void)saveFacebookID {
+    [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id data, NSError *error) {
+        if (error) {
+            DebugLog(@"Error requesting /me %@", error);
+            return;
+        }
+        // DebugLog(@"data about current user %@", data);
+        NSDictionary *userData = (NSDictionary *)data;
+        DebugLog(@"data about current user %@", userData);
+
+        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber * facebookID = [f numberFromString:userData[@"id"]];
+        DebugLog(@"fb id %@", facebookID);
+
+        [[DGUser currentUser] saveSocialID:facebookID withType:@"facebook"];
+    }];
 }
 
 + (void)openSession {

@@ -75,6 +75,38 @@
 		6355EC3317B75EB600EE91C0 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3217B75EB300EE91C0 /* constants.m */; };
 		6355EC3A17B8680300EE91C0 /* SignUpOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC3917B8680300EE91C0 /* SignUpOverviewCell.xib */; };
 		6355EC3D17B86B8400EE91C0 /* SignUpOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3C17B86B7B00EE91C0 /* SignUpOverviewCell.m */; };
+		6358340B17C885D700F997F6 /* DGUserSearchTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358340A17C885D700F997F6 /* DGUserSearchTwitterViewController.m */; };
+		6358341017C8895000F997F6 /* TwitterButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358340C17C8895000F997F6 /* TwitterButton.png */; };
+		6358341117C8895000F997F6 /* TwitterButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358340D17C8895000F997F6 /* TwitterButton@2x.png */; };
+		6358341217C8895000F997F6 /* TwitterButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358340E17C8895000F997F6 /* TwitterButtonTap.png */; };
+		6358341317C8895000F997F6 /* TwitterButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358340F17C8895000F997F6 /* TwitterButtonTap@2x.png */; };
+		6358341617C88D3700F997F6 /* DGUserSearchFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358341517C88D3700F997F6 /* DGUserSearchFacebookViewController.m */; };
+		6358341917C88F3C00F997F6 /* DGUserSearchOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358341817C88F3C00F997F6 /* DGUserSearchOtherViewController.m */; };
+		6358342017C894DB00F997F6 /* FacebookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358341C17C894DB00F997F6 /* FacebookButton.png */; };
+		6358342117C894DB00F997F6 /* FacebookButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358341D17C894DB00F997F6 /* FacebookButton@2x.png */; };
+		6358342217C894DB00F997F6 /* FacebookButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358341E17C894DB00F997F6 /* FacebookButtonTap.png */; };
+		6358342317C894DB00F997F6 /* FacebookButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358341F17C894DB00F997F6 /* FacebookButtonTap@2x.png */; };
+		6358342817C8997200F997F6 /* BasicButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358342417C8997200F997F6 /* BasicButton.png */; };
+		6358342917C8997200F997F6 /* BasicButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358342517C8997200F997F6 /* BasicButton@2x.png */; };
+		6358342A17C8997200F997F6 /* BasicButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358342617C8997200F997F6 /* BasicButtonTap.png */; };
+		6358342B17C8997200F997F6 /* BasicButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358342717C8997200F997F6 /* BasicButtonTap@2x.png */; };
+		6358342E17C8A09700F997F6 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358342D17C8A09700F997F6 /* Arrow.m */; };
+		6358343317C8A89600F997F6 /* TwitterOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358342F17C8A89600F997F6 /* TwitterOff.png */; };
+		6358343417C8A89600F997F6 /* TwitterOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358343017C8A89600F997F6 /* TwitterOff@2x.png */; };
+		6358343517C8A89600F997F6 /* TwitterOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358343117C8A89600F997F6 /* TwitterOn.png */; };
+		6358343617C8A89600F997F6 /* TwitterOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358343217C8A89600F997F6 /* TwitterOn@2x.png */; };
+		6358343B17C8A8F900F997F6 /* AddressBookOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358343717C8A8F900F997F6 /* AddressBookOff.png */; };
+		6358343C17C8A8F900F997F6 /* AddressBookOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358343817C8A8F900F997F6 /* AddressBookOff@2x.png */; };
+		6358343D17C8A8F900F997F6 /* AddressBookOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358343917C8A8F900F997F6 /* AddressBookOn.png */; };
+		6358343E17C8A8F900F997F6 /* AddressBookOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358343A17C8A8F900F997F6 /* AddressBookOn@2x.png */; };
+		6358344317C8A93700F997F6 /* FindButtonOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358343F17C8A93700F997F6 /* FindButtonOff.png */; };
+		6358344417C8A93700F997F6 /* FindButtonOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358344017C8A93700F997F6 /* FindButtonOff@2x.png */; };
+		6358344517C8A93700F997F6 /* FindButtonOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358344117C8A93700F997F6 /* FindButtonOn.png */; };
+		6358344617C8A93700F997F6 /* FindButtonOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358344217C8A93700F997F6 /* FindButtonOn@2x.png */; };
+		6358344B17C8B70C00F997F6 /* FacebookOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358344717C8B70C00F997F6 /* FacebookOff.png */; };
+		6358344C17C8B70C00F997F6 /* FacebookOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358344817C8B70C00F997F6 /* FacebookOff@2x.png */; };
+		6358344D17C8B70C00F997F6 /* FacebookOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358344917C8B70C00F997F6 /* FacebookOn.png */; };
+		6358344E17C8B70C00F997F6 /* FacebookOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6358344A17C8B70C00F997F6 /* FacebookOn@2x.png */; };
 		636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA5C17AD43CC002A3494 /* Good.storyboard */; };
 		636AEA7C17AD4B95002A3494 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA6D17AD4B95002A3494 /* Default-568h@2x.png */; };
 		636AEA7E17AD4B95002A3494 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA6E17AD4B95002A3494 /* Default.png */; };
@@ -106,6 +138,11 @@
 		636AEAD717AD97B0002A3494 /* Calibre-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 636AEAD017AD97B0002A3494 /* Calibre-Regular.otf */; };
 		636AEAD817AD97B0002A3494 /* Calibre-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 636AEAD117AD97B0002A3494 /* Calibre-Semibold.otf */; };
 		636AEAD917AD97B0002A3494 /* Calibre-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 636AEAD217AD97B0002A3494 /* Calibre-Thin.otf */; };
+		637ABAD317C7C6F4004AA4C9 /* SearchUserNetworks.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637ABAD217C7C6F4004AA4C9 /* SearchUserNetworks.xib */; };
+		637ABAD917C7CEF5004AA4C9 /* AddressBookWatermark.png in Resources */ = {isa = PBXBuildFile; fileRef = 637ABAD517C7CEF5004AA4C9 /* AddressBookWatermark.png */; };
+		637ABADA17C7CEF5004AA4C9 /* AddressBookWatermark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 637ABAD617C7CEF5004AA4C9 /* AddressBookWatermark@2x.png */; };
+		637ABADB17C7CEF5004AA4C9 /* TwitterWatermark.png in Resources */ = {isa = PBXBuildFile; fileRef = 637ABAD717C7CEF5004AA4C9 /* TwitterWatermark.png */; };
+		637ABADC17C7CEF5004AA4C9 /* TwitterWatermark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 637ABAD817C7CEF5004AA4C9 /* TwitterWatermark@2x.png */; };
 		637CC94217C5527E007619F5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637CC94117C5527E007619F5 /* Accounts.framework */; };
 		637CC94317C55290007619F5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6355EC1817B531C700EE91C0 /* Social.framework */; };
 		637CC94517C553D9007619F5 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637CC94417C553D9007619F5 /* Twitter.framework */; };
@@ -140,6 +177,12 @@
 		639B890417BA8660005E2B62 /* OptionsButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B890017BA8660005E2B62 /* OptionsButtonTap.png */; };
 		639B890517BA8660005E2B62 /* OptionsButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B890117BA8660005E2B62 /* OptionsButtonTap@2x.png */; };
 		639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B891017BAEC1D005E2B62 /* DGFollow.m */; };
+		63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */; };
+		63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */; };
+		63BFB1F117C854E4004D990F /* AddressBookButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 63BFB1ED17C854E4004D990F /* AddressBookButton.png */; };
+		63BFB1F217C854E4004D990F /* AddressBookButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63BFB1EE17C854E4004D990F /* AddressBookButton@2x.png */; };
+		63BFB1F317C854E4004D990F /* AddressBookButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 63BFB1EF17C854E4004D990F /* AddressBookButtonTap.png */; };
+		63BFB1F417C854E4004D990F /* AddressBookButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63BFB1F017C854E4004D990F /* AddressBookButtonTap@2x.png */; };
 		63E0797117BC3F6D006FC42E /* PoweredByFoursquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0796F17BC3F6D006FC42E /* PoweredByFoursquare.png */; };
 		63E0797217BC3F6D006FC42E /* PoweredByFoursquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0797017BC3F6D006FC42E /* PoweredByFoursquare@2x.png */; };
 		63E0797517BC4010006FC42E /* Textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0797317BC4010006FC42E /* Textfield.png */; };
@@ -275,6 +318,42 @@
 		6355EC3917B8680300EE91C0 /* SignUpOverviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpOverviewCell.xib; sourceTree = "<group>"; };
 		6355EC3B17B86B7800EE91C0 /* SignUpOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpOverviewCell.h; sourceTree = "<group>"; };
 		6355EC3C17B86B7B00EE91C0 /* SignUpOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpOverviewCell.m; sourceTree = "<group>"; };
+		6358340917C885D700F997F6 /* DGUserSearchTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchTwitterViewController.h; sourceTree = "<group>"; };
+		6358340A17C885D700F997F6 /* DGUserSearchTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchTwitterViewController.m; sourceTree = "<group>"; };
+		6358340C17C8895000F997F6 /* TwitterButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterButton.png; sourceTree = "<group>"; };
+		6358340D17C8895000F997F6 /* TwitterButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TwitterButton@2x.png"; sourceTree = "<group>"; };
+		6358340E17C8895000F997F6 /* TwitterButtonTap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterButtonTap.png; sourceTree = "<group>"; };
+		6358340F17C8895000F997F6 /* TwitterButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TwitterButtonTap@2x.png"; sourceTree = "<group>"; };
+		6358341417C88D3700F997F6 /* DGUserSearchFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchFacebookViewController.h; sourceTree = "<group>"; };
+		6358341517C88D3700F997F6 /* DGUserSearchFacebookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchFacebookViewController.m; sourceTree = "<group>"; };
+		6358341717C88F3C00F997F6 /* DGUserSearchOtherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchOtherViewController.h; sourceTree = "<group>"; };
+		6358341817C88F3C00F997F6 /* DGUserSearchOtherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchOtherViewController.m; sourceTree = "<group>"; };
+		6358341C17C894DB00F997F6 /* FacebookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FacebookButton.png; sourceTree = "<group>"; };
+		6358341D17C894DB00F997F6 /* FacebookButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FacebookButton@2x.png"; sourceTree = "<group>"; };
+		6358341E17C894DB00F997F6 /* FacebookButtonTap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FacebookButtonTap.png; sourceTree = "<group>"; };
+		6358341F17C894DB00F997F6 /* FacebookButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FacebookButtonTap@2x.png"; sourceTree = "<group>"; };
+		6358342417C8997200F997F6 /* BasicButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BasicButton.png; sourceTree = "<group>"; };
+		6358342517C8997200F997F6 /* BasicButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BasicButton@2x.png"; sourceTree = "<group>"; };
+		6358342617C8997200F997F6 /* BasicButtonTap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BasicButtonTap.png; sourceTree = "<group>"; };
+		6358342717C8997200F997F6 /* BasicButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BasicButtonTap@2x.png"; sourceTree = "<group>"; };
+		6358342C17C8A09700F997F6 /* Arrow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Arrow.h; sourceTree = "<group>"; };
+		6358342D17C8A09700F997F6 /* Arrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arrow.m; sourceTree = "<group>"; };
+		6358342F17C8A89600F997F6 /* TwitterOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterOff.png; sourceTree = "<group>"; };
+		6358343017C8A89600F997F6 /* TwitterOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TwitterOff@2x.png"; sourceTree = "<group>"; };
+		6358343117C8A89600F997F6 /* TwitterOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterOn.png; sourceTree = "<group>"; };
+		6358343217C8A89600F997F6 /* TwitterOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TwitterOn@2x.png"; sourceTree = "<group>"; };
+		6358343717C8A8F900F997F6 /* AddressBookOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddressBookOff.png; sourceTree = "<group>"; };
+		6358343817C8A8F900F997F6 /* AddressBookOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddressBookOff@2x.png"; sourceTree = "<group>"; };
+		6358343917C8A8F900F997F6 /* AddressBookOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddressBookOn.png; sourceTree = "<group>"; };
+		6358343A17C8A8F900F997F6 /* AddressBookOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddressBookOn@2x.png"; sourceTree = "<group>"; };
+		6358343F17C8A93700F997F6 /* FindButtonOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindButtonOff.png; sourceTree = "<group>"; };
+		6358344017C8A93700F997F6 /* FindButtonOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindButtonOff@2x.png"; sourceTree = "<group>"; };
+		6358344117C8A93700F997F6 /* FindButtonOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FindButtonOn.png; sourceTree = "<group>"; };
+		6358344217C8A93700F997F6 /* FindButtonOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FindButtonOn@2x.png"; sourceTree = "<group>"; };
+		6358344717C8B70C00F997F6 /* FacebookOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FacebookOff.png; sourceTree = "<group>"; };
+		6358344817C8B70C00F997F6 /* FacebookOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FacebookOff@2x.png"; sourceTree = "<group>"; };
+		6358344917C8B70C00F997F6 /* FacebookOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FacebookOn.png; sourceTree = "<group>"; };
+		6358344A17C8B70C00F997F6 /* FacebookOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FacebookOn@2x.png"; sourceTree = "<group>"; };
 		636AEA5C17AD43CC002A3494 /* Good.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Good.storyboard; sourceTree = "<group>"; };
 		636AEA6D17AD4B95002A3494 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		636AEA6E17AD4B95002A3494 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -310,6 +389,11 @@
 		636AEAD017AD97B0002A3494 /* Calibre-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-Regular.otf"; sourceTree = "<group>"; };
 		636AEAD117AD97B0002A3494 /* Calibre-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-Semibold.otf"; sourceTree = "<group>"; };
 		636AEAD217AD97B0002A3494 /* Calibre-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Calibre-Thin.otf"; sourceTree = "<group>"; };
+		637ABAD217C7C6F4004AA4C9 /* SearchUserNetworks.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchUserNetworks.xib; sourceTree = "<group>"; };
+		637ABAD517C7CEF5004AA4C9 /* AddressBookWatermark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddressBookWatermark.png; sourceTree = "<group>"; };
+		637ABAD617C7CEF5004AA4C9 /* AddressBookWatermark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddressBookWatermark@2x.png"; sourceTree = "<group>"; };
+		637ABAD717C7CEF5004AA4C9 /* TwitterWatermark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TwitterWatermark.png; sourceTree = "<group>"; };
+		637ABAD817C7CEF5004AA4C9 /* TwitterWatermark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TwitterWatermark@2x.png"; sourceTree = "<group>"; };
 		637CC94117C5527E007619F5 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		637CC94417C553D9007619F5 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		638647DE17AC087A00167F15 /* DoGood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoGood.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -355,6 +439,14 @@
 		639B890117BA8660005E2B62 /* OptionsButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OptionsButtonTap@2x.png"; sourceTree = "<group>"; };
 		639B890F17BAEC1D005E2B62 /* DGFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFollow.h; sourceTree = "<group>"; };
 		639B891017BAEC1D005E2B62 /* DGFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFollow.m; sourceTree = "<group>"; };
+		63BFB1E517C818DE004D990F /* DGUserSearchAddressBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchAddressBookViewController.h; sourceTree = "<group>"; };
+		63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchAddressBookViewController.m; sourceTree = "<group>"; };
+		63BFB1EA17C81E11004D990F /* DGUserSearchNetworksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchNetworksViewController.h; sourceTree = "<group>"; };
+		63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchNetworksViewController.m; sourceTree = "<group>"; };
+		63BFB1ED17C854E4004D990F /* AddressBookButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddressBookButton.png; sourceTree = "<group>"; };
+		63BFB1EE17C854E4004D990F /* AddressBookButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddressBookButton@2x.png"; sourceTree = "<group>"; };
+		63BFB1EF17C854E4004D990F /* AddressBookButtonTap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddressBookButtonTap.png; sourceTree = "<group>"; };
+		63BFB1F017C854E4004D990F /* AddressBookButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddressBookButtonTap@2x.png"; sourceTree = "<group>"; };
 		63E0796F17BC3F6D006FC42E /* PoweredByFoursquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PoweredByFoursquare.png; sourceTree = "<group>"; };
 		63E0797017BC3F6D006FC42E /* PoweredByFoursquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PoweredByFoursquare@2x.png"; sourceTree = "<group>"; };
 		63E0797317BC4010006FC42E /* Textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Textfield.png; sourceTree = "<group>"; };
@@ -410,6 +502,8 @@
 		6319D39017BDF05C0071DA71 /* Reusable Components */ = {
 			isa = PBXGroup;
 			children = (
+				6358342C17C8A09700F997F6 /* Arrow.h */,
+				6358342D17C8A09700F997F6 /* Arrow.m */,
 				63E0798717BC59C7006FC42E /* UITextFieldCell.xib */,
 				6308161317C3C19F004DE5D7 /* DGPhotoPickerViewController.h */,
 				6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */,
@@ -457,6 +551,10 @@
 				632A36C717BCB29B004EED26 /* FollowingButton@2x.png */,
 				632A36C817BCB29B004EED26 /* FollowingButtonTap.png */,
 				632A36C917BCB29B004EED26 /* FollowingButtonTap@2x.png */,
+				6358342417C8997200F997F6 /* BasicButton.png */,
+				6358342517C8997200F997F6 /* BasicButton@2x.png */,
+				6358342617C8997200F997F6 /* BasicButtonTap.png */,
+				6358342717C8997200F997F6 /* BasicButtonTap@2x.png */,
 				6397318417C15EBE001B96BF /* SignOutButton.png */,
 				6397318517C15EBE001B96BF /* SignOutButton@2x.png */,
 				6397318617C15EBE001B96BF /* SignOutButtonTap.png */,
@@ -528,8 +626,19 @@
 			children = (
 				6319D39317BE5A220071DA71 /* DGUserSearchViewController.h */,
 				6319D39417BE5A220071DA71 /* DGUserSearchViewController.m */,
+				637ABAD217C7C6F4004AA4C9 /* SearchUserNetworks.xib */,
 				6355EC3917B8680300EE91C0 /* SignUpOverviewCell.xib */,
 				6355EC3B17B86B7800EE91C0 /* SignUpOverviewCell.h */,
+				63BFB1E517C818DE004D990F /* DGUserSearchAddressBookViewController.h */,
+				63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */,
+				6358341717C88F3C00F997F6 /* DGUserSearchOtherViewController.h */,
+				6358341817C88F3C00F997F6 /* DGUserSearchOtherViewController.m */,
+				6358341417C88D3700F997F6 /* DGUserSearchFacebookViewController.h */,
+				6358341517C88D3700F997F6 /* DGUserSearchFacebookViewController.m */,
+				6358340917C885D700F997F6 /* DGUserSearchTwitterViewController.h */,
+				6358340A17C885D700F997F6 /* DGUserSearchTwitterViewController.m */,
+				63BFB1EA17C81E11004D990F /* DGUserSearchNetworksViewController.h */,
+				63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */,
 				6355EC3C17B86B7B00EE91C0 /* SignUpOverviewCell.m */,
 				632A36B917BCAEE8004EED26 /* UserCell.h */,
 				632A36BA17BCAEE8004EED26 /* UserCell.m */,
@@ -617,6 +726,7 @@
 		636AEA6C17AD4B8A002A3494 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				637ABAD417C7CEE6004AA4C9 /* FindFriends */,
 				632A36C117BCB294004EED26 /* Buttons */,
 				63E0798C17BC94B6006FC42E /* UserProfile */,
 				63E4424617BBCCA1000224E8 /* Progress */,
@@ -678,6 +788,45 @@
 				636AEAD217AD97B0002A3494 /* Calibre-Thin.otf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		637ABAD417C7CEE6004AA4C9 /* FindFriends */ = {
+			isa = PBXGroup;
+			children = (
+				637ABAD517C7CEF5004AA4C9 /* AddressBookWatermark.png */,
+				637ABAD617C7CEF5004AA4C9 /* AddressBookWatermark@2x.png */,
+				63BFB1ED17C854E4004D990F /* AddressBookButton.png */,
+				63BFB1EE17C854E4004D990F /* AddressBookButton@2x.png */,
+				63BFB1EF17C854E4004D990F /* AddressBookButtonTap.png */,
+				63BFB1F017C854E4004D990F /* AddressBookButtonTap@2x.png */,
+				6358341C17C894DB00F997F6 /* FacebookButton.png */,
+				6358341D17C894DB00F997F6 /* FacebookButton@2x.png */,
+				6358341E17C894DB00F997F6 /* FacebookButtonTap.png */,
+				6358341F17C894DB00F997F6 /* FacebookButtonTap@2x.png */,
+				6358343F17C8A93700F997F6 /* FindButtonOff.png */,
+				6358344017C8A93700F997F6 /* FindButtonOff@2x.png */,
+				6358344117C8A93700F997F6 /* FindButtonOn.png */,
+				6358344217C8A93700F997F6 /* FindButtonOn@2x.png */,
+				6358344717C8B70C00F997F6 /* FacebookOff.png */,
+				6358344817C8B70C00F997F6 /* FacebookOff@2x.png */,
+				6358344917C8B70C00F997F6 /* FacebookOn.png */,
+				6358344A17C8B70C00F997F6 /* FacebookOn@2x.png */,
+				6358343717C8A8F900F997F6 /* AddressBookOff.png */,
+				6358343817C8A8F900F997F6 /* AddressBookOff@2x.png */,
+				6358343917C8A8F900F997F6 /* AddressBookOn.png */,
+				6358343A17C8A8F900F997F6 /* AddressBookOn@2x.png */,
+				6358342F17C8A89600F997F6 /* TwitterOff.png */,
+				6358343017C8A89600F997F6 /* TwitterOff@2x.png */,
+				6358343117C8A89600F997F6 /* TwitterOn.png */,
+				6358343217C8A89600F997F6 /* TwitterOn@2x.png */,
+				6358340C17C8895000F997F6 /* TwitterButton.png */,
+				6358340D17C8895000F997F6 /* TwitterButton@2x.png */,
+				6358340E17C8895000F997F6 /* TwitterButtonTap.png */,
+				6358340F17C8895000F997F6 /* TwitterButtonTap@2x.png */,
+				637ABAD717C7CEF5004AA4C9 /* TwitterWatermark.png */,
+				637ABAD817C7CEF5004AA4C9 /* TwitterWatermark@2x.png */,
+			);
+			name = FindFriends;
 			sourceTree = "<group>";
 		};
 		638647D517AC087A00167F15 = {
@@ -992,6 +1141,43 @@
 				6397318917C15EBE001B96BF /* SignOutButton@2x.png in Resources */,
 				6397318A17C15EBE001B96BF /* SignOutButtonTap.png in Resources */,
 				6397318B17C15EBE001B96BF /* SignOutButtonTap@2x.png in Resources */,
+				637ABAD317C7C6F4004AA4C9 /* SearchUserNetworks.xib in Resources */,
+				637ABAD917C7CEF5004AA4C9 /* AddressBookWatermark.png in Resources */,
+				637ABADA17C7CEF5004AA4C9 /* AddressBookWatermark@2x.png in Resources */,
+				637ABADB17C7CEF5004AA4C9 /* TwitterWatermark.png in Resources */,
+				637ABADC17C7CEF5004AA4C9 /* TwitterWatermark@2x.png in Resources */,
+				63BFB1F117C854E4004D990F /* AddressBookButton.png in Resources */,
+				63BFB1F217C854E4004D990F /* AddressBookButton@2x.png in Resources */,
+				63BFB1F317C854E4004D990F /* AddressBookButtonTap.png in Resources */,
+				63BFB1F417C854E4004D990F /* AddressBookButtonTap@2x.png in Resources */,
+				6358341017C8895000F997F6 /* TwitterButton.png in Resources */,
+				6358341117C8895000F997F6 /* TwitterButton@2x.png in Resources */,
+				6358341217C8895000F997F6 /* TwitterButtonTap.png in Resources */,
+				6358341317C8895000F997F6 /* TwitterButtonTap@2x.png in Resources */,
+				6358342017C894DB00F997F6 /* FacebookButton.png in Resources */,
+				6358342117C894DB00F997F6 /* FacebookButton@2x.png in Resources */,
+				6358342217C894DB00F997F6 /* FacebookButtonTap.png in Resources */,
+				6358342317C894DB00F997F6 /* FacebookButtonTap@2x.png in Resources */,
+				6358342817C8997200F997F6 /* BasicButton.png in Resources */,
+				6358342917C8997200F997F6 /* BasicButton@2x.png in Resources */,
+				6358342A17C8997200F997F6 /* BasicButtonTap.png in Resources */,
+				6358342B17C8997200F997F6 /* BasicButtonTap@2x.png in Resources */,
+				6358343317C8A89600F997F6 /* TwitterOff.png in Resources */,
+				6358343417C8A89600F997F6 /* TwitterOff@2x.png in Resources */,
+				6358343517C8A89600F997F6 /* TwitterOn.png in Resources */,
+				6358343617C8A89600F997F6 /* TwitterOn@2x.png in Resources */,
+				6358343B17C8A8F900F997F6 /* AddressBookOff.png in Resources */,
+				6358343C17C8A8F900F997F6 /* AddressBookOff@2x.png in Resources */,
+				6358343D17C8A8F900F997F6 /* AddressBookOn.png in Resources */,
+				6358343E17C8A8F900F997F6 /* AddressBookOn@2x.png in Resources */,
+				6358344317C8A93700F997F6 /* FindButtonOff.png in Resources */,
+				6358344417C8A93700F997F6 /* FindButtonOff@2x.png in Resources */,
+				6358344517C8A93700F997F6 /* FindButtonOn.png in Resources */,
+				6358344617C8A93700F997F6 /* FindButtonOn@2x.png in Resources */,
+				6358344B17C8B70C00F997F6 /* FacebookOff.png in Resources */,
+				6358344C17C8B70C00F997F6 /* FacebookOff@2x.png in Resources */,
+				6358344D17C8B70C00F997F6 /* FacebookOn.png in Resources */,
+				6358344E17C8B70C00F997F6 /* FacebookOn@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1082,6 +1268,12 @@
 				6308161817C3DDD4004DE5D7 /* RestKit.m in Sources */,
 				6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */,
 				6308162217C41EA0004DE5D7 /* ThirdParties.m in Sources */,
+				63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */,
+				63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */,
+				6358340B17C885D700F997F6 /* DGUserSearchTwitterViewController.m in Sources */,
+				6358341617C88D3700F997F6 /* DGUserSearchFacebookViewController.m in Sources */,
+				6358341917C88F3C00F997F6 /* DGUserSearchOtherViewController.m in Sources */,
+				6358342E17C8A09700F997F6 /* Arrow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

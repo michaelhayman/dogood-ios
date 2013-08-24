@@ -45,8 +45,10 @@
      @"liked_goods_count",
      @"posted_or_followed_goods_count",
      @"contactable",
-     @"message"
-    ]];
+     @"message",
+     @"twitter_id",
+     @"facebook_id"
+     ]];
 
     RKResponseDescriptor *userResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:userResponseDescriptor];
@@ -60,8 +62,10 @@
      @"phone",
      @"contactable",
      @"location",
-     @"biography"
-    ]];
+     @"biography",
+     @"twitter_id",
+     @"facebook_id"
+     ]];
 
     RKRequestDescriptor *userRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:userRequestMapping objectClass:[DGUser class] rootKeyPath:@"user" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:userRequestDescriptor];

@@ -135,6 +135,7 @@
         UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.delegate = self;
         imagePicker.allowsEditing = YES;
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentViewController:imagePicker animated:YES completion:nil];
     }
 }

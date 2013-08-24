@@ -17,7 +17,8 @@
 #define TWITTER_CONSUMER_SECRET @"3neq3XqN5fO3obqwZoajavGFCUrC42ZfbrLXy5sCv8"
 
 // Paths
-#define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3002/"
+#define JSON_API_HOST_ADDRESS @"http://192.168.1.3:3002/"
+// #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3002/"
 
 #pragma mark - User
 
@@ -58,6 +59,8 @@ extern NSString* const kDGUserCurrentUserBiography;
 extern NSString* const kDGUserCurrentUserPhone;
 extern NSString* const kDGUserCurrentUserContactable;
 extern NSString* const kDGUserCurrentUserAvatar;
+extern NSString* const kDGUserCurrentUserTwitterID;
+extern NSString* const kDGUserCurrentUserFacebookID;
 
 // Notifications
 extern NSString *const DGUserDidSignOutNotification;
@@ -102,12 +105,16 @@ extern NSString* const DGUserIsNotConnectedToTwitter;
 extern NSString* const DGUserDidCheckIfTwitterIsConnected;
 
 extern NSString* const DGUserDidFindFriendsOnTwitter;
+extern NSString* const DGUserDidFailFindFriendsOnTwitter;
 
 extern NSString* const DGUserDidConnectToFacebook;
 extern NSString* const DGUserDidDisconnectFromFacebook;
 
 extern NSString* const DGUserDidCheckIfFacebookIsConnectedAndHasPermissions;
 extern NSString* const DGUserDidCheckIfFacebookIsConnected;
+extern NSString* const DGUserDidFindFriendsOnFacebook;
+
+extern NSString* const DGUserDidCheckIfAddressBookIsConnected;
 
 #pragma mark - Good
 
@@ -116,3 +123,6 @@ extern NSString* const DGUserDidPostGood;
 
 // Text field cells
 extern NSString* const UITextFieldCellIdentifier;
+
+// convenience methods
+#define NSNullIfNil(v) (v ? v : [NSNull null])

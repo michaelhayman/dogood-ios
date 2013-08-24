@@ -267,9 +267,17 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Find locations near you" id="Sgk-10-bsa">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                            <connections>
+                                <outlet property="delegate" destination="gsy-GB-XGg" id="DA5-oZ-Qe1"/>
+                            </connections>
+                        </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="location" id="Quo-aC-kFC">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -283,12 +291,56 @@
                             <outlet property="delegate" destination="gsy-GB-XGg" id="jXi-fP-jg2"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="searchBar" destination="Sgk-10-bsa" id="xSG-dH-LDy"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MVg-zl-kpj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1615" y="527"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="DGGoodCommentsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGGoodCommentsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="commentFieldBottom" candidateClass="NSLayoutConstraint"/>
+                <relationship kind="outlet" name="commentInputField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="commentInputView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="tableViewBottom" candidateClass="NSLayoutConstraint"/>
+            </relationships>
+        </class>
+        <class className="DGGoodListViewController" superclassName="RootViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGGoodListViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="headerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="DGPostGoodCategoryViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGPostGoodCategoryViewController.h"/>
+        </class>
+        <class className="DGPostGoodLocationViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGPostGoodLocationViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="DGPostGoodViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGPostGoodViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="post:"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RootViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

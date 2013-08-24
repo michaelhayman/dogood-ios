@@ -1,17 +1,18 @@
-@class DGUserInvitesViewController;
-@interface DGUserFindFriendsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate> {
-    
-    __weak IBOutlet UISegmentedControl *tabs;
-    __weak IBOutlet UILabel *contentDescription;
-    __weak IBOutlet UITableView *tableView;
-    __weak IBOutlet UIView *internalSearch;
-    NSArray *users;
-    __weak IBOutlet UIView *tableHeader;
-    DGUserInvitesViewController *invites;
+@class Arrow;
+@interface DGUserFindFriendsViewController : UIViewController {
+    Arrow *arrow;
+    NSInteger segmentIndex;
+
+    __weak IBOutlet UIView *buttonRow;
+    __weak IBOutlet UIButton *other;
+    __weak IBOutlet UIButton *facebook;
+    __weak IBOutlet UIButton *twitter;
+    __weak IBOutlet UIButton *addressBook;
 }
 
-- (IBAction)searchForPeople:(id)sender;
-- (IBAction)inviteViaText:(id)sender;
-- (IBAction)inviteViaEmail:(id)sender;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *typeSegmentedControl;
+@property (nonatomic, retain)    UIViewController *currentViewController;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+- (IBAction)segmentChanged:(UISegmentedControl *)sender;
 
 @end

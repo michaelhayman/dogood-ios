@@ -20,6 +20,9 @@
 @property (nonatomic, copy) NSString* message;
 @property (nonatomic, copy) NSString* avatar;
 @property (nonatomic, copy) UIImage* image;
+#pragma mark - Social
+@property (nonatomic, copy) NSNumber* twitter_id;
+@property (nonatomic, copy) NSNumber* facebook_id;
 
 #pragma mark - Class methods
 + (DGUser*)currentUser;
@@ -47,8 +50,10 @@
 #pragma mark - Points
 - (void)updatePoints;
 
+#pragma mark - Social
+- (void)saveSocialID:(NSNumber *)socialID withType:(NSString *)socialType;
+
 #pragma mark - Profile helpers
 + (void)openProfilePage:(NSNumber *)userID inController:(UINavigationController *)nav;
 
 @end
-

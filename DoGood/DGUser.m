@@ -29,6 +29,8 @@ static DGUser* currentUser = nil;
             currentUser.contactable = [defaults objectForKey:kDGUserCurrentUserContactable];
             currentUser.avatar = [defaults objectForKey:kDGUserCurrentUserAvatar];
             currentUser.password = [RFKeychain passwordForAccount:kDoGoodAccount service:kDoGoodService];
+            currentUser.twitter_id = [defaults objectForKey:kDGUserCurrentUserTwitterID];
+            currentUser.twitter_id = [defaults objectForKey:kDGUserCurrentUserFacebookID];
 		} else {
             currentUser = [[self alloc] init];
 		}
@@ -103,6 +105,8 @@ static DGUser* currentUser = nil;
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.contactable forKey:kDGUserCurrentUserContactable];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.avatar forKey:kDGUserCurrentUserAvatar];
     [RFKeychain setPassword:currentUser.password account:kDoGoodAccount service:kDoGoodService];
+	[[NSUserDefaults standardUserDefaults] setObject:currentUser.twitter_id forKey:kDGUserCurrentUserTwitterID];
+	[[NSUserDefaults standardUserDefaults] setObject:currentUser.facebook_id forKey:kDGUserCurrentUserFacebookID];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -126,6 +130,8 @@ static DGUser* currentUser = nil;
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserEmail];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserContactable];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserAvatar];
+	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserTwitterID];
+	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserFacebookID];
     [[NSUserDefaults standardUserDefaults] synchronize];
  
     self.userID = nil;
@@ -139,6 +145,8 @@ static DGUser* currentUser = nil;
     self.phone = nil;
     self.contactable = nil;
     self.avatar = nil;
+    self.twitter_id = nil;
+    self.facebook_id = nil;
 
     [RFKeychain deletePasswordForAccount:kDoGoodAccount service:kDoGoodService];
     [DGUser setAuthorizationHeader];
@@ -157,11 +165,50 @@ static DGUser* currentUser = nil;
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/users/points" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         DGUser *user = mappingResult.array[0];
         self.points = user.points;
+        [DGUser assignDefaults];
+        // should probably synchronize here..
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdatePointsNotification object:self];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
     }];
 }
+
+#pragma mark - Social
+- (void)saveSocialID:(NSNumber *)socialID withType:(NSString *)socialType {
+    if (socialID == nil || socialType == nil) {
+        return;
+    }
+
+    DGUser *user = [DGUser new];
+
+    if ([socialType isEqualToString:@"twitter"]) {
+        if (![self.twitter_id  isEqualToNumber:socialID]) {
+            user.twitter_id = socialID;
+        } else {
+            return;
+        }
+    } else if ([socialType isEqualToString:@"facebook"]) {
+        if (![self.facebook_id isEqualToNumber:socialID]) {
+            user.facebook_id = socialID;
+        } else {
+            return;
+        }
+    }
+
+    [[RKObjectManager sharedManager] postObject:user path:@"/users/social" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        DebugLog(@"successfully saved.");
+        if (user.twitter_id) {
+            self.twitter_id = user.twitter_id;
+        } else if (user.facebook_id) {
+            self.facebook_id = user.facebook_id;
+        }
+        [DGUser assignDefaults];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        DebugLog(@"Operation failed with error: %@", error);
+    }];
+}
+
+// - (void)saveFacebookID:(NSString *)facebookID
 
 #pragma mark - Profile helper
 + (void)openProfilePage:(NSNumber *)userID inController:(UINavigationController *)nav  {

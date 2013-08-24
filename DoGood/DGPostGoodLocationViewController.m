@@ -81,8 +81,9 @@
         }
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSDictionary* jsonFromData = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:&error];
-        DebugLog(@"failure %@", jsonFromData);
+        // don't output here, it's broken
+        // NSDictionary* jsonFromData = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:&error];
+        // DebugLog(@"failure %@", jsonFromData);
     }];
 }
 

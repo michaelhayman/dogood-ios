@@ -13,7 +13,6 @@
     [DGAppearance setupAppearance];
     [DGUser setUpUserAuthentication];
     [RestKit setupRestKit];
-    [ThirdParties setupFoursquare];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self setupViewsForUser];
@@ -61,10 +60,7 @@
     return NO;
 }
 
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation {
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     return [ThirdParties facebookHandleOpenURL:url];
 }
 

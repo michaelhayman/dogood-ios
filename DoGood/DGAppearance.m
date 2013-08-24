@@ -29,13 +29,10 @@
 }
 
 - (void)listFonts {
-    for (NSString* family in [UIFont familyNames])
-    {
-        NSLog(@"%@", family);
-
-        for (NSString* name in [UIFont fontNamesForFamilyName: family])
-        {
-            NSLog(@"  %@", name);
+    for (NSString* family in [UIFont familyNames]) {
+        DebugLog(@"%@", family);
+        for (NSString* name in [UIFont fontNamesForFamilyName: family]) {
+            DebugLog(@"  %@", name);
         }
     }
 }
