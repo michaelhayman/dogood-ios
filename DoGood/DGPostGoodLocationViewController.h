@@ -1,10 +1,10 @@
 #import <CoreLocation/CoreLocation.h>
 
-@interface DGPostGoodLocationViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UISearchBarDelegate> {
+@interface DGPostGoodLocationViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UISearchBarDelegate, UIScrollViewDelegate> {
     NSMutableArray *locations;
     CLLocationManager *locationManager;
     CLLocation *userLocation;
-    __weak IBOutlet UISearchBar *searchBar;
+    IBOutlet UISearchBar *searchBar;
     CLGeocoder *geo;
     CLRegion *region;
 }

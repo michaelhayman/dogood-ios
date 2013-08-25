@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ype-Me-aoA">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -299,48 +299,46 @@
             </objects>
             <point key="canvasLocation" x="1615" y="527"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="e9o-qF-3xI">
+            <objects>
+                <viewController id="Ype-Me-aoA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fb9-dJ-4lH">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="SqN-XQ-FVG">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" type="user" id="VEX-KO-glU"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ntJ-Tt-DKJ">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="scaleToFill" id="om0-T0-XZZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ntJ-Tt-DKJ" firstAttribute="top" secondItem="SqN-XQ-FVG" secondAttribute="bottom" type="user" id="10s-cs-Jav"/>
+                            <constraint firstItem="ntJ-Tt-DKJ" firstAttribute="leading" secondItem="fb9-dJ-4lH" secondAttribute="leading" type="default" id="EAd-SH-yb4"/>
+                            <constraint firstItem="ntJ-Tt-DKJ" firstAttribute="trailing" secondItem="fb9-dJ-4lH" secondAttribute="trailing" type="default" id="Lt3-Fd-8nq"/>
+                            <constraint firstItem="SqN-XQ-FVG" firstAttribute="trailing" secondItem="fb9-dJ-4lH" secondAttribute="trailing" type="default" id="OcI-HN-AtH"/>
+                            <constraint firstItem="ntJ-Tt-DKJ" firstAttribute="bottom" secondItem="fb9-dJ-4lH" secondAttribute="bottom" type="default" id="P6d-po-Hcz"/>
+                            <constraint firstItem="SqN-XQ-FVG" firstAttribute="top" secondItem="fb9-dJ-4lH" secondAttribute="top" type="user" id="XjI-eB-7Zh"/>
+                            <constraint firstItem="SqN-XQ-FVG" firstAttribute="leading" secondItem="fb9-dJ-4lH" secondAttribute="leading" type="default" id="ZIi-2K-qAC"/>
+                            <constraint firstItem="ntJ-Tt-DKJ" firstAttribute="top" secondItem="SqN-XQ-FVG" secondAttribute="bottom" type="user" id="drd-5e-etQ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hxa-iB-3W1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1961" y="527"/>
+        </scene>
     </scenes>
-    <classes>
-        <class className="DGGoodCommentsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGGoodCommentsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="commentFieldBottom" candidateClass="NSLayoutConstraint"/>
-                <relationship kind="outlet" name="commentInputField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="commentInputView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="sendButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="tableViewBottom" candidateClass="NSLayoutConstraint"/>
-            </relationships>
-        </class>
-        <class className="DGGoodListViewController" superclassName="RootViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGGoodListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="headerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="DGPostGoodCategoryViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGPostGoodCategoryViewController.h"/>
-        </class>
-        <class className="DGPostGoodLocationViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGPostGoodLocationViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-            </relationships>
-        </class>
-        <class className="DGPostGoodViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DGPostGoodViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="post:"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="RootViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RootViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -17,8 +17,8 @@
 #define TWITTER_CONSUMER_SECRET @"3neq3XqN5fO3obqwZoajavGFCUrC42ZfbrLXy5sCv8"
 
 // Paths
-#define JSON_API_HOST_ADDRESS @"http://192.168.1.3:3002/"
-// #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3002/"
+// #define JSON_API_HOST_ADDRESS @"http://192.168.1.3:3002/"
+#define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3002/"
 
 #pragma mark - User
 

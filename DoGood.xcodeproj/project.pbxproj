@@ -1009,7 +1009,7 @@
 				ORGANIZATIONNAME = Michael;
 				TargetAttributes = {
 					6386480117AC087A00167F15 = {
-						TestTargetID = 638647DD17AC087A00167F15;
+						TestTargetID = 638647DD17AC087A00167F15 /* DoGood */;
 					};
 				};
 			};
