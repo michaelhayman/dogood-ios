@@ -17,6 +17,7 @@
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
     locations = [[NSMutableArray alloc] init];
+    geo = [[CLGeocoder alloc] init];
 }
 
 - (void)dealloc {
@@ -32,6 +33,8 @@
     DebugLog(@"array of locations %@", foundLocations);
     userLocation = [foundLocations lastObject];
     [self findLocations:[foundLocations lastObject]];
+    
+    region = [[CLRegion alloc] initCircularRegionWithCenter:userLocation.coordinate radius:750 identifier:@"currentRegion"];
     [locationManager stopUpdatingLocation];
 }
 
@@ -60,6 +63,7 @@
     DebugLog(@"path 1 %@", path);
 
     [client getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        // is this broken offline?
         // NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         // DebugLog(@"Request Successful, response '%@'", responseStr);
         NSError *error;
@@ -81,6 +85,7 @@
         }
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        DebugLog(@"the operation failed.");
         // don't output here, it's broken
         // NSDictionary* jsonFromData = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:&error];
         // DebugLog(@"failure %@", jsonFromData);
@@ -115,6 +120,33 @@
                                                         object:nil
                                                       userInfo:userInfo];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    NSMutableArray *tempLocations = locations;
+    if ([searchText length] > 1) {
+        // wait a few seconds before doing this
+        [self geocodeLocation:searchText];
+    } else if (searchText.length == 0) {
+        locations = tempLocations;
+    } else {
+        [locations removeAllObjects];
+        [self.tableView reloadData];
+    }
+}
+
+- (void)geocodeLocation:(NSString *)searchText {
+    [geo cancelGeocode];
+    // executed on main thread
+    [geo geocodeAddressString:searchText inRegion:region completionHandler:^(NSArray *placemarks, NSError *error) {
+        if (!error) {
+            CLPlacemark *place = [placemarks objectAtIndex:0];
+            [self findLocations:place.location];
+        }
+        else {
+            DebugLog(@"There was a forward geocoding error\n%@", [error localizedDescription]);
+        }
+    }];
 }
 
 @end
