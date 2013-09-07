@@ -1,5 +1,6 @@
 @interface DGCategory : NSObject
 
-@property (retain) NSString *displayName;
+@property (retain) NSNumber *categoryID;
+@property (retain) NSString *name;
 
 @end

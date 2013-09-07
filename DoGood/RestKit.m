@@ -139,6 +139,16 @@
     RKRequestDescriptor *claimRewardRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:claimRewardRequestMapping objectClass:[DGReward class] rootKeyPath:@"reward" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:claimRewardRequestDescriptor];
 
+    // category
+    RKObjectMapping *categoryMapping = [RKObjectMapping mappingForClass:[DGCategory class]];
+ 
+    [categoryMapping addAttributeMappingsFromArray:@[
+     @"name"
+    ]];
+    [categoryMapping addAttributeMappingsFromDictionary:@{ @"id" : @"categoryID" }];
+    RKResponseDescriptor *categoryResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:categoryMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"categories" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:categoryResponseDescriptor];
+
     // good
     RKObjectMapping *goodMapping = [RKObjectMapping mappingForClass:[DGGood class]];
 
