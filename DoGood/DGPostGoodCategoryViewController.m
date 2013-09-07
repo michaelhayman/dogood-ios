@@ -18,16 +18,7 @@
     self.tableView.opaque = NO;
     self.view.backgroundColor = [UIColor whiteColor];
 
-    // [self.tableView setStyle:UITableViewStyleGrouped];
-
-    // mock data
-    DGCategory * category = [DGCategory new];
-    category.displayName = @"Health";
-
-    DGCategory * category2 = [DGCategory new];
-    category2.displayName = @"Environment";
-
-    categories = [[NSArray alloc] initWithObjects:category, category2, nil];
+    [self getCategories];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,7 +39,17 @@
     static NSString *CellIdentifier = @"category";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     DGCategory *category = categories[indexPath.row];
-    cell.textLabel.text = category.displayName;
+    cell.textLabel.text = category.name;
+
+    UIImage *categoryImage = [UIImage imageNamed:@"category_1.png"];
+    if (categoryImage == nil) {
+        NSString *imgURL = [NSString stringWithFormat:@"%@/images/categories/category_%@.png", JSON_API_HOST_ADDRESS, category.categoryID];
+        DebugLog(@"nil image %@", imgURL);
+        [cell.imageView setImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:[UIImage imageNamed:@"category_empty.png"]];
+    } else {
+        cell.imageView.image = categoryImage;
+    }
+
     return cell;
 }
 
@@ -68,6 +69,16 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)getCategories {
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/categories" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        categories = [[NSArray alloc] initWithArray:mappingResult.array];
+        [self.tableView reloadData];
+        DebugLog(@"categories %@", categories);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        DebugLog(@"Operation failed with error: %@", error);
+    }];
 }
 
 @end
