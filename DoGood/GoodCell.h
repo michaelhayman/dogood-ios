@@ -11,14 +11,13 @@
     __weak IBOutlet NSLayoutConstraint *commentsHeight;
     __weak IBOutlet NSLayoutConstraint *regoodsHeight;
     __weak IBOutlet NSLayoutConstraint *likesHeight;
+    __weak IBOutlet UIView *comments;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *overviewImage;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeight;
 @property (weak, nonatomic) IBOutlet UILabel *regoods;
 @property (weak, nonatomic) IBOutlet UILabel *commentsCount;
-@property (weak, nonatomic) IBOutlet UIView *comments;
-@property (strong, nonatomic) TTTAttributedLabel *commentBlock;
 
 @property (weak, nonatomic) IBOutlet UILabel *likes;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;

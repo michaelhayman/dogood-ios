@@ -49,12 +49,7 @@ static inline NSRegularExpression * NameRegularExpression() {
     UITapGestureRecognizer* commentsGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showComments)];
     [self.commentsCount setUserInteractionEnabled:YES];
     [self.commentsCount addGestureRecognizer:commentsGesture];
-
-    self.commentBlock = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
-    self.commentBlock.font = [UIFont fontWithName:@"Calibre" size:12];
-    self.commentBlock.textColor = [UIColor darkGrayColor];
-    self.commentBlock.lineBreakMode = NSLineBreakByWordWrapping;
-    self.commentBlock.numberOfLines = 0;
+    commentBoxHeight.constant = 0;
 
     // re-goods
     [self.regood addTarget:self action:@selector(addUserRegood) forControlEvents:UIControlEventTouchUpInside];
@@ -65,6 +60,13 @@ static inline NSRegularExpression * NameRegularExpression() {
     // more options
     [self.moreOptions addTarget:self action:@selector(openMoreOptions) forControlEvents:UIControlEventTouchUpInside];
     [self setupMoreOptions];
+}
+
+#pragma mark - Set up cell for reuse
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    [comments.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    DebugLog(@"reusing");
 }
 
 #pragma mark - Set values when cell becomes visible
@@ -241,7 +243,12 @@ static inline NSRegularExpression * NameRegularExpression() {
 }
 
 - (void)setupCommentsList {
-    CGFloat lastHeight = 0;
+    CGFloat lastHeight = 0.0;
+    if ([self.good.comments count] == 0) {
+        commentBoxHeight.constant = 0;
+        // self.comments.hidden = YES;
+        return;
+    }
     for (DGComment *comment in [self.good.comments reverseObjectEnumerator]) {
         TTTAttributedLabel *label = [self commentLabel];
         NSString *text = [NSString stringWithFormat:@"%@ %@", comment.user.username, comment.comment];
@@ -275,12 +282,13 @@ static inline NSRegularExpression * NameRegularExpression() {
         CGSize size = [text sizeWithFont:font
                               constrainedToSize:CGSizeMake(221, 118)
                           lineBreakMode:NSLineBreakByWordWrapping];
-        lastHeight = lastHeight + size.height;
         label.frame = CGRectMake(0, lastHeight, 221, size.height);
+        lastHeight = lastHeight + size.height;
         label.delegate = self;
-        [self.comments addSubview:label];
+        [comments addSubview:label];
     }
-    commentBoxHeight.constant = lastHeight + 20;
+    commentBoxHeight.constant = lastHeight + 0.0;
+    [self layoutIfNeeded];
 }
 
 #pragma mark - More options
