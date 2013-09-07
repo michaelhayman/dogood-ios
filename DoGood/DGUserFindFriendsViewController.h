@@ -13,6 +13,5 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *typeSegmentedControl;
 @property (nonatomic, retain)    UIViewController *currentViewController;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
-- (IBAction)segmentChanged:(UISegmentedControl *)sender;
 
 @end
