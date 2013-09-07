@@ -20,14 +20,7 @@
     UINib *nib = [UINib nibWithNibName:@"GoodCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"GoodCell"];
 
-    [[NSBundle mainBundle] loadNibNamed:@"UserOverview" owner:self options:nil];
-    [tableView setTableHeaderView:headerView];
-
-    UILabel *userName = (UILabel *)[headerView viewWithTag:201];
-    userName.text = [DGUser currentUser].username;
-    UILabel *points = (UILabel *)[headerView viewWithTag:202];
-    points.text = @"51,500";
-
+    [self setupUserPoints];
     [self getGood];
     [self setupRefresh];
 
@@ -43,6 +36,17 @@
                                              selector:@selector(getGood)
                                                  name:DGUserDidPostGood
                                                object:nil];
+}
+
+- (void)setupUserPoints {
+    [[NSBundle mainBundle] loadNibNamed:@"UserOverview" owner:self options:nil];
+    [tableView setTableHeaderView:headerView];
+
+    UILabel *userName = (UILabel *)[headerView viewWithTag:201];
+    userName.text = [DGUser currentUser].username;
+    UILabel *points = (UILabel *)[headerView viewWithTag:202];
+    points.text = [NSString stringWithFormat:@"%@ points", [DGUser currentUser].points];
+    headerView.backgroundColor = [UIColor lightGrayColor];
 }
 
 - (void)setupRefresh {
@@ -61,6 +65,7 @@
     DebugLog(@"appeared");
     // [[NSNotificationCenter defaultCenter] postNotificationName:@"SignOut" object:self];
     [self showWelcome];
+    [tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
