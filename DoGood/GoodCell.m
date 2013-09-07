@@ -208,17 +208,17 @@ static inline NSRegularExpression * NameRegularExpression() {
 #pragma mark - Comments
 - (void)addComment {
     UIStoryboard *goodS = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-    DGGoodCommentsViewController *comments = [goodS instantiateViewControllerWithIdentifier:@"GoodComments"];
-    comments.good = self.good;
-    comments.makeComment = YES;
-    [self.navigationController pushViewController:comments animated:YES];
+    DGGoodCommentsViewController *commentsView = [goodS instantiateViewControllerWithIdentifier:@"GoodComments"];
+    commentsView.good = self.good;
+    commentsView.makeComment = YES;
+    [self.navigationController pushViewController:commentsView animated:YES];
 }
 
 - (void)showComments {
     UIStoryboard *goodS = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-    DGGoodCommentsViewController *comments = [goodS instantiateViewControllerWithIdentifier:@"GoodComments"];
-    comments.good = self.good;
-    [self.navigationController pushViewController:comments animated:YES];
+    DGGoodCommentsViewController *commentsView = [goodS instantiateViewControllerWithIdentifier:@"GoodComments"];
+    commentsView.good = self.good;
+    [self.navigationController pushViewController:commentsView animated:YES];
 }
 
 - (void)setCommentsText {
