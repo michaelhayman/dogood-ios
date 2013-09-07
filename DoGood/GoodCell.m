@@ -73,6 +73,7 @@ static inline NSRegularExpression * NameRegularExpression() {
 - (void)setValues {
     // user
     self.username.text = self.good.user.username;
+    [self.avatar setImageWithURL:[NSURL URLWithString:self.good.user.avatar]];
     // description
     self.description.text = self.good.caption;
     // image
