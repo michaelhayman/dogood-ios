@@ -17,8 +17,8 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupMenuTitle:@"Profile"];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.title = @"Profile";
 
     // assume it's the current user's profile if no ID was specified
     if (self.userID == nil) {

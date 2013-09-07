@@ -47,6 +47,8 @@ NSString* const DGUserClaimRewardNotification = @"DGUserClaimRewardNotification"
 NSString* const DGUserDidAddPhotoNotification = @"DGUserDidAddPhotoNotification";
 NSString* const DGUserDidRemovePhotoNotification = @"DGUserDidRemovePhotoNotification";
 
+NSString* const DGUserDidToggleMenu = @"DGUserDidToggleMenu";
+
 #pragma mark - Good
 
 // Notifications

@@ -189,6 +189,7 @@
 		63BFB1F217C854E4004D990F /* AddressBookButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63BFB1EE17C854E4004D990F /* AddressBookButton@2x.png */; };
 		63BFB1F317C854E4004D990F /* AddressBookButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 63BFB1EF17C854E4004D990F /* AddressBookButtonTap.png */; };
 		63BFB1F417C854E4004D990F /* AddressBookButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63BFB1F017C854E4004D990F /* AddressBookButtonTap@2x.png */; };
+		63DA644417DBEA52003DFF03 /* UIViewController+DGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DA644317DBEA52003DFF03 /* UIViewController+DGViewController.m */; };
 		63E0797117BC3F6D006FC42E /* PoweredByFoursquare.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0796F17BC3F6D006FC42E /* PoweredByFoursquare.png */; };
 		63E0797217BC3F6D006FC42E /* PoweredByFoursquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0797017BC3F6D006FC42E /* PoweredByFoursquare@2x.png */; };
 		63E0797517BC4010006FC42E /* Textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 63E0797317BC4010006FC42E /* Textfield.png */; };
@@ -460,6 +461,8 @@
 		63BFB1EE17C854E4004D990F /* AddressBookButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddressBookButton@2x.png"; sourceTree = "<group>"; };
 		63BFB1EF17C854E4004D990F /* AddressBookButtonTap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddressBookButtonTap.png; sourceTree = "<group>"; };
 		63BFB1F017C854E4004D990F /* AddressBookButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AddressBookButtonTap@2x.png"; sourceTree = "<group>"; };
+		63DA644217DBEA52003DFF03 /* UIViewController+DGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DGViewController.h"; sourceTree = "<group>"; };
+		63DA644317DBEA52003DFF03 /* UIViewController+DGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DGViewController.m"; sourceTree = "<group>"; };
 		63E0796F17BC3F6D006FC42E /* PoweredByFoursquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PoweredByFoursquare.png; sourceTree = "<group>"; };
 		63E0797017BC3F6D006FC42E /* PoweredByFoursquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PoweredByFoursquare@2x.png"; sourceTree = "<group>"; };
 		63E0797317BC4010006FC42E /* Textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Textfield.png; sourceTree = "<group>"; };
@@ -515,6 +518,8 @@
 		6319D39017BDF05C0071DA71 /* Reusable Components */ = {
 			isa = PBXGroup;
 			children = (
+				63DA644217DBEA52003DFF03 /* UIViewController+DGViewController.h */,
+				63DA644317DBEA52003DFF03 /* UIViewController+DGViewController.m */,
 				6358342C17C8A09700F997F6 /* Arrow.h */,
 				6358342D17C8A09700F997F6 /* Arrow.m */,
 				63E0798717BC59C7006FC42E /* UITextFieldCell.xib */,
@@ -1045,7 +1050,7 @@
 				ORGANIZATIONNAME = Michael;
 				TargetAttributes = {
 					6386480117AC087A00167F15 = {
-						TestTargetID = 638647DD17AC087A00167F15 /* DoGood */;
+						TestTargetID = 638647DD17AC087A00167F15;
 					};
 				};
 			};
@@ -1316,6 +1321,7 @@
 				6358341917C88F3C00F997F6 /* DGUserSearchOtherViewController.m in Sources */,
 				6358342E17C8A09700F997F6 /* Arrow.m in Sources */,
 				635A232017CAB5150045C256 /* DGCategories.m in Sources */,
+				63DA644417DBEA52003DFF03 /* UIViewController+DGViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

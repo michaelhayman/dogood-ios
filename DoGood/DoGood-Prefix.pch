@@ -16,6 +16,7 @@
     #import "TSMessage.h"
     #import "DGUser.h"
     #import "constants.h"
+    #import "UIViewController+DGViewController.h"
     #import <RestKit/RestKit.h>
 #endif
 

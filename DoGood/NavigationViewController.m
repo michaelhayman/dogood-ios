@@ -21,6 +21,8 @@
     self.navigationBar.tintColor = [UIColor blueColor];
     self.navigationBar.tintColor = [UIColor colorWithRed:0 green:179/255.0 blue:134/255.0 alpha:1];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu) name:DGUserDidToggleMenu object:nil];
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(showGoodList)
                                                  name:DGUserDidSignOutNotification

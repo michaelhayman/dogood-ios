@@ -116,6 +116,8 @@ extern NSString* const DGUserDidFindFriendsOnFacebook;
 
 extern NSString* const DGUserDidCheckIfAddressBookIsConnected;
 
+extern NSString* const DGUserDidToggleMenu;
+
 #pragma mark - Good
 
 // Notifications

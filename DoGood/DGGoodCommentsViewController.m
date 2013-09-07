@@ -12,7 +12,8 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Comments";
+    [self setupMenuTitle:@"Comments"];
+
     DebugLog(@"comments good %@", self.comment.good);
     UINib *nib = [UINib nibWithNibName:@"CommentCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"CommentCell"];

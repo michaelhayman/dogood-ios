@@ -18,11 +18,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupMenuTitle:@"Rewards"];
     [collectionView registerClass:[DGRewardCell class] forCellWithReuseIdentifier:@"RewardCell"];
     UINib *nib = [UINib nibWithNibName:@"RewardCell" bundle:nil];
     [collectionView registerNib:nib forCellWithReuseIdentifier:@"RewardCell"];
     collectionView.backgroundColor = [UIColor whiteColor];
-    self.title = @"Rewards";
 
     [self setupTabs];
 
