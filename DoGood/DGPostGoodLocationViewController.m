@@ -17,27 +17,20 @@
     locationManager.delegate = self;
     [locationManager startUpdatingLocation];
     locations = [[NSMutableArray alloc] init];
-    geo = [[CLGeocoder alloc] init];
-    self.tableView.delegate = self;
 
-    DebugLog(@"region %@", region);
-
-    UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
     logo.contentMode = UIViewContentModeCenter;
 
+    searchBar.delegate = self;
+
     logo.image = [UIImage imageNamed:@"PoweredByFoursquare"];
-    DebugLog(@"header view %@", self.tableView.tableHeaderView);
-    [self.tableView setTableFooterView:logo];
-    // [self.tableView setTableHeaderView:searchBar];
-    DebugLog(@"header view %@", self.tableView.tableHeaderView);
+    [tableView setTableFooterView:logo];
+
+    UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
+    [tableView registerNib:nib forCellReuseIdentifier:@"UserCell"];
 }
 
--(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    // searchBar.frame = CGRectMake(0, MAX(0, scrollView.contentOffset.y), 320, 44);
-    CGRect rect = searchBar.frame;
-    rect.origin.y = MIN(0, scrollView.contentOffset.y);
-    [scrollView layoutSubviews];
-    searchBar.frame = rect;
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.view endEditing:YES];
 }
 
 - (void)dealloc {
@@ -52,10 +45,8 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)foundLocations {
     DebugLog(@"array of locations %@", foundLocations);
     userLocation = [foundLocations lastObject];
-    [self findVenuesAtLocation:[foundLocations lastObject] matchingQuery:nil];
-    
-    region = [[CLRegion alloc] initCircularRegionWithCenter:userLocation.coordinate radius:750 identifier:@"currentRegion"];
     [locationManager stopUpdatingLocation];
+    [self findVenuesAtLocation:[foundLocations lastObject] matchingQuery:nil];
 }
 
 #pragma mark - Find locations
@@ -64,11 +55,11 @@
     NSURL *baseURL = [NSURL URLWithString:FOURSQUARE_API_URL];
     AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     [client setDefaultHeader:@"Accept" value:@"application/json"];
-    DebugLog(@"query %@", query);
+
+    // query
     if (query == nil) {
         query = @"";
     }
-    DebugLog(@"query %@", query);
 
     // lat & lng
     NSString *ll = [NSString stringWithFormat:@"%f,%f", location.coordinate.latitude, location.coordinate.longitude];
@@ -86,7 +77,7 @@
         ll,
         query,
         dateString];
-    DebugLog(@"path 1 %@", path);
+    path = [path stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
 
     [client getPath:path parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         // is this broken offline?
@@ -99,19 +90,20 @@
 
         for (NSDictionary *element in response) {
             FSLocation * location = [FSLocation new];
-            DebugLog(@"location %@", location.displayName);
             location.displayName = element[@"name"];
-            // DebugLog(@"location %f", location.point.latitude);
-            // DebugLog(@"location %f", location.point.longitude);
-            // Parse does this with one object, a 'point'
-            // location.point
-            // location.lat = [element[@"location"][@"lat"] floatValue];
-            // location.lng = [element[@"location"][@"lng"] floatValue];
+            location.lat = [NSNumber numberWithDouble:[(NSString*)(element[@"location"][@"lat"]) doubleValue]];
+            location.lng = [NSNumber numberWithDouble:[(NSString*)(element[@"location"][@"lng"]) doubleValue]];
+            location.address = (NSString*)(element[@"location"][@"address"]);
+            DebugLog(@"category %@", element[@"categories"]);
+            if ([element[@"categories"] count] > 0) {
+                location.imageURL = [NSString stringWithFormat:@"%@%@%@", element[@"categories"][0][@"icon"][@"prefix"], @"88", element[@"categories"][0][@"icon"][@"suffix"]];
+            }
+            DebugLog(@"location %@ %@ %@", location.displayName, location.lat, location.lng);
             [locations addObject:location];
         }
-        [self.tableView reloadData];
+        [tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        DebugLog(@"the operation failed.");
+        DebugLog(@"The operation failed.");
         // don't output here, it's broken
         // NSDictionary* jsonFromData = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:operation.responseData options:NSJSONReadingMutableContainers error:&error];
         // DebugLog(@"failure %@", jsonFromData);
@@ -127,11 +119,15 @@
     return [locations count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"location";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     FSLocation *location = locations[indexPath.row];
     cell.textLabel.text = location.displayName;
+    cell.detailTextLabel.text = location.address;
+
+    [cell.imageView setImageWithURL:[NSURL URLWithString:location.imageURL] placeholderImage:[UIImage imageNamed:@"EmptyLocation"]];
+    cell.imageView.backgroundColor = [UIColor lightGrayColor];
     return cell;
 }
 
@@ -141,6 +137,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     FSLocation *location = locations[indexPath.row];
+    DebugLog(@"location %@ %@ %@", location.displayName, location.lat, location.imageURL);
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:location, @"location", nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DGUserDidUpdateGoodLocation"
                                                         object:nil
@@ -153,33 +150,13 @@
     if ([searchText length] > 1) {
         // wait a few seconds before doing this
         [self findVenuesAtLocation:userLocation matchingQuery:searchText];
-        // [self geocodeLocation:searchText];
     } else if (searchText.length == 0) {
         locations = tempLocations;
+        [tableView reloadData];
     } else {
         [locations removeAllObjects];
-        [self.tableView reloadData];
+        [tableView reloadData];
     }
 }
-
-/*
-- (void)geocodeLocation:(NSString *)searchText {
-    [geo cancelGeocode];
-    // executed on main thread
-    DebugLog(@"region outside %@", region);
-    [geo geocodeAddressString:searchText inRegion:region completionHandler:^(NSArray *placemarks, NSError *error) {
-        if (!error) {
-            DebugLog(@"placemarks %@", placemarks);
-            CLPlacemark *place = [placemarks objectAtIndex:0];
-            DebugLog(@"place %@", place);
-            DebugLog(@"region inside %@", region);
-            [self findLocations:place.location];
-        }
-        else {
-            DebugLog(@"There was a forward geocoding error\n%@", [error localizedDescription]);
-        }
-    }];
-}
-*/
 
 @end

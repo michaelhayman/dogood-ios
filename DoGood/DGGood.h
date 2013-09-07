@@ -20,17 +20,20 @@
 @property (retain) NSNumber *current_user_commented;
 @property (retain) NSNumber *comments_count;
 @property (retain) NSArray *comments;
+@property (retain) NSNumber *category_id;
 // regoods
 @property (retain) NSNumber *current_user_regooded;
 // location
 @property (retain) NSNumber *lat;
 @property (retain) NSNumber *lng;
 @property (retain) NSArray *point;
-@property (retain) NSString *locationName;
+@property (retain) NSString *location_name;
+@property (retain) NSString *location_image;
 @property BOOL shareDoGood;
 @property BOOL shareTwitter;
 @property BOOL shareFacebook;
 
 - (void)setValuesForLocation:(FSLocation *)location;
+- (void)setValuesForCategory:(DGCategory *)category;
 
 @end

@@ -101,7 +101,7 @@
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         if (self.good.category) {
             cell.imageView.image = [UIImage imageNamed:@"CategoryIconOn.png"];
-            cell.textLabel.text = self.good.category.displayName;
+            cell.textLabel.text = self.good.category.name;
         } else {
             cell.textLabel.text = @"Add a category";
             cell.imageView.image = [UIImage imageNamed:@"CategoryIconOff.png"];
@@ -113,9 +113,9 @@
     } else if (indexPath.section == location) {
         static NSString *CellIdentifier = @"location";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        if (self.good.locationName) {
+        if (self.good.location_name) {
             cell.imageView.image = [UIImage imageNamed:@"LocationIconOn.png"];
-            cell.textLabel.text = self.good.locationName;
+            cell.textLabel.text = self.good.location_name;
         } else {
             cell.textLabel.text = @"Add a location";
             cell.imageView.image = [UIImage imageNamed:@"LocationIconOff.png"];
@@ -165,8 +165,8 @@
         }
         DebugLog(@"category");
     } else if (indexPath.section == location) {
-        DebugLog(@"good.location %@", self.good.locationName);
-        if (self.good.locationName != nil) {
+        DebugLog(@"good.location %@", self.good.location_name);
+        if (self.good.location_name != nil) {
             DebugLog(@"shouldn't be nil");
             [locationSheet showInView:self.view];
         } else {
@@ -253,7 +253,7 @@
             DebugLog(@"button index %d", buttonIndex);
             if (buttonIndex == remove_button) {
                 DebugLog(@"remove");
-                self.good.locationName = nil;
+                self.good.location_name = nil;
                 [self.tableView reloadData];
             } else if (buttonIndex == select_new_button) {
                 [self showLocationChooser];
@@ -337,14 +337,16 @@
 #pragma mark - Change data responses
 - (void)receiveUpdatedCategory:(NSNotification *)notification {
     self.good.category = [[notification userInfo] valueForKey:@"category"];
-    // replace with specific rows to reload
+    [self.good setValuesForCategory:self.good.category];
     [self.tableView reloadData];
 }
 
 - (void)receiveUpdatedLocation:(NSNotification *)notification {
     DebugLog(@"receiving");
     FSLocation *location = [[notification userInfo] valueForKey:@"location"];
+    DebugLog(@"location %@ %@ %@", location.displayName, location.lat, location.imageURL);
     [self.good setValuesForLocation:location];
+    DebugLog(@"location %@", self.good.location_image);
     [self.tableView reloadData];
 }
 
@@ -353,18 +355,13 @@
     GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
     self.good.caption = cell.description.text;
 
-    // GoodShareCell *doGood = (GoodShareCell *)[self.tableView viewWithTag:share_do_good_cell_tag];
-    // self.good.shareDoGood = doGood.share.on;
-    // GoodShareCell *twitter = (GoodShareCell *)[self.tableView viewWithTag:share_twitter_cell_tag];
-    // self.good.shareTwitter = twitter.share.on;
     UISwitch *twitter = (UISwitch *)[self.tableView viewWithTag:share_twitter_cell_tag];
     self.good.shareTwitter = twitter.on;
     DebugLog(@"sharin %d %d", twitter.on, self.good.shareTwitter);
-    // GoodShareCell *facebook = (GoodShareCell *)[self.tableView viewWithTag:share_facebook_cell_tag];
-    // self.good.shareFacebook = facebook.share.on;
     UISwitch *facebook = (UISwitch *)[self.tableView viewWithTag:share_facebook_cell_tag];
     self.good.shareFacebook = facebook.on;
     DebugLog(@"post good %@", self.good);
+    DebugLog(@"location %@", self.good.location_image);
 
     bool errors = YES;
     NSString *message;
@@ -375,10 +372,10 @@
         errors = NO;
     }
 
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.labelText = @"Posting good...";
-
     if (!errors) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.labelText = @"Posting good...";
+
         NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:self.good method:RKRequestMethodPOST path:@"/goods.json" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             if (self.good.image) {
                 UIImage *resizedImage = [self.good.image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 480) interpolationQuality:kCGInterpolationHigh];
@@ -429,20 +426,6 @@
                                 withMessage:NSLocalizedString(message, nil)
                                    withType:TSMessageNotificationTypeError];
     }
-}
-
-#pragma mark - Sharing methods
-- (void)checkDoGood {
-    DebugLog(@"do good");
-}
-
-- (void)checkTwitter {
-    DebugLog(@"twitter");
-}
-
-- (void)checkFacebook {
-    // only activate when selected...
-    // DGUser *user = [DGUser currentUser];
 }
 
 @end

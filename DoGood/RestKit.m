@@ -151,6 +151,10 @@
      @"current_user_commented",
      @"current_user_regooded",
      @"likes_count",
+     @"location_name",
+     @"location_image",
+     @"lat",
+     @"lng",
      @"regoods_count",
      @"comments_count",
      @"evidence"
@@ -162,7 +166,7 @@
     [objectManager addResponseDescriptor:goodResponseDescriptor];
 
     RKObjectMapping* goodRequestMapping = [RKObjectMapping requestMapping];
-    [goodRequestMapping addAttributeMappingsFromArray:@[ @"caption" ]];
+    [goodRequestMapping addAttributeMappingsFromArray:@[ @"caption", @"category_id", @"location_name", @"location_image", @"lat", @"lng" ]];
     RKRequestDescriptor *goodRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:goodRequestMapping objectClass:[DGGood class] rootKeyPath:@"good" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:goodRequestDescriptor];
 
