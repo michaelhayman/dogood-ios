@@ -21,8 +21,7 @@
 }
 
 - (void)setupViewsForUser {
-    UIStoryboard *storyboard;
-    storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     DGGoodListViewController *goodListController = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
 
     self.window.rootViewController = [[NavigationViewController alloc] initWithRootViewController:goodListController];

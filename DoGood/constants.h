@@ -126,5 +126,12 @@ extern NSString* const DGUserDidPostGood;
 // Text field cells
 extern NSString* const UITextFieldCellIdentifier;
 
+// explore - search
+extern NSString* const DGUserDidStartSearchingTags;
+extern NSString* const DGUserDidStartSearchingPeople;
+extern NSString* const DGSearchTextFieldDidBeginEditing;
+extern NSString* const DGSearchTextFieldDidEndEditing;
+extern NSString* const DGUserDidStartBrowsingSearchTable;
+
 // convenience methods
 #define NSNullIfNil(v) (v ? v : [NSNull null])

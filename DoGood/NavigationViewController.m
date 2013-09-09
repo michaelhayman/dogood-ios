@@ -1,6 +1,7 @@
 #import "NavigationViewController.h"
 #import "DGUserProfileViewController.h"
 #import "DGGoodListViewController.h"
+#import "DGExploreViewController.h"
 #import "DGRewardsListViewController.h"
 
 @interface NavigationViewController ()
@@ -37,15 +38,14 @@
         [weakSelf setViewControllers:@[controller] animated:NO];
     }];
 
-    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"Ideas" subtitle:nil image:[UIImage imageNamed:@"Icon_Explore"] highlightedImage:nil action:^(REMenuItem *item) {
+    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"Explore" subtitle:nil image:[UIImage imageNamed:@"Icon_Explore"] highlightedImage:nil action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Explore" bundle:nil];
+        DGExploreViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"explore"];
+        [weakSelf setViewControllers:@[controller] animated:NO];
     }];
 
-    REMenuItem *doneItem = [[REMenuItem alloc] initWithTitle:@"Done" subtitle:nil image:[UIImage imageNamed:@"Good_Done"] highlightedImage:nil action:^(REMenuItem *item) {
-        NSLog(@"Item: %@", item);
-    }];
-
-    REMenuItem *activityItem = [[REMenuItem alloc] initWithTitle:@"Rewards" subtitle:nil image:[UIImage imageNamed:@"Icon_Activity"] highlightedImage:nil action:^(REMenuItem *item) { NSLog(@"Item: %@", item);
+    REMenuItem *rewardsItem = [[REMenuItem alloc] initWithTitle:@"Rewards" subtitle:nil image:[UIImage imageNamed:@"Icon_Activity"] highlightedImage:nil action:^(REMenuItem *item) { NSLog(@"Item: %@", item);
 
         DGRewardsListViewController *controller = [[DGRewardsListViewController alloc] initWithNibName:@"DGRewardsListViewController" bundle:nil];
         [weakSelf setViewControllers:@[controller] animated:NO];
@@ -62,11 +62,10 @@
 
     homeItem.tag = 0;
     exploreItem.tag = 1;
-    doneItem.tag = 2;
-    activityItem.tag = 3;
+    rewardsItem.tag = 3;
     profileItem.tag = 4;
     
-    _menu = [[REMenu alloc] initWithItems:@[homeItem, exploreItem, doneItem, activityItem, profileItem]];
+    _menu = [[REMenu alloc] initWithItems:@[homeItem, exploreItem, rewardsItem, profileItem]];
     _menu.cornerRadius = 4;
     _menu.shadowRadius = 4;
     _menu.shadowColor = [UIColor blackColor];

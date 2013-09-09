@@ -75,3 +75,10 @@ NSString* const DGUserDidCheckIfAddressBookIsConnected = @"DGUserDidCheckIfAddre
 
 // UITableView cells
 NSString* const UITextFieldCellIdentifier = @"UITextFieldCell";
+
+// explore - search
+NSString* const DGUserDidStartSearchingTags = @"DGUserDidStartSearchingTags";
+NSString* const DGUserDidStartSearchingPeople = @"DGUserDidStartSearchingPeople";
+NSString* const DGSearchTextFieldDidBeginEditing = @"DGSearchTextFieldDidBeginEditing";
+NSString* const DGSearchTextFieldDidEndEditing = @"DGSearchTextFieldDidEndEditing";
+NSString* const DGUserDidStartBrowsingSearchTable = @"DGUserDidStartBrowsingSearchTable";

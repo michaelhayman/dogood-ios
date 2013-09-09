@@ -1,6 +1,7 @@
 #import "DGGoodListViewController.h"
 #import "GoodCell.h"
 #import "DGGood.h"
+#import "DGCategory.h"
 #import "FSLocation.h"
 #import "DGWelcomeViewController.h"
 
@@ -13,9 +14,13 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupMenuTitle:@"Do Good"];
+    if (_category) {
+        [self setupMenuTitle:_category.name];
+    } else {
+        [self setupMenuTitle:@"Do Good"];
+        [self addMenuButton:@"MenuFromHomeIcon" withTapButton:@"MenuFromHomeIconTap"];
+    }
 
-    [self addMenuButton:@"MenuFromHomeIcon" withTapButton:@"MenuFromHomeIconTap"];
 
     UINib *nib = [UINib nibWithNibName:@"GoodCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"GoodCell"];
@@ -115,7 +120,14 @@
 
 #pragma mark - Retrieval methods
 - (void)getGood {
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"/goods.json" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    NSString *path;
+    if (_category) {
+        path = [NSString stringWithFormat:@"/goods?category_id=%@", _category.categoryID];
+    } else {
+        path = @"/goods";
+    }
+
+    [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         goods = [[NSArray alloc] initWithArray:mappingResult.array];
         [tableView reloadData];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
