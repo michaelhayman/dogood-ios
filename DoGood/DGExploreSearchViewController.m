@@ -9,6 +9,8 @@
     self.title = @"Search";
     [self initTables];
     [self watchKeyboard];
+    [self selectPeople:peopleButton];
+    tableView.hidden = YES;
 
     UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"UserCell"];
@@ -22,8 +24,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     DebugLog(@"1. will appear called each time");
     // headerViewToTopConstraint.constant = -30;
-    [self selectPeople:peopleButton];
-    tableView.hidden = YES;
     headerViewToTopConstraint.constant = -130;
 }
 
@@ -92,33 +92,6 @@
 - (void)watchKeyboard {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(closeKeyboard) name:DGUserDidStartBrowsingSearchTable object:nil];
 }
-
-/*
-- (void)dismissKeyboard {
-    // [_parent.searchField resignFirstResponder];
-    DebugLog(@"dismiss");
-    // [_parent.view endEditing:YES];
-    // [self.view endEditing:YES];
-    [_searchField resignFirstResponder];
-}
-
-- (void)keyboardWillShow:(NSNotification *)notification {
-    DebugLog(@"kb shown");
-    dismissTap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(dismissKeyboard)];
-    [self.view addGestureRecognizer:dismissTap];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    [self.view removeGestureRecognizer:dismissTap];
-}
-
-- (void)watchKeyboard {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-*/
 
 #pragma mark - UITextFieldDelegate methods
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
