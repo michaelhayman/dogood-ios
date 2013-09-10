@@ -152,6 +152,7 @@
 		637CC94217C5527E007619F5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637CC94117C5527E007619F5 /* Accounts.framework */; };
 		637CC94317C55290007619F5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6355EC1817B531C700EE91C0 /* Social.framework */; };
 		637CC94517C553D9007619F5 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637CC94417C553D9007619F5 /* Twitter.framework */; };
+		63834D0417DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63834D0317DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.m */; };
 		638647E217AC087A00167F15 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E117AC087A00167F15 /* Foundation.framework */; };
 		638647E417AC087A00167F15 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E317AC087A00167F15 /* CoreGraphics.framework */; };
 		638647E617AC087A00167F15 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E517AC087A00167F15 /* UIKit.framework */; };
@@ -165,6 +166,14 @@
 		6397318A17C15EBE001B96BF /* SignOutButtonTap.png in Resources */ = {isa = PBXBuildFile; fileRef = 6397318617C15EBE001B96BF /* SignOutButtonTap.png */; };
 		6397318B17C15EBE001B96BF /* SignOutButtonTap@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6397318717C15EBE001B96BF /* SignOutButtonTap@2x.png */; };
 		6397318E17C1733D001B96BF /* DGUserTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */; };
+		639B301217DE8E7800126FC3 /* KeyboardMention.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B300A17DE8E7800126FC3 /* KeyboardMention.png */; };
+		639B301317DE8E7800126FC3 /* KeyboardMention@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B300B17DE8E7800126FC3 /* KeyboardMention@2x.png */; };
+		639B301417DE8E7800126FC3 /* KeyboardMentionActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B300C17DE8E7800126FC3 /* KeyboardMentionActive.png */; };
+		639B301517DE8E7800126FC3 /* KeyboardMentionActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B300D17DE8E7800126FC3 /* KeyboardMentionActive@2x.png */; };
+		639B301617DE8E7800126FC3 /* KeyboardTag.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B300E17DE8E7800126FC3 /* KeyboardTag.png */; };
+		639B301717DE8E7800126FC3 /* KeyboardTag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B300F17DE8E7800126FC3 /* KeyboardTag@2x.png */; };
+		639B301817DE8E7800126FC3 /* KeyboardTagActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B301017DE8E7800126FC3 /* KeyboardTagActive.png */; };
+		639B301917DE8E7800126FC3 /* KeyboardTagActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B301117DE8E7800126FC3 /* KeyboardTagActive@2x.png */; };
 		639B88E417B9A25B005E2B62 /* DGVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B88E317B9A25A005E2B62 /* DGVote.m */; };
 		639B88EC17BA76A9005E2B62 /* UnCommentButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88E617BA76A9005E2B62 /* UnCommentButton.png */; };
 		639B88ED17BA76A9005E2B62 /* UnCommentButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 639B88E717BA76A9005E2B62 /* UnCommentButton@2x.png */; };
@@ -449,6 +458,8 @@
 		637ABAD817C7CEF5004AA4C9 /* TwitterWatermark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TwitterWatermark@2x.png"; sourceTree = "<group>"; };
 		637CC94117C5527E007619F5 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		637CC94417C553D9007619F5 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		63834D0217DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTextFieldSearchPeopleTableViewController.h; sourceTree = "<group>"; };
+		63834D0317DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTextFieldSearchPeopleTableViewController.m; sourceTree = "<group>"; };
 		638647DE17AC087A00167F15 /* DoGood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoGood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		638647E117AC087A00167F15 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		638647E317AC087A00167F15 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -472,6 +483,14 @@
 		6397318717C15EBE001B96BF /* SignOutButtonTap@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SignOutButtonTap@2x.png"; path = "../../../../../Desktop/Vine 1.3.1/Payload/iphone.app/SignOutButtonTap@2x.png"; sourceTree = "<group>"; };
 		6397318C17C1733D001B96BF /* DGUserTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserTwitterViewController.h; sourceTree = "<group>"; };
 		6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserTwitterViewController.m; sourceTree = "<group>"; };
+		639B300A17DE8E7800126FC3 /* KeyboardMention.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KeyboardMention.png; sourceTree = "<group>"; };
+		639B300B17DE8E7800126FC3 /* KeyboardMention@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardMention@2x.png"; sourceTree = "<group>"; };
+		639B300C17DE8E7800126FC3 /* KeyboardMentionActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KeyboardMentionActive.png; sourceTree = "<group>"; };
+		639B300D17DE8E7800126FC3 /* KeyboardMentionActive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardMentionActive@2x.png"; sourceTree = "<group>"; };
+		639B300E17DE8E7800126FC3 /* KeyboardTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KeyboardTag.png; sourceTree = "<group>"; };
+		639B300F17DE8E7800126FC3 /* KeyboardTag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardTag@2x.png"; sourceTree = "<group>"; };
+		639B301017DE8E7800126FC3 /* KeyboardTagActive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KeyboardTagActive.png; sourceTree = "<group>"; };
+		639B301117DE8E7800126FC3 /* KeyboardTagActive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyboardTagActive@2x.png"; sourceTree = "<group>"; };
 		639B88E217B9A25A005E2B62 /* DGVote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGVote.h; sourceTree = "<group>"; };
 		639B88E317B9A25A005E2B62 /* DGVote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGVote.m; sourceTree = "<group>"; };
 		639B88E617BA76A9005E2B62 /* UnCommentButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UnCommentButton.png; sourceTree = "<group>"; };
@@ -607,6 +626,8 @@
 			children = (
 				63DA644217DBEA52003DFF03 /* UIViewController+DGViewController.h */,
 				63DA644317DBEA52003DFF03 /* UIViewController+DGViewController.m */,
+				63834D0217DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.h */,
+				63834D0317DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.m */,
 				6358342C17C8A09700F997F6 /* Arrow.h */,
 				6358342D17C8A09700F997F6 /* Arrow.m */,
 				63E0798717BC59C7006FC42E /* UITextFieldCell.xib */,
@@ -869,6 +890,7 @@
 		636AEA6C17AD4B8A002A3494 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				639B300917DE8E4400126FC3 /* Keyboard */,
 				63DA646417DC1F3A003DFF03 /* Search */,
 				635A232317CB8F470045C256 /* Categories */,
 				635A231917CAAC1E0045C256 /* Location */,
@@ -1063,6 +1085,21 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		639B300917DE8E4400126FC3 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				639B300A17DE8E7800126FC3 /* KeyboardMention.png */,
+				639B300B17DE8E7800126FC3 /* KeyboardMention@2x.png */,
+				639B300C17DE8E7800126FC3 /* KeyboardMentionActive.png */,
+				639B300D17DE8E7800126FC3 /* KeyboardMentionActive@2x.png */,
+				639B300E17DE8E7800126FC3 /* KeyboardTag.png */,
+				639B300F17DE8E7800126FC3 /* KeyboardTag@2x.png */,
+				639B301017DE8E7800126FC3 /* KeyboardTagActive.png */,
+				639B301117DE8E7800126FC3 /* KeyboardTagActive@2x.png */,
+			);
+			name = Keyboard;
+			sourceTree = "<group>";
+		};
 		639B88E517BA769E005E2B62 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1191,11 +1228,6 @@
 				CLASSPREFIX = DG;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = Michael;
-				TargetAttributes = {
-					6386480117AC087A00167F15 = {
-						TestTargetID = 638647DD17AC087A00167F15;
-					};
-				};
 			};
 			buildConfigurationList = 638647D917AC087A00167F15 /* Build configuration list for PBXProject "DoGood" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1397,6 +1429,14 @@
 				63DBEEB417DD636E00230D81 /* TagIconOff@2x.png in Resources */,
 				63DBEEB517DD636E00230D81 /* TagIconOn.png in Resources */,
 				63DBEEB617DD636E00230D81 /* TagIconOn@2x.png in Resources */,
+				639B301217DE8E7800126FC3 /* KeyboardMention.png in Resources */,
+				639B301317DE8E7800126FC3 /* KeyboardMention@2x.png in Resources */,
+				639B301417DE8E7800126FC3 /* KeyboardMentionActive.png in Resources */,
+				639B301517DE8E7800126FC3 /* KeyboardMentionActive@2x.png in Resources */,
+				639B301617DE8E7800126FC3 /* KeyboardTag.png in Resources */,
+				639B301717DE8E7800126FC3 /* KeyboardTag@2x.png in Resources */,
+				639B301817DE8E7800126FC3 /* KeyboardTagActive.png in Resources */,
+				639B301917DE8E7800126FC3 /* KeyboardTagActive@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1504,6 +1544,7 @@
 				63DA645D17DC1715003DFF03 /* TagCell.m in Sources */,
 				63DA646217DC189C003DFF03 /* CategoryCell.m in Sources */,
 				63DBEE8F17DD599600230D81 /* NoResultsCell.m in Sources */,
+				63834D0417DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

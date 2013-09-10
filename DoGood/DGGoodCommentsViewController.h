@@ -1,7 +1,7 @@
 #import "DGComment.h"
 @class DGGood;
 @class DGComment;
-
+@class DGTextFieldSearchPeopleTableViewController;
 @interface DGGoodCommentsViewController : UIViewController <UITextFieldDelegate> {
     __weak IBOutlet NSLayoutConstraint *commentFieldBottom;
     __weak IBOutlet UIView *commentInputView;
@@ -10,6 +10,23 @@
     NSMutableArray *comments;
     __weak IBOutlet NSLayoutConstraint *tableViewBottom;
     __weak IBOutlet UIButton *sendButton;
+
+    // keyboard
+    CGFloat totalKeyboardHeight;
+    UIToolbar *accessoryView;
+    UIButton *accessoryButtonMention;
+    UIButton *accessoryButtonTag;
+    UILabel *characterLimitLabel;
+    int characterLimit;
+
+    bool searchPeople;
+    bool searchTags;
+
+    int startOfRange;
+    UITableView *searchTable;
+
+    NSString *searchTerm;
+    DGTextFieldSearchPeopleTableViewController * searchPeopleTableController;
 }
 
 @property bool makeComment;
