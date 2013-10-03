@@ -43,6 +43,8 @@
 	<string>151726295032833</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIAppFonts</key>
