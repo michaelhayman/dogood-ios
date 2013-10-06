@@ -11,7 +11,9 @@
 #pragma mark - View lifecycle
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
+    self.title = @"Welcome";
+    self.navigationItem.title = @"Welcome";
+    // self.navigationController.navigationBarHidden = YES;
     self.navigationController.navigationBar.tintColor = [UIColor clearColor];
     if ([DGUser currentUser]) {
         self.welcomeLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Welcome %@!", nil), [[DGUser currentUser] username]];
@@ -20,6 +22,7 @@
     }
 }
 
+/*
 - (IBAction)signIn:(id)sender {
     UIStoryboard *storyboard;
     storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
@@ -27,6 +30,7 @@
     DebugLog(@"controller %@", controller);
     [self.navigationController pushViewController:controller animated:YES];
 }
+*/
 
 @end
 

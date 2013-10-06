@@ -2,6 +2,7 @@
 // views
 #import "NavigationViewController.h"
 #import "DGGoodListViewController.h"
+// #import "DGWelcomeViewController.h"
 // global set up
 #import "RestKit.h"
 #import "DGAppearance.h"
@@ -21,11 +22,19 @@
 }
 
 - (void)setupViewsForUser {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     DGGoodListViewController *goodListController = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
-
     self.window.rootViewController = [[NavigationViewController alloc] initWithRootViewController:goodListController];
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+
+       /*
+    UIStoryboard *storyboard;
+    storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+    DGWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
+    // UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
+                  */
+    // self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:goodListController];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

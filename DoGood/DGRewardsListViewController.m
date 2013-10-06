@@ -122,12 +122,12 @@
     DGReward *reward = [[notification userInfo] valueForKey:@"reward"];
 
     [[RKObjectManager sharedManager] postObject:reward path:@"/rewards/claim" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [TSMessage showNotificationInViewController:self withTitle:NSLocalizedString(@"Reward claimed!", nil) withMessage:[NSString stringWithFormat:@"%@ is yours", reward.title] withType:TSMessageNotificationTypeSuccess];
+        [TSMessage showNotificationInViewController:self title:NSLocalizedString(@"Reward claimed!", nil) subtitle:[NSString stringWithFormat:@"%@ is yours", reward.title] type:TSMessageNotificationTypeSuccess];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserUpdatePointsNotification object:nil];
         [claimedButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
-        [TSMessage showNotificationInViewController:self withTitle:NSLocalizedString(@"Reward not claimed.", nil) withMessage:[error localizedDescription] withType:TSMessageNotificationTypeError];
+        [TSMessage showNotificationInViewController:self title:NSLocalizedString(@"Reward not claimed.", nil) subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
     }];
 }
 

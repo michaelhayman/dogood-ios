@@ -10,9 +10,9 @@
 #pragma mark - View management
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = NEUTRAL_BACKGROUND_COLOUR;
+    // self.view.backgroundColor = NEUTRAL_BACKGROUND_COLOUR;
     user = [DGUser new];
-    self.navigationItem.rightBarButtonItem.tintColor = BUTTON_COLOR;
+    // self.navigationItem.rightBarButtonItem.tintColor = BUTTON_COLOR;
 
     // avatar.backgroundColor = BUTTON_COLOR;
     UITapGestureRecognizer* imageGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoSheet)];
@@ -20,7 +20,7 @@
     [avatar addGestureRecognizer:imageGesture];
     avatar.contentMode = UIViewContentModeScaleAspectFit;
 
-    [[UITextField appearance] setBorderStyle:UITextBorderStyleNone];
+    // [[UITextField appearance] setBorderStyle:UITextBorderStyleNone];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -35,9 +35,9 @@
 - (IBAction)verifyNext:(id)sender {
     if ([name.text isEqualToString:@""]) {
         [TSMessage showNotificationInViewController:self
-                                  withTitle:nil
-                                withMessage:@"Name required"
-                                   withType:TSMessageNotificationTypeError];
+                                  title:nil
+                                           subtitle:@"Name required"
+                                   type:TSMessageNotificationTypeError];
     } else {
         [name resignFirstResponder];
         if (user.image == nil) {

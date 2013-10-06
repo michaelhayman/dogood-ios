@@ -27,10 +27,10 @@
     tableView.backgroundColor = [UIColor clearColor];
     tableView.backgroundView = nil;
     tableView.opaque = NO;
-    self.view.backgroundColor = NEUTRAL_BACKGROUND_COLOUR;
+    // self.view.backgroundColor = NEUTRAL_BACKGROUND_COLOUR;
 
-    self.navigationItem.rightBarButtonItem.tintColor = BUTTON_COLOR;
-    [[UITextField appearance] setBorderStyle:UITextBorderStyleNone];
+    // self.navigationItem.rightBarButtonItem.tintColor = BUTTON_COLOR;
+    // [[UITextField appearance] setBorderStyle:UITextBorderStyleNone];
     // [self registerForKeyboardNotifications];
 }
 
@@ -122,11 +122,13 @@
             [DGUser setCurrentUser:user];
             [DGUser signInWasSuccessful];
             [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidCreateAccountNotification object:self];
-            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:^(void) {
+                [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+            }];
             [TSMessage showNotificationInViewController:self.presentingViewController
-                                      withTitle:nil
-                                    withMessage:NSLocalizedString(@"Welcome to Do Good!", nil)
-                                       withType:TSMessageNotificationTypeSuccess];
+                                      title:nil
+                                    subtitle:NSLocalizedString(@"Welcome to Do Good!", nil)
+                                       type:TSMessageNotificationTypeSuccess];
             DebugLog(@"success");
             hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
             // Set custom view mode
@@ -136,9 +138,9 @@
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             DebugLog(@"fail");
             [TSMessage showNotificationInViewController:self
-                                      withTitle:nil
-                                    withMessage:[error localizedDescription]
-                                       withType:TSMessageNotificationTypeError];
+                                      title:nil
+                                    subtitle:[error localizedDescription]
+                                       type:TSMessageNotificationTypeError];
             [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailCreateAccountNotification object:self];
             [hud hide:YES];
         }];
@@ -146,9 +148,9 @@
         [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
     } else {
         [TSMessage showNotificationInViewController:self
-                                  withTitle:nil
-                                withMessage:NSLocalizedString(message, nil)
-                                   withType:TSMessageNotificationTypeError];
+                                  title:nil
+                                subtitle:NSLocalizedString(message, nil)
+                                   type:TSMessageNotificationTypeError];
     }
 }
 
@@ -182,6 +184,7 @@
         cell.tag = sign_up_phone_cell_tag;
         cell.textField.returnKeyType = UIReturnKeyDone;
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.textField.delegate = self;
     return cell;
 }

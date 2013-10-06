@@ -23,6 +23,7 @@
                                              selector:@selector(popController)
                                                  name:DGUserDidSendPasswordNotification
                                                object:nil];
+    self.navigationItem.title = @"Forgot Password";
 }
 
 - (void)popController {
@@ -70,15 +71,15 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSendPasswordNotification object:nil];
         DebugLog(@"password sent %@ %@", self.parentViewController, self.navigationController.parentViewController);
         [TSMessage showNotificationInViewController:self.parentViewController
-                                  withTitle:NSLocalizedString(@"Password sent.", nil)
-                                withMessage:user.message
-                                   withType:TSMessageNotificationTypeSuccess];
+                                  title:NSLocalizedString(@"Password sent.", nil)
+                                           subtitle:user.message
+                                   type:TSMessageNotificationTypeSuccess];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
         [TSMessage showNotificationInViewController:self
-                                  withTitle:NSLocalizedString(@"Password not sent.", nil)
-                                withMessage:[error description]
-                                   withType:TSMessageNotificationTypeError];
+                                  title:NSLocalizedString(@"Password not sent.", nil)
+                                subtitle:[error description]
+                                   type:TSMessageNotificationTypeError];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailSendPasswordNotification object:nil];
     }];
 }

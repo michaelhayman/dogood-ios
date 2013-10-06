@@ -8,37 +8,27 @@
 
 @implementation DGSignInViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"Sign In";
+    self.navigationItem.title = self.title;
+    self.navigationItem.hidesBackButton = NO;
+    // self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
-/*
-- (IBAction)forgotPassword:(id)sender {
-    UIStoryboard * users = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
-    UIViewController * controller = [users instantiateViewControllerWithIdentifier:@"forgotPassword"];
-    // [self.navigationController pushViewController:controller animated:YES];
-}
-*/
 
 - (IBAction)signIn:(id)sender {
     [self signInWithEmail:self.emailField.text orUsername:self.emailField.text andPassword:self.passwordField.text showMessage:YES];
@@ -58,20 +48,22 @@
     [[RKObjectManager sharedManager] postObject:user path:user_session_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [DGUser setCurrentUser:user];
 		[DGUser signInWasSuccessful];
-        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        [self.presentingViewController dismissViewControllerAnimated:YES completion:^(void) {
+            [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+        }];
 
         if (message == YES) {
             DebugLog(@"success");
         }
         [TSMessage showNotificationInViewController:self.presentingViewController
-                                  withTitle:nil
-                                withMessage:NSLocalizedString(@"Welcome to Do Good!", nil)
-                                   withType:TSMessageNotificationTypeSuccess];
+                                  title:nil
+                                           subtitle:NSLocalizedString(@"Welcome to Do Good!", nil)
+                                   type:TSMessageNotificationTypeSuccess];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [TSMessage showNotificationInViewController:self
-                                  withTitle:nil
-                                withMessage:[error localizedDescription]
-                                   withType:TSMessageNotificationTypeError];
+                                  title:nil
+                                subtitle:[error localizedDescription]
+                                   type:TSMessageNotificationTypeError];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailSignInNotification object:self];
         DebugLog(@"user %@", user);
     }];

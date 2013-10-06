@@ -390,9 +390,9 @@
 
         RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             [TSMessage showNotificationInViewController:self.navigationController.parentViewController
-                                      withTitle:NSLocalizedString(@"Saved!", nil)
-                                    withMessage:NSLocalizedString(@"You made some points!", nil)
-                                       withType:TSMessageNotificationTypeSuccess];
+                                      title:NSLocalizedString(@"Saved!", nil)
+                                    subtitle:NSLocalizedString(@"You made some points!", nil)
+                                       type:TSMessageNotificationTypeSuccess];
 
             if (self.good.shareTwitter) {
                 DebugLog(@"post to twitter");
@@ -413,18 +413,18 @@
             [hud hide:YES];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [TSMessage showNotificationInViewController:self
-                                      withTitle:nil
-                                    withMessage:[error localizedDescription]
-                                       withType:TSMessageNotificationTypeError];
+                                      title:nil
+                                    subtitle:[error localizedDescription]
+                                       type:TSMessageNotificationTypeError];
             [hud hide:YES];
         }];
 
         [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
     } else {
         [TSMessage showNotificationInViewController:self
-                                  withTitle:nil
-                                withMessage:NSLocalizedString(message, nil)
-                                   withType:TSMessageNotificationTypeError];
+                                  title:nil
+                                subtitle:NSLocalizedString(message, nil)
+                                   type:TSMessageNotificationTypeError];
     }
 }
 

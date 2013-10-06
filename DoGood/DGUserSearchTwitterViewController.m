@@ -98,9 +98,9 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self showUnauthorized];
         [TSMessage showNotificationInViewController:self
-                                  withTitle:nil
-                                withMessage:@"Couldn't connect to Twitter"
-                                   withType:TSMessageNotificationTypeError];
+                                  title:nil
+                                           subtitle:@"Couldn't connect to Twitter"
+                                   type:TSMessageNotificationTypeError];
     });
 
 }

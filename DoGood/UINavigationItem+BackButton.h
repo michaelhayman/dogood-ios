@@ -1,3 +1,0 @@
-@interface UINavigationItem (BackButton)
-
-@end

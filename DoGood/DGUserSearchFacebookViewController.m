@@ -101,9 +101,9 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self showUnauthorized];
         [TSMessage showNotificationInViewController:self
-                                  withTitle:nil
-                                withMessage:@"Couldn't connect to Facebook"
-                                   withType:TSMessageNotificationTypeError];
+                                  title:nil
+                                           subtitle:@"Couldn't connect to Facebook"
+                                   type:TSMessageNotificationTypeError];
     });
 
 }

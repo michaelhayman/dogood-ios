@@ -39,15 +39,15 @@
         [DGUser setNewPassword:user[@"user"][@"password"]];
         DGUser * user = (mappingResult.array)[0];
         [TSMessage showNotificationInViewController:self
-                                  withTitle:NSLocalizedString(@"Password updated.", nil)
-                                withMessage:user.message
-                                   withType:TSMessageNotificationTypeSuccess];
+                                  title:NSLocalizedString(@"Password updated.", nil)
+                                           subtitle:user.message
+                                   type:TSMessageNotificationTypeSuccess];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdatePasswordNotification object:self];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [TSMessage showNotificationInViewController:self
-                                  withTitle:NSLocalizedString(@"Couldn't save password.", nil)
-                                withMessage:nil
-                                   withType:TSMessageNotificationTypeError];
+                                  title:NSLocalizedString(@"Couldn't save password.", nil)
+                                subtitle:nil
+                                   type:TSMessageNotificationTypeError];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailUpdatePasswordNotification object:self];
     }];
 }
