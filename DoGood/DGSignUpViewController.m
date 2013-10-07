@@ -10,15 +10,13 @@
 #pragma mark - View management
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // self.view.backgroundColor = NEUTRAL_BACKGROUND_COLOUR;
     user = [DGUser new];
-    // self.navigationItem.rightBarButtonItem.tintColor = BUTTON_COLOR;
 
-    // avatar.backgroundColor = BUTTON_COLOR;
     UITapGestureRecognizer* imageGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoSheet)];
     [avatar setUserInteractionEnabled:YES];
     [avatar addGestureRecognizer:imageGesture];
     avatar.contentMode = UIViewContentModeScaleAspectFit;
+    avatar.backgroundColor = COLOUR_OFF_WHITE;
 
     // [[UITextField appearance] setBorderStyle:UITextBorderStyleNone];
 }
@@ -34,7 +32,7 @@
 #pragma mark - Verify account creation
 - (IBAction)verifyNext:(id)sender {
     if ([name.text isEqualToString:@""]) {
-        [TSMessage showNotificationInViewController:self
+        [TSMessage showNotificationInViewController:self.navigationController
                                   title:nil
                                            subtitle:@"Name required"
                                    type:TSMessageNotificationTypeError];

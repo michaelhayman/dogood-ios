@@ -36,7 +36,7 @@ static inline NSRegularExpression * NameRegularExpression() {
     [self.overviewImage setClipsToBounds:YES];
 
     // description
-    self.description.contentInset = UIEdgeInsetsMake(-4,-8,0,0);
+    self.description.contentInset = UIEdgeInsetsMake(0,-4,0,0);
 
     // likes
     [self.like addTarget:self action:@selector(addUserLike) forControlEvents:UIControlEventTouchUpInside];
@@ -79,6 +79,8 @@ static inline NSRegularExpression * NameRegularExpression() {
     // image
     // - set height to 0 if there's no image
     [self.overviewImage setImageWithURL:[NSURL URLWithString:self.good.evidence]];
+    // self.overviewImage.hidden = YES;
+    // self.overviewImageHeight.constant = 0;
     // likes
     if ([self.good.current_user_liked boolValue]) {
         [self.like setSelected:YES];

@@ -1,6 +1,7 @@
 #import "DGRewardCell.h"
 #import "DGReward.h"
-#import <CODialog.h>
+#import "DGRewardPopupViewController.h"
+#import "UIViewController+MJPopupViewController.h"
 
 @implementation DGRewardCell
 
@@ -26,22 +27,19 @@
     [self.teaser addGestureRecognizer:teaserGesture];
 
     self.teaser.contentMode = UIViewContentModeScaleAspectFit;
-
-    self.dialog = [CODialog dialogWithWindow:[[[UIApplication sharedApplication] delegate] window]];
-
 }
 
 - (void)setValues {
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.reward.teaser] cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:15.0];
     [self.teaser setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        if (![self sufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
+        if (![self hasSufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
             self.teaser.image = [self convertImageToGrayscale:image];
         } else {
             self.teaser.image = image;
         }
     } failure:nil];
 
-    if (![self sufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
+    if (![self hasSufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
         self.teaser.userInteractionEnabled = NO;
         self.heading.userInteractionEnabled = NO;
         self.heading.textColor = GRAYED_OUT;
@@ -62,11 +60,10 @@
 
     self.heading.text = self.reward.title;
     self.subheading.text = self.reward.subtitle;
-    self.cost.text = [NSString stringWithFormat:@"%@ points", self.reward.cost];
-
+    self.cost.text = [self.reward costText];
 }
 
-- (bool)sufficientPoints {
+- (bool)hasSufficientPoints {
     return [[DGUser currentUser].points intValue] >= [self.reward.cost intValue];
 }
 
@@ -80,50 +77,20 @@
 }
 
 #pragma mark - Instructions dialog
-- (void)instructions {
-    [self.dialog resetLayout];
-    self.dialog.title = self.heading.text;
-    self.dialog.subtitle = @"instructions for obtaining this good should go here \nwhat if\n they're \n very \n long";
-    self.dialog.dialogStyle = CODialogStyleCustomView;
-    self.dialog.customView = nil;
-
-    [self.dialog addButtonWithTitle:@"Got it" target:self selector:@selector(hideAndShow:)];
-    [self.dialog showOrUpdateAnimated:YES];
-}
-
-#pragma mark - Claim dialog
 - (void)claim {
-    [self.dialog resetLayout];
-
-    UIImageView *view = [[UIImageView alloc] init];
-    [view setImageWithURL:[NSURL URLWithString:self.reward.teaser]];
-    view.frame = CGRectMake(0, 0, 128, 128);
-    view.contentMode = UIViewContentModeScaleAspectFit;
-
-    self.dialog.title = self.heading.text;
-    self.dialog.subtitle = [NSString stringWithFormat:@"%@\n%@ goods", self.subheading.text, self.reward.cost];
-    self.dialog.dialogStyle = CODialogStyleCustomView;
-    /*
-    UIView *viewage = [[UIView alloc] init];
-    viewage.frame = CGRectMake(0, 0, 128, 128);
-    viewage = [self contentView];
-    */
-    self.dialog.customView = view;
-
-    [self.dialog addButtonWithTitle:@"Nah" target:self selector:@selector(hideAndShow:)];
-    [self.dialog addButtonWithTitle:@"Yes!" target:self selector:@selector(claimReward:) highlighted:YES];
-    [self.dialog showOrUpdateAnimated:YES];
+    UIStoryboard *storyboard;
+    storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
+    DGRewardPopupViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"rewardClaimPopup"];
+    controller.reward = self.reward;
+    [self.navigationController presentPopupViewController:controller animationType:MJPopupViewAnimationSlideBottomBottom];
 }
 
-- (void)hideAndShow:(id)sender {
-    [self.dialog hideAnimated:YES];
-}
-
-#pragma mark - Claim reward
-- (void)claimReward:(id)sender {
-    [self.dialog hideAnimated:YES];
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:self.reward, @"reward", nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserClaimRewardNotification object:nil userInfo:userInfo];
+- (void)instructions {
+    UIStoryboard *storyboard;
+    storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
+    DGRewardPopupViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"rewardInstructionsPopup"];
+    controller.reward = self.reward;
+    [self.navigationController presentPopupViewController:controller animationType:MJPopupViewAnimationSlideBottomBottom];
 }
 
 // credit:

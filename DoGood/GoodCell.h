@@ -14,6 +14,8 @@
     __weak IBOutlet UIView *comments;
 }
 
+@property (weak, nonatomic) NSLayoutConstraint *overviewImageHeight;
+
 @property (weak, nonatomic) IBOutlet UIImageView *overviewImage;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeight;
 @property (weak, nonatomic) IBOutlet UILabel *regoods;

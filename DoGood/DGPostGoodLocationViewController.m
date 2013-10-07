@@ -11,7 +11,7 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Location";
+    [self setupMenuTitle:@"Location"];
 
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;

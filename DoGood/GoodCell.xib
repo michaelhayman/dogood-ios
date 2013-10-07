@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <objects>
@@ -196,6 +196,7 @@
                 <outlet property="likesHeight" destination="275" id="359"/>
                 <outlet property="moreOptions" destination="217" id="257"/>
                 <outlet property="overviewImage" destination="4" id="259"/>
+                <outlet property="overviewImageHeight" destination="327" id="h35-W3-Oal"/>
                 <outlet property="regood" destination="178" id="256"/>
                 <outlet property="regoods" destination="73" id="250"/>
                 <outlet property="regoodsHeight" destination="142" id="360"/>

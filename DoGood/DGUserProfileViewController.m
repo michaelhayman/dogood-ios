@@ -27,7 +27,7 @@
     ownProfile = [self.userID isEqualToNumber:[DGUser currentUser].userID];
 
     if (self.fromMenu) {
-        [self addMenuButton:@"MenuFromHomeIcon" withTapButton:@"MenuFromHomeIconTap"];
+        [self addMenuButton:@"MenuFromProfileIconTap" withTapButton:@"MenuFromProfileIcon"];
     }
 
     // conditional settings on user

@@ -10,10 +10,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Sign In";
-    self.navigationItem.title = self.title;
-    self.navigationItem.hidesBackButton = NO;
-    // self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -24,10 +20,6 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 - (IBAction)signIn:(id)sender {
@@ -60,8 +52,8 @@
                                            subtitle:NSLocalizedString(@"Welcome to Do Good!", nil)
                                    type:TSMessageNotificationTypeSuccess];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [TSMessage showNotificationInViewController:self
-                                  title:nil
+        [TSMessage showNotificationInViewController:self.navigationController
+                                  title:@"Oops"
                                 subtitle:[error localizedDescription]
                                    type:TSMessageNotificationTypeError];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailSignInNotification object:self];

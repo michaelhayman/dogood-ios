@@ -36,7 +36,6 @@
 		6355EC0717B0C83100EE91C0 /* DGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC0617B0C83100EE91C0 /* DGComment.m */; };
 		6355EC0C17B0D4C300EE91C0 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC0A17B0D4C300EE91C0 /* CommentCell.m */; };
 		6355EC0D17B0D4C300EE91C0 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC0B17B0D4C300EE91C0 /* CommentCell.xib */; };
-		6355EC0F17B0E73C00EE91C0 /* DGRewardsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC0E17B0E73C00EE91C0 /* DGRewardsListViewController.xib */; };
 		6355EC1217B0EDA300EE91C0 /* DGRewardsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC1117B0EDA300EE91C0 /* DGRewardsListViewController.m */; };
 		6355EC1417B0EE1E00EE91C0 /* RewardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC1317B0EE1E00EE91C0 /* RewardCell.xib */; };
 		6355EC1717B0EF2700EE91C0 /* DGRewardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC1617B0EF2700EE91C0 /* DGRewardCell.m */; };
@@ -81,6 +80,8 @@
 		63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */; };
 		63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */; };
 		63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */; };
+		63D4BD251802484800ACF1B9 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D4BD241802484800ACF1B9 /* Rewards.storyboard */; };
+		63D4BD2818024E0700ACF1B9 /* DGRewardPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BD2718024E0700ACF1B9 /* DGRewardPopupViewController.m */; };
 		63DA644417DBEA52003DFF03 /* UIViewController+DGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DA644317DBEA52003DFF03 /* UIViewController+DGViewController.m */; };
 		63DA644817DC0F04003DFF03 /* DGExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DA644717DC0F04003DFF03 /* DGExploreViewController.m */; };
 		63DA644B17DC0F28003DFF03 /* DGExploreCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DA644A17DC0F28003DFF03 /* DGExploreCategoriesViewController.m */; };
@@ -155,7 +156,6 @@
 		6355EC0917B0D4C200EE91C0 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		6355EC0A17B0D4C300EE91C0 /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		6355EC0B17B0D4C300EE91C0 /* CommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
-		6355EC0E17B0E73C00EE91C0 /* DGRewardsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DGRewardsListViewController.xib; sourceTree = "<group>"; };
 		6355EC1017B0EDA300EE91C0 /* DGRewardsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DGRewardsListViewController.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		6355EC1117B0EDA300EE91C0 /* DGRewardsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGRewardsListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6355EC1317B0EE1E00EE91C0 /* RewardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RewardCell.xib; sourceTree = "<group>"; };
@@ -236,6 +236,9 @@
 		63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchNetworksViewController.m; sourceTree = "<group>"; };
 		63D4BCDD17FFDF7000ACF1B9 /* DGGoodCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGoodCommentsViewController.h; sourceTree = "<group>"; };
 		63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGGoodCommentsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		63D4BD241802484800ACF1B9 /* Rewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rewards.storyboard; sourceTree = "<group>"; };
+		63D4BD2618024E0700ACF1B9 /* DGRewardPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGRewardPopupViewController.h; sourceTree = "<group>"; };
+		63D4BD2718024E0700ACF1B9 /* DGRewardPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRewardPopupViewController.m; sourceTree = "<group>"; };
 		63DA644217DBEA52003DFF03 /* UIViewController+DGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DGViewController.h"; sourceTree = "<group>"; };
 		63DA644317DBEA52003DFF03 /* UIViewController+DGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DGViewController.m"; sourceTree = "<group>"; };
 		63DA644617DC0F04003DFF03 /* DGExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGExploreViewController.h; sourceTree = "<group>"; };
@@ -438,10 +441,12 @@
 		636AEA6A17AD477A002A3494 /* Rewards */ = {
 			isa = PBXGroup;
 			children = (
-				6355EC0E17B0E73C00EE91C0 /* DGRewardsListViewController.xib */,
+				63D4BD241802484800ACF1B9 /* Rewards.storyboard */,
 				6355EC1017B0EDA300EE91C0 /* DGRewardsListViewController.h */,
 				6355EC1117B0EDA300EE91C0 /* DGRewardsListViewController.m */,
 				6355EC1317B0EE1E00EE91C0 /* RewardCell.xib */,
+				63D4BD2618024E0700ACF1B9 /* DGRewardPopupViewController.h */,
+				63D4BD2718024E0700ACF1B9 /* DGRewardPopupViewController.m */,
 				6355EC1517B0EF2700EE91C0 /* DGRewardCell.h */,
 				6355EC1617B0EF2700EE91C0 /* DGRewardCell.m */,
 			);
@@ -636,6 +641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				638647EC17AC087A00167F15 /* InfoPlist.strings in Resources */,
+				63D4BD251802484800ACF1B9 /* Rewards.storyboard in Resources */,
 				636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */,
 				636AEA9B17AD63EC002A3494 /* GoodCell.xib in Resources */,
 				636AEAA917AD79B1002A3494 /* GoodOverviewCell.xib in Resources */,
@@ -644,7 +650,6 @@
 				633DBF7917AE02580038BC2D /* UserOverview.xib in Resources */,
 				633DBF7B17AE1E530038BC2D /* DoGood.nss in Resources */,
 				6355EC0D17B0D4C300EE91C0 /* CommentCell.xib in Resources */,
-				6355EC0F17B0E73C00EE91C0 /* DGRewardsListViewController.xib in Resources */,
 				6355EC1417B0EE1E00EE91C0 /* RewardCell.xib in Resources */,
 				6355EC2417B6723E00EE91C0 /* Users.storyboard in Resources */,
 				6355EC3A17B8680300EE91C0 /* SignUpOverviewCell.xib in Resources */,
@@ -720,6 +725,7 @@
 				63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */,
 				6355EC0C17B0D4C300EE91C0 /* CommentCell.m in Sources */,
 				6355EC1217B0EDA300EE91C0 /* DGRewardsListViewController.m in Sources */,
+				63D4BD2818024E0700ACF1B9 /* DGRewardPopupViewController.m in Sources */,
 				6355EC1717B0EF2700EE91C0 /* DGRewardCell.m in Sources */,
 				6355EC1C17B5BA4600EE91C0 /* DGUser.m in Sources */,
 				6355EC1F17B601BF00EE91C0 /* DGError.m in Sources */,

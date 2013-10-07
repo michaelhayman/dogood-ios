@@ -10,7 +10,7 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Category";
+    [self setupMenuTitle:@"Category"];
 
     // customize look
     self.tableView.backgroundColor = [UIColor clearColor];

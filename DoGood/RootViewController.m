@@ -16,22 +16,22 @@
     [navigationController.menu setNeedsLayout];
 }
 
+/*
 - (void)viewWillDisappear:(BOOL)animated {
-    /*
     DebugLog(@"dispapeared");
     NavigationViewController *navigationController = (NavigationViewController *)self.navigationController;
     [navigationController.menu close];
-    */
 }
+*/
 
 #pragma mark - Custom button
 - (void)addMenuButton:(NSString *)menuButton withTapButton:(NSString *)tapButton {
     UIButton *bt = [UIButton buttonWithType:UIButtonTypeCustom];
     bt.backgroundColor = [UIColor clearColor];
-    [bt setFrame:CGRectMake(0, 0, 60, 60)];
+    [bt setFrame:CGRectMake(0, 0, 40, 40)];
 
-    UIImage *barBackBtnImg = [[UIImage imageNamed:menuButton] resizableImageWithCapInsets:UIEdgeInsetsMake(40, 24, 0, 0)];
-    UIImage *barBackBtnImgTap = [[UIImage imageNamed:tapButton] resizableImageWithCapInsets:UIEdgeInsetsMake(40, 24, 0, 0)];
+    UIImage *barBackBtnImg = [[UIImage imageNamed:menuButton] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    UIImage *barBackBtnImgTap = [[UIImage imageNamed:tapButton] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [bt setImage:barBackBtnImg forState:UIControlStateNormal];
     [bt setImage:barBackBtnImgTap forState:UIControlStateHighlighted];
     [bt addTarget:self.navigationController action:@selector(toggleMenu) forControlEvents:UIControlEventTouchUpInside];

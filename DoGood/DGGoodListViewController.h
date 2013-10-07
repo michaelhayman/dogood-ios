@@ -5,6 +5,7 @@
     IBOutlet UITableView *tableView;
     IBOutlet UIView *headerView;
     NSArray *goods;
+
 }
 
 @property (nonatomic, retain) DGCategory *category;

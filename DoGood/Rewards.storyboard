@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kLR-5A-8xi">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+    </dependencies>
+    <scenes>
+        <!--Rewards List View Controller-->
+        <scene sceneID="Dep-up-Ar0">
+            <objects>
+                <viewController storyboardIdentifier="rewardList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kLR-5A-8xi" customClass="DGRewardsListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Idl-HF-0Lt"/>
+                        <viewControllerLayoutGuide type="bottom" id="XU5-vX-F1X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="053-ty-rms">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gpO-bh-KNi">
+                                <rect key="frame" x="0.0" y="176" width="320" height="392"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZUL-RY-Ge3">
+                                    <size key="itemSize" width="100" height="180"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="kLR-5A-8xi" id="eOi-pI-NeP"/>
+                                    <outlet property="delegate" destination="kLR-5A-8xi" id="gXh-Jn-Yig"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DH4-uL-Mw2">
+                                <rect key="frame" x="0.0" y="64" width="320" height="112"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfM-bl-Xx5">
+                                        <rect key="frame" x="37" y="31" width="247" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="247" id="cR1-aZ-imp"/>
+                                            <constraint firstAttribute="height" constant="21" id="yfx-He-6nZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="112" id="FOW-C8-Vam"/>
+                                    <constraint firstItem="KfM-bl-Xx5" firstAttribute="top" secondItem="DH4-uL-Mw2" secondAttribute="top" constant="31" id="TDP-9W-1uo"/>
+                                    <constraint firstAttribute="centerX" secondItem="KfM-bl-Xx5" secondAttribute="centerX" id="zgw-jt-tZJ"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyc-X1-HxD">
+                                <rect key="frame" x="0.0" y="146" width="155" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="155" id="3ab-3w-fI9"/>
+                                    <constraint firstAttribute="height" constant="30" id="Bcq-Zn-4to"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Available" backgroundImage="ProfileTabLeftOff">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="ProfileTabLeftOn.png"/>
+                                <state key="highlighted" backgroundImage="ProfileTabLeftOff.png"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRx-6P-NJR">
+                                <rect key="frame" x="165" y="146" width="155" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="155" id="MK9-Od-TGL"/>
+                                    <constraint firstAttribute="height" constant="30" id="i0z-Dc-PCG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Claimed" backgroundImage="ProfileTabRightOff">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" backgroundImage="ProfileTabRightOn.png"/>
+                                <state key="highlighted" backgroundImage="ProfileTabRightOff.png"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DH4-uL-Mw2" firstAttribute="bottom" secondItem="RRx-6P-NJR" secondAttribute="bottom" id="1pv-5Q-Xdm"/>
+                            <constraint firstItem="gpO-bh-KNi" firstAttribute="trailing" secondItem="053-ty-rms" secondAttribute="trailing" id="30l-hp-Fid"/>
+                            <constraint firstItem="gpO-bh-KNi" firstAttribute="leading" secondItem="053-ty-rms" secondAttribute="leading" id="8lo-jZ-BCL"/>
+                            <constraint firstItem="DH4-uL-Mw2" firstAttribute="leading" secondItem="053-ty-rms" secondAttribute="leading" id="Azc-5h-0B3"/>
+                            <constraint firstItem="DH4-uL-Mw2" firstAttribute="trailing" secondItem="053-ty-rms" secondAttribute="trailing" id="EZ2-dC-k3J"/>
+                            <constraint firstItem="gpO-bh-KNi" firstAttribute="top" secondItem="DH4-uL-Mw2" secondAttribute="bottom" id="Kh9-tq-BgK"/>
+                            <constraint firstItem="RRx-6P-NJR" firstAttribute="baseline" secondItem="jyc-X1-HxD" secondAttribute="baseline" id="SiK-fO-xMf"/>
+                            <constraint firstItem="jyc-X1-HxD" firstAttribute="leading" secondItem="053-ty-rms" secondAttribute="leading" id="VDZ-vc-HFL"/>
+                            <constraint firstItem="DH4-uL-Mw2" firstAttribute="top" secondItem="Idl-HF-0Lt" secondAttribute="bottom" id="b5e-hK-3Ls"/>
+                            <constraint firstItem="gpO-bh-KNi" firstAttribute="bottom" secondItem="053-ty-rms" secondAttribute="bottom" id="gwG-li-jLy"/>
+                            <constraint firstItem="RRx-6P-NJR" firstAttribute="trailing" secondItem="053-ty-rms" secondAttribute="trailing" id="pTz-hk-5zR"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                        <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="claimedButton" destination="RRx-6P-NJR" id="Mv1-hP-K7F"/>
+                        <outlet property="collectionView" destination="gpO-bh-KNi" id="OA5-xu-N1C"/>
+                        <outlet property="points" destination="KfM-bl-Xx5" id="1bf-6M-uMG"/>
+                        <outlet property="rewardsButton" destination="jyc-X1-HxD" id="sWl-5s-Uaa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dse-y9-I1Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="87" y="-188"/>
+        </scene>
+        <!--Reward Popup View Controller-->
+        <scene sceneID="4Xb-DY-RIf">
+            <objects>
+                <viewController storyboardIdentifier="rewardClaimPopup" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fSp-2L-lZu" customClass="DGRewardPopupViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hi8-lX-b1x"/>
+                        <viewControllerLayoutGuide type="bottom" id="j4Z-pV-eYg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HwG-vd-fOn">
+                        <rect key="frame" x="0.0" y="0.0" width="266" height="322"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="249" translatesAutoresizingMaskIntoConstraints="NO" id="Yak-Tg-k7V">
+                                <rect key="frame" x="10" y="134" width="249" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lqY-Lc-Z2D">
+                                <rect key="frame" x="85" y="26" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="249" translatesAutoresizingMaskIntoConstraints="NO" id="Wr2-9w-bSx">
+                                <rect key="frame" x="10" y="173" width="249" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="249" translatesAutoresizingMaskIntoConstraints="NO" id="cRM-36-yuI">
+                                <rect key="frame" x="10" y="208" width="249" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5K1-jO-BJO">
+                                <rect key="frame" x="95" y="283" width="80" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="I want it!">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="claim:" destination="fSp-2L-lZu" eventType="touchUpInside" id="2BR-h7-z7A"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s1M-ZT-a6d">
+                                <rect key="frame" x="236" y="0.0" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="x">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="close:" destination="fSp-2L-lZu" eventType="touchUpInside" id="0dM-eN-rEp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="cost" destination="cRM-36-yuI" id="1YN-GA-dFh"/>
+                        <outlet property="heading" destination="Yak-Tg-k7V" id="xSU-i8-uf2"/>
+                        <outlet property="subheading" destination="Wr2-9w-bSx" id="azp-Mj-aul"/>
+                        <outlet property="teaser" destination="lqY-Lc-Z2D" id="zIY-XI-6Fs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iXm-l6-e5U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="453" y="-188"/>
+        </scene>
+        <!--Reward Popup View Controller-->
+        <scene sceneID="W3V-fq-XDF">
+            <objects>
+                <viewController storyboardIdentifier="rewardInstructionsPopup" autoresizesArchivedViewToFullSize="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="daH-Me-6Lb" customClass="DGRewardPopupViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IKx-6p-fxR"/>
+                        <viewControllerLayoutGuide type="bottom" id="dnT-Ya-Ogx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tdn-ju-5G3">
+                        <rect key="frame" x="0.0" y="0.0" width="266" height="322"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lm5-wU-YVf">
+                                <rect key="frame" x="0.0" y="80" width="266" height="242"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="161" translatesAutoresizingMaskIntoConstraints="NO" id="aCd-mT-20v">
+                                <rect key="frame" x="74" y="5" width="161" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NCM-iN-6RX">
+                                <rect key="frame" x="5" y="5" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188" translatesAutoresizingMaskIntoConstraints="NO" id="KJD-r4-fRX">
+                                <rect key="frame" x="74" y="24" width="188" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="188" translatesAutoresizingMaskIntoConstraints="NO" id="Tic-I9-9gt">
+                                <rect key="frame" x="74" y="46" width="188" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oHj-P7-KTV">
+                                <rect key="frame" x="236" y="0.0" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="x">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="close:" destination="daH-Me-6Lb" eventType="touchUpInside" id="7ad-Md-eIX"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="cost" destination="Tic-I9-9gt" id="RrC-SS-s6g"/>
+                        <outlet property="heading" destination="aCd-mT-20v" id="lWs-WD-FYp"/>
+                        <outlet property="subheading" destination="KJD-r4-fRX" id="NB0-7H-mJ2"/>
+                        <outlet property="teaser" destination="NCM-iN-6RX" id="zKQ-GM-r3K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HQv-Gd-3nJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="453" y="227"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ProfileTabLeftOff" width="155" height="30"/>
+        <image name="ProfileTabLeftOff.png" width="61" height="30"/>
+        <image name="ProfileTabLeftOn.png" width="61" height="30"/>
+        <image name="ProfileTabRightOff" width="155" height="30"/>
+        <image name="ProfileTabRightOff.png" width="61" height="30"/>
+        <image name="ProfileTabRightOn.png" width="61" height="30"/>
+    </resources>
+    <color key="tintColor" red="0.0" green="0.70196078429999997" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

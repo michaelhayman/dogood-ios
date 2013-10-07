@@ -197,14 +197,14 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yze-Kc-bm4">
-                                <rect key="frame" x="0.0" y="70" width="320" height="498"/>
+                                <rect key="frame" x="0.0" y="90" width="320" height="478"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="RPw-Vo-vb4" kind="embed" id="Gc0-Kf-5nV"/>
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X8T-x2-bh9">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="70"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSU-QK-rgN">
                                         <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
@@ -309,8 +309,7 @@
                             <constraint firstItem="Yze-Kc-bm4" firstAttribute="leading" secondItem="LPH-bq-HTj" secondAttribute="leading" id="7FP-Fd-0nz"/>
                             <constraint firstItem="Yze-Kc-bm4" firstAttribute="bottom" secondItem="LPH-bq-HTj" secondAttribute="bottom" id="Lmf-bh-UMW"/>
                             <constraint firstItem="Yze-Kc-bm4" firstAttribute="top" secondItem="X8T-x2-bh9" secondAttribute="bottom" id="aKN-d2-EL3"/>
-                            <constraint firstItem="X8T-x2-bh9" firstAttribute="top" secondItem="LPH-bq-HTj" secondAttribute="top" id="xVA-wc-p5R"/>
-                            <constraint firstItem="Yze-Kc-bm4" firstAttribute="top" secondItem="X8T-x2-bh9" secondAttribute="bottom" id="zlC-h2-wiz"/>
+                            <constraint firstItem="X8T-x2-bh9" firstAttribute="top" secondItem="4qB-Z4-iIV" secondAttribute="bottom" id="tec-yv-WYw"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1151,7 +1150,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Ngr-3N-iO2"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="AnA-Vx-lIg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="498"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="478"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>

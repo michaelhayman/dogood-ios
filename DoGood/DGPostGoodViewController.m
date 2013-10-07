@@ -11,6 +11,7 @@
 #import <UIImage+Resize.h>
 #import <MBProgressHUD.h>
 
+
 @interface DGPostGoodViewController ()
 
 @end
@@ -18,17 +19,9 @@
 @implementation DGPostGoodViewController
 
 #pragma mark - View lifecycle
-- (id)initWithStyle:(UITableViewStyle)style {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Post Good";
+    [self setupMenuTitle:@"Post Good"];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(receiveUpdatedCategory:)
@@ -40,22 +33,19 @@
                                                  name:@"DGUserDidUpdateGoodLocation"
                                                object:nil];
 
-    // customize look
-    self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.backgroundView = nil;
-    self.tableView.opaque = NO;
-    self.view.backgroundColor = [UIColor whiteColor];
-
     UINib *nib = [UINib nibWithNibName:@"GoodOverviewCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"GoodOverviewCell"];
     UINib *shareNib = [UINib nibWithNibName:@"GoodShareCell" bundle:nil];
     [[self tableView] registerNib:shareNib forCellReuseIdentifier:@"GoodShareCell"];
 
+    // UIFont *font = [UIFont boldSystemFontOfSize:17];
+    [postButton setTitleTextAttributes:FONT_BAR_BUTTON_ITEM_BOLD
+                                     forState:UIControlStateNormal];
+
     [self setUpActionSheets];
 
     self.good = [DGGood new];
     self.good.user = [DGUser currentUser];
-    // self.good.category = [DGCategory object];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -89,7 +79,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == overview) {
         GoodOverviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodOverviewCell"];
-        cell.description.delegate = self;
+        // cell.description.delegate = self;
 
         UITapGestureRecognizer* imageGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoSheet)];
         [cell.image setUserInteractionEnabled:YES];
@@ -148,6 +138,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == overview) {
         return 102;
+    }
+    if (indexPath.section == share) {
+        return 54;
     } else {
         return 44;
     }
@@ -314,6 +307,7 @@
     cell.image.image = imageToUpload;
 }
 
+/*
 #pragma mark - UITextFieldDelegate
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     DebugLog(@"getting hit");
@@ -323,6 +317,7 @@
     }
     return YES;
 }
+*/
 
 /*
 - (BOOL)textFieldShouldReturn:(UITextView *)text {

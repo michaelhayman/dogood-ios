@@ -6,8 +6,8 @@
     self.title = title;
     UILabel *view = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 130, 40)];
     view.text = self.navigationItem.title;
-    view.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:18];
-    view.textColor = [UIColor whiteColor];
+    view.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+    view.textColor = [UIColor blackColor];
     view.textAlignment = NSTextAlignmentCenter;
     view.backgroundColor = [UIColor clearColor];
     view.userInteractionEnabled = YES;

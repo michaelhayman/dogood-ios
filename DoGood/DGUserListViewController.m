@@ -10,7 +10,7 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = [self.query capitalizedString];
+    [self setupMenuTitle:[self.query capitalizedString]];
 
     UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"UserCell"];

@@ -1,9 +1,9 @@
 PODS:
   - AFNetworking (1.3.1)
-  - CODialog (0.0.1)
   - Facebook-iOS-SDK (3.7.0)
   - HexColors (2.2.1)
   - MBProgressHUD (0.7)
+  - MJPopupViewController (0.4)
   - REMenu (1.3.5)
   - RestKit (0.20.3):
     - RestKit/Core
@@ -30,9 +30,9 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 1.3.1)
-  - CODialog
   - Facebook-iOS-SDK (~> 3.7)
   - MBProgressHUD
+  - MJPopupViewController (~> 0.4)
   - REMenu (~> 1.3.5)
   - RestKit (~> 0.20.3)
   - RFKeychain (~> 0.1)
@@ -42,10 +42,10 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
-  CODialog: bbdfc2b86598edb0a00329d98a0ffb0ac58cf92a
   Facebook-iOS-SDK: 39b55f6c2a8901df8ebcfa23b90c66da1c475f82
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
   MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
+  MJPopupViewController: 4cd0badf3dae541017e0e16e2d2c7578d9224052
   REMenu: 097c09787102e30f17f344386d12dbb3d723a43d
   RestKit: 1f181c180105a92f11ec4f6cd7de37625e516d83
   RFKeychain: 6f70ff418c01b5d76b84796941f3d63672c9e316

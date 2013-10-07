@@ -5,6 +5,7 @@
     UIActionSheet *locationSheet;
     UIActionSheet *photoSheet;
     UIImage *imageToUpload;
+    __weak IBOutlet UIBarButtonItem *postButton;
 }
 
 @property (nonatomic, retain) DGGood *good;

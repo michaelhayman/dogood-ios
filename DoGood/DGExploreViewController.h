@@ -1,4 +1,6 @@
-@interface DGExploreViewController : UIViewController <UITextFieldDelegate> {
+#import "RootViewController.h"
+
+@interface DGExploreViewController : RootViewController <UITextFieldDelegate> {
     __weak IBOutlet UITextField *searchField;
     __weak IBOutlet UIButton *searchButton;
     __weak IBOutlet NSLayoutConstraint *searchFieldWidth;

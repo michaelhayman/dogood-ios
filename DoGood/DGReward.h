@@ -11,4 +11,6 @@
 @property (retain) NSNumber *user_id;
 @property (retain) DGUser *user;
 
+- (NSString *)costText;
+
 @end

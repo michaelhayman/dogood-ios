@@ -10,7 +10,8 @@ pod 'MBProgressHUD'
 pod 'REMenu', '~> 1.3.5'
 pod 'UIImage-Categories', '~> 0.0.1'
 pod 'TTTAttributedLabel'
-pod 'CODialog'
+pod 'MJPopupViewController', '~> 0.4'
+
 # social
 # pod 'STTwitter'
 # pod 'STTwitter', :head

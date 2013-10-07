@@ -1,4 +1,3 @@
-#import <CODialog.h>
 @class DGReward;
 
 @interface DGRewardCell : UICollectionViewCell {
@@ -13,9 +12,6 @@
 @property (weak, nonatomic) NSString *type;
 @property (weak, nonatomic) UINavigationController *navigationController;
 
-@property (nonatomic, strong) CODialog *dialog;
-
 - (void)setValues;
-- (void)claimReward:(id)sender;
 
 @end

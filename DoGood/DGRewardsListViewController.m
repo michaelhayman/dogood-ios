@@ -1,6 +1,7 @@
 #import "DGRewardsListViewController.h"
 #import "DGRewardCell.h"
 #import "DGReward.h"
+#import "UIViewController+MJPopupViewController.h"
 
 @interface DGRewardsListViewController ()
 
@@ -26,7 +27,7 @@
 
     [self setupTabs];
 
-    [self addMenuButton:@"MenuFromHomeIcon" withTapButton:@"MenuFromHomeIconTap"];
+    [self addMenuButton:@"MenuFromRewardsIconTap" withTapButton:@"MenuFromRewardsIcon"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

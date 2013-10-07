@@ -32,6 +32,7 @@
     [self.view addGestureRecognizer:tap];
     */
 
+
     characterLimit = 120;
     [self setupAccessoryView];
     [commentInputField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
@@ -46,7 +47,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     tableView.transform = CGAffineTransformMakeRotation(-M_PI);
-
     [self setupKeyboardBehaviour];
 }
 
@@ -308,20 +308,19 @@
     CommentCell *cell = [aTableView dequeueReusableCellWithIdentifier:@"CommentCell"];
     cell.transform = CGAffineTransformMakeRotation(M_PI);
     DGComment * comment = comments[indexPath.row];
-    // DebugLog(@"comment %@ user %@", comment, comment.user);
-    cell.user.text = comment.user.username;
-    cell.comment.text = comment.comment;
-    [cell.avatar setImageWithURL:[NSURL URLWithString:comment.user.avatar]];
+    cell.comment = comment;
+    cell.navigationController = self.navigationController;
+    [cell setValues];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     DGComment * comment = comments[indexPath.row];
-    CGSize size = [comment.comment sizeWithFont:[UIFont fontWithName:@"Helvetica" size:17]
+    CGSize size = [comment.comment sizeWithFont:[UIFont fontWithName:@"Helvetica" size:13]
                   constrainedToSize:CGSizeMake(235, 300)
                       lineBreakMode:NSLineBreakByWordWrapping];
     DebugLog(@"comment %@ %f", comment.comment, size.height);
-    return size.height + 42;
+    return MAX(63, size.height + 22);
 }
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
@@ -336,10 +335,12 @@
     return @"";
 }
 
+/*
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     // This will create a "invisible" footer
     return 0.01f;
 }
+ */
 
 #pragma mark - Retrieval methods
 - (void)getComments {

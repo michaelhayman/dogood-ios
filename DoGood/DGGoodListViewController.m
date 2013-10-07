@@ -18,7 +18,7 @@
         [self setupMenuTitle:_category.name];
     } else {
         [self setupMenuTitle:@"Do Good"];
-        [self addMenuButton:@"MenuFromHomeIcon" withTapButton:@"MenuFromHomeIconTap"];
+        [self addMenuButton:@"MenuFromHomeIconTap" withTapButton:@"MenuFromHomeIcon"];
     }
 
     UINib *nib = [UINib nibWithNibName:@"GoodCell" bundle:nil];
@@ -50,7 +50,9 @@
     userName.text = [DGUser currentUser].username;
     UILabel *points = (UILabel *)[headerView viewWithTag:202];
     points.text = [NSString stringWithFormat:@"%@ points", [DGUser currentUser].points];
-    headerView.backgroundColor = [UIColor lightGrayColor];
+    points.textColor = [UIColor whiteColor];
+    userName.textColor = [UIColor whiteColor];
+    headerView.backgroundColor = COLOUR_REDDISH_BROWN;
 }
 
 - (void)setupRefresh {
@@ -102,7 +104,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 773;
+    return 600;
 }
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {

@@ -27,7 +27,7 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Settings";
+    [self setupMenuTitle:@"Settings"];
 
     // customize look
     self.tableView.backgroundColor = [UIColor clearColor];
