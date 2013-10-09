@@ -102,14 +102,14 @@
     CGRect imageRect = CGRectMake(0, 0, actualWidth, actualHeight);
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
 
-    CGContextRef context = CGBitmapContextCreate(nil, actualWidth, actualHeight, 8, 0, colorSpace, kCGImageAlphaNone);
+    CGContextRef context = CGBitmapContextCreate(nil, actualWidth, actualHeight, 8, 0, colorSpace, (CGBitmapInfo)kCGImageAlphaNone);
     CGContextDrawImage(context, imageRect, [image CGImage]);
 
     CGImageRef grayImage = CGBitmapContextCreateImage(context);
     CGColorSpaceRelease(colorSpace);
     CGContextRelease(context);
 
-    context = CGBitmapContextCreate(nil, actualWidth, actualHeight, 8, 0, nil, kCGImageAlphaOnly);
+    context = CGBitmapContextCreate(nil, actualWidth, actualHeight, 8, 0, nil, (CGBitmapInfo)kCGImageAlphaOnly);
     CGContextDrawImage(context, imageRect, [image CGImage]);
     CGImageRef mask = CGBitmapContextCreateImage(context);
     CGContextRelease(context);
