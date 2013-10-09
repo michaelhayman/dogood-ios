@@ -66,6 +66,7 @@ NSString* const DGUserDidFindFriendsOnTwitter = @"DGUserDidFindFriendsOnTwitter"
 NSString* const DGUserDidFailFindFriendsOnTwitter = @"DGUserDidFailFindFriendsOnTwitter";
 
 NSString* const DGUserDidConnectToFacebook = @"DGUserDidConnectToFacebook";
+NSString* const DGUserDidFailToConnectToFacebook = @"DGUserDidFailToConnectToFacebook";
 NSString* const DGUserDidDisconnectFromFacebook = @"DGUserDidDisconnectFromFacebook";
 NSString* const DGUserDidCheckIfFacebookIsConnectedAndHasPermissions = @"DGUserDidCheckIfFacebookIsConnectedAndHasPermissions";
 NSString* const DGUserDidCheckIfFacebookIsConnected = @"DGUserDidCheckIfFacebookIsConnected";

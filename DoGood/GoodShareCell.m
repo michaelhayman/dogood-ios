@@ -10,6 +10,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.share.on = NO;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareOff) name:DGUserDidFailToConnectToFacebook object:nil];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -56,7 +57,7 @@
     } else {
         // [self.share performSelectorOnMainThread:@selector(setOn:) withObject:[NSNumber numberWithBool:NO] waitUntilDone:NO];
         [self performSelectorOnMainThread:@selector(shareOff) withObject:nil waitUntilDone:NO];
-        DebugLog(@"no %d", self.share.selected);
+        //DebugLog(@"no %d", self.share.selected);
     }
 }
 
@@ -101,7 +102,7 @@
     } else {
         // [self.share performSelectorOnMainThread:@selector(setOn:) withObject:[NSNumber numberWithBool:NO] waitUntilDone:NO];
         [self performSelectorOnMainThread:@selector(shareOff) withObject:nil waitUntilDone:NO];
-        DebugLog(@"no %d", self.share.selected);
+        // DebugLog(@"no %d", self.share.selected);
     }
 }
 

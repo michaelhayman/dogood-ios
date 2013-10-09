@@ -428,6 +428,8 @@ NSNumber *tempUserID = [self getTwitterIDFromAccount:[[accountStore accountsWith
         }
         case FBSessionStateClosedLoginFailed: {
             DebugLog(@"login failed");
+            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailToConnectToFacebook object:nil];
+
             [self removeFacebookAccess];
 
             break;

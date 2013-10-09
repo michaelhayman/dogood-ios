@@ -123,6 +123,7 @@ extern NSString* const DGUserDidFailFindFriendsOnTwitter;
 
 extern NSString* const DGUserDidConnectToFacebook;
 extern NSString* const DGUserDidDisconnectFromFacebook;
+extern NSString* const DGUserDidFailToConnectToFacebook;
 
 extern NSString* const DGUserDidCheckIfFacebookIsConnectedAndHasPermissions;
 extern NSString* const DGUserDidCheckIfFacebookIsConnected;
