@@ -307,28 +307,6 @@
     cell.image.image = imageToUpload;
 }
 
-/*
-#pragma mark - UITextFieldDelegate
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    DebugLog(@"getting hit");
-    if([text isEqualToString:@"\n"]) {
-        [textView resignFirstResponder];
-        return NO;
-    }
-    return YES;
-}
-*/
-
-/*
-- (BOOL)textFieldShouldReturn:(UITextView *)text {
-    if([text.text isEqualToString:@"\n"]) {
-        [text resignFirstResponder];
-        return NO;
-    }
-    return YES;
-}
-*/
-
 #pragma mark - Change data responses
 - (void)receiveUpdatedCategory:(NSNotification *)notification {
     self.good.category = [[notification userInfo] valueForKey:@"category"];
