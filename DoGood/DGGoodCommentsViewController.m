@@ -316,11 +316,17 @@
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     DGComment * comment = comments[indexPath.row];
-    CGSize size = [comment.comment sizeWithFont:[UIFont fontWithName:@"Helvetica" size:13]
-                  constrainedToSize:CGSizeMake(235, 300)
-                      lineBreakMode:NSLineBreakByWordWrapping];
-    DebugLog(@"comment %@ %f", comment.comment, size.height);
-    return MAX(63, size.height + 22);
+    CGFloat width = 235;
+    UIFont *font = [UIFont systemFontOfSize:13];
+    NSAttributedString *attributedText =
+    [[NSAttributedString alloc] initWithString:comment.comment attributes:@ { NSFontAttributeName: font }];
+    CGRect rect = [attributedText boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                               context:nil];
+    CGSize size = rect.size;
+    CGFloat height = ceilf(size.height);
+
+    return MAX(63, height + 22);
 }
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {

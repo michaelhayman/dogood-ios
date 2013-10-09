@@ -256,6 +256,8 @@ static inline NSRegularExpression * NameRegularExpression() {
         TTTAttributedLabel *label = [self commentLabel];
         NSString *text = [NSString stringWithFormat:@"%@ %@", comment.user.username, comment.comment];
 
+        label.font = [UIFont systemFontOfSize:10];
+
         [label setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
             NSRange stringRange = NSMakeRange(0, [mutableAttributedString length]);
             
@@ -281,10 +283,9 @@ static inline NSRegularExpression * NameRegularExpression() {
 
         NSRange r = [text rangeOfString:comment.user.username];
         [label addLinkToURL:[NSURL URLWithString:[NSString stringWithFormat:@"dogood://users/%@", comment.user.userID]] withRange:r];
-        UIFont *font = [UIFont fontWithName:@"Calibre" size:12];
-        CGSize size = [text sizeWithFont:font
-                              constrainedToSize:CGSizeMake(221, 118)
-                          lineBreakMode:NSLineBreakByWordWrapping];
+        CGFloat width = 140;
+        CGRect rect = [label.attributedText boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+        CGSize size = rect.size;
         label.frame = CGRectMake(0, lastHeight, 221, size.height);
         lastHeight = lastHeight + size.height;
         label.delegate = self;
