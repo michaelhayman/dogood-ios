@@ -14,22 +14,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="263">
-                        <rect key="frame" x="233" y="13" width="73" height="73"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="UploadImage" highlightedImage="UploadImageTap" translatesAutoresizingMaskIntoConstraints="NO" id="263">
+                        <rect key="frame" x="225" y="5" width="90" height="90"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x38-h0-bgy">
+                        <rect key="frame" x="239" y="18" width="63" height="63"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="73" id="472"/>
-                            <constraint firstAttribute="height" constant="73" id="474"/>
+                            <constraint firstAttribute="width" constant="63" id="iNF-oB-eoo"/>
                         </constraints>
                     </imageView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="296">
                         <rect key="frame" x="13" y="5" width="204" height="90"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="204" id="302"/>
-                            <constraint firstAttribute="height" constant="90" id="377"/>
-                        </constraints>
                         <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                         <connections>
@@ -37,17 +36,28 @@
                         </connections>
                     </textView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="x38-h0-bgy" firstAttribute="top" secondItem="Fqe-Dx-qRL" secondAttribute="top" constant="18" id="5PI-Mn-bS8"/>
+                    <constraint firstItem="296" firstAttribute="leading" secondItem="Fqe-Dx-qRL" secondAttribute="leading" constant="13" id="Dub-S9-Fua"/>
+                    <constraint firstItem="263" firstAttribute="top" secondItem="296" secondAttribute="top" id="Jdn-Nt-Apv"/>
+                    <constraint firstItem="263" firstAttribute="centerX" secondItem="x38-h0-bgy" secondAttribute="centerX" id="aED-cm-YSY"/>
+                    <constraint firstAttribute="bottom" secondItem="x38-h0-bgy" secondAttribute="bottom" constant="20" symbolic="YES" id="bBC-te-zfZ"/>
+                    <constraint firstItem="296" firstAttribute="top" secondItem="Fqe-Dx-qRL" secondAttribute="top" constant="5" id="cpn-d3-FMc"/>
+                    <constraint firstAttribute="trailing" secondItem="x38-h0-bgy" secondAttribute="trailing" constant="18" id="ews-Wv-AmF"/>
+                    <constraint firstItem="263" firstAttribute="leading" secondItem="296" secondAttribute="trailing" constant="8" symbolic="YES" id="gxq-IJ-rIF"/>
+                    <constraint firstItem="x38-h0-bgy" firstAttribute="leading" secondItem="296" secondAttribute="trailing" constant="22" id="h32-Zb-xpX"/>
+                    <constraint firstItem="263" firstAttribute="bottom" secondItem="296" secondAttribute="bottom" id="h3U-TE-Tx3"/>
+                    <constraint firstItem="296" firstAttribute="centerY" secondItem="Fqe-Dx-qRL" secondAttribute="centerY" id="qHH-dI-SkU"/>
+                </constraints>
             </tableViewCellContentView>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="263" secondAttribute="trailing" constant="14" id="Do6-Di-fCU"/>
-                <constraint firstItem="263" firstAttribute="centerY" secondItem="296" secondAttribute="centerY" id="GnN-PZ-IeA"/>
-                <constraint firstItem="296" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="13" id="MUz-7r-ucP"/>
-                <constraint firstItem="296" firstAttribute="top" secondItem="3" secondAttribute="top" constant="5" id="rnL-fC-Od1"/>
-            </constraints>
             <connections>
                 <outlet property="description" destination="296" id="305"/>
-                <outlet property="image" destination="263" id="306"/>
+                <outlet property="image" destination="x38-h0-bgy" id="tTh-Qj-hg5"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="UploadImage" width="73" height="73"/>
+        <image name="UploadImageTap" width="73" height="73"/>
+    </resources>
 </document>
