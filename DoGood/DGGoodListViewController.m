@@ -4,6 +4,7 @@
 #import "DGCategory.h"
 #import "FSLocation.h"
 #import "DGWelcomeViewController.h"
+#import "UserOverview.h"
 
 @interface DGGoodListViewController ()
 
@@ -43,16 +44,16 @@
 }
 
 - (void)setupUserPoints {
-    [[NSBundle mainBundle] loadNibNamed:@"UserOverview" owner:self options:nil];
-    [tableView setTableHeaderView:headerView];
-
-    UILabel *userName = (UILabel *)[headerView viewWithTag:201];
-    userName.text = [DGUser currentUser].username;
-    UILabel *points = (UILabel *)[headerView viewWithTag:202];
-    points.text = [NSString stringWithFormat:@"%@ points", [DGUser currentUser].points];
-    points.textColor = [UIColor whiteColor];
-    userName.textColor = [UIColor whiteColor];
-    headerView.backgroundColor = COLOUR_REDDISH_BROWN;
+    if (self.category == nil) {
+    // if ([[DGUser currentUser].points intValue] > 0) {
+        // UserOverview *userView = [[UserOverview alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+        UserOverview *userView = [[UserOverview alloc] init];
+        // userView.backgroundColor = [UIColor blackColor];
+        [tableView setTableHeaderView:userView];
+        // tableView.tableHeaderView.backgroundColor = [UIColor redColor];
+        DebugLog(@"setting points");
+    // }
+    }
 }
 
 - (void)setupRefresh {
