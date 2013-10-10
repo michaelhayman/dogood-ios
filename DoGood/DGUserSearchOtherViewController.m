@@ -24,10 +24,12 @@
 }
 
 - (IBAction)inviteViaText:(id)sender {
-    [invites inviteViaText:nil];
+    [invites setInviteText];
+    [invites sendViaText:nil];
 }
 
 - (IBAction)inviteViaEmail:(id)sender {
-    [invites inviteViaEmail:nil];
+    [invites setInviteText];
+    [invites sendViaEmail:nil];
 }
 @end

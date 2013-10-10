@@ -98,8 +98,9 @@
     GoodCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     DGGood *good = goods[indexPath.row];
     cell.good = good;
-    [cell setValues];
     cell.navigationController = self.navigationController;
+    cell.parent = self;
+    [cell setValues];
     return cell;
 }
 

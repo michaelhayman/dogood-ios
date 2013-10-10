@@ -4,6 +4,8 @@
 // @class TTTAttributedLabelDelegate;
 #import <TTTAttributedLabel.h>
 
+@class DGUserInvitesViewController;
+
 @interface GoodCell : UITableViewCell <UIActionSheetDelegate, TTTAttributedLabelDelegate> {
     UIActionSheet *moreOptionsSheet;
     UIActionSheet *shareOptionsSheet;
@@ -12,6 +14,8 @@
     __weak IBOutlet NSLayoutConstraint *regoodsHeight;
     __weak IBOutlet NSLayoutConstraint *likesHeight;
     __weak IBOutlet UIView *comments;
+
+    DGUserInvitesViewController *invites;
 }
 
 @property (weak, nonatomic) NSLayoutConstraint *overviewImageHeight;

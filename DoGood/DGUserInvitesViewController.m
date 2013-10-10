@@ -9,9 +9,21 @@
 @implementation DGUserInvitesViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
 }
 
-- (IBAction)inviteViaText:(id)sender {
+// have pre-canned invites
+// setInviteText or setCustomText
+// then change names to sendViaText & sendViaEmail
+- (void)setInviteText {
+    bodyText = [NSString stringWithFormat:@"Get rewarded for doing good - follow me on Do Good! dogood://users/%@\n\n---\nDon't have Do Good? Get it from the App Store: https://get.dogood.co", [DGUser currentUser].userID];
+}
+
+- (void)setCustomText:(NSString *)string {
+    bodyText = string;
+}
+
+- (IBAction)sendViaText:(id)sender {
     if ([MFMessageComposeViewController canSendText]) {
         [self displaySMSComposerSheet];
     }
@@ -20,7 +32,7 @@
     }
 }
 
-- (IBAction)inviteViaEmail:(id)sender {
+- (IBAction)sendViaEmail:(id)sender {
     if ([MFMailComposeViewController canSendMail]) {
         [self displayMailComposerSheet];
     }

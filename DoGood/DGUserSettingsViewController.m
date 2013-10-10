@@ -500,10 +500,12 @@
             [self findFriendsSearch];
         }
         if (indexPath.row == byText) {
-            [invites inviteViaText:nil];
+            [invites setInviteText];
+            [invites sendViaText:nil];
         }
         if (indexPath.row == byEmail) {
-            [invites inviteViaEmail:nil];
+            [invites setInviteText];
+            [invites sendViaEmail:nil];
         }
     }
     if (indexPath.section == socialNetworks) {

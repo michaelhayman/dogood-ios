@@ -6,6 +6,7 @@
 #import <TTTAttributedLabel.h>
 #import "DGUserProfileViewController.h"
 #import "DGUserListViewController.h"
+#import "DGUserInvitesViewController.h"
 
 static inline NSRegularExpression * NameRegularExpression() {
     static NSRegularExpression *_nameRegularExpression = nil;
@@ -105,6 +106,10 @@ static inline NSRegularExpression * NameRegularExpression() {
         [self.regood setSelected:NO];
     }
     [self setRegoodsText];
+
+    // more options
+    invites = [[DGUserInvitesViewController alloc] init];
+    invites.parent = (UIViewController *)self.parent;
 }
 
 /*
@@ -342,8 +347,14 @@ static inline NSRegularExpression * NameRegularExpression() {
             }
         } else if (actionSheet == shareOptionsSheet) {
             if (buttonIndex == text_message_button) {
+                NSString *text = [NSString stringWithFormat:@"Check out this good story! dogood://good/%@", self.good.goodID];
+                [invites setCustomText:text];
+                [invites sendViaText:nil];
                 DebugLog(@"Text message");
             } else if (buttonIndex == email_button) {
+                NSString *text = [NSString stringWithFormat:@"Check out this good story! dogood://good/%@", self.good.goodID];
+                [invites setCustomText:text];
+                [invites sendViaEmail:nil];
                 DebugLog(@"Email");
             } else if (buttonIndex == facebook_button) {
                 DebugLog(@"Facebook");
