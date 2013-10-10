@@ -292,11 +292,15 @@ static inline NSRegularExpression * NameRegularExpression() {
 
         NSRange r = [text rangeOfString:comment.user.username];
         [label addLinkToURL:[NSURL URLWithString:[NSString stringWithFormat:@"dogood://users/%@", comment.user.userID]] withRange:r];
-        CGFloat width = 140;
-        CGRect rect = [label.attributedText boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+
+        CGFloat labelWidth = 221;
+        CGRect rect = [label.attributedText boundingRectWithSize:CGSizeMake(labelWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
         CGSize size = rect.size;
-        label.frame = CGRectMake(0, lastHeight, 221, size.height);
+        CGFloat height = ceilf(size.height);
+        CGFloat width  = ceilf(size.width);
+        label.frame = CGRectMake(0, lastHeight, width, height);
         lastHeight = lastHeight + size.height;
+
         label.delegate = self;
         [comments addSubview:label];
     }
