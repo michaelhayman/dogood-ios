@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "accounts-glyph-avatar-default.png"
+      "filename" : "accounts-glyph-avatar-active.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "accounts-glyph-avatar-default@2x.png"
+      "filename" : "accounts-glyph-avatar-active@2x.png"
     }
   ],
   "info" : {
