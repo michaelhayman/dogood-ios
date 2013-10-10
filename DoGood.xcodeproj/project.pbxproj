@@ -79,6 +79,7 @@
 		639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B891017BAEC1D005E2B62 /* DGFollow.m */; };
 		63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */; };
 		63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */; };
+		63C1BA501806026300CB95CF /* UserOverview.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C1BA4F1806026300CB95CF /* UserOverview.m */; };
 		63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */; };
 		63D4BD251802484800ACF1B9 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D4BD241802484800ACF1B9 /* Rewards.storyboard */; };
 		63D4BD2818024E0700ACF1B9 /* DGRewardPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BD2718024E0700ACF1B9 /* DGRewardPopupViewController.m */; };
@@ -234,6 +235,8 @@
 		63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchAddressBookViewController.m; sourceTree = "<group>"; };
 		63BFB1EA17C81E11004D990F /* DGUserSearchNetworksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchNetworksViewController.h; sourceTree = "<group>"; };
 		63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchNetworksViewController.m; sourceTree = "<group>"; };
+		63C1BA4E1806026300CB95CF /* UserOverview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOverview.h; sourceTree = "<group>"; };
+		63C1BA4F1806026300CB95CF /* UserOverview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOverview.m; sourceTree = "<group>"; };
 		63D4BCDD17FFDF7000ACF1B9 /* DGGoodCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGoodCommentsViewController.h; sourceTree = "<group>"; };
 		63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGGoodCommentsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		63D4BD241802484800ACF1B9 /* Rewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rewards.storyboard; sourceTree = "<group>"; };
@@ -362,6 +365,7 @@
 				637ABAD217C7C6F4004AA4C9 /* SearchUserNetworks.xib */,
 				6355EC3917B8680300EE91C0 /* SignUpOverviewCell.xib */,
 				6355EC3B17B86B7800EE91C0 /* SignUpOverviewCell.h */,
+				6355EC3C17B86B7B00EE91C0 /* SignUpOverviewCell.m */,
 				63BFB1E517C818DE004D990F /* DGUserSearchAddressBookViewController.h */,
 				63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */,
 				6358341717C88F3C00F997F6 /* DGUserSearchOtherViewController.h */,
@@ -372,7 +376,6 @@
 				6358340A17C885D700F997F6 /* DGUserSearchTwitterViewController.m */,
 				63BFB1EA17C81E11004D990F /* DGUserSearchNetworksViewController.h */,
 				63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */,
-				6355EC3C17B86B7B00EE91C0 /* SignUpOverviewCell.m */,
 				632A36B917BCAEE8004EED26 /* UserCell.h */,
 				632A36BA17BCAEE8004EED26 /* UserCell.m */,
 				632A36BB17BCAEE8004EED26 /* UserCell.xib */,
@@ -428,6 +431,8 @@
 				633DBF7517ADD57D0038BC2D /* GoodShareCell.h */,
 				633DBF7617ADD57E0038BC2D /* GoodShareCell.m */,
 				633DBF7817AE02570038BC2D /* UserOverview.xib */,
+				63C1BA4E1806026300CB95CF /* UserOverview.h */,
+				63C1BA4F1806026300CB95CF /* UserOverview.m */,
 				636AEAA817AD79B1002A3494 /* GoodOverviewCell.xib */,
 				636AEAA517AD79AA002A3494 /* GoodOverviewCell.h */,
 				636AEAA617AD79AA002A3494 /* GoodOverviewCell.m */,
@@ -719,6 +724,7 @@
 				633DBF7217ADC4E60038BC2D /* DGPostGoodImageViewController.m in Sources */,
 				633DBF7717ADD57E0038BC2D /* GoodShareCell.m in Sources */,
 				633DBF7E17AE25CF0038BC2D /* DGUserProfileViewController.m in Sources */,
+				63C1BA501806026300CB95CF /* UserOverview.m in Sources */,
 				633DBF8417AE92E00038BC2D /* NavigationViewController.m in Sources */,
 				633DBF8517AE92E00038BC2D /* RootViewController.m in Sources */,
 				6355EC0717B0C83100EE91C0 /* DGComment.m in Sources */,
