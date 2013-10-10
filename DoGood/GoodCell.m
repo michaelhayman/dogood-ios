@@ -26,6 +26,10 @@ static inline NSRegularExpression * NameRegularExpression() {
 
     // user
     self.avatar.contentMode = UIViewContentModeScaleAspectFit;
+    UITapGestureRecognizer* userAvatarGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGoodUserProfile)];
+    [self.avatar setUserInteractionEnabled:YES];
+    [self.avatar addGestureRecognizer:userAvatarGesture];
+
     UITapGestureRecognizer* userGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGoodUserProfile)];
     [self.username setUserInteractionEnabled:YES];
     [self.username addGestureRecognizer:userGesture];
