@@ -36,7 +36,7 @@
     headerViewToTopConstraint.constant = 0;
     [headerView setNeedsUpdateConstraints];
 
-    [UIView animateWithDuration:5.5 animations:^{
+    [UIView animateWithDuration:0.3 animations:^{
         [headerView layoutIfNeeded];
     }];
 }
