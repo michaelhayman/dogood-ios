@@ -26,15 +26,6 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     DGGoodListViewController *goodListController = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
     self.window.rootViewController = [[NavigationViewController alloc] initWithRootViewController:goodListController];
-
-       /*
-    UIStoryboard *storyboard;
-    storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
-    DGWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
-    // UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
-                  */
-    // self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:goodListController];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
