@@ -8,7 +8,7 @@
         <!--Explore View Controller-->
         <scene sceneID="QP3-d8-uEQ">
             <objects>
-                <viewController storyboardIdentifier="explore" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qBz-P4-Iph" customClass="DGExploreViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="explore" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qBz-P4-Iph" customClass="DGExploreViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e2S-3b-YKL"/>
                         <viewControllerLayoutGuide type="bottom" id="vME-Vi-Jyl"/>
