@@ -57,6 +57,7 @@
 
     // setup avatar
     avatar.contentMode = UIViewContentModeScaleAspectFit;
+    avatar.backgroundColor = COLOUR_OFF_WHITE;
     UITapGestureRecognizer* avatarGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoPicker)];
     [avatar setUserInteractionEnabled:YES];
     [avatar addGestureRecognizer:avatarGesture];
