@@ -30,7 +30,7 @@ static DGUser* currentUser = nil;
             currentUser.contactable = [defaults objectForKey:kDGUserCurrentUserContactable];
             currentUser.avatar = [defaults objectForKey:kDGUserCurrentUserAvatar];
             currentUser.password = [RFKeychain passwordForAccount:kDoGoodAccount service:kDoGoodService];
-            currentUser.twitter_id = [defaults objectForKey:kDGUserCurrentUserTwitterID];
+            currentUser.facebook_id = [defaults objectForKey:kDGUserCurrentUserTwitterID];
             currentUser.twitter_id = [defaults objectForKey:kDGUserCurrentUserFacebookID];
 		} else {
             currentUser = [[self alloc] init];
