@@ -137,7 +137,7 @@
             [hud hide:YES];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             DebugLog(@"fail");
-            [TSMessage showNotificationInViewController:self
+            [TSMessage showNotificationInViewController:self.navigationController
                                       title:nil
                                     subtitle:[error localizedDescription]
                                        type:TSMessageNotificationTypeError];

@@ -5,6 +5,7 @@
     
     __weak IBOutlet UIImageView *avatar;
     __weak IBOutlet UIImageView *avatarOverlay;
+
     UIImage *imageToUpload;
     DGUserInvitesViewController *invites;
     DGPhotoPickerViewController *photos;

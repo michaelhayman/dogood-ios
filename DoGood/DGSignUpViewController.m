@@ -1,5 +1,6 @@
 #import "DGSignUpViewController.h"
 #import "DGSignUpDetailsViewController.h"
+#import "DGPhotoPickerViewController.h"
 
 @interface DGSignUpViewController ()
 
@@ -12,12 +13,16 @@
     [super viewDidLoad];
     user = [DGUser new];
 
-    UITapGestureRecognizer* imageGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoSheet)];
+    UITapGestureRecognizer* imageGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoPicker)];
     [avatar setUserInteractionEnabled:YES];
     [avatar addGestureRecognizer:imageGesture];
     avatar.contentMode = UIViewContentModeScaleAspectFit;
     avatar.backgroundColor = COLOUR_OFF_WHITE;
 
+    photos = [[DGPhotoPickerViewController alloc] init];
+    photos.parent = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadAvatar:) name:DGUserDidAddPhotoNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteAvatar) name:DGUserDidRemovePhotoNotification object:nil];
     // [[UITextField appearance] setBorderStyle:UITextBorderStyleNone];
 }
 
@@ -58,7 +63,7 @@
     if(alertView.tag == 59) {
         if(buttonIndex == 0) {
             [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
-            [self openPhotoSheet];
+            [self openPhotoPicker];
         } else {
             [self showNextStep];
         }
@@ -74,79 +79,23 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-#pragma mark - UIActionSheetDelegate methods
-- (void)openPhotoSheet {
-    avatar.highlighted = YES;
-    NSString *destructiveButtonTitle;
-    if (user.image) {
-        destructiveButtonTitle = @"Remove photo";
-    } else {
-        destructiveButtonTitle = nil;
-    }
-
-    photoSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                delegate:self
-                                       cancelButtonTitle:@"Cancel"
-                                  destructiveButtonTitle:destructiveButtonTitle
-                                       otherButtonTitles:@"Add from camera", @"Add from camera roll", nil];
-    [photoSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-    [photoSheet showInView:self.view];
+#pragma mark - Avatar & DGPhotoPickerViewController
+- (void)openPhotoPicker {
+    [photos openPhotoSheet:avatar.image];
 }
 
-#define remove_button 0
-#define select_new_button 1
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex != actionSheet.cancelButtonIndex) {
-        if (actionSheet == photoSheet) {
-            DebugLog(@"button index %d", buttonIndex);
-            if (buttonIndex == photoSheet.destructiveButtonIndex) {
-                DebugLog(@"remove");
-                avatar.image = nil;
-                user.image = nil;
-                avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
-            } else if (buttonIndex == photoSheet.firstOtherButtonIndex) {
-                [self showCamera];
-            } else if (buttonIndex == photoSheet.firstOtherButtonIndex + 1) {
-                [self showCameraRoll];
-            }
-        }
-    } else {
-        DebugLog(@"button index %d, %d", buttonIndex, actionSheet.cancelButtonIndex);
-        // [actionSheet dismissWithClickedButtonIndex:actionSheet.cancelButtonIndex animated:YES];
-    }
-}
-
-#pragma mark - Camera helpers
-- (void)showCameraRoll {
-    DebugLog(@"show camera roll");
-    UIImagePickerController *pickerC = [[UIImagePickerController alloc] init];
-    pickerC.delegate = self;
-    pickerC.allowsEditing = YES;
-    [self presentViewController:pickerC animated:YES completion:nil];
-}
-
-- (void)showCamera {
-    DebugLog(@"show camera");
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeCamera])
-    {
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-        imagePicker.delegate = self;
-        imagePicker.allowsEditing = YES;
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    }
-}
-
-#pragma mark - UIImagePickerController delegate methods
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    imageToUpload = [info objectForKey:UIImagePickerControllerEditedImage];
-    // imageToUpload = [info objectForKey:UIImagePickerControllerOriginalImage];
+- (void)uploadAvatar:(NSNotification *)notification  {
+    imageToUpload = [[notification userInfo] objectForKey:UIImagePickerControllerEditedImage];
     user.image = imageToUpload;
     avatar.image = user.image;
     avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
     [avatar bringSubviewToFront:avatarOverlay];
+}
+
+- (void)deleteAvatar {
+    avatar.image = nil;
+    user.image = nil;
+    avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
 }
 
 #pragma mark - UITextFieldDelegate

@@ -1,13 +1,14 @@
-@interface DGSignUpViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate> {
+@class DGPhotoPickerViewController;
+
+@interface DGSignUpViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, UIActionSheetDelegate> {
     __weak IBOutlet UIImageView *avatar;
     __weak IBOutlet UIImageView *avatarOverlay;
     __weak IBOutlet UITextField *name;
-    UIActionSheet * photoSheet;
+
     DGUser *user;
     UIImage *imageToUpload;
-}
 
-- (void)showCamera;
-- (void)showCameraRoll;
+    DGPhotoPickerViewController *photos;
+}
 
 @end
