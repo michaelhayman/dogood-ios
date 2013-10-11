@@ -30,10 +30,12 @@
     [self setupMenuTitle:@"Settings"];
 
     // customize look
+    /*
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.backgroundView = nil;
     self.tableView.opaque = NO;
     self.view.backgroundColor = NEUTRAL_BACKGROUND_COLOUR;
+     */
 
     UINib *nib = [UINib nibWithNibName:UITextFieldCellIdentifier bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:UITextFieldCellIdentifier];
