@@ -316,10 +316,9 @@
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     DGComment * comment = comments[indexPath.row];
-    CGFloat width = 235;
     UIFont *font = [UIFont systemFontOfSize:13];
-    NSAttributedString *attributedText =
-    [[NSAttributedString alloc] initWithString:comment.comment attributes:@ { NSFontAttributeName: font }];
+    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:comment.comment attributes:@ { NSFontAttributeName: font }];
+    CGFloat width = 235;
     CGRect rect = [attributedText boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
                                                options:NSStringDrawingUsesLineFragmentOrigin
                                                context:nil];
@@ -341,12 +340,10 @@
     return @"";
 }
 
-/*
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     // This will create a "invisible" footer
     return 0.01f;
 }
- */
 
 #pragma mark - Retrieval methods
 - (void)getComments {
