@@ -1,6 +1,7 @@
 #import "RootViewController.h"
+@class DGUserInvitesViewController;
 
-@interface DGUserProfileViewController : RootViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface DGUserProfileViewController : RootViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIAlertViewDelegate> {
     IBOutlet UIButton *centralButton;
     __weak IBOutlet UIImageView *avatarOverlay;
     __weak IBOutlet UIImageView *avatar;
@@ -17,7 +18,11 @@
     NSString *selectedTab;
     __weak IBOutlet UIButton *goodsButton;
     __weak IBOutlet UIButton *likesButton;
-    
+
+    DGUserInvitesViewController *invites;
+
+    UIActionSheet *moreOptionsSheet;
+    UIActionSheet *shareOptionsSheet;
 }
 
 @property (weak, nonatomic) NSNumber *userID;

@@ -6,7 +6,7 @@
 
 @class DGUserInvitesViewController;
 
-@interface GoodCell : UITableViewCell <UIActionSheetDelegate, TTTAttributedLabelDelegate> {
+@interface GoodCell : UITableViewCell <UIActionSheetDelegate, TTTAttributedLabelDelegate, UIAlertViewDelegate> {
     UIActionSheet *moreOptionsSheet;
     UIActionSheet *shareOptionsSheet;
     __weak IBOutlet NSLayoutConstraint *commentBoxHeight;

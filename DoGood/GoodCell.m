@@ -2,6 +2,7 @@
 #import "DGGood.h"
 #import "DGVote.h"
 #import "DGFollow.h"
+#import "DGReport.h"
 #import "DGGoodCommentsViewController.h"
 #import <TTTAttributedLabel.h>
 #import "DGUserProfileViewController.h"
@@ -330,7 +331,8 @@ static inline NSRegularExpression * NameRegularExpression() {
                                                     delegate:self
                                            cancelButtonTitle:@"Cancel"
                                       destructiveButtonTitle:nil
-                                           otherButtonTitles:@"Text message", @"Email", @"Facebook", @"Twitter", nil];
+                                           otherButtonTitles:@"Text message", @"Email", nil];
+                                           // otherButtonTitles:@"Text message", @"Email", @"Facebook", @"Twitter", nil];
     [shareOptionsSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
     shareOptionsSheet.delegate = self;
 }
@@ -354,14 +356,13 @@ static inline NSRegularExpression * NameRegularExpression() {
                 DebugLog(@"Share");
             }
         } else if (actionSheet == shareOptionsSheet) {
+            NSString *text = [NSString stringWithFormat:@"Check out this good story! dogood://goods/%@", self.good.goodID];
             if (buttonIndex == text_message_button) {
-                NSString *text = [NSString stringWithFormat:@"Check out this good story! dogood://good/%@", self.good.goodID];
-                [invites setCustomText:text];
+                [invites setCustomText:text withSubject:nil];
                 [invites sendViaText:nil];
                 DebugLog(@"Text message");
             } else if (buttonIndex == email_button) {
-                NSString *text = [NSString stringWithFormat:@"Check out this good story! dogood://good/%@", self.good.goodID];
-                [invites setCustomText:text];
+                [invites setCustomText:text withSubject:@"Check out this good!"];
                 [invites sendViaEmail:nil];
                 DebugLog(@"Email");
             } else if (buttonIndex == facebook_button) {
@@ -375,7 +376,24 @@ static inline NSRegularExpression * NameRegularExpression() {
 
 #pragma mark - Report good
 - (void)reportGood {
-    DebugLog(@"Report good");
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You want to report this post?"
+                                                    message:@"Are you sure?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"No..."
+                                          otherButtonTitles:@"Yes!", nil];
+    [alert show];
+}
+
+- (void)confirmReportGood {
+    [DGReport fileReportFor:self.good.goodID ofType:@"good" inController:self.navigationController];
+}
+
+#pragma mark - UIAlertViewDelegate methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        [self confirmReportGood];
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+    }
 }
 
 #pragma mark - User profile helper

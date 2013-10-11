@@ -102,6 +102,7 @@
 		63E4424D17BC3010000224E8 /* DGSignUpDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E4424C17BC3010000224E8 /* DGSignUpDetailsViewController.m */; };
 		63EB262E17C2C8BC006D520A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EB262D17C2C8BC006D520A /* AddressBook.framework */; };
 		63EB263017C2F029006D520A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EB262F17C2F029006D520A /* MessageUI.framework */; };
+		63FBF603180830C4005686A6 /* DGReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF602180830C4005686A6 /* DGReport.m */; };
 		EBCC96E10520469A951D5018 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0150758A9E934060AF039752 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -273,6 +274,8 @@
 		63E4424C17BC3010000224E8 /* DGSignUpDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGSignUpDetailsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		63EB262D17C2C8BC006D520A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		63EB262F17C2F029006D520A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		63FBF601180830C4005686A6 /* DGReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGReport.h; sourceTree = "<group>"; };
+		63FBF602180830C4005686A6 /* DGReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGReport.m; sourceTree = "<group>"; };
 		66189FDD6F34462B8CF25EBA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -331,6 +334,8 @@
 			children = (
 				6308161617C3DDD4004DE5D7 /* RestKit.h */,
 				6308161717C3DDD4004DE5D7 /* RestKit.m */,
+				63FBF601180830C4005686A6 /* DGReport.h */,
+				63FBF602180830C4005686A6 /* DGReport.m */,
 				6355EC1A17B5BA4500EE91C0 /* DGUser.h */,
 				6355EC1B17B5BA4500EE91C0 /* DGUser.m */,
 				6319D38D17BDED080071DA71 /* DGReward.h */,
@@ -745,6 +750,7 @@
 				639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */,
 				63E4424D17BC3010000224E8 /* DGSignUpDetailsViewController.m in Sources */,
 				63E0798B17BC5A6F006FC42E /* UITextFieldCell.m in Sources */,
+				63FBF603180830C4005686A6 /* DGReport.m in Sources */,
 				632A36BC17BCAEE8004EED26 /* UserCell.m in Sources */,
 				632A36C017BCAF00004EED26 /* DGUserListViewController.m in Sources */,
 				632A36D217BD1157004EED26 /* DGUserSettingsViewController.m in Sources */,

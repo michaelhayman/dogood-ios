@@ -7,6 +7,7 @@
 #import "DGFollow.h"
 #import "DGVote.h"
 #import "DGReward.h"
+#import "DGReport.h"
 
 @implementation RestKit
 
@@ -179,6 +180,25 @@
     [goodRequestMapping addAttributeMappingsFromArray:@[ @"caption", @"category_id", @"location_name", @"location_image", @"lat", @"lng" ]];
     RKRequestDescriptor *goodRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:goodRequestMapping objectClass:[DGGood class] rootKeyPath:@"good" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:goodRequestDescriptor];
+
+    // report
+    RKObjectMapping *reportMapping = [RKObjectMapping mappingForClass:[DGReport class]];
+
+    [reportMapping addAttributeMappingsFromDictionary:@{
+        @"id" : @"reportID",
+     }];
+    [reportMapping addAttributeMappingsFromArray:@[
+     @"reportable_type",
+     @"reportable_id"
+    ]];
+
+    RKResponseDescriptor *reportResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:reportMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"reports" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:reportResponseDescriptor];
+
+    RKObjectMapping* reportRequestMapping = [RKObjectMapping requestMapping];
+    [reportRequestMapping addAttributeMappingsFromArray:@[ @"reportable_type", @"reportable_id" ]];
+    RKRequestDescriptor *reportRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:reportRequestMapping objectClass:[DGReport class] rootKeyPath:@"report" method:RKRequestMethodAny];
+    [objectManager addRequestDescriptor:reportRequestDescriptor];
 
     // error
     RKObjectMapping *errorMapping = [RKObjectMapping mappingForClass:[DGError class]];

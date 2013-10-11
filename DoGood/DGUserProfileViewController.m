@@ -7,6 +7,8 @@
 #import "GoodCell.h"
 #import "DGGood.h"
 #import "DGFollow.h"
+#import "DGReport.h"
+#import "DGUserInvitesViewController.h"
 
 @interface DGUserProfileViewController ()
 
@@ -39,6 +41,7 @@
     } else {
         // block menu options
         connectButton = [[UIBarButtonItem alloc] initWithTitle:@"..." style: UIBarButtonItemStylePlain target:self action:@selector(openActionMenu:)];
+        [self setupMoreOptions];
 
         [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButton"] forState:UIControlStateNormal];
         [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButtonTap"] forState:UIControlStateHighlighted];
@@ -82,6 +85,9 @@
     } else {
         avatarOverlay.hidden = YES;
     }
+
+    invites = [[DGUserInvitesViewController alloc] init];
+    invites.parent = (UIViewController *)self;
 }
 
 - (void)dealloc {
@@ -177,7 +183,88 @@
 }
 
 - (IBAction)openActionMenu:(id)sender {
+    [moreOptionsSheet showInView:self.navigationController.view];
+}
 
+- (void)setupMoreOptions {
+    moreOptionsSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                delegate:self
+                                       cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:@"Report user"
+                                       otherButtonTitles:@"Share profile", nil];
+    [moreOptionsSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    moreOptionsSheet.delegate = self;
+    [self setupShareOptions];
+}
+
+- (void)setupShareOptions {
+    shareOptionsSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                    delegate:self
+                                           cancelButtonTitle:@"Cancel"
+                                      destructiveButtonTitle:nil
+                                           otherButtonTitles:@"Text message", @"Email", nil];
+    [shareOptionsSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    shareOptionsSheet.delegate = self;
+}
+
+- (void)openShareOptions {
+    [shareOptionsSheet showInView:self.navigationController.view];
+}
+
+#pragma mark - UIAlertViewDelegate methods
+#define share_button 1
+#define text_message_button 0
+#define email_button 1
+#define facebook_button 2
+#define twitter_button 3
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != actionSheet.cancelButtonIndex) {
+        if (actionSheet == moreOptionsSheet) {
+            if (buttonIndex == actionSheet.destructiveButtonIndex) {
+                [self reportUser];
+            } else if (buttonIndex == share_button) {
+                [self openShareOptions];
+                DebugLog(@"Share");
+            }
+        } else if (actionSheet == shareOptionsSheet) {
+            NSString *text = [NSString stringWithFormat:@"Check out this good person! dogood://users/%@", self.userID];
+            if (buttonIndex == text_message_button) {
+                [invites setCustomText:text withSubject:nil];
+                [invites sendViaText:nil];
+                DebugLog(@"Text message");
+            } else if (buttonIndex == email_button) {
+                [invites setCustomText:text withSubject:@"Wow!"];
+                [invites sendViaEmail:nil];
+                DebugLog(@"Email");
+            } else if (buttonIndex == facebook_button) {
+                DebugLog(@"Facebook");
+            } else if (buttonIndex == twitter_button) {
+                DebugLog(@"Twitter");
+            }
+        }
+    }
+}
+
+#pragma mark - Reporting
+- (void)reportUser {
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You want to report this user?"
+                                                    message:@"Are you sure?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"No..."
+                                          otherButtonTitles:@"Yes!", nil];
+    [alert show];
+}
+
+- (void)confirmReportUser {
+    [DGReport fileReportFor:self.userID ofType:@"user" inController:self.navigationController];
+}
+
+#pragma mark - UIAlertViewDelegate methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        [self confirmReportUser];
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+    }
 }
 
 #pragma mark - UITableView delegate methods
