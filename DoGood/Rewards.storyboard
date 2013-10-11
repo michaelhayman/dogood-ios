@@ -7,7 +7,7 @@
         <!--Rewards List View Controller-->
         <scene sceneID="Dep-up-Ar0">
             <objects>
-                <viewController storyboardIdentifier="rewardList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kLR-5A-8xi" customClass="DGRewardsListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="rewardList" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kLR-5A-8xi" customClass="DGRewardsListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Idl-HF-0Lt"/>
                         <viewControllerLayoutGuide type="bottom" id="XU5-vX-F1X"/>

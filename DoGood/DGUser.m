@@ -21,6 +21,7 @@ static DGUser* currentUser = nil;
 			currentUser = [[self alloc] init];
             currentUser.userID = userID;
             currentUser.username = [defaults objectForKey:kDGUserCurrentUserUsername];
+            currentUser.points = [defaults objectForKey:kDGUserCurrentUserPoints];
             currentUser.full_name = [defaults objectForKey:kDGUserCurrentUserFullName];
             currentUser.location = [defaults objectForKey:kDGUserCurrentUserLocation];
             currentUser.biography = [defaults objectForKey:kDGUserCurrentUserBiography];
@@ -98,6 +99,7 @@ static DGUser* currentUser = nil;
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.userID forKey:kDGUserCurrentUserIDDefaultsKey];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.email forKey:kDGUserCurrentUserEmail];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.username forKey:kDGUserCurrentUserUsername];
+   	[[NSUserDefaults standardUserDefaults] setObject:currentUser.points forKey:kDGUserCurrentUserPoints];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.phone forKey:kDGUserCurrentUserPhone];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.full_name forKey:kDGUserCurrentUserFullName];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.biography forKey:kDGUserCurrentUserBiography];
@@ -126,6 +128,7 @@ static DGUser* currentUser = nil;
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserBiography];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserLocation];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserUsername];
+    [[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserPoints];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserPhone];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserEmail];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserContactable];
@@ -147,6 +150,7 @@ static DGUser* currentUser = nil;
     self.avatar = nil;
     self.twitter_id = nil;
     self.facebook_id = nil;
+    self.points = nil;
 
     [RFKeychain deletePasswordForAccount:kDoGoodAccount service:kDoGoodService];
     [DGUser setAuthorizationHeader];
@@ -216,6 +220,13 @@ static DGUser* currentUser = nil;
     DGUserProfileViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
     controller.userID = userID;
     [nav pushViewController:controller animated:YES];
+}
+
+#pragma mark - Formatters
+- (NSString *)pointsText {
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setGroupingSeparator: [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator]];
+    return [formatter stringFromNumber:self.points];
 }
 
 @end

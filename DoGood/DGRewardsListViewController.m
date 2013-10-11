@@ -9,35 +9,31 @@
 
 @implementation DGRewardsListViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupMenuTitle:@"Rewards"];
     [collectionView registerClass:[DGRewardCell class] forCellWithReuseIdentifier:@"RewardCell"];
     UINib *nib = [UINib nibWithNibName:@"RewardCell" bundle:nil];
     [collectionView registerNib:nib forCellWithReuseIdentifier:@"RewardCell"];
-    collectionView.backgroundColor = [UIColor whiteColor];
 
     [self setupTabs];
 
     [self addMenuButton:@"MenuFromRewardsIconTap" withTapButton:@"MenuFromRewardsIcon"];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissPopup) name:DGUserDidDismissRewardPopup object:nil];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     if (!rewardsButton.selected && !claimedButton.selected) {
         rewardsButton.selected = YES;
     }
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshVisibleRewards) name:DGUserDidUpdatePointsNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePointsText) name:DGUserDidUpdatePointsNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePoints) name:DGUserUpdatePointsNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(claimReward:) name:DGUserClaimRewardNotification object:nil];
+
     [self updatePoints];
 }
 
@@ -51,7 +47,8 @@
 }
 
 - (void)updatePointsText {
-    points.text = [NSString stringWithFormat:@"%@ points", [DGUser currentUser].points];
+    points.text = [[DGUser currentUser] pointsText];
+    // points.text = [NSString stringWithFormat:@"%@ points", [DGUser currentUser].points];
 }
 
 #pragma mark - Tabs
@@ -123,13 +120,17 @@
     DGReward *reward = [[notification userInfo] valueForKey:@"reward"];
 
     [[RKObjectManager sharedManager] postObject:reward path:@"/rewards/claim" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [TSMessage showNotificationInViewController:self title:NSLocalizedString(@"Reward claimed!", nil) subtitle:[NSString stringWithFormat:@"%@ is yours", reward.title] type:TSMessageNotificationTypeSuccess];
+        [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Reward claimed!", nil) subtitle:[NSString stringWithFormat:@"%@ is yours", reward.title] type:TSMessageNotificationTypeSuccess];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserUpdatePointsNotification object:nil];
-        [claimedButton sendActionsForControlEvents:UIControlEventTouchUpInside];
+        // [claimedButton sendActionsForControlEvents:UIControlEventTouchUpInside];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
-        [TSMessage showNotificationInViewController:self title:NSLocalizedString(@"Reward not claimed.", nil) subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
+        [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Reward not claimed.", nil) subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
     }];
+}
+
+- (void)dismissPopup {
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopBottom];
 }
 
 @end

@@ -7,5 +7,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *points;
 
 - (void)updatePointsText;
+- (void)setContent;
 
 @end

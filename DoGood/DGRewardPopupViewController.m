@@ -29,12 +29,31 @@
 }
 
 - (IBAction)claim:(id)sender {
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You want this?"
+                                                    message:@"Are you sure?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"No..."
+                                          otherButtonTitles:@"Yes!", nil];
+    [alert show];
+}
+
+#pragma mark - UIAlertViewDelegate methods
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        [self confirmClaim];
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+    }
+}
+
+- (void)confirmClaim {
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:self.reward, @"reward", nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:DGUserClaimRewardNotification object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidDismissRewardPopup object:nil];
 }
 
 - (IBAction)close:(id)sender {
     DebugLog(@"close it");
+    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidDismissRewardPopup object:nil];
 }
 
 @end

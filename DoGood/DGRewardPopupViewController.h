@@ -1,6 +1,6 @@
 @class DGReward;
 
-@interface DGRewardPopupViewController : UIViewController {
+@interface DGRewardPopupViewController : UIViewController <UIAlertViewDelegate> {
 }
 
 @property (weak, nonatomic) DGReward *reward;

@@ -25,29 +25,24 @@
     UINib *nib = [UINib nibWithNibName:@"GoodCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"GoodCell"];
 
+    userView = [[UserOverview alloc] init];
     [self setupUserPoints];
-    [self getGood];
+    // [self getGood];
     [self setupRefresh];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(showWelcome)
-                                                 name:DGUserDidSignOutNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(getGood)
-                                                 name:DGUserDidSignInNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(getGood)
-                                                 name:DGUserDidPostGood
-                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:userView selector:@selector(setContent) name:DGUserDidSignInNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayPostSuccessMessage) name:DGUserDidPostGood object:nil];
+}
+
+- (void)displayPostSuccessMessage {
+    [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Saved!", nil) subtitle:NSLocalizedString(@"You made some points!", nil) type:TSMessageNotificationTypeSuccess];
 }
 
 - (void)setupUserPoints {
     if (self.category == nil) {
     // if ([[DGUser currentUser].points intValue] > 0) {
         // UserOverview *userView = [[UserOverview alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-        UserOverview *userView = [[UserOverview alloc] init];
         // userView.backgroundColor = [UIColor blackColor];
         [tableView setTableHeaderView:userView];
         // tableView.tableHeaderView.backgroundColor = [UIColor redColor];
@@ -90,6 +85,8 @@
         DGWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
         [self presentViewController:navigationController animated:NO completion:nil];
+    } else {
+        [self getGood];
     }
 }
 

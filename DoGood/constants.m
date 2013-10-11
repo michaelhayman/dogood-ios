@@ -6,6 +6,7 @@
 NSString* const kDGUserCurrentUserIDDefaultsKey = @"kDGUserCurrentUserIDDefaultsKey";
 NSString* const kDGUserCurrentUserEmail = @"kDGUserCurrentUserEmail";
 NSString* const kDGUserCurrentUserUsername = @"kDGUserCurrentUserUsername";
+NSString* const kDGUserCurrentUserPoints = @"kDGUserCurrentUserPoints";
 NSString* const kDGUserCurrentUserFullName = @"kDGUserCurrentUserFullName";
 NSString* const kDGUserCurrentUserLocation = @"kDGUserCurrentUserLocation";
 NSString* const kDGUserCurrentUserBiography = @"kDGUserCurrentUserBiography";
@@ -48,6 +49,8 @@ NSString* const DGUserDidAddPhotoNotification = @"DGUserDidAddPhotoNotification"
 NSString* const DGUserDidRemovePhotoNotification = @"DGUserDidRemovePhotoNotification";
 
 NSString* const DGUserDidToggleMenu = @"DGUserDidToggleMenu";
+
+NSString* const DGUserDidDismissRewardPopup = @"DGUserDidDismissRewardPopup";
 
 #pragma mark - Good
 

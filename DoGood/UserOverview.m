@@ -10,8 +10,7 @@
         [[NSBundle mainBundle] loadNibNamed:@"UserOverview" owner:self options:nil];
         [self addSubview:self.view];
 
-        self.username.text = [DGUser currentUser].username;
-        [self updatePointsText];
+        [self setContent];
     }
     return self;
 }
@@ -20,6 +19,11 @@
     [super awakeFromNib];
     [self addSubview:self.view];
     [self setupNotifications];
+}
+
+- (void)setContent {
+    self.username.text = [DGUser currentUser].username;
+    [self updatePointsText];
 }
 
 - (void)style {
@@ -35,7 +39,7 @@
 
 #pragma mark - Content methods
 - (void)updatePointsText {
-    self.points.text = [[DGUser currentUser] pointsText];
+    self.points.text = [NSString stringWithFormat:@"%@ points", [[DGUser currentUser] pointsText]];
 }
 
 @end

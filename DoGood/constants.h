@@ -67,6 +67,7 @@
 extern NSString *const kDGUserCurrentUserIDDefaultsKey;
 extern NSString* const kDGUserCurrentUserEmail;
 extern NSString* const kDGUserCurrentUserUsername;
+extern NSString* const kDGUserCurrentUserPoints;
 extern NSString* const kDGUserCurrentUserFullName;
 extern NSString* const kDGUserCurrentUserLocation;
 extern NSString* const kDGUserCurrentUserBiography;
@@ -132,6 +133,8 @@ extern NSString* const DGUserDidFindFriendsOnFacebook;
 extern NSString* const DGUserDidCheckIfAddressBookIsConnected;
 
 extern NSString* const DGUserDidToggleMenu;
+
+extern NSString* const DGUserDidDismissRewardPopup;
 
 #pragma mark - Good
 

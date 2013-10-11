@@ -56,4 +56,7 @@
 #pragma mark - Profile helpers
 + (void)openProfilePage:(NSNumber *)userID inController:(UINavigationController *)nav;
 
+#pragma mark - Formatters
+- (NSString *)pointsText;
+
 @end
