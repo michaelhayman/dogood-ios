@@ -15,6 +15,16 @@
     __weak IBOutlet NSLayoutConstraint *likesHeight;
     __weak IBOutlet UIView *comments;
 
+    // location
+    __weak IBOutlet UIImageView *locationImage;
+    __weak IBOutlet NSLayoutConstraint *locationImageHeight;
+    __weak IBOutlet UILabel *locationTitle;
+
+    // category
+    __weak IBOutlet UIImageView *categoryImage;
+    __weak IBOutlet NSLayoutConstraint *categoryImageHeight;
+    __weak IBOutlet UILabel *categoryTitle;
+
     DGUserInvitesViewController *invites;
 }
 

@@ -1,5 +1,6 @@
 #import "GoodCell.h"
 #import "DGGood.h"
+#import "DGCategory.h"
 #import "DGVote.h"
 #import "DGFollow.h"
 #import "DGReport.h"
@@ -66,6 +67,33 @@ static inline NSRegularExpression * NameRegularExpression() {
     // more options
     [self.moreOptions addTarget:self action:@selector(openMoreOptions) forControlEvents:UIControlEventTouchUpInside];
     [self setupMoreOptions];
+
+    categoryImage.image = [UIImage imageNamed:@"CategoryIconOn"];
+    locationImage.image = [UIImage imageNamed:@"LocationIconOn"];
+}
+
+- (void)showLocation {
+    locationImageHeight.constant = 20;
+    locationImage.hidden = NO;
+    locationTitle.hidden = NO;
+}
+
+- (void)hideLocation {
+    locationImageHeight.constant = 0;
+    locationImage.hidden = YES;
+    locationTitle.hidden = YES;
+}
+
+- (void)showCategory {
+    categoryImageHeight.constant = 20;
+    categoryImage.hidden = NO;
+    categoryTitle.hidden = NO;
+}
+
+- (void)hideCategory {
+    categoryImageHeight.constant = 0;
+    categoryImage.hidden = YES;
+    categoryTitle.hidden = YES;
 }
 
 #pragma mark - Set up cell for reuse
@@ -115,6 +143,22 @@ static inline NSRegularExpression * NameRegularExpression() {
     // more options
     invites = [[DGUserInvitesViewController alloc] init];
     invites.parent = (UIViewController *)self.parent;
+
+    if (self.good.category) {
+        categoryTitle.text = self.good.category.name;
+        [self showCategory];
+    } else {
+        categoryTitle.text = nil;
+        [self hideCategory];
+    }
+
+    if (self.good.location_name) {
+        locationTitle.text = self.good.location_name;
+        [self showLocation];
+    } else {
+        locationTitle.text = nil;
+        [self hideLocation];
+    }
 }
 
 /*
