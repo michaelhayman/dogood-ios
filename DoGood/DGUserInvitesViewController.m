@@ -17,10 +17,12 @@
 // then change names to sendViaText & sendViaEmail
 - (void)setInviteText {
     bodyText = [NSString stringWithFormat:@"Get rewarded for doing good - follow me on Do Good! dogood://users/%@\n\n---\nDon't have Do Good? Get it from the App Store: https://get.dogood.co", [DGUser currentUser].userID];
+    subjectText = @"Do Good with me";
 }
 
-- (void)setCustomText:(NSString *)string {
-    bodyText = string;
+- (void)setCustomText:(NSString *)body withSubject:(NSString *)subject {
+    bodyText = body;
+    subjectText = subject;
 }
 
 - (IBAction)sendViaText:(id)sender {
@@ -46,10 +48,10 @@
 	MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
 	picker.mailComposeDelegate = self;
 	
-	[picker setSubject:@"Do Good with me"];
+	[picker setSubject:subjectText];
 	
 	// Fill out the email body text
-	NSString *emailBody = [NSString stringWithFormat:@"Get rewarded for doing good - follow me on Do Good! dogood://users/%@\n\n---\nDon't have Do Good? Get it from the App Store: https://get.dogood.co", [DGUser currentUser].userID];
+	NSString *emailBody = bodyText;
 	[picker setMessageBody:emailBody isHTML:NO];
 	
 	[_parent presentViewController:picker animated:YES completion:NULL];
@@ -59,7 +61,7 @@
 	MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
 	picker.messageComposeDelegate = self;
 	
-    picker.body = [NSString stringWithFormat:@"Follow me on Do Good! dogood://users/%@\n\n---\nDon't have Do Good? Get it from the App Store: https://get.dogood.co", [DGUser currentUser].userID];
+    picker.body = bodyText;
     
 	[_parent presentViewController:picker animated:YES completion:NULL];
 }
