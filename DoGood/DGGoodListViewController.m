@@ -123,6 +123,8 @@
     NSString *path;
     if (_category) {
         path = [NSString stringWithFormat:@"/goods?category_id=%@", _category.categoryID];
+    } else if (_goodID) {
+        path = [NSString stringWithFormat:@"/goods?good_id=%@", _goodID];
     } else {
         path = @"/goods";
     }
@@ -131,6 +133,7 @@
         goods = [[NSArray alloc] initWithArray:mappingResult.array];
         [tableView reloadData];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [TSMessage showNotificationInViewController:self.navigationController title:@"Oops" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
         DebugLog(@"Operation failed with error: %@", error);
     }];
 }
