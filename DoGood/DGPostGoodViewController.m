@@ -362,10 +362,7 @@
         }];
 
         RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            [TSMessage showNotificationInViewController:self.navigationController.parentViewController
-                                      title:NSLocalizedString(@"Saved!", nil)
-                                    subtitle:NSLocalizedString(@"You made some points!", nil)
-                                       type:TSMessageNotificationTypeSuccess];
+            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidPostGood object:nil];
 
             if (self.good.shareTwitter) {
                 DebugLog(@"post to twitter");
