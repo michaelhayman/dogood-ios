@@ -53,8 +53,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 }
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    DebugLog(@"handle open url");
     if ([[url scheme] isEqualToString:@"dogood"]) {
+        DebugLog(@"handle dogood");
         if ([[url host] hasPrefix:@"users"]) {
             NSArray *urlComponents = [url pathComponents];
             NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
@@ -63,13 +65,22 @@
             DebugLog(@"open profile page for %@", userID);
             [DGUser openProfilePage:userID inController:(UINavigationController *)self.window.rootViewController];
         }
-        return YES;
-    }
-    return NO;
-}
+        if ([[url host] hasPrefix:@"goods"]) {
+            NSArray *urlComponents = [url pathComponents];
+            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+            [f setNumberStyle:NSNumberFormatterDecimalStyle];
+            NSNumber * goodID = [f numberFromString:urlComponents[1]];
+            DebugLog(@"open good page for %@", goodID);
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    return [ThirdParties facebookHandleOpenURL:url];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+            DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
+            controller.goodID = goodID;
+            [(UINavigationController *)self.window.rootViewController pushViewController:controller animated:YES];
+        }
+        return YES;
+    } else {
+        return [ThirdParties facebookHandleOpenURL:url];
+    }
 }
 
 @end
