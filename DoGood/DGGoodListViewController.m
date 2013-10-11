@@ -55,6 +55,7 @@
     UIRefreshControl *refreshControl = [UIRefreshControl new];
 
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    refreshControl.tintColor = COLOUR_GREEN;
     [tableView addSubview:refreshControl];
 }
 
