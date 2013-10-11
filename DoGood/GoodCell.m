@@ -204,6 +204,7 @@ static inline NSRegularExpression * NameRegularExpression() {
 
 - (void)setRegoodsText {
     if ([self.good.regoods_count intValue] > 0) {
+        regoodsHeight.constant = 21.0;
         self.regoods.text = [NSString stringWithFormat:@"%@ regoods", self.good.regoods_count];
     } else {
         regoodsHeight.constant = 0.0;
@@ -251,6 +252,7 @@ static inline NSRegularExpression * NameRegularExpression() {
 
 - (void)setLikesText {
     if ([self.good.likes_count intValue] > 0) {
+        likesHeight.constant = 21.0;
         self.likes.text = [NSString stringWithFormat:@"%@ likes", self.good.likes_count];
     } else {
         likesHeight.constant = 0.0;
@@ -279,6 +281,7 @@ static inline NSRegularExpression * NameRegularExpression() {
 
 - (void)setCommentsText {
     if ([self.good.comments_count intValue] > 0) {
+        commentsHeight.constant = 21.0;
         self.commentsCount.text = [NSString stringWithFormat:@"%@ comments", self.good.comments_count];
     } else {
         commentsHeight.constant = 0.0;
