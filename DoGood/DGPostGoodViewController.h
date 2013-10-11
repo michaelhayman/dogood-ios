@@ -1,11 +1,13 @@
 @class DGGood;
+@class DGPhotoPickerViewController;
 
-@interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+@interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UITextViewDelegate> {
     UIActionSheet *categorySheet;
     UIActionSheet *locationSheet;
-    UIActionSheet *photoSheet;
     UIImage *imageToUpload;
     __weak IBOutlet UIBarButtonItem *postButton;
+
+    DGPhotoPickerViewController *photos;
 }
 
 @property (nonatomic, retain) DGGood *good;

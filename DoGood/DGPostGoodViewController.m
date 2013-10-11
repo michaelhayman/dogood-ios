@@ -11,6 +11,7 @@
 #import <UIImage+Resize.h>
 #import <MBProgressHUD.h>
 
+#import "DGPhotoPickerViewController.h"
 
 @interface DGPostGoodViewController ()
 
@@ -46,6 +47,12 @@
 
     self.good = [DGGood new];
     self.good.user = [DGUser currentUser];
+
+    // photos
+    photos = [[DGPhotoPickerViewController alloc] init];
+    photos.parent = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadAvatar:) name:DGUserDidAddPhotoNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteAvatar) name:DGUserDidRemovePhotoNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -208,23 +215,26 @@
     [locationSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
 }
 
-- (void)openPhotoSheet {
+- (void)uploadAvatar:(NSNotification *)notification  {
+    imageToUpload = [[notification userInfo] objectForKey:UIImagePickerControllerEditedImage];
+    // self.good.image = [PFFile fileWithData:UIImagePNGRepresentation(imageToUpload)];
+    self.good.image = imageToUpload;
+    DebugLog(@"imagetoupload");
     GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
-    cell.image.highlighted = YES;
-    NSString *destructiveButtonTitle;
-    if (self.good.image) {
-        destructiveButtonTitle = @"Remove photo";
-    } else {
-        destructiveButtonTitle = nil;
-    }
+    cell.image.image = imageToUpload;
+}
 
-    photoSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                delegate:self
-                                       cancelButtonTitle:@"Cancel"
-                                  destructiveButtonTitle:destructiveButtonTitle
-                                       otherButtonTitles:@"Add from camera", @"Add from camera roll", nil];
-    [photoSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-    [photoSheet showInView:self.view];
+- (void)deleteAvatar {
+    imageToUpload = nil;
+    DebugLog(@"remove");
+    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
+    cell.image.image = nil;
+    self.good.image = nil;
+    [self.tableView reloadData];
+}
+
+- (void)openPhotoSheet {
+    [photos openPhotoSheet:self.good.image];
 }
 
 #define remove_button 0
@@ -253,58 +263,10 @@
                 DebugLog(@"select new");
             }
         }
-        if (actionSheet == photoSheet) {
-            DebugLog(@"button index %d", buttonIndex);
-            if (buttonIndex == photoSheet.destructiveButtonIndex) {
-                DebugLog(@"remove");
-                GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
-                cell.image.image = nil;
-                self.good.image = nil;
-                [self.tableView reloadData];
-            } else if (buttonIndex == photoSheet.firstOtherButtonIndex) {
-                [self showCamera];
-            } else if (buttonIndex == photoSheet.firstOtherButtonIndex + 1) {
-                [self showCameraRoll];
-            }
-        }
     } else {
         DebugLog(@"button index %d, %d", buttonIndex, actionSheet.cancelButtonIndex);
         // [actionSheet dismissWithClickedButtonIndex:actionSheet.cancelButtonIndex animated:YES];
     }
-}
-
-#pragma mark - Camera helpers
-- (void)showCameraRoll {
-    DebugLog(@"show camera roll");
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-    imagePicker.delegate = self;
-    imagePicker.allowsEditing = YES;
-    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    [self presentViewController:imagePicker animated:YES completion:nil];
-}
-
-- (void)showCamera {
-    DebugLog(@"show camera");
-    if ([UIImagePickerController isSourceTypeAvailable:
-         UIImagePickerControllerSourceTypeCamera])
-    {
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        imagePicker.delegate = self;
-        imagePicker.allowsEditing = YES;
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    }
-}
-
-#pragma mark - UIImagePickerController delegate methods
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    imageToUpload = [info objectForKey:UIImagePickerControllerOriginalImage];
-    // self.good.image = [PFFile fileWithData:UIImagePNGRepresentation(imageToUpload)];
-    self.good.image = imageToUpload;
-    DebugLog(@"imagetoupload");
-    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
-    cell.image.image = imageToUpload;
 }
 
 #pragma mark - Change data responses
