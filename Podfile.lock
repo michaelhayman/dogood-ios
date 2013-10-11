@@ -1,6 +1,6 @@
 PODS:
   - AFNetworking (1.3.1)
-  - Facebook-iOS-SDK (3.7.0)
+  - Facebook-iOS-SDK (3.8.0)
   - HexColors (2.2.1)
   - MBProgressHUD (0.7)
   - MJPopupViewController (0.4)
@@ -30,7 +30,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 1.3.1)
-  - Facebook-iOS-SDK (~> 3.7)
+  - Facebook-iOS-SDK (~> 3.8)
   - MBProgressHUD
   - MJPopupViewController (~> 0.4)
   - REMenu (~> 1.3.5)
@@ -42,7 +42,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
-  Facebook-iOS-SDK: 39b55f6c2a8901df8ebcfa23b90c66da1c475f82
+  Facebook-iOS-SDK: 55a22fe8bcaacd638cde9014af6b3ee85f4d71fb
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
   MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
   MJPopupViewController: 4cd0badf3dae541017e0e16e2d2c7578d9224052

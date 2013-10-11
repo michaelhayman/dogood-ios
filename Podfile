@@ -15,7 +15,8 @@ pod 'MJPopupViewController', '~> 0.4'
 # social
 # pod 'STTwitter'
 # pod 'STTwitter', :head
-pod 'Facebook-iOS-SDK', '~> 3.7'
+# pod 'Facebook-iOS-SDK', '~> 3.7'
+pod 'Facebook-iOS-SDK', '~> 3.8'
 
 # not used yet
 # pod 'NSData+Base64'
