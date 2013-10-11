@@ -65,15 +65,15 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     DebugLog(@"appeared");
-    // [[NSNotificationCenter defaultCenter] postNotificationName:@"SignOut" object:self];
     [self showWelcome];
     [tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     DebugLog(@"disappeared");
-    // [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SignOut" object:nil];
 }
 
 #pragma mark - Points
