@@ -52,6 +52,11 @@
 - (void)stylePage {
     [searchField setLeftViewMode:UITextFieldViewModeAlways];
     [self nothingSelected];
+    /*
+    searchField.leftView.backgroundColor = [UIColor greenColor]; 
+    searchField.leftView.contentMode = UIViewContentModeRight;
+    searchField.leftView.frame = CGRectMake(3, 0, searchField.leftView.frame.size.width, searchField.leftView.frame.size.height);
+    */
 }
 
 #pragma mark - Search Field
@@ -131,17 +136,27 @@
 #pragma mark - Search Icons
 - (void)nothingSelected {
     searchField.placeholder = @"Search for people or tags";
-    searchField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SearchIcon"]];
+      
+    UIImageView* image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 16)];
+    image.image = [UIImage imageNamed:@"SearchIcon"];
+    image.contentMode = UIViewContentModeRight;
+    searchField.leftView = image;
 }
 
 - (void)peopleSelected {
     searchField.placeholder = @"Search for people";
-    searchField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SearchPeopleIcon"]];
+    UIImageView* image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 16)];
+    image.image = [UIImage imageNamed:@"SearchPeopleIcon"];
+    image.contentMode = UIViewContentModeRight;
+    searchField.leftView = image;
 }
 
 - (void)tagsSelected {
     searchField.placeholder = @"Search for tags";
-    searchField.leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SearchTagsIcon"]];
+    UIImageView* image = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 20, 16)];
+    image.image = [UIImage imageNamed:@"SearchTagsIcon"];
+    image.contentMode = UIViewContentModeRight;
+    searchField.leftView = image;
 }
 
 #pragma mark - Swap views
