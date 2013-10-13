@@ -9,7 +9,6 @@
     if (self) {
         showNoResultsMessage = NO;
         users = [[NSMutableArray alloc] init];
-
     }
     return self;
 }
@@ -23,7 +22,6 @@
     if (indexPath.section == 0) {
         static NSString * reuseIdentifier = @"UserCell";
         UserCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        // NSArray *users;
         DGUser *user = users[indexPath.row];
         cell.user = user;
         DebugLog(@"cell user %@", user);
@@ -34,7 +32,6 @@
     } else {
         static NSString * reuseIdentifier = @"NoResultsCell";
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        // NSArray *users;
         cell.explanation.text = @"No people found";
         return cell;
     }
@@ -79,6 +76,7 @@
     }];
 }
 
+/*
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if ([searchText length] > 1) {
         [self getUsersByName:searchText];
@@ -87,6 +85,7 @@
         [_tableView reloadData];
     }
 }
+*/
 
 - (void)purge {
     [users removeAllObjects];

@@ -8,6 +8,7 @@
 #import "DGVote.h"
 #import "DGReward.h"
 #import "DGReport.h"
+#import "DGTag.h"
 
 @implementation RestKit
 
@@ -88,6 +89,18 @@
     ]];
     RKRequestDescriptor *voteRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:voteRequestMapping objectClass:[DGVote class] rootKeyPath:@"vote" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:voteRequestDescriptor];
+
+    // tags
+    RKObjectMapping *tagMapping = [RKObjectMapping mappingForClass:[DGTag class]];
+
+    [tagMapping addAttributeMappingsFromDictionary:@{
+     @"id" : @"tagID",
+    }];
+    [tagMapping addAttributeMappingsFromArray:@[
+     @"name"
+    ]];
+    RKResponseDescriptor *tagResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:tagMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"tags" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:tagResponseDescriptor];
 
     // follows
     RKObjectMapping *followMapping = [RKObjectMapping mappingForClass:[DGFollow class]];

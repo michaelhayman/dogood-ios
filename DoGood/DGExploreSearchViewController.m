@@ -12,8 +12,11 @@
     [self selectPeople:peopleButton];
     tableView.hidden = YES;
 
-    UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
-    [tableView registerNib:nib forCellReuseIdentifier:@"UserCell"];
+    UINib *userNib = [UINib nibWithNibName:@"UserCell" bundle:nil];
+    [tableView registerNib:userNib forCellReuseIdentifier:@"UserCell"];
+
+    UINib *tagNib = [UINib nibWithNibName:@"TagCell" bundle:nil];
+    [tableView registerNib:tagNib forCellReuseIdentifier:@"TagCell"];
 
     UINib *noResultsNib = [UINib nibWithNibName:@"NoResultsCell" bundle:nil];
     [tableView registerNib:noResultsNib forCellReuseIdentifier:@"NoResultsCell"];
@@ -59,6 +62,8 @@
     searchPeopleTable = [[DGExploreSearchPeopleTableViewController alloc] init];
     searchPeopleTable.tableView = tableView;
     searchTagsTable = [[DGExploreSearchTagsTableViewController alloc] init];
+    searchTagsTable.tableView = tableView;
+    searchTagsTable.navigationController = self.navigationController;
 }
 
 #pragma mark - Actions
@@ -116,8 +121,15 @@
             tableView.hidden = YES;
             [searchPeopleTable purge];
         }
+    } else if (tagsButton.selected) {
+        if ([_searchField.text length] > 1) {
+            tableView.hidden = NO;
+            [searchTagsTable getTagsByName:_searchField.text];
+        } else {
+            tableView.hidden = YES;
+            [searchTagsTable purge];
+        }
     }
-
 }
 
 @end

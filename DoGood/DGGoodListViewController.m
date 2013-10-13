@@ -1,6 +1,7 @@
 #import "DGGoodListViewController.h"
 #import "GoodCell.h"
 #import "DGGood.h"
+#import "DGTag.h"
 #import "DGCategory.h"
 #import "FSLocation.h"
 #import "DGWelcomeViewController.h"
@@ -17,6 +18,8 @@
     [super viewDidLoad];
     if (_category) {
         [self setupMenuTitle:_category.name];
+    } else if (_tag) {
+       [self setupMenuTitle:[_tag hashifiedName]];
     } else {
         [self setupMenuTitle:@"Do Good"];
         [self addMenuButton:@"MenuFromHomeIconTap" withTapButton:@"MenuFromHomeIcon"];
@@ -41,7 +44,7 @@
 }
 
 - (void)setupUserPoints {
-    if (self.category == nil) {
+    if (self.category == nil && self.tag == nil) {
     // if ([[DGUser currentUser].points intValue] > 0) {
         // UserOverview *userView = [[UserOverview alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
         // userView.backgroundColor = [UIColor blackColor];
@@ -127,6 +130,8 @@
         path = [NSString stringWithFormat:@"/goods?category_id=%@", _category.categoryID];
     } else if (_goodID) {
         path = [NSString stringWithFormat:@"/goods?good_id=%@", _goodID];
+    } else if (_tag) {
+        path = [NSString stringWithFormat:@"/goods/tagged_by_id?id=%@", _tag.tagID];
     } else {
         path = @"/goods";
     }
