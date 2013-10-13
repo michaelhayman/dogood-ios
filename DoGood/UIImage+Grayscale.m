@@ -1,7 +1,6 @@
 #import "UIImage+Grayscale.h"
 
 @implementation UIImage (Grayscale)
-// [self.teaser.image convertToGrayscale];
 
 - (UIImage *)convertToGrayscale {
     CGFloat actualWidth = self.size.width;

@@ -1,4 +1,6 @@
 @interface UserOverview : UIView {
+    NSArray * rewards;
+    __weak IBOutlet UICollectionView *rewardCollectionView;
 }
 
 @property (nonatomic, retain) IBOutlet UIView *view;

@@ -26,6 +26,7 @@
     [tableView registerNib:nib forCellReuseIdentifier:@"GoodCell"];
 
     userView = [[UserOverview alloc] init];
+    // userView = [[UserOverview alloc] initWithFrame:CGRectMake(0, 0, 320, 106)];
     [self setupUserPoints];
     // [self getGood];
     [self setupRefresh];

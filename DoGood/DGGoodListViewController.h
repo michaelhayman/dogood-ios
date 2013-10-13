@@ -7,6 +7,8 @@
     IBOutlet UIView *headerView;
     NSArray *goods;
     UserOverview *userView;
+
+    
 }
 
 @property (nonatomic, retain) DGCategory *category;

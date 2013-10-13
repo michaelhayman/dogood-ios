@@ -104,6 +104,7 @@
 		63EB263017C2F029006D520A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EB262F17C2F029006D520A /* MessageUI.framework */; };
 		63FBF603180830C4005686A6 /* DGReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF602180830C4005686A6 /* DGReport.m */; };
 		63FBF606180AECFF005686A6 /* UIImage+Grayscale.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF605180AECFF005686A6 /* UIImage+Grayscale.m */; };
+		63FBF608180B0C06005686A6 /* DGRewardMiniCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FBF607180B0C06005686A6 /* DGRewardMiniCell.xib */; };
 		EBCC96E10520469A951D5018 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0150758A9E934060AF039752 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -279,6 +280,7 @@
 		63FBF602180830C4005686A6 /* DGReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGReport.m; sourceTree = "<group>"; };
 		63FBF604180AECFF005686A6 /* UIImage+Grayscale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Grayscale.h"; sourceTree = "<group>"; };
 		63FBF605180AECFF005686A6 /* UIImage+Grayscale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Grayscale.m"; sourceTree = "<group>"; };
+		63FBF607180B0C06005686A6 /* DGRewardMiniCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DGRewardMiniCell.xib; sourceTree = "<group>"; };
 		66189FDD6F34462B8CF25EBA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -460,6 +462,7 @@
 				6355EC1017B0EDA300EE91C0 /* DGRewardsListViewController.h */,
 				6355EC1117B0EDA300EE91C0 /* DGRewardsListViewController.m */,
 				6355EC1317B0EE1E00EE91C0 /* RewardCell.xib */,
+				63FBF607180B0C06005686A6 /* DGRewardMiniCell.xib */,
 				63D4BD2618024E0700ACF1B9 /* DGRewardPopupViewController.h */,
 				63D4BD2718024E0700ACF1B9 /* DGRewardPopupViewController.m */,
 				6355EC1517B0EF2700EE91C0 /* DGRewardCell.h */,
@@ -665,6 +668,7 @@
 				633DBF7917AE02580038BC2D /* UserOverview.xib in Resources */,
 				633DBF7B17AE1E530038BC2D /* DoGood.nss in Resources */,
 				6355EC0D17B0D4C300EE91C0 /* CommentCell.xib in Resources */,
+				63FBF608180B0C06005686A6 /* DGRewardMiniCell.xib in Resources */,
 				6355EC1417B0EE1E00EE91C0 /* RewardCell.xib in Resources */,
 				6355EC2417B6723E00EE91C0 /* Users.storyboard in Resources */,
 				6355EC3A17B8680300EE91C0 /* SignUpOverviewCell.xib in Resources */,
