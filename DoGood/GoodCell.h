@@ -9,6 +9,8 @@
 @interface GoodCell : UITableViewCell <UIActionSheetDelegate, TTTAttributedLabelDelegate, UIAlertViewDelegate> {
     UIActionSheet *moreOptionsSheet;
     UIActionSheet *shareOptionsSheet;
+    
+    __weak IBOutlet NSLayoutConstraint *captionHeight;
     __weak IBOutlet NSLayoutConstraint *commentBoxHeight;
     __weak IBOutlet NSLayoutConstraint *commentsHeight;
     __weak IBOutlet NSLayoutConstraint *regoodsHeight;

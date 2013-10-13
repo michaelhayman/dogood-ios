@@ -10,6 +10,8 @@
 #import "DGUserListViewController.h"
 #import "DGUserInvitesViewController.h"
 
+#define kRightColumnWidth 221
+
 static inline NSRegularExpression * NameRegularExpression() {
     static NSRegularExpression *_nameRegularExpression = nil;
     static dispatch_once_t onceToken;
@@ -43,7 +45,7 @@ static inline NSRegularExpression * NameRegularExpression() {
     [self.overviewImage setClipsToBounds:YES];
 
     // description
-    self.description.contentInset = UIEdgeInsetsMake(0,-4,0,0);
+    self.description.contentInset = UIEdgeInsetsMake(-10,-4,0,-10);
 
     // likes
     [self.like addTarget:self action:@selector(addUserLike) forControlEvents:UIControlEventTouchUpInside];
@@ -109,7 +111,7 @@ static inline NSRegularExpression * NameRegularExpression() {
     self.username.text = self.good.user.username;
     [self.avatar setImageWithURL:[NSURL URLWithString:self.good.user.avatar]];
     // description
-    self.description.text = self.good.caption;
+    [self setCaptionText];
     // image
     // - set height to 0 if there's no image
     [self.overviewImage setImageWithURL:[NSURL URLWithString:self.good.evidence]];
@@ -286,6 +288,18 @@ static inline NSRegularExpression * NameRegularExpression() {
     } else {
         commentsHeight.constant = 0.0;
     }
+}
+
+#pragma mark - Description
+- (void)setCaptionText {
+    self.description.text = self.good.caption;
+    CGFloat labelWidth = kRightColumnWidth;
+    CGRect rect = [self.description.attributedText boundingRectWithSize:CGSizeMake(labelWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
+    CGSize size = rect.size;
+    CGFloat height = ceilf(size.height);
+    // CGFloat width  = ceilf(size.width);
+
+    captionHeight.constant = height;
 }
 
 - (TTTAttributedLabel *)commentLabel {
