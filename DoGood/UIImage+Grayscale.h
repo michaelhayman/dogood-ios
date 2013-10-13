@@ -2,6 +2,6 @@
 
 @interface UIImage (Grayscale)
 
-- (UIImage *)convertImageToGrayscale:(UIImage *)image;
+- (UIImage *)convertToGrayscale;
 
 @end

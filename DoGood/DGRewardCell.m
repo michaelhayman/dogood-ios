@@ -2,6 +2,7 @@
 #import "DGReward.h"
 #import "DGRewardPopupViewController.h"
 #import "UIViewController+MJPopupViewController.h"
+#import "UIImage+Grayscale.h"
 
 @implementation DGRewardCell
 
@@ -33,7 +34,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.reward.teaser] cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:15.0];
     [self.teaser setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         if (![self hasSufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
-            self.teaser.image = [self convertImageToGrayscale:image];
+            self.teaser.image = [image convertToGrayscale];
         } else {
             self.teaser.image = image;
         }
@@ -94,33 +95,6 @@
     DGRewardPopupViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"rewardInstructionsPopup"];
     controller.reward = self.reward;
     [self.navigationController presentPopupViewController:controller animationType:MJPopupViewAnimationSlideBottomBottom];
-}
-
-// credit:
-// 
-- (UIImage *)convertImageToGrayscale:(UIImage *)image {
-    CGFloat actualWidth = image.size.width;
-    CGFloat actualHeight = image.size.height;
-
-    CGRect imageRect = CGRectMake(0, 0, actualWidth, actualHeight);
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceGray();
-
-    CGContextRef context = CGBitmapContextCreate(nil, actualWidth, actualHeight, 8, 0, colorSpace, (CGBitmapInfo)kCGImageAlphaNone);
-    CGContextDrawImage(context, imageRect, [image CGImage]);
-
-    CGImageRef grayImage = CGBitmapContextCreateImage(context);
-    CGColorSpaceRelease(colorSpace);
-    CGContextRelease(context);
-
-    context = CGBitmapContextCreate(nil, actualWidth, actualHeight, 8, 0, nil, (CGBitmapInfo)kCGImageAlphaOnly);
-    CGContextDrawImage(context, imageRect, [image CGImage]);
-    CGImageRef mask = CGBitmapContextCreateImage(context);
-    CGContextRelease(context);
-
-    UIImage *grayScaleImage = [UIImage imageWithCGImage:CGImageCreateWithMask(grayImage, mask) scale:image.scale orientation:image.imageOrientation];
-    CGImageRelease(grayImage);
-    CGImageRelease(mask);
-    return grayScaleImage;
 }
 
 @end

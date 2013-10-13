@@ -25,14 +25,13 @@
 
 - (void)setContents {
     [self.teaser setImageWithURL:[NSURL URLWithString:self.reward.teaser]];
-    [self.teaser.image convertImageToGrayscale:self.teaser.image];
     self.heading.text = self.reward.title;
     self.subheading.text = self.reward.subtitle;
     self.cost.text = [self.reward costText];
 
     if (![self hasSufficientPoints]) {
-        self.instructions.text = @"You don't have points to buy this item!";
-        self.teaser.image = [self.teaser.image convertImageToGrayscale:self.teaser.image];
+        self.instructions.text = @"You don't have enough points to buy this item!";
+        self.teaser.image = [self.teaser.image convertToGrayscale];
     } else {
         self.instructions.text = self.reward.instructions;
     }
@@ -43,11 +42,7 @@
 }
 
 - (IBAction)claim:(id)sender {
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You want this?"
-                                                    message:@"Are you sure?"
-                                                   delegate:self
-                                          cancelButtonTitle:@"No..."
-                                          otherButtonTitles:@"Yes!", nil];
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You want this?" message:@"Are you sure?" delegate:self cancelButtonTitle:@"No..." otherButtonTitles:@"Yes!", nil];
     [alert show];
 }
 
