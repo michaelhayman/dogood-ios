@@ -103,6 +103,7 @@
 		63EB262E17C2C8BC006D520A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EB262D17C2C8BC006D520A /* AddressBook.framework */; };
 		63EB263017C2F029006D520A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EB262F17C2F029006D520A /* MessageUI.framework */; };
 		63FBF603180830C4005686A6 /* DGReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF602180830C4005686A6 /* DGReport.m */; };
+		63FBF606180AECFF005686A6 /* UIImage+Grayscale.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF605180AECFF005686A6 /* UIImage+Grayscale.m */; };
 		EBCC96E10520469A951D5018 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0150758A9E934060AF039752 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -276,6 +277,8 @@
 		63EB262F17C2F029006D520A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		63FBF601180830C4005686A6 /* DGReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGReport.h; sourceTree = "<group>"; };
 		63FBF602180830C4005686A6 /* DGReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGReport.m; sourceTree = "<group>"; };
+		63FBF604180AECFF005686A6 /* UIImage+Grayscale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Grayscale.h"; sourceTree = "<group>"; };
+		63FBF605180AECFF005686A6 /* UIImage+Grayscale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Grayscale.m"; sourceTree = "<group>"; };
 		66189FDD6F34462B8CF25EBA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -306,6 +309,8 @@
 				63DA644317DBEA52003DFF03 /* UIViewController+DGViewController.m */,
 				63834D0217DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.h */,
 				63834D0317DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.m */,
+				63FBF604180AECFF005686A6 /* UIImage+Grayscale.h */,
+				63FBF605180AECFF005686A6 /* UIImage+Grayscale.m */,
 				6358342C17C8A09700F997F6 /* Arrow.h */,
 				6358342D17C8A09700F997F6 /* Arrow.m */,
 				63E0798717BC59C7006FC42E /* UITextFieldCell.xib */,
@@ -759,6 +764,7 @@
 				6397318E17C1733D001B96BF /* DGUserTwitterViewController.m in Sources */,
 				63357AFE17C279F2007B5FD7 /* DGUserFindFriendsViewController.m in Sources */,
 				6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */,
+				63FBF606180AECFF005686A6 /* UIImage+Grayscale.m in Sources */,
 				6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */,
 				6308161817C3DDD4004DE5D7 /* RestKit.m in Sources */,
 				6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */,

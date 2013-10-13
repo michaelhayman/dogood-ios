@@ -40,21 +40,12 @@
     } failure:nil];
 
     if (![self hasSufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
-        self.teaser.userInteractionEnabled = NO;
-        self.heading.userInteractionEnabled = NO;
         self.heading.textColor = GRAYED_OUT;
-        self.subheading.userInteractionEnabled = NO;
         self.subheading.textColor = GRAYED_OUT;
-        self.cost.userInteractionEnabled = NO;
         self.cost.textColor = GRAYED_OUT;
     } else {
         self.heading.textColor = ACTIVE;
-        self.teaser.userInteractionEnabled = YES;
-        self.heading.userInteractionEnabled = YES;
-        self.heading.textColor = ACTIVE;
-        self.subheading.userInteractionEnabled = YES;
         self.subheading.textColor = ACTIVE;
-        self.cost.userInteractionEnabled = YES;
         self.cost.textColor = ACTIVE;
     }
 
@@ -70,10 +61,22 @@
 #pragma mark - Options
 - (void)options {
     if ([self.type isEqualToString:@"Rewards"]) {
-        [self claim];
+        if (![self hasSufficientPoints]) {
+            [self displayInsufficientPoints];
+        } else {
+            [self claim];
+        }
     } else {
         [self instructions];
     }
+}
+
+- (void)displayInsufficientPoints {
+    UIStoryboard *storyboard;
+    storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
+    DGRewardPopupViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"rewardInsufficientPointsPopup"];
+    controller.reward = self.reward;
+    [self.navigationController presentPopupViewController:controller animationType:MJPopupViewAnimationSlideBottomBottom];
 }
 
 #pragma mark - Instructions dialog

@@ -21,7 +21,6 @@
     [self addMenuButton:@"MenuFromRewardsIconTap" withTapButton:@"MenuFromRewardsIcon"];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissPopup) name:DGUserDidDismissRewardPopup object:nil];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {

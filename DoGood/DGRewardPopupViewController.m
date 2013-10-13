@@ -1,12 +1,14 @@
 #import "DGReward.h"
 #import "DGRewardPopupViewController.h"
 #import "UIViewController+MJPopupViewController.h"
+#import "UIImage+Grayscale.h"
 
 @interface DGRewardPopupViewController ()
     @property (weak, nonatomic) IBOutlet UIImageView *teaser;
     @property (weak, nonatomic) IBOutlet UILabel *heading;
     @property (weak, nonatomic) IBOutlet UILabel *subheading;
     @property (weak, nonatomic) IBOutlet UILabel *cost;
+    @property (weak, nonatomic) IBOutlet UITextView *instructions;
 @end
 
 @implementation DGRewardPopupViewController
@@ -23,9 +25,21 @@
 
 - (void)setContents {
     [self.teaser setImageWithURL:[NSURL URLWithString:self.reward.teaser]];
+    [self.teaser.image convertImageToGrayscale:self.teaser.image];
     self.heading.text = self.reward.title;
     self.subheading.text = self.reward.subtitle;
     self.cost.text = [self.reward costText];
+
+    if (![self hasSufficientPoints]) {
+        self.instructions.text = @"You don't have points to buy this item!";
+        self.teaser.image = [self.teaser.image convertImageToGrayscale:self.teaser.image];
+    } else {
+        self.instructions.text = self.reward.instructions;
+    }
+}
+
+- (bool)hasSufficientPoints {
+    return [[DGUser currentUser].points intValue] >= [self.reward.cost intValue];
 }
 
 - (IBAction)claim:(id)sender {
