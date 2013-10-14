@@ -79,13 +79,13 @@
 
             [commentInputView becomeFirstResponder];
             commentInputField.text = @"";
-            [TSMessage showNotificationInViewController:self
+            [TSMessage showNotificationInViewController:self.navigationController
                                   title:NSLocalizedString(@"Comment Saved!", nil)
                                 subtitle:nil
                                    type:TSMessageNotificationTypeSuccess];
             [self fetchComments];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            [TSMessage showNotificationInViewController:self
+            [TSMessage showNotificationInViewController:self.navigationController
                                       title:NSLocalizedString(@"Couldn't save the comment", nil)
                                                subtitle:NSLocalizedString([error description], nil)
                                        type:TSMessageNotificationTypeError];
