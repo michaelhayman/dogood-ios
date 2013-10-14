@@ -10,7 +10,7 @@
 #import "DGUserListViewController.h"
 #import "DGUserInvitesViewController.h"
 
-#define kRightColumnWidth 221
+#define kRightColumnWidth 236.0
 
 static inline NSRegularExpression * NameRegularExpression() {
     static NSRegularExpression *_nameRegularExpression = nil;
@@ -45,7 +45,7 @@ static inline NSRegularExpression * NameRegularExpression() {
     [self.overviewImage setClipsToBounds:YES];
 
     // description
-    self.description.contentInset = UIEdgeInsetsMake(-10,-4,0,-10);
+    // self.description.contentInset = UIEdgeInsetsMake(-10,-4,0,-10);
 
     // likes
     [self.like addTarget:self action:@selector(addUserLike) forControlEvents:UIControlEventTouchUpInside];
@@ -113,10 +113,15 @@ static inline NSRegularExpression * NameRegularExpression() {
     // description
     [self setCaptionText];
     // image
-    // - set height to 0 if there's no image
     [self.overviewImage setImageWithURL:[NSURL URLWithString:self.good.evidence]];
-    // self.overviewImage.hidden = YES;
-    // self.overviewImageHeight.constant = 0;
+
+    if (self.good.evidence) {
+        self.overviewImageHeight.constant = 302;
+        self.overviewImage.hidden = NO;
+    } else {
+        self.overviewImageHeight.constant = 0;
+        self.overviewImage.hidden = YES;
+    }
     // likes
     if ([self.good.current_user_liked boolValue]) {
         [self.like setSelected:YES];
@@ -290,18 +295,6 @@ static inline NSRegularExpression * NameRegularExpression() {
     }
 }
 
-#pragma mark - Description
-- (void)setCaptionText {
-    self.description.text = self.good.caption;
-    CGFloat labelWidth = kRightColumnWidth;
-    CGRect rect = [self.description.attributedText boundingRectWithSize:CGSizeMake(labelWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
-    CGSize size = rect.size;
-    CGFloat height = ceilf(size.height);
-    // CGFloat width  = ceilf(size.width);
-
-    captionHeight.constant = height;
-}
-
 - (TTTAttributedLabel *)commentLabel {
     TTTAttributedLabel *label = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
     label.font = [UIFont fontWithName:@"Calibre" size:12];
@@ -368,6 +361,22 @@ static inline NSRegularExpression * NameRegularExpression() {
     }
     commentBoxHeight.constant = lastHeight + 0.0;
     [self layoutIfNeeded];
+}
+
+#pragma mark - Description
+- (void)setCaptionText {
+    CGFloat labelWidth = kRightColumnWidth;
+    NSDictionary *attributes = @{NSFontAttributeName : self.description.font};
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.good.caption attributes:attributes];
+    self.description.attributedText = attrString;
+
+    CGRect rect = [attrString boundingRectWithSize:CGSizeMake(labelWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil];
+    CGSize size = rect.size;
+    CGFloat height = ceilf(size.height);
+    CGFloat width  = ceilf(size.width);
+
+    captionHeight.constant = height;
+    captionWidth.constant = width;
 }
 
 #pragma mark - More options

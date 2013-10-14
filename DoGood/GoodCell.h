@@ -11,6 +11,8 @@
     UIActionSheet *shareOptionsSheet;
     
     __weak IBOutlet NSLayoutConstraint *captionHeight;
+    
+    __weak IBOutlet NSLayoutConstraint *captionWidth;
     __weak IBOutlet NSLayoutConstraint *commentBoxHeight;
     __weak IBOutlet NSLayoutConstraint *commentsHeight;
     __weak IBOutlet NSLayoutConstraint *regoodsHeight;
@@ -40,7 +42,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *likes;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UILabel *username;
-@property (weak, nonatomic) IBOutlet UITextView *description;
+@property (weak, nonatomic) IBOutlet UILabel *description;
 @property (weak, nonatomic) IBOutlet UIButton *like;
 @property (weak, nonatomic) IBOutlet UIButton *comment;
 @property (weak, nonatomic) IBOutlet UIButton *regood;
