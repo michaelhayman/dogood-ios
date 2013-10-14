@@ -156,6 +156,7 @@
     [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         goods = [[NSArray alloc] initWithArray:mappingResult.array];
         // dynamically set height here
+        [cellHeights removeAllObjects];
         [self estimateHeightsForGoods:goods];
         [tableView reloadData];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
