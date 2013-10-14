@@ -17,6 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupMenuTitle:@"Comments"];
+    advanced = NO;
 
     DebugLog(@"comments good %@", self.comment.good);
     UINib *nib = [UINib nibWithNibName:@"CommentCell" bundle:nil];
@@ -149,25 +150,27 @@
     accessoryView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, kToolbarHeight)];
     accessoryView.tintColor = [UIColor colorWithRed:0.569 green:0.600 blue:0.643 alpha:1.000];
     accessoryView.backgroundColor = [UIColor clearColor];
-    accessoryButtonMention = [UIButton buttonWithType:UIButtonTypeCustom];
-    [accessoryButtonMention setFrame:CGRectMake(10.0f, 10.0f, 26.0f, 23.0f)];
-    [accessoryButtonMention setImage:[UIImage imageNamed:@"KeyboardMention"] forState:UIControlStateNormal];
-    [accessoryButtonMention setImage:[UIImage imageNamed:@"KeyboardMentionActive"] forState:UIControlStateSelected];
-    [accessoryButtonMention addTarget:self action:@selector(selectPeople:) forControlEvents:UIControlEventTouchUpInside];
 
-    accessoryButtonTag = [UIButton buttonWithType:UIButtonTypeCustom];
-    [accessoryButtonTag setFrame:CGRectMake(50.0f, 10.0f, 33.0f, 23.0f)];
-    [accessoryButtonTag setImage:[UIImage imageNamed:@"KeyboardTag"] forState:UIControlStateNormal];
-    [accessoryButtonTag setImage:[UIImage imageNamed:@"KeyboardTagActive"] forState:UIControlStateSelected];
-    [accessoryButtonTag addTarget:self action:@selector(selectTag:) forControlEvents:UIControlEventTouchUpInside];
+    if (advanced) {
+        accessoryButtonMention = [UIButton buttonWithType:UIButtonTypeCustom];
+        [accessoryButtonMention setFrame:CGRectMake(10.0f, 10.0f, 26.0f, 23.0f)];
+        [accessoryButtonMention setImage:[UIImage imageNamed:@"KeyboardMention"] forState:UIControlStateNormal];
+        [accessoryButtonMention setImage:[UIImage imageNamed:@"KeyboardMentionActive"] forState:UIControlStateSelected];
+        [accessoryButtonMention addTarget:self action:@selector(selectPeople:) forControlEvents:UIControlEventTouchUpInside];
+        [accessoryView addSubview:accessoryButtonMention];
+
+        accessoryButtonTag = [UIButton buttonWithType:UIButtonTypeCustom];
+        [accessoryButtonTag setFrame:CGRectMake(50.0f, 10.0f, 33.0f, 23.0f)];
+        [accessoryButtonTag setImage:[UIImage imageNamed:@"KeyboardTag"] forState:UIControlStateNormal];
+        [accessoryButtonTag setImage:[UIImage imageNamed:@"KeyboardTagActive"] forState:UIControlStateSelected];
+        [accessoryButtonTag addTarget:self action:@selector(selectTag:) forControlEvents:UIControlEventTouchUpInside];
+        [accessoryView addSubview:accessoryButtonTag];
+    }
 
     characterLimitLabel = [[UILabel alloc] initWithFrame:CGRectMake(275, 10, 35, 23)];
     characterLimitLabel.textAlignment = NSTextAlignmentRight;
     characterLimitLabel.backgroundColor = [UIColor clearColor];
     [self setLimitText];
-
-    [accessoryView addSubview:accessoryButtonMention];
-    [accessoryView addSubview:accessoryButtonTag];
     [accessoryView addSubview:characterLimitLabel];
 }
 
@@ -225,27 +228,29 @@
 - (void)textFieldDidChange:(UITextField *)textField {
     [self setLimitText];
 
-    if (searchPeople) {
-        if ([textField.text length] >= startOfRange) {
-            searchTerm = [textField.text substringFromIndex:startOfRange];
-            [self searchPeople:searchTerm];
-            return;
-        } else {
-            [self stopSearchingPeople];
+    if (advanced) {
+        if (searchPeople) {
+            if ([textField.text length] >= startOfRange) {
+                searchTerm = [textField.text substringFromIndex:startOfRange];
+                [self searchPeople:searchTerm];
+                return;
+            } else {
+                [self stopSearchingPeople];
+            }
         }
-    }
 
-    searchTerm = @"";
+        searchTerm = @"";
 
-    if ([textField.text hasSuffix:@"@"]) {
-        DebugLog(@"pop open table & start searching, and don't stop until 0 results are found");
-        [self startSearchingPeople];
-        startOfRange = [textField.text length];
-        // save start of range here
-    }
-    if ([textField.text hasSuffix:@"#"]) {
-        DebugLog(@"pop open hash table & color following text up to a space");
-        // searchTags = YES;
+        if ([textField.text hasSuffix:@"@"]) {
+            DebugLog(@"pop open table & start searching, and don't stop until 0 results are found");
+            [self startSearchingPeople];
+            startOfRange = [textField.text length];
+            // save start of range here
+        }
+        if ([textField.text hasSuffix:@"#"]) {
+            DebugLog(@"pop open hash table & color following text up to a space");
+            // searchTags = YES;
+        }
     }
 }
 

@@ -10,6 +10,7 @@
     NSMutableArray *comments;
     __weak IBOutlet NSLayoutConstraint *tableViewBottom;
     __weak IBOutlet UIButton *sendButton;
+    BOOL advanced;
 
     // keyboard
     CGFloat totalKeyboardHeight;
