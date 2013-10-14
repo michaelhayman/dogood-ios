@@ -6,6 +6,7 @@
 #import "FSLocation.h"
 #import "DGWelcomeViewController.h"
 #import "UserOverview.h"
+#import "UIScrollView+SVInfiniteScrolling.h"
 
 @interface DGGoodListViewController ()
 
@@ -40,7 +41,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayPostSuccessMessage) name:DGUserDidPostGood object:nil];
 
+    goods = [[NSMutableArray alloc] init];
     cellHeights = [[NSMutableArray alloc] init];
+    [self setupInfiniteScroll];
 }
 
 - (void)displayPostSuccessMessage {
@@ -68,7 +71,7 @@
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
-    [self getGood];
+    [self reloadGood];
     [refreshControl endRefreshing];
 }
 
@@ -95,7 +98,7 @@
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
         [self presentViewController:navigationController animated:NO completion:nil];
     } else {
-        [self getGood];
+        [self reloadGood];
     }
 }
 
@@ -153,18 +156,57 @@
         path = @"/goods";
     }
 
-    [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        goods = [[NSArray alloc] initWithArray:mappingResult.array];
-        // dynamically set height here
-        [cellHeights removeAllObjects];
-        [self estimateHeightsForGoods:goods];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:page], @"page", nil];
+
+    [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [goods addObjectsFromArray:mappingResult.array];
+        if ([goods count] == 0)  {
+            showNoGoodsMessage = YES;
+        } else {
+            showNoGoodsMessage = NO;
+            [self estimateHeightsForGoods:mappingResult.array];
+        }
+        DebugLog(@"goods %@", goods);
         [tableView reloadData];
+        [tableView.infiniteScrollingView stopAnimating];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [TSMessage showNotificationInViewController:self.navigationController title:@"Oops" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
+        if ([goods count] == 0) {
+            [TSMessage showNotificationInViewController:self.navigationController title:@"Oops" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
+        }
+        [tableView.infiniteScrollingView stopAnimating];
         DebugLog(@"Operation failed with error: %@", error);
     }];
 }
 
+- (void)loadMoreGood {
+    page++;
+    [self getGood];
+}
+
+- (void)resetGood {
+    page = 1;
+    [goods removeAllObjects];
+    [cellHeights removeAllObjects];
+}
+
+- (void)reloadGood {
+    DebugLog(@"reload good");
+    [self resetGood];
+    [self getGood];
+    [tableView reloadData];
+}
+
+- (void)setupInfiniteScroll {
+    tableView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+
+    __weak DGGoodListViewController *self_ = self;
+    [tableView addInfiniteScrollingWithActionHandler:^{
+        [tableView.infiniteScrollingView startAnimating];
+        [self_ loadMoreGood];
+    }];
+}
+
+#pragma mark - Cell heights
 - (void)estimateHeightsForGoods:(NSArray *)goodList {
     for (DGGood *good in goodList) {
         [cellHeights addObject:[self calculateHeightForGood:good]];

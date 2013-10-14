@@ -22,6 +22,7 @@ PODS:
     - TransitionKit (= 1.1.1)
   - RFKeychain (0.1)
   - SOCKit (1.1)
+  - SVPullToRefresh (0.4.1)
   - TransitionKit (1.1.1)
   - TSMessages (0.9.4):
     - HexColors
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - REMenu (~> 1.3.5)
   - RestKit (~> 0.20.3)
   - RFKeychain (~> 0.1)
+  - SVPullToRefresh (~> 0.4.1)
   - TSMessages (~> 0.9.4)
   - TTTAttributedLabel
   - UIImage-Categories (~> 0.0.1)
@@ -50,9 +52,10 @@ SPEC CHECKSUMS:
   RestKit: 1f181c180105a92f11ec4f6cd7de37625e516d83
   RFKeychain: 6f70ff418c01b5d76b84796941f3d63672c9e316
   SOCKit: 2f3bc4d07910de12dcc202815e07db68a3802581
+  SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
   TransitionKit: d0e3344aac92991395d4c2e72d9c5a8ceeb12910
   TSMessages: 5ab92604b02e49a755d2cc2baf114d2248a90977
   TTTAttributedLabel: e504133915a9b11de63cb470ffa2790383a3eb23
   UIImage-Categories: d9f10e0afb9b281b35a3c2b0c7d16d1ca251d824
 
-COCOAPODS: 0.25.0
+COCOAPODS: 0.26.1
