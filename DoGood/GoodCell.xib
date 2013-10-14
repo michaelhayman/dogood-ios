@@ -152,7 +152,7 @@
                             <constraint firstAttribute="width" constant="56" id="324"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="EJn-jJ-p9f">
+                    <imageView userInteractionEnabled="NO" contentMode="left" translatesAutoresizingMaskIntoConstraints="NO" id="EJn-jJ-p9f">
                         <rect key="frame" x="10" y="382" width="56" height="57"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -260,6 +260,8 @@
             </constraints>
             <connections>
                 <outlet property="avatar" destination="191" id="248"/>
+                <outlet property="avatarHeight" destination="197" id="3ul-JS-aZk"/>
+                <outlet property="avatarHeightSpacing" destination="EvH-db-7j1" id="qxS-MD-Ztc"/>
                 <outlet property="captionHeight" destination="p7B-1l-9zB" id="5JU-c5-RBy"/>
                 <outlet property="captionWidth" destination="2bB-9v-AdP" id="icF-At-p8G"/>
                 <outlet property="categoryImage" destination="9n7-gP-4eG" id="K2b-SE-gSW"/>

@@ -40,7 +40,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *commentsCount;
 
 @property (weak, nonatomic) IBOutlet UILabel *likes;
+
+// avatar
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *avatarHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *avatarHeightSpacing;
+
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *description;
 @property (weak, nonatomic) IBOutlet UIButton *like;

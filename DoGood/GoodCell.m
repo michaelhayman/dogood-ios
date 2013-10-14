@@ -120,10 +120,23 @@ static inline  NSRegularExpression * UserNameAndHashRegularExpression()
 }
 
 #pragma mark - Set values when cell becomes visible
+- (void)setupAvatar {
+    if (self.good.user.avatar) {
+        [self.avatar setImageWithURL:[NSURL URLWithString:self.good.user.avatar]];
+        self.avatar.hidden = NO;
+        self.avatarHeight.constant = 57;
+        self.avatarHeightSpacing.constant = 8;
+    } else {
+        self.avatar.hidden = YES;
+        self.avatarHeight.constant = 0;
+        self.avatarHeightSpacing.constant = 0;
+    }
+}
+
 - (void)setValues {
     // user
     self.username.text = self.good.user.username;
-    [self.avatar setImageWithURL:[NSURL URLWithString:self.good.user.avatar]];
+    [self setupAvatar];
     // description
     [self setCaptionText];
     // image
