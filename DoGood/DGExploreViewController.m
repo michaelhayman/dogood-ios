@@ -52,11 +52,6 @@
 - (void)stylePage {
     [searchField setLeftViewMode:UITextFieldViewModeAlways];
     [self nothingSelected];
-    /*
-    searchField.leftView.backgroundColor = [UIColor greenColor]; 
-    searchField.leftView.contentMode = UIViewContentModeRight;
-    searchField.leftView.frame = CGRectMake(3, 0, searchField.leftView.frame.size.width, searchField.leftView.frame.size.height);
-    */
 }
 
 #pragma mark - Search Field
@@ -124,7 +119,6 @@
     [self showSearch];
 }
 
-// - (void)textFieldDidEndEditing:(UITextField *)textField {
 - (void)searchFieldDidEndEditing {
     DebugLog(@"ending");
 }
