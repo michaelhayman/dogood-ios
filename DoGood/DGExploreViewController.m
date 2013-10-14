@@ -64,7 +64,8 @@
     UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [clearButton setImage:[UIImage imageNamed:@"SearchCancel"] forState:UIControlStateNormal];
     [clearButton setImage:[UIImage imageNamed:@"SearchCancelTap"] forState:UIControlStateHighlighted];
-    [clearButton setFrame:CGRectMake(0, 0, 20, 20)];
+    [clearButton setFrame:CGRectMake(0, 0, 30, 20)];
+    clearButton.imageView.contentMode = UIViewContentModeLeft;
     [clearButton addTarget:self action:@selector(clearTextField:) forControlEvents:UIControlEventTouchUpInside];
 
     [searchField setRightViewMode:UITextFieldViewModeAlways];
