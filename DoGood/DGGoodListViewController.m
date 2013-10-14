@@ -148,7 +148,7 @@
     } else if (_goodID) {
         path = [NSString stringWithFormat:@"/goods?good_id=%@", _goodID];
     } else if (_tag) {
-        path = [NSString stringWithFormat:@"/goods/tagged_by_id?id=%@", _tag.tagID];
+        path = [NSString stringWithFormat:@"/goods/tagged?id=%@&name=%@", _tag.tagID, _tag.name];
     } else {
         path = @"/goods";
     }

@@ -4,6 +4,7 @@
 #import "DGVote.h"
 #import "DGFollow.h"
 #import "DGReport.h"
+#import "DGTag.h"
 #import "DGGoodCommentsViewController.h"
 #import <TTTAttributedLabel.h>
 #import "DGUserProfileViewController.h"
@@ -22,6 +23,18 @@ static inline NSRegularExpression * NameRegularExpression() {
     
     return _nameRegularExpression;
 }
+
+static inline  NSRegularExpression * UserNameAndHashRegularExpression()
+{
+    static NSRegularExpression *_usernameAndHashRegularExpression = nil;
+
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _usernameAndHashRegularExpression = [[NSRegularExpression alloc] initWithPattern:@"(?:^|\\s|[\\p{Punct}&&[^/]])((#[\\p{L}0-9-_]+)|(@[\\p{L}0-9-_\\.]+))" options:NSRegularExpressionCaseInsensitive error:nil];
+    });
+    return _usernameAndHashRegularExpression;
+}
+
 @implementation GoodCell
 
 #pragma mark - Initial setup
@@ -311,12 +324,16 @@ static inline NSRegularExpression * NameRegularExpression() {
     label.textColor = [UIColor darkGrayColor];
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.numberOfLines = 0;
+
+    label.linkAttributes = [self linkAttributes];
+    return label;
+}
+
+- (NSDictionary *)linkAttributes {
     NSArray *keys = [[NSArray alloc] initWithObjects:(id)kCTForegroundColorAttributeName, (id)kCTUnderlineStyleAttributeName, nil];
     NSArray *objects = [[NSArray alloc] initWithObjects:LINK_COLOUR, [NSNumber numberWithInt:kCTUnderlineStyleNone], nil];
     NSDictionary *linkAttributes = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
-
-    label.linkAttributes = linkAttributes;
-    return label;
+    return linkAttributes;
 }
 
 - (void)setupCommentsList {
@@ -378,8 +395,21 @@ static inline NSRegularExpression * NameRegularExpression() {
     NSDictionary *attributes = @{NSFontAttributeName : self.description.font};
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.good.caption attributes:attributes];
     self.description.attributedText = attrString;
-
     captionHeight.constant = [GoodCell calculateHeightForText:attrString];
+    self.description.linkAttributes = [self linkAttributes];
+
+    NSRange stringRange = NSMakeRange(0, [self.description.attributedText length]);
+    NSRegularExpression *regexp = UserNameAndHashRegularExpression();
+    [regexp enumerateMatchesInString:[self.description.attributedText string] options:0 range:stringRange usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+        NSString *noHashes = [[[self.description.attributedText string] substringWithRange:result.range] stringByReplacingOccurrencesOfString:@"#" withString:@""];
+        NSString *noSpacesAndNoHashes = [noHashes stringByReplacingOccurrencesOfString:@" " withString:@""];
+        NSString *urlString = [NSString stringWithFormat:@"dogood://goods/tagged/%@", noSpacesAndNoHashes];
+        NSURL *url = [NSURL URLWithString:urlString];
+        // DebugLog(@"URL string %@ %@ %@", urlString, noSpacesAndNoHashes, noHashes, [url absoluteString]);
+        [self.description addLinkToURL:url withRange:result.range];
+    }];
+
+    self.description.delegate = self;
 }
 
 + (CGFloat)calculateHeightForText:(NSAttributedString *)string {
@@ -495,20 +525,35 @@ static inline NSRegularExpression * NameRegularExpression() {
 
 #pragma mark - TTTAttributedLabel delegate methods
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
+    DebugLog(@"selected");
     if ([[url scheme] hasPrefix:@"dogood"]) {
+        NSArray *urlComponents = [url pathComponents];
+        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+
         if ([[url host] hasPrefix:@"users"]) {
-            NSArray *urlComponents = [url pathComponents];
-            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-            [f setNumberStyle:NSNumberFormatterDecimalStyle];
             NSNumber * userID = [f numberFromString:urlComponents[1]];
             [DGUser openProfilePage:userID inController:self.navigationController];
         } else if ([[url host] hasPrefix:@"show-settings"]) {
             /* load settings screen */
+        } else if ([[url host] hasPrefix:@"goods"]) {
+            DGTag *tag = [DGTag new];
+            tag.name = [url pathComponents][2];
+            [self openTag:tag];
+        } else {
+            DebugLog(@"hit here");
         }
     } else {
         /* deal with http links here */
-        DebugLog(@"not sure what else to do");
+        DebugLog(@"not sure what else to do %@", [url scheme]);
     }
+}
+
+- (void)openTag:(DGTag *)tag {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+    DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
+    controller.tag = tag;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - Utility functions
