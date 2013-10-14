@@ -13,6 +13,8 @@
 
 @implementation DGGoodListViewController
 
+#define kGoodCaptionFont [UIFont systemFontOfSize:14.]
+
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,6 +39,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:userView selector:@selector(setContent) name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayPostSuccessMessage) name:DGUserDidPostGood object:nil];
+
+    cellHeights = [[NSMutableArray alloc] init];
 }
 
 - (void)displayPostSuccessMessage {
@@ -104,11 +108,24 @@
     cell.navigationController = self.navigationController;
     cell.parent = self;
     [cell setValues];
+    DebugLog(@"set");
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+/*
+- (CGFloat)tableView:(UITableView *)aTableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 600;
+}
+*/
+
+- (void)reloadCellAtIndexPath:(NSIndexPath *)indexPath withGood:(DGGood *)good {
+    cellHeights[indexPath.row] = [self calculateHeightForGood:good];
+    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSNumber *height = [cellHeights objectAtIndex:indexPath.row];
+    return [height floatValue];
 }
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
@@ -138,11 +155,50 @@
 
     [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         goods = [[NSArray alloc] initWithArray:mappingResult.array];
+        // dynamically set height here
+        [self estimateHeightsForGoods:goods];
         [tableView reloadData];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [TSMessage showNotificationInViewController:self.navigationController title:@"Oops" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
         DebugLog(@"Operation failed with error: %@", error);
     }];
+}
+
+- (void)estimateHeightsForGoods:(NSArray *)goodList {
+    for (DGGood *good in goodList) {
+        [cellHeights addObject:[self calculateHeightForGood:good]];
+    }
+}
+
+- (NSNumber *)calculateHeightForGood:(DGGood *)good {
+    CGFloat height = 110;
+
+    NSDictionary *attributes = @{NSFontAttributeName : kGoodCaptionFont};
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:good.caption attributes:attributes];
+
+    CGFloat captionHeight = [GoodCell calculateHeightForText:attrString];
+    height += captionHeight;
+
+    if (good.evidence) {
+        height+= 300;
+    }
+    if (good.location_name) {
+        height += 20;
+    }
+    if (good.category) {
+        height += 20;
+    }
+    if (good.comments) {
+        height += [good.comments count] * 20;
+        height += 30;
+    }
+    if ([good.likes_count intValue] > 0) {
+        height += 30;
+    }
+    if ([good.regoods_count intValue] > 0) {
+        height += 30;
+    }
+    return [NSNumber numberWithFloat:height];
 }
 
 @end

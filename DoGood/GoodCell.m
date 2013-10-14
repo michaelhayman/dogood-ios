@@ -9,6 +9,7 @@
 #import "DGUserProfileViewController.h"
 #import "DGUserListViewController.h"
 #import "DGUserInvitesViewController.h"
+#import "DGGoodListViewController.h"
 
 #define kRightColumnWidth 236.0
 
@@ -200,6 +201,7 @@ static inline NSRegularExpression * NameRegularExpression() {
     self.good.regoods_count = @(self.good.regoods_count.intValue + 1);
     self.good.current_user_regooded = [NSNumber numberWithBool:YES];
     [self setRegoodsText];
+    [self reloadCell];
 }
 
 - (void)decreaseRegood {
@@ -207,6 +209,7 @@ static inline NSRegularExpression * NameRegularExpression() {
     self.good.regoods_count = @(self.good.regoods_count.intValue - 1);
     self.good.current_user_regooded = [NSNumber numberWithBool:NO];
     [self setRegoodsText];
+    [self reloadCell];
 }
 
 - (void)setRegoodsText {
@@ -248,6 +251,7 @@ static inline NSRegularExpression * NameRegularExpression() {
     self.good.likes_count = @(self.good.likes_count.intValue + 1);
     self.good.current_user_liked = [NSNumber numberWithBool:YES];
     [self setLikesText];
+    [self reloadCell];
 }
 
 - (void)decreaseLike {
@@ -255,6 +259,7 @@ static inline NSRegularExpression * NameRegularExpression() {
     self.good.likes_count = @(self.good.likes_count.intValue - 1);
     self.good.current_user_liked = [NSNumber numberWithBool:NO];
     [self setLikesText];
+    [self reloadCell];
 }
 
 - (void)setLikesText {
@@ -365,18 +370,20 @@ static inline NSRegularExpression * NameRegularExpression() {
 
 #pragma mark - Description
 - (void)setCaptionText {
-    CGFloat labelWidth = kRightColumnWidth;
     NSDictionary *attributes = @{NSFontAttributeName : self.description.font};
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.good.caption attributes:attributes];
     self.description.attributedText = attrString;
 
-    CGRect rect = [attrString boundingRectWithSize:CGSizeMake(labelWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil];
+    captionHeight.constant = [GoodCell calculateHeightForText:attrString];
+}
+
++ (CGFloat)calculateHeightForText:(NSAttributedString *)string {
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(kRightColumnWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil];
     CGSize size = rect.size;
     CGFloat height = ceilf(size.height);
-    CGFloat width  = ceilf(size.width);
+    // CGFloat width  = ceilf(size.width);
 
-    captionHeight.constant = height;
-    captionWidth.constant = width;
+    return height;
 }
 
 #pragma mark - More options
@@ -497,6 +504,13 @@ static inline NSRegularExpression * NameRegularExpression() {
         /* deal with http links here */
         DebugLog(@"not sure what else to do");
     }
+}
+
+#pragma mark - Utility functions
+- (void)reloadCell {
+    UITableView *table = (UITableView *)self.superview.superview;
+    NSIndexPath *indexPath = [table indexPathForCell:(UITableViewCell *)self];
+    [self.parent reloadCellAtIndexPath:indexPath withGood:self.good];
 }
 
 @end

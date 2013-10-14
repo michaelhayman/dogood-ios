@@ -52,5 +52,6 @@
 @property (weak, nonatomic) UINavigationController *navigationController;
 
 - (void)setValues;
++ (CGFloat)calculateHeightForText:(NSAttributedString *)string;
 
 @end
