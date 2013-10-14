@@ -74,7 +74,6 @@
 
     // votes
     RKObjectMapping *voteMapping = [RKObjectMapping mappingForClass:[DGVote class]];
-
     [voteMapping addAttributeMappingsFromArray:@[
         @"voteable_id", @"voteable_type", @"user_id"
     ]];
@@ -155,7 +154,6 @@
 
     // category
     RKObjectMapping *categoryMapping = [RKObjectMapping mappingForClass:[DGCategory class]];
- 
     [categoryMapping addAttributeMappingsFromArray:@[
      @"name"
     ]];
@@ -181,7 +179,8 @@
      @"lng",
      @"regoods_count",
      @"comments_count",
-     @"evidence"
+     @"evidence",
+     @"done"
     ]];
 
     RKResponseDescriptor *goodResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:goodMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"goods" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];

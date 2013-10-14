@@ -148,6 +148,8 @@ static inline NSRegularExpression * NameRegularExpression() {
     }
     [self setRegoodsText];
 
+    [self setDoneImage];
+
     // more options
     invites = [[DGUserInvitesViewController alloc] init];
     invites.parent = (UIViewController *)self.parent;
@@ -169,11 +171,14 @@ static inline NSRegularExpression * NameRegularExpression() {
     }
 }
 
-/*
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (void)setDoneImage {
+    if ([self.good.done boolValue] == NO) {
+        self.done.image = [UIImage imageNamed:@"ToDoGood"];
+        self.done.hidden = NO;
+    } else {
+        self.done.hidden = YES;
+    }
 }
-*/
 
 #pragma mark - Regoods
 - (void)addUserRegood {

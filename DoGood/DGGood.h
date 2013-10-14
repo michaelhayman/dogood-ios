@@ -29,6 +29,7 @@
 @property (retain) NSArray *point;
 @property (retain) NSString *location_name;
 @property (retain) NSString *location_image;
+@property (retain) NSNumber *done;
 @property BOOL shareDoGood;
 @property BOOL shareTwitter;
 @property BOOL shareFacebook;

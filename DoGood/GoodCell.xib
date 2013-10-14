@@ -146,10 +146,19 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="191">
                         <rect key="frame" x="10" y="317" width="56" height="57"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="57" id="197"/>
                             <constraint firstAttribute="width" constant="56" id="324"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="EJn-jJ-p9f">
+                        <rect key="frame" x="10" y="382" width="56" height="57"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="57" id="BT5-fe-w5E"/>
+                            <constraint firstAttribute="width" constant="56" id="RZV-iV-Yd3"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="228">
@@ -204,11 +213,13 @@
                     <constraint firstItem="9n7-gP-4eG" firstAttribute="leading" secondItem="XiP-RE-4tV" secondAttribute="leading" constant="74" id="9pq-T0-X28"/>
                     <constraint firstItem="WCI-2A-oec" firstAttribute="top" secondItem="38" secondAttribute="bottom" id="A6a-WN-qGP"/>
                     <constraint firstItem="58K-AX-OCA" firstAttribute="leading" secondItem="XiP-RE-4tV" secondAttribute="leading" constant="74" id="E4g-K4-zbq"/>
+                    <constraint firstItem="EJn-jJ-p9f" firstAttribute="top" secondItem="191" secondAttribute="bottom" constant="8" id="EvH-db-7j1"/>
                     <constraint firstItem="335" firstAttribute="width" secondItem="217" secondAttribute="width" id="Ige-AH-aJh"/>
                     <constraint firstItem="335" firstAttribute="height" secondItem="217" secondAttribute="height" id="L2F-XK-mKW"/>
                     <constraint firstItem="58K-AX-OCA" firstAttribute="top" secondItem="WCI-2A-oec" secondAttribute="bottom" constant="8" id="Liw-gq-2NX"/>
                     <constraint firstItem="335" firstAttribute="height" secondItem="178" secondAttribute="height" id="PjQ-kR-rcz"/>
                     <constraint firstItem="217" firstAttribute="leading" secondItem="178" secondAttribute="trailing" constant="2" id="UXC-Uf-c9F"/>
+                    <constraint firstItem="EJn-jJ-p9f" firstAttribute="leading" secondItem="191" secondAttribute="leading" id="YgE-hN-0ld"/>
                     <constraint firstItem="WnP-ZZ-Lfp" firstAttribute="leading" secondItem="58K-AX-OCA" secondAttribute="trailing" id="aGG-6f-qRa"/>
                     <constraint firstItem="9n7-gP-4eG" firstAttribute="top" secondItem="58K-AX-OCA" secondAttribute="bottom" constant="5" id="ajs-TZ-3Ze"/>
                     <constraint firstItem="166" firstAttribute="leading" secondItem="335" secondAttribute="trailing" constant="3" id="gLG-wO-n1D"/>
@@ -260,6 +271,7 @@
                 <outlet property="commentsCount" destination="83" id="251"/>
                 <outlet property="commentsHeight" destination="273" id="365"/>
                 <outlet property="description" destination="WCI-2A-oec" id="3MF-Ig-Isw"/>
+                <outlet property="done" destination="EJn-jJ-p9f" id="jXo-Wi-6em"/>
                 <outlet property="like" destination="335" id="348"/>
                 <outlet property="likes" destination="58" id="260"/>
                 <outlet property="likesHeight" destination="275" id="359"/>

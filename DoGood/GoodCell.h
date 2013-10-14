@@ -50,6 +50,8 @@
 @property (weak, nonatomic) DGGood *good;
 @property (weak, nonatomic) DGGoodListViewController *parent;
 @property (weak, nonatomic) UINavigationController *navigationController;
+@property (weak, nonatomic) IBOutlet UIImageView *done;
+
 
 - (void)setValues;
 + (CGFloat)calculateHeightForText:(NSAttributedString *)string;
