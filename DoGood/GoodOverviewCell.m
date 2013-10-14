@@ -1,6 +1,5 @@
 #import "GoodOverviewCell.h"
 
-#define TEXTVIEW_TEXT @"Tell the world about the good you did"
 @implementation GoodOverviewCell
 
 - (void)awakeFromNib {

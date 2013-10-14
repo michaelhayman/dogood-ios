@@ -1,3 +1,5 @@
+#define TEXTVIEW_TEXT @"Tell the world about the good you did"
+
 @interface GoodOverviewCell : UITableViewCell <UITextViewDelegate> {
 }
 
