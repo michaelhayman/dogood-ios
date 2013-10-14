@@ -19,7 +19,6 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupMenuTitle:@"Profile"];
     self.view.backgroundColor = [UIColor whiteColor];
 
     // assume it's the current user's profile if no ID was specified
@@ -35,6 +34,7 @@
     // conditional settings on user
     UIBarButtonItem *connectButton;
     if (ownProfile) {
+        [self setupMenuTitle:@"Profile"];
         connectButton = [[UIBarButtonItem alloc] initWithTitle:@"Find Friends" style: UIBarButtonItemStylePlain target:self action:@selector(findFriends:)];
         [centralButton addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
         [centralButton setTitle:@"Settings" forState:UIControlStateNormal];
@@ -116,6 +116,9 @@
             centralButton.selected = YES;
             [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowingButtonTap"] forState:UIControlStateHighlighted];
             [centralButton setTitle:@"Following" forState:UIControlStateNormal];
+        }
+        if (!ownProfile) {
+            [self setupMenuTitle:user.username];
         }
         [self setupTabs];
 
