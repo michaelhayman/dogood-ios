@@ -24,15 +24,26 @@ static inline NSRegularExpression * NameRegularExpression() {
     return _nameRegularExpression;
 }
 
-static inline  NSRegularExpression * UserNameAndHashRegularExpression()
+static inline  NSRegularExpression * HashRegularExpression()
 {
-    static NSRegularExpression *_usernameAndHashRegularExpression = nil;
+    static NSRegularExpression *_HashRegularExpression = nil;
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _usernameAndHashRegularExpression = [[NSRegularExpression alloc] initWithPattern:@"(?:^|\\s|[\\p{Punct}&&[^/]])((#[\\p{L}0-9-_]+)|(@[\\p{L}0-9-_\\.]+))" options:NSRegularExpressionCaseInsensitive error:nil];
+        _HashRegularExpression = [[NSRegularExpression alloc] initWithPattern:@"(?:^|\\s|[\\p{Punct}&&[^/]])(#[\\p{L}0-9-_]+)" options:NSRegularExpressionCaseInsensitive error:nil];
     });
-    return _usernameAndHashRegularExpression;
+    return _HashRegularExpression;
+}
+
+static inline  NSRegularExpression * UserNameRegularExpression()
+{
+    static NSRegularExpression *_usernameRegularExpression = nil;
+
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _usernameRegularExpression = [[NSRegularExpression alloc] initWithPattern:@"(?:^|\\s|[\\p{Punct}&&[^/]])((#[\\p{L}0-9-_]+)|(@[\\p{L}0-9-_\\.]+))" options:NSRegularExpressionCaseInsensitive error:nil];
+    });
+    return _usernameRegularExpression;
 }
 
 @implementation GoodCell
@@ -412,7 +423,7 @@ static inline  NSRegularExpression * UserNameAndHashRegularExpression()
     self.description.linkAttributes = [self linkAttributes];
 
     NSRange stringRange = NSMakeRange(0, [self.description.attributedText length]);
-    NSRegularExpression *regexp = UserNameAndHashRegularExpression();
+    NSRegularExpression *regexp = HashRegularExpression();
     [regexp enumerateMatchesInString:[self.description.attributedText string] options:0 range:stringRange usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
         NSString *noHashes = [[[self.description.attributedText string] substringWithRange:result.range] stringByReplacingOccurrencesOfString:@"#" withString:@""];
         NSString *noSpacesAndNoHashes = [noHashes stringByReplacingOccurrencesOfString:@" " withString:@""];
