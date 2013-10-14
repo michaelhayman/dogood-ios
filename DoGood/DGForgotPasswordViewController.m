@@ -76,7 +76,7 @@
                                    type:TSMessageNotificationTypeSuccess];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
-        [TSMessage showNotificationInViewController:self
+        [TSMessage showNotificationInViewController:self.navigationController
                                   title:NSLocalizedString(@"Password not sent.", nil)
                                 subtitle:[error description]
                                    type:TSMessageNotificationTypeError];

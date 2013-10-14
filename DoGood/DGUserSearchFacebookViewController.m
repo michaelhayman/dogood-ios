@@ -100,7 +100,7 @@
 - (void)failedToFindFriends:(NSNotification *)notification {
     dispatch_async(dispatch_get_main_queue(), ^{
         [self showUnauthorized];
-        [TSMessage showNotificationInViewController:self
+        [TSMessage showNotificationInViewController:self.navigationController
                                   title:nil
                                            subtitle:@"Couldn't connect to Facebook"
                                    type:TSMessageNotificationTypeError];

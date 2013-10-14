@@ -349,7 +349,7 @@
             hud.labelText = @"Completed";
             [hud hide:YES];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            [TSMessage showNotificationInViewController:self
+            [TSMessage showNotificationInViewController:self.navigationController
                                       title:nil
                                     subtitle:[error localizedDescription]
                                        type:TSMessageNotificationTypeError];
@@ -358,7 +358,7 @@
 
         [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
     } else {
-        [TSMessage showNotificationInViewController:self
+        [TSMessage showNotificationInViewController:self.navigationController
                                   title:nil
                                 subtitle:NSLocalizedString(message, nil)
                                    type:TSMessageNotificationTypeError];

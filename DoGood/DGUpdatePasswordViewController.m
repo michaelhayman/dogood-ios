@@ -38,13 +38,13 @@
     [[RKObjectManager sharedManager] putObject:user path:user_password_path parameters:user success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [DGUser setNewPassword:user[@"user"][@"password"]];
         DGUser * user = (mappingResult.array)[0];
-        [TSMessage showNotificationInViewController:self
+        [TSMessage showNotificationInViewController:self.navigationController
                                   title:NSLocalizedString(@"Password updated.", nil)
                                            subtitle:user.message
                                    type:TSMessageNotificationTypeSuccess];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdatePasswordNotification object:self];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [TSMessage showNotificationInViewController:self
+        [TSMessage showNotificationInViewController:self.navigationController
                                   title:NSLocalizedString(@"Couldn't save password.", nil)
                                 subtitle:nil
                                    type:TSMessageNotificationTypeError];

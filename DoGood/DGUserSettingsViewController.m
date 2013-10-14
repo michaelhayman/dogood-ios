@@ -127,7 +127,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateAccountNotification object:nil];
 
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [TSMessage showNotificationInViewController:self
+        [TSMessage showNotificationInViewController:self.navigationController
                                   title:nil
                                 subtitle:NSLocalizedString(@"Avatar upload failed", nil)
                                    type:TSMessageNotificationTypeError];
@@ -143,13 +143,13 @@
         [DGUser currentUser].avatar = nil;
         [DGUser currentUser].image = nil;
         [DGUser assignDefaults];
-        [TSMessage showNotificationInViewController:self
+        [TSMessage showNotificationInViewController:self.navigationController
                               title:NSLocalizedString(@"Profile photo updated", nil)
                             subtitle:nil
                                type:TSMessageNotificationTypeSuccess];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateAccountNotification object:nil];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [TSMessage showNotificationInViewController:self
+        [TSMessage showNotificationInViewController:self.navigationController
                               title:NSLocalizedString(@"Oops", nil)
                             subtitle:NSLocalizedString(@"Couldn't remove your photo.", nil)
                                type:TSMessageNotificationTypeError];
@@ -171,7 +171,7 @@
                 [DGUser assignDefaults];
                 [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateAccountNotification object:nil];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                [TSMessage showNotificationInViewController:self
+                [TSMessage showNotificationInViewController:self.navigationController
                                       title:NSLocalizedString(@"Oops", nil)
                                     subtitle:NSLocalizedString(@"Couldn't update your name.", nil)
                                        type:TSMessageNotificationTypeError];
@@ -189,7 +189,7 @@
                 [DGUser currentUser].biography = textField.text;
                 [DGUser assignDefaults];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                [TSMessage showNotificationInViewController:self
+                [TSMessage showNotificationInViewController:self.navigationController
                                       title:NSLocalizedString(@"Oops", nil)
                                     subtitle:NSLocalizedString(@"Couldn't update your biography.", nil)
                                        type:TSMessageNotificationTypeError];
@@ -207,7 +207,7 @@
                 [DGUser currentUser].location = textField.text;
                 [DGUser assignDefaults];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                [TSMessage showNotificationInViewController:self
+                [TSMessage showNotificationInViewController:self.navigationController
                                       title:NSLocalizedString(@"Oops", nil)
                                     subtitle:NSLocalizedString(@"Couldn't update your biography.", nil)
                                        type:TSMessageNotificationTypeError];
@@ -226,7 +226,7 @@
             [[RKObjectManager sharedManager] putObject:user path:user_update_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                 [DGUser currentUser].phone = textField.text;
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                [TSMessage showNotificationInViewController:self
+                [TSMessage showNotificationInViewController:self.navigationController
                                       title:NSLocalizedString(@"Oops", nil)
                                     subtitle:NSLocalizedString(@"Couldn't update your biography.", nil)
                                        type:TSMessageNotificationTypeError];
