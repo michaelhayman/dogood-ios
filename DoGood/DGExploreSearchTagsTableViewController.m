@@ -41,9 +41,13 @@
    } else {
         static NSString * reuseIdentifier = @"NoResultsCell";
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        cell.explanation.text = @"No people found";
+        cell.explanation.text = @"No tags found";
         return cell;
    }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
