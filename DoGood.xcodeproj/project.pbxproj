@@ -10,7 +10,6 @@
 		6303A33617FE322100E2EACD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6303A33517FE322100E2EACD /* Media.xcassets */; };
 		6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */; };
 		6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */; };
-		6308161817C3DDD4004DE5D7 /* RestKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161717C3DDD4004DE5D7 /* RestKit.m */; };
 		6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161E17C41E0D004DE5D7 /* DGAppearance.m */; };
 		6308162217C41EA0004DE5D7 /* ThirdParties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308162117C41EA0004DE5D7 /* ThirdParties.m */; };
 		6319D38F17BDED080071DA71 /* DGReward.m in Sources */ = {isa = PBXBuildFile; fileRef = 6319D38E17BDED080071DA71 /* DGReward.m */; };
@@ -105,6 +104,7 @@
 		63FBF603180830C4005686A6 /* DGReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF602180830C4005686A6 /* DGReport.m */; };
 		63FBF606180AECFF005686A6 /* UIImage+Grayscale.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF605180AECFF005686A6 /* UIImage+Grayscale.m */; };
 		63FBF608180B0C06005686A6 /* DGRewardMiniCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FBF607180B0C06005686A6 /* DGRewardMiniCell.xib */; };
+		63FBF60A180CD5F3005686A6 /* RestKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF609180CD5F3005686A6 /* RestKit.m */; };
 		EBCC96E10520469A951D5018 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0150758A9E934060AF039752 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -116,7 +116,6 @@
 		6308161317C3C19F004DE5D7 /* DGPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPhotoPickerViewController.h; sourceTree = "<group>"; };
 		6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPhotoPickerViewController.m; sourceTree = "<group>"; };
 		6308161617C3DDD4004DE5D7 /* RestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestKit.h; sourceTree = "<group>"; };
-		6308161717C3DDD4004DE5D7 /* RestKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestKit.m; sourceTree = "<group>"; };
 		6308161D17C41E0D004DE5D7 /* DGAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAppearance.h; sourceTree = "<group>"; };
 		6308161E17C41E0D004DE5D7 /* DGAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAppearance.m; sourceTree = "<group>"; };
 		6308162017C41EA0004DE5D7 /* ThirdParties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdParties.h; sourceTree = "<group>"; };
@@ -281,6 +280,7 @@
 		63FBF604180AECFF005686A6 /* UIImage+Grayscale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Grayscale.h"; sourceTree = "<group>"; };
 		63FBF605180AECFF005686A6 /* UIImage+Grayscale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Grayscale.m"; sourceTree = "<group>"; };
 		63FBF607180B0C06005686A6 /* DGRewardMiniCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DGRewardMiniCell.xib; sourceTree = "<group>"; };
+		63FBF609180CD5F3005686A6 /* RestKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestKit.m; sourceTree = "<group>"; };
 		66189FDD6F34462B8CF25EBA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -340,7 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				6308161617C3DDD4004DE5D7 /* RestKit.h */,
-				6308161717C3DDD4004DE5D7 /* RestKit.m */,
+				63FBF609180CD5F3005686A6 /* RestKit.m */,
 				63FBF601180830C4005686A6 /* DGReport.h */,
 				63FBF602180830C4005686A6 /* DGReport.m */,
 				6355EC1A17B5BA4500EE91C0 /* DGUser.h */,
@@ -769,8 +769,8 @@
 				63357AFE17C279F2007B5FD7 /* DGUserFindFriendsViewController.m in Sources */,
 				6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */,
 				63FBF606180AECFF005686A6 /* UIImage+Grayscale.m in Sources */,
+				63FBF60A180CD5F3005686A6 /* RestKit.m in Sources */,
 				6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */,
-				6308161817C3DDD4004DE5D7 /* RestKit.m in Sources */,
 				6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */,
 				6308162217C41EA0004DE5D7 /* ThirdParties.m in Sources */,
 				63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */,
