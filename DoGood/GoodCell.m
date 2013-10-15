@@ -332,6 +332,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     DGGoodCommentsViewController *commentsView = [goodS instantiateViewControllerWithIdentifier:@"GoodComments"];
     commentsView.good = self.good;
     commentsView.makeComment = YES;
+    commentsView.goodCell = self;
     [self.navigationController pushViewController:commentsView animated:YES];
 }
 
@@ -339,6 +340,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     UIStoryboard *goodS = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     DGGoodCommentsViewController *commentsView = [goodS instantiateViewControllerWithIdentifier:@"GoodComments"];
     commentsView.good = self.good;
+    commentsView.goodCell = self;
     [self.navigationController pushViewController:commentsView animated:YES];
 }
 

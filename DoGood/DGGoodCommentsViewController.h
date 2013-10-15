@@ -2,6 +2,8 @@
 @class DGGood;
 @class DGComment;
 @class DGTextFieldSearchPeopleTableViewController;
+@class GoodCell;
+
 @interface DGGoodCommentsViewController : UIViewController <UITextFieldDelegate> {
     __weak IBOutlet NSLayoutConstraint *commentFieldBottom;
     __weak IBOutlet UIView *commentInputView;
@@ -33,5 +35,6 @@
 @property bool makeComment;
 @property DGGood *good;
 @property (nonatomic, retain) DGComment *comment;
+@property (nonatomic, retain) GoodCell *goodCell;
 
 @end

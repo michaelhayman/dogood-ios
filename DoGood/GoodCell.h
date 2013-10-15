@@ -59,6 +59,7 @@
 
 
 - (void)setValues;
+- (void)reloadCell;
 + (CGFloat)calculateHeightForText:(NSAttributedString *)string;
 
 @end

@@ -1,5 +1,6 @@
 #import "DGGoodCommentsViewController.h"
 #import "DGGood.h"
+#import "GoodCell.h"
 #import "DGComment.h"
 #import "CommentCell.h"
 #import "DGTextFieldSearchPeopleTableViewController.h"
@@ -59,6 +60,22 @@
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/comments.json" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [comments removeAllObjects];
         [comments addObjectsFromArray:mappingResult.array];
+
+        /*
+        if ([comments count] > 5) {
+            NSRange theRange;
+            theRange.location = [comments count] - 5;
+            theRange.length = 5;
+            self.good.comments = [comments subarrayWithRange:theRange];
+        } else {
+            self.good.comments = comments;
+        }
+        */
+        self.good.comments = comments;
+        // use metadata eventually
+        self.good.comments_count = [NSNumber numberWithInt: [comments count]];
+        self.goodCell.good = self.good;
+        [self.goodCell reloadCell];
         [tableView reloadData];
         DebugLog(@"reloading data");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
