@@ -3,13 +3,14 @@
 #import "DGReward.h"
 // #import "DGRewardMiniCell.h"
 #import "DGRewardCell.h"
+#import "UIViewController+MJPopupViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @implementation UserOverview
 
 #pragma mark - Initialization & reuse
 - (id)initWithFrame:(CGRect)frame {
-    frame = CGRectMake(0, 0, 320, 106);
+    frame = CGRectMake(0, 0, 320, 90);
     self = [super initWithFrame:frame];
     if (self) {
         [[NSBundle mainBundle] loadNibNamed:@"UserOverview" owner:self options:nil];
@@ -17,6 +18,7 @@
 
         [self setContent];
         [self style];
+        [self setupNotifications];
     }
     return self;
 }
@@ -24,7 +26,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self addSubview:self.view];
-    [self setupNotifications];
 }
 
 - (void)setContent {
@@ -39,14 +40,17 @@
     // self.username.textColor = [UIColor whiteColor];
     // self.view.backgroundColor = COLOUR_REDDISH_BROWN;
     // rewardCollectionView.layer
-    [rewardCollectionView.layer setBorderWidth:1.0];
-    rewardCollectionView.layer.cornerRadius = 5;
-    rewardCollectionView.layer.borderColor = [[UIColor grayColor] CGColor];
 }
 
 - (void)setupNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePointsText) name:DGUserDidUpdatePointsNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePointsText) name:DGUserDidPostGood object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissPopup) name:DGUserDidDismissRewardPopup object:nil];
+}
+
+- (void)dismissPopup {
+    DebugLog(@"dismiss");
+    [self.navigationController dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopBottom];
 }
 
 #pragma mark - Content methods
@@ -70,13 +74,18 @@
     DGRewardCell *cell = [aCollectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     DGReward *reward = rewards[indexPath.row];
     cell.reward = reward;
+    cell.contentView.layer.borderWidth = 1.0;
+    cell.contentView.layer.cornerRadius = 10;
+    cell.contentView.layer.borderColor = [[UIColor grayColor] CGColor];
     [cell setValues];
+    cell.navigationController = self.navigationController;
+    cell.type = @"Rewards";
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    DGReward *reward = rewards[indexPath.row];
-    DebugLog(@"reward %@", reward);
+    DGRewardCell *cell = (DGRewardCell *)[aCollectionView cellForItemAtIndexPath:indexPath];
+    [cell options];
 }
 
 - (void)getRewardsAtPath:(NSString *)path {

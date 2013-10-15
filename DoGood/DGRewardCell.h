@@ -13,5 +13,6 @@
 @property (weak, nonatomic) UINavigationController *navigationController;
 
 - (void)setValues;
+- (void)options;
 
 @end

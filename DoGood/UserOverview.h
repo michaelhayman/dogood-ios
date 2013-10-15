@@ -8,6 +8,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *username;
 @property (nonatomic, retain) IBOutlet UILabel *points;
 
+@property (weak, nonatomic) UINavigationController *navigationController;
+
 - (void)updatePointsText;
 - (void)setContent;
 
