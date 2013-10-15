@@ -61,16 +61,6 @@
         [comments removeAllObjects];
         [comments addObjectsFromArray:mappingResult.array];
 
-        /*
-        if ([comments count] > 5) {
-            NSRange theRange;
-            theRange.location = [comments count] - 5;
-            theRange.length = 5;
-            self.good.comments = [comments subarrayWithRange:theRange];
-        } else {
-            self.good.comments = comments;
-        }
-        */
         self.good.comments = comments;
         // use metadata eventually
         self.good.comments_count = [NSNumber numberWithInt: [comments count]];
