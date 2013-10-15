@@ -15,12 +15,18 @@
     if (self) {
         showNoResultsMessage = NO;
         tags = [[NSMutableArray alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emptyTable) name:DGSearchTextFieldDidBeginEditing object:nil];
     }
     return self;
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)emptyTable {
+    [tags removeAllObjects];
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableView delegate methods

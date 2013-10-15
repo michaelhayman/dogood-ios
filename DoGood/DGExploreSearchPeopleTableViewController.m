@@ -1,6 +1,7 @@
 #import "DGExploreSearchPeopleTableViewController.h"
 #import "UserCell.h"
 #import "NoResultsCell.h"
+#import "constants.h"
 
 @implementation DGExploreSearchPeopleTableViewController
 
@@ -9,12 +10,18 @@
     if (self) {
         showNoResultsMessage = NO;
         users = [[NSMutableArray alloc] init];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emptyTable) name:DGSearchTextFieldDidBeginEditing object:nil];
     }
     return self;
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)emptyTable {
+    [users removeAllObjects];
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableView delegate methods
