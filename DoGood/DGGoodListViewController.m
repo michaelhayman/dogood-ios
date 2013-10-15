@@ -14,6 +14,8 @@
 
 @implementation DGGoodListViewController
 
+@synthesize tableView;
+
 #define kGoodCaptionFont [UIFont systemFontOfSize:14.]
 
 #pragma mark - View lifecycle
@@ -28,21 +30,25 @@
         [self addMenuButton:@"MenuFromHomeIconTap" withTapButton:@"MenuFromHomeIcon"];
     }
 
-    UINib *nib = [UINib nibWithNibName:@"GoodCell" bundle:nil];
-    [tableView registerNib:nib forCellReuseIdentifier:@"GoodCell"];
+    [self initializeTable];
 
     userView = [[UserOverview alloc] init];
     // userView = [[UserOverview alloc] initWithFrame:CGRectMake(0, 0, 320, 106)];
     [self setupUserPoints];
     // [self getGood];
-    [self setupRefresh];
 
     [[NSNotificationCenter defaultCenter] addObserver:userView selector:@selector(setContent) name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayPostSuccessMessage) name:DGUserDidPostGood object:nil];
 
+}
+
+- (void)initializeTable {
+    UINib *nib = [UINib nibWithNibName:@"GoodCell" bundle:nil];
+    [tableView registerNib:nib forCellReuseIdentifier:@"GoodCell"];
     goods = [[NSMutableArray alloc] init];
     cellHeights = [[NSMutableArray alloc] init];
+    [self setupRefresh];
     [self setupInfiniteScroll];
 }
 
@@ -148,7 +154,10 @@
 #pragma mark - Retrieval methods
 - (void)getGood {
     NSString *path;
-    if (_category) {
+    DebugLog(@"self path %@", self.path);
+    if (self.path) {
+        path = self.path;
+    } else if (_category) {
         path = [NSString stringWithFormat:@"/goods?category_id=%@", _category.categoryID];
     } else if (_goodID) {
         path = [NSString stringWithFormat:@"/goods?good_id=%@", _goodID];

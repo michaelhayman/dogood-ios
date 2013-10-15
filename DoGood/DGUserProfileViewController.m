@@ -57,13 +57,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getProfile) name:DGUserDidUpdateAccountNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getProfile) name:DGUserDidUpdateFollowingsNotification object:nil];
 
-    // table set up
-    [tableView setTableHeaderView:headerView];
-    UINib *nib = [UINib nibWithNibName:@"GoodCell" bundle:nil];
-    [tableView registerNib:nib forCellReuseIdentifier:@"GoodCell"];
-
     // get good list
+    goodList = [[DGGoodListViewController alloc] init];
+    tableView.dataSource = goodList;
+    tableView.delegate = goodList;
+    goodList.tableView = tableView;
+    [goodList initializeTable];
     [self getUserGood];
+    [tableView setTableHeaderView:headerView];
 
     // setup following / followers text
     UITapGestureRecognizer* followersGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFollowers)];
@@ -88,6 +89,7 @@
 
     invites = [[DGUserInvitesViewController alloc] init];
     invites.parent = (UIViewController *)self;
+
 }
 
 - (void)dealloc {
@@ -270,32 +272,6 @@
     }
 }
 
-#pragma mark - UITableView delegate methods
-- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString * reuseIdentifier = @"GoodCell";
-    GoodCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    DGGood *good = goods[indexPath.row];
-    cell.good = good;
-    [cell setValues];
-    cell.navigationController = self.navigationController;
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 773;
-}
-
-- (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
-    return [goods count];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"";
-}
 
 #pragma mark - User listing links
 - (void)showFollowers {
@@ -322,7 +298,8 @@
         [likesButton setSelected:NO];
         DebugLog(@"get user good");
         NSString *path = [NSString stringWithFormat:@"/goods/posted_or_followed_by?user_id=%@", self.userID];
-        [self getGoodsAtPath:path];
+        goodList.path = path;
+        [goodList reloadGood];
     }
 }
 
@@ -332,10 +309,12 @@
         [goodsButton setSelected:NO];
         [likesButton setSelected:YES];
         NSString *path = [NSString stringWithFormat:@"/goods/liked_by?user_id=%@", self.userID];
-        [self getGoodsAtPath:path];
+        goodList.path = path;
+        [goodList reloadGood];
     }
 }
 
+/*
 - (void)getGoodsAtPath:(NSString *)path {
     [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         goods = [[NSArray alloc] initWithArray:mappingResult.array];
@@ -344,5 +323,6 @@
         DebugLog(@"Operation failed with error: %@", error);
     }];
 }
+ */
 
 @end

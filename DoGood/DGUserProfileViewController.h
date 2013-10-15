@@ -1,7 +1,8 @@
 #import "RootViewController.h"
 @class DGUserInvitesViewController;
+@class DGGoodListViewController;
 
-@interface DGUserProfileViewController : RootViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate, UIAlertViewDelegate> {
+@interface DGUserProfileViewController : RootViewController <UIActionSheetDelegate, UIAlertViewDelegate> {
     IBOutlet UIButton *centralButton;
     __weak IBOutlet UIImageView *avatarOverlay;
     __weak IBOutlet UIImageView *avatar;
@@ -20,6 +21,7 @@
     __weak IBOutlet UIButton *likesButton;
 
     DGUserInvitesViewController *invites;
+    DGGoodListViewController *goodList;
 
     UIActionSheet *moreOptionsSheet;
     UIActionSheet *shareOptionsSheet;

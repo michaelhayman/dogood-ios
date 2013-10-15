@@ -14,11 +14,16 @@
     UserOverview *userView;
 }
 
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) NSString *path;
 @property (nonatomic, retain) DGCategory *category;
 @property (nonatomic, retain) DGTag *tag;
 @property (nonatomic, retain) NSNumber *goodID;
 
 - (void)showWelcome;
 - (void)reloadCellAtIndexPath:(NSIndexPath *)indexPath withGood:(DGGood *)good;
+- (void)getGood;
+- (void)reloadGood;
+- (void)initializeTable;
 
 @end

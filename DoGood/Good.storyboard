@@ -52,7 +52,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="fIW-G7-7aj" id="7Fo-Ow-wBK"/>
+                        <outlet property="tableView" destination="fIW-G7-7aj" id="qLj-cE-lq7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecl-hr-nni" userLabel="First Responder" sceneMemberID="firstResponder"/>
