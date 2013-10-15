@@ -3,6 +3,7 @@
 #import "DGReward.h"
 // #import "DGRewardMiniCell.h"
 #import "DGRewardCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation UserOverview
 
@@ -15,6 +16,7 @@
         [self addSubview:self.view];
 
         [self setContent];
+        [self style];
     }
     return self;
 }
@@ -36,6 +38,10 @@
     // self.points.textColor = [UIColor whiteColor];
     // self.username.textColor = [UIColor whiteColor];
     // self.view.backgroundColor = COLOUR_REDDISH_BROWN;
+    // rewardCollectionView.layer
+    [rewardCollectionView.layer setBorderWidth:1.0];
+    rewardCollectionView.layer.cornerRadius = 5;
+    rewardCollectionView.layer.borderColor = [[UIColor grayColor] CGColor];
 }
 
 - (void)setupNotifications {
@@ -65,8 +71,12 @@
     DGReward *reward = rewards[indexPath.row];
     cell.reward = reward;
     [cell setValues];
-    // cell.navigationController = self.navigationController;
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    DGReward *reward = rewards[indexPath.row];
+    DebugLog(@"reward %@", reward);
 }
 
 - (void)getRewardsAtPath:(NSString *)path {
