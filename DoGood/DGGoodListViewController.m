@@ -98,7 +98,9 @@
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
         [self presentViewController:navigationController animated:NO completion:nil];
     } else {
-        [self reloadGood];
+        if ([goods count] == 0) {
+            [self reloadGood];
+        }
     }
 }
 
