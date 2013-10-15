@@ -5,7 +5,7 @@
 - (NSString *)costText {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setGroupingSeparator: [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator]];
-    return [formatter stringFromNumber:self.cost];
+    return [NSString stringWithFormat:@"%@ pts", [formatter stringFromNumber:self.cost]];
 }
 
 @end
