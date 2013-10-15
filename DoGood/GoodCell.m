@@ -78,6 +78,15 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     [self.likes setUserInteractionEnabled:YES];
     [self.likes addGestureRecognizer:likesGesture];
 
+    // categories
+    UITapGestureRecognizer* openCategoryGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCategory)];
+    [categoryTitle setUserInteractionEnabled:YES];
+    [categoryTitle addGestureRecognizer:openCategoryGesture];
+
+    UITapGestureRecognizer* imageOpenCategoryGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCategory)];
+    [categoryImage setUserInteractionEnabled:YES];
+    [categoryImage addGestureRecognizer:imageOpenCategoryGesture];
+
     // comments
     [self.comment addTarget:self action:@selector(addComment) forControlEvents:UIControlEventTouchUpInside];
     UITapGestureRecognizer* commentsGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showComments)];
@@ -577,6 +586,13 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
     controller.tag = tag;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)openCategory {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+    DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
+    controller.category = self.good.category;
     [self.navigationController pushViewController:controller animated:YES];
 }
 
