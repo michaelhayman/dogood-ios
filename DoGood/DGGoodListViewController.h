@@ -8,7 +8,7 @@
     IBOutlet UITableView *tableView;
     IBOutlet UIView *headerView;
     int page;
-    bool showNoGoodsMessage;
+    bool showNoResultsMessage;
     NSMutableArray *goods;
     NSMutableArray *cellHeights;
     UserOverview *userView;

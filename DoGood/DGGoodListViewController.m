@@ -2,6 +2,7 @@
 #import "GoodCell.h"
 #import "DGGood.h"
 #import "DGTag.h"
+#import "NoResultsCell.h"
 #import "DGCategory.h"
 #import "FSLocation.h"
 #import "DGWelcomeViewController.h"
@@ -30,6 +31,8 @@
         [self addMenuButton:@"MenuFromHomeIconTap" withTapButton:@"MenuFromHomeIcon"];
     }
 
+    showNoResultsMessage = NO;
+
     [self initializeTable];
 
     userView = [[UserOverview alloc] init];
@@ -40,12 +43,14 @@
     [[NSNotificationCenter defaultCenter] addObserver:userView selector:@selector(setContent) name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayPostSuccessMessage) name:DGUserDidPostGood object:nil];
-
 }
 
 - (void)initializeTable {
     UINib *nib = [UINib nibWithNibName:@"GoodCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"GoodCell"];
+    UINib *noResultsNib = [UINib nibWithNibName:@"NoResultsCell" bundle:nil];
+    [tableView registerNib:noResultsNib forCellReuseIdentifier:@"NoResultsCell"];
+    showNoResultsMessage = NO;
     goods = [[NSMutableArray alloc] init];
     cellHeights = [[NSMutableArray alloc] init];
     [self setupRefresh];
@@ -112,15 +117,22 @@
 
 #pragma mark - UITableView delegate methods
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString * reuseIdentifier = @"GoodCell";
-    GoodCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    DGGood *good = goods[indexPath.row];
-    cell.good = good;
-    cell.navigationController = self.navigationController;
-    cell.parent = self;
-    [cell setValues];
-    DebugLog(@"set");
-    return cell;
+    if (indexPath.section == 0) {
+        static NSString * reuseIdentifier = @"GoodCell";
+        GoodCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+        DGGood *good = goods[indexPath.row];
+        cell.good = good;
+        cell.navigationController = self.navigationController;
+        cell.parent = self;
+        [cell setValues];
+        DebugLog(@"set");
+        return cell;
+    } else {
+        static NSString * reuseIdentifier = @"NoResultsCell";
+        NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+        cell.explanation.text = @"No good found";
+        return cell;
+    }
 }
 
 /*
@@ -135,20 +147,37 @@
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSNumber *height = [cellHeights objectAtIndex:indexPath.row];
-    return [height floatValue];
+    if (indexPath.section == 0) {
+        NSNumber *height = [cellHeights objectAtIndex:indexPath.row];
+        return [height floatValue];
+    } else {
+        return 205;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
-    return [goods count];
+    if (section == 0) {
+        return [goods count];
+    } else {
+        if (showNoResultsMessage == YES) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return @"";
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    // This will create a "invisible" footer
+    return 0.01f;
 }
 
 #pragma mark - Retrieval methods
@@ -172,18 +201,16 @@
     [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [goods addObjectsFromArray:mappingResult.array];
         if ([goods count] == 0)  {
-            showNoGoodsMessage = YES;
+            showNoResultsMessage = YES;
         } else {
-            showNoGoodsMessage = NO;
+            showNoResultsMessage = NO;
             [self estimateHeightsForGoods:mappingResult.array];
         }
         DebugLog(@"goods %@", goods);
         [tableView reloadData];
         [tableView.infiniteScrollingView stopAnimating];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        if ([goods count] == 0) {
-            [TSMessage showNotificationInViewController:self.navigationController title:@"Oops" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
-        }
+        [TSMessage showNotificationInViewController:self.navigationController title:@"Oops" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
         [tableView.infiniteScrollingView stopAnimating];
         DebugLog(@"Operation failed with error: %@", error);
     }];
