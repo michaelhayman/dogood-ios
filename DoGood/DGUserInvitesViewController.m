@@ -112,7 +112,7 @@
 	}
     DebugLog(@"%@", feedbackMsg);
 
-	[self dismissViewControllerAnimated:YES completion:NULL];
+	[_parent dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end
