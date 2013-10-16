@@ -59,6 +59,7 @@
 
     // get good list
     goodList = [[DGGoodListViewController alloc] init];
+    goodList.loadController = self.navigationController;
     tableView.dataSource = goodList;
     tableView.delegate = goodList;
     goodList.tableView = tableView;

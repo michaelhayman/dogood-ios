@@ -44,6 +44,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:userView selector:@selector(setContent) name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayPostSuccessMessage) name:DGUserDidPostGood object:nil];
+
+    if (!self.loadController) {
+        self.loadController = self.navigationController;
+    }
 }
 
 - (void)initializeTable {
@@ -123,7 +127,7 @@
         GoodCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
         DGGood *good = goods[indexPath.row];
         cell.good = good;
-        cell.navigationController = self.navigationController;
+        cell.navigationController = self.loadController;
         cell.parent = self;
         [cell setValues];
         DebugLog(@"set");
