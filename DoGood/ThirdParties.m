@@ -41,9 +41,19 @@ NSNumber *tempUserID = [self getTwitterIDFromAccount:[[accountStore accountsWith
     [accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
         if (granted == YES) {
-            [dictionary setObject:[NSNumber numberWithBool:YES] forKey:@"connected"];
+            DebugLog(@"granted");
             NSNumber *tempUserID = [self getTwitterIDFromAccount:[[accountStore accountsWithAccountType:accountType] lastObject]];
-            [self saveTwitterID:tempUserID];
+            if (tempUserID) {
+                DebugLog(@"tweeter");
+                [self saveTwitterID:tempUserID];
+                [dictionary setObject:[NSNumber numberWithBool:YES] forKey:@"connected"];
+            } else {
+                DebugLog(@"no tweeter");
+                [dictionary setObject:[NSNumber numberWithBool:NO] forKey:@"connected"];
+                if (prompt) {
+                     [self performSelectorOnMainThread:@selector(noTwitterAccountMessage) withObject:self waitUntilDone:NO];
+                }
+            }
         } else {
             [dictionary setObject:[NSNumber numberWithBool:NO] forKey:@"connected"];
             if ([error code] == ACErrorAccountNotFound) {

@@ -35,6 +35,7 @@
     [authorizeButton setTitle:@"Search Twitter friends" forState:UIControlStateNormal];
     [authorizeButton setBackgroundImage:[UIImage imageNamed:@"TwitterButton"] forState:UIControlStateNormal];
     [authorizeButton setBackgroundImage:[UIImage imageNamed:@"TwitterButtonTap"] forState:UIControlStateHighlighted];
+    [authorizeButton addTarget:self action:@selector(showTwitter) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)showUnauthorized {
