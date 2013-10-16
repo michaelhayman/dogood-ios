@@ -1,4 +1,5 @@
 #import "DGSignInViewController.h"
+#import <MBProgressHUD.h>
 
 @interface DGSignInViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *emailField;
@@ -36,6 +37,8 @@
     user.username = username;
     user.password = password;
     DebugLog(@"usreage %@", user);
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Signing in...";
 
     [[RKObjectManager sharedManager] postObject:user path:user_session_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [DGUser setCurrentUser:user];
@@ -51,6 +54,7 @@
                                   title:nil
                                            subtitle:NSLocalizedString(@"Welcome to Do Good!", nil)
                                    type:TSMessageNotificationTypeSuccess];
+        [hud hide:YES];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [TSMessage showNotificationInViewController:self.navigationController
                                   title:@"Oops"
@@ -58,6 +62,7 @@
                                    type:TSMessageNotificationTypeError];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailSignInNotification object:self];
         DebugLog(@"user %@", user);
+        [hud hide:YES];
     }];
 }
 
