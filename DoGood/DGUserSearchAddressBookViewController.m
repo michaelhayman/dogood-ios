@@ -5,6 +5,7 @@
 @implementation DGUserSearchAddressBookViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     self.title = @"Search Address Book";
     UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"UserCell"];

@@ -5,6 +5,7 @@
 @implementation DGUserSearchTwitterViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     self.title = @"Search Twitter";
     UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"UserCell"];
@@ -40,6 +41,7 @@
 
 - (void)showUnauthorized {
     [super showUnauthorized];
+    DebugLog(@"showing unauth");
     [authorizeButton setTitle:@"Search Twitter friends" forState:UIControlStateNormal];
 
     [authorizeButton addTarget:self action:@selector(checkTwitterAccessWithPrompt) forControlEvents:UIControlEventTouchUpInside];
@@ -55,16 +57,19 @@
 
 #pragma mark - Twitter
 - (void)showTwitter {
+    DebugLog(@"check twitter access");
     contentDescription.text = @"Find Twitter friends on Do Good";
     [ThirdParties checkTwitterAccess:NO];
 }
 
 - (void)checkTwitterAccessWithPrompt {
+    DebugLog(@"check twitter");
     [ThirdParties checkTwitterAccess:YES];
 }
 
 - (void)twitterConnected:(NSNotification *)notification {
     NSNumber* connected = [[notification userInfo] objectForKey:@"connected"];
+    DebugLog(@"twitter connected method %@", connected);
     if ([connected boolValue]) {
         // [ThirdParties getTwitterFriendsOnDoGood];
         [ThirdParties performSelectorOnMainThread:@selector(getTwitterFriendsOnDoGood) withObject:nil waitUntilDone:NO];

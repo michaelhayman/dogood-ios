@@ -1,4 +1,5 @@
 #import "DGUserSearchNetworksViewController.h"
+#import "constants.h"
 
 @interface DGUserSearchNetworksViewController ()
 @end
@@ -6,6 +7,9 @@
 @implementation DGUserSearchNetworksViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
+    contentDescription.backgroundColor = COLOUR_SEARCH_NETWORKS_BACKGROUND;
+    contentDescription.textColor = [UIColor blackColor];
 }
 
 - (void)showAuthorized {

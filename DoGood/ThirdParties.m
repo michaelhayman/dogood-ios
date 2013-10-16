@@ -66,12 +66,13 @@ NSNumber *tempUserID = [self getTwitterIDFromAccount:[[accountStore accountsWith
                 if (prompt) {
                     [self performSelectorOnMainThread:@selector(appNotAllowedToAccessTwitterMessage) withObject:self waitUntilDone:NO];
                 }
-                DebugLog(@"");
+                DebugLog(@"no error");
              }
              else {
                  DebugLog(@"error %d", [error code]);
              }
         }
+        DebugLog(@"granted? %d", granted);
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidCheckIfTwitterIsConnected object:nil userInfo:dictionary];
      }];
 }

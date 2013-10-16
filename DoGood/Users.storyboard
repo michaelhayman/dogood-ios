@@ -187,7 +187,7 @@
         <!--User Find Friends View Controller-->
         <scene sceneID="QP3-d8-uEQ">
             <objects>
-                <viewController storyboardIdentifier="FindFriends" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qBz-P4-Iph" customClass="DGUserFindFriendsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FindFriends" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qBz-P4-Iph" customClass="DGUserFindFriendsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4qB-Z4-iIV"/>
                         <viewControllerLayoutGuide type="bottom" id="hzG-FU-B4z"/>
@@ -1147,7 +1147,7 @@
         <!--View Controller-->
         <scene sceneID="UT7-n8-nc1">
             <objects>
-                <viewController id="RPw-Vo-vb4" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="RPw-Vo-vb4" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WcH-d2-6Wj"/>
                         <viewControllerLayoutGuide type="bottom" id="Ngr-3N-iO2"/>
@@ -1167,18 +1167,13 @@
         <image name="AddressBookOff" width="40" height="40"/>
         <image name="AddressBookOn.png" width="40" height="40"/>
         <image name="BasicButton" width="300" height="41"/>
-        <image name="BasicButton" width="300" height="41"/>
-        <image name="BasicButton" width="300" height="41"/>
         <image name="BasicButtonTap.png" width="300" height="41"/>
-        <image name="EditProfilePhotoFrame" width="75" height="76"/>
-        <image name="EditProfilePhotoFrame" width="75" height="76"/>
         <image name="EditProfilePhotoFrame" width="75" height="76"/>
         <image name="FacebookOff" width="40" height="40"/>
         <image name="FacebookOn.png" width="40" height="40"/>
         <image name="FindButtonOff" width="36" height="36"/>
         <image name="FindButtonOn.png" width="36" height="36"/>
         <image name="ProfileSettingsButton" width="300" height="42"/>
-        <image name="ProfileSettingsButtonTap" width="300" height="42"/>
         <image name="ProfileSettingsButtonTap" width="300" height="42"/>
         <image name="ProfileTabLeftOff" width="155" height="30"/>
         <image name="ProfileTabLeftOff.png" width="155" height="30"/>

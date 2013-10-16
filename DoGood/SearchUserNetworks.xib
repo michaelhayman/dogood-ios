@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <objects>
@@ -36,10 +36,10 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="225">
-                                    <rect key="frame" x="0.0" y="8" width="320" height="21"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="21" id="235"/>
+                                        <constraint firstAttribute="height" constant="30" id="235"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -51,7 +51,7 @@
                                 <constraint firstAttribute="height" constant="38" id="163"/>
                                 <constraint firstItem="225" firstAttribute="leading" secondItem="77" secondAttribute="leading" id="231"/>
                                 <constraint firstAttribute="centerX" secondItem="225" secondAttribute="centerX" id="233"/>
-                                <constraint firstAttribute="centerY" secondItem="225" secondAttribute="centerY" id="234"/>
+                                <constraint firstAttribute="centerY" secondItem="225" secondAttribute="centerY" constant="4" id="234"/>
                             </constraints>
                         </view>
                     </subviews>
