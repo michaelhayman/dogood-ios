@@ -91,9 +91,10 @@
         DGRewardCell *cell = [aCollectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
         DGReward *reward = [DGReward new];
         cell.reward = reward;
-        reward.title = @"And more...";
+        reward.title = @"And\nmore";
         [cell setValues];
-        cell.cost.text = @"See all >";
+        cell.cost.text = @"See all";
+        cell.teaser.image = [UIImage imageNamed:@"MenuIconRewards"];
         cell.contentView.layer.borderWidth = 1.0;
         cell.contentView.layer.cornerRadius = 10;
         cell.contentView.layer.borderColor = [[UIColor grayColor] CGColor];
