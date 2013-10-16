@@ -1,7 +1,7 @@
 #pragma mark - Paths -----
 
-#define DEBUG 1
-#if DEBUG
+#define DEVELOPMENT 0
+#if DEVELOPMENT
     #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3002/"
 #else
     #define JSON_API_HOST_ADDRESS @"http://dogood-app.herokuapp.com/"
