@@ -1,5 +1,6 @@
 @class DGGood;
 @class DGPhotoPickerViewController;
+@class DGFacebookManager;
 
 @interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UITextViewDelegate> {
     UIActionSheet *categorySheet;
@@ -8,6 +9,7 @@
     __weak IBOutlet UIBarButtonItem *postButton;
 
     DGPhotoPickerViewController *photos;
+    DGFacebookManager *facebookManager;
 }
 
 @property (nonatomic, retain) DGGood *good;

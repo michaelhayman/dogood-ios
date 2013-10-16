@@ -7,6 +7,7 @@
 #import "DGPostGoodCategoryViewController.h"
 #import "DGPostGoodLocationViewController.h"
 #import "ThirdParties.h"
+#import "DGFacebookManager.h"
 
 #import <UIImage+Resize.h>
 #import <MBProgressHUD.h>
@@ -47,6 +48,7 @@
 
     self.good = [DGGood new];
     self.good.user = [DGUser currentUser];
+    facebookManager = [[DGFacebookManager alloc] init];
 
     // photos
     photos = [[DGPhotoPickerViewController alloc] init];
@@ -138,6 +140,7 @@
             cell.share.tag = share_facebook_cell_tag;
             cell.type.text = @"Share on Facebook";
             [cell facebook];
+            cell.facebookManager = facebookManager;
         } else {
             cell.share.tag = share_twitter_cell_tag;
             cell.type.text = @"Share on Twitter";
@@ -329,6 +332,7 @@
         }];
 
         RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            // post this notification about whether it was shared or not too
             [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidPostGood object:nil];
 
             if (self.good.shareTwitter) {
@@ -339,8 +343,16 @@
             }
 
             if (self.good.shareFacebook) {
-                [ThirdParties postToFacebook:self.good.caption andImage:self.good.image];
+                DebugLog(@"sharing to fb");
+                [facebookManager postToFacebook:self.good.caption andImage:self.good.image withSuccess:^(NSString *msg) {
+                    DebugLog(@"%@", msg);
+                } failure:^(NSString *error) {
+                    DebugLog(@"%@", error);
+                }];
+            } else {
+                DebugLog(@"not sharing to fb");
             }
+
             [self.navigationController popViewControllerAnimated:YES];
 
             hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];

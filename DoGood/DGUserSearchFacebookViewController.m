@@ -1,10 +1,14 @@
 #import "DGUserSearchFacebookViewController.h"
 #import "UserCell.h"
-#import "ThirdParties.h"
+#import "DGFacebookManager.h"
+
+@interface DGUserSearchFacebookViewController () <UIActionSheetDelegate>
+@end
 
 @implementation DGUserSearchFacebookViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     self.title = @"Search Facebook";
     UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"UserCell"];
@@ -12,21 +16,14 @@
     tableView.delegate = self;
     tableView.dataSource = self;
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookConnected:) name:DGUserDidCheckIfFacebookIsConnected object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(findDoGoodUsersOnFacebook:) name:DGUserDidFindFriendsOnFacebook object:nil];
+    facebookManager = [[DGFacebookManager alloc] init];
 
     [self setupView];
-    [self showFacebook];
+    [self searchFacebookAndDisplayWarning:NO];
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-#pragma mark - Search Networks methods
-- (void)showAuthorized {
-    [super showAuthorized];
 }
 
 - (void)setupView {
@@ -34,88 +31,79 @@
     unauthorizedBackground.image = [UIImage imageNamed:@"FacebookWatermark"];
     [authorizeButton setBackgroundImage:[UIImage imageNamed:@"FacebookButton"] forState:UIControlStateNormal];
     [authorizeButton setBackgroundImage:[UIImage imageNamed:@"FacebookButtonTap"] forState:UIControlStateHighlighted];
+    contentDescription.text = @"Find Facebook friends on Do Good";
+}
+
+
+- (void)searchFacebookAndDisplayWarning:(BOOL)warning {
+    [facebookManager findFacebookFriendsWithSuccess:^(NSArray *facebookUsers) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self findDoGoodUsersOnFacebook:facebookUsers];
+        });
+    } failure:^(NSString *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showUnauthorized];
+
+            if (warning) {
+                [[[UIAlertView alloc] initWithTitle:@"Facebook Settings" message:@"Enable Facebook & Do Good under Settings > Facebook." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            }
+        });
+    }];
+}
+
+- (void)searchFacebookWithWarning {
+    [self searchFacebookAndDisplayWarning:YES];
+}
+
+#pragma mark - Search Networks methods
+- (void)showAuthorized {
+    [super showAuthorized];
 }
 
 - (void)showUnauthorized {
     [super showUnauthorized];
     [authorizeButton setTitle:@"Search for Facebook friends" forState:UIControlStateNormal];
-
-    [authorizeButton addTarget:self action:@selector(showFacebook) forControlEvents:UIControlEventTouchUpInside];
+    [authorizeButton addTarget:self action:@selector(searchFacebookWithWarning) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)showNoUsersFoundMessage {
     [authorizeButton setTitle:@"Try again" forState:UIControlStateNormal];
-    [authorizeButton addTarget:self action:@selector(tryHarder) forControlEvents:UIControlEventTouchUpInside];
+    [authorizeButton addTarget:self action:@selector(searchFacebookWithWarning) forControlEvents:UIControlEventTouchUpInside];
     noUsersLabel.hidden = NO;
     noUsersLabel.text = @"No Facebook friends found";
 }
 
-#pragma mark - Facebook
-- (void)facebookConnected:(NSNotification *)notification {
-    NSNumber* connected = [[notification userInfo] objectForKey:@"connected"];
-    DebugLog(@"connected to fb? %@", connected);
-    if ([connected boolValue]) {
-        [ThirdParties performSelectorOnMainThread:@selector(getFacebookFriendsOnDoGood) withObject:nil waitUntilDone:NO];
-    } else {
-        [self performSelectorOnMainThread:@selector(showUnauthorized) withObject:nil waitUntilDone:NO];
-    }
-}
-
-- (void)showFacebook {
-    contentDescription.text = @"Find Do Good friends on Facebook";
-    // passive check first time
-    [ThirdParties checkFacebookAccess];
-}
-
-- (void)tryHarder {
-    [ThirdParties getFacebookFriendsOnDoGood];
-}
-
-- (void)findDoGoodUsersOnFacebook:(NSNotification *)notification {
-    NSArray *facebookUserIDs = [[notification userInfo] valueForKey:@"facebook_ids"];
-
+- (void)findDoGoodUsersOnFacebook:(NSArray *)facebookUserIDs {
     if (facebookUserIDs.count > 0) {
         NSString *path = [NSString stringWithFormat:@"/users/search_by_facebook_ids"];
-        [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:[notification userInfo] success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+
+        NSDictionary *params = [NSDictionary dictionaryWithObject:NSNullIfNil(facebookUserIDs) forKey:@"facebook_ids"];
+
+        [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             users = [[NSArray alloc] initWithArray:mappingResult.array];
-            DebugLog(@"do good users on facebook %@", users);
+            // DebugLog(@"do good users on facebook %@", users);
+            [tableView reloadData];
             if ([users count] > 0) {
-                [self performSelectorOnMainThread:@selector(showAuthorized) withObject:nil waitUntilDone:NO];
-                [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-                // [tableView reloadData];
+                [self showAuthorized];
             } else {
-                // should be on main thread elsewhere too
-                [self performSelectorOnMainThread:@selector(showNoUsersFoundMessage) withObject:nil waitUntilDone:NO];
+                [self showNoUsersFoundMessage];
             }
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             DebugLog(@"Operation failed with error: %@", error);
         }];
     } else {
-        DebugLog(@"no data returned from fb");
-        [self performSelectorOnMainThread:@selector(showNoUsersFoundMessage) withObject:nil waitUntilDone:NO];
-        // 57	87	154
+        // DebugLog(@"no data returned from fb");
+        [self showNoUsersFoundMessage];
     }
-}
-
-- (void)failedToFindFriends:(NSNotification *)notification {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self showUnauthorized];
-        [TSMessage showNotificationInViewController:self.navigationController
-                                  title:nil
-                                           subtitle:@"Couldn't connect to Facebook"
-                                   type:TSMessageNotificationTypeError];
-    });
-
 }
 
 #pragma mark - UITableView delegate methods
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * reuseIdentifier = @"UserCell";
     UserCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    // NSArray *users;
     DGUser *user = users[indexPath.row];
     cell.user = user;
-    DebugLog(@"user %@", user);
+    // DebugLog(@"user %@", user);
     [cell setValues];
     cell.navigationController = self.navigationController;
     return cell;

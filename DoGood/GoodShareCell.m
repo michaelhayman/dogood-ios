@@ -1,5 +1,6 @@
 #import "GoodShareCell.h"
 #import "ThirdParties.h"
+#import "DGFacebookManager.h"
 
 #define share_do_good_cell_tag 501
 #define share_facebook_cell_tag 502
@@ -10,7 +11,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.share.on = NO;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shareOff) name:DGUserDidFailToConnectToFacebook object:nil];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -78,31 +78,23 @@
 
 #pragma mark - Facebook methods
 - (void)facebook {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookConnected:) name:DGUserDidCheckIfFacebookIsConnectedAndHasPermissions object:nil];
     [self.share addTarget:self action:@selector(checkFacebook) forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)checkFacebook {
-    DebugLog(@"facebook %d", self.share.on);
+    DebugLog(@"check facebook");
     if([self.share isOn]) {
-        DebugLog(@"facebooking");
-        [ThirdParties checkFacebookAccessForPosting];
+        DebugLog(@"facebookin");
+        [self.facebookManager checkFacebookPostAccessWithSuccess:^(NSString *msg) {
+            DebugLog(@"success");
+            self.share.on = YES;
+        } failure:^(NSString *error) {
+            self.share.on = NO;
+            [self.facebookManager promptForPostAccess];
+            DebugLog(@"failed to get access. prompt user.");
+        }];
     } else {
         DebugLog(@"not facebookin, dont do anything");
-    }
-}
-
-- (void)facebookConnected:(NSNotification *)notification {
-    DebugLog(@"facebook connected?");
-    NSNumber* permission = [[notification userInfo] objectForKey:@"permission"];
-    if ([permission boolValue]) {
-        // [self.share performSelectorOnMainThread:@selector(setOn:) withObject:[NSNumber numberWithBool:YES] waitUntilDone:NO];
-        [self performSelectorOnMainThread:@selector(shareOn) withObject:nil waitUntilDone:NO];
-        DebugLog(@"yes");
-    } else {
-        // [self.share performSelectorOnMainThread:@selector(setOn:) withObject:[NSNumber numberWithBool:NO] waitUntilDone:NO];
-        [self performSelectorOnMainThread:@selector(shareOff) withObject:nil waitUntilDone:NO];
-        // DebugLog(@"no %d", self.share.selected);
     }
 }
 

@@ -178,7 +178,8 @@ static DGUser* currentUser = nil;
 }
 
 #pragma mark - Social
-- (void)saveSocialID:(NSNumber *)socialID withType:(NSString *)socialType {
+- (void)saveSocialID:(NSString *)socialID withType:(NSString *)socialType {
+
     if (socialID == nil || socialType == nil) {
         return;
     }
@@ -186,13 +187,13 @@ static DGUser* currentUser = nil;
     DGUser *user = [DGUser new];
 
     if ([socialType isEqualToString:@"twitter"]) {
-        if (![self.twitter_id  isEqualToNumber:socialID]) {
+        if (![self.twitter_id  isEqualToString:socialID]) {
             user.twitter_id = socialID;
         } else {
             return;
         }
     } else if ([socialType isEqualToString:@"facebook"]) {
-        if (![self.facebook_id isEqualToNumber:socialID]) {
+        if (![self.facebook_id isEqualToString:socialID]) {
             user.facebook_id = socialID;
         } else {
             return;
