@@ -1,6 +1,7 @@
 @class DGGood;
 @class DGPhotoPickerViewController;
 @class DGFacebookManager;
+@class DGTwitterManager;
 
 @interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UITextViewDelegate> {
     UIActionSheet *categorySheet;
@@ -10,6 +11,7 @@
 
     DGPhotoPickerViewController *photos;
     DGFacebookManager *facebookManager;
+    DGTwitterManager *twitterManager;
 }
 
 @property (nonatomic, retain) DGGood *good;

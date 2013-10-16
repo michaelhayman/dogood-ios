@@ -6,7 +6,7 @@
 #import "FSLocation.h"
 #import "DGPostGoodCategoryViewController.h"
 #import "DGPostGoodLocationViewController.h"
-#import "ThirdParties.h"
+#import "DGTwitterManager.h"
 #import "DGFacebookManager.h"
 
 #import <UIImage+Resize.h>
@@ -49,6 +49,7 @@
     self.good = [DGGood new];
     self.good.user = [DGUser currentUser];
     facebookManager = [[DGFacebookManager alloc] init];
+    twitterManager = [[DGTwitterManager alloc] init];
 
     // photos
     photos = [[DGPhotoPickerViewController alloc] init];
@@ -145,6 +146,7 @@
             cell.share.tag = share_twitter_cell_tag;
             cell.type.text = @"Share on Twitter";
             [cell twitter];
+            cell.twitterManager = twitterManager;
         }
         return cell;
     }
@@ -337,7 +339,11 @@
 
             if (self.good.shareTwitter) {
                 DebugLog(@"post to twitter");
-                [ThirdParties postToTwitter:[NSString stringWithFormat:@"I did some good! %@", self.good.caption]];
+                [twitterManager postToTwitter:[NSString stringWithFormat:@"I did some good! %@", self.good.caption] andImage:self.good.image withSuccess:^(NSString *msg) {
+                    DebugLog(@"%@", msg);
+                } failure:^(NSError *error) {
+                    DebugLog(@"error %@ %@", [error localizedRecoverySuggestion], [error localizedDescription]);
+                }];
             } else {
                 DebugLog(@"don't post to twitter");
             }
@@ -346,8 +352,8 @@
                 DebugLog(@"sharing to fb");
                 [facebookManager postToFacebook:self.good.caption andImage:self.good.image withSuccess:^(NSString *msg) {
                     DebugLog(@"%@", msg);
-                } failure:^(NSString *error) {
-                    DebugLog(@"%@", error);
+                } failure:^(NSError *error) {
+                    DebugLog(@"error %@ %@", [error localizedRecoverySuggestion], [error localizedDescription]);
                 }];
             } else {
                 DebugLog(@"not sharing to fb");

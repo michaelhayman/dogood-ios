@@ -31,16 +31,16 @@
     unauthorizedBackground.image = [UIImage imageNamed:@"FacebookWatermark"];
     [authorizeButton setBackgroundImage:[UIImage imageNamed:@"FacebookButton"] forState:UIControlStateNormal];
     [authorizeButton setBackgroundImage:[UIImage imageNamed:@"FacebookButtonTap"] forState:UIControlStateHighlighted];
+    [authorizeButton addTarget:self action:@selector(searchFacebookWithWarning) forControlEvents:UIControlEventTouchUpInside];
     contentDescription.text = @"Find Facebook friends on Do Good";
 }
-
 
 - (void)searchFacebookAndDisplayWarning:(BOOL)warning {
     [facebookManager findFacebookFriendsWithSuccess:^(NSArray *facebookUsers) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self findDoGoodUsersOnFacebook:facebookUsers];
         });
-    } failure:^(NSString *error) {
+    } failure:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self showUnauthorized];
 
@@ -90,6 +90,7 @@
             }
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             DebugLog(@"Operation failed with error: %@", error);
+            [self showUnauthorized];
         }];
     } else {
         // DebugLog(@"no data returned from fb");

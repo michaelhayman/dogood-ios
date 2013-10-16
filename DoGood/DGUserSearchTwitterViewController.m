@@ -1,6 +1,6 @@
 #import "DGUserSearchTwitterViewController.h"
 #import "UserCell.h"
-#import "ThirdParties.h"
+#import "DGTwitterManager.h"
 
 @implementation DGUserSearchTwitterViewController
 
@@ -13,13 +13,10 @@
     tableView.delegate = self;
     tableView.dataSource = self;
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterConnected:) name:DGUserDidCheckIfTwitterIsConnected object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(findDoGoodUsersOnTwitter:) name:DGUserDidFindFriendsOnTwitter object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(failedToFindFriends:) name:DGUserDidFailFindFriendsOnTwitter object:nil];
+    twitterManager = [[DGTwitterManager alloc] init];
 
     [self setupView];
-    [self showTwitter];
+    [self searchTwitterAndDisplayWarning:NO];
 }
 
 - (void)dealloc {
@@ -36,7 +33,8 @@
     [authorizeButton setTitle:@"Search Twitter friends" forState:UIControlStateNormal];
     [authorizeButton setBackgroundImage:[UIImage imageNamed:@"TwitterButton"] forState:UIControlStateNormal];
     [authorizeButton setBackgroundImage:[UIImage imageNamed:@"TwitterButtonTap"] forState:UIControlStateHighlighted];
-    [authorizeButton addTarget:self action:@selector(showTwitter) forControlEvents:UIControlEventTouchUpInside];
+    [authorizeButton addTarget:self action:@selector(searchTwitterWithWarning) forControlEvents:UIControlEventTouchUpInside];
+    contentDescription.text = @"Find Twitter friends on Do Good";
 }
 
 - (void)showUnauthorized {
@@ -44,71 +42,62 @@
     DebugLog(@"showing unauth");
     [authorizeButton setTitle:@"Search Twitter friends" forState:UIControlStateNormal];
 
-    [authorizeButton addTarget:self action:@selector(checkTwitterAccessWithPrompt) forControlEvents:UIControlEventTouchUpInside];
+    [authorizeButton addTarget:self action:@selector(searchTwitterWithWarning) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)showNoUsersFoundMessage {
     [self showUnauthorized];
     [authorizeButton setTitle:@"Try again" forState:UIControlStateNormal];
-    [authorizeButton addTarget:self action:@selector(showTwitter) forControlEvents:UIControlEventTouchUpInside];
+    [authorizeButton addTarget:self action:@selector(searchTwitterWithWarning) forControlEvents:UIControlEventTouchUpInside];
     noUsersLabel.hidden = NO;
     noUsersLabel.text = @"No Twitter friends found";
 }
 
 #pragma mark - Twitter
-- (void)showTwitter {
+- (void)searchTwitterAndDisplayWarning:(BOOL)warning {
     DebugLog(@"check twitter access");
-    contentDescription.text = @"Find Twitter friends on Do Good";
-    [ThirdParties checkTwitterAccess:NO];
-}
+    [twitterManager findTwitterFriendsWithSuccess:^(NSArray *twitterUsers) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self findDoGoodUsersOnTwitter:twitterUsers];
+        });
+    } failure:^(NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self showUnauthorized];
 
-- (void)checkTwitterAccessWithPrompt {
-    DebugLog(@"check twitter");
-    [ThirdParties checkTwitterAccess:YES];
-}
-
-- (void)twitterConnected:(NSNotification *)notification {
-    NSNumber* connected = [[notification userInfo] objectForKey:@"connected"];
-    DebugLog(@"twitter connected method %@", connected);
-    if ([connected boolValue]) {
-        // [ThirdParties getTwitterFriendsOnDoGood];
-        [ThirdParties performSelectorOnMainThread:@selector(getTwitterFriendsOnDoGood) withObject:nil waitUntilDone:NO];
-    } else {
-        [self performSelectorOnMainThread:@selector(showUnauthorized) withObject:nil waitUntilDone:NO];
-    }
-}
-
-- (void)findDoGoodUsersOnTwitter:(NSNotification *)notification {
-    NSArray *twitterUserIDs= [[notification userInfo] valueForKey:@"ids"];
-    NSString *path = [NSString stringWithFormat:@"/users/search_by_twitter_ids"];
-
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
-    [dictionary setObject:NSNullIfNil(twitterUserIDs) forKey:@"twitter_ids"];
-
-    [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:dictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        users = [[NSArray alloc] initWithArray:mappingResult.array];
-        DebugLog(@"do good users on twitter %@", users);
-        if ([users count] > 0) {
-            [self performSelectorOnMainThread:@selector(showAuthorized) withObject:nil waitUntilDone:NO];
-            [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
-        } else {
-            [self performSelectorOnMainThread:@selector(showNoUsersFoundMessage) withObject:nil waitUntilDone:NO];
-        }
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        DebugLog(@"Operation failed with error: %@", error);
-        [self performSelectorOnMainThread:@selector(showUnauthorized) withObject:nil waitUntilDone:NO];
+            if (warning) {
+                [[[UIAlertView alloc] initWithTitle:@"Twitter Settings" message:@"Enable Twitter & Do Good under Settings > Twitter." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+            }
+        });
     }];
 }
 
-- (void)failedToFindFriends:(NSNotification *)notification {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self showUnauthorized];
-        [TSMessage showNotificationInViewController:self.navigationController
-                                  title:nil
-                                           subtitle:@"Couldn't connect to Twitter"
-                                   type:TSMessageNotificationTypeError];
-    });
+- (void)searchTwitterWithWarning {
+    [self searchTwitterAndDisplayWarning:YES];
+}
 
+- (void)findDoGoodUsersOnTwitter:(NSArray *)twitterUserIDs {
+    if ([twitterUserIDs count] > 0) {
+        NSString *path = [NSString stringWithFormat:@"/users/search_by_twitter_ids"];
+
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
+        [dictionary setObject:NSNullIfNil(twitterUserIDs) forKey:@"twitter_ids"];
+
+        [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:dictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            users = [[NSArray alloc] initWithArray:mappingResult.array];
+            DebugLog(@"do good users on twitter %@", users);
+            [tableView reloadData];
+            if ([users count] > 0) {
+                [self showAuthorized];
+            } else {
+                [self showNoUsersFoundMessage];
+            }
+        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            DebugLog(@"Operation failed with error: %@", error);
+            [self showUnauthorized];
+        }];
+    } else {
+        [self showNoUsersFoundMessage];
+    }
 }
 
 #pragma mark - UITableView delegate methods

@@ -6,7 +6,6 @@
 // global set up
 #import "RestKit.h"
 #import "DGAppearance.h"
-#import "ThirdParties.h"
 
 @implementation DGAppDelegate
 
@@ -38,7 +37,6 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    [ThirdParties facebookHandleDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -70,7 +68,7 @@
         }
         return YES;
     } else {
-        return [ThirdParties facebookHandleOpenURL:url];
+        return NO;
     }
 }
 

@@ -11,7 +11,8 @@
 		6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */; };
 		6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */; };
 		6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161E17C41E0D004DE5D7 /* DGAppearance.m */; };
-		6308162217C41EA0004DE5D7 /* ThirdParties.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308162117C41EA0004DE5D7 /* ThirdParties.m */; };
+		6308162217C41EA0004DE5D7 /* DGTwitterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308162117C41EA0004DE5D7 /* DGTwitterManager.m */; };
+		6311488D180F3CA5008278E5 /* DGFacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6311488C180F3CA5008278E5 /* DGFacebookManager.m */; };
 		6319D38F17BDED080071DA71 /* DGReward.m in Sources */ = {isa = PBXBuildFile; fileRef = 6319D38E17BDED080071DA71 /* DGReward.m */; };
 		6319D39517BE5A230071DA71 /* DGUserSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6319D39417BE5A220071DA71 /* DGUserSearchViewController.m */; };
 		632A36BC17BCAEE8004EED26 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A36BA17BCAEE8004EED26 /* UserCell.m */; };
@@ -118,8 +119,10 @@
 		6308161617C3DDD4004DE5D7 /* RestKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestKit.h; sourceTree = "<group>"; };
 		6308161D17C41E0D004DE5D7 /* DGAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAppearance.h; sourceTree = "<group>"; };
 		6308161E17C41E0D004DE5D7 /* DGAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAppearance.m; sourceTree = "<group>"; };
-		6308162017C41EA0004DE5D7 /* ThirdParties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdParties.h; sourceTree = "<group>"; };
-		6308162117C41EA0004DE5D7 /* ThirdParties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdParties.m; sourceTree = "<group>"; };
+		6308162017C41EA0004DE5D7 /* DGTwitterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTwitterManager.h; sourceTree = "<group>"; };
+		6308162117C41EA0004DE5D7 /* DGTwitterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTwitterManager.m; sourceTree = "<group>"; };
+		6311488B180F3CA5008278E5 /* DGFacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFacebookManager.h; sourceTree = "<group>"; };
+		6311488C180F3CA5008278E5 /* DGFacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFacebookManager.m; sourceTree = "<group>"; };
 		6319D38D17BDED080071DA71 /* DGReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGReward.h; sourceTree = "<group>"; };
 		6319D38E17BDED080071DA71 /* DGReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGReward.m; sourceTree = "<group>"; };
 		6319D39317BE5A220071DA71 /* DGUserSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchViewController.h; sourceTree = "<group>"; };
@@ -597,8 +600,10 @@
 		63DA644517DC0E76003DFF03 /* Social */ = {
 			isa = PBXGroup;
 			children = (
-				6308162017C41EA0004DE5D7 /* ThirdParties.h */,
-				6308162117C41EA0004DE5D7 /* ThirdParties.m */,
+				6308162017C41EA0004DE5D7 /* DGTwitterManager.h */,
+				6308162117C41EA0004DE5D7 /* DGTwitterManager.m */,
+				6311488B180F3CA5008278E5 /* DGFacebookManager.h */,
+				6311488C180F3CA5008278E5 /* DGFacebookManager.m */,
 			);
 			name = Social;
 			sourceTree = "<group>";
@@ -738,6 +743,7 @@
 				633DBF7217ADC4E60038BC2D /* DGPostGoodImageViewController.m in Sources */,
 				633DBF7717ADD57E0038BC2D /* GoodShareCell.m in Sources */,
 				633DBF7E17AE25CF0038BC2D /* DGUserProfileViewController.m in Sources */,
+				6311488D180F3CA5008278E5 /* DGFacebookManager.m in Sources */,
 				63C1BA501806026300CB95CF /* UserOverview.m in Sources */,
 				633DBF8417AE92E00038BC2D /* NavigationViewController.m in Sources */,
 				633DBF8517AE92E00038BC2D /* RootViewController.m in Sources */,
@@ -772,7 +778,7 @@
 				63FBF60A180CD5F3005686A6 /* RestKit.m in Sources */,
 				6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */,
 				6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */,
-				6308162217C41EA0004DE5D7 /* ThirdParties.m in Sources */,
+				6308162217C41EA0004DE5D7 /* DGTwitterManager.m in Sources */,
 				63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */,
 				63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */,
 				6358340B17C885D700F997F6 /* DGUserSearchTwitterViewController.m in Sources */,

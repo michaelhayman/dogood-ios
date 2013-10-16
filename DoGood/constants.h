@@ -66,6 +66,9 @@ extern NSString* const kDGUserCurrentUserAvatar;
 extern NSString* const kDGUserCurrentUserTwitterID;
 extern NSString* const kDGUserCurrentUserFacebookID;
 
+#pragma mark - Errors -----
+extern NSString *const DGErrorDomain;
+
 #pragma mark - Notifications -----
 
 // Notifications

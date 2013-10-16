@@ -16,7 +16,7 @@ pod 'MJPopupViewController', '~> 0.4'
 # pod 'STTwitter'
 # pod 'STTwitter', :head
 # pod 'Facebook-iOS-SDK', '~> 3.7'
-pod 'Facebook-iOS-SDK', '~> 3.8'
+# pod 'Facebook-iOS-SDK', '~> 3.8'
 
 pod 'SVPullToRefresh', '~> 0.4.1'
 pod 'SocialAuth', :git => "git@github.com:evadne/SocialAuth.git"

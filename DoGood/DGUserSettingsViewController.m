@@ -7,7 +7,7 @@
 #import <UIImage+Resize.h>
 #import <MBProgressHUD.h>
 
-#import "ThirdParties.h"
+// #import "ThirdParties.h"
 
 #define full_name_tag 101
 #define biography_tag 102
@@ -69,8 +69,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [ThirdParties checkTwitterAccess:NO];
-    [ThirdParties checkFacebookAccess];
+    // [ThirdParties checkTwitterAccess:NO];
+    // [ThirdParties checkFacebookAccess];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -514,13 +514,13 @@
     }
     if (indexPath.section == socialNetworks) {
         if (indexPath.row == twitter) {
-            [ThirdParties checkTwitterAccess:YES];
+            // [ThirdParties checkTwitterAccess:YES];
         }
         if (indexPath.row == facebook) {
             if ([facebookConnectedStatus isEqualToString:@"Connected"]) {
-                [ThirdParties removeFacebookAccess];
+                // [ThirdParties removeFacebookAccess];
             } else {
-                [ThirdParties checkFacebookAccessForPosting];
+                // [ThirdParties checkFacebookAccessForPosting];
             }
         }
     }

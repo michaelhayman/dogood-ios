@@ -56,6 +56,9 @@ NSString* const DGUserDidSelectRewards = @"DGUserDidSelectRewards";
 
 #pragma mark - Good
 
+// Errors
+NSString *const DGErrorDomain = @"DGErrorDomain";
+
 // Notifications
 
 NSString* const DGUserDidPostGood = @"DGUserDidPostGood";
