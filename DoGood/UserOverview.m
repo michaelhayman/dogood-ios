@@ -60,32 +60,56 @@
 
 #pragma mark - UICollectionView methods
 - (void)setupRewardCell {
-   [rewardCollectionView registerClass:[DGRewardCell class] forCellWithReuseIdentifier:@"RewardCell"];
+    [rewardCollectionView registerClass:[DGRewardCell class] forCellWithReuseIdentifier:@"RewardCell"];
     UINib *nib = [UINib nibWithNibName:@"DGRewardMiniCell" bundle:nil];
     [rewardCollectionView registerNib:nib forCellWithReuseIdentifier:@"RewardCell"];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [rewards count];
+    if (section == 0) {
+        return [rewards count];
+    } else {
+        return 1;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)aCollectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *reuseIdentifier = @"RewardCell";
-    DGRewardCell *cell = [aCollectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    DGReward *reward = rewards[indexPath.row];
-    cell.reward = reward;
-    cell.contentView.layer.borderWidth = 1.0;
-    cell.contentView.layer.cornerRadius = 10;
-    cell.contentView.layer.borderColor = [[UIColor grayColor] CGColor];
-    [cell setValues];
-    cell.navigationController = self.navigationController;
-    cell.type = @"Rewards";
-    return cell;
+    if (indexPath.section == 0) {
+        static NSString *reuseIdentifier = @"RewardCell";
+        DGRewardCell *cell = [aCollectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+        DGReward *reward = rewards[indexPath.row];
+        cell.reward = reward;
+        cell.contentView.layer.borderWidth = 1.0;
+        cell.contentView.layer.cornerRadius = 10;
+        cell.contentView.layer.borderColor = [[UIColor grayColor] CGColor];
+        [cell setValues];
+        cell.navigationController = self.navigationController;
+        cell.type = @"Rewards";
+        return cell;
+    } else {
+        static NSString *reuseIdentifier = @"RewardCell";
+        DGRewardCell *cell = [aCollectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+        DGReward *reward = [DGReward new];
+        cell.reward = reward;
+        reward.title = @"And more...";
+        [cell setValues];
+        cell.cost.text = @"See all >";
+        cell.contentView.layer.borderWidth = 1.0;
+        cell.contentView.layer.cornerRadius = 10;
+        cell.contentView.layer.borderColor = [[UIColor grayColor] CGColor];
+        cell.navigationController = self.navigationController;
+        cell.type = @"See all";
+        return cell;
+    }
 }
 
 - (void)collectionView:(UICollectionView *)aCollectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     DGRewardCell *cell = (DGRewardCell *)[aCollectionView cellForItemAtIndexPath:indexPath];
     [cell options];
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView*)collectionView {
+    return 2;
 }
 
 - (void)getRewardsAtPath:(NSString *)path {

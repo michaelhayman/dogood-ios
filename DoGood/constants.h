@@ -134,6 +134,9 @@ extern NSString* const DGUserDidPostGood;
 // Text field cells
 extern NSString* const UITextFieldCellIdentifier;
 
+// rewards
+extern NSString* const DGUserDidSelectRewards;
+
 // explore - search
 extern NSString* const DGUserDidStartSearchingTags;
 extern NSString* const DGUserDidStartSearchingPeople;

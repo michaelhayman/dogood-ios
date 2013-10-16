@@ -67,6 +67,8 @@
         } else {
             [self claim];
         }
+    } else if ([self.type isEqualToString:@"See all"]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSelectRewards object:nil];
     } else {
         [self instructions];
     }
