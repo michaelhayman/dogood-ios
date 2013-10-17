@@ -2,7 +2,8 @@
 
 #pragma mark - Paths -----
 
-#define DEVELOPMENT 0
+#define DEVELOPMENT_LOGS 1
+#define DEVELOPMENT 1
 #if DEVELOPMENT
     #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3002/"
 #else

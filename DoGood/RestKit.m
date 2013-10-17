@@ -13,9 +13,11 @@
 @implementation RestKit
 
 + (void)setupRestKit {
-    RKLogConfigureByName("RestKit", RKLogLevelTrace);
-    RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelInfo);
-    RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+    #ifdef DEVELOPMENT_LOGS
+        RKLogConfigureByName("RestKit", RKLogLevelTrace);
+        RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelInfo);
+        RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
+    #endif
 
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     NSURL *baseURL = [NSURL URLWithString:JSON_API_HOST_ADDRESS];
@@ -26,7 +28,9 @@
     RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
     [DGUser setAuthorizationHeader];
 
+    // --------------------------------
     // user
+    // --------------------------------
     RKObjectMapping *userMapping = [RKObjectMapping mappingForClass:[DGUser class]];
 
     [userMapping addAttributeMappingsFromDictionary:@{
@@ -72,7 +76,9 @@
     RKRequestDescriptor *userRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:userRequestMapping objectClass:[DGUser class] rootKeyPath:@"user" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:userRequestDescriptor];
 
-    // votes
+    // --------------------------------
+    // vote
+    // --------------------------------
     RKObjectMapping *voteMapping = [RKObjectMapping mappingForClass:[DGVote class]];
     [voteMapping addAttributeMappingsFromArray:@[
         @"voteable_id", @"voteable_type", @"user_id"
@@ -89,7 +95,9 @@
     RKRequestDescriptor *voteRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:voteRequestMapping objectClass:[DGVote class] rootKeyPath:@"vote" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:voteRequestDescriptor];
 
-    // tags
+    // --------------------------------
+    // tag
+    // --------------------------------
     RKObjectMapping *tagMapping = [RKObjectMapping mappingForClass:[DGTag class]];
 
     [tagMapping addAttributeMappingsFromDictionary:@{
@@ -101,7 +109,9 @@
     RKResponseDescriptor *tagResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:tagMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"tags" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:tagResponseDescriptor];
 
-    // follows
+    // --------------------------------
+    // follow
+    // --------------------------------
     RKObjectMapping *followMapping = [RKObjectMapping mappingForClass:[DGFollow class]];
 
     [followMapping addAttributeMappingsFromArray:@[
@@ -117,7 +127,9 @@
     RKRequestDescriptor *followRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:followRequestMapping objectClass:[DGFollow class] rootKeyPath:@"follow" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:followRequestDescriptor];
 
-    // comments
+    // --------------------------------
+    // comment
+    // --------------------------------
     RKObjectMapping *commentMapping = [RKObjectMapping mappingForClass:[DGComment class]];
  
     [commentMapping addAttributeMappingsFromArray:@[
@@ -138,7 +150,9 @@
     RKRequestDescriptor *commentRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:commentRequestMapping objectClass:[DGComment class] rootKeyPath:@"comment" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:commentRequestDescriptor];
 
-    // rewards
+    // --------------------------------
+    // reward
+    // --------------------------------
     RKObjectMapping *rewardMapping = [RKObjectMapping mappingForClass:[DGReward class]];
  
     [rewardMapping addAttributeMappingsFromDictionary:@{ @"id" : @"rewardID" }];
@@ -152,7 +166,9 @@
     RKRequestDescriptor *claimRewardRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:claimRewardRequestMapping objectClass:[DGReward class] rootKeyPath:@"reward" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:claimRewardRequestDescriptor];
 
-    // category
+    // --------------------------------
+    // categories
+    // --------------------------------
     RKObjectMapping *categoryMapping = [RKObjectMapping mappingForClass:[DGCategory class]];
     [categoryMapping addAttributeMappingsFromArray:@[
      @"name"
@@ -161,7 +177,9 @@
     RKResponseDescriptor *categoryResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:categoryMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"categories" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:categoryResponseDescriptor];
 
-    // good
+    // --------------------------------
+    // goods
+    // --------------------------------
     RKObjectMapping *goodMapping = [RKObjectMapping mappingForClass:[DGGood class]];
 
     [goodMapping addAttributeMappingsFromDictionary:@{
@@ -194,7 +212,9 @@
     RKRequestDescriptor *goodRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:goodRequestMapping objectClass:[DGGood class] rootKeyPath:@"good" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:goodRequestDescriptor];
 
+    // --------------------------------
     // report
+    // --------------------------------
     RKObjectMapping *reportMapping = [RKObjectMapping mappingForClass:[DGReport class]];
 
     [reportMapping addAttributeMappingsFromDictionary:@{
@@ -213,7 +233,9 @@
     RKRequestDescriptor *reportRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:reportRequestMapping objectClass:[DGReport class] rootKeyPath:@"report" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:reportRequestDescriptor];
 
+    // --------------------------------
     // error
+    // --------------------------------
     RKObjectMapping *errorMapping = [RKObjectMapping mappingForClass:[DGError class]];
     [errorMapping addAttributeMappingsFromDictionary:@{
         @"messages" : @"messages",
