@@ -339,7 +339,8 @@
 
             if (self.good.shareTwitter) {
                 DebugLog(@"post to twitter");
-                [twitterManager postToTwitter:[NSString stringWithFormat:@"I did some good! %@", self.good.caption] andImage:self.good.image withSuccess:^(NSString *msg) {
+                [twitterManager postToTwitter:[NSString stringWithFormat:@"I did some good! %@", self.good.caption] andImage:self.good.image withSuccess:^(BOOL success, NSString *msg, ACAccount *account) {
+                    [[DGUser currentUser] saveSocialID:[twitterManager getTwitterIDFromAccount:account] withType:@"twitter"];
                     DebugLog(@"%@", msg);
                 } failure:^(NSError *error) {
                     DebugLog(@"error %@ %@", [error localizedRecoverySuggestion], [error localizedDescription]);

@@ -62,12 +62,11 @@
 }
 
 #pragma mark - Posting
-- (void)checkTwitterPostAccessWithSuccess:(void (^)(NSString *msg))success failure:(void (^)(NSError *error))failure {
+- (void)checkTwitterPostAccessWithSuccess:(void (^)(BOOL success, NSString *msg))success failure:(void (^)(NSError *error))failure {
    	ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    DebugLog(@"post options %@", postOptions);
    	[self.accountStore requestAccountTyped:accountType withOptions:postOptions completion:^(BOOL didFinish, ACAccount *account, NSError *error) {
 		if (account) {
-            success(@"Woot");
+            success(YES, @"Posting access granted.");
         } else {
             failure(unableToPostError);
         }
@@ -79,14 +78,13 @@
     [alertView show];
 }
 
-- (void)postToTwitter:(NSString *)status andImage:(UIImage *)image withSuccess:(void (^)(NSString *msg))success failure:(void (^)(NSError *postError))failure {
+- (void)postToTwitter:(NSString *)status andImage:(UIImage *)image withSuccess:(void (^)(BOOL success, NSString *msg, ACAccount *account))success failure:(void (^)(NSError *postError))failure {
     ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-    DebugLog(@"post options %@", postOptions);
 
    	[self.accountStore requestAccountTyped:accountType withOptions:postOptions  completion:^(BOOL didFinish, ACAccount *account, NSError *error) {
 		if (account) {
             NSURL *url = [NSURL URLWithString:@"https://api.twitter.com"
-                               @"/1.1/statuses/update.json"];
+                @"/1.1/statuses/update.json"];
             NSDictionary *params = @{@"status" : status};
 
             SLRequest *request =
@@ -95,14 +93,8 @@
             [request setAccount:account];
 
             [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                DebugLog(@"error %@\n url %@", error, urlResponse);
-                NSDictionary *response = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
-                DebugLog(@"Twitter Response : %@",response);
-
                 if (!error) {
-                    success(@"posted good!");
-                    [self saveTwitterID:[self getTwitterIDFromAccount:account]];
-                    // [self findFacebookIDForAccount:account withSuccess:nil failure:nil];
+                    success(YES, @"Posted tweet!", account);
                 } else {
                     failure(unableToPostError);
                 }
@@ -113,7 +105,7 @@
     }];
 }
 
-- (void)findTwitterFriendsWithSuccess:(void (^)(NSArray *msg))success failure:(void (^)(NSError *findError))failure {
+- (void)findTwitterFriendsWithSuccess:(void (^)(BOOL success, NSArray *msg, ACAccount *account))success failure:(void (^)(NSError *findError))failure {
    	ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
    	[self.accountStore requestAccountTyped:accountType withOptions:nil  completion:^(BOOL didFinish, ACAccount *account, NSError *error) {
 		if (account) {
@@ -127,7 +119,6 @@
             [request setAccount:account];
 
             [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                 // DebugLog(@"%@",[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
                  if (responseData) {
                      if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
                          NSError *jsonError;
@@ -135,7 +126,7 @@
 
                          if (statusData) {
                              NSArray *twitterUserIDs= [statusData valueForKey:@"ids"];
-                             success(twitterUserIDs);
+                             success(YES, twitterUserIDs, account);
                          } else {
                              failure(jsonError);
                          }
@@ -156,10 +147,6 @@
     NSDictionary *tempDict = [[NSMutableDictionary alloc] initWithDictionary: [account dictionaryWithValuesForKeys:[NSArray arrayWithObject:@"properties"]]];
     NSString *twitterID = [[tempDict objectForKey:@"properties"] objectForKey:@"user_id"];
     return twitterID;
-}
-
-- (void)saveTwitterID:(NSString *)twitterID {
-    [[DGUser currentUser] saveSocialID:twitterID withType:@"twitter"];
 }
 
 @end

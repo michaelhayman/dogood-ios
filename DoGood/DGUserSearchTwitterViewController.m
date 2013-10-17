@@ -56,9 +56,10 @@
 #pragma mark - Twitter
 - (void)searchTwitterAndDisplayWarning:(BOOL)warning {
     DebugLog(@"check twitter access");
-    [twitterManager findTwitterFriendsWithSuccess:^(NSArray *twitterUsers) {
+    [twitterManager findTwitterFriendsWithSuccess:^(BOOL success, NSArray *twitterUsers, ACAccount *account) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self findDoGoodUsersOnTwitter:twitterUsers];
+            [[DGUser currentUser] saveSocialID:[twitterManager getTwitterIDFromAccount:account] withType:@"twitter"];
         });
     } failure:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{

@@ -39,7 +39,7 @@
     DebugLog(@"twitter %d", self.share.on);
     if([self.share isOn]) {
         DebugLog(@"tweeting");
-        [self.twitterManager checkTwitterPostAccessWithSuccess:^(NSString *msg) {
+        [self.twitterManager checkTwitterPostAccessWithSuccess:^(BOOL success, NSString *msg) {
             DebugLog(@"success");
             self.share.on = YES;
         } failure:^(NSError *error) {
