@@ -242,10 +242,14 @@
 - (void)setupInfiniteScroll {
     tableView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
 
-    __weak DGGoodListViewController *self_ = self;
+    __weak DGGoodListViewController *weakSelf = self;
+    __weak UITableView *weakTableView = self.tableView;
+
     [tableView addInfiniteScrollingWithActionHandler:^{
-        [tableView.infiniteScrollingView startAnimating];
-        [self_ loadMoreGood];
+        __strong DGGoodListViewController *strongSelf = weakSelf;
+        __strong UITableView *strongTableView = weakTableView;
+        [strongTableView.infiniteScrollingView startAnimating];
+        [strongSelf loadMoreGood];
     }];
 }
 
