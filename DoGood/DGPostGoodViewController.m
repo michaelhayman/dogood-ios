@@ -139,12 +139,10 @@
         GoodShareCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodShareCell"];
         if (indexPath.row == 0) {
             cell.share.tag = share_facebook_cell_tag;
-            cell.type.text = @"Share on Facebook";
             [cell facebook];
             cell.facebookManager = facebookManager;
         } else {
             cell.share.tag = share_twitter_cell_tag;
-            cell.type.text = @"Share on Twitter";
             [cell twitter];
             cell.twitterManager = twitterManager;
         }
