@@ -1,5 +1,6 @@
 @interface DGTwitterManager : NSObject {
     NSDictionary *postOptions;
+    NSString *appName;
 
     NSError *checkSettingsError;
     NSError *unableToPostError;

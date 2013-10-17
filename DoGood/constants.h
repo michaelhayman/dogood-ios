@@ -1,3 +1,5 @@
+#define APP_NAME @"Do Good"
+
 #pragma mark - Paths -----
 
 #define DEVELOPMENT 0

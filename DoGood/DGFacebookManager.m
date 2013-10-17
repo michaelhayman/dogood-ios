@@ -11,9 +11,10 @@
 @synthesize accountStore = _accountStore;
 
 #pragma mark - Initialization
-- (id)init {
+- (id)initWithAppName:(NSString *)name {
     self = [super init];
     if (self) {
+        appName = name;
         postOptions = @{
             ACFacebookAppIdKey : FACEBOOK_APP_ID,
             ACFacebookPermissionsKey : @[ @"publish_actions", @"publish_stream" ],
@@ -49,7 +50,7 @@
     NSDictionary *checkSettingsErrorInfo = @{
         NSLocalizedDescriptionKey: NSLocalizedString(@"Unable to Access Facebook", nil),
         NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Access denied.", nil),
-        NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"There are no Facebook accounts configured or Do Good access is disabled on this device. Check Settings > Facebook and try again.", nil)
+        NSLocalizedRecoverySuggestionErrorKey: [NSString stringWithFormat:@"There are no Facebook accounts configured or %@ access is disabled on this device. Check Settings > Facebook and try again.", appName]
     };
     checkSettingsError = [NSError errorWithDomain:DGErrorDomain code:-57 userInfo:checkSettingsErrorInfo];
 }
@@ -65,12 +66,11 @@
 }
 
 #pragma mark - Posting
-- (void)checkFacebookPostAccessWithSuccess:(void (^)(NSString *msg))success failure:(void (^)(NSError *error))failure {
+- (void)checkFacebookPostAccessWithSuccess:(void (^)(BOOL success, NSString *msg))success failure:(void (^)(NSError *error))failure {
    	ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
-    DebugLog(@"post options %@", postOptions);
    	[self.accountStore requestAccountTyped:accountType withOptions:postOptions  completion:^(BOOL didFinish, ACAccount *account, NSError *error) {
 		if (account) {
-            success(@"Woot");
+            success(YES, @"Permission granted to post.");
         } else {
             failure(unableToPostError);
         }
@@ -78,41 +78,25 @@
 }
 
 - (void)promptForPostAccess {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No Access" message:@"There are no Facebook accounts configured or Do Good access is disabled. Check Settings > Facebook and try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No Access" message:[NSString stringWithFormat:@"There are no Facebook accounts configured or %@ access is disabled. Check Settings > Facebook and try again.", appName ] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertView show];
 }
 
-- (void)postToFacebook:(NSString *)status andImage:(UIImage *)image withSuccess:(void (^)(NSString *msg))success failure:(void (^)(NSError *postError))failure {
+- (void)postToFacebook:(NSMutableDictionary *)params andImage:(UIImage *)image withSuccess:(void (^)(BOOL success, NSString *msg, ACAccount *account))success failure:(void (^)(NSError *postError))failure {
     ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
-    DebugLog(@"post options %@", postOptions);
 
    	[self.accountStore requestAccountTyped:accountType withOptions:postOptions  completion:^(BOOL didFinish, ACAccount *account, NSError *error) {
 		if (account) {
             NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/me/feed"];
 
-            NSMutableDictionary *params = [NSMutableDictionary dictionary];
-            params[@"message"] = @"I did some good!";
-            params[@"link"] = @"http://www.dogoodapp.com/";
-            params[@"name"] = @"Do Good, get a high score and earn rewards.";
-            params[@"caption"] = status;
             params[@"access_token"] = [self accessTokenFromAccount:account];
 
             SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook requestMethod:SLRequestMethodPOST URL:url parameters:params];
-
             [request setAccount:account];
 
             [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                DebugLog(@"error %@\n url %@", error, urlResponse);
-                NSDictionary *response = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:nil];
-                DebugLog(@"Facebook Response : %@",response);
-
                 if (!error) {
-                    success(@"posted good!");
-                    [self findFacebookIDForAccount:account withSuccess:^(NSString *msg) {
-                        DebugLog(@"found id");
-                    } failure:^(NSError *findError) {
-                        DebugLog(@"didn't find id");
-                    }];
+                    success(YES, @"Post successful!", account);
                 } else {
                     failure(unableToPostError);
                 }
@@ -128,7 +112,7 @@
 }
 
 #pragma mark - Friends
-- (void)findFacebookFriendsWithSuccess:(void (^)(NSArray *msg))success failure:(void (^)(NSError *findError))failure {
+- (void)findFacebookFriendsWithSuccess:(void (^)(BOOL success, NSArray *msg, ACAccount *account))success failure:(void (^)(NSError *findError))failure {
    	ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
     NSDictionary *options = @{
         ACFacebookAppIdKey : FACEBOOK_APP_ID,
@@ -137,11 +121,6 @@
     };
    	[self.accountStore requestAccountTyped:accountType withOptions:options completion:^(BOOL didFinish, ACAccount *account, NSError *error) {
 		if (account) {
-            [self findFacebookIDForAccount:account withSuccess:^(NSString *msg) {
-                 DebugLog(@"found id");
-            } failure:^(NSError *findError) {
-                 DebugLog(@"didn't find id");
-            }];
             NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/me/friends"];
 
             NSDictionary *params = @{ @"access_token": [self accessTokenFromAccount:account] };
@@ -149,20 +128,18 @@
             SLRequest *request = [SLRequest requestForServiceType:SLServiceTypeFacebook requestMethod:SLRequestMethodGET URL:url parameters:params];
             [request setAccount:account];
             [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                 // DebugLog(@"%@",[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]);
                  if (responseData) {
                      if (urlResponse.statusCode >= 200 && urlResponse.statusCode < 300) {
                          NSError *jsonError;
                          NSDictionary *statusData = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&jsonError];
 
                          if (statusData) {
-                             // DebugLog(@"Status Response: %@\n", statusData);
                              NSArray *facebookUserIDs= [statusData valueForKey:@"data"];
                              NSMutableArray *ids = [[NSMutableArray alloc] initWithCapacity:[facebookUserIDs count]];
                              for (NSDictionary *dict in facebookUserIDs) {
                                  [ids addObject:dict[@"id"]];
                              }
-                             success(ids);
+                             success(YES, ids, account);
                          } else {
                              failure(jsonError);
                          }
@@ -179,7 +156,7 @@
     }];
 }
 
-- (void)findFacebookIDForAccount:(ACAccount *)account withSuccess:(void (^)(NSString *msg))success failure:(void (^)(NSError *findError))failure {
+- (void)findFacebookIDForAccount:(ACAccount *)account withSuccess:(void (^)(BOOL success, NSString *facebookID))success failure:(void (^)(NSError *findError))failure {
     NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/me"];
 
     NSDictionary *params = @{ @"access_token": [self accessTokenFromAccount:account] };
@@ -195,9 +172,7 @@
                 NSDictionary *statusData = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:&jsonError];
                 if (statusData) {
                     NSString *facebookID = statusData[@"id"];
-                    DebugLog(@"Facebook id: %@", facebookID);
-                    [[DGUser currentUser] saveSocialID:facebookID withType:@"facebook"];
-                    success(@"Saved the ID!");
+                    success(YES, facebookID);
                 } else {
                     failure(error);
                 }

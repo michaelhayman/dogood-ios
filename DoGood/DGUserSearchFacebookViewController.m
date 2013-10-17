@@ -16,7 +16,7 @@
     tableView.delegate = self;
     tableView.dataSource = self;
 
-    facebookManager = [[DGFacebookManager alloc] init];
+    facebookManager = [[DGFacebookManager alloc] initWithAppName:APP_NAME];
 
     [self setupView];
     [self searchFacebookAndDisplayWarning:NO];
@@ -36,9 +36,15 @@
 }
 
 - (void)searchFacebookAndDisplayWarning:(BOOL)warning {
-    [facebookManager findFacebookFriendsWithSuccess:^(NSArray *facebookUsers) {
+    [facebookManager findFacebookFriendsWithSuccess:^(BOOL success, NSArray *facebookUsers, ACAccount *account) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self findDoGoodUsersOnFacebook:facebookUsers];
+           [self findDoGoodUsersOnFacebook:facebookUsers];
+
+           [facebookManager findFacebookIDForAccount:account withSuccess:^(BOOL success, NSString *facebookID) {
+               [[DGUser currentUser] saveSocialID:facebookID withType:@"facebook"];
+            } failure:^(NSError *findError) {
+                 DebugLog(@"didn't find id");
+            }];
         });
     } failure:^(NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{

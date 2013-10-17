@@ -48,7 +48,7 @@
 
     self.good = [DGGood new];
     self.good.user = [DGUser currentUser];
-    facebookManager = [[DGFacebookManager alloc] init];
+    facebookManager = [[DGFacebookManager alloc] initWithAppName:APP_NAME];
     twitterManager = [[DGTwitterManager alloc] init];
 
     // photos
@@ -350,8 +350,19 @@
 
             if (self.good.shareFacebook) {
                 DebugLog(@"sharing to fb");
-                [facebookManager postToFacebook:self.good.caption andImage:self.good.image withSuccess:^(NSString *msg) {
+
+                NSMutableDictionary *params = [NSMutableDictionary dictionary];
+                params[@"message"] = @"I did some good!";
+                params[@"link"] = @"http://www.dogoodapp.com/";
+                params[@"name"] = @"Do Good, get a high score and earn rewards.";
+                params[@"caption"] = self.good.caption;
+                [facebookManager postToFacebook:params andImage:self.good.image withSuccess:^(BOOL success, NSString *msg, ACAccount *account) {
                     DebugLog(@"%@", msg);
+                    [facebookManager findFacebookIDForAccount:account withSuccess:^(BOOL success, NSString *facebookID) {
+                        [[DGUser currentUser] saveSocialID:facebookID withType:@"facebook"];
+                    } failure:^(NSError *findError) {
+                        DebugLog(@"didn't find id");
+                    }];
                 } failure:^(NSError *error) {
                     DebugLog(@"error %@ %@", [error localizedRecoverySuggestion], [error localizedDescription]);
                 }];

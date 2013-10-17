@@ -78,7 +78,7 @@
     DebugLog(@"check facebook");
     if([self.share isOn]) {
         DebugLog(@"facebookin");
-        [self.facebookManager checkFacebookPostAccessWithSuccess:^(NSString *msg) {
+        [self.facebookManager checkFacebookPostAccessWithSuccess:^(BOOL success, NSString *msg) {
             DebugLog(@"success");
             self.share.on = YES;
         } failure:^(NSError *error) {

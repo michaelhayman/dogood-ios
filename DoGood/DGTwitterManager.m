@@ -11,9 +11,10 @@
 @synthesize accountStore = _accountStore;
 
 #pragma mark - Initialization
-- (id)init {
+- (id)initWithAppName:(NSString *)name {
     self = [super init];
     if (self) {
+        appName = name;
         postOptions = nil;
         [self setupErrors];
     }
@@ -45,7 +46,7 @@
     NSDictionary *checkSettingsErrorInfo = @{
         NSLocalizedDescriptionKey: NSLocalizedString(@"Unable to Access Twitter", nil),
         NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Access denied.", nil),
-        NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(@"There are no Twitter accounts configured or Do Good access is disabled on this device. Check Settings > Twitter and try again.", nil)
+        NSLocalizedRecoverySuggestionErrorKey: [NSString stringWithFormat:@"There are no Twitter accounts configured or %@ access is disabled on this device. Check Settings > Facebook and try again.", appName]
     };
     checkSettingsError = [NSError errorWithDomain:DGErrorDomain code:-57 userInfo:checkSettingsErrorInfo];
 }
@@ -74,7 +75,7 @@
 }
 
 - (void)promptForPostAccess {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No Access" message:@"There are no Twitter accounts configured, or Do Good access is disabled. Check Settings > Twitter and try again." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"No Access" message:[NSString stringWithFormat:@"There are no Twitter accounts configured or %@ access is disabled. Check Settings > Facebook and try again.", appName] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [alertView show];
 }
 
