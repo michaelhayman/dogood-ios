@@ -39,12 +39,14 @@
     entities = [[NSMutableArray alloc] init];
     [self setupAccessoryView];
     [commentInputField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    commentInputField.allowsEditingTextAttributes = NO;
 
     [self setupSearchPeopleTable];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super viewWillDisappear:NO];
+    // [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -96,6 +98,7 @@
                                   title:NSLocalizedString(@"Comment Saved!", nil)
                                 subtitle:nil
                                    type:TSMessageNotificationTypeSuccess];
+            [entities removeAllObjects];
             [self fetchComments];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [TSMessage showNotificationInViewController:self.navigationController
@@ -221,6 +224,30 @@
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    for (DGEntity *entity in entities) {
+        NSRange entityRange = [entity rangeFromArray];
+        NSRange intersection = NSIntersectionRange(range, [entity rangeFromArray]);
+        if (intersection.length <= 0)
+            DebugLog(@"Ranges do not intersect, continue");
+        else {
+            DebugLog(@"Intersection = %@", NSStringFromRange(intersection));
+            UITextRange *selectedTextRange = [textField selectedTextRange];
+            UITextPosition *newPosition = [textField positionFromPosition:selectedTextRange.start offset:entityRange.length];
+            UITextRange *newTextRange = [textField textRangeFromPosition:newPosition toPosition:selectedTextRange.start];
+
+            // Set new range
+            if ([selectedTextRange isEqual:newTextRange]) {
+                [entities removeObject:entity];
+                return YES;
+            } else {
+                [textField setSelectedTextRange:newTextRange];
+                return NO;
+            }
+        }
+    }
+    
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
+    textField.typingAttributes = attributes;
     int length = commentInputField.text.length - range.length + string.length;
 
     if (length > 0) {
@@ -292,34 +319,45 @@
 
 }
 
+- (NSDictionary *)linkAttributes {
+    NSArray *keys = [[NSArray alloc] initWithObjects:(id)kCTForegroundColorAttributeName, (id)kCTUnderlineStyleAttributeName, nil];
+    NSArray *objects = [[NSArray alloc] initWithObjects:LINK_COLOUR, [NSNumber numberWithInt:kCTUnderlineStyleNone], nil];
+    NSDictionary *linkAttributes = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
+    return linkAttributes;
+}
+
 - (void)selectedPerson:(NSNotification *)notification {
-    DebugLog(@"notif %@", notification);
+    DebugLog(@"notif %@ range %d", notification, startOfRange);
     DGUser *user = [[notification userInfo] valueForKey:@"user"];
-    NSString *originalComment = [commentInputField.text substringToIndex:startOfRange - 1];
-    NSString *newComment = [originalComment stringByAppendingString:[user.full_name stringByAppendingString:@" "]];
-    // commentInputField.attributedText =
-    NSMutableAttributedString *newCommentFormatted = [[NSMutableAttributedString alloc] initWithString:newComment];
-    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
-    [newCommentFormatted addAttribute:NSFontAttributeName value:font range:NSMakeRange(startOfRange - 1, [newComment length] - 1)];
-    // reset the end to regular
-    /*
-    UIFont *fontRegular = [UIFont fontWithName:@"HelveticaNeue" size:15];
-    [newCommentFormatted addAttribute:NSFontAttributeName value:fontRegular range:NSMakeRange([newCommentFormatted length] - 2, [newCommentFormatted length] - 1)];
-    */
-    commentInputField.attributedText = newCommentFormatted;
-    searchTable.hidden = YES;
+    int startOfPersonRange = startOfRange - 1;
+    int personLength = [user.full_name length];
+    int endOfPersonRange = startOfRange + personLength;
+
+    // seems like a lot to go through whole string and reformat it every time
+
+    NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[commentInputField.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfPersonRange)];
+
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:LINK_COLOUR forKey:NSForegroundColorAttributeName];
+    NSAttributedString *extraComment = [[NSAttributedString alloc] initWithString:[user.full_name stringByAppendingString:@" "] attributes:attributes];
+
+    [originalComment appendAttributedString:extraComment];
+    commentInputField.attributedText = originalComment;
+
+    NSRange range = NSMakeRange(startOfPersonRange, endOfPersonRange - startOfPersonRange);
+    // NSMutableAttributedString *newCommentFormatted = [[NSMutableAttributedString alloc] initWithString:newComment];
+    // DebugLog(@"range: %i %i new comment length: %i", range.location, range.length, newCommentFormatted.length);
 
     // each entity
     DGEntity *entity = [DGEntity new];
-    entity.range = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:startOfRange], [NSNumber numberWithInt:[newComment length]], nil];
+    [entity setArrayFromRange:range];
+    // entity.range = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:startOfPersonRange], [NSNumber numberWithInt:endOfPersonRange], nil];
     entity.entityable_type = @"Comment";
     entity.entityable_id = user.userID;
     entity.title = user.full_name;
     entity.link = [NSString stringWithFormat:@"dogood://users/%@", user.userID];
+    entity.link_id = user.userID;
     entity.link_type = @"user";
-    // entity.entityID = [NSNumber numberWithInt:1];
     [entities addObject:entity];
-    // commentInputField.selectedTextRange = NSMakeRange([newComment length], 0);
     [self stopSearchingPeople];
 }
 
@@ -335,6 +373,7 @@
     accessoryButtonMention.selected = NO;
     searchTable.hidden = YES;
     searchPeople = NO;
+    [searchPeopleTableController purge];
 }
 
 - (void)startSearchingTags {

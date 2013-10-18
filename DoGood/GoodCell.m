@@ -12,6 +12,7 @@
 #import "DGUserListViewController.h"
 #import "DGUserInvitesViewController.h"
 #import "DGGoodListViewController.h"
+#import "URLHandler.h"
 
 #define kRightColumnWidth 236.0
 
@@ -580,27 +581,13 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 #pragma mark - TTTAttributedLabel delegate methods
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
     DebugLog(@"selected");
-    if ([[url scheme] hasPrefix:@"dogood"]) {
-        NSArray *urlComponents = [url pathComponents];
-        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-
-        if ([[url host] hasPrefix:@"users"]) {
-            NSNumber * userID = [f numberFromString:urlComponents[1]];
-            [DGUser openProfilePage:userID inController:self.navigationController];
-        } else if ([[url host] hasPrefix:@"show-settings"]) {
-            /* load settings screen */
-        } else if ([[url host] hasPrefix:@"goods"]) {
-            DGTag *tag = [DGTag new];
-            tag.name = [url pathComponents][2];
-            [self openTag:tag];
-        } else {
-            DebugLog(@"hit here");
+    URLHandler *handler = [[URLHandler alloc] init];
+    [handler openURL:url andReturn:^(BOOL matched) {
+        if (matched) {
+            DebugLog(@"yup");
         }
-    } else {
-        /* deal with http links here */
-        DebugLog(@"not sure what else to do %@", [url scheme]);
-    }
+        return matched;
+    }];
 }
 
 - (void)openTag:(DGTag *)tag {

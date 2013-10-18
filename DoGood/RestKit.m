@@ -121,6 +121,7 @@
         @"entityable_id",
         @"title",
         @"link",
+        @"link_id",
         @"link_type",
         @"range"
     ];

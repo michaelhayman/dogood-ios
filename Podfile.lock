@@ -43,7 +43,7 @@ DEPENDENCIES:
   - SocialAuth (from `git@github.com:evadne/SocialAuth.git`)
   - SVPullToRefresh (~> 0.4.1)
   - TSMessages (~> 0.9.4)
-  - TTTAttributedLabel
+  - TTTAttributedLabel (~> 1.7.1)
   - UIImage-Categories (~> 0.0.1)
 
 EXTERNAL SOURCES:

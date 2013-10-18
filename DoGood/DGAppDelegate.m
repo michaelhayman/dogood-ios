@@ -6,6 +6,8 @@
 // global set up
 #import "RestKit.h"
 #import "DGAppearance.h"
+#import "URLHandler.h"
+#import <TTTAttributedLabel.h>
 
 @implementation DGAppDelegate
 
@@ -44,32 +46,11 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     DebugLog(@"handle open url");
-    if ([[url scheme] isEqualToString:@"dogood"]) {
-        DebugLog(@"handle dogood");
-        if ([[url host] hasPrefix:@"users"]) {
-            NSArray *urlComponents = [url pathComponents];
-            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-            [f setNumberStyle:NSNumberFormatterDecimalStyle];
-            NSNumber * userID = [f numberFromString:urlComponents[1]];
-            DebugLog(@"open profile page for %@", userID);
-            [DGUser openProfilePage:userID inController:(UINavigationController *)self.window.rootViewController];
-        }
-        if ([[url host] hasPrefix:@"goods"]) {
-            NSArray *urlComponents = [url pathComponents];
-            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-            [f setNumberStyle:NSNumberFormatterDecimalStyle];
-            NSNumber * goodID = [f numberFromString:urlComponents[1]];
-            DebugLog(@"open good page for %@", goodID);
-
-            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-            DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
-            controller.goodID = goodID;
-            [(UINavigationController *)self.window.rootViewController pushViewController:controller animated:YES];
-        }
-        return YES;
-    } else {
-        return NO;
-    }
+    URLHandler *handler = [[URLHandler alloc] init];
+    [handler openURL:url andReturn:^(BOOL matched) {
+        return matched;
+    }];
+    return YES;
 }
 
 @end

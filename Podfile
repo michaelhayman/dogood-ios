@@ -9,7 +9,7 @@ pod 'TSMessages', '~> 0.9.4'
 pod 'MBProgressHUD'
 pod 'REMenu', '~> 1.3.5'
 pod 'UIImage-Categories', '~> 0.0.1'
-pod 'TTTAttributedLabel'
+pod 'TTTAttributedLabel', '~> 1.7.1'
 pod 'MJPopupViewController', '~> 0.4'
 
 # social

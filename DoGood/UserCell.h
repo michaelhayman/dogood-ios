@@ -3,6 +3,7 @@
 @interface UserCell : UITableViewCell <UIActionSheetDelegate, TTTAttributedLabelDelegate> {
 }
 
+@property bool disableSelection;
 @property (weak, nonatomic) IBOutlet DGUser *user;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UILabel *username;

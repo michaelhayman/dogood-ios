@@ -13,11 +13,13 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 
     // user
-    self.avatar.contentMode = UIViewContentModeScaleAspectFit;
-    UITapGestureRecognizer* userGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userProfile)];
-    [self.username setUserInteractionEnabled:YES];
-    [self.username addGestureRecognizer:userGesture];
-    self.username.textColor = LINK_COLOUR;
+    if (!self.disableSelection) {
+        self.avatar.contentMode = UIViewContentModeScaleAspectFit;
+        UITapGestureRecognizer* userGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userProfile)];
+        [self.username setUserInteractionEnabled:YES];
+        [self.username addGestureRecognizer:userGesture];
+        self.username.textColor = LINK_COLOUR;
+    }
 
     // likes
     [self.follow addTarget:self action:@selector(followUser) forControlEvents:UIControlEventTouchUpInside];

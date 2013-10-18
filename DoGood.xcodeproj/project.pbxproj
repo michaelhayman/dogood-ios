@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		630046D01810E619001529E5 /* URLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 630046CF1810E619001529E5 /* URLHandler.m */; };
 		6303A33617FE322100E2EACD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6303A33517FE322100E2EACD /* Media.xcassets */; };
 		6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */; };
 		6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */; };
@@ -112,6 +113,8 @@
 
 /* Begin PBXFileReference section */
 		0150758A9E934060AF039752 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		630046CE1810E619001529E5 /* URLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLHandler.h; sourceTree = "<group>"; };
+		630046CF1810E619001529E5 /* URLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLHandler.m; sourceTree = "<group>"; };
 		6303A33517FE322100E2EACD /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		6308161017C3BB11004DE5D7 /* DGUserInvitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserInvitesViewController.h; sourceTree = "<group>"; };
 		6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserInvitesViewController.m; sourceTree = "<group>"; };
@@ -552,6 +555,8 @@
 		638647E717AC087A00167F15 /* DoGood */ = {
 			isa = PBXGroup;
 			children = (
+				630046CE1810E619001529E5 /* URLHandler.h */,
+				630046CF1810E619001529E5 /* URLHandler.m */,
 				636AEA6C17AD4B8A002A3494 /* Assets */,
 				63DA644517DC0E76003DFF03 /* Social */,
 				6319D39017BDF05C0071DA71 /* Reusable Components */,
@@ -767,6 +772,7 @@
 				6355EC3317B75EB600EE91C0 /* constants.m in Sources */,
 				6355EC3D17B86B8400EE91C0 /* SignUpOverviewCell.m in Sources */,
 				639B88E417B9A25B005E2B62 /* DGVote.m in Sources */,
+				630046D01810E619001529E5 /* URLHandler.m in Sources */,
 				639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */,
 				63E4424D17BC3010000224E8 /* DGSignUpDetailsViewController.m in Sources */,
 				63E0798B17BC5A6F006FC42E /* UITextFieldCell.m in Sources */,

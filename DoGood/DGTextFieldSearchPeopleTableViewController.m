@@ -25,6 +25,7 @@
     cell.user = user;
     DebugLog(@"cell user %@", user);
     [cell setValues];
+    cell.disableSelection = YES;
     cell.follow.hidden = YES;
     cell.navigationController = self.navigationController;
     return cell;
