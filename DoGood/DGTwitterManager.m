@@ -62,7 +62,7 @@
 }
 
 #pragma mark - Posting
-- (void)checkTwitterPostAccessWithSuccess:(void (^)(BOOL success, NSString *msg))success failure:(void (^)(NSError *error))failure {
+- (void)checkTwitterPostAccessWithSuccess:(PostAccessBlock)success failure:(ErrorBlock)failure {
    	ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
    	[self.accountStore requestAccountTyped:accountType withOptions:postOptions completion:^(BOOL didFinish, ACAccount *account, NSError *error) {
 		if (account) {
@@ -78,7 +78,7 @@
     [alertView show];
 }
 
-- (void)postToTwitter:(NSString *)status andImage:(UIImage *)image withSuccess:(void (^)(BOOL success, NSString *msg, ACAccount *account))success failure:(void (^)(NSError *postError))failure {
+- (void)postToTwitter:(NSString *)status andImage:(UIImage *)image withSuccess:(PostCompletionBlock)success failure:(ErrorBlock)failure {
     ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 
    	[self.accountStore requestAccountTyped:accountType withOptions:postOptions  completion:^(BOOL didFinish, ACAccount *account, NSError *error) {
@@ -105,7 +105,7 @@
     }];
 }
 
-- (void)findTwitterFriendsWithSuccess:(void (^)(BOOL success, NSArray *msg, ACAccount *account))success failure:(void (^)(NSError *findError))failure {
+- (void)findTwitterFriendsWithSuccess:(FindFriendsBlock)success failure:(ErrorBlock)failure {
    	ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
    	[self.accountStore requestAccountTyped:accountType withOptions:nil  completion:^(BOOL didFinish, ACAccount *account, NSError *error) {
 		if (account) {

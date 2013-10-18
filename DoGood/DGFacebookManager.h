@@ -1,5 +1,11 @@
 @class ACAccount;
 
+typedef void (^PostCompletionBlock)(BOOL success, NSString *msg, ACAccount *account);
+typedef void (^PostAccessBlock)(BOOL success, NSString *msg);
+typedef void (^ErrorBlock)(NSError *error);
+typedef void (^FindFriendsBlock)(BOOL success, NSArray *msg, ACAccount *account);
+typedef void (^FindIDBlock)(BOOL success, NSString *facebookID);
+
 @interface DGFacebookManager : NSObject {
     NSDictionary *postOptions;
     NSString *appName;
@@ -10,10 +16,10 @@
 }
 
 - (id)initWithAppName:(NSString *)name;
-- (void)checkFacebookPostAccessWithSuccess:(void (^)(BOOL success, NSString *msg))success failure:(void (^)(NSError *checkError))failure;
+- (void)checkFacebookPostAccessWithSuccess:(PostAccessBlock)success failure:(ErrorBlock)failure;
 - (void)promptForPostAccess;
-- (void)postToFacebook:(NSMutableDictionary *)params andImage:(UIImage *)image withSuccess:(void (^)(BOOL success, NSString *msg, ACAccount *account))success failure:(void (^)(NSError *postError))failure;
-- (void)findFacebookFriendsWithSuccess:(void (^)(BOOL success, NSArray *msg, ACAccount *account))success failure:(void (^)(NSError *findError))failure;
-- (void)findFacebookIDForAccount:(ACAccount *)account withSuccess:(void (^)(BOOL success, NSString *facebookID))success failure:(void (^)(NSError *findError))failure;
+- (void)postToFacebook:(NSMutableDictionary *)params andImage:(UIImage *)image withSuccess:(PostCompletionBlock)success failure:(ErrorBlock)failure;
+- (void)findFacebookFriendsWithSuccess:(FindFriendsBlock)success failure:(ErrorBlock)failure;
+- (void)findFacebookIDForAccount:(ACAccount *)account withSuccess:(FindIDBlock)success failure:(ErrorBlock)failure;
 
 @end

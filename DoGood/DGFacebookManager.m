@@ -66,7 +66,7 @@
 }
 
 #pragma mark - Posting
-- (void)checkFacebookPostAccessWithSuccess:(void (^)(BOOL success, NSString *msg))success failure:(void (^)(NSError *error))failure {
+- (void)checkFacebookPostAccessWithSuccess:(PostAccessBlock)success failure:(ErrorBlock)failure {
    	ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
    	[self.accountStore requestAccountTyped:accountType withOptions:postOptions  completion:^(BOOL didFinish, ACAccount *account, NSError *error) {
 		if (account) {
@@ -82,7 +82,7 @@
     [alertView show];
 }
 
-- (void)postToFacebook:(NSMutableDictionary *)params andImage:(UIImage *)image withSuccess:(void (^)(BOOL success, NSString *msg, ACAccount *account))success failure:(void (^)(NSError *postError))failure {
+- (void)postToFacebook:(NSMutableDictionary *)params andImage:(UIImage *)image withSuccess:(PostCompletionBlock)success failure:(ErrorBlock)failure {
     ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
 
    	[self.accountStore requestAccountTyped:accountType withOptions:postOptions  completion:^(BOOL didFinish, ACAccount *account, NSError *error) {
@@ -112,7 +112,7 @@
 }
 
 #pragma mark - Friends
-- (void)findFacebookFriendsWithSuccess:(void (^)(BOOL success, NSArray *msg, ACAccount *account))success failure:(void (^)(NSError *findError))failure {
+- (void)findFacebookFriendsWithSuccess:(FindFriendsBlock)success failure:(ErrorBlock)failure {
    	ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
     NSDictionary *options = @{
         ACFacebookAppIdKey : FACEBOOK_APP_ID,
@@ -156,7 +156,7 @@
     }];
 }
 
-- (void)findFacebookIDForAccount:(ACAccount *)account withSuccess:(void (^)(BOOL success, NSString *facebookID))success failure:(void (^)(NSError *findError))failure {
+- (void)findFacebookIDForAccount:(ACAccount *)account withSuccess:(FindIDBlock)success failure:(ErrorBlock)failure {
     NSURL *url = [NSURL URLWithString:@"https://graph.facebook.com/me"];
 
     NSDictionary *params = @{ @"access_token": [self accessTokenFromAccount:account] };

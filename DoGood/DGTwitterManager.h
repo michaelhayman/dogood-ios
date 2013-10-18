@@ -1,4 +1,10 @@
 @class ACAccount;
+typedef void (^ErrorBlock)(NSError *error);
+
+typedef void (^PostAccessBlock)(BOOL success, NSString *msg);
+typedef void (^PostCompletionBlock)(BOOL success, NSString *msg, ACAccount *account);
+typedef void (^FindFriendsBlock)(BOOL success, NSArray *msg, ACAccount *account);
+
 @interface DGTwitterManager : NSObject {
     NSDictionary *postOptions;
     NSString *appName;
@@ -8,10 +14,11 @@
     NSError *noAccountError;
 }
 
-- (void)checkTwitterPostAccessWithSuccess:(void (^)(BOOL success, NSString *msg))success failure:(void (^)(NSError *error))failure;
+- (id)initWithAppName:(NSString *)name;
+- (void)checkTwitterPostAccessWithSuccess:(PostAccessBlock)success failure:(ErrorBlock)failure;
 - (void)promptForPostAccess;
-- (void)postToTwitter:(NSString *)status andImage:(UIImage *)image withSuccess:(void (^)(BOOL success, NSString *msg, ACAccount *account))success failure:(void (^)(NSError *postError))failure;
-- (void)findTwitterFriendsWithSuccess:(void (^)(BOOL success, NSArray *msg, ACAccount *account))success failure:(void (^)(NSError *findError))failure;
+- (void)postToTwitter:(NSString *)status andImage:(UIImage *)image withSuccess:(PostCompletionBlock)success failure:(ErrorBlock)failure;
+- (void)findTwitterFriendsWithSuccess:(FindFriendsBlock)success failure:(ErrorBlock)failure;
 - (NSString *)getTwitterIDFromAccount:(ACAccount *)account;
 
 @end

@@ -49,7 +49,7 @@
     self.good = [DGGood new];
     self.good.user = [DGUser currentUser];
     facebookManager = [[DGFacebookManager alloc] initWithAppName:APP_NAME];
-    twitterManager = [[DGTwitterManager alloc] init];
+    twitterManager = [[DGTwitterManager alloc] initWithAppName:APP_NAME];
 
     // photos
     photos = [[DGPhotoPickerViewController alloc] init];

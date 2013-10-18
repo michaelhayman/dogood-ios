@@ -13,7 +13,7 @@
     tableView.delegate = self;
     tableView.dataSource = self;
 
-    twitterManager = [[DGTwitterManager alloc] init];
+    twitterManager = [[DGTwitterManager alloc] initWithAppName:APP_NAME];
 
     [self setupView];
     [self searchTwitterAndDisplayWarning:NO];
