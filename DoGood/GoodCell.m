@@ -5,6 +5,7 @@
 #import "DGFollow.h"
 #import "DGReport.h"
 #import "DGTag.h"
+#import "DGEntity.h"
 #import "DGGoodCommentsViewController.h"
 #import <TTTAttributedLabel.h>
 #import "DGUserProfileViewController.h"
@@ -443,6 +444,24 @@ static inline  NSRegularExpression * UserNameRegularExpression()
         // DebugLog(@"URL string %@ %@ %@", urlString, noSpacesAndNoHashes, noHashes, [url absoluteString]);
         [self.description addLinkToURL:url withRange:result.range];
     }];
+
+    // each entity
+    DGEntity *entity = [DGEntity new];
+    entity.range = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:0], [NSNumber numberWithInt:3], nil];
+    entity.entityable_type = @"Good";
+    entity.entityable_id = [NSNumber numberWithInt:1];
+    entity.title = @"sup";
+    entity.link = @"dogood://users/1";
+    // entity.entityID = [NSNumber numberWithInt:1];
+
+    NSArray *entities = @[ entity ];
+    for (DGEntity *entity in entities) {
+        NSURL *url = [NSURL URLWithString:entity.link];
+        NSUInteger loc = [[entity.range firstObject] intValue];
+        NSUInteger len = [[entity.range lastObject] intValue];
+        DebugLog(@"loc & len %i %i", loc, len);
+        [self.description addLinkToURL:url withRange:NSMakeRange(loc, len)];
+    }
 
     self.description.delegate = self;
 }

@@ -9,5 +9,6 @@
 @property (retain) NSNumber *user_id;
 @property (retain) DGGood *good;
 @property (retain) DGUser *user;
+@property (retain) NSArray *entities;
 
 @end

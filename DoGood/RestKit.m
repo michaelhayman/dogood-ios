@@ -9,6 +9,7 @@
 #import "DGReward.h"
 #import "DGReport.h"
 #import "DGTag.h"
+#import "DGEntity.h"
 
 @implementation RestKit
 
@@ -96,6 +97,44 @@
     [objectManager addRequestDescriptor:voteRequestDescriptor];
 
     // --------------------------------
+    // entity
+    // --------------------------------
+    RKObjectMapping *entityMapping = [RKObjectMapping mappingForClass:[DGEntity class]];
+    /*
+    [entityMapping addAttributeMappingsFromDictionary:@{
+        @"id" : @"entityID",
+    }];
+    */
+    /*
+    NSDictionary *entityDict = @{
+        @"id" : @"entityID",
+        @"entityable_type" : @"type",
+        @"entityable_id" : @"entityable_id",
+        @"link" : @"link",
+        @"range" : @"range",
+    };
+    [entityMapping addAttributeMappingsFromDictionary:entityDict];
+    */
+
+    NSArray *entityArray = @[
+        @"entityable_type",
+        @"entityable_id",
+        @"title",
+        @"link",
+        @"link_type",
+        @"range"
+    ];
+    [entityMapping addAttributeMappingsFromArray:entityArray ];
+    RKResponseDescriptor *entityResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"entities" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:entityResponseDescriptor];
+
+    RKObjectMapping* entityRequestMapping = [RKObjectMapping requestMapping ];
+    [entityRequestMapping addAttributeMappingsFromArray:entityArray];
+    RKRequestDescriptor *entityRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:entityRequestMapping objectClass:[DGEntity class] rootKeyPath:@"entities" method:RKRequestMethodAny];
+    [objectManager addRequestDescriptor:entityRequestDescriptor];
+    
+
+    // --------------------------------
     // tag
     // --------------------------------
     RKObjectMapping *tagMapping = [RKObjectMapping mappingForClass:[DGTag class]];
@@ -138,6 +177,7 @@
     ]];
     [commentMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:userMapping]];
     RKResponseDescriptor *commentResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:commentMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"comments" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [commentMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"entities" toKeyPath:@"entities" withMapping:entityMapping]];
     [objectManager addResponseDescriptor:commentResponseDescriptor];
 
     RKObjectMapping* commentRequestMapping = [RKObjectMapping requestMapping ];
@@ -148,6 +188,7 @@
      @"user_id"
     ]];
     RKRequestDescriptor *commentRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:commentRequestMapping objectClass:[DGComment class] rootKeyPath:@"comment" method:RKRequestMethodAny];
+    [commentRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"entities" toKeyPath:@"entities_attributes" withMapping:entityRequestMapping]];
     [objectManager addRequestDescriptor:commentRequestDescriptor];
 
     // --------------------------------
@@ -205,10 +246,12 @@
     [goodMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:userMapping]];
     [goodMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"comments" toKeyPath:@"comments" withMapping:commentMapping]];
     [goodMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"category" toKeyPath:@"category" withMapping:categoryMapping]];
+    [goodMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"entities" toKeyPath:@"entities" withMapping:entityMapping]];
     [objectManager addResponseDescriptor:goodResponseDescriptor];
 
     RKObjectMapping* goodRequestMapping = [RKObjectMapping requestMapping];
     [goodRequestMapping addAttributeMappingsFromArray:@[ @"caption", @"category_id", @"location_name", @"location_image", @"lat", @"lng" ]];
+    [goodRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"entities" toKeyPath:@"entities_attributes" withMapping:entityMapping]];
     RKRequestDescriptor *goodRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:goodRequestMapping objectClass:[DGGood class] rootKeyPath:@"good" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:goodRequestDescriptor];
 
@@ -242,6 +285,13 @@
      }];
     RKResponseDescriptor *errorResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:errorMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"errors" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
     [objectManager addResponseDescriptor:errorResponseDescriptor];
+
+    // RELATIONSHIPS
+    /*
+    [eventMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"bets" toKeyPath:@"bets" withMapping:betMapping]];
+    [eventRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"bets" toKeyPath:@"bets_attributes" withMapping:betRequestMapping]];
+    */
+
 }
 
 @end

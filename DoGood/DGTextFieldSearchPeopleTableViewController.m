@@ -20,6 +20,7 @@
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * reuseIdentifier = @"UserCell";
     UserCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+    cell.transform = CGAffineTransformMakeRotation(M_PI);
     DGUser *user = users[indexPath.row];
     cell.user = user;
     DebugLog(@"cell user %@", user);

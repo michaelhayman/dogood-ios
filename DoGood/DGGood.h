@@ -33,6 +33,7 @@
 @property BOOL shareDoGood;
 @property BOOL shareTwitter;
 @property BOOL shareFacebook;
+@property (retain) NSArray *entities;
 
 - (void)setValuesForLocation:(FSLocation *)location;
 - (void)setValuesForCategory:(DGCategory *)category;

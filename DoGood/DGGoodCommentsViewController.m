@@ -3,6 +3,7 @@
 #import "GoodCell.h"
 #import "DGComment.h"
 #import "CommentCell.h"
+#import "DGEntity.h"
 #import "DGTextFieldSearchPeopleTableViewController.h"
 
 @interface DGGoodCommentsViewController ()
@@ -18,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupMenuTitle:@"Comments"];
-    advanced = NO;
+    advanced = YES;
 
     DebugLog(@"comments good %@", self.comment.good);
     UINib *nib = [UINib nibWithNibName:@"CommentCell" bundle:nil];
@@ -34,8 +35,8 @@
     [self.view addGestureRecognizer:tap];
     */
 
-
     characterLimit = 120;
+    entities = [[NSMutableArray alloc] init];
     [self setupAccessoryView];
     [commentInputField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 
@@ -58,14 +59,18 @@
     NSDictionary *params = [NSDictionary dictionaryWithObject:self.good.goodID forKey:@"good_id"];
 
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/comments.json" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        // this is ugly, just add new comment to the end...
         [comments removeAllObjects];
         [comments addObjectsFromArray:mappingResult.array];
 
+        /*
         self.good.comments = comments;
         // use metadata eventually
         self.good.comments_count = [NSNumber numberWithInt: [comments count]];
         self.goodCell.good = self.good;
         [self.goodCell reloadCell];
+        */
+
         [tableView reloadData];
         DebugLog(@"reloading data");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -81,6 +86,7 @@
     newComment.commentable_id = self.good.goodID;
     newComment.commentable_type = @"Good";
     newComment.user_id = [DGUser currentUser].userID;
+    newComment.entities = entities;
     if (![commentInputField.text isEqualToString:@""]) {
         [[RKObjectManager sharedManager] postObject:newComment path:@"/comments" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 
@@ -189,6 +195,7 @@
     accessoryButtonMention.selected = !accessoryButtonMention.selected;
     commentInputField.text = [commentInputField.text stringByAppendingString:@"@"];
     DebugLog(@"@");
+    [self textFieldDidChange:commentInputField];
     // [self startSearchingPeople];
     // [self searchPeople:nil];
 }
@@ -268,7 +275,11 @@
 }
 
 - (void)setupSearchPeopleTable {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopSearchingPeople) name:@"DidntFind" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedPerson:) name:@"Selected" object:nil];
+    DebugLog(@"notificaitons setup");
     searchTable = [[UITableView alloc] init];
+    searchTable.transform = CGAffineTransformMakeRotation(-M_PI);
     searchPeopleTableController =  [[DGTextFieldSearchPeopleTableViewController alloc] init];
     searchPeopleTableController.tableView = searchTable;
     searchTable.delegate = searchPeopleTableController;
@@ -279,20 +290,35 @@
     UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
     [searchTable registerNib:nib forCellReuseIdentifier:@"UserCell"];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopSearchingPeople) name:@"DidntFind" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedPerson:) name:@"Selected" object:nil];
 }
 
 - (void)selectedPerson:(NSNotification *)notification {
     DebugLog(@"notif %@", notification);
     DGUser *user = [[notification userInfo] valueForKey:@"user"];
-    NSString *originalComment = [commentInputField.text substringToIndex:startOfRange];
+    NSString *originalComment = [commentInputField.text substringToIndex:startOfRange - 1];
     NSString *newComment = [originalComment stringByAppendingString:[user.full_name stringByAppendingString:@" "]];
     // commentInputField.attributedText =
     NSMutableAttributedString *newCommentFormatted = [[NSMutableAttributedString alloc] initWithString:newComment];
     UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
-    [newCommentFormatted addAttribute:NSFontAttributeName value:font range:NSMakeRange(startOfRange, [newComment length] - 1)];
+    [newCommentFormatted addAttribute:NSFontAttributeName value:font range:NSMakeRange(startOfRange - 1, [newComment length] - 1)];
+    // reset the end to regular
+    /*
+    UIFont *fontRegular = [UIFont fontWithName:@"HelveticaNeue" size:15];
+    [newCommentFormatted addAttribute:NSFontAttributeName value:fontRegular range:NSMakeRange([newCommentFormatted length] - 2, [newCommentFormatted length] - 1)];
+    */
     commentInputField.attributedText = newCommentFormatted;
+    searchTable.hidden = YES;
+
+    // each entity
+    DGEntity *entity = [DGEntity new];
+    entity.range = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:startOfRange], [NSNumber numberWithInt:[newComment length]], nil];
+    entity.entityable_type = @"Comment";
+    entity.entityable_id = user.userID;
+    entity.title = user.full_name;
+    entity.link = [NSString stringWithFormat:@"dogood://users/%@", user.userID];
+    entity.link_type = @"user";
+    // entity.entityID = [NSNumber numberWithInt:1];
+    [entities addObject:entity];
     // commentInputField.selectedTextRange = NSMakeRange([newComment length], 0);
     [self stopSearchingPeople];
 }

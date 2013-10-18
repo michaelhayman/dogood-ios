@@ -30,6 +30,8 @@
 
     NSString *searchTerm;
     DGTextFieldSearchPeopleTableViewController * searchPeopleTableController;
+
+    NSMutableArray *entities;
 }
 
 @property bool makeComment;

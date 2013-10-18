@@ -83,6 +83,7 @@
 		63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */; };
 		63D4BD251802484800ACF1B9 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D4BD241802484800ACF1B9 /* Rewards.storyboard */; };
 		63D4BD2818024E0700ACF1B9 /* DGRewardPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BD2718024E0700ACF1B9 /* DGRewardPopupViewController.m */; };
+		63D9F1FE18107E1000B9207F /* DGEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D9F1FD18107E1000B9207F /* DGEntity.m */; };
 		63DA644417DBEA52003DFF03 /* UIViewController+DGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DA644317DBEA52003DFF03 /* UIViewController+DGViewController.m */; };
 		63DA644817DC0F04003DFF03 /* DGExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DA644717DC0F04003DFF03 /* DGExploreViewController.m */; };
 		63DA644B17DC0F28003DFF03 /* DGExploreCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DA644A17DC0F28003DFF03 /* DGExploreCategoriesViewController.m */; };
@@ -247,6 +248,8 @@
 		63D4BD241802484800ACF1B9 /* Rewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rewards.storyboard; sourceTree = "<group>"; };
 		63D4BD2618024E0700ACF1B9 /* DGRewardPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGRewardPopupViewController.h; sourceTree = "<group>"; };
 		63D4BD2718024E0700ACF1B9 /* DGRewardPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRewardPopupViewController.m; sourceTree = "<group>"; };
+		63D9F1FC18107E1000B9207F /* DGEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGEntity.h; sourceTree = "<group>"; };
+		63D9F1FD18107E1000B9207F /* DGEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEntity.m; sourceTree = "<group>"; };
 		63DA644217DBEA52003DFF03 /* UIViewController+DGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DGViewController.h"; sourceTree = "<group>"; };
 		63DA644317DBEA52003DFF03 /* UIViewController+DGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DGViewController.m"; sourceTree = "<group>"; };
 		63DA644617DC0F04003DFF03 /* DGExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGExploreViewController.h; sourceTree = "<group>"; };
@@ -344,6 +347,8 @@
 			children = (
 				6308161617C3DDD4004DE5D7 /* RestKit.h */,
 				63FBF609180CD5F3005686A6 /* RestKit.m */,
+				63D9F1FC18107E1000B9207F /* DGEntity.h */,
+				63D9F1FD18107E1000B9207F /* DGEntity.m */,
 				63FBF601180830C4005686A6 /* DGReport.h */,
 				63FBF602180830C4005686A6 /* DGReport.m */,
 				6355EC1A17B5BA4500EE91C0 /* DGUser.h */,
@@ -773,6 +778,7 @@
 				6319D39517BE5A230071DA71 /* DGUserSearchViewController.m in Sources */,
 				6397318E17C1733D001B96BF /* DGUserTwitterViewController.m in Sources */,
 				63357AFE17C279F2007B5FD7 /* DGUserFindFriendsViewController.m in Sources */,
+				63D9F1FE18107E1000B9207F /* DGEntity.m in Sources */,
 				6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */,
 				63FBF606180AECFF005686A6 /* UIImage+Grayscale.m in Sources */,
 				63FBF60A180CD5F3005686A6 /* RestKit.m in Sources */,
