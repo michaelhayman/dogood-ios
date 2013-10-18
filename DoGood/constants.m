@@ -54,6 +54,12 @@ NSString* const DGUserDidToggleMenu = @"DGUserDidToggleMenu";
 NSString* const DGUserDidDismissRewardPopup = @"DGUserDidDismissRewardPopup";
 NSString* const DGUserDidSelectRewards = @"DGUserDidSelectRewards";
 
+// textfields
+NSString* const DGUserDidSelectPersonForTextField = @"DGUserDidSelectPersonForTextField";
+NSString* const DGUserDidNotFindPeopleForTextField = @"DGUserDidNotFindPeopleForTextField";
+NSString* const DGUserDidSelectHashtagForTextField = @"DGUserDidSelectHashtagForTextField";
+NSString* const DGUserDidStopSearchingHashtagsForTextField = @"DGUserDidStopSearchingHashtagsForTextField";
+
 #pragma mark - Good
 
 // Errors

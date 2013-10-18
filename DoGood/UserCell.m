@@ -12,9 +12,10 @@
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 
+    self.avatar.contentMode = UIViewContentModeScaleAspectFit;
+
     // user
     if (!self.disableSelection) {
-        self.avatar.contentMode = UIViewContentModeScaleAspectFit;
         UITapGestureRecognizer* userGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userProfile)];
         [self.username setUserInteractionEnabled:YES];
         [self.username addGestureRecognizer:userGesture];
@@ -27,6 +28,11 @@
 
 #pragma mark - Set values when cell becomes visible
 - (void)setValues {
+     if (self.disableSelection) {
+        [self.username setUserInteractionEnabled:NO];
+        [self.avatar setUserInteractionEnabled:NO];
+    }
+
     // hide the follow button for the own user
     if ([self.user.userID isEqualToNumber:[DGUser currentUser].userID]) {
         self.follow.hidden = YES;

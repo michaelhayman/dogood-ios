@@ -1,4 +1,5 @@
 #import "DGAppearance.h"
+#import <TTTAttributedLabel.h>
 
 @implementation DGAppearance
 
@@ -17,6 +18,13 @@
             DebugLog(@"  %@", name);
         }
     }
+}
+
++ (NSDictionary *)linkAttributes {
+    NSArray *keys = [[NSArray alloc] initWithObjects:(id)kCTForegroundColorAttributeName, (id)kCTUnderlineStyleAttributeName, nil];
+    NSArray *objects = [[NSArray alloc] initWithObjects:LINK_COLOUR, [NSNumber numberWithInt:kCTUnderlineStyleNone], nil];
+    NSDictionary *linkAttributes = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
+    return linkAttributes;
 }
 
 @end

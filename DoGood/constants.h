@@ -133,6 +133,12 @@ extern NSString* const DGUserDidToggleMenu;
 
 extern NSString* const DGUserDidDismissRewardPopup;
 
+extern NSString* const DGUserDidSelectPersonForTextField;
+extern NSString* const DGUserDidNotFindPeopleForTextField;
+
+extern NSString* const DGUserDidSelectHashtagForTextField;
+extern NSString* const DGUserDidStopSearchingHashtagsForTextField;
+
 #pragma mark - Good
 
 // Notifications

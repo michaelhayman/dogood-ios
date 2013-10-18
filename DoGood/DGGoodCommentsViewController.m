@@ -18,60 +18,50 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [self setupMenuTitle:@"Comments"];
+
     advanced = YES;
 
-    DebugLog(@"comments good %@", self.comment.good);
+    // comments list
     UINib *nib = [UINib nibWithNibName:@"CommentCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"CommentCell"];
     comments = [[NSMutableArray alloc] init];
     [self fetchComments];
 
-    /*
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                   initWithTarget:self
-                                   action:@selector(dismissKeyboard)];
-
-    [self.view addGestureRecognizer:tap];
-    */
-
+    // accessories
     characterLimit = 120;
-    entities = [[NSMutableArray alloc] init];
     [self setupAccessoryView];
     [commentInputField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     commentInputField.allowsEditingTextAttributes = NO;
 
+    // entities
+    entities = [[NSMutableArray alloc] init];
     [self setupSearchPeopleTable];
-}
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:NO];
-    // [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
     tableView.transform = CGAffineTransformMakeRotation(-M_PI);
     [self setupKeyboardBehaviour];
 }
 
-#pragma mark - Comment retrieval
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:NO];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    tableView.transform = CGAffineTransformMakeRotation(-M_PI);
+    [TSMessage dismissActiveNotification];
+}
+
+// TODO: not sure why this is in will appear
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
+
+#pragma mark - Comment retrieval ----------
 - (void)fetchComments {
-    DebugLog(@"refresh comments");
     NSDictionary *params = [NSDictionary dictionaryWithObject:self.good.goodID forKey:@"good_id"];
 
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/comments.json" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        // this is ugly, just add new comment to the end...
         [comments removeAllObjects];
         [comments addObjectsFromArray:mappingResult.array];
-
-        /*
-        self.good.comments = comments;
-        // use metadata eventually
-        self.good.comments_count = [NSNumber numberWithInt: [comments count]];
-        self.goodCell.good = self.good;
-        [self.goodCell reloadCell];
-        */
 
         [tableView reloadData];
         DebugLog(@"reloading data");
@@ -79,6 +69,47 @@
         DebugLog(@"Operation failed with error: %@", error);
     }];
     [tableView reloadData];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CommentCell *cell = [aTableView dequeueReusableCellWithIdentifier:@"CommentCell"];
+    cell.transform = CGAffineTransformMakeRotation(M_PI);
+    DGComment * comment = comments[indexPath.row];
+    cell.comment = comment;
+    cell.navigationController = self.navigationController;
+    [cell setValues];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    DGComment * comment = comments[indexPath.row];
+    UIFont *font = [UIFont systemFontOfSize:13];
+    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:comment.comment attributes:@ { NSFontAttributeName: font }];
+    CGFloat width = 235;
+    CGRect rect = [attributedText boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
+                                               options:NSStringDrawingUsesLineFragmentOrigin
+                                               context:nil];
+    CGSize size = rect.size;
+    CGFloat height = ceilf(size.height);
+
+    return MAX(63, height + 22);
+}
+
+- (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
+    return [comments count];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"";
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    // This will create a "invisible" footer
+    return 0.01f;
 }
 
 #pragma mark - Comment posting
@@ -99,7 +130,15 @@
                                 subtitle:nil
                                    type:TSMessageNotificationTypeSuccess];
             [entities removeAllObjects];
-            [self fetchComments];
+            // [self fetchComments];
+            [self addComment:[mappingResult.array objectAtIndex:0]];
+            /* Add comment to previous page...
+            self.good.comments = comments;
+            // use metadata eventually
+            self.good.comments_count = [NSNumber numberWithInt: [comments count]];
+            self.goodCell.good = self.good;
+            [self.goodCell reloadCell];
+            */
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [TSMessage showNotificationInViewController:self.navigationController
                                       title:NSLocalizedString(@"Couldn't save the comment", nil)
@@ -109,6 +148,12 @@
             DebugLog(@"error %@", [error description]);
         }];
     }
+}
+
+- (void)addComment:(DGComment *)comment {
+    [comments insertObject:comment atIndex:0];
+    // [comments addObject:comment];
+    [tableView reloadData];
 }
 
 #pragma mark - Keyboard management
@@ -190,30 +235,14 @@
     [accessoryView addSubview:characterLimitLabel];
 }
 
-- (void)setLimitText {
-    characterLimitLabel.text = [NSString stringWithFormat:@"%d", characterLimit - [commentInputField.text length]];
-}
-
-- (void)selectPeople:(id)sender {
-    accessoryButtonMention.selected = !accessoryButtonMention.selected;
-    commentInputField.text = [commentInputField.text stringByAppendingString:@"@"];
-    DebugLog(@"@");
-    [self textFieldDidChange:commentInputField];
-    // [self startSearchingPeople];
-    // [self searchPeople:nil];
-}
-
-- (void)selectTag:(id)sender {
-    accessoryButtonTag.selected = !accessoryButtonTag.selected;
-    commentInputField.text = [commentInputField.text stringByAppendingString:@"#"];
-    DebugLog(@"#");
-}
-
 - (void)dismissKeyboard {
     [commentInputField resignFirstResponder];
 }
 
-#pragma mark - UITextField delegate methods
+- (void)setLimitText {
+    characterLimitLabel.text = [NSString stringWithFormat:@"%d", characterLimit - [commentInputField.text length]];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (![textField.text isEqualToString:@""]) {
         [self postComment:textField];
@@ -279,6 +308,9 @@
                 [self stopSearchingPeople];
             }
         }
+        if (searchTags) {
+
+        }
 
         searchTerm = @"";
 
@@ -288,6 +320,7 @@
             startOfRange = [textField.text length];
             // save start of range here
         }
+
         if ([textField.text hasSuffix:@"#"]) {
             DebugLog(@"pop open hash table & color following text up to a space");
             // searchTags = YES;
@@ -295,16 +328,21 @@
     }
 }
 
+#pragma mark - People
+- (void)selectPeople:(id)sender {
+    accessoryButtonMention.selected = !accessoryButtonMention.selected;
+    commentInputField.text = [commentInputField.text stringByAppendingString:@"@"];
+    [self textFieldDidChange:commentInputField];
+}
+
 - (void)searchPeople:(NSString *)text {
-    // start searching with nil
-    DebugLog(@"searching people for text %@", text);
     [searchPeopleTableController getUsersByName:text];
 }
 
 - (void)setupSearchPeopleTable {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopSearchingPeople) name:@"DidntFind" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedPerson:) name:@"Selected" object:nil];
-    DebugLog(@"notificaitons setup");
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopSearchingPeople) name:DGUserDidNotFindPeopleForTextField object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedPerson:) name:DGUserDidSelectPersonForTextField object:nil];
+
     searchTable = [[UITableView alloc] init];
     searchTable.transform = CGAffineTransformMakeRotation(-M_PI);
     searchPeopleTableController =  [[DGTextFieldSearchPeopleTableViewController alloc] init];
@@ -316,24 +354,13 @@
 
     UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
     [searchTable registerNib:nib forCellReuseIdentifier:@"UserCell"];
-
-}
-
-- (NSDictionary *)linkAttributes {
-    NSArray *keys = [[NSArray alloc] initWithObjects:(id)kCTForegroundColorAttributeName, (id)kCTUnderlineStyleAttributeName, nil];
-    NSArray *objects = [[NSArray alloc] initWithObjects:LINK_COLOUR, [NSNumber numberWithInt:kCTUnderlineStyleNone], nil];
-    NSDictionary *linkAttributes = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
-    return linkAttributes;
 }
 
 - (void)selectedPerson:(NSNotification *)notification {
-    DebugLog(@"notif %@ range %d", notification, startOfRange);
     DGUser *user = [[notification userInfo] valueForKey:@"user"];
     int startOfPersonRange = startOfRange - 1;
     int personLength = [user.full_name length];
     int endOfPersonRange = startOfRange + personLength;
-
-    // seems like a lot to go through whole string and reformat it every time
 
     NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[commentInputField.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfPersonRange)];
 
@@ -344,13 +371,9 @@
     commentInputField.attributedText = originalComment;
 
     NSRange range = NSMakeRange(startOfPersonRange, endOfPersonRange - startOfPersonRange);
-    // NSMutableAttributedString *newCommentFormatted = [[NSMutableAttributedString alloc] initWithString:newComment];
-    // DebugLog(@"range: %i %i new comment length: %i", range.location, range.length, newCommentFormatted.length);
 
-    // each entity
     DGEntity *entity = [DGEntity new];
     [entity setArrayFromRange:range];
-    // entity.range = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:startOfPersonRange], [NSNumber numberWithInt:endOfPersonRange], nil];
     entity.entityable_type = @"Comment";
     entity.entityable_id = user.userID;
     entity.title = user.full_name;
@@ -358,6 +381,7 @@
     entity.link_id = user.userID;
     entity.link_type = @"user";
     [entities addObject:entity];
+
     [self stopSearchingPeople];
 }
 
@@ -366,7 +390,6 @@
     searchPeople = YES;
     accessoryButtonMention.selected = YES;
     searchTable.frame = CGRectMake(0, 0, 320, self.view.frame.size.height - totalKeyboardHeight);
-    DebugLog(@"self view %f %f", self.view.frame.size.height, totalKeyboardHeight);
 }
 
 - (void)stopSearchingPeople {
@@ -376,54 +399,15 @@
     [searchPeopleTableController purge];
 }
 
+#pragma mark - Tags
+- (void)selectTag:(id)sender {
+    accessoryButtonTag.selected = !accessoryButtonTag.selected;
+    commentInputField.text = [commentInputField.text stringByAppendingString:@"#"];
+    [self textFieldDidChange:commentInputField];
+}
+
 - (void)startSearchingTags {
 
-}
-
-#pragma mark - UITableView delegate methods
-- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CommentCell *cell = [aTableView dequeueReusableCellWithIdentifier:@"CommentCell"];
-    cell.transform = CGAffineTransformMakeRotation(M_PI);
-    DGComment * comment = comments[indexPath.row];
-    cell.comment = comment;
-    cell.navigationController = self.navigationController;
-    [cell setValues];
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    DGComment * comment = comments[indexPath.row];
-    UIFont *font = [UIFont systemFontOfSize:13];
-    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:comment.comment attributes:@ { NSFontAttributeName: font }];
-    CGFloat width = 235;
-    CGRect rect = [attributedText boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
-                                               options:NSStringDrawingUsesLineFragmentOrigin
-                                               context:nil];
-    CGSize size = rect.size;
-    CGFloat height = ceilf(size.height);
-
-    return MAX(63, height + 22);
-}
-
-- (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
-    return [comments count];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"";
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    // This will create a "invisible" footer
-    return 0.01f;
-}
-
-#pragma mark - Retrieval methods
-- (void)getComments {
 }
 
 @end

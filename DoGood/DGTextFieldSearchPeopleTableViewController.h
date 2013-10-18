@@ -1,5 +1,4 @@
 @interface DGTextFieldSearchPeopleTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-    // __weak IBOutlet UITableView *tableView;
     NSMutableArray *users;
     bool showNoResultsMessage;
 }

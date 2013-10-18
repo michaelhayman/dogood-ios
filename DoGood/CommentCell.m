@@ -4,6 +4,7 @@
 #import "DGTag.h"
 #import <TTTAttributedLabel.h>
 #import "URLHandler.h"
+#import "DGAppearance.h"
 
 @implementation CommentCell
 
@@ -17,20 +18,13 @@
     UITapGestureRecognizer* avatarGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGoodUserProfile)];
     [self.avatar setUserInteractionEnabled:YES];
     [self.avatar addGestureRecognizer:avatarGesture];
-    self.commentBody.linkAttributes = [self linkAttributes];
+    self.commentBody.linkAttributes = [DGAppearance linkAttributes];
     self.commentBody.delegate = self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-}
-
-- (NSDictionary *)linkAttributes {
-    NSArray *keys = [[NSArray alloc] initWithObjects:(id)kCTForegroundColorAttributeName, (id)kCTUnderlineStyleAttributeName, nil];
-    NSArray *objects = [[NSArray alloc] initWithObjects:LINK_COLOUR, [NSNumber numberWithInt:kCTUnderlineStyleNone], nil];
-    NSDictionary *linkAttributes = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
-    return linkAttributes;
 }
 
 - (void)setValues {

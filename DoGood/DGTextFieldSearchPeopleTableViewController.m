@@ -23,11 +23,10 @@
     cell.transform = CGAffineTransformMakeRotation(M_PI);
     DGUser *user = users[indexPath.row];
     cell.user = user;
-    DebugLog(@"cell user %@", user);
-    [cell setValues];
     cell.disableSelection = YES;
-    cell.follow.hidden = YES;
     cell.navigationController = self.navigationController;
+    [cell setValues];
+    cell.follow.hidden = YES;
     return cell;
 }
 
@@ -48,7 +47,7 @@
         [users removeAllObjects];
         [users addObjectsFromArray:mappingResult.array];
         if ([users count] == 0) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"DidntFind" object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidNotFindPeopleForTextField object:nil];
             [self purge];
         }
         [_tableView reloadData];
@@ -58,10 +57,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DebugLog(@"did select");
     DGUser *user = users[indexPath.row];
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:user, @"user", nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"Selected" object:nil userInfo:userInfo];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSelectPersonForTextField object:nil userInfo:userInfo];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
@@ -77,9 +75,5 @@
     [users removeAllObjects];
     [_tableView reloadData];
 }
-
-// two notifications
-// - didn't find users
-// - selected a user
 
 @end

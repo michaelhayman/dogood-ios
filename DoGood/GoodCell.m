@@ -13,6 +13,7 @@
 #import "DGUserInvitesViewController.h"
 #import "DGGoodListViewController.h"
 #import "URLHandler.h"
+#import "DGAppearance.h"
 
 #define kRightColumnWidth 236.0
 
@@ -362,15 +363,8 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.numberOfLines = 0;
 
-    label.linkAttributes = [self linkAttributes];
+    label.linkAttributes = [DGAppearance linkAttributes];
     return label;
-}
-
-- (NSDictionary *)linkAttributes {
-    NSArray *keys = [[NSArray alloc] initWithObjects:(id)kCTForegroundColorAttributeName, (id)kCTUnderlineStyleAttributeName, nil];
-    NSArray *objects = [[NSArray alloc] initWithObjects:LINK_COLOUR, [NSNumber numberWithInt:kCTUnderlineStyleNone], nil];
-    NSDictionary *linkAttributes = [[NSDictionary alloc] initWithObjects:objects forKeys:keys];
-    return linkAttributes;
 }
 
 - (void)setupCommentsList {
@@ -433,7 +427,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.good.caption attributes:attributes];
     self.description.attributedText = attrString;
     captionHeight.constant = [GoodCell calculateHeightForText:attrString];
-    self.description.linkAttributes = [self linkAttributes];
+    self.description.linkAttributes = [DGAppearance linkAttributes];
 
     NSRange stringRange = NSMakeRange(0, [self.description.attributedText length]);
     NSRegularExpression *regexp = HashRegularExpression();
