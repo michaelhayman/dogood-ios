@@ -14,19 +14,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="261">
-                        <rect key="frame" x="66" y="8" width="210" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="210" id="356"/>
-                            <constraint firstAttribute="height" constant="16" id="d4V-T0-EFz"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                        <color key="textColor" red="0.0" green="0.70196078429999997" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CrA-EP-OhX">
-                        <rect key="frame" x="66" y="36" width="210" height="16"/>
+                        <rect key="frame" x="66" y="18" width="210" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="16" id="a4r-60-7yL"/>
@@ -37,7 +26,7 @@
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="248" translatesAutoresizingMaskIntoConstraints="NO" id="271" customClass="TTTAttributedLabel">
-                        <rect key="frame" x="66" y="24" width="248" height="12"/>
+                        <rect key="frame" x="66" y="6" width="248" height="12"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="248" id="357"/>
@@ -58,16 +47,15 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="261" firstAttribute="leading" secondItem="296" secondAttribute="trailing" constant="8" id="0Kn-x3-91X"/>
+                    <constraint firstItem="271" firstAttribute="leading" secondItem="296" secondAttribute="trailing" constant="8" id="D9J-Y4-hRb"/>
                     <constraint firstItem="CrA-EP-OhX" firstAttribute="leading" secondItem="271" secondAttribute="leading" id="Ff1-N5-ojb"/>
+                    <constraint firstItem="271" firstAttribute="leading" secondItem="CrA-EP-OhX" secondAttribute="leading" id="eFg-uB-w8z"/>
+                    <constraint firstItem="271" firstAttribute="top" secondItem="o7K-gL-xYe" secondAttribute="top" constant="6" id="iL2-Iy-N4s"/>
                     <constraint firstItem="CrA-EP-OhX" firstAttribute="top" secondItem="271" secondAttribute="bottom" id="uj0-1h-ROf"/>
-                    <constraint firstItem="271" firstAttribute="top" secondItem="261" secondAttribute="bottom" id="y0b-5t-Mrt"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
                 <constraint firstItem="296" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="13" id="ELo-Bk-cXm"/>
-                <constraint firstItem="261" firstAttribute="leading" secondItem="271" secondAttribute="leading" id="hCa-XR-4ax"/>
-                <constraint firstItem="261" firstAttribute="top" secondItem="296" secondAttribute="top" id="pJ1-Z5-iQG"/>
                 <constraint firstItem="296" firstAttribute="top" secondItem="3" secondAttribute="top" constant="8" id="uDw-68-nE4"/>
             </constraints>
             <connections>
@@ -75,7 +63,6 @@
                 <outlet property="commentBody" destination="271" id="7dl-Hr-iuX"/>
                 <outlet property="commentBodyHeight" destination="Cu8-1l-ZLD" id="TOI-Ho-hDu"/>
                 <outlet property="timePosted" destination="CrA-EP-OhX" id="lFf-Qb-z7J"/>
-                <outlet property="user" destination="261" id="279"/>
             </connections>
         </tableViewCell>
     </objects>
