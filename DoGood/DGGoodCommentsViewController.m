@@ -358,14 +358,14 @@
         accessoryButtonMention.selected = !accessoryButtonMention.selected;
         [self resetTypingAttributes:commentInputField];
         DebugLog(@"attributed text... %@", commentInputField.attributedText);
-        commentInputField.attributedText = [self insert:@"@" atEndOf:commentInputField];
+        commentInputField.attributedText = [self insert:@"@" atEndOf:commentInputField.attributedText];
         DebugLog(@"attributed text... %@", commentInputField.attributedText);
         [self textFieldDidChange:commentInputField];
     }
 }
 
-- (NSAttributedString *)insert:(NSString *)string atEndOf:(UITextField *)textField {
-    NSMutableAttributedString *mutableString = [[NSMutableAttributedString alloc] initWithAttributedString:textField.attributedText];
+- (NSAttributedString *)insert:(NSString *)string atEndOf:(NSAttributedString *)textField {
+    NSMutableAttributedString *mutableString = [[NSMutableAttributedString alloc] initWithAttributedString:textField];
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:LINK_COLOUR forKey:NSForegroundColorAttributeName];
     NSAttributedString *extraCharacters = [[NSAttributedString alloc] initWithString:string attributes:attributes];
     [mutableString appendAttributedString:extraCharacters];
@@ -410,17 +410,14 @@
 
 - (void)selectedPerson:(NSNotification *)notification {
     DGUser *user = [[notification userInfo] valueForKey:@"user"];
+    // the idea here is to
+    // strip out the @ symbol from the textfield on insertion
     int startOfPersonRange = startOfRange - 1;
     int personLength = [user.full_name length];
-    int endOfPersonRange = startOfRange + personLength;
+    int endOfPersonRange = startOfPersonRange + personLength;
 
     NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[commentInputField.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfPersonRange)];
-
-    NSDictionary *attributes = [NSDictionary dictionaryWithObject:LINK_COLOUR forKey:NSForegroundColorAttributeName];
-    NSAttributedString *extraComment = [[NSAttributedString alloc] initWithString:[user.full_name stringByAppendingString:@" "] attributes:attributes];
-
-    [originalComment appendAttributedString:extraComment];
-    commentInputField.attributedText = originalComment;
+    commentInputField.attributedText = [self insert:[user.full_name stringByAppendingString:@" "] atEndOf:originalComment];
 
     NSRange range = NSMakeRange(startOfPersonRange, endOfPersonRange - startOfPersonRange);
 
@@ -443,7 +440,7 @@
     if (accessoryButtonMention.selected == NO && accessoryButtonTag.selected == NO) {
         accessoryButtonTag.selected = !accessoryButtonTag.selected;
         [self resetTypingAttributes:commentInputField];
-        commentInputField.attributedText = [self insert:@"#" atEndOf:commentInputField];
+        commentInputField.attributedText = [self insert:@"#" atEndOf:commentInputField.attributedText];
         // commentInputField.text = [commentInputField.text stringByAppendingString:@"#"];
         [self textFieldDidChange:commentInputField];
     }
