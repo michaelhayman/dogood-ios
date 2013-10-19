@@ -35,17 +35,6 @@
 
     UIFont *font = [UIFont boldSystemFontOfSize:13];
     [CommentCell addUsernameAndLinksToComment:self.comment withText:text andFont:font inLabel:self.commentBody];
-    /*
-    NSRange r = NSMakeRange(0, [self.comment.user.username length]);
-    // NSRange r =  [self.commentBody.text rangeOfString:self.comment.user.username];
-    [self.commentBody addLinkToURL:[NSURL URLWithString:[NSString stringWithFormat:@"dogood://users/%@", self.comment.user.userID]] withRange:r];
-
-    for (DGEntity *entity in self.comment.entities) {
-        NSURL *url = [NSURL URLWithString:entity.link];
-        // [self.commentBody addLinkToURL:url withRange:[entity rangeFromArray]];
-        [self.commentBody addLinkToURL:url withRange:[entity rangeFromArrayWithOffset:[self.comment.user.username length] + 1]];
-    }
-    */
 
     CGFloat height = [DGAppearance calculateHeightForText:self.commentBody.attributedText andWidth:kCommentRightColumnWidth];
 
@@ -70,8 +59,6 @@
 + (void)addUsernameAndLinksToComment:(DGComment *)comment withText:(NSString *)text andFont:(UIFont *)font inLabel:(TTTAttributedLabel*)label {
     [label setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
         NSRange stringRange = NSMakeRange(0, [mutableAttributedString length]);
-
-        // NSRegularExpression *regexp = NameRegularExpression();
 
         NSRegularExpression *regexp = [[NSRegularExpression alloc] initWithPattern:[NSString stringWithFormat:@"%@+",comment.user.username] options:NSRegularExpressionCaseInsensitive error:nil];
 

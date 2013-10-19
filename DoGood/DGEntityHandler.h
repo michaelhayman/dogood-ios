@@ -31,13 +31,6 @@
 
 @property (nonatomic, weak) UITextView *commentInputField;
 
-@property bool makeComment;
-@property DGGood *good;
-@property (nonatomic, retain) DGComment *comment;
-@property (nonatomic, retain) GoodCell *goodCell;
-
-- (void)initialize;
-
 typedef BOOL (^CheckEntitiesBlock)(BOOL end, NSMutableArray *entities);
 - (BOOL)check:(UITextView *)textField range:(NSRange)range forEntities:(NSMutableArray *)entities completion:(CheckEntitiesBlock)completion;
 - (void)watchForEntities:(UITextView *)textField;

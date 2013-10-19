@@ -145,12 +145,8 @@
 - (void)selectPeople:(id)sender {
     if (accessoryButtonMention.selected == NO && accessoryButtonTag.selected == NO) {
         accessoryButtonMention.selected = !accessoryButtonMention.selected;
-        // [self resetTypingAttributes:entityTextView];
-        DebugLog(@"attributed text... %@", entityTextView.attributedText);
         entityTextView.attributedText = [self insert:@"@" atEndOf:entityTextView.attributedText];
-        DebugLog(@"attributed text... %@", entityTextView.attributedText);
         [self watchForEntities:entityTextView];
-        // [self textViewDidChange:entityTextView];
         [self resetTypingAttributes:entityTextView];
     }
 }

@@ -11,15 +11,11 @@
 #endif
 
 #pragma mark - Convenience -----
-
 #define iPad    UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
 #pragma mark - Styles -----
-
-// #define kSummaryCommentFont [UIFont fontWithName:@"Calibre" size:12.]
 #define kSummaryCommentFont [UIFont systemFontOfSize:10]
 #define kGoodCaptionFont [UIFont systemFontOfSize:14.]
-#define kGoodCaptionFont2 [UIFont systemFontOfSize:10.]
 
 #define kGoodRightColumnWidth 236.0
 #define kCommentRightColumnWidth 248.0
