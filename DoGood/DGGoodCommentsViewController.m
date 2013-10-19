@@ -256,29 +256,34 @@
     for (DGEntity *entity in entities) {
         NSRange entityRange = [entity rangeFromArray];
         NSRange intersection = NSIntersectionRange(range, [entity rangeFromArray]);
+        DebugLog(@"should change chars %@ entity range %@, intersection %@", NSStringFromRange(range), NSStringFromRange( entityRange), NSStringFromRange(intersection));
+        entityRange.length = entityRange.length;
         if (intersection.length <= 0)
             DebugLog(@"Ranges do not intersect, continue");
         else {
             DebugLog(@"Intersection = %@", NSStringFromRange(intersection));
             UITextRange *selectedTextRange = [textField selectedTextRange];
-            DebugLog(@"selected text range = %@", selectedTextRange);
-            UITextPosition *newPosition = [textField positionFromPosition:selectedTextRange.start offset:entityRange.length];
+            UITextPosition *newPosition = [textField positionFromPosition:selectedTextRange.start offset:-entityRange.length];
             UITextRange *newTextRange = [textField textRangeFromPosition:newPosition toPosition:selectedTextRange.start];
-            DebugLog(@"this is null new position = %@", newPosition);
-            DebugLog(@"selected text range = %@", newTextRange);
+            UITextPosition *anotherPosition = [textField positionFromPosition:selectedTextRange.start offset:entityRange.length];
+            UITextRange *anotherTextRange = [textField textRangeFromPosition:selectedTextRange.start toPosition:anotherPosition];
+
+            DebugLog(@"selected text range = %@", selectedTextRange);
+            DebugLog(@"new text range = %@", newTextRange);
 
             // Set new range
-            if ([selectedTextRange isEqual:newTextRange]) {
+            if ([selectedTextRange isEqual:anotherTextRange]) {
+                DebugLog(@"is equal");
                 [entities removeObject:entity];
                 return YES;
-                // i think this is unnecessary
-                break;
-            } else {
+            } else if (![selectedTextRange isEqual:newTextRange]) {
+                DebugLog(@"isn't equal");
                 [textField setSelectedTextRange:newTextRange];
                 return NO;
             }
         }
     }
+
     [self resetTypingAttributes:textField];
     int length = commentInputField.text.length - range.length + string.length;
 
