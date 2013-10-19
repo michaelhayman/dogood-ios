@@ -91,7 +91,7 @@
 
     CGFloat height = [DGAppearance calculateHeightForText:attributedText andWidth:kCommentRightColumnWidth];
 
-    CGFloat cellHeight = MAX(63, height + 42);
+    CGFloat cellHeight = MAX(63, height + 44);
     return cellHeight;
 }
 
