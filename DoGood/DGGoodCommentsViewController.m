@@ -46,15 +46,16 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:NO];
-    // [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     tableView.transform = CGAffineTransformMakeRotation(-M_PI);
     [TSMessage dismissActiveNotification];
-    [commentInputField resignFirstResponder];
+    // [commentInputField resignFirstResponder];
 }
 
 // TODO: not sure why this is in will appear
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self setupKeyboardBehaviour];
 }
 
 #pragma mark - Comment retrieval ----------
@@ -211,6 +212,15 @@
 - (void)setupAccessoryView {
     accessoryView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, kToolbarHeight)];
 
+    /*
+    accessoryView.translatesAutoresizingMaskIntoConstraints = NO;
+    NSDictionary* views = NSDictionaryOfVariableBindings(accessoryView);
+    accessoryViewHeight = [NSLayoutConstraint constraintWithItem:accessoryView attribute:<#(NSLayoutAttribute)#> relatedBy:<#(NSLayoutRelation)#> toItem:<#(id)#> attribute:<#(NSLayoutAttribute)#> multiplier:<#(CGFloat)#> constant:<#(CGFloat)#>
+    accessoryViewHeight = [NSLayoutConstraint constraintsWithVisualFormat:@"|[accessoryView(60)]|" options:0 metrics:0 views:views];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[accessoryView(60)]|" options:0 metrics:0 views:views]];
+     */
+
+
     if (advanced) {
         accessoryButtonMention = [UIButton buttonWithType:UIButtonTypeCustom];
         [accessoryButtonMention setFrame:CGRectMake(10.0f, 10.0f, 26.0f, 23.0f)];
@@ -301,6 +311,9 @@
     [self setLimitText];
     int length = commentInputField.text.length - range.length + string.length;
 
+    CGFloat adjustmentIndex = [DGAppearance calculateHeightForText:commentInputField.attributedText andWidth:256] + 16;
+    commentInputFieldHeight.constant = adjustmentIndex;
+
     if (length > 0) {
         sendButton.enabled = YES;
     } else {
@@ -310,7 +323,6 @@
 }
 
 - (void)resetTypingAttributes:(UITextView *)textField {
-    DebugLog(@"reset typing");
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
     textField.typingAttributes = attributes;
 }

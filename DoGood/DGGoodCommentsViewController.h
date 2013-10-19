@@ -9,6 +9,8 @@
     __weak IBOutlet UIView *commentInputView;
     __weak IBOutlet UITextView *commentInputField;
     __weak IBOutlet NSLayoutConstraint *commentInputFieldHeight;
+    __weak IBOutlet NSLayoutConstraint *commentBoxHeight;
+
     __weak IBOutlet UITableView *tableView;
     NSMutableArray *comments;
     __weak IBOutlet NSLayoutConstraint *tableViewBottom;
@@ -18,6 +20,7 @@
     // keyboard
     CGFloat totalKeyboardHeight;
     UIToolbar *accessoryView;
+    NSLayoutConstraint *accessoryViewHeight;
     UIButton *accessoryButtonMention;
     UIButton *accessoryButtonTag;
     UILabel *characterLimitLabel;

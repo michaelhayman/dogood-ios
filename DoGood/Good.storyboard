@@ -113,11 +113,12 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="fSi-6k-2pC" secondAttribute="bottom" constant="7" id="0Ds-Vz-yFC"/>
                                     <constraint firstItem="fSi-6k-2pC" firstAttribute="top" secondItem="xil-Rx-NGQ" secondAttribute="top" constant="7" id="BcO-Vp-S1R"/>
                                     <constraint firstItem="EDq-ZU-GEV" firstAttribute="leading" secondItem="fSi-6k-2pC" secondAttribute="trailing" constant="8" id="ZHB-GZ-hXG"/>
                                     <constraint firstItem="fSi-6k-2pC" firstAttribute="leading" secondItem="xil-Rx-NGQ" secondAttribute="leading" constant="10" id="f2h-sQ-wEz"/>
                                     <constraint firstItem="EDq-ZU-GEV" firstAttribute="centerY" secondItem="fSi-6k-2pC" secondAttribute="centerY" id="ruQ-y0-8ws"/>
-                                    <constraint firstAttribute="height" constant="44" id="wK2-gR-TPQ"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="wK2-gR-TPQ"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -134,6 +135,7 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="commentBoxHeight" destination="wK2-gR-TPQ" id="xZI-dw-jSz"/>
                         <outlet property="commentFieldBottom" destination="isc-T3-AhV" id="2Wj-Vk-7DF"/>
                         <outlet property="commentInputField" destination="fSi-6k-2pC" id="DMh-sw-nVB"/>
                         <outlet property="commentInputFieldHeight" destination="Lem-dG-qGJ" id="Nyh-Mp-YW5"/>
