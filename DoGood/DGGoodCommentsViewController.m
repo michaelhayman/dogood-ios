@@ -282,6 +282,7 @@
     }
 
     [self resetTypingAttributes:textField];
+    [self setLimitText];
     int length = commentInputField.text.length - range.length + string.length;
 
     if (length > 0) {
@@ -415,6 +416,7 @@
 
     NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[commentInputField.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfPersonRange)];
     commentInputField.attributedText = [self insert:[user.full_name stringByAppendingString:@" "] atEndOf:originalComment];
+    [self setLimitText];
 
     NSRange range = NSMakeRange(startOfPersonRange, endOfPersonRange - startOfPersonRange);
 
