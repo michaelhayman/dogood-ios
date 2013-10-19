@@ -209,8 +209,6 @@
 
 - (void)setupAccessoryView {
     accessoryView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, kToolbarHeight)];
-    accessoryView.tintColor = [UIColor colorWithRed:0.569 green:0.600 blue:0.643 alpha:1.000];
-    accessoryView.backgroundColor = [UIColor clearColor];
 
     if (advanced) {
         accessoryButtonMention = [UIButton buttonWithType:UIButtonTypeCustom];
