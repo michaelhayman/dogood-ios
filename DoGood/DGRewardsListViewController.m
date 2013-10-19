@@ -129,7 +129,8 @@
 }
 
 - (void)dismissPopup {
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopBottom];
+    // [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopBottom];
+    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideBottomBottom];
 }
 
 @end

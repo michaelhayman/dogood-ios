@@ -50,7 +50,7 @@
 
 - (void)dismissPopup {
     DebugLog(@"dismiss");
-    [self.navigationController dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopBottom];
+    [self.navigationController dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideBottomBottom];
 }
 
 #pragma mark - Content methods
