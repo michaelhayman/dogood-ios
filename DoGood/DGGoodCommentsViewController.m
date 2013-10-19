@@ -241,6 +241,13 @@
 
 - (void)setLimitText {
     characterLimitLabel.text = [NSString stringWithFormat:@"%d", characterLimit - [commentInputField.text length]];
+    if ([commentInputField.text length] >= characterLimit) {
+        characterLimitLabel.textColor = [UIColor redColor];
+        sendButton.enabled = NO;
+    } else {
+        characterLimitLabel.textColor = [UIColor blackColor];
+        sendButton.enabled = YES;
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -253,6 +260,10 @@
 }
 
 -(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (characterLimit == range.location) {
+        return NO;
+    }
+
     for (DGEntity *entity in entities) {
         NSRange entityRange = [entity rangeFromArray];
         NSRange intersection = NSIntersectionRange(range, [entity rangeFromArray]);
