@@ -261,22 +261,25 @@
         else {
             DebugLog(@"Intersection = %@", NSStringFromRange(intersection));
             UITextRange *selectedTextRange = [textField selectedTextRange];
+            DebugLog(@"selected text range = %@", selectedTextRange);
             UITextPosition *newPosition = [textField positionFromPosition:selectedTextRange.start offset:entityRange.length];
             UITextRange *newTextRange = [textField textRangeFromPosition:newPosition toPosition:selectedTextRange.start];
+            DebugLog(@"this is null new position = %@", newPosition);
+            DebugLog(@"selected text range = %@", newTextRange);
 
             // Set new range
             if ([selectedTextRange isEqual:newTextRange]) {
                 [entities removeObject:entity];
                 return YES;
+                // i think this is unnecessary
+                break;
             } else {
                 [textField setSelectedTextRange:newTextRange];
                 return NO;
             }
         }
     }
-    
-    NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
-    textField.typingAttributes = attributes;
+    [self resetTypingAttributes:textField];
     int length = commentInputField.text.length - range.length + string.length;
 
     if (length > 0) {
@@ -285,6 +288,11 @@
         sendButton.enabled = NO;
     }
     return YES;
+}
+
+- (void)resetTypingAttributes:(UITextField *)textField {
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
+    textField.typingAttributes = attributes;
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -306,22 +314,33 @@
                 return;
             } else {
                 [self stopSearchingPeople];
+                accessoryButtonMention.selected = NO;
             }
         }
+
         if (searchTags) {
+            if ([textField.text length] >= startOfRange) {
+                searchTerm = [textField.text substringFromIndex:startOfRange];
+                // [self searchTags:searchTerm];
+                return;
+            } else {
+                // [self stopSearchingTags];
+                accessoryButtonTag.selected = NO;
+            }
 
         }
 
         searchTerm = @"";
 
-        if ([textField.text hasSuffix:@"@"]) {
+        if ([textField.text hasSuffix:@"@"] && accessoryButtonTag.selected == NO) {
             DebugLog(@"pop open table & start searching, and don't stop until 0 results are found");
             [self startSearchingPeople];
             startOfRange = [textField.text length];
+            [self searchPeople:nil];
             // save start of range here
         }
 
-        if ([textField.text hasSuffix:@"#"]) {
+        if ([textField.text hasSuffix:@"#"] && accessoryButtonMention.selected == NO) {
             DebugLog(@"pop open hash table & color following text up to a space");
             // searchTags = YES;
         }
@@ -330,9 +349,23 @@
 
 #pragma mark - People
 - (void)selectPeople:(id)sender {
-    accessoryButtonMention.selected = !accessoryButtonMention.selected;
-    commentInputField.text = [commentInputField.text stringByAppendingString:@"@"];
-    [self textFieldDidChange:commentInputField];
+    if (accessoryButtonMention.selected == NO && accessoryButtonTag.selected == NO) {
+        accessoryButtonMention.selected = !accessoryButtonMention.selected;
+        [self resetTypingAttributes:commentInputField];
+        DebugLog(@"attributed text... %@", commentInputField.attributedText);
+        commentInputField.attributedText = [self insert:@"@" atEndOf:commentInputField];
+        DebugLog(@"attributed text... %@", commentInputField.attributedText);
+        [self textFieldDidChange:commentInputField];
+    }
+}
+
+- (NSAttributedString *)insert:(NSString *)string atEndOf:(UITextField *)textField {
+    NSMutableAttributedString *mutableString = [[NSMutableAttributedString alloc] initWithAttributedString:textField.attributedText];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:LINK_COLOUR forKey:NSForegroundColorAttributeName];
+    NSAttributedString *extraCharacters = [[NSAttributedString alloc] initWithString:string attributes:attributes];
+    [mutableString appendAttributedString:extraCharacters];
+    DebugLog(@"umm");
+    return mutableString;
 }
 
 - (void)searchPeople:(NSString *)text {
@@ -354,6 +387,20 @@
 
     UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
     [searchTable registerNib:nib forCellReuseIdentifier:@"UserCell"];
+}
+
+- (void)startSearchingPeople {
+    searchTable.hidden = NO;
+    searchPeople = YES;
+    accessoryButtonMention.selected = YES;
+    searchTable.frame = CGRectMake(0, 0, 320, self.view.frame.size.height - totalKeyboardHeight);
+}
+
+- (void)stopSearchingPeople {
+    accessoryButtonMention.selected = NO;
+    searchTable.hidden = YES;
+    searchPeople = NO;
+    [searchPeopleTableController purge];
 }
 
 - (void)selectedPerson:(NSNotification *)notification {
@@ -385,25 +432,16 @@
     [self stopSearchingPeople];
 }
 
-- (void)startSearchingPeople {
-    searchTable.hidden = NO;
-    searchPeople = YES;
-    accessoryButtonMention.selected = YES;
-    searchTable.frame = CGRectMake(0, 0, 320, self.view.frame.size.height - totalKeyboardHeight);
-}
-
-- (void)stopSearchingPeople {
-    accessoryButtonMention.selected = NO;
-    searchTable.hidden = YES;
-    searchPeople = NO;
-    [searchPeopleTableController purge];
-}
 
 #pragma mark - Tags
 - (void)selectTag:(id)sender {
-    accessoryButtonTag.selected = !accessoryButtonTag.selected;
-    commentInputField.text = [commentInputField.text stringByAppendingString:@"#"];
-    [self textFieldDidChange:commentInputField];
+    if (accessoryButtonMention.selected == NO && accessoryButtonTag.selected == NO) {
+        accessoryButtonTag.selected = !accessoryButtonTag.selected;
+        [self resetTypingAttributes:commentInputField];
+        commentInputField.attributedText = [self insert:@"#" atEndOf:commentInputField];
+        // commentInputField.text = [commentInputField.text stringByAppendingString:@"#"];
+        [self textFieldDidChange:commentInputField];
+    }
 }
 
 - (void)startSearchingTags {

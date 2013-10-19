@@ -43,7 +43,14 @@
 }
 
 - (void)getUsersByName:(NSString *)searchText {
-    [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/users/search?search=%@", searchText] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    NSDictionary *params;
+    if (searchText) {
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:searchText, @"search", nil];
+    } else {
+        params = nil;
+    }
+
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/users/search" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [users removeAllObjects];
         [users addObjectsFromArray:mappingResult.array];
         if ([users count] == 0) {
