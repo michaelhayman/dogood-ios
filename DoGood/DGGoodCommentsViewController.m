@@ -33,7 +33,7 @@
     // accessories
     characterLimit = 120;
     [self setupAccessoryView];
-    [commentInputField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    // [commentInputField addTarget:self action:@selector(textViewDidChange:) forControlEvents:UIControlEventEditingChanged];
     commentInputField.allowsEditingTextAttributes = NO;
 
     // entities
@@ -46,9 +46,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:NO];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    // [[NSNotificationCenter defaultCenter] removeObserver:self];
     tableView.transform = CGAffineTransformMakeRotation(-M_PI);
     [TSMessage dismissActiveNotification];
+    [commentInputField resignFirstResponder];
 }
 
 // TODO: not sure why this is in will appear
@@ -248,7 +249,7 @@
     }
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (BOOL)textViewShouldReturn:(UITextView *)textField {
     if (![textField.text isEqualToString:@""]) {
         [self postComment:textField];
     } else {
@@ -257,12 +258,18 @@
     return NO;
 }
 
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+- (BOOL)textView:(UITextView *)textField shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)string {
+    if ([string isEqualToString:@"\n"]) {
+        [textField resignFirstResponder];
+        return NO;
+    }
+
     if (characterLimit == range.location) {
         return NO;
     }
 
     for (DGEntity *entity in entities) {
+        DebugLog(@"entity");
         NSRange entityRange = [entity rangeFromArray];
         NSRange intersection = NSIntersectionRange(range, [entity rangeFromArray]);
         entityRange.length = entityRange.length;
@@ -302,20 +309,23 @@
     return YES;
 }
 
-- (void)resetTypingAttributes:(UITextField *)textField {
+- (void)resetTypingAttributes:(UITextView *)textField {
+    DebugLog(@"reset typing");
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
     textField.typingAttributes = attributes;
 }
 
--(void)textFieldDidBeginEditing:(UITextField *)textField{
+-(BOOL)textViewShouldBeginEditing:(UITextView *)textField{
+    DebugLog(@"did begin..");
     [commentInputField setInputAccessoryView:accessoryView];
+    return YES;
 }
 
--(void)textFieldDidEndEditing:(UITextField *)textField {
+-(void)textFieldDidEndEditing:(UITextView *)textField {
 
 }
 
-- (void)textFieldDidChange:(UITextField *)textField {
+- (void)textViewDidChange:(UITextView *)textField {
     [self setLimitText];
 
     if (advanced) {
@@ -367,7 +377,8 @@
         DebugLog(@"attributed text... %@", commentInputField.attributedText);
         commentInputField.attributedText = [self insert:@"@" atEndOf:commentInputField.attributedText];
         DebugLog(@"attributed text... %@", commentInputField.attributedText);
-        [self textFieldDidChange:commentInputField];
+        [self textViewDidChange:commentInputField];
+        [self resetTypingAttributes:commentInputField];
     }
 }
 
@@ -449,7 +460,7 @@
         [self resetTypingAttributes:commentInputField];
         commentInputField.attributedText = [self insert:@"#" atEndOf:commentInputField.attributedText];
         // commentInputField.text = [commentInputField.text stringByAppendingString:@"#"];
-        [self textFieldDidChange:commentInputField];
+        [self textViewDidChange:commentInputField];
     }
 }
 

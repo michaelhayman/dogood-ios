@@ -4,10 +4,11 @@
 @class DGTextFieldSearchPeopleTableViewController;
 @class GoodCell;
 
-@interface DGGoodCommentsViewController : UIViewController <UITextFieldDelegate> {
+@interface DGGoodCommentsViewController : UIViewController <UITextViewDelegate> {
     __weak IBOutlet NSLayoutConstraint *commentFieldBottom;
     __weak IBOutlet UIView *commentInputView;
-    __weak IBOutlet UITextField *commentInputField;
+    __weak IBOutlet UITextView *commentInputField;
+    __weak IBOutlet NSLayoutConstraint *commentInputFieldHeight;
     __weak IBOutlet UITableView *tableView;
     NSMutableArray *comments;
     __weak IBOutlet NSLayoutConstraint *tableViewBottom;

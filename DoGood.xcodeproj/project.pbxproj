@@ -20,6 +20,7 @@
 		632A36BD17BCAEE8004EED26 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632A36BB17BCAEE8004EED26 /* UserCell.xib */; };
 		632A36C017BCAF00004EED26 /* DGUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A36BF17BCAF00004EED26 /* DGUserListViewController.m */; };
 		632A36D217BD1157004EED26 /* DGUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3717B8505900EE91C0 /* DGUserSettingsViewController.m */; };
+		6330B69E1812D891005DC78B /* DGEditableTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6330B69D1812D891005DC78B /* DGEditableTextView.m */; };
 		63357AFE17C279F2007B5FD7 /* DGUserFindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63357AFD17C279F2007B5FD7 /* DGUserFindFriendsViewController.m */; };
 		633DBF6117ADA5670038BC2D /* DGCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6017ADA5670038BC2D /* DGCategory.m */; };
 		633DBF6417ADA61D0038BC2D /* DGGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6317ADA61C0038BC2D /* DGGood.m */; };
@@ -136,6 +137,8 @@
 		632A36BB17BCAEE8004EED26 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		632A36BE17BCAF00004EED26 /* DGUserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserListViewController.h; sourceTree = "<group>"; };
 		632A36BF17BCAF00004EED26 /* DGUserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserListViewController.m; sourceTree = "<group>"; };
+		6330B69C1812D891005DC78B /* DGEditableTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGEditableTextView.h; sourceTree = "<group>"; };
+		6330B69D1812D891005DC78B /* DGEditableTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEditableTextView.m; sourceTree = "<group>"; };
 		63357AFC17C279F2007B5FD7 /* DGUserFindFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserFindFriendsViewController.h; sourceTree = "<group>"; };
 		63357AFD17C279F2007B5FD7 /* DGUserFindFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserFindFriendsViewController.m; sourceTree = "<group>"; };
 		633DBF5F17ADA5670038BC2D /* DGCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCategory.h; sourceTree = "<group>"; };
@@ -557,6 +560,8 @@
 			children = (
 				630046CE1810E619001529E5 /* URLHandler.h */,
 				630046CF1810E619001529E5 /* URLHandler.m */,
+				6330B69C1812D891005DC78B /* DGEditableTextView.h */,
+				6330B69D1812D891005DC78B /* DGEditableTextView.m */,
 				636AEA6C17AD4B8A002A3494 /* Assets */,
 				63DA644517DC0E76003DFF03 /* Social */,
 				6319D39017BDF05C0071DA71 /* Reusable Components */,
@@ -800,6 +805,7 @@
 				635A232017CAB5150045C256 /* DGCategories.m in Sources */,
 				63DA644417DBEA52003DFF03 /* UIViewController+DGViewController.m in Sources */,
 				63DA644817DC0F04003DFF03 /* DGExploreViewController.m in Sources */,
+				6330B69E1812D891005DC78B /* DGEditableTextView.m in Sources */,
 				63DA644B17DC0F28003DFF03 /* DGExploreCategoriesViewController.m in Sources */,
 				63DA644E17DC0F55003DFF03 /* DGExploreSearchViewController.m in Sources */,
 				63DA645517DC158D003DFF03 /* DGExploreSearchPeopleTableViewController.m in Sources */,

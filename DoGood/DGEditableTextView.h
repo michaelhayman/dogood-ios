@@ -1,0 +1,3 @@
+@interface DGEditableTextView : UITextView
+
+@end
