@@ -256,28 +256,25 @@
     for (DGEntity *entity in entities) {
         NSRange entityRange = [entity rangeFromArray];
         NSRange intersection = NSIntersectionRange(range, [entity rangeFromArray]);
-        DebugLog(@"should change chars %@ entity range %@, intersection %@", NSStringFromRange(range), NSStringFromRange( entityRange), NSStringFromRange(intersection));
         entityRange.length = entityRange.length;
         if (intersection.length <= 0)
-            DebugLog(@"Ranges do not intersect, continue");
+            DebugLog(@"Ranges do not intersect, continue as normal.");
         else {
             DebugLog(@"Intersection = %@", NSStringFromRange(intersection));
             UITextRange *selectedTextRange = [textField selectedTextRange];
+
+            // range of entity if it is not currently selected
             UITextPosition *newPosition = [textField positionFromPosition:selectedTextRange.start offset:-entityRange.length];
             UITextRange *newTextRange = [textField textRangeFromPosition:newPosition toPosition:selectedTextRange.start];
+
+            // range of entity if it is currently selected
             UITextPosition *anotherPosition = [textField positionFromPosition:selectedTextRange.start offset:entityRange.length];
             UITextRange *anotherTextRange = [textField textRangeFromPosition:selectedTextRange.start toPosition:anotherPosition];
 
-            DebugLog(@"selected text range = %@", selectedTextRange);
-            DebugLog(@"new text range = %@", newTextRange);
-
-            // Set new range
             if ([selectedTextRange isEqual:anotherTextRange]) {
-                DebugLog(@"is equal");
                 [entities removeObject:entity];
                 return YES;
             } else if (![selectedTextRange isEqual:newTextRange]) {
-                DebugLog(@"isn't equal");
                 [textField setSelectedTextRange:newTextRange];
                 return NO;
             }
