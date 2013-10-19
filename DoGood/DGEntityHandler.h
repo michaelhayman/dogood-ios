@@ -1,14 +1,14 @@
-#import "DGComment.h"
 @class DGGood;
 @class DGComment;
 @class DGTextFieldSearchPeopleTableViewController;
 @class GoodCell;
-@class DGEntityHandler;
 
-@interface DGGoodCommentsViewController : UIViewController <UITextViewDelegate> {
+@interface DGEntityHandler : NSObject <UITextViewDelegate> {
+    UIViewController *parent;
+
     __weak IBOutlet NSLayoutConstraint *commentFieldBottom;
     __weak IBOutlet UIView *commentInputView;
-    __weak IBOutlet UITextView *commentInputField;
+    // UITextView *commentInputField;
     __weak IBOutlet NSLayoutConstraint *commentInputFieldHeight;
     __weak IBOutlet NSLayoutConstraint *commentBoxHeight;
 
@@ -16,6 +16,7 @@
     NSMutableArray *comments;
     __weak IBOutlet NSLayoutConstraint *tableViewBottom;
     __weak IBOutlet UIButton *sendButton;
+    BOOL advanced;
 
     // keyboard
     CGFloat totalKeyboardHeight;
@@ -35,13 +36,21 @@
     NSString *searchTerm;
     DGTextFieldSearchPeopleTableViewController * searchPeopleTableController;
 
-    NSMutableArray *entities;
-    DGEntityHandler *entityHandler;
+    // NSMutableArray *entities;
 }
+
+@property (nonatomic, weak) UITextView *commentInputField;
 
 @property bool makeComment;
 @property DGGood *good;
 @property (nonatomic, retain) DGComment *comment;
 @property (nonatomic, retain) GoodCell *goodCell;
+
+- (void)initialize;
+
+typedef BOOL (^CheckEntitiesBlock)(BOOL end, NSMutableArray *entities);
+- (BOOL)check:(UITextView *)textField range:(NSRange)range forEntities:(NSMutableArray *)entities completion:(CheckEntitiesBlock)completion;
+// working kinda
+// - (BOOL)check:(UITextView *)textField range:(NSRange)range forEntities:(NSMutableArray *)entities completion:(BOOL (^)(CheckEntitiesBlock))completion;
 
 @end

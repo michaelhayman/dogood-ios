@@ -7,6 +7,8 @@
 #import "DGTextFieldSearchPeopleTableViewController.h"
 #import "DGAppearance.h"
 
+#import "DGEntityHandler.h"
+
 @interface DGGoodCommentsViewController ()
 
 @end
@@ -22,13 +24,19 @@
 
     [self setupMenuTitle:@"Comments"];
 
-    advanced = YES;
-
     // comments list
     UINib *nib = [UINib nibWithNibName:@"CommentCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"CommentCell"];
     comments = [[NSMutableArray alloc] init];
     [self fetchComments];
+
+
+    entityHandler = [[DGEntityHandler alloc] init];
+    /*
+    [entityHandler initialize];
+    commentInputField.delegate = entityHandler;
+    entityHandler.commentInputField = commentInputField;
+    */
 
     // accessories
     characterLimit = 120;
@@ -212,30 +220,19 @@
 - (void)setupAccessoryView {
     accessoryView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, kToolbarHeight)];
 
-    /*
-    accessoryView.translatesAutoresizingMaskIntoConstraints = NO;
-    NSDictionary* views = NSDictionaryOfVariableBindings(accessoryView);
-    accessoryViewHeight = [NSLayoutConstraint constraintWithItem:accessoryView attribute:<#(NSLayoutAttribute)#> relatedBy:<#(NSLayoutRelation)#> toItem:<#(id)#> attribute:<#(NSLayoutAttribute)#> multiplier:<#(CGFloat)#> constant:<#(CGFloat)#>
-    accessoryViewHeight = [NSLayoutConstraint constraintsWithVisualFormat:@"|[accessoryView(60)]|" options:0 metrics:0 views:views];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"|[accessoryView(60)]|" options:0 metrics:0 views:views]];
-     */
+    accessoryButtonMention = [UIButton buttonWithType:UIButtonTypeCustom];
+    [accessoryButtonMention setFrame:CGRectMake(10.0f, 10.0f, 26.0f, 23.0f)];
+    [accessoryButtonMention setImage:[UIImage imageNamed:@"KeyboardMention"] forState:UIControlStateNormal];
+    [accessoryButtonMention setImage:[UIImage imageNamed:@"KeyboardMentionActive"] forState:UIControlStateSelected];
+    [accessoryButtonMention addTarget:self action:@selector(selectPeople:) forControlEvents:UIControlEventTouchUpInside];
+    [accessoryView addSubview:accessoryButtonMention];
 
-
-    if (advanced) {
-        accessoryButtonMention = [UIButton buttonWithType:UIButtonTypeCustom];
-        [accessoryButtonMention setFrame:CGRectMake(10.0f, 10.0f, 26.0f, 23.0f)];
-        [accessoryButtonMention setImage:[UIImage imageNamed:@"KeyboardMention"] forState:UIControlStateNormal];
-        [accessoryButtonMention setImage:[UIImage imageNamed:@"KeyboardMentionActive"] forState:UIControlStateSelected];
-        [accessoryButtonMention addTarget:self action:@selector(selectPeople:) forControlEvents:UIControlEventTouchUpInside];
-        [accessoryView addSubview:accessoryButtonMention];
-
-        accessoryButtonTag = [UIButton buttonWithType:UIButtonTypeCustom];
-        [accessoryButtonTag setFrame:CGRectMake(50.0f, 10.0f, 33.0f, 23.0f)];
-        [accessoryButtonTag setImage:[UIImage imageNamed:@"KeyboardTag"] forState:UIControlStateNormal];
-        [accessoryButtonTag setImage:[UIImage imageNamed:@"KeyboardTagActive"] forState:UIControlStateSelected];
-        [accessoryButtonTag addTarget:self action:@selector(selectTag:) forControlEvents:UIControlEventTouchUpInside];
-        [accessoryView addSubview:accessoryButtonTag];
-    }
+    accessoryButtonTag = [UIButton buttonWithType:UIButtonTypeCustom];
+    [accessoryButtonTag setFrame:CGRectMake(50.0f, 10.0f, 33.0f, 23.0f)];
+    [accessoryButtonTag setImage:[UIImage imageNamed:@"KeyboardTag"] forState:UIControlStateNormal];
+    [accessoryButtonTag setImage:[UIImage imageNamed:@"KeyboardTagActive"] forState:UIControlStateSelected];
+    [accessoryButtonTag addTarget:self action:@selector(selectTag:) forControlEvents:UIControlEventTouchUpInside];
+    [accessoryView addSubview:accessoryButtonTag];
 
     characterLimitLabel = [[UILabel alloc] initWithFrame:CGRectMake(275, 10, 35, 23)];
     characterLimitLabel.textAlignment = NSTextAlignmentRight;
@@ -278,35 +275,6 @@
         return NO;
     }
 
-    for (DGEntity *entity in entities) {
-        DebugLog(@"entity");
-        NSRange entityRange = [entity rangeFromArray];
-        NSRange intersection = NSIntersectionRange(range, [entity rangeFromArray]);
-        entityRange.length = entityRange.length;
-        if (intersection.length <= 0)
-            DebugLog(@"Ranges do not intersect, continue as normal.");
-        else {
-            DebugLog(@"Intersection = %@", NSStringFromRange(intersection));
-            UITextRange *selectedTextRange = [textField selectedTextRange];
-
-            // range of entity if it is not currently selected
-            UITextPosition *newPosition = [textField positionFromPosition:selectedTextRange.start offset:-entityRange.length];
-            UITextRange *newTextRange = [textField textRangeFromPosition:newPosition toPosition:selectedTextRange.start];
-
-            // range of entity if it is currently selected
-            UITextPosition *anotherPosition = [textField positionFromPosition:selectedTextRange.start offset:entityRange.length];
-            UITextRange *anotherTextRange = [textField textRangeFromPosition:selectedTextRange.start toPosition:anotherPosition];
-
-            if ([selectedTextRange isEqual:anotherTextRange]) {
-                [entities removeObject:entity];
-                return YES;
-            } else if (![selectedTextRange isEqual:newTextRange]) {
-                [textField setSelectedTextRange:newTextRange];
-                return NO;
-            }
-        }
-    }
-
     [self resetTypingAttributes:textField];
     [self setLimitText];
     int length = commentInputField.text.length - range.length + string.length;
@@ -319,7 +287,12 @@
     } else {
         sendButton.enabled = NO;
     }
-    return YES;
+   
+    BOOL sup = [entityHandler check:textField range:(NSRange)range forEntities:entities completion:^BOOL(BOOL end, NSMutableArray *newEntities) {
+        entities = newEntities;
+        return end;
+    }];
+    return sup;
 }
 
 - (void)resetTypingAttributes:(UITextView *)textField {
@@ -340,44 +313,44 @@
 - (void)textViewDidChange:(UITextView *)textField {
     [self setLimitText];
 
-    if (advanced) {
-        if (searchPeople) {
-            if ([textField.text length] >= startOfRange) {
-                searchTerm = [textField.text substringFromIndex:startOfRange];
-                [self searchPeople:searchTerm];
-                return;
-            } else {
-                [self stopSearchingPeople];
-                accessoryButtonMention.selected = NO;
-            }
+    // [entityHandler watchForEntities];
+
+    if (searchPeople) {
+        if ([textField.text length] >= startOfRange) {
+            searchTerm = [textField.text substringFromIndex:startOfRange];
+            [self searchPeople:searchTerm];
+            return;
+        } else {
+            [self stopSearchingPeople];
+            accessoryButtonMention.selected = NO;
+        }
+    }
+
+    if (searchTags) {
+        if ([textField.text length] >= startOfRange) {
+            searchTerm = [textField.text substringFromIndex:startOfRange];
+            // [self searchTags:searchTerm];
+            return;
+        } else {
+            // [self stopSearchingTags];
+            accessoryButtonTag.selected = NO;
         }
 
-        if (searchTags) {
-            if ([textField.text length] >= startOfRange) {
-                searchTerm = [textField.text substringFromIndex:startOfRange];
-                // [self searchTags:searchTerm];
-                return;
-            } else {
-                // [self stopSearchingTags];
-                accessoryButtonTag.selected = NO;
-            }
+    }
 
-        }
+    searchTerm = @"";
 
-        searchTerm = @"";
+    if ([textField.text hasSuffix:@"@"] && accessoryButtonTag.selected == NO) {
+        DebugLog(@"pop open table & start searching, and don't stop until 0 results are found");
+        [self startSearchingPeople];
+        startOfRange = [textField.text length];
+        [self searchPeople:nil];
+        // save start of range here
+    }
 
-        if ([textField.text hasSuffix:@"@"] && accessoryButtonTag.selected == NO) {
-            DebugLog(@"pop open table & start searching, and don't stop until 0 results are found");
-            [self startSearchingPeople];
-            startOfRange = [textField.text length];
-            [self searchPeople:nil];
-            // save start of range here
-        }
-
-        if ([textField.text hasSuffix:@"#"] && accessoryButtonMention.selected == NO) {
-            DebugLog(@"pop open hash table & color following text up to a space");
-            // searchTags = YES;
-        }
+    if ([textField.text hasSuffix:@"#"] && accessoryButtonMention.selected == NO) {
+        DebugLog(@"pop open hash table & color following text up to a space");
+        // searchTags = YES;
     }
 }
 
