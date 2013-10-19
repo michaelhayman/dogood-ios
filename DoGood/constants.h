@@ -16,8 +16,14 @@
 
 #pragma mark - Styles -----
 
+// #define kSummaryCommentFont [UIFont fontWithName:@"Calibre" size:12.]
+#define kSummaryCommentFont [UIFont systemFontOfSize:10]
+#define kGoodCaptionFont [UIFont systemFontOfSize:14.]
+#define kGoodCaptionFont2 [UIFont systemFontOfSize:10.]
+
 #define kGoodRightColumnWidth 236.0
 #define kCommentRightColumnWidth 248.0
+#define kSummaryCommentRightColumnWidth 221.0
 
 // Styles
 #define LINK_COLOUR [UIColor colorWithRed:5.0/255.0 green:171.0/255.0 blue:117.0/255.0 alpha:1.0]

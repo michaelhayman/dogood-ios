@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *timePosted;
 
 - (void)setValues;
++ (void)addUsernameAndLinksToComment:(DGComment *)comment withText:(NSString *)text andFont:(UIFont *)font inLabel:(TTTAttributedLabel*)label;
 
 @end

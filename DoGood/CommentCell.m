@@ -34,13 +34,23 @@
     self.timePosted.text = [[self.comment createdAgoInWords] uppercaseString];
 
     NSDictionary *attributes = @{ NSFontAttributeName : self.commentBody.font };
-    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.comment.comment attributes:attributes];
+    NSString *text =[NSString stringWithFormat:@"%@ %@", self.comment.user.username, self.comment.comment];
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:text attributes:attributes];
     self.commentBody.attributedText = attrString;
+
+    UIFont *font = [UIFont boldSystemFontOfSize:13];
+    [CommentCell addUsernameAndLinksToComment:self.comment withText:text andFont:font inLabel:self.commentBody];
+    /*
+    NSRange r = NSMakeRange(0, [self.comment.user.username length]);
+    // NSRange r =  [self.commentBody.text rangeOfString:self.comment.user.username];
+    [self.commentBody addLinkToURL:[NSURL URLWithString:[NSString stringWithFormat:@"dogood://users/%@", self.comment.user.userID]] withRange:r];
 
     for (DGEntity *entity in self.comment.entities) {
         NSURL *url = [NSURL URLWithString:entity.link];
-        [self.commentBody addLinkToURL:url withRange:[entity rangeFromArray]];
+        // [self.commentBody addLinkToURL:url withRange:[entity rangeFromArray]];
+        [self.commentBody addLinkToURL:url withRange:[entity rangeFromArrayWithOffset:[self.comment.user.username length] + 1]];
     }
+    */
 
     CGFloat height = [DGAppearance calculateHeightForText:self.commentBody.attributedText andWidth:kCommentRightColumnWidth];
 
@@ -60,6 +70,39 @@
 #pragma mark - User profile helper
 - (void)showGoodUserProfile {
     [DGUser openProfilePage:self.comment.user.userID inController:self.navigationController];
+}
+
++ (void)addUsernameAndLinksToComment:(DGComment *)comment withText:(NSString *)text andFont:(UIFont *)font inLabel:(TTTAttributedLabel*)label {
+    [label setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
+        NSRange stringRange = NSMakeRange(0, [mutableAttributedString length]);
+
+        // NSRegularExpression *regexp = NameRegularExpression();
+
+        NSRegularExpression *regexp = [[NSRegularExpression alloc] initWithPattern:[NSString stringWithFormat:@"%@+",comment.user.username] options:NSRegularExpressionCaseInsensitive error:nil];
+
+        [regexp enumerateMatchesInString:[mutableAttributedString string] options:0 range:stringRange usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {            
+            UIFont *italicSystemFont = font;
+            CTFontRef italicFont = CTFontCreateWithName((__bridge CFStringRef)italicSystemFont.fontName, italicSystemFont.pointSize, NULL);
+            if (italicFont) {
+                [mutableAttributedString removeAttribute:(NSString *)kCTFontAttributeName range:result.range];
+                [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)italicFont range:result.range];
+                CFRelease(italicFont);
+                
+                [mutableAttributedString removeAttribute:(NSString *)kCTForegroundColorAttributeName range:result.range];
+                [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(__bridge id)[[UIColor grayColor] CGColor] range:result.range];
+            }
+        }];
+
+        return mutableAttributedString;
+    }];
+
+    NSRange r = [text rangeOfString:comment.user.username];
+    [label addLinkToURL:[NSURL URLWithString:[NSString stringWithFormat:@"dogood://users/%@", comment.user.userID]] withRange:r];
+
+    for (DGEntity *entity in comment.entities) {
+        NSURL *url = [NSURL URLWithString:entity.link];
+        [label addLinkToURL:url withRange:[entity rangeFromArrayWithOffset:[comment.user.username length] + 1]];
+    }
 }
 
 @end

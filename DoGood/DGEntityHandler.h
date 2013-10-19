@@ -6,37 +6,27 @@
 @interface DGEntityHandler : NSObject <UITextViewDelegate> {
     UIViewController *parent;
 
-    __weak IBOutlet NSLayoutConstraint *commentFieldBottom;
-    __weak IBOutlet UIView *commentInputView;
-    // UITextView *commentInputField;
-    __weak IBOutlet NSLayoutConstraint *commentInputFieldHeight;
-    __weak IBOutlet NSLayoutConstraint *commentBoxHeight;
-
-    __weak IBOutlet UITableView *tableView;
-    NSMutableArray *comments;
-    __weak IBOutlet NSLayoutConstraint *tableViewBottom;
-    __weak IBOutlet UIButton *sendButton;
-    BOOL advanced;
+    UITextView *entityTextView;
+    NSString *entityType;
 
     // keyboard
-    CGFloat totalKeyboardHeight;
     UIToolbar *accessoryView;
-    NSLayoutConstraint *accessoryViewHeight;
     UIButton *accessoryButtonMention;
     UIButton *accessoryButtonTag;
     UILabel *characterLimitLabel;
     int characterLimit;
+    CGFloat totalKeyboardHeight;
 
+    // searching
     bool searchPeople;
     bool searchTags;
-
     int startOfRange;
+
     UITableView *searchTable;
-
-    NSString *searchTerm;
     DGTextFieldSearchPeopleTableViewController * searchPeopleTableController;
+    NSString *searchTerm;
 
-    // NSMutableArray *entities;
+    NSMutableArray *entities;
 }
 
 @property (nonatomic, weak) UITextView *commentInputField;
@@ -50,7 +40,9 @@
 
 typedef BOOL (^CheckEntitiesBlock)(BOOL end, NSMutableArray *entities);
 - (BOOL)check:(UITextView *)textField range:(NSRange)range forEntities:(NSMutableArray *)entities completion:(CheckEntitiesBlock)completion;
-// working kinda
-// - (BOOL)check:(UITextView *)textField range:(NSRange)range forEntities:(NSMutableArray *)entities completion:(BOOL (^)(CheckEntitiesBlock))completion;
+- (void)watchForEntities:(UITextView *)textField;
+- (id)initWithTextView:(UITextView *)textView andEntities:(NSMutableArray *)inputEntities inController:(UIViewController *)controller withType:(NSString *)type;
+- (void)resetTypingAttributes:(UITextView *)textField;
+- (void)setLimitText;
 
 @end

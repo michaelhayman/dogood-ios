@@ -13,5 +13,6 @@
 @property (retain) NSDate *created_at;
 
 - (NSString *)createdAgoInWords;
+- (NSString *)commentWithUsername;
 
 @end

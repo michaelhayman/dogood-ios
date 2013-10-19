@@ -11,5 +11,6 @@
 
 - (NSRange)rangeFromArray;
 - (void)setArrayFromRange:(NSRange)range;
+- (NSRange)rangeFromArrayWithOffset:(int)offset;
 
 @end

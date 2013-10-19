@@ -9,6 +9,7 @@
 #import "UserOverview.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
 #import "DGAppearance.h"
+#import "DGComment.h"
 
 @interface DGGoodListViewController ()
 
@@ -17,8 +18,6 @@
 @implementation DGGoodListViewController
 
 @synthesize tableView;
-
-#define kGoodCaptionFont [UIFont systemFontOfSize:14.]
 
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
@@ -280,8 +279,13 @@
         height += 20;
     }
     if (good.comments) {
-        height += [good.comments count] * 20;
-        height += 30;
+        height += 40;
+        for (DGComment *comment in good.comments) {
+            NSDictionary *commentAttributes = @{ NSFontAttributeName : kSummaryCommentFont };
+            NSAttributedString *attrCommentString = [[NSAttributedString alloc] initWithString:[comment.user.username stringByAppendingString:comment.comment] attributes:commentAttributes];
+            CGFloat commentHeight = [DGAppearance calculateHeightForText:attrCommentString andWidth:kSummaryCommentRightColumnWidth];
+            height += commentHeight;
+        }
     }
     if ([good.likes_count intValue] > 0) {
         height += 30;

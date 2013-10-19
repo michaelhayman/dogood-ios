@@ -16,10 +16,23 @@
 
 @implementation DGEntityHandler
 
-@synthesize commentInputField;
+- (id)initWithTextView:(UITextView *)textView andEntities:(NSMutableArray *)inputEntities inController:(UIViewController *)controller withType:(NSString *)type
+{
+    self = [super init];
+    if (self) {
+        entityTextView = textView;
+        entities = inputEntities;
+        entityType = type;
+        parent = controller;
+        characterLimit = 120;
+        [self setupAccessoryView];
+        [self setupSearchPeopleTable];
+    }
+    return self;
+}
 
-- (BOOL)check:(UITextView *)textField range:(NSRange)range forEntities:(NSMutableArray *)entities completion:(CheckEntitiesBlock)completion {
-     for (DGEntity *entity in entities) {
+- (BOOL)check:(UITextView *)textField range:(NSRange)range forEntities:(NSMutableArray *)theseEntities completion:(CheckEntitiesBlock)completion {
+     for (DGEntity *entity in theseEntities) {
         DebugLog(@"entity");
         NSRange entityRange = [entity rangeFromArray];
         NSRange intersection = NSIntersectionRange(range, [entity rangeFromArray]);
@@ -39,11 +52,12 @@
             UITextRange *anotherTextRange = [textField textRangeFromPosition:selectedTextRange.start toPosition:anotherPosition];
 
             if ([selectedTextRange isEqual:anotherTextRange]) {
-                [entities removeObject:entity];
-                completion(YES, entities);
+                [theseEntities removeObject:entity];
+                [self resetTypingAttributes:textField];
+                completion(YES, theseEntities);
                 return YES;
             } else if (![selectedTextRange isEqual:newTextRange]) {
-                completion(YES, entities);
+                completion(YES, theseEntities);
                 [textField setSelectedTextRange:newTextRange];
                 return NO;
             }
@@ -52,55 +66,78 @@
     return YES;
 }
 
-/*
-#pragma mark - View lifecycle
-- (void)initialize {
-    advanced = YES;
+- (void)watchForEntities:(UITextView *)textField {
+    if (searchPeople) {
+        if ([textField.text length] >= startOfRange) {
+            searchTerm = [textField.text substringFromIndex:startOfRange];
+            [self searchPeople:searchTerm];
+            return;
+        } else {
+            [self stopSearchingPeople];
+            accessoryButtonMention.selected = NO;
+        }
+    }
 
-    // accessories
-    characterLimit = 120;
-    [self setupAccessoryView];
+    if (searchTags) {
+        if ([textField.text length] >= startOfRange) {
+            searchTerm = [textField.text substringFromIndex:startOfRange];
+            // [self searchTags:searchTerm];
+            return;
+        } else {
+            // [self stopSearchingTags];
+            accessoryButtonTag.selected = NO;
+        }
 
-    // entities
-    entities = [[NSMutableArray alloc] init];
-    [self setupSearchPeopleTable];
+    }
+
+    searchTerm = @"";
+
+    if ([textField.text hasSuffix:@"@"] && accessoryButtonTag.selected == NO) {
+        DebugLog(@"pop open table & start searching, and don't stop until 0 results are found");
+        [self startSearchingPeople];
+        startOfRange = [textField.text length];
+        [self searchPeople:nil];
+        // save start of range here
+    }
+
+    if ([textField.text hasSuffix:@"#"] && accessoryButtonMention.selected == NO) {
+        DebugLog(@"pop open hash table & color following text up to a space");
+        // searchTags = YES;
+    }
 }
 
 #pragma mark - Keyboard management
 - (void)setupAccessoryView {
     accessoryView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, kToolbarHeight)];
 
-    if (advanced) {
-        accessoryButtonMention = [UIButton buttonWithType:UIButtonTypeCustom];
-        [accessoryButtonMention setFrame:CGRectMake(10.0f, 10.0f, 26.0f, 23.0f)];
-        [accessoryButtonMention setImage:[UIImage imageNamed:@"KeyboardMention"] forState:UIControlStateNormal];
-        [accessoryButtonMention setImage:[UIImage imageNamed:@"KeyboardMentionActive"] forState:UIControlStateSelected];
-        [accessoryButtonMention addTarget:self action:@selector(selectPeople:) forControlEvents:UIControlEventTouchUpInside];
-        [accessoryView addSubview:accessoryButtonMention];
+    accessoryButtonMention = [UIButton buttonWithType:UIButtonTypeCustom];
+    [accessoryButtonMention setFrame:CGRectMake(10.0f, 10.0f, 26.0f, 23.0f)];
+    [accessoryButtonMention setImage:[UIImage imageNamed:@"KeyboardMention"] forState:UIControlStateNormal];
+    [accessoryButtonMention setImage:[UIImage imageNamed:@"KeyboardMentionActive"] forState:UIControlStateSelected];
+    [accessoryButtonMention addTarget:self action:@selector(selectPeople:) forControlEvents:UIControlEventTouchUpInside];
+    [accessoryView addSubview:accessoryButtonMention];
 
-        accessoryButtonTag = [UIButton buttonWithType:UIButtonTypeCustom];
-        [accessoryButtonTag setFrame:CGRectMake(50.0f, 10.0f, 33.0f, 23.0f)];
-        [accessoryButtonTag setImage:[UIImage imageNamed:@"KeyboardTag"] forState:UIControlStateNormal];
-        [accessoryButtonTag setImage:[UIImage imageNamed:@"KeyboardTagActive"] forState:UIControlStateSelected];
-        [accessoryButtonTag addTarget:self action:@selector(selectTag:) forControlEvents:UIControlEventTouchUpInside];
-        [accessoryView addSubview:accessoryButtonTag];
-    }
+    accessoryButtonTag = [UIButton buttonWithType:UIButtonTypeCustom];
+    [accessoryButtonTag setFrame:CGRectMake(50.0f, 10.0f, 33.0f, 23.0f)];
+    [accessoryButtonTag setImage:[UIImage imageNamed:@"KeyboardTag"] forState:UIControlStateNormal];
+    [accessoryButtonTag setImage:[UIImage imageNamed:@"KeyboardTagActive"] forState:UIControlStateSelected];
+    [accessoryButtonTag addTarget:self action:@selector(selectTag:) forControlEvents:UIControlEventTouchUpInside];
+    [accessoryView addSubview:accessoryButtonTag];
 
     characterLimitLabel = [[UILabel alloc] initWithFrame:CGRectMake(275, 10, 35, 23)];
     characterLimitLabel.textAlignment = NSTextAlignmentRight;
     characterLimitLabel.backgroundColor = [UIColor clearColor];
     [self setLimitText];
     [accessoryView addSubview:characterLimitLabel];
+    [entityTextView setInputAccessoryView:accessoryView];
 }
 
 - (void)setLimitText {
-    characterLimitLabel.text = [NSString stringWithFormat:@"%d", characterLimit - [commentInputField.text length]];
-    if ([commentInputField.text length] >= characterLimit) {
+    characterLimitLabel.text = [NSString stringWithFormat:@"%d", characterLimit - [entityTextView.text length]];
+    if ([entityTextView.text length] >= characterLimit) {
         characterLimitLabel.textColor = [UIColor redColor];
-        sendButton.enabled = NO;
     } else {
         characterLimitLabel.textColor = [UIColor blackColor];
-        sendButton.enabled = YES;
     }
 }
 
@@ -108,12 +145,13 @@
 - (void)selectPeople:(id)sender {
     if (accessoryButtonMention.selected == NO && accessoryButtonTag.selected == NO) {
         accessoryButtonMention.selected = !accessoryButtonMention.selected;
-        [self resetTypingAttributes:commentInputField];
-        DebugLog(@"attributed text... %@", commentInputField.attributedText);
-        commentInputField.attributedText = [self insert:@"@" atEndOf:commentInputField.attributedText];
-        DebugLog(@"attributed text... %@", commentInputField.attributedText);
-        [self textViewDidChange:commentInputField];
-        [self resetTypingAttributes:commentInputField];
+        // [self resetTypingAttributes:entityTextView];
+        DebugLog(@"attributed text... %@", entityTextView.attributedText);
+        entityTextView.attributedText = [self insert:@"@" atEndOf:entityTextView.attributedText];
+        DebugLog(@"attributed text... %@", entityTextView.attributedText);
+        [self watchForEntities:entityTextView];
+        // [self textViewDidChange:entityTextView];
+        [self resetTypingAttributes:entityTextView];
     }
 }
 
@@ -133,6 +171,7 @@
 - (void)setupSearchPeopleTable {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopSearchingPeople) name:DGUserDidNotFindPeopleForTextField object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedPerson:) name:DGUserDidSelectPersonForTextField object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
     searchTable = [[UITableView alloc] init];
     searchTable.transform = CGAffineTransformMakeRotation(-M_PI);
@@ -147,6 +186,11 @@
     [searchTable registerNib:nib forCellReuseIdentifier:@"UserCell"];
 }
 
+- (void)keyboardWillShow:(NSNotification *)notification {
+    CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    totalKeyboardHeight = keyboardSize.height + kCommentFieldHeight;
+}
+
 - (void)startSearchingPeople {
     searchTable.hidden = NO;
     searchPeople = YES;
@@ -159,6 +203,7 @@
     searchTable.hidden = YES;
     searchPeople = NO;
     [searchPeopleTableController purge];
+    [self resetTypingAttributes:entityTextView];
 }
 
 // here take an arbitrary string 
@@ -170,15 +215,15 @@
     int personLength = [user.full_name length];
     int endOfPersonRange = startOfPersonRange + personLength;
 
-    NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[commentInputField.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfPersonRange)];
-    commentInputField.attributedText = [self insert:[user.full_name stringByAppendingString:@" "] atEndOf:originalComment];
+    NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[entityTextView.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfPersonRange)];
+    entityTextView.attributedText = [self insert:[user.full_name stringByAppendingString:@" "] atEndOf:originalComment];
     [self setLimitText];
 
     NSRange range = NSMakeRange(startOfPersonRange, endOfPersonRange - startOfPersonRange);
 
     DGEntity *entity = [DGEntity new];
     [entity setArrayFromRange:range];
-    entity.entityable_type = @"Comment";
+    entity.entityable_type = entityType;
     entity.entityable_id = user.userID;
     entity.title = user.full_name;
     entity.link = [NSString stringWithFormat:@"dogood://users/%@", user.userID];
@@ -193,16 +238,20 @@
 - (void)selectTag:(id)sender {
     if (accessoryButtonMention.selected == NO && accessoryButtonTag.selected == NO) {
         accessoryButtonTag.selected = !accessoryButtonTag.selected;
-        [self resetTypingAttributes:commentInputField];
-        commentInputField.attributedText = [self insert:@"#" atEndOf:commentInputField.attributedText];
-        // commentInputField.text = [commentInputField.text stringByAppendingString:@"#"];
-        [self textViewDidChange:commentInputField];
+        [self resetTypingAttributes:entityTextView];
+        entityTextView.attributedText = [self insert:@"#" atEndOf:entityTextView.attributedText];
+        // entityTextView.text = [entityTextView.text stringByAppendingString:@"#"];
+        [self textViewDidChange:entityTextView];
     }
 }
 
 - (void)startSearchingTags {
 
 }
-*/
+
+- (void)resetTypingAttributes:(UITextView *)textField {
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
+    textField.typingAttributes = attributes;
+}
 
 @end

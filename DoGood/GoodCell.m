@@ -14,7 +14,7 @@
 #import "DGGoodListViewController.h"
 #import "URLHandler.h"
 #import "DGAppearance.h"
-
+#import "CommentCell.h"
 
 static inline NSRegularExpression * NameRegularExpression() {
     static NSRegularExpression *_nameRegularExpression = nil;
@@ -357,7 +357,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
 - (TTTAttributedLabel *)commentLabel {
     TTTAttributedLabel *label = [[TTTAttributedLabel alloc] initWithFrame:CGRectZero];
-    label.font = [UIFont fontWithName:@"Calibre" size:12];
+    label.font = kSummaryCommentFont;
     label.textColor = [UIColor darkGrayColor];
     label.lineBreakMode = NSLineBreakByWordWrapping;
     label.numberOfLines = 0;
@@ -375,37 +375,14 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     }
     for (DGComment *comment in [self.good.comments reverseObjectEnumerator]) {
         TTTAttributedLabel *label = [self commentLabel];
-        NSString *text = [NSString stringWithFormat:@"%@ %@", comment.user.username, comment.comment];
+        NSString *text = [comment commentWithUsername];
 
-        label.font = [UIFont systemFontOfSize:10];
+        label.font = kSummaryCommentFont;
 
-        [label setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
-            NSRange stringRange = NSMakeRange(0, [mutableAttributedString length]);
-            
-            // NSRegularExpression *regexp = NameRegularExpression();
+        UIFont *font = [UIFont boldSystemFontOfSize:10];
+        [CommentCell addUsernameAndLinksToComment:comment withText:text andFont:font inLabel:label];
 
-            NSRegularExpression *regexp = [[NSRegularExpression alloc] initWithPattern:[NSString stringWithFormat:@"%@+",comment.user.username] options:NSRegularExpressionCaseInsensitive error:nil];
-
-            [regexp enumerateMatchesInString:[mutableAttributedString string] options:0 range:stringRange usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {            
-                UIFont *italicSystemFont = [UIFont boldSystemFontOfSize:10];
-                CTFontRef italicFont = CTFontCreateWithName((__bridge CFStringRef)italicSystemFont.fontName, italicSystemFont.pointSize, NULL);
-                if (italicFont) {
-                    [mutableAttributedString removeAttribute:(NSString *)kCTFontAttributeName range:result.range];
-                    [mutableAttributedString addAttribute:(NSString *)kCTFontAttributeName value:(__bridge id)italicFont range:result.range];
-                    CFRelease(italicFont);
-                    
-                    [mutableAttributedString removeAttribute:(NSString *)kCTForegroundColorAttributeName range:result.range];
-                    [mutableAttributedString addAttribute:(NSString *)kCTForegroundColorAttributeName value:(__bridge id)[[UIColor grayColor] CGColor] range:result.range];
-                }
-            }];
-
-            return mutableAttributedString;
-        }];
-
-        NSRange r = [text rangeOfString:comment.user.username];
-        [label addLinkToURL:[NSURL URLWithString:[NSString stringWithFormat:@"dogood://users/%@", comment.user.userID]] withRange:r];
-
-        CGFloat labelWidth = 221;
+        CGFloat labelWidth = kSummaryCommentRightColumnWidth;
         CGRect rect = [label.attributedText boundingRectWithSize:CGSizeMake(labelWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
         CGSize size = rect.size;
         CGFloat height = ceilf(size.height);
@@ -419,6 +396,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     commentBoxHeight.constant = lastHeight + 0.0;
     [self layoutIfNeeded];
 }
+
 
 #pragma mark - Description
 - (void)setCaptionText {

@@ -7,4 +7,8 @@
     return [self.created_at timeAgo];
 }
 
+- (NSString *)commentWithUsername {
+    return [NSString stringWithFormat:@"%@ %@", self.user.username, self.comment];
+}
+
 @end
