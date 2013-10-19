@@ -15,7 +15,6 @@
 #import "URLHandler.h"
 #import "DGAppearance.h"
 
-#define kRightColumnWidth 236.0
 
 static inline NSRegularExpression * NameRegularExpression() {
     static NSRegularExpression *_nameRegularExpression = nil;
@@ -426,7 +425,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     NSDictionary *attributes = @{NSFontAttributeName : self.description.font};
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.good.caption attributes:attributes];
     self.description.attributedText = attrString;
-    captionHeight.constant = [GoodCell calculateHeightForText:attrString];
+    captionHeight.constant = [DGAppearance calculateHeightForText:attrString andWidth:kGoodRightColumnWidth];
     self.description.linkAttributes = [DGAppearance linkAttributes];
 
     NSRange stringRange = NSMakeRange(0, [self.description.attributedText length]);
@@ -459,15 +458,6 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     }
 
     self.description.delegate = self;
-}
-
-+ (CGFloat)calculateHeightForText:(NSAttributedString *)string {
-    CGRect rect = [string boundingRectWithSize:CGSizeMake(kRightColumnWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil];
-    CGSize size = rect.size;
-    CGFloat height = ceilf(size.height);
-    // CGFloat width  = ceilf(size.width);
-
-    return height;
 }
 
 #pragma mark - More options

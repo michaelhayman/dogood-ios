@@ -31,6 +31,8 @@
     [self.avatar setImageWithURL:[NSURL URLWithString:self.comment.user.avatar]];
     self.user.text = self.comment.user.username;
 
+    self.timePosted.text = [[self.comment createdAgoInWords] uppercaseString];
+
     NSDictionary *attributes = @{ NSFontAttributeName : self.commentBody.font };
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.comment.comment attributes:attributes];
     self.commentBody.attributedText = attrString;
@@ -39,6 +41,12 @@
         NSURL *url = [NSURL URLWithString:entity.link];
         [self.commentBody addLinkToURL:url withRange:[entity rangeFromArray]];
     }
+
+    CGFloat height = [DGAppearance calculateHeightForText:self.commentBody.attributedText andWidth:kCommentRightColumnWidth];
+
+    self.commentBody.delegate = self;
+    self.commentBodyHeight.constant = height;
+    [self layoutIfNeeded];
 }
 
 #pragma mark - TTTAttributedLabel delegate methods

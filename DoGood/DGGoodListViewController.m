@@ -8,6 +8,7 @@
 #import "DGWelcomeViewController.h"
 #import "UserOverview.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
+#import "DGAppearance.h"
 
 @interface DGGoodListViewController ()
 
@@ -266,7 +267,7 @@
     NSDictionary *attributes = @{NSFontAttributeName : kGoodCaptionFont};
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:good.caption attributes:attributes];
 
-    CGFloat captionHeight = [GoodCell calculateHeightForText:attrString];
+    CGFloat captionHeight = [DGAppearance calculateHeightForText:attrString andWidth:kGoodRightColumnWidth];
     height += captionHeight;
 
     if (good.evidence) {

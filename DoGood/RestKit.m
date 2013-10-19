@@ -174,7 +174,8 @@
  
     [commentMapping addAttributeMappingsFromArray:@[
      @"comment",
-     @"user_id"
+     @"user_id",
+     @"created_at"
     ]];
     [commentMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:userMapping]];
     RKResponseDescriptor *commentResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:commentMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"comments" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];

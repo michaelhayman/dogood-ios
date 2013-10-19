@@ -5,6 +5,7 @@
 #import "CommentCell.h"
 #import "DGEntity.h"
 #import "DGTextFieldSearchPeopleTableViewController.h"
+#import "DGAppearance.h"
 
 @interface DGGoodCommentsViewController ()
 
@@ -85,14 +86,11 @@
     DGComment * comment = comments[indexPath.row];
     UIFont *font = [UIFont systemFontOfSize:13];
     NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:comment.comment attributes:@ { NSFontAttributeName: font }];
-    CGFloat width = 235;
-    CGRect rect = [attributedText boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX)
-                                               options:NSStringDrawingUsesLineFragmentOrigin
-                                               context:nil];
-    CGSize size = rect.size;
-    CGFloat height = ceilf(size.height);
 
-    return MAX(63, height + 22);
+    CGFloat height = [DGAppearance calculateHeightForText:attributedText andWidth:kCommentRightColumnWidth];
+
+    CGFloat cellHeight = MAX(63, height + 42);
+    return cellHeight;
 }
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
@@ -107,10 +105,12 @@
     return @"";
 }
 
+/*
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     // This will create a "invisible" footer
     return 0.01f;
 }
+*/
 
 #pragma mark - Comment posting
 - (IBAction)postComment:(id)sender {
@@ -443,7 +443,6 @@
 
     [self stopSearchingPeople];
 }
-
 
 #pragma mark - Tags
 - (void)selectTag:(id)sender {

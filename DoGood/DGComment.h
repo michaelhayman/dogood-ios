@@ -10,5 +10,8 @@
 @property (retain) DGGood *good;
 @property (retain) DGUser *user;
 @property (retain) NSArray *entities;
+@property (retain) NSDate *created_at;
+
+- (NSString *)createdAgoInWords;
 
 @end
