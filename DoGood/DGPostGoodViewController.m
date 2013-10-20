@@ -82,8 +82,6 @@
     [super viewWillDisappear:animated];
     // [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidAddPhotoNotification object:nil];
     // [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidRemovePhotoNotification object:nil];
-    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
-    [cell.description resignFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -186,6 +184,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
+    [cell.description resignFirstResponder];
+
     if (indexPath.section == category) {
         DebugLog(@"good.category %@", self.good.category);
         if (self.good.category != nil) {
