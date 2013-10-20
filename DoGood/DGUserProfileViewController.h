@@ -25,6 +25,7 @@
 
     UIActionSheet *moreOptionsSheet;
     UIActionSheet *shareOptionsSheet;
+    UIView *loadingView;
 }
 
 @property (weak, nonatomic) NSNumber *userID;
