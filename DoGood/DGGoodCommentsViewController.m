@@ -33,6 +33,7 @@
     comments = [[NSMutableArray alloc] init];
 
     tableView.hidden = YES;
+    tableView.tableFooterView = [[UIView alloc] init];
 
     loadingView = [DGAppearance createLoadingViewCenteredOn:tableView];
     [self.view addSubview:loadingView];
@@ -134,13 +135,6 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     return @"";
 }
-
-/*  This has bugs o
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    // This will create a "invisible" footer
-    return 0.01f;
-}
-*/
 
 #pragma mark - Comment posting
 - (IBAction)postComment:(id)sender {
