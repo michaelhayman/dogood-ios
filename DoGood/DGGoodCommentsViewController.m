@@ -291,7 +291,7 @@
 - (void)textViewDidChange:(UITextView *)textField {
     [entityHandler watchForEntities:textField];
     [entityHandler setLimitText];
-    if ([textField.text length] >= characterLimit) {
+    if ([textField.text length] >= characterLimit || [textField.text isEqualToString:@""]) {
         sendButton.enabled = NO;
     } else {
         sendButton.enabled = YES;
