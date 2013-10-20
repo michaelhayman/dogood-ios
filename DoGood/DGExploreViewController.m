@@ -43,6 +43,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchFieldDidEndEditing) name:DGSearchTextFieldDidEndEditing object:nil];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     // this should be moved elsewhere as we don't want it called constantly

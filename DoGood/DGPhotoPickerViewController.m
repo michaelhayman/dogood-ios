@@ -22,6 +22,10 @@
     [super viewDidLoad];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Camera helpers
 - (void)openPhotoSheet:(UIImage *)image {
     NSString *destructiveButtonTitle;

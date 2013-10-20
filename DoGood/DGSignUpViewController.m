@@ -36,6 +36,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidRemovePhotoNotification object:nil];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - Verify account creation
 - (IBAction)verifyNext:(id)sender {
     if ([name.text isEqualToString:@""]) {

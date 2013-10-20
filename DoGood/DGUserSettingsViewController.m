@@ -68,6 +68,10 @@
     // connection status
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     // [ThirdParties checkTwitterAccess:NO];
     // [ThirdParties checkFacebookAccess];

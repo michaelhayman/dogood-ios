@@ -26,6 +26,10 @@
     self.navigationItem.title = @"Forgot Password";
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)popController {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -46,10 +50,6 @@
 - (IBAction)forgotPassword:(id)sender {
     DebugLog(@"email %@", self.emailField.text);
     [self sendPasswordToEmail:self.emailField.text];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UITextFieldDelegate

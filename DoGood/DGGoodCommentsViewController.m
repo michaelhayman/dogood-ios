@@ -56,6 +56,10 @@
     // [commentInputField resignFirstResponder];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 // TODO: not sure why this is in will appear
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

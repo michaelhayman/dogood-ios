@@ -18,6 +18,10 @@
                                                object:nil];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -50,11 +54,6 @@
                                    type:TSMessageNotificationTypeError];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailUpdatePasswordNotification object:self];
     }];
-}
-
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UITextFieldDelegate

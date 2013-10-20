@@ -20,4 +20,8 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidToggleMenu object:nil];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 @end

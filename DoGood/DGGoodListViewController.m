@@ -51,6 +51,9 @@
     }
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)initializeTable {
     UINib *nib = [UINib nibWithNibName:@"GoodCell" bundle:nil];

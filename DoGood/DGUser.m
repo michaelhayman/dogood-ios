@@ -43,6 +43,10 @@ static DGUser* currentUser = nil;
 	currentUser = user;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - HTTP Headers
 + (void)setAuthorizationHeader {
     DebugLog(@"setting authorization header for %@ and %@", currentUser.username, currentUser.password);

@@ -93,6 +93,10 @@
     _menu.waitUntilAnimationIsComplete = NO;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     DebugLog(@"dispapeared nv");
     if (_menu && _menu.isOpen) {
