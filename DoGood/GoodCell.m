@@ -15,6 +15,7 @@
 #import "URLHandler.h"
 #import "DGAppearance.h"
 #import "CommentCell.h"
+#import "TTTAttributedLabel+Tag.h"
 
 static inline NSRegularExpression * NameRegularExpression() {
     static NSRegularExpression *_nameRegularExpression = nil;
@@ -24,17 +25,6 @@ static inline NSRegularExpression * NameRegularExpression() {
     });
     
     return _nameRegularExpression;
-}
-
-static inline  NSRegularExpression * HashRegularExpression()
-{
-    static NSRegularExpression *_HashRegularExpression = nil;
-
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _HashRegularExpression = [[NSRegularExpression alloc] initWithPattern:@"(?:^|\\s|[\\p{Punct}&&[^/]])(#[\\p{L}0-9-_]+)" options:NSRegularExpressionCaseInsensitive error:nil];
-    });
-    return _HashRegularExpression;
 }
 
 static inline  NSRegularExpression * UserNameRegularExpression()
@@ -390,6 +380,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
         label.frame = CGRectMake(0, lastHeight, width, height);
         lastHeight = lastHeight + size.height;
 
+        [label hashIfy:label.attributedText inLabel:label];
         label.delegate = self;
         [comments addSubview:label];
     }
@@ -406,34 +397,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     captionHeight.constant = [DGAppearance calculateHeightForText:attrString andWidth:kGoodRightColumnWidth];
     self.description.linkAttributes = [DGAppearance linkAttributes];
 
-    NSRange stringRange = NSMakeRange(0, [self.description.attributedText length]);
-    NSRegularExpression *regexp = HashRegularExpression();
-    [regexp enumerateMatchesInString:[self.description.attributedText string] options:0 range:stringRange usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-        NSString *noHashes = [[[self.description.attributedText string] substringWithRange:result.range] stringByReplacingOccurrencesOfString:@"#" withString:@""];
-        NSString *noSpacesAndNoHashes = [noHashes stringByReplacingOccurrencesOfString:@" " withString:@""];
-        NSString *urlString = [NSString stringWithFormat:@"dogood://goods/tagged/%@", noSpacesAndNoHashes];
-        NSURL *url = [NSURL URLWithString:urlString];
-        // DebugLog(@"URL string %@ %@ %@", urlString, noSpacesAndNoHashes, noHashes, [url absoluteString]);
-        [self.description addLinkToURL:url withRange:result.range];
-    }];
-
-    // each entity
-    DGEntity *entity = [DGEntity new];
-    entity.range = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:0], [NSNumber numberWithInt:3], nil];
-    entity.entityable_type = @"Good";
-    entity.entityable_id = [NSNumber numberWithInt:1];
-    entity.title = @"sup";
-    entity.link = @"dogood://users/1";
-    // entity.entityID = [NSNumber numberWithInt:1];
-
-    NSArray *entities = @[ entity ];
-    for (DGEntity *entity in entities) {
-        NSURL *url = [NSURL URLWithString:entity.link];
-        NSUInteger loc = [[entity.range firstObject] intValue];
-        NSUInteger len = [[entity.range lastObject] intValue];
-        DebugLog(@"loc & len %i %i", loc, len);
-        [self.description addLinkToURL:url withRange:NSMakeRange(loc, len)];
-    }
+    [self.description hashIfy:self.description.attributedText inLabel:self.description];
 
     self.description.delegate = self;
 }

@@ -5,8 +5,6 @@
     CLLocationManager *locationManager;
     CLLocation *userLocation;
     IBOutlet UISearchBar *searchBar;
-    CLGeocoder *geo;
-    CLRegion *region;
     __weak IBOutlet UIImageView *logo;
     __weak IBOutlet UITableView *tableView;
 }

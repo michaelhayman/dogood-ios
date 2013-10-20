@@ -57,8 +57,8 @@ NSString* const DGUserDidSelectRewards = @"DGUserDidSelectRewards";
 // textfields
 NSString* const DGUserDidSelectPersonForTextField = @"DGUserDidSelectPersonForTextField";
 NSString* const DGUserDidNotFindPeopleForTextField = @"DGUserDidNotFindPeopleForTextField";
-NSString* const DGUserDidSelectHashtagForTextField = @"DGUserDidSelectHashtagForTextField";
-NSString* const DGUserDidStopSearchingHashtagsForTextField = @"DGUserDidStopSearchingHashtagsForTextField";
+NSString* const DGUserDidSelectTagForTextField = @"DGUserDidSelectTagForTextField";
+NSString* const DGUserDidNotFindTagsForTextField = @"DGUserDidNotFindTagsForTextField";
 
 #pragma mark - Good
 

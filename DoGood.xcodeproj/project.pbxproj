@@ -58,6 +58,7 @@
 		6358342E17C8A09700F997F6 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358342D17C8A09700F997F6 /* Arrow.m */; };
 		635A232017CAB5150045C256 /* DGCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 635A231F17CAB5150045C256 /* DGCategories.m */; };
 		635A232217CABEB30045C256 /* Categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 635A232117CABEB30045C256 /* Categories.plist */; };
+		635C949A18136CD2005594BC /* TTTAttributedLabel+Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C949918136CD2005594BC /* TTTAttributedLabel+Tag.m */; };
 		636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA5C17AD43CC002A3494 /* Good.storyboard */; };
 		636AEA9B17AD63EC002A3494 /* GoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA9A17AD63EC002A3494 /* GoodCell.xib */; };
 		636AEA9F17AD66C8002A3494 /* GoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636AEA9E17AD66C8002A3494 /* GoodCell.m */; };
@@ -80,6 +81,7 @@
 		6397318E17C1733D001B96BF /* DGUserTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */; };
 		639B88E417B9A25B005E2B62 /* DGVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B88E317B9A25A005E2B62 /* DGVote.m */; };
 		639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B891017BAEC1D005E2B62 /* DGFollow.m */; };
+		63A38D84181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A38D83181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m */; };
 		63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */; };
 		63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */; };
 		63C1BA501806026300CB95CF /* UserOverview.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C1BA4F1806026300CB95CF /* UserOverview.m */; };
@@ -209,6 +211,8 @@
 		635A231E17CAB5150045C256 /* DGCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCategories.h; sourceTree = "<group>"; };
 		635A231F17CAB5150045C256 /* DGCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCategories.m; sourceTree = "<group>"; };
 		635A232117CABEB30045C256 /* Categories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Categories.plist; sourceTree = "<group>"; };
+		635C949818136CD2005594BC /* TTTAttributedLabel+Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TTTAttributedLabel+Tag.h"; sourceTree = "<group>"; };
+		635C949918136CD2005594BC /* TTTAttributedLabel+Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TTTAttributedLabel+Tag.m"; sourceTree = "<group>"; };
 		636AEA5C17AD43CC002A3494 /* Good.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Good.storyboard; sourceTree = "<group>"; };
 		636AEA9A17AD63EC002A3494 /* GoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodCell.xib; sourceTree = "<group>"; };
 		636AEA9D17AD66C8002A3494 /* GoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodCell.h; sourceTree = "<group>"; };
@@ -246,6 +250,8 @@
 		639B88E317B9A25A005E2B62 /* DGVote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGVote.m; sourceTree = "<group>"; };
 		639B890F17BAEC1D005E2B62 /* DGFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFollow.h; sourceTree = "<group>"; };
 		639B891017BAEC1D005E2B62 /* DGFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFollow.m; sourceTree = "<group>"; };
+		63A38D82181358FD00590D24 /* DGTextFieldSearchTagsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTextFieldSearchTagsTableViewController.h; sourceTree = "<group>"; };
+		63A38D83181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTextFieldSearchTagsTableViewController.m; sourceTree = "<group>"; };
 		63BFB1E517C818DE004D990F /* DGUserSearchAddressBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchAddressBookViewController.h; sourceTree = "<group>"; };
 		63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchAddressBookViewController.m; sourceTree = "<group>"; };
 		63BFB1EA17C81E11004D990F /* DGUserSearchNetworksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchNetworksViewController.h; sourceTree = "<group>"; };
@@ -326,6 +332,8 @@
 				63DA644317DBEA52003DFF03 /* UIViewController+DGViewController.m */,
 				63834D0217DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.h */,
 				63834D0317DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.m */,
+				63A38D82181358FD00590D24 /* DGTextFieldSearchTagsTableViewController.h */,
+				63A38D83181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m */,
 				63FBF604180AECFF005686A6 /* UIImage+Grayscale.h */,
 				63FBF605180AECFF005686A6 /* UIImage+Grayscale.m */,
 				6358342C17C8A09700F997F6 /* Arrow.h */,
@@ -526,6 +534,8 @@
 		638647D517AC087A00167F15 = {
 			isa = PBXGroup;
 			children = (
+				635C949818136CD2005594BC /* TTTAttributedLabel+Tag.h */,
+				635C949918136CD2005594BC /* TTTAttributedLabel+Tag.m */,
 				638647E717AC087A00167F15 /* DoGood */,
 				6386480917AC087A00167F15 /* DoGoodTests */,
 				638647E017AC087A00167F15 /* Frameworks */,
@@ -779,6 +789,7 @@
 				6355EC2B17B690D800EE91C0 /* DGForgotPasswordViewController.m in Sources */,
 				6355EC2E17B69F1E00EE91C0 /* DGSignInViewController.m in Sources */,
 				6355EC3117B69F2800EE91C0 /* DGSignUpViewController.m in Sources */,
+				63A38D84181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m in Sources */,
 				6355EC3317B75EB600EE91C0 /* constants.m in Sources */,
 				6355EC3D17B86B8400EE91C0 /* SignUpOverviewCell.m in Sources */,
 				639B88E417B9A25B005E2B62 /* DGVote.m in Sources */,
@@ -800,6 +811,7 @@
 				63FBF60A180CD5F3005686A6 /* RestKit.m in Sources */,
 				6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */,
 				6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */,
+				635C949A18136CD2005594BC /* TTTAttributedLabel+Tag.m in Sources */,
 				6308162217C41EA0004DE5D7 /* DGTwitterManager.m in Sources */,
 				63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */,
 				63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */,

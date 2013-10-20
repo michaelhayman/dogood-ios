@@ -148,8 +148,8 @@ extern NSString* const DGUserDidDismissRewardPopup;
 extern NSString* const DGUserDidSelectPersonForTextField;
 extern NSString* const DGUserDidNotFindPeopleForTextField;
 
-extern NSString* const DGUserDidSelectHashtagForTextField;
-extern NSString* const DGUserDidStopSearchingHashtagsForTextField;
+extern NSString* const DGUserDidSelectTagForTextField;
+extern NSString* const DGUserDidNotFindTagsForTextField;
 
 #pragma mark - Good
 

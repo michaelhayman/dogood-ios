@@ -1,11 +1,8 @@
 #import "DGEntityHandler.h"
-#import "DGGood.h"
-#import "GoodCell.h"
-#import "DGComment.h"
-#import "CommentCell.h"
 #import "DGEntity.h"
+#import "DGTag.h"
 #import "DGTextFieldSearchPeopleTableViewController.h"
-#import "DGAppearance.h"
+#import "DGTextFieldSearchTagsTableViewController.h"
 
 @interface DGEntityHandler ()
 
@@ -27,6 +24,7 @@
         characterLimit = 120;
         [self setupAccessoryView];
         [self setupSearchPeopleTable];
+        [self setupSearchTagsTable];
     }
     return self;
 }
@@ -67,6 +65,14 @@
 }
 
 - (void)watchForEntities:(UITextView *)textField {
+
+    if ([textField.text isEqualToString:@""])
+        // if word has a @ at the start of it,
+        // searchPeople = YES;
+        // startOfRange = just after the @
+    {
+    }
+
     if (searchPeople) {
         if ([textField.text length] >= startOfRange) {
             searchTerm = [textField.text substringFromIndex:startOfRange];
@@ -81,10 +87,10 @@
     if (searchTags) {
         if ([textField.text length] >= startOfRange) {
             searchTerm = [textField.text substringFromIndex:startOfRange];
-            // [self searchTags:searchTerm];
+            [self searchTags:searchTerm];
             return;
         } else {
-            // [self stopSearchingTags];
+            [self stopSearchingTags];
             accessoryButtonTag.selected = NO;
         }
 
@@ -93,16 +99,15 @@
     searchTerm = @"";
 
     if ([textField.text hasSuffix:@"@"] && accessoryButtonTag.selected == NO) {
-        DebugLog(@"pop open table & start searching, and don't stop until 0 results are found");
         [self startSearchingPeople];
         startOfRange = [textField.text length];
         [self searchPeople:nil];
-        // save start of range here
     }
 
     if ([textField.text hasSuffix:@"#"] && accessoryButtonMention.selected == NO) {
-        DebugLog(@"pop open hash table & color following text up to a space");
-        // searchTags = YES;
+        [self startSearchingTags];
+        startOfRange = [textField.text length];
+        [self searchTags:nil];
     }
 }
 
@@ -156,12 +161,15 @@
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:LINK_COLOUR forKey:NSForegroundColorAttributeName];
     NSAttributedString *extraCharacters = [[NSAttributedString alloc] initWithString:string attributes:attributes];
     [mutableString appendAttributedString:extraCharacters];
-    DebugLog(@"umm");
     return mutableString;
 }
 
 - (void)searchPeople:(NSString *)text {
     [searchPeopleTableController getUsersByName:text];
+}
+
+- (void)searchTags:(NSString *)text {
+    [searchTagsTableController getTagsByName:text];
 }
 
 - (void)setupSearchPeopleTable {
@@ -180,6 +188,23 @@
 
     UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
     [searchTable registerNib:nib forCellReuseIdentifier:@"UserCell"];
+}
+
+- (void)setupSearchTagsTable {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopSearchingTags) name:DGUserDidNotFindTagsForTextField object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedTag:) name:DGUserDidSelectTagForTextField object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+
+    searchTagsTable = [[UITableView alloc] init];
+    searchTagsTable.transform = CGAffineTransformMakeRotation(-M_PI);
+    searchTagsTableController =  [[DGTextFieldSearchTagsTableViewController alloc] init];
+    searchTagsTableController.tableView = searchTagsTable;
+    searchTagsTable.delegate = searchTagsTableController;
+    searchTagsTable.dataSource = searchTagsTableController;
+    searchTagsTable.hidden = YES;
+    [parent.view addSubview:searchTagsTable];
+    UINib *nib = [UINib nibWithNibName:@"TagCell" bundle:nil];
+    [searchTagsTable registerNib:nib forCellReuseIdentifier:@"TagCell"];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -202,12 +227,12 @@
     [self resetTypingAttributes:entityTextView];
 }
 
-// here take an arbitrary string 
+// here take an arbitrary string
+// the idea here is to
+// strip out the @ symbol from the textfield on insertion
 - (void)selectedPerson:(NSNotification *)notification {
     DGUser *user = [[notification userInfo] valueForKey:@"user"];
-    // the idea here is to
-    // strip out the @ symbol from the textfield on insertion
-    int startOfPersonRange = startOfRange - 1;
+    int startOfPersonRange = MAX(0, startOfRange - 1);
     int personLength = [user.full_name length];
     int endOfPersonRange = startOfPersonRange + personLength;
 
@@ -234,15 +259,53 @@
 - (void)selectTag:(id)sender {
     if (accessoryButtonMention.selected == NO && accessoryButtonTag.selected == NO) {
         accessoryButtonTag.selected = !accessoryButtonTag.selected;
-        [self resetTypingAttributes:entityTextView];
         entityTextView.attributedText = [self insert:@"#" atEndOf:entityTextView.attributedText];
-        // entityTextView.text = [entityTextView.text stringByAppendingString:@"#"];
-        [self textViewDidChange:entityTextView];
+        [self watchForEntities:entityTextView];
+        [self resetTypingAttributes:entityTextView];
     }
 }
 
 - (void)startSearchingTags {
+    DebugLog(@"start searching");
+    searchTagsTable.hidden = NO;
+    searchTags = YES;
+    accessoryButtonTag.selected = YES;
+    searchTagsTable.frame = CGRectMake(0, 0, 320, parent.view.frame.size.height - totalKeyboardHeight);
+}
 
+- (void)stopSearchingTags {
+    accessoryButtonTag.selected = NO;
+    searchTagsTable.hidden = YES;
+    searchTags = NO;
+    [searchTagsTableController purge];
+    [self resetTypingAttributes:entityTextView];
+}
+
+- (void)selectedTag:(NSNotification *)notification {
+    DGTag *tag = [[notification userInfo] valueForKey:@"tag"];
+
+    int startOfPersonRange = MAX(0, startOfRange);
+    int personLength = [tag.name length];
+    int endOfPersonRange = startOfPersonRange + personLength;
+
+    NSString *entityName = tag.name;
+    NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[entityTextView.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfPersonRange)];
+    entityTextView.attributedText = [self insert:[entityName stringByAppendingString:@" "] atEndOf:originalComment];
+    [self setLimitText];
+
+    NSRange range = NSMakeRange(startOfPersonRange, endOfPersonRange - startOfPersonRange);
+
+    DGEntity *entity = [DGEntity new];
+    [entity setArrayFromRange:range];
+    entity.entityable_type = entityType;
+    entity.entityable_id = tag.tagID;
+    entity.title = tag.name;
+    entity.link = [NSString stringWithFormat:@"dogood://goods/tagged/%@", tag.tagID];
+    entity.link_id = tag.tagID;
+    entity.link_type = @"tag";
+    [entities addObject:entity];
+
+    [self stopSearchingTags];
 }
 
 - (void)resetTypingAttributes:(UITextView *)textField {

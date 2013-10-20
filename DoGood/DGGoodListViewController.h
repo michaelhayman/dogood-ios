@@ -6,7 +6,6 @@
 
 @interface DGGoodListViewController : RootViewController <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *tableView;
-    IBOutlet UIView *headerView;
     int page;
     bool showNoResultsMessage;
     NSMutableArray *goods;

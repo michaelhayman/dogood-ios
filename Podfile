@@ -12,16 +12,9 @@ pod 'UIImage-Categories', '~> 0.0.1'
 pod 'TTTAttributedLabel', '~> 1.7.1'
 pod 'MJPopupViewController', '~> 0.4'
 pod 'NSDate+TimeAgo', '~> 1.0.2'
-
-# social
-# pod 'STTwitter'
-# pod 'STTwitter', :head
-# pod 'Facebook-iOS-SDK', '~> 3.7'
-# pod 'Facebook-iOS-SDK', '~> 3.8'
-
 pod 'SVPullToRefresh', '~> 0.4.1'
+# social
 pod 'SocialAuth', :git => "git@github.com:evadne/SocialAuth.git"
-
 
 # not used yet
 # pod 'NSData+Base64'
@@ -30,3 +23,8 @@ pod 'SocialAuth', :git => "git@github.com:evadne/SocialAuth.git"
 # pod 'NUI'
 # pod 'UISS'
 # pod 'Foursquare-API-v2'
+# social
+# pod 'STTwitter'
+# pod 'STTwitter', :head
+# pod 'Facebook-iOS-SDK', '~> 3.7'
+# pod 'Facebook-iOS-SDK', '~> 3.8'

@@ -1,7 +1,5 @@
 @class DGGood;
 @class DGGoodListViewController;
-// @class TTTAttributedLabel;
-// @class TTTAttributedLabelDelegate;
 #import <TTTAttributedLabel.h>
 
 @class DGUserInvitesViewController;

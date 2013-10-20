@@ -4,7 +4,6 @@
 @interface CommentCell : UITableViewCell < TTTAttributedLabelDelegate> {
 }
 
-@property bool disableSelection;
 @property (weak, nonatomic) DGComment *comment;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *commentBody;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *commentBodyHeight;

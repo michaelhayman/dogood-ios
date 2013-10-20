@@ -18,22 +18,8 @@
     __weak IBOutlet UIButton *sendButton;
 
     // keyboard
-    CGFloat totalKeyboardHeight;
-    UIToolbar *accessoryView;
-    NSLayoutConstraint *accessoryViewHeight;
-    UIButton *accessoryButtonMention;
-    UIButton *accessoryButtonTag;
-    UILabel *characterLimitLabel;
     int characterLimit;
-
-    bool searchPeople;
-    bool searchTags;
-
-    int startOfRange;
-    UITableView *searchTable;
-
-    NSString *searchTerm;
-    DGTextFieldSearchPeopleTableViewController * searchPeopleTableController;
+    CGFloat totalKeyboardHeight;
 
     NSMutableArray *entities;
     DGEntityHandler *entityHandler;

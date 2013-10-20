@@ -1,13 +1,14 @@
-#import "DGTextFieldSearchPeopleTableViewController.h"
-#import "UserCell.h"
+#import "DGTextFieldSearchTagsTableViewController.h"
+#import "TagCell.h"
+#import "DGTag.h"
 #import "NoResultsCell.h"
 
-@implementation DGTextFieldSearchPeopleTableViewController
+@implementation DGTextFieldSearchTagsTableViewController
 
 - (id)init {
     self = [super init];
     if (self) {
-        users = [[NSMutableArray alloc] init];
+        tags = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -18,56 +19,56 @@
 
 #pragma mark - UITableView delegate methods
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([users count] == 0) {
+    if ([tags count] == 0) {
         _tableView.transform = CGAffineTransformMakeRotation(M_PI);
         static NSString * reuseIdentifier = @"NoResultsCell";
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        cell.explanation.text = @"No comments posted yet";
+        cell.explanation.text = @"No tags found";
         cell.transform = CGAffineTransformMakeRotation(-M_PI);
         return cell;
     }
     _tableView.transform = CGAffineTransformMakeRotation(-M_PI);
 
-    static NSString * reuseIdentifier = @"UserCell";
-    UserCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+    static NSString * reuseIdentifier = @"TagCell";
+    TagCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     cell.transform = CGAffineTransformMakeRotation(M_PI);
-    DGUser *user = users[indexPath.row];
-    cell.user = user;
-    cell.disableSelection = YES;
+    DGTag *tag = tags[indexPath.row];
+    cell.taggage = tag;
+    // cell.disableSelection = YES;
     cell.navigationController = self.navigationController;
     [cell setValues];
-    cell.follow.hidden = YES;
+    // cell.follow.hidden = YES;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([users count] == 0) {
+    if ([tags count] == 0) {
        return 204;
     }
-    return 60;
+    return 30;
 }
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
-    return [users count];
+    return [tags count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
-- (void)getUsersByName:(NSString *)searchText {
+- (void)getTagsByName:(NSString *)searchText {
     NSDictionary *params;
     if (searchText) {
-        params = [[NSDictionary alloc] initWithObjectsAndKeys:searchText, @"search", nil];
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:searchText, @"q", nil];
     } else {
         params = nil;
     }
 
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"/users/search" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [users removeAllObjects];
-        [users addObjectsFromArray:mappingResult.array];
-        if ([users count] == 0) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidNotFindPeopleForTextField object:nil];
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/tags/search" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [tags removeAllObjects];
+        [tags addObjectsFromArray:mappingResult.array];
+        if ([tags count] == 0) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidNotFindTagsForTextField object:nil];
             [self purge];
         }
         [_tableView reloadData];
@@ -77,22 +78,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DGUser *user = users[indexPath.row];
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:user, @"user", nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSelectPersonForTextField object:nil userInfo:userInfo];
+    DGUser *tag = tags[indexPath.row];
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:tag, @"tag", nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSelectTagForTextField object:nil userInfo:userInfo];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if ([searchText length] > 1) {
-        [self getUsersByName:searchText];
+        [self getTagsByName:searchText];
     } else {
-        [users removeAllObjects];
+        [tags removeAllObjects];
         [_tableView reloadData];
     }
 }
 
 - (void)purge {
-    [users removeAllObjects];
+    [tags removeAllObjects];
     [_tableView reloadData];
 }
 

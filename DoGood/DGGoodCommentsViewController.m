@@ -34,6 +34,8 @@
     comments = [[NSMutableArray alloc] init];
     [self fetchComments];
 
+    tableView.hidden = YES;
+
     characterLimit = 120;
     entities = [[NSMutableArray alloc] init];
     commentInputField.allowsEditingTextAttributes = NO;
@@ -65,23 +67,23 @@
         [comments removeAllObjects];
         [comments addObjectsFromArray:mappingResult.array];
 
+        tableView.hidden = NO;
         [tableView reloadData];
         DebugLog(@"reloading data");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        tableView.hidden = NO;
         DebugLog(@"Operation failed with error: %@", error);
     }];
     [tableView reloadData];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([comments count] == 0) {
+   if ([comments count] == 0) {
         tableView.transform = CGAffineTransformMakeRotation(M_PI);
         static NSString * reuseIdentifier = @"NoResultsCell";
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
         cell.explanation.text = @"No comments posted yet";
-        // cell.transform = CGAffineTransformMakeRotation(M_PI/2);
         cell.transform = CGAffineTransformMakeRotation(-M_PI);
-        // cell.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(180));
         return cell;
     }
     tableView.transform = CGAffineTransformMakeRotation(-M_PI);
@@ -96,7 +98,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-
    if ([comments count] == 0) {
        return 204;
    }
@@ -140,7 +141,15 @@
     newComment.commentable_id = self.good.goodID;
     newComment.commentable_type = @"Good";
     newComment.user_id = [DGUser currentUser].userID;
-    newComment.entities = entities;
+
+    NSMutableArray *userEntities = [[NSMutableArray alloc] init];
+    for (DGEntity *entity in entities) {
+        if ([entity.link_type isEqualToString:@"user"]) {
+            [userEntities addObject:entity];
+        }
+    }
+
+    newComment.entities = userEntities;
     if (![commentInputField.text isEqualToString:@""]) {
         [[RKObjectManager sharedManager] postObject:newComment path:@"/comments" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 
