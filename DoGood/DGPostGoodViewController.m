@@ -333,7 +333,7 @@
     bool errors = YES;
     NSString *message;
 
-    if ([self.good.caption isEqualToString:@""] || [self.good.caption isEqualToString:TEXTVIEW_TEXT]) {
+    if ([self.good.caption isEqualToString:@""]) {
         message = @"Make sure you fill in a caption for your good";
     } else {
         errors = NO;

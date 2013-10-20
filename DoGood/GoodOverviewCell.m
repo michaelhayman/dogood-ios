@@ -11,6 +11,7 @@
     self.entities = [[NSMutableArray alloc] init];
     self.description.allowsEditingTextAttributes = NO;
     self.description.delegate = self;
+    self.placeholder.hidden = NO;
 }
 
 - (void)initEntityHandler {
@@ -65,30 +66,30 @@
     return sup;
 }
 
-- (void)setDefaultText:(UITextView *)textView {
-    textView.text = TEXTVIEW_TEXT;
-    textView.textColor = [UIColor lightGrayColor];
-}
-
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    if ([textView.text isEqualToString:TEXTVIEW_TEXT]) {
-        textView.text = @"";
-        textView.textColor = [UIColor blackColor];
-    }
     [textView becomeFirstResponder];
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
     if ([textView.text isEqualToString:@""]) {
-        [self setDefaultText:textView];
+        self.placeholder.hidden = NO;
+    } else {
+        self.placeholder.hidden = YES;
     }
     [textView resignFirstResponder];
 }
 
 #pragma mark - EntityDelegates
 - (void)textViewDidChange:(UITextView *)textField {
+    if ([textField.text isEqualToString:@""]) {
+        self.placeholder.hidden = NO;
+    } else {
+        self.placeholder.hidden = YES;
+    }
+
     [entityHandler watchForEntities:textField];
     [entityHandler setLimitText];
+
     if ([textField.text length] >= characterLimit) {
         // sendButton.enabled = NO;
     } else {
