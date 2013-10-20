@@ -252,7 +252,11 @@
 
 - (BOOL)textView:(UITextView *)textField shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)string {
     if ([string isEqualToString:@"\n"]) {
-        [textField resignFirstResponder];
+        if (![textField.text isEqualToString:@""]) {
+           [self postComment:textField];
+        } else {
+            [textField resignFirstResponder];
+        }
         return NO;
     }
 
