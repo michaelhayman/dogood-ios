@@ -33,7 +33,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePoints) name:DGUserUpdatePointsNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(claimReward:) name:DGUserClaimRewardNotification object:nil];
 
+    [self updatePointsText];
     [self updatePoints];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

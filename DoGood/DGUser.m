@@ -171,7 +171,9 @@ static DGUser* currentUser = nil;
         self.points = user.points;
         [DGUser assignDefaults];
         // should probably synchronize here..
-        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdatePointsNotification object:self];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdatePointsNotification object:self];
+        });
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
     }];
