@@ -14,7 +14,9 @@ static inline  NSRegularExpression * HashRegularExpression()
 
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _HashRegularExpression = [[NSRegularExpression alloc] initWithPattern:@"(?:^|\\s|[\\p{Punct}&&[^/]])(#[\\p{L}0-9-_]+)" options:NSRegularExpressionCaseInsensitive error:nil];
+        //_HashRegularExpression = [[NSRegularExpression alloc] initWithPattern:@"(#[\\p{L}0-9-_]+)" options:NSRegularExpressionCaseInsensitive error:nil];
+        //_HashRegularExpression = [[NSRegularExpression alloc] initWithPattern:@"(?:^|\\s|[\\p{Punct}&&[^/]])(#[\\p{L}0-9-_]+)" options:NSRegularExpressionCaseInsensitive error:nil];
+        _HashRegularExpression = [[NSRegularExpression alloc] initWithPattern:@"#[A-Za-z0-9_]+" options:NSRegularExpressionCaseInsensitive error:nil];
     });
     return _HashRegularExpression;
 }
