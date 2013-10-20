@@ -20,7 +20,6 @@ static DGUser* currentUser = nil;
 		if (userID) {
 			currentUser = [[self alloc] init];
             currentUser.userID = userID;
-            currentUser.username = [defaults objectForKey:kDGUserCurrentUserUsername];
             currentUser.points = [defaults objectForKey:kDGUserCurrentUserPoints];
             currentUser.full_name = [defaults objectForKey:kDGUserCurrentUserFullName];
             currentUser.location = [defaults objectForKey:kDGUserCurrentUserLocation];
@@ -49,8 +48,8 @@ static DGUser* currentUser = nil;
 
 #pragma mark - HTTP Headers
 + (void)setAuthorizationHeader {
-    DebugLog(@"setting authorization header for %@ and %@", currentUser.username, currentUser.password);
-    [[RKObjectManager sharedManager].HTTPClient setAuthorizationHeaderWithUsername:currentUser.username password:currentUser.password];
+    DebugLog(@"setting authorization header for %@ and %@", currentUser.email, currentUser.password);
+    [[RKObjectManager sharedManager].HTTPClient setAuthorizationHeaderWithUsername:currentUser.email password:currentUser.password];
 }
 
 + (void)setUpUserAuthentication {
@@ -94,7 +93,7 @@ static DGUser* currentUser = nil;
 + (void)signInWasSuccessful {
     [self assignDefaults];
 
-    [[RKObjectManager sharedManager].HTTPClient setAuthorizationHeaderWithUsername:currentUser.username password:currentUser.password];
+    [[RKObjectManager sharedManager].HTTPClient setAuthorizationHeaderWithUsername:currentUser.email password:currentUser.password];
 
 	[[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSignInNotification object:self];
 }
@@ -102,7 +101,6 @@ static DGUser* currentUser = nil;
 + (void) assignDefaults {
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.userID forKey:kDGUserCurrentUserIDDefaultsKey];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.email forKey:kDGUserCurrentUserEmail];
-	[[NSUserDefaults standardUserDefaults] setObject:currentUser.username forKey:kDGUserCurrentUserUsername];
    	[[NSUserDefaults standardUserDefaults] setObject:currentUser.points forKey:kDGUserCurrentUserPoints];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.phone forKey:kDGUserCurrentUserPhone];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.full_name forKey:kDGUserCurrentUserFullName];
@@ -131,7 +129,6 @@ static DGUser* currentUser = nil;
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserFullName];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserBiography];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserLocation];
-	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserUsername];
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserPoints];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserPhone];
 	[[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserEmail];
@@ -143,7 +140,6 @@ static DGUser* currentUser = nil;
  
     self.userID = nil;
     self.email = nil;
-    self.username = nil;
     self.password = nil;
     self.password_confirmation = nil;
     self.full_name = nil;

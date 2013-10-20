@@ -5,7 +5,6 @@
 // Constants
 NSString* const kDGUserCurrentUserIDDefaultsKey = @"kDGUserCurrentUserIDDefaultsKey";
 NSString* const kDGUserCurrentUserEmail = @"kDGUserCurrentUserEmail";
-NSString* const kDGUserCurrentUserUsername = @"kDGUserCurrentUserUsername";
 NSString* const kDGUserCurrentUserPoints = @"kDGUserCurrentUserPoints";
 NSString* const kDGUserCurrentUserFullName = @"kDGUserCurrentUserFullName";
 NSString* const kDGUserCurrentUserLocation = @"kDGUserCurrentUserLocation";

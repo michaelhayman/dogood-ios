@@ -29,7 +29,7 @@
 }
 
 - (void)setContent {
-    self.username.text = [DGUser currentUser].username;
+    self.username.text = [DGUser currentUser].full_name;
     [self updatePointsText];
     [self setupRewardCell];
     [self getRewardsAtPath:@"/rewards/highlights"];

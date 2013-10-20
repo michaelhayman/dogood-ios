@@ -8,7 +8,7 @@
 }
 
 - (NSString *)commentWithUsername {
-    return [NSString stringWithFormat:@"%@ %@", self.user.username, self.comment];
+    return [NSString stringWithFormat:@"%@ %@", self.user.full_name, self.comment];
 }
 
 @end

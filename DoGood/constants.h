@@ -70,7 +70,6 @@
 // Constants
 extern NSString *const kDGUserCurrentUserIDDefaultsKey;
 extern NSString* const kDGUserCurrentUserEmail;
-extern NSString* const kDGUserCurrentUserUsername;
 extern NSString* const kDGUserCurrentUserPoints;
 extern NSString* const kDGUserCurrentUserFullName;
 extern NSString* const kDGUserCurrentUserLocation;

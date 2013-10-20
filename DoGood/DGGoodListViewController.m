@@ -287,7 +287,7 @@
         height += 40;
         for (DGComment *comment in good.comments) {
             NSDictionary *commentAttributes = @{ NSFontAttributeName : kSummaryCommentFont };
-            NSAttributedString *attrCommentString = [[NSAttributedString alloc] initWithString:[comment.user.username stringByAppendingString:comment.comment] attributes:commentAttributes];
+            NSAttributedString *attrCommentString = [[NSAttributedString alloc] initWithString:[comment.user.full_name stringByAppendingString:comment.comment] attributes:commentAttributes];
             CGFloat commentHeight = [DGAppearance calculateHeightForText:attrCommentString andWidth:kSummaryCommentRightColumnWidth];
             height += commentHeight;
         }

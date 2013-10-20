@@ -1,7 +1,6 @@
 @interface DGUser : NSObject
 
 @property (nonatomic, copy) NSNumber* userID;
-@property (nonatomic, copy) NSString* username;
 @property (nonatomic, copy) NSString* email;
 @property (nonatomic, copy) NSString* password;
 @property (nonatomic, copy) NSString* password_confirmation;

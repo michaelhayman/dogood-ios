@@ -148,7 +148,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
 - (void)setValues {
     // user
-    self.username.text = self.good.user.username;
+    self.username.text = self.good.user.full_name;
     [self setupAvatar];
     // description
     [self setCaptionText];

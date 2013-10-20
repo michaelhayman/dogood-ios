@@ -30,7 +30,7 @@
     self.timePosted.text = [[self.comment createdAgoInWords] uppercaseString];
 
     NSDictionary *attributes = @{ NSFontAttributeName : self.commentBody.font };
-    NSString *text =[NSString stringWithFormat:@"%@ %@", self.comment.user.username, self.comment.comment];
+    NSString *text =[NSString stringWithFormat:@"%@ %@", self.comment.user.full_name, self.comment.comment];
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:text attributes:attributes];
     self.commentBody.attributedText = attrString;
 
@@ -63,7 +63,7 @@
     [label setText:text afterInheritingLabelAttributesAndConfiguringWithBlock:^NSMutableAttributedString *(NSMutableAttributedString *mutableAttributedString) {
         NSRange stringRange = NSMakeRange(0, [mutableAttributedString length]);
 
-        NSRegularExpression *regexp = [[NSRegularExpression alloc] initWithPattern:[NSString stringWithFormat:@"%@+",comment.user.username] options:NSRegularExpressionCaseInsensitive error:nil];
+        NSRegularExpression *regexp = [[NSRegularExpression alloc] initWithPattern:[NSString stringWithFormat:@"%@+",comment.user.full_name] options:NSRegularExpressionCaseInsensitive error:nil];
 
         [regexp enumerateMatchesInString:[mutableAttributedString string] options:0 range:stringRange usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {            
             UIFont *italicSystemFont = font;
@@ -81,12 +81,12 @@
         return mutableAttributedString;
     }];
 
-    NSRange r = [text rangeOfString:comment.user.username];
+    NSRange r = [text rangeOfString:comment.user.full_name];
     [label addLinkToURL:[NSURL URLWithString:[NSString stringWithFormat:@"dogood://users/%@", comment.user.userID]] withRange:r];
 
     for (DGEntity *entity in comment.entities) {
         NSURL *url = [NSURL URLWithString:entity.link];
-        [label addLinkToURL:url withRange:[entity rangeFromArrayWithOffset:[comment.user.username length] + 1]];
+        [label addLinkToURL:url withRange:[entity rangeFromArrayWithOffset:[comment.user.full_name length] + 1]];
     }
 }
 

@@ -126,7 +126,6 @@
             [centralButton setTitle:@"Following" forState:UIControlStateNormal];
         }
         if (!ownProfile) {
-            // [self setupMenuTitle:user.username];
             [self setupMenuTitle:@"Profile"];
         }
         [self setupTabs];

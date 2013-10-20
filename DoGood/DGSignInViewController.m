@@ -34,7 +34,6 @@
 - (void)signInWithEmail:(NSString *)email orUsername:(NSString *)username andPassword:(NSString *)password showMessage:(BOOL)message {
     DGUser *user = [DGUser new];
     user.email = email;
-    user.username = username;
     user.password = password;
     DebugLog(@"usreage %@", user);
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

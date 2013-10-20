@@ -86,7 +86,6 @@
     DebugLog(@"email %@, password %@, phone %@", email.text, password.text, phone.text);
 
     self.user.email = email.text;
-    self.user.username = email.text;
     self.user.password = password.text;
     self.user.phone = phone.text;
     bool errors = YES;
