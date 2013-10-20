@@ -1,8 +1,14 @@
 #define APP_NAME @"Do Good"
 
 #pragma mark - Paths -----
+#define HOME 0
+#if HOME
+    #define LOCALHOST @"http://0.0.0.0:3002/"
+#else
+    #define LOCALHOST @"http://192.168.59.8"
+#endif
 
-#define DEVELOPMENT_LOGS 1
+#define DEVELOPMENT_LOGS 0
 #define DEVELOPMENT 1
 #if DEVELOPMENT
     #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3002/"
@@ -176,3 +182,5 @@ extern NSString* const DGUserDidStartBrowsingSearchTable;
 #define TWITTER_CONSUMER_KEY @"yT577ApRtZw51q4NPMPPOQ"
 #define TWITTER_CONSUMER_SECRET @"3neq3XqN5fO3obqwZoajavGFCUrC42ZfbrLXy5sCv8"
 #define FACEBOOK_APP_ID @"151726295032833"
+
+
