@@ -44,11 +44,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:userView selector:@selector(setContent) name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayPostSuccessMessage) name:DGUserDidPostGood object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadGood) name:DGUserDidPostGood object:nil];
 
     if (!self.loadController) {
         self.loadController = self.navigationController;
     }
 }
+
 
 - (void)initializeTable {
     UINib *nib = [UINib nibWithNibName:@"GoodCell" bundle:nil];
