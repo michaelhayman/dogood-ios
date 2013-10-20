@@ -287,6 +287,10 @@
     [self resetTypingAttributes:entityTextView];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)selectedTag:(NSNotification *)notification {
     DGTag *tag = [[notification userInfo] valueForKey:@"tag"];
 
