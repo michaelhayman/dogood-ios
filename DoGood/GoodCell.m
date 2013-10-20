@@ -127,6 +127,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 #pragma mark - Set up cell for reuse
 - (void)prepareForReuse {
     [super prepareForReuse];
+    self.description.attributedText = nil;
     [comments.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     DebugLog(@"reusing");
 }
