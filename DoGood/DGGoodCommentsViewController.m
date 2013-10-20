@@ -31,9 +31,11 @@
     UINib *noResultsNib = [UINib nibWithNibName:@"NoResultsCell" bundle:nil];
     [tableView registerNib:noResultsNib forCellReuseIdentifier:@"NoResultsCell"];
     comments = [[NSMutableArray alloc] init];
-    [self fetchComments];
 
     tableView.hidden = YES;
+
+    loadingView = [DGAppearance createLoadingViewCenteredOn:tableView];
+    [self.view addSubview:loadingView];
 
     characterLimit = 120;
     entities = [[NSMutableArray alloc] init];
@@ -42,6 +44,7 @@
 
     tableView.transform = CGAffineTransformMakeRotation(-M_PI);
     [self setupKeyboardBehaviour];
+    [self fetchComments];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -61,19 +64,25 @@
 #pragma mark - Comment retrieval ----------
 - (void)fetchComments {
     NSDictionary *params = [NSDictionary dictionaryWithObject:self.good.goodID forKey:@"good_id"];
+    loadingView.hidden = NO;
 
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/comments.json" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [comments removeAllObjects];
         [comments addObjectsFromArray:mappingResult.array];
+        loadingStatus = @"No comments posted yet";
 
         tableView.hidden = NO;
+        loadingView.hidden = YES;
         [tableView reloadData];
         DebugLog(@"reloading data");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        loadingStatus = @"Couldn't connect";
+
         tableView.hidden = NO;
+        loadingView.hidden = YES;
         DebugLog(@"Operation failed with error: %@", error);
+        [tableView reloadData];
     }];
-    [tableView reloadData];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -81,7 +90,7 @@
         tableView.transform = CGAffineTransformMakeRotation(M_PI);
         static NSString * reuseIdentifier = @"NoResultsCell";
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        cell.explanation.text = @"No comments posted yet";
+        cell.explanation.text = loadingStatus;
         cell.transform = CGAffineTransformMakeRotation(-M_PI);
         return cell;
     }

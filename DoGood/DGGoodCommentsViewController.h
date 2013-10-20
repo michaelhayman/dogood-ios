@@ -22,6 +22,8 @@
     CGFloat totalKeyboardHeight;
     NSMutableArray *entities;
     DGEntityHandler *entityHandler;
+    UIView *loadingView;
+    NSString *loadingStatus;
 }
 
 @property bool makeComment;

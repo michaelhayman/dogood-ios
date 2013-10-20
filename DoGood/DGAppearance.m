@@ -36,4 +36,15 @@
     return height;
 }
 
+
++ (UIView *)createLoadingViewCenteredOn:(UIView *)view {
+    UIView *loadingView = [[UIView alloc] initWithFrame:view.frame];
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = view.center;
+    spinner.frame = CGRectMake(spinner.frame.origin.x, spinner.frame.origin.y  / 2, spinner.frame.size.width, spinner.frame.size.height);
+    [loadingView addSubview:spinner];
+    [spinner startAnimating];
+    return loadingView;
+}
+
 @end
