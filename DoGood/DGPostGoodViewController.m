@@ -340,6 +340,7 @@
     }
 
     if (!errors) {
+        [cell.description resignFirstResponder];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.labelText = @"Posting good...";
 
