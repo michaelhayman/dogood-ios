@@ -156,7 +156,7 @@
     }
 }
 
-- (NSAttributedString *)insert:(NSString *)string atEndOf:(NSAttributedString *)textField {
+- (NSMutableAttributedString *)insert:(NSString *)string atEndOf:(NSAttributedString *)textField {
     NSMutableAttributedString *mutableString = [[NSMutableAttributedString alloc] initWithAttributedString:textField];
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:LINK_COLOUR forKey:NSForegroundColorAttributeName];
     NSAttributedString *extraCharacters = [[NSAttributedString alloc] initWithString:string attributes:attributes];
@@ -290,7 +290,12 @@
 
     NSString *entityName = tag.name;
     NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[entityTextView.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfPersonRange)];
-    entityTextView.attributedText = [self insert:[entityName stringByAppendingString:@" "] atEndOf:originalComment];
+
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:LINK_COLOUR forKey:NSForegroundColorAttributeName];
+    originalComment = [self insert:[entityName stringByAppendingString:@" "] atEndOf:originalComment];
+    [originalComment addAttributes:attributes range:NSMakeRange(startOfPersonRange -1, 1)];
+
+    entityTextView.attributedText = originalComment;
     [self setLimitText];
 
     NSRange range = NSMakeRange(startOfPersonRange, endOfPersonRange - startOfPersonRange);
