@@ -25,11 +25,6 @@
         tableOffset = firstOffset;
         secondTableOffset = secondOffset;
         reverseScroll = reverse;
-        /*
-        tableOffset = 0;
-        secondTableOffset = 44;
-        reverseScroll = YES;
-        */
         [self setupAccessoryView];
         [self setupSearchPeopleTable];
         [self setupSearchTagsTable];
@@ -278,7 +273,6 @@
 }
 
 - (void)startSearchingTags {
-    DebugLog(@"start searching");
     searchTagsTable.hidden = NO;
     searchTags = YES;
     accessoryButtonTag.selected = YES;
