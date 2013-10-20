@@ -6,7 +6,7 @@
     __weak IBOutlet UIButton *rewardsButton;
     __weak IBOutlet UIButton *claimedButton;
     NSArray *rewards;
-    __weak IBOutlet UILabel *points;
+    IBOutlet UILabel *points;
 }
 
 @end
