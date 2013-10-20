@@ -23,6 +23,7 @@
     [super viewDidLoad];
 
     [self setupMenuTitle:@"Comments"];
+    sendButton.enabled = NO;
 
     // comments list
     UINib *nib = [UINib nibWithNibName:@"CommentCell" bundle:nil];
