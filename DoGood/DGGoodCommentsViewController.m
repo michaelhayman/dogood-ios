@@ -6,6 +6,7 @@
 #import "DGEntity.h"
 #import "DGTextFieldSearchPeopleTableViewController.h"
 #import "DGAppearance.h"
+#import "NoResultsCell.h"
 
 #import "DGEntityHandler.h"
 
@@ -15,6 +16,7 @@
 
 #define kToolbarHeight 40
 #define kCommentFieldHeight 44
+#define DEGREES_TO_RADIANS(x) (M_PI * x / 180.0)
 
 @implementation DGGoodCommentsViewController
 
@@ -27,6 +29,8 @@
     // comments list
     UINib *nib = [UINib nibWithNibName:@"CommentCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"CommentCell"];
+    UINib *noResultsNib = [UINib nibWithNibName:@"NoResultsCell" bundle:nil];
+    [tableView registerNib:noResultsNib forCellReuseIdentifier:@"NoResultsCell"];
     comments = [[NSMutableArray alloc] init];
     [self fetchComments];
 
@@ -70,6 +74,18 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([comments count] == 0) {
+        tableView.transform = CGAffineTransformMakeRotation(M_PI);
+        static NSString * reuseIdentifier = @"NoResultsCell";
+        NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+        cell.explanation.text = @"No comments posted yet";
+        // cell.transform = CGAffineTransformMakeRotation(M_PI/2);
+        cell.transform = CGAffineTransformMakeRotation(-M_PI);
+        // cell.transform = CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(180));
+        return cell;
+    }
+    tableView.transform = CGAffineTransformMakeRotation(-M_PI);
+
     CommentCell *cell = [aTableView dequeueReusableCellWithIdentifier:@"CommentCell"];
     cell.transform = CGAffineTransformMakeRotation(M_PI);
     DGComment * comment = comments[indexPath.row];
@@ -80,17 +96,25 @@
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+   if ([comments count] == 0) {
+       return 204;
+   }
+
     DGComment * comment = comments[indexPath.row];
     UIFont *font = [UIFont systemFontOfSize:13];
-    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:comment.comment attributes:@ { NSFontAttributeName: font }];
+    NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:[comment commentWithUsername] attributes:@ { NSFontAttributeName: font }];
 
     CGFloat height = [DGAppearance calculateHeightForText:attributedText andWidth:kCommentRightColumnWidth];
 
-    CGFloat cellHeight = MAX(63, height + 44);
+    CGFloat cellHeight = MAX(63, height + 30);
     return cellHeight;
 }
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
+    if ([comments count] == 0) {
+        return 1; // a single cell to report no data
+    }
     return [comments count];
 }
 
@@ -102,7 +126,7 @@
     return @"";
 }
 
-/*
+/*  This has bugs o
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     // This will create a "invisible" footer
     return 0.01f;
