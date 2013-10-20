@@ -4,10 +4,11 @@
 
 @implementation DGTextFieldSearchPeopleTableViewController
 
-- (id)init {
+- (id)initWithScrolling:(BOOL)reverse {
     self = [super init];
     if (self) {
         users = [[NSMutableArray alloc] init];
+        reverseScroll = reverse;
     }
     return self;
 }
@@ -19,18 +20,22 @@
 #pragma mark - UITableView delegate methods
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([users count] == 0) {
-        _tableView.transform = CGAffineTransformMakeRotation(M_PI);
         static NSString * reuseIdentifier = @"NoResultsCell";
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
         cell.explanation.text = @"No comments posted yet";
-        cell.transform = CGAffineTransformMakeRotation(-M_PI);
+        if (reverseScroll) {
+            _tableView.transform = CGAffineTransformMakeRotation(M_PI);
+            cell.transform = CGAffineTransformMakeRotation(-M_PI);
+        }
         return cell;
     }
-    _tableView.transform = CGAffineTransformMakeRotation(-M_PI);
 
     static NSString * reuseIdentifier = @"UserCell";
     UserCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-    cell.transform = CGAffineTransformMakeRotation(M_PI);
+    if (reverseScroll) {
+        _tableView.transform = CGAffineTransformMakeRotation(-M_PI);
+        cell.transform = CGAffineTransformMakeRotation(M_PI);
+    }
     DGUser *user = users[indexPath.row];
     cell.user = user;
     cell.disableSelection = YES;

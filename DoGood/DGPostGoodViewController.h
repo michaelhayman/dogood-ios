@@ -2,6 +2,7 @@
 @class DGPhotoPickerViewController;
 @class DGFacebookManager;
 @class DGTwitterManager;
+@class DGEntityHandler;
 
 @interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UITextViewDelegate> {
     UIActionSheet *categorySheet;

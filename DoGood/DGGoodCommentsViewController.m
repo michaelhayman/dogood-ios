@@ -14,8 +14,6 @@
 
 @end
 
-#define kToolbarHeight 40
-#define kCommentFieldHeight 44
 #define DEGREES_TO_RADIANS(x) (M_PI * x / 180.0)
 
 @implementation DGGoodCommentsViewController
@@ -39,7 +37,7 @@
     characterLimit = 120;
     entities = [[NSMutableArray alloc] init];
     commentInputField.allowsEditingTextAttributes = NO;
-    entityHandler = [[DGEntityHandler alloc] initWithTextView:commentInputField andEntities:entities inController:self withType:@"Comment"];
+    entityHandler = [[DGEntityHandler alloc] initWithTextView:commentInputField andEntities:entities inController:self withType:@"Comment" reverseScroll:YES tableOffset:0 secondTableOffset:44];
 
     tableView.transform = CGAffineTransformMakeRotation(-M_PI);
     [self setupKeyboardBehaviour];
@@ -142,6 +140,7 @@
     newComment.commentable_type = @"Good";
     newComment.user_id = [DGUser currentUser].userID;
 
+    // filter out non-user entities
     NSMutableArray *userEntities = [[NSMutableArray alloc] init];
     for (DGEntity *entity in entities) {
         if ([entity.link_type isEqualToString:@"user"]) {
@@ -211,7 +210,6 @@
     NSTimeInterval animationDuration;
     UIViewAnimationCurve animationCurve;
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    totalKeyboardHeight = keyboardSize.height + kCommentFieldHeight;
     [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
     [[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
 

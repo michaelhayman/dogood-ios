@@ -13,7 +13,7 @@
 
 @implementation DGEntityHandler
 
-- (id)initWithTextView:(UITextView *)textView andEntities:(NSMutableArray *)inputEntities inController:(UIViewController *)controller withType:(NSString *)type
+- (id)initWithTextView:(UITextView *)textView andEntities:(NSMutableArray *)inputEntities inController:(UIViewController *)controller withType:(NSString *)type reverseScroll:(BOOL)reverse tableOffset:(int)firstOffset secondTableOffset:(int)secondOffset
 {
     self = [super init];
     if (self) {
@@ -22,6 +22,14 @@
         entityType = type;
         parent = controller;
         characterLimit = 120;
+        tableOffset = firstOffset;
+        secondTableOffset = secondOffset;
+        reverseScroll = reverse;
+        /*
+        tableOffset = 0;
+        secondTableOffset = 44;
+        reverseScroll = YES;
+        */
         [self setupAccessoryView];
         [self setupSearchPeopleTable];
         [self setupSearchTagsTable];
@@ -30,6 +38,7 @@
 }
 
 - (BOOL)check:(UITextView *)textField range:(NSRange)range forEntities:(NSMutableArray *)theseEntities completion:(CheckEntitiesBlock)completion {
+     DebugLog(@"check these entities %@", theseEntities);
      for (DGEntity *entity in theseEntities) {
         DebugLog(@"entity");
         NSRange entityRange = [entity rangeFromArray];
@@ -178,8 +187,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
     searchTable = [[UITableView alloc] init];
-    searchTable.transform = CGAffineTransformMakeRotation(-M_PI);
-    searchPeopleTableController =  [[DGTextFieldSearchPeopleTableViewController alloc] init];
+    searchPeopleTableController =  [[DGTextFieldSearchPeopleTableViewController alloc] initWithScrolling:reverseScroll];
     searchPeopleTableController.tableView = searchTable;
     searchTable.delegate = searchPeopleTableController;
     searchTable.dataSource = searchPeopleTableController;
@@ -196,8 +204,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
     searchTagsTable = [[UITableView alloc] init];
-    searchTagsTable.transform = CGAffineTransformMakeRotation(-M_PI);
-    searchTagsTableController =  [[DGTextFieldSearchTagsTableViewController alloc] init];
+
+    if (reverseScroll) {
+        searchTagsTable.transform = CGAffineTransformMakeRotation(-M_PI);
+    }
+
+    searchTagsTableController =  [[DGTextFieldSearchTagsTableViewController alloc] initWithScrolling:reverseScroll];
     searchTagsTableController.tableView = searchTagsTable;
     searchTagsTable.delegate = searchTagsTableController;
     searchTagsTable.dataSource = searchTagsTableController;
@@ -209,14 +221,14 @@
 
 - (void)keyboardWillShow:(NSNotification *)notification {
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    totalKeyboardHeight = keyboardSize.height + kCommentFieldHeight;
+    totalKeyboardHeight = keyboardSize.height;
 }
 
 - (void)startSearchingPeople {
     searchTable.hidden = NO;
     searchPeople = YES;
     accessoryButtonMention.selected = YES;
-    searchTable.frame = CGRectMake(0, 0, 320, parent.view.frame.size.height - totalKeyboardHeight);
+    searchTable.frame = CGRectMake(0, tableOffset, 320, parent.view.frame.size.height - totalKeyboardHeight - (tableOffset + secondTableOffset));
 }
 
 - (void)stopSearchingPeople {
@@ -270,7 +282,7 @@
     searchTagsTable.hidden = NO;
     searchTags = YES;
     accessoryButtonTag.selected = YES;
-    searchTagsTable.frame = CGRectMake(0, 0, 320, parent.view.frame.size.height - totalKeyboardHeight);
+    searchTagsTable.frame = CGRectMake(0, tableOffset, 320, parent.view.frame.size.height - totalKeyboardHeight - (tableOffset + secondTableOffset));
 }
 
 - (void)stopSearchingTags {

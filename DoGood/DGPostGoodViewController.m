@@ -8,11 +8,17 @@
 #import "DGPostGoodLocationViewController.h"
 #import "DGTwitterManager.h"
 #import "DGFacebookManager.h"
+#import "DGEntityHandler.h"
 
 #import <UIImage+Resize.h>
 #import <MBProgressHUD.h>
 
 #import "DGPhotoPickerViewController.h"
+
+#define good_overview_cell_tag 69
+#define share_do_good_cell_tag 501
+#define share_facebook_cell_tag 502
+#define share_twitter_cell_tag 503
 
 @interface DGPostGoodViewController ()
 
@@ -56,11 +62,27 @@
     photos.parent = self;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadAvatar:) name:DGUserDidAddPhotoNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteAvatar) name:DGUserDidRemovePhotoNotification object:nil];
+
+    // keyboard
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
+
+- (void)keyboardWillShow:(NSNotification *)notification {
+    self.tableView.bounces = NO;
+    self.tableView.bouncesZoom = NO;
+}
+
+- (void)keyboardWillHide:(NSNotification *)notification {
+    self.tableView.bounces = YES;
+    self.tableView.bouncesZoom = YES;
+}
+
 
 - (void)viewWillDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidAddPhotoNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidRemovePhotoNotification object:nil];
+       [super viewWillDisappear:animated];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -87,15 +109,12 @@
     }
 }
 
-#define good_overview_cell_tag 69
-#define share_do_good_cell_tag 501
-#define share_facebook_cell_tag 502
-#define share_twitter_cell_tag 503
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == overview) {
         GoodOverviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodOverviewCell"];
         // cell.description.delegate = self;
-
+        cell.parent = self;
+        [cell initEntityHandler];
         UITapGestureRecognizer* imageGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoSheet)];
         [cell.image setUserInteractionEnabled:YES];
         [cell.image addGestureRecognizer:imageGesture];
@@ -305,6 +324,7 @@
     self.good.shareFacebook = facebook.on;
     DebugLog(@"post good %@", self.good);
     DebugLog(@"location %@", self.good.location_image);
+    self.good.entities = cell.entities;
 
     bool errors = YES;
     NSString *message;

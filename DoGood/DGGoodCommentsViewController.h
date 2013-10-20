@@ -17,10 +17,9 @@
     __weak IBOutlet NSLayoutConstraint *tableViewBottom;
     __weak IBOutlet UIButton *sendButton;
 
-    // keyboard
+    // entities
     int characterLimit;
     CGFloat totalKeyboardHeight;
-
     NSMutableArray *entities;
     DGEntityHandler *entityHandler;
 }
