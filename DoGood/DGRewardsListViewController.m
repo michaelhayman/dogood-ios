@@ -46,7 +46,7 @@
 }
 
 - (void)updatePointsText {
-    points.text = [[DGUser currentUser] pointsText];
+    points.text = [NSString stringWithFormat:@"%@ good",  [[DGUser currentUser] pointsText]];
     // points.text = [NSString stringWithFormat:@"%@ points", [DGUser currentUser].points];
 }
 
