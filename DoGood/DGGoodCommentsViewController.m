@@ -164,10 +164,7 @@
 
             [commentInputView becomeFirstResponder];
             commentInputField.text = @"";
-            [TSMessage showNotificationInViewController:self.navigationController
-                                  title:NSLocalizedString(@"Comment Saved!", nil)
-                                subtitle:nil
-                                   type:TSMessageNotificationTypeSuccess];
+            [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Comment Saved!", nil) subtitle:nil type:TSMessageNotificationTypeSuccess];
             [entities removeAllObjects];
             // [self fetchComments];
             [self textViewDidChange:commentInputField];
@@ -182,10 +179,7 @@
             [self.goodCell reloadCell];
             */
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            [TSMessage showNotificationInViewController:self.navigationController
-                                      title:NSLocalizedString(@"Couldn't save the comment", nil)
-                                               subtitle:NSLocalizedString([error description], nil)
-                                       type:TSMessageNotificationTypeError];
+            [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Couldn't save the comment", nil) subtitle:NSLocalizedString([error localizedDescription], nil) type:TSMessageNotificationTypeError];
 
             DebugLog(@"error %@", [error description]);
         }];
