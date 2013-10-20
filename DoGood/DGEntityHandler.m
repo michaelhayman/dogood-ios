@@ -296,21 +296,21 @@
 - (void)selectedTag:(NSNotification *)notification {
     DGTag *tag = [[notification userInfo] valueForKey:@"tag"];
 
-    int startOfPersonRange = MAX(0, startOfRange);
+    int startOfTagRange = MAX(-1, startOfRange);
     int personLength = [tag.name length];
-    int endOfPersonRange = startOfPersonRange + personLength;
+    int endOfPersonRange = startOfTagRange + personLength;
 
     NSString *entityName = tag.name;
-    NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[entityTextView.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfPersonRange)];
+    NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[entityTextView.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfTagRange)];
 
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:LINK_COLOUR forKey:NSForegroundColorAttributeName];
     originalComment = [self insert:[entityName stringByAppendingString:@" "] atEndOf:originalComment];
-    [originalComment addAttributes:attributes range:NSMakeRange(startOfPersonRange -1, 1)];
+    [originalComment addAttributes:attributes range:NSMakeRange(startOfTagRange, 1)];
 
     entityTextView.attributedText = originalComment;
     [self setLimitText];
 
-    NSRange range = NSMakeRange(startOfPersonRange, endOfPersonRange - startOfPersonRange);
+    NSRange range = NSMakeRange(startOfTagRange, endOfPersonRange - startOfTagRange);
 
     DGEntity *entity = [DGEntity new];
     [entity setArrayFromRange:range];
