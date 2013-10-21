@@ -39,7 +39,6 @@
     }];
     [userMapping addAttributeMappingsFromArray:@[
      @"points",
-     @"username",
      @"full_name",
      @"phone",
      @"location",
@@ -63,7 +62,6 @@
     RKObjectMapping* userRequestMapping = [RKObjectMapping requestMapping ];
     [userRequestMapping addAttributeMappingsFromArray:@[
      @"email",
-     @"username",
      @"password",
      @"full_name",
      @"phone",
