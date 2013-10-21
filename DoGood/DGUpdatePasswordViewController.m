@@ -42,6 +42,7 @@
     [[RKObjectManager sharedManager] putObject:user path:user_password_path parameters:user success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [DGUser setNewPassword:user[@"user"][@"password"]];
         DGUser * user = (mappingResult.array)[0];
+
         [TSMessage showNotificationInViewController:self.navigationController
                                   title:NSLocalizedString(@"Password updated.", nil)
                                            subtitle:user.message
@@ -50,7 +51,7 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [TSMessage showNotificationInViewController:self.navigationController
                                   title:NSLocalizedString(@"Couldn't save password.", nil)
-                                subtitle:nil
+                                subtitle:[error localizedDescription]
                                    type:TSMessageNotificationTypeError];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailUpdatePasswordNotification object:self];
     }];
