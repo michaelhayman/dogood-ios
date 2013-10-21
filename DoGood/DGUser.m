@@ -108,9 +108,9 @@ static DGUser* currentUser = nil;
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.location forKey:kDGUserCurrentUserLocation];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.contactable forKey:kDGUserCurrentUserContactable];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.avatar forKey:kDGUserCurrentUserAvatar];
-    [RFKeychain setPassword:currentUser.password account:kDoGoodAccount service:kDoGoodService];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.twitter_id forKey:kDGUserCurrentUserTwitterID];
 	[[NSUserDefaults standardUserDefaults] setObject:currentUser.facebook_id forKey:kDGUserCurrentUserFacebookID];
+    [RFKeychain setPassword:currentUser.password account:kDoGoodAccount service:kDoGoodService];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -118,11 +118,14 @@ static DGUser* currentUser = nil;
 	return self.userID != nil;
 }
 
+#pragma mark - Set Password
 + (void)setNewPassword:(NSString *)password {
+    [DGUser currentUser].password = password;
     [RFKeychain setPassword:password account:kDoGoodAccount service:kDoGoodService];
+    [self setAuthorizationHeader];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-#pragma mark - Send Password
 #pragma mark - Sign Out
 - (void)signOutWithMessage:(BOOL)showMessage {
     [[NSUserDefaults standardUserDefaults] setValue:nil forKey:kDGUserCurrentUserIDDefaultsKey];
