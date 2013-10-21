@@ -3,16 +3,11 @@
 #import "RFKeychain.h"
 #import "DGUserProfileViewController.h"
 
-// Current User singleton
 static DGUser* currentUser = nil;
 
 @implementation DGUser
 
 #pragma mark - Class methods
-/**
- * Returns the singleton current User instance. There is always a User returned so that you
- * are not sending messages to nil
- */
 + (DGUser*)currentUser {
 	if (nil == currentUser) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -42,19 +37,12 @@ static DGUser* currentUser = nil;
 	currentUser = user;
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 #pragma mark - HTTP Headers
 + (void)setAuthorizationHeader {
-    DebugLog(@"setting authorization header for %@ and %@", currentUser.email, currentUser.password);
     [[RKObjectManager sharedManager].HTTPClient setAuthorizationHeaderWithUsername:currentUser.email password:currentUser.password];
 }
 
 + (void)setUpUserAuthentication {
-    DebugLog(@"set up user auth");
-    // Register for authentication notifications
 	[[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(setBasicHTTPAccessFromAuthenticationNotification:)
                                                  name:DGUserDidSignInNotification
@@ -64,26 +52,19 @@ static DGUser* currentUser = nil;
                                                  name:DGUserDidSignOutNotification
                                                object:nil];
 
-    // [[DGUser currentUser] verifySavedUser];
     [DGUser currentUser];
     [DGUser verifySavedUser];
 }
 
 + (void)setBasicHTTPAccessFromAuthenticationNotification:(NSNotification*)notification {
-    DebugLog(@"set basic access");
-    // [self setAuthorizationHeader];
     [DGUser setAuthorizationHeader];
 }
 
 #pragma mark - Sign In
 + (void)verifySavedUser {
-    DebugLog(@"verify %@ %@", currentUser, currentUser.userID);
     if ([currentUser isSignedIn]) {
-        DebugLog(@"is signed in");
         [[RKObjectManager sharedManager] postObject:self path:user_session_path parameters:nil success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            DebugLog(@"failed post to user session");
             if ([currentUser isSignedIn]) {
-                DebugLog(@"signing out");
                 [[DGUser currentUser] signOutWithMessage:NO];
             }
         }];
@@ -162,7 +143,6 @@ static DGUser* currentUser = nil;
     }
 
     [[RKObjectManager sharedManager].HTTPClient deletePath:user_end_session_path parameters:nil success:nil failure:nil];
-    DebugLog(@"why isn't notification posting, %@", DGUserDidSignOutNotification);
 
     [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSignOutNotification object:self];
 }
@@ -173,13 +153,11 @@ static DGUser* currentUser = nil;
         DGUser *user = mappingResult.array[0];
         self.points = user.points;
         [DGUser assignDefaults];
-        // should probably synchronize here..
         dispatch_async(dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdatePointsNotification object:self];
         });
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        DebugLog(@"Operation failed with error: %@", error);
-    }];
+    } failure:nil
+    ];
 }
 
 #pragma mark - Social
@@ -206,19 +184,14 @@ static DGUser* currentUser = nil;
     }
 
     [[RKObjectManager sharedManager] postObject:user path:@"/users/social" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        DebugLog(@"successfully saved.");
         if (user.twitter_id) {
             self.twitter_id = user.twitter_id;
         } else if (user.facebook_id) {
             self.facebook_id = user.facebook_id;
         }
         [DGUser assignDefaults];
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        DebugLog(@"Operation failed with error: %@", error);
-    }];
+    } failure:nil];
 }
-
-// - (void)saveFacebookID:(NSString *)facebookID
 
 #pragma mark - Profile helper
 + (void)openProfilePage:(NSNumber *)userID inController:(UINavigationController *)nav  {
@@ -233,6 +206,11 @@ static DGUser* currentUser = nil;
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setGroupingSeparator: [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator]];
     return [formatter stringFromNumber:self.points];
+}
+
+#pragma mark - Clean up
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

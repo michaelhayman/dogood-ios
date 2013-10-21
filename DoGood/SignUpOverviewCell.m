@@ -11,10 +11,7 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-}
-
+#pragma mark - Set image
 - (UIImage *)defaultImage {
     return [UIImage imageNamed:@"upload-image"];
 }
@@ -23,12 +20,17 @@
     return [UIImage imageNamed:@"upload-image-active"];
 }
 
+#pragma mark - Change text view
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     if([text isEqualToString:@"\n"]) {
         [textView resignFirstResponder];
         return NO;
     }
     return YES;
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
 }
 
 @end
