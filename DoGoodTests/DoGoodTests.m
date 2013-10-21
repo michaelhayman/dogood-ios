@@ -2,7 +2,7 @@
 //  DoGoodTests.m
 //  DoGoodTests
 //
-//  Created by Michael on 2013-08-02.
+//  Created by Michael on 2013-10-20.
 //  Copyright (c) 2013 Michael. All rights reserved.
 //
 
@@ -28,7 +28,7 @@
 
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    XCTAssertTrue(true);
 }
 
 @end
