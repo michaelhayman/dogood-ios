@@ -1,3 +1,4 @@
+@class DGUser;
 @interface DGReward : NSObject
 
 @property (retain) NSNumber *rewardID;

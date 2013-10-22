@@ -2,6 +2,7 @@ platform :ios, '6.0'
 # networking
 pod 'AFNetworking', '~> 1.3.1'
 pod 'RestKit', '~> 0.20.3'
+pod 'RestKit/Testing', '~> 0.20.0'
 # security
 pod 'RFKeychain', '~> 0.1'
 # ui
@@ -15,6 +16,11 @@ pod 'NSDate+TimeAgo', '~> 1.0.2'
 pod 'SVPullToRefresh', '~> 0.4.1'
 # social
 pod 'SocialAuth', :git => "git@github.com:evadne/SocialAuth.git"
+
+target :DoGoodTests, :exclusive => true do
+    pod 'Kiwi/XCTest'
+    # pod 'RKKiwiMatchers'
+end
 
 # not used yet
 # pod 'NSData+Base64'

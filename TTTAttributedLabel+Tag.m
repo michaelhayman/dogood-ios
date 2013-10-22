@@ -1,11 +1,3 @@
-//
-//  TTTAttributedLabel+Tag.m
-//  DoGood
-//
-//  Created by Michael on 2013-10-19.
-//  Copyright (c) 2013 Michael. All rights reserved.
-//
-
 #import "TTTAttributedLabel+Tag.h"
 
 static inline  NSRegularExpression * HashRegularExpression()

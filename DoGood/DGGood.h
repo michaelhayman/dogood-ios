@@ -6,12 +6,14 @@
 
 @property (retain) NSNumber *goodID;
 @property (retain) NSString *caption;
-@property (retain) DGCategory *category;
+// image
 @property (retain) NSString *evidence;
 @property (retain) UIImage *image;
+// category
+@property (retain) DGCategory *category;
+@property (retain) NSNumber *category_id;
 // user
 @property (retain) DGUser *user;
-@property (retain) NSNumber *user_id;
 // likes
 @property (retain) NSNumber *current_user_liked;
 @property (retain) NSNumber *likes_count;
@@ -20,20 +22,21 @@
 @property (retain) NSNumber *current_user_commented;
 @property (retain) NSNumber *comments_count;
 @property (retain) NSArray *comments;
-@property (retain) NSNumber *category_id;
 // regoods
 @property (retain) NSNumber *current_user_regooded;
 // location
 @property (retain) NSNumber *lat;
 @property (retain) NSNumber *lng;
-@property (retain) NSArray *point;
 @property (retain) NSString *location_name;
 @property (retain) NSString *location_image;
-@property (retain) NSNumber *done;
+// share
 @property BOOL shareDoGood;
 @property BOOL shareTwitter;
 @property BOOL shareFacebook;
+// entities
 @property (retain) NSArray *entities;
+// done status
+@property (retain) NSNumber *done;
 
 - (void)setValuesForLocation:(FSLocation *)location;
 - (void)setValuesForCategory:(DGCategory *)category;

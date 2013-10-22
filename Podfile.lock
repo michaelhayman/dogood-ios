@@ -1,6 +1,11 @@
 PODS:
   - AFNetworking (1.3.1)
   - HexColors (2.2.1)
+  - Kiwi/ARC (2.2.2)
+  - Kiwi/NonARC (2.2.2)
+  - Kiwi/XCTest (2.2.2):
+    - Kiwi/ARC
+    - Kiwi/NonARC
   - MBProgressHUD (0.7)
   - MJPopupViewController (0.4)
   - NSData+Base64 (1.0.0)
@@ -23,6 +28,7 @@ PODS:
   - RestKit/ObjectMapping (0.20.3)
   - RestKit/Support (0.20.3):
     - TransitionKit (= 1.1.1)
+  - RestKit/Testing (0.20.3)
   - RFKeychain (0.1)
   - SocialAuth (1.0.4):
     - OAuthCore
@@ -36,11 +42,13 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 1.3.1)
+  - Kiwi/XCTest
   - MBProgressHUD
   - MJPopupViewController (~> 0.4)
   - NSDate+TimeAgo (~> 1.0.2)
   - REMenu (~> 1.3.5)
   - RestKit (~> 0.20.3)
+  - RestKit/Testing (~> 0.20.0)
   - RFKeychain (~> 0.1)
   - SocialAuth (from `git@github.com:evadne/SocialAuth.git`)
   - SVPullToRefresh (~> 0.4.1)
@@ -55,6 +63,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
+  Kiwi: 03539aeb004ccd42bdbc31253617b26364315df4
   MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
   MJPopupViewController: 4cd0badf3dae541017e0e16e2d2c7578d9224052
   NSData+Base64: 4819562faee4544e3cf5703f2139820b09732b28

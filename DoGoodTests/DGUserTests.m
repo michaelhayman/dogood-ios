@@ -95,9 +95,10 @@
 }
 
 // can't do this since it screws with the actual app testing
+/*
 - (void)testUserSignOut {
     [newUser signOutWithMessage:NO];
     XCTAssertFalse([newUser isSignedIn], @"user should be signed out");
 }
-
+*/
 @end
