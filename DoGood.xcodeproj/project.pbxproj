@@ -93,6 +93,7 @@
 		63A7964618160DA90065740C /* DGBlankTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A7964518160DA90065740C /* DGBlankTests.m */; };
 		63A7964818168D510065740C /* DGErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A7964718168D510065740C /* DGErrorTests.m */; };
 		63A7964A18168E510065740C /* DGURLHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A7964918168E510065740C /* DGURLHandlerTests.m */; };
+		63A7964C1816914F0065740C /* DGEntityHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A7964B1816914F0065740C /* DGEntityHandlerTests.m */; };
 		63AAFB171815EE7B00C8CA0B /* DGUserKiwiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AAFB161815EE7B00C8CA0B /* DGUserKiwiTests.m */; };
 		63AAFB191815FAB500C8CA0B /* DGRestKitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AAFB181815FAB500C8CA0B /* DGRestKitTest.m */; };
 		63AAFB1B1816070F00C8CA0B /* DGTagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AAFB1A1816070F00C8CA0B /* DGTagTests.m */; };
@@ -291,6 +292,7 @@
 		63A7964518160DA90065740C /* DGBlankTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGBlankTests.m; sourceTree = "<group>"; };
 		63A7964718168D510065740C /* DGErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGErrorTests.m; sourceTree = "<group>"; };
 		63A7964918168E510065740C /* DGURLHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGURLHandlerTests.m; sourceTree = "<group>"; };
+		63A7964B1816914F0065740C /* DGEntityHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEntityHandlerTests.m; sourceTree = "<group>"; };
 		63AAFB161815EE7B00C8CA0B /* DGUserKiwiTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserKiwiTests.m; sourceTree = "<group>"; };
 		63AAFB181815FAB500C8CA0B /* DGRestKitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRestKitTest.m; sourceTree = "<group>"; };
 		63AAFB1A1816070F00C8CA0B /* DGTagTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTagTests.m; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 		636A5A601814D82500FB708A /* DoGoodTests */ = {
 			isa = PBXGroup;
 			children = (
+				63A7964B1816914F0065740C /* DGEntityHandlerTests.m */,
 				63A7964918168E510065740C /* DGURLHandlerTests.m */,
 				63A7964718168D510065740C /* DGErrorTests.m */,
 				63A7964518160DA90065740C /* DGBlankTests.m */,
@@ -921,6 +924,7 @@
 				63A7964418160CBB0065740C /* DGRewardTests.m in Sources */,
 				63AAFB171815EE7B00C8CA0B /* DGUserKiwiTests.m in Sources */,
 				63AAFB191815FAB500C8CA0B /* DGRestKitTest.m in Sources */,
+				63A7964C1816914F0065740C /* DGEntityHandlerTests.m in Sources */,
 				63A7964818168D510065740C /* DGErrorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
