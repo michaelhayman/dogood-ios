@@ -24,7 +24,7 @@
     comment = nil;
 }
 
-- (void)testExample {
+- (void)testCreation {
     comment.created_at = [NSDate distantPast];
     NSString *timeAgo = [comment.created_at timeAgo];
     XCTAssertEqualObjects(comment.createdAgoInWords, timeAgo, @"comment should have a nice timestamp");
