@@ -73,13 +73,7 @@
 
 - (void)setupUserPoints {
     if (self.category == nil && self.tag == nil) {
-    // if ([[DGUser currentUser].points intValue] > 0) {
-        // UserOverview *userView = [[UserOverview alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-        // userView.backgroundColor = [UIColor blackColor];
         [tableView setTableHeaderView:userView];
-        // tableView.tableHeaderView.backgroundColor = [UIColor redColor];
-        DebugLog(@"setting points");
-    // }
     }
 }
 
@@ -135,7 +129,6 @@
         cell.navigationController = self.loadController;
         cell.parent = self;
         [cell setValues];
-        DebugLog(@"set");
         return cell;
     } else {
         static NSString * reuseIdentifier = @"NoResultsCell";

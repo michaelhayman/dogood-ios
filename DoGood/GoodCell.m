@@ -129,7 +129,6 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     [super prepareForReuse];
     self.description.attributedText = nil;
     [comments.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
-    DebugLog(@"reusing");
 }
 
 #pragma mark - Set values when cell becomes visible

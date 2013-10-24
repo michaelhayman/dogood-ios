@@ -33,7 +33,6 @@
 }
 
 - (BOOL)check:(UITextView *)textField range:(NSRange)range forEntities:(NSMutableArray *)theseEntities completion:(CheckEntitiesBlock)completion {
-     DebugLog(@"check these entities %@", theseEntities);
      for (DGEntity *entity in theseEntities) {
         DebugLog(@"entity");
         NSRange entityRange = [entity rangeFromArray];
