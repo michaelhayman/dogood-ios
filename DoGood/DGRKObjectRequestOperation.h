@@ -1,0 +1,3 @@
+@interface DGRKObjectRequestOperation : NSObject
+
+@end

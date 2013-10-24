@@ -87,6 +87,8 @@ extern NSString *const DGErrorDomain;
 
 // Notifications
 extern NSString *const DGUserDidSignOutNotification;
+extern NSString *const DGUserDidFailSilentAuthenticationNotification;
+extern NSString* const DGConnectionFailure;
 
 extern NSString* const DGUserDidSignInNotification;
 extern NSString* const DGUserDidFailSignInNotification;

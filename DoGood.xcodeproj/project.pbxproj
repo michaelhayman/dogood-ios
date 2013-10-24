@@ -71,6 +71,7 @@
 		636AEAA317AD77F0002A3494 /* DGPostGoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636AEAA217AD77F0002A3494 /* DGPostGoodViewController.m */; };
 		636AEAA717AD79AA002A3494 /* GoodOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636AEAA617AD79AA002A3494 /* GoodOverviewCell.m */; };
 		636AEAA917AD79B1002A3494 /* GoodOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636AEAA817AD79B1002A3494 /* GoodOverviewCell.xib */; };
+		6378AE1E1818BA50001DB9BF /* DGRKObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6378AE1D1818BA50001DB9BF /* DGRKObjectRequestOperation.m */; };
 		637ABAD317C7C6F4004AA4C9 /* SearchUserNetworks.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637ABAD217C7C6F4004AA4C9 /* SearchUserNetworks.xib */; };
 		637CC94217C5527E007619F5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637CC94117C5527E007619F5 /* Accounts.framework */; };
 		637CC94317C55290007619F5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6355EC1817B531C700EE91C0 /* Social.framework */; };
@@ -257,6 +258,8 @@
 		636AEAA517AD79AA002A3494 /* GoodOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodOverviewCell.h; sourceTree = "<group>"; };
 		636AEAA617AD79AA002A3494 /* GoodOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodOverviewCell.m; sourceTree = "<group>"; };
 		636AEAA817AD79B1002A3494 /* GoodOverviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodOverviewCell.xib; sourceTree = "<group>"; };
+		6378AE1C1818BA50001DB9BF /* DGRKObjectRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGRKObjectRequestOperation.h; sourceTree = "<group>"; };
+		6378AE1D1818BA50001DB9BF /* DGRKObjectRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRKObjectRequestOperation.m; sourceTree = "<group>"; };
 		637ABAD217C7C6F4004AA4C9 /* SearchUserNetworks.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchUserNetworks.xib; sourceTree = "<group>"; };
 		637CC94117C5527E007619F5 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		637CC94417C553D9007619F5 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
@@ -427,6 +430,8 @@
 		633DBF9217AED2480038BC2D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6378AE1C1818BA50001DB9BF /* DGRKObjectRequestOperation.h */,
+				6378AE1D1818BA50001DB9BF /* DGRKObjectRequestOperation.m */,
 				6308161617C3DDD4004DE5D7 /* RestKit.h */,
 				63FBF609180CD5F3005686A6 /* RestKit.m */,
 				63D9F1FC18107E1000B9207F /* DGEntity.h */,
@@ -1001,6 +1006,7 @@
 				6330B6A11812FC28005DC78B /* DGEntityHandler.m in Sources */,
 				63DA644B17DC0F28003DFF03 /* DGExploreCategoriesViewController.m in Sources */,
 				63DA644E17DC0F55003DFF03 /* DGExploreSearchViewController.m in Sources */,
+				6378AE1E1818BA50001DB9BF /* DGRKObjectRequestOperation.m in Sources */,
 				63DA645517DC158D003DFF03 /* DGExploreSearchPeopleTableViewController.m in Sources */,
 				63DA645617DC158D003DFF03 /* DGExploreSearchTagsTableViewController.m in Sources */,
 				63DA645917DC16A2003DFF03 /* DGTag.m in Sources */,

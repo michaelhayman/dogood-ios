@@ -10,8 +10,15 @@
 #import "DGReport.h"
 #import "DGTag.h"
 #import "DGEntity.h"
+#import "DGRKObjectRequestOperation.h"
 
 @implementation RestKit
+
+/*
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+*/
 
 + (void)setupRestKit {
     #ifdef DEVELOPMENT_LOGS
@@ -25,8 +32,11 @@
     AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];
     
     [client setDefaultHeader:@"Accept" value:RKMIMETypeJSON];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(connectionFailedWithOperation:) name:DGConnectionFailure object:nil];
 
     RKObjectManager *objectManager = [[RKObjectManager alloc] initWithHTTPClient:client];
+    [[RKObjectManager sharedManager] registerRequestOperationClass:[DGRKObjectRequestOperation class]];
+
     [DGUser setAuthorizationHeader];
 
     // --------------------------------
@@ -292,6 +302,37 @@
     [eventRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"bets" toKeyPath:@"bets_attributes" withMapping:betRequestMapping]];
     */
 
+}
+
++ (void)connectionFailedWithOperation:(NSNotification *)notification {
+    RKObjectRequestOperation *operation = (RKObjectRequestOperation *)notification.object;
+    DebugLog(@"failed!");
+    UINavigationController *nav = (UINavigationController *)[[UIApplication sharedApplication] keyWindow].rootViewController;
+
+    if (operation) {
+
+        NSInteger statusCode = operation.HTTPRequestOperation.response.statusCode;
+        DebugLog(@"failed! %i", statusCode);
+
+        switch (statusCode) {
+            case 0: // No internet connection
+            {
+                [TSMessage showNotificationInViewController:nav title:@"Couldn't connect" subtitle:@"No internet connection" type:TSMessageNotificationTypeError];
+            }
+                break;
+            case  401: // not authenticated
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailSilentAuthenticationNotification object:nil];
+                DebugLog(@"present welcome screen");
+            }
+                break;
+
+            default:
+            {
+            }
+                break;
+        }
+    }
 }
 
 @end

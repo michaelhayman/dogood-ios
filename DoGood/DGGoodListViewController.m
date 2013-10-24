@@ -41,6 +41,7 @@
     [self setupUserPoints];
     // [self getGood];
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(welcomeScreen) name:DGUserDidFailSilentAuthenticationNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:userView selector:@selector(setContent) name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayPostSuccessMessage) name:DGUserDidPostGood object:nil];
@@ -107,16 +108,20 @@
     DebugLog(@"show welcome");
     if (![[DGUser currentUser] isSignedIn]) {
         DebugLog(@"shouldn't be signed in");
-        UIStoryboard *storyboard;
-        storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
-        DGWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
-        [self presentViewController:navigationController animated:NO completion:nil];
+        [self welcomeScreen];
     } else {
         if ([goods count] == 0) {
             [self reloadGood];
         }
     }
+}
+
+- (void)welcomeScreen {
+    UIStoryboard *storyboard;
+    storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+    DGWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
+    [self presentViewController:navigationController animated:NO completion:nil];
 }
 
 #pragma mark - UITableView delegate methods

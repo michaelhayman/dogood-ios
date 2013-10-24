@@ -15,8 +15,12 @@ NSString* const kDGUserCurrentUserAvatar = @"kDGUserCurrentUserAvatar";
 NSString* const kDGUserCurrentUserTwitterID = @"kDGUserCurrentUserTwitterID";
 NSString* const kDGUserCurrentUserFacebookID = @"kDGUserCurrentUserFacebookID";
 
+
+NSString* const DGConnectionFailure = @"DGConnectionFailure";
+
 // Notifications
 NSString* const DGUserDidSignOutNotification = @"DGUserDidSignOutNotification";
+NSString *const DGUserDidFailSilentAuthenticationNotification = @"DGUserDidFailSilentAuthenticationNotification";
 
 NSString* const DGUserDidSignInNotification = @"DGUserDidSignInNotification";
 NSString* const DGUserDidFailSignInNotification = @"DGUserDidFailSignInNotification";
