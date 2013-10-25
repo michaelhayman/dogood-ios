@@ -24,6 +24,7 @@
                                                  name:DGUserDidSendPasswordNotification
                                                object:nil];
     self.navigationItem.title = @"Forgot Password";
+    [self.emailField becomeFirstResponder];
 }
 
 - (void)dealloc {

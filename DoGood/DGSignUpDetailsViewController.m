@@ -100,6 +100,7 @@
     }
 
     if (!errors) {
+        [self.view endEditing:YES];
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:tableView animated:YES];
         hud.labelText = @"Creating account...";
 

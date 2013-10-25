@@ -11,6 +11,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.emailField becomeFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -38,6 +39,7 @@
     DebugLog(@"usreage %@", user);
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Signing in...";
+    [self.view endEditing:YES];
 
     [[RKObjectManager sharedManager] postObject:user path:user_session_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [DGUser setCurrentUser:user];
