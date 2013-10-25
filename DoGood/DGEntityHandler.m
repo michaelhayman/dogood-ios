@@ -116,7 +116,7 @@
 
 #pragma mark - Keyboard management
 - (void)setupAccessoryView {
-    accessoryView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, kToolbarHeight)];
+    accessoryView = [[UIInputView alloc] initWithFrame:CGRectMake(0, 0, 320, kToolbarHeight) inputViewStyle:UIInputViewStyleKeyboard];
 
     accessoryButtonMention = [UIButton buttonWithType:UIButtonTypeCustom];
     [accessoryButtonMention setFrame:CGRectMake(10.0f, 10.0f, 26.0f, 23.0f)];

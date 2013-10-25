@@ -11,7 +11,7 @@
     NSString *entityType;
 
     // keyboard
-    UIToolbar *accessoryView;
+    UIInputView *accessoryView;
     UIButton *accessoryButtonMention;
     UIButton *accessoryButtonTag;
     UILabel *characterLimitLabel;
