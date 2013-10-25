@@ -284,7 +284,7 @@
 }
 
 - (void)setTextViewHeight {
-    CGFloat adjustmentIndex = [DGAppearance calculateHeightForText:commentInputField.attributedText andWidth:256] + 16;
+    CGFloat adjustmentIndex = [DGAppearance calculateHeightForText:commentInputField.attributedText andWidth:240] + 16;
     commentInputFieldHeight.constant = adjustmentIndex;
 }
 
