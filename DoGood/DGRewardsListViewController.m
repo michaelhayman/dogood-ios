@@ -19,8 +19,6 @@
     [self setupTabs];
 
     [self addMenuButton:@"MenuFromRewardsIconTap" withTapButton:@"MenuFromRewardsIcon"];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissPopup) name:DGUserDidDismissRewardPopup object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -131,11 +129,6 @@
         DebugLog(@"Operation failed with error: %@", error);
         [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Reward not claimed.", nil) subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
     }];
-}
-
-- (void)dismissPopup {
-    // [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideTopBottom];
-    [self dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideBottomBottom];
 }
 
 @end

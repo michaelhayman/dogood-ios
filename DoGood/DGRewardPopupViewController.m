@@ -57,12 +57,11 @@
 - (void)confirmClaim {
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:self.reward, @"reward", nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:DGUserClaimRewardNotification object:nil userInfo:userInfo];
-    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidDismissRewardPopup object:nil];
+    [self close:nil];
 }
 
 - (IBAction)close:(id)sender {
-    DebugLog(@"close it");
-    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidDismissRewardPopup object:nil];
+    [self dismissPopupViewController:self animationType:MJPopupViewAnimationSlideBottomBottom];
 }
 
 @end

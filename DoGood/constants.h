@@ -144,8 +144,6 @@ extern NSString* const DGUserDidCheckIfAddressBookIsConnected;
 
 extern NSString* const DGUserDidToggleMenu;
 
-extern NSString* const DGUserDidDismissRewardPopup;
-
 extern NSString* const DGUserDidSelectPersonForTextField;
 extern NSString* const DGUserDidNotFindPeopleForTextField;
 

@@ -79,7 +79,7 @@
     storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
     DGRewardPopupViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"rewardInsufficientPointsPopup"];
     controller.reward = self.reward;
-    [self.navigationController presentPopupViewController:controller animationType:MJPopupViewAnimationSlideBottomBottom];
+    [self.navigationController presentPopupViewController:controller contentInteraction:MJPopupViewContentInteractionDismissBackgroundOnly];
 }
 
 #pragma mark - Instructions dialog
@@ -88,7 +88,7 @@
     storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
     DGRewardPopupViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"rewardClaimPopup"];
     controller.reward = self.reward;
-    [self.navigationController presentPopupViewController:controller animationType:MJPopupViewAnimationSlideBottomBottom];
+    [self.navigationController presentPopupViewController:controller animationType:MJPopupViewAnimationSlideBottomBottom contentInteraction:MJPopupViewContentInteractionDismissBackgroundOnly];
 }
 
 - (void)instructions {
@@ -96,7 +96,7 @@
     storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
     DGRewardPopupViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"rewardInstructionsPopup"];
     controller.reward = self.reward;
-    [self.navigationController presentPopupViewController:controller animationType:MJPopupViewAnimationSlideBottomBottom];
+    [self.navigationController presentPopupViewController:controller animationType:MJPopupViewAnimationSlideBottomBottom contentInteraction:MJPopupViewContentInteractionDismissBackgroundOnly];
 }
 
 @end

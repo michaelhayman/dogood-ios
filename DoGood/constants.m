@@ -54,7 +54,6 @@ NSString* const DGUserDidRemovePhotoNotification = @"DGUserDidRemovePhotoNotific
 NSString* const DGUserDidToggleMenu = @"DGUserDidToggleMenu";
 
 // rewards
-NSString* const DGUserDidDismissRewardPopup = @"DGUserDidDismissRewardPopup";
 NSString* const DGUserDidSelectRewards = @"DGUserDidSelectRewards";
 
 // textfields

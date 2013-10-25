@@ -45,16 +45,10 @@
 - (void)setupNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePointsText) name:DGUserDidUpdatePointsNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePointsText) name:DGUserDidPostGood object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissPopup) name:DGUserDidDismissRewardPopup object:nil];
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)dismissPopup {
-    DebugLog(@"dismiss");
-    [self.navigationController dismissPopupViewControllerWithanimationType:MJPopupViewAnimationSlideBottomBottom];
 }
 
 #pragma mark - Content methods

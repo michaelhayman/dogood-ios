@@ -11,7 +11,7 @@ pod 'MBProgressHUD'
 pod 'REMenu', '~> 1.3.5'
 pod 'UIImage-Categories', '~> 0.0.1'
 pod 'TTTAttributedLabel', '~> 1.7.1'
-pod 'MJPopupViewController', '~> 0.4'
+pod 'MJPopupViewController', :git => "git@github.com:doPanic/MJPopupViewController.git"
 pod 'NSDate+TimeAgo', '~> 1.0.2'
 pod 'SVPullToRefresh', '~> 0.4.1'
 # social
