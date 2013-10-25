@@ -111,9 +111,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-   if ([comments count] == 0) {
-       return 204;
-   }
+    if ([comments count] == 0) {
+        return 204;
+    }
 
     DGComment * comment = comments[indexPath.row];
     UIFont *font = [UIFont systemFontOfSize:13];
