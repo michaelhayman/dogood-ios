@@ -154,6 +154,7 @@
     if (accessoryButtonMention.selected == NO && accessoryButtonTag.selected == NO) {
         accessoryButtonMention.selected = !accessoryButtonMention.selected;
         entityTextView.attributedText = [self insert:@"@" atEndOf:entityTextView.attributedText];
+        [entityTextView.delegate textViewDidChange:entityTextView];
         [self watchForEntities:entityTextView];
         [self resetTypingAttributes:entityTextView];
     }
@@ -266,6 +267,7 @@
     if (accessoryButtonMention.selected == NO && accessoryButtonTag.selected == NO) {
         accessoryButtonTag.selected = !accessoryButtonTag.selected;
         entityTextView.attributedText = [self insert:@"#" atEndOf:entityTextView.attributedText];
+        [entityTextView.delegate textViewDidChange:entityTextView];
         [self watchForEntities:entityTextView];
         [self resetTypingAttributes:entityTextView];
     }
