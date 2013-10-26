@@ -35,8 +35,7 @@
 
     [self initializeTable];
 
-    userView = [[UserOverview alloc] init];
-    userView.navigationController = self.navigationController;
+    userView = [[UserOverview alloc] initWithController:self.navigationController];
     // userView = [[UserOverview alloc] initWithFrame:CGRectMake(0, 0, 320, 106)];
     [self setupUserPoints];
     // [self getGood];

@@ -115,6 +115,7 @@ extern NSString* const DGUserUpdatePointsNotification;
 extern NSString* const DGUserDidUpdatePointsNotification;
 
 extern NSString* const DGUserClaimRewardNotification;
+extern NSString* const DGUserDidClaimRewardNotification;
 
 extern NSString* const DGUserDidAddPhotoNotification;
 extern NSString* const DGUserDidRemovePhotoNotification;

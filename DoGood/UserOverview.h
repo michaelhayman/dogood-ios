@@ -10,6 +10,7 @@
 
 @property (weak, nonatomic) UINavigationController *navigationController;
 
+- (id)initWithController:(UINavigationController *)controller;
 - (void)updatePointsText;
 - (void)setContent;
 

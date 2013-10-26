@@ -9,12 +9,13 @@
 @implementation UserOverview
 
 #pragma mark - Initialization & reuse
-- (id)initWithFrame:(CGRect)frame {
-    frame = CGRectMake(0, 0, 320, 90);
+- (id)initWithController:(UINavigationController *)controller {
+    CGRect frame = CGRectMake(0, 0, 320, 90);
     self = [super initWithFrame:frame];
     if (self) {
         [[NSBundle mainBundle] loadNibNamed:@"UserOverview" owner:self options:nil];
         [self addSubview:self.view];
+        self.navigationController = controller;
 
         [self setContent];
         [self style];
@@ -45,6 +46,7 @@
 - (void)setupNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePointsText) name:DGUserDidUpdatePointsNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePointsText) name:DGUserDidPostGood object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didClaimReward:) name:DGUserDidClaimRewardNotification object:nil];
 }
 
 - (void)dealloc {
@@ -118,6 +120,11 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
     }];
+}
+
+- (void)didClaimReward:(NSNotification *)notification {
+    DGReward *reward = [[notification userInfo] valueForKey:@"reward"];
+    [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Reward claimed!", nil) subtitle:[NSString stringWithFormat:@"%@ is yours", reward.title] type:TSMessageNotificationTypeSuccess];
 }
 
 @end

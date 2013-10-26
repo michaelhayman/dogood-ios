@@ -47,6 +47,7 @@ NSString* const DGUserUpdatePointsNotification = @"DGUserUpdatePointsNotificatio
 NSString* const DGUserDidUpdatePointsNotification = @"DGUserDidUpdatePointsNotification";
 
 NSString* const DGUserClaimRewardNotification = @"DGUserClaimRewardNotification";
+NSString* const DGUserDidClaimRewardNotification = @"DGUserDidClaimRewardNotification";
 
 NSString* const DGUserDidAddPhotoNotification = @"DGUserDidAddPhotoNotification";
 NSString* const DGUserDidRemovePhotoNotification = @"DGUserDidRemovePhotoNotification";

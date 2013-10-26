@@ -55,13 +55,27 @@
 }
 
 - (void)confirmClaim {
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:self.reward, @"reward", nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserClaimRewardNotification object:nil userInfo:userInfo];
+    [self claimReward];
     [self close:nil];
+}
+
+- (void)claimReward {
+    [[RKObjectManager sharedManager] postObject:self.reward path:@"/rewards/claim" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:self.reward, @"reward", nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserUpdatePointsNotification object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidClaimRewardNotification object:nil userInfo:userInfo];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        DebugLog(@"Operation failed with error: %@", error);
+        [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Reward not claimed.", nil) subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
+    }];
 }
 
 - (IBAction)close:(id)sender {
     [self dismissPopupViewController:self animationType:MJPopupViewAnimationSlideBottomBottom];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end
