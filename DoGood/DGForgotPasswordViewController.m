@@ -8,22 +8,14 @@
 
 @implementation DGForgotPasswordViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(popController)
                                                  name:DGUserDidSendPasswordNotification
                                                object:nil];
     self.navigationItem.title = @"Forgot Password";
+    self.emailField.text = self.signInEmail;
     [self.emailField becomeFirstResponder];
 }
 
@@ -35,8 +27,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
@@ -79,7 +70,7 @@
         DebugLog(@"Operation failed with error: %@", error);
         [TSMessage showNotificationInViewController:self.navigationController
                                   title:NSLocalizedString(@"Password not sent.", nil)
-                                subtitle:[error description]
+                                subtitle:[error localizedDescription]
                                    type:TSMessageNotificationTypeError];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailSendPasswordNotification object:nil];
     }];
