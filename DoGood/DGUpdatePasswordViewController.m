@@ -39,7 +39,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:currentPassword, @"current_password", password, @"password", passwordConfirmation, @"password_confirmation", nil];
     user[@"user"] = params;
     
-    [[RKObjectManager sharedManager] putObject:user path:user_password_path parameters:user success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] putObject:user path:user_update_password_path parameters:user success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [DGUser setNewPassword:user[@"user"][@"password"]];
         DGUser * user = (mappingResult.array)[0];
 

@@ -61,6 +61,7 @@
 #define user_registration_path @"/users"
 #define user_password_path @"/users/password"
 #define user_update_path @"/users/update_profile"
+#define user_update_password_path @"/users/update_password"
 #define user_remove_avatar_path @"/users/remove_avatar"
 
 // RKPassword
