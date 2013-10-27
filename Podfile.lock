@@ -34,6 +34,7 @@ PODS:
     - OAuthCore
   - SOCKit (1.1)
   - SVPullToRefresh (0.4.1)
+  - TestFlightSDK (2.1.1-beta)
   - TransitionKit (1.1.1)
   - TSMessages (0.9.4):
     - HexColors
@@ -52,6 +53,7 @@ DEPENDENCIES:
   - RFKeychain (~> 0.1)
   - SocialAuth (from `git@github.com:evadne/SocialAuth.git`)
   - SVPullToRefresh (~> 0.4.1)
+  - TestFlightSDK
   - TSMessages (~> 0.9.4)
   - TTTAttributedLabel (~> 1.7.1)
   - UIImage-Categories (~> 0.0.1)
@@ -77,6 +79,7 @@ SPEC CHECKSUMS:
   SocialAuth: 53f5e770e4d01084f809ff231533196826f767d6
   SOCKit: 2f3bc4d07910de12dcc202815e07db68a3802581
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
+  TestFlightSDK: dea28c16f0bf65c49c4ed8939b2ae0b0ed9bf8b0
   TransitionKit: d0e3344aac92991395d4c2e72d9c5a8ceeb12910
   TSMessages: 5ab92604b02e49a755d2cc2baf114d2248a90977
   TTTAttributedLabel: e504133915a9b11de63cb470ffa2790383a3eb23

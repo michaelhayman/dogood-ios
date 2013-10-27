@@ -8,6 +8,7 @@
 #import "DGAppearance.h"
 #import "URLHandler.h"
 #import <TTTAttributedLabel.h>
+#import "TestFlight.h"
 
 @implementation DGAppDelegate
 
@@ -15,6 +16,7 @@
     [DGAppearance setupAppearance];
     [DGUser setUpUserAuthentication];
     [RestKit setupRestKit];
+    [TestFlight takeOff:@"737117dd-7de4-44f2-8be8-4a3782b60517"];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self setupViewsForUser];

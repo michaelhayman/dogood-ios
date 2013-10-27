@@ -16,6 +16,7 @@ pod 'NSDate+TimeAgo', '~> 1.0.2'
 pod 'SVPullToRefresh', '~> 0.4.1'
 # social
 pod 'SocialAuth', :git => "git@github.com:evadne/SocialAuth.git"
+pod 'TestFlightSDK'
 
 target :DoGoodTests, :exclusive => true do
     pod 'Kiwi/XCTest'
