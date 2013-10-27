@@ -1,20 +1,32 @@
 #import "DGExploreCategoriesViewController.h"
 #import "CategoryCell.h"
+#import "ExplorePopularTagsCell.h"
+#import "ExploreHighlightsCell.h"
 #import "DGCategory.h"
 #import "DGGoodListViewController.h"
+#import "DGAppearance.h"
 
 @implementation DGExploreCategoriesViewController
 
 - (void)viewDidLoad {
     self.title = @"Categories";
-    UINib *nib = [UINib nibWithNibName:@"CategoryCell" bundle:nil];
-    [tableView registerNib:nib forCellReuseIdentifier:@"CategoryCell"];
+    UINib *categoryNib = [UINib nibWithNibName:@"CategoryCell" bundle:nil];
+    [tableView registerNib:categoryNib forCellReuseIdentifier:@"CategoryCell"];
 
+    exploreHighlights = [[ExploreHighlightsCell alloc] initWithController:self.navigationController];
+    explorePopularTags = [[ExplorePopularTagsCell alloc] initWithController:self.navigationController];
+
+    [tableView setTableHeaderView:exploreHighlights];
+    [tableView setTableFooterView:explorePopularTags];
+
+    loadingView = [DGAppearance createLoadingViewCenteredOn:tableView];
+    [self.view addSubview:loadingView];
     [self stylePage];
     [self getCategories];
 
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (void)dealloc {
@@ -25,12 +37,14 @@
 }
 
 - (void)getCategories {
+    loadingView.hidden = NO;
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/categories" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         categories = [[NSArray alloc] initWithArray:mappingResult.array];
         [tableView reloadData];
-        DebugLog(@"categories %@", categories);
+        loadingView.hidden = YES;
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
+        loadingView.hidden = YES;
     }];
 }
 
@@ -40,7 +54,6 @@
     CategoryCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     DGCategory *category = categories[indexPath.row];
     cell.category = category;
-    DebugLog(@"category %@", category);
     [cell setValues];
     cell.navigationController = self.navigationController;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
