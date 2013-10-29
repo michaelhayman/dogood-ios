@@ -21,7 +21,7 @@
 */
 
 + (void)setupRestKit {
-    #ifdef DEVELOPMENT_LOGS
+    #if DEVELOPMENT_LOGS
         RKLogConfigureByName("RestKit", RKLogLevelTrace);
         RKLogConfigureByName("RestKit/ObjectMapping", RKLogLevelInfo);
         RKLogConfigureByName("RestKit/Network", RKLogLevelTrace);
