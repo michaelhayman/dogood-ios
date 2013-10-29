@@ -243,6 +243,7 @@
     int personLength = [user.full_name length];
     int endOfPersonRange = startOfPersonRange + personLength;
 
+    DebugLog(@"debugging info: %i %@", startOfPersonRange, entityTextView.attributedText);
     NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[entityTextView.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfPersonRange)];
     entityTextView.attributedText = [self insert:[user.full_name stringByAppendingString:@" "] atEndOf:originalComment];
     [self setLimitText];
