@@ -38,9 +38,7 @@
     [self initializeTable];
 
     userView = [[UserOverview alloc] initWithController:self.navigationController];
-    // userView = [[UserOverview alloc] initWithFrame:CGRectMake(0, 0, 320, 106)];
     [self setupUserPoints];
-    // [self getGood];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(welcomeScreen) name:DGUserDidFailSilentAuthenticationNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:userView selector:@selector(setContent) name:DGUserDidSignInNotification object:nil];
