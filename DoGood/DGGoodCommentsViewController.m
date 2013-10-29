@@ -91,7 +91,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   if ([comments count] == 0) {
+    if ([comments count] == 0) {
         tableView.transform = CGAffineTransformMakeRotation(M_PI);
         static NSString * reuseIdentifier = @"NoResultsCell";
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
