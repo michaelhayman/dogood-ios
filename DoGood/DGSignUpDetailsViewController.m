@@ -27,6 +27,7 @@
     tableView.backgroundColor = [UIColor clearColor];
     tableView.backgroundView = nil;
     tableView.opaque = NO;
+
     // self.view.backgroundColor = NEUTRAL_BACKGROUND_COLOUR;
 
     // self.navigationItem.rightBarButtonItem.tintColor = BUTTON_COLOR;
@@ -89,6 +90,7 @@
     self.user.password = password.text;
     self.user.phone = phone.text;
     bool errors = YES;
+
     NSString *message;
 
     if ([self.user.email isEqualToString:@""]) {
@@ -125,10 +127,7 @@
             [self.presentingViewController dismissViewControllerAnimated:YES completion:^(void) {
                 [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
             }];
-            [TSMessage showNotificationInViewController:self.presentingViewController
-                                      title:nil
-                                    subtitle:NSLocalizedString(@"Welcome to Do Good!", nil)
-                                       type:TSMessageNotificationTypeSuccess];
+            [TSMessage showNotificationInViewController:self.presentingViewController title:nil subtitle:NSLocalizedString(@"Welcome to Do Good!", nil) type:TSMessageNotificationTypeSuccess];
             DebugLog(@"success");
             hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
             // Set custom view mode
@@ -137,20 +136,14 @@
             [hud hide:YES];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             DebugLog(@"fail");
-            [TSMessage showNotificationInViewController:self.navigationController
-                                      title:nil
-                                    subtitle:[error localizedDescription]
-                                       type:TSMessageNotificationTypeError];
+            [TSMessage showNotificationInViewController:self.navigationController title:@"Error" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
             [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailCreateAccountNotification object:self];
             [hud hide:YES];
         }];
 
         [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
     } else {
-        [TSMessage showNotificationInViewController:self
-                                  title:nil
-                                subtitle:NSLocalizedString(message, nil)
-                                   type:TSMessageNotificationTypeError];
+        [TSMessage showNotificationInViewController:self.navigationController title:@"Error" subtitle:message type:TSMessageNotificationTypeError];
     }
 }
 
