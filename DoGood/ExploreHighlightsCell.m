@@ -32,10 +32,10 @@
     static NSString *reuseIdentifier = cellName;
     HighlightCollectionCell *cell = [aCollectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     if (indexPath.row == popular) {
-        [cell setName:@"Popular Now"];
+        [cell setName:@"Popular"];
         cell.backgroundColor = COLOUR_BROWN;
     } else {
-        [cell setName:@"In\nDemand"];
+        [cell setName:@"Nearby"];
         cell.backgroundColor = COLOUR_YELLOW;
     }
     return cell;
@@ -45,9 +45,11 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
     if (indexPath.row == popular) {
-        controller.path = @"/goods";
+        controller.path = @"/goods/popular";
+        controller.titleForPath = @"Popular";
     } else {
-        controller.path = @"/goods";
+        controller.path = @"/goods/nearby";
+        controller.titleForPath = @"Nearby";
     }
     [self.navigationController pushViewController:controller animated:YES];
 }

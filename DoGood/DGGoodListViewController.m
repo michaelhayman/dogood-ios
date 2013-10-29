@@ -27,7 +27,7 @@
     } else if (_tag) {
        [self setupMenuTitle:[_tag hashifiedName]];
     } else if (_path) {
-        [self setupMenuTitle:_path];
+        [self setupMenuTitle:_titleForPath];
     } else {
         [self setupMenuTitle:@"Do Good"];
         [self addMenuButton:@"MenuFromHomeIconTap" withTapButton:@"MenuFromHomeIcon"];

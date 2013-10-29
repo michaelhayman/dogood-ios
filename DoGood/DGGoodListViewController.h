@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSString *path;
+@property (nonatomic, retain) NSString *titleForPath;
 @property (nonatomic, retain) DGCategory *category;
 @property (nonatomic, retain) DGTag *tag;
 @property (nonatomic, retain) NSNumber *goodID;
