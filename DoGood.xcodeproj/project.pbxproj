@@ -127,7 +127,7 @@
 		63EB263017C2F029006D520A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EB262F17C2F029006D520A /* MessageUI.framework */; };
 		63FBF603180830C4005686A6 /* DGReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF602180830C4005686A6 /* DGReport.m */; };
 		63FBF606180AECFF005686A6 /* UIImage+Grayscale.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF605180AECFF005686A6 /* UIImage+Grayscale.m */; };
-		63FBF608180B0C06005686A6 /* DGRewardMiniCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FBF607180B0C06005686A6 /* DGRewardMiniCell.xib */; };
+		63FBF608180B0C06005686A6 /* RewardMiniCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FBF607180B0C06005686A6 /* RewardMiniCell.xib */; };
 		63FBF60A180CD5F3005686A6 /* RestKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF609180CD5F3005686A6 /* RestKit.m */; };
 		63FDAC42181C601000668B15 /* ExplorePopularTagsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FDAC41181C601000668B15 /* ExplorePopularTagsCell.m */; };
 		63FDAC44181C603B00668B15 /* ExplorePopularTagsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FDAC43181C603B00668B15 /* ExplorePopularTagsCell.xib */; };
@@ -356,7 +356,7 @@
 		63FBF602180830C4005686A6 /* DGReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGReport.m; sourceTree = "<group>"; };
 		63FBF604180AECFF005686A6 /* UIImage+Grayscale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Grayscale.h"; sourceTree = "<group>"; };
 		63FBF605180AECFF005686A6 /* UIImage+Grayscale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Grayscale.m"; sourceTree = "<group>"; };
-		63FBF607180B0C06005686A6 /* DGRewardMiniCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DGRewardMiniCell.xib; sourceTree = "<group>"; };
+		63FBF607180B0C06005686A6 /* RewardMiniCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RewardMiniCell.xib; sourceTree = "<group>"; };
 		63FBF609180CD5F3005686A6 /* RestKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestKit.m; sourceTree = "<group>"; };
 		63FDAC40181C601000668B15 /* ExplorePopularTagsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExplorePopularTagsCell.h; sourceTree = "<group>"; };
 		63FDAC41181C601000668B15 /* ExplorePopularTagsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExplorePopularTagsCell.m; sourceTree = "<group>"; };
@@ -607,7 +607,7 @@
 				6355EC1017B0EDA300EE91C0 /* DGRewardsListViewController.h */,
 				6355EC1117B0EDA300EE91C0 /* DGRewardsListViewController.m */,
 				6355EC1317B0EE1E00EE91C0 /* RewardCell.xib */,
-				63FBF607180B0C06005686A6 /* DGRewardMiniCell.xib */,
+				63FBF607180B0C06005686A6 /* RewardMiniCell.xib */,
 				63D4BD2618024E0700ACF1B9 /* DGRewardPopupViewController.h */,
 				63D4BD2718024E0700ACF1B9 /* DGRewardPopupViewController.m */,
 				6355EC1517B0EF2700EE91C0 /* DGRewardCell.h */,
@@ -868,7 +868,7 @@
 				633DBF7917AE02580038BC2D /* UserOverview.xib in Resources */,
 				633DBF7B17AE1E530038BC2D /* DoGood.nss in Resources */,
 				6355EC0D17B0D4C300EE91C0 /* CommentCell.xib in Resources */,
-				63FBF608180B0C06005686A6 /* DGRewardMiniCell.xib in Resources */,
+				63FBF608180B0C06005686A6 /* RewardMiniCell.xib in Resources */,
 				6355EC1417B0EE1E00EE91C0 /* RewardCell.xib in Resources */,
 				6355EC2417B6723E00EE91C0 /* Users.storyboard in Resources */,
 				63FDAC49181C61BA00668B15 /* TagCollectionCell.xib in Resources */,

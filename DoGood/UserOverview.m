@@ -61,7 +61,7 @@
 #pragma mark - UICollectionView methods
 - (void)setupRewardCell {
     [rewardCollectionView registerClass:[DGRewardCell class] forCellWithReuseIdentifier:@"RewardCell"];
-    UINib *nib = [UINib nibWithNibName:@"DGRewardMiniCell" bundle:nil];
+    UINib *nib = [UINib nibWithNibName:@"RewardMiniCell" bundle:nil];
     [rewardCollectionView registerNib:nib forCellWithReuseIdentifier:@"RewardCell"];
 }
 
