@@ -58,7 +58,6 @@
 		6358342E17C8A09700F997F6 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358342D17C8A09700F997F6 /* Arrow.m */; };
 		635A232017CAB5150045C256 /* DGCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 635A231F17CAB5150045C256 /* DGCategories.m */; };
 		635A232217CABEB30045C256 /* Categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 635A232117CABEB30045C256 /* Categories.plist */; };
-		635C949A18136CD2005594BC /* TTTAttributedLabel+Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C949918136CD2005594BC /* TTTAttributedLabel+Tag.m */; };
 		636A5A5D1814D82500FB708A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636A5A5C1814D82500FB708A /* XCTest.framework */; };
 		636A5A5E1814D82500FB708A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E117AC087A00167F15 /* Foundation.framework */; };
 		636A5A5F1814D82500FB708A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E517AC087A00167F15 /* UIKit.framework */; };
@@ -101,6 +100,7 @@
 		63AAFB1D181607B600C8CA0B /* DGEntityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AAFB1C181607B600C8CA0B /* DGEntityTests.m */; };
 		63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */; };
 		63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */; };
+		63C1548A181F555A00DA81B9 /* TTTAttributedLabel+Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C15489181F555A00DA81B9 /* TTTAttributedLabel+Tag.m */; };
 		63C1BA501806026300CB95CF /* UserOverview.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C1BA4F1806026300CB95CF /* UserOverview.m */; };
 		63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */; };
 		63D4BD251802484800ACF1B9 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D4BD241802484800ACF1B9 /* Rewards.storyboard */; };
@@ -248,8 +248,6 @@
 		635A231E17CAB5150045C256 /* DGCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCategories.h; sourceTree = "<group>"; };
 		635A231F17CAB5150045C256 /* DGCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCategories.m; sourceTree = "<group>"; };
 		635A232117CABEB30045C256 /* Categories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Categories.plist; sourceTree = "<group>"; };
-		635C949818136CD2005594BC /* TTTAttributedLabel+Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "TTTAttributedLabel+Tag.h"; path = "../TTTAttributedLabel+Tag.h"; sourceTree = "<group>"; };
-		635C949918136CD2005594BC /* TTTAttributedLabel+Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "TTTAttributedLabel+Tag.m"; path = "../TTTAttributedLabel+Tag.m"; sourceTree = "<group>"; };
 		636A5A5B1814D82500FB708A /* DoGoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoGoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		636A5A5C1814D82500FB708A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		636A5A621814D82500FB708A /* DoGoodTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoGoodTests-Info.plist"; sourceTree = "<group>"; };
@@ -312,6 +310,8 @@
 		63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchAddressBookViewController.m; sourceTree = "<group>"; };
 		63BFB1EA17C81E11004D990F /* DGUserSearchNetworksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchNetworksViewController.h; sourceTree = "<group>"; };
 		63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchNetworksViewController.m; sourceTree = "<group>"; };
+		63C15488181F555A00DA81B9 /* TTTAttributedLabel+Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TTTAttributedLabel+Tag.h"; sourceTree = "<group>"; };
+		63C15489181F555A00DA81B9 /* TTTAttributedLabel+Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TTTAttributedLabel+Tag.m"; sourceTree = "<group>"; };
 		63C1BA4E1806026300CB95CF /* UserOverview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOverview.h; sourceTree = "<group>"; };
 		63C1BA4F1806026300CB95CF /* UserOverview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOverview.m; sourceTree = "<group>"; };
 		63D4BCDD17FFDF7000ACF1B9 /* DGGoodCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGoodCommentsViewController.h; sourceTree = "<group>"; };
@@ -410,8 +410,8 @@
 			children = (
 				63DA644217DBEA52003DFF03 /* UIViewController+DGViewController.h */,
 				63DA644317DBEA52003DFF03 /* UIViewController+DGViewController.m */,
-				635C949818136CD2005594BC /* TTTAttributedLabel+Tag.h */,
-				635C949918136CD2005594BC /* TTTAttributedLabel+Tag.m */,
+				63C15488181F555A00DA81B9 /* TTTAttributedLabel+Tag.h */,
+				63C15489181F555A00DA81B9 /* TTTAttributedLabel+Tag.m */,
 				630046CE1810E619001529E5 /* URLHandler.h */,
 				630046CF1810E619001529E5 /* URLHandler.m */,
 				6330B69F1812FC28005DC78B /* DGEntityHandler.h */,
@@ -1021,6 +1021,7 @@
 				6319D38F17BDED080071DA71 /* DGReward.m in Sources */,
 				6319D39517BE5A230071DA71 /* DGUserSearchViewController.m in Sources */,
 				6397318E17C1733D001B96BF /* DGUserTwitterViewController.m in Sources */,
+				63C1548A181F555A00DA81B9 /* TTTAttributedLabel+Tag.m in Sources */,
 				63357AFE17C279F2007B5FD7 /* DGUserFindFriendsViewController.m in Sources */,
 				63FDAC48181C61BA00668B15 /* TagCollectionCell.m in Sources */,
 				63D9F1FE18107E1000B9207F /* DGEntity.m in Sources */,
@@ -1029,7 +1030,6 @@
 				63FBF60A180CD5F3005686A6 /* RestKit.m in Sources */,
 				6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */,
 				6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */,
-				635C949A18136CD2005594BC /* TTTAttributedLabel+Tag.m in Sources */,
 				63FDAC52181C651400668B15 /* HighlightCollectionCell.m in Sources */,
 				6308162217C41EA0004DE5D7 /* DGTwitterManager.m in Sources */,
 				63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */,
