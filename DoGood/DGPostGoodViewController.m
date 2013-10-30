@@ -360,6 +360,7 @@
 
         RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             // post this notification about whether it was shared or not too
+            DGGood *postedGood = [mappingResult.array objectAtIndex:0];
             [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidPostGood object:nil];
 
             if (self.good.shareTwitter) {
@@ -382,6 +383,7 @@
                 params[@"link"] = @"http://www.dogoodapp.com/";
                 params[@"name"] = @"Do Good, get a high score and earn rewards.";
                 params[@"caption"] = self.good.caption;
+                params[@"picture"] = NSNullIfNil(postedGood.evidence);
                 [facebookManager postToFacebook:params andImage:self.good.image withSuccess:^(BOOL success, NSString *msg, ACAccount *account) {
                     DebugLog(@"%@", msg);
                     [facebookManager findFacebookIDForAccount:account withSuccess:^(BOOL success, NSString *facebookID) {
