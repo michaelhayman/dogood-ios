@@ -41,15 +41,11 @@
     DGCategory *category = categories[indexPath.row];
     cell.textLabel.text = category.name;
 
-    UIImage *categoryImage = [UIImage imageNamed:@"category_1.png"];
-    if (categoryImage == nil) {
-        NSString *imgURL = [NSString stringWithFormat:@"%@/images/categories/category_%@.png", JSON_API_HOST_ADDRESS, category.categoryID];
-        DebugLog(@"nil image %@", imgURL);
-        [cell.imageView setImageWithURL:[NSURL URLWithString:imgURL] placeholderImage:[UIImage imageNamed:@"category_empty.png"]];
+    if ([category image]) {
+        cell.imageView.image = [category image];
     } else {
-        cell.imageView.image = categoryImage;
+        [cell.imageView setImageWithURL:[NSURL URLWithString:category.image_url] placeholderImage:[UIImage imageNamed:@"category_empty.png"]];
     }
-
     return cell;
 }
 

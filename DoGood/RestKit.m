@@ -222,7 +222,9 @@
     // --------------------------------
     RKObjectMapping *categoryMapping = [RKObjectMapping mappingForClass:[DGCategory class]];
     [categoryMapping addAttributeMappingsFromArray:@[
-     @"name"
+     @"name",
+     @"name_constant",
+     @"image_url"
     ]];
     [categoryMapping addAttributeMappingsFromDictionary:@{ @"id" : @"categoryID" }];
     RKResponseDescriptor *categoryResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:categoryMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"categories" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];

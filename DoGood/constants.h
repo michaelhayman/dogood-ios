@@ -12,8 +12,10 @@
 #define DEVELOPMENT 1
 #if DEVELOPMENT
     #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3002/"
+    #define IMAGES_HOST_ADDRESS @"https://reciprocity-development.s3.amazonaws.com/"
 #else
     #define JSON_API_HOST_ADDRESS @"http://dogood-app.herokuapp.com/"
+    #define IMAGES_HOST_ADDRESS @"https://reciprocity-production.s3.amazonaws.com/"
 #endif
 
 #pragma mark - Convenience -----
