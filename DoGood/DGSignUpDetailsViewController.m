@@ -84,7 +84,7 @@
     UITextField *email = [self textFieldForEmail];
     UITextField *password = [self textFieldForPassword];
     UITextField *phone = [self textFieldForPhone];
-    DebugLog(@"email %@, password %@, phone %@", email.text, password.text, phone.text);
+    DebugLog(@"full name %@ email %@, password %@, phone %@", self.user.full_name, email.text, password.text, phone.text);
 
     self.user.email = email.text;
     self.user.password = password.text;
