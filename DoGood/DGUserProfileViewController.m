@@ -137,7 +137,6 @@
                avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
                 [avatar bringSubviewToFront:avatarOverlay];
             }
-            DebugLog(@"RETRIEVING IMAGE");
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
             DebugLog(@"FAILING RETRIEVE");
         }];
@@ -181,7 +180,6 @@
 }
 
 - (void)openSettings {
-    DebugLog(@"settings view");
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
     DGUserSettingsViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"Settings"];
     [self.navigationController pushViewController:controller animated:YES];
@@ -237,18 +235,15 @@
                 [self reportUser];
             } else if (buttonIndex == share_button) {
                 [self openShareOptions];
-                DebugLog(@"Share");
             }
         } else if (actionSheet == shareOptionsSheet) {
             NSString *text = [NSString stringWithFormat:@"Check out this good person! dogood://users/%@", self.userID];
             if (buttonIndex == text_message_button) {
                 [invites setCustomText:text withSubject:nil];
                 [invites sendViaText:nil];
-                DebugLog(@"Text message");
             } else if (buttonIndex == email_button) {
                 [invites setCustomText:text withSubject:@"Wow!"];
                 [invites sendViaEmail:nil];
-                DebugLog(@"Email");
             } else if (buttonIndex == facebook_button) {
                 DebugLog(@"Facebook");
             } else if (buttonIndex == twitter_button) {
@@ -304,7 +299,6 @@
     if (goodsButton.selected == NO) {
         [goodsButton setSelected:YES];
         [likesButton setSelected:NO];
-        DebugLog(@"get user good");
         NSString *path = [NSString stringWithFormat:@"/goods/posted_or_followed_by?user_id=%@", self.userID];
         goodList.path = path;
         [goodList reloadGood];
@@ -313,7 +307,6 @@
 
 - (void)getUserLikes {
     if (likesButton.selected == NO) {
-        DebugLog(@"get user likes");
         [goodsButton setSelected:NO];
         [likesButton setSelected:YES];
         NSString *path = [NSString stringWithFormat:@"/goods/liked_by?user_id=%@", self.userID];

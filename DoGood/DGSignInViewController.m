@@ -32,7 +32,6 @@
 - (IBAction)forgotPassword:(id)sender {
     DGForgotPasswordViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ForgotPassword"];
     controller.signInEmail = self.emailField.text;
-    DebugLog(@"self email %@", self.emailField.text);
     [self.navigationController pushViewController:controller animated:YES];
 }
 
@@ -44,7 +43,6 @@
     DGUser *user = [DGUser new];
     user.email = email;
     user.password = password;
-    DebugLog(@"usreage %@", user);
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"Signing in...";
     [self.view endEditing:YES];
@@ -70,7 +68,6 @@
                                 subtitle:[error localizedDescription]
                                    type:TSMessageNotificationTypeError];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailSignInNotification object:self];
-        DebugLog(@"user %@", user);
         [hud hide:YES];
     }];
 }

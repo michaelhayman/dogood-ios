@@ -85,7 +85,6 @@
 
         [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:dictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             users = [[NSArray alloc] initWithArray:mappingResult.array];
-            DebugLog(@"do good users on twitter %@", users);
             [tableView reloadData];
             if ([users count] > 0) {
                 [self showAuthorized];
@@ -108,7 +107,6 @@
     // NSArray *users;
     DGUser *user = users[indexPath.row];
     cell.user = user;
-    DebugLog(@"user %@", user);
     [cell setValues];
     cell.navigationController = self.navigationController;
     return cell;

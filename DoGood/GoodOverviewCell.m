@@ -56,7 +56,6 @@
     // [self setTextViewHeight];
     [entityHandler setLimitText];
 
-    DebugLog(@"check");
     BOOL sup = [entityHandler check:textField range:(NSRange)range forEntities:self.entities completion:^BOOL(BOOL end, NSMutableArray *newEntities) {
         self.entities = newEntities;
         return end;

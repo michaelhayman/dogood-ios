@@ -98,11 +98,9 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    DebugLog(@"dispapeared nv");
     if (_menu && _menu.isOpen) {
         [_menu close];
     }
-    DebugLog(@"not the cause");
 }
 
 - (void)toggleMenu {

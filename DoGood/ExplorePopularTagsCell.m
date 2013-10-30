@@ -41,7 +41,6 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)aCollectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    DebugLog(@"cells hit %@", self.navigationController);
     TagCollectionCell *cell = [aCollectionView dequeueReusableCellWithReuseIdentifier:cellName forIndexPath:indexPath];
     cell.taggage = [tags objectAtIndex:indexPath.row];
     cell.contentView.layer.borderWidth = 1.0;
@@ -52,7 +51,6 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    DebugLog(@"getting hit at all?");
     DGTag * tag = [tags objectAtIndex:indexPath.row];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];

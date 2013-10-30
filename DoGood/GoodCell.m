@@ -446,18 +446,15 @@ static inline  NSRegularExpression * UserNameRegularExpression()
                 [self reportGood];
             } else if (buttonIndex == share_button) {
                 [self openShareOptions];
-                DebugLog(@"Share");
             }
         } else if (actionSheet == shareOptionsSheet) {
             NSString *text = [NSString stringWithFormat:@"Check out this good story! dogood://goods/%@", self.good.goodID];
             if (buttonIndex == text_message_button) {
                 [invites setCustomText:text withSubject:nil];
                 [invites sendViaText:nil];
-                DebugLog(@"Text message");
             } else if (buttonIndex == email_button) {
                 [invites setCustomText:text withSubject:@"Check out this good!"];
                 [invites sendViaEmail:nil];
-                DebugLog(@"Email");
             } else if (buttonIndex == facebook_button) {
                 DebugLog(@"Facebook");
             } else if (buttonIndex == twitter_button) {
@@ -506,7 +503,6 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
 #pragma mark - TTTAttributedLabel delegate methods
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithURL:(NSURL *)url {
-    DebugLog(@"selected");
     URLHandler *handler = [[URLHandler alloc] init];
     [handler openURL:url andReturn:^(BOOL matched) {
         if (matched) {

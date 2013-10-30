@@ -37,7 +37,6 @@
 }
 
 - (void)signInWithEmail:(NSString *)email orUsername:(NSString *)username andPassword:(NSString *)password showMessage:(BOOL)message {
-    DebugLog(@"sign into twitter. notify when connected so tableview updates.");
     [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidConnectToTwitter object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }

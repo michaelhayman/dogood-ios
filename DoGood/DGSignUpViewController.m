@@ -108,7 +108,6 @@
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    DebugLog(@"what");
     if (textField == name) {
         [self verifyNext:textField];
     }

@@ -128,7 +128,6 @@
                 [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
             }];
             [TSMessage showNotificationInViewController:self.presentingViewController title:nil subtitle:NSLocalizedString(@"Welcome to Do Good!", nil) type:TSMessageNotificationTypeSuccess];
-            DebugLog(@"success");
             hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
             // Set custom view mode
             hud.mode = MBProgressHUDModeCustomView;

@@ -71,7 +71,6 @@
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/categories" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         categories = [[NSArray alloc] initWithArray:mappingResult.array];
         [self.tableView reloadData];
-        DebugLog(@"categories %@", categories);
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
     }];

@@ -92,21 +92,17 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    DebugLog(@"appeared");
     [self showWelcome];
     [tableView reloadData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    DebugLog(@"disappeared");
 }
 
 #pragma mark - Points
 - (void)showWelcome {
-    DebugLog(@"show welcome");
     if (![[DGUser currentUser] isSignedIn]) {
-        DebugLog(@"shouldn't be signed in");
         [self welcomeScreen];
     } else {
         if ([goods count] == 0) {
@@ -190,7 +186,6 @@
 #pragma mark - Retrieval methods
 - (void)getGood {
     NSString *path;
-    DebugLog(@"self path %@", self.path);
     if (self.path) {
         path = self.path;
     } else if (_category) {
@@ -213,7 +208,6 @@
             showNoResultsMessage = NO;
             [self estimateHeightsForGoods:mappingResult.array];
         }
-        DebugLog(@"goods %@", goods);
         [tableView reloadData];
         [tableView.infiniteScrollingView stopAnimating];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -235,7 +229,6 @@
 }
 
 - (void)reloadGood {
-    DebugLog(@"reload good");
     [self resetGood];
     [self getGood];
     [tableView reloadData];

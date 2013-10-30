@@ -85,7 +85,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    DebugLog(@"good %@", self.good);
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -188,25 +188,17 @@
     [cell.description resignFirstResponder];
 
     if (indexPath.section == category) {
-        DebugLog(@"good.category %@", self.good.category);
         if (self.good.category != nil) {
-            DebugLog(@"shouldn't be nil");
             [categorySheet showInView:self.view];
         } else {
-            DebugLog(@"should be nil");
             [self showCategoryChooser];
         }
-        DebugLog(@"category");
     } else if (indexPath.section == location) {
-        DebugLog(@"good.location %@", self.good.location_name);
         if (self.good.location_name != nil) {
-            DebugLog(@"shouldn't be nil");
             [locationSheet showInView:self.view];
         } else {
-            DebugLog(@"should be nil");
             [self showLocationChooser];
         }
-        DebugLog(@"category");
     } else if (indexPath.section == who) {
         DebugLog(@"who");
     }
@@ -215,7 +207,6 @@
 
 #pragma mark - UIActionSheets
 - (void) showCategoryChooser {
-    DebugLog(@"show categories");
     UIStoryboard *storyboard;
     storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     DGPostGoodCategoryViewController *categoryController = [storyboard instantiateViewControllerWithIdentifier:@"PostGoodCategory"];
@@ -224,7 +215,6 @@
 }
 
 - (void) showLocationChooser {
-    DebugLog(@"show categories");
     UIStoryboard *storyboard;
     storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     DGPostGoodLocationViewController *locationController = [storyboard instantiateViewControllerWithIdentifier:@"PostGoodLocation"];
@@ -250,16 +240,13 @@
 
 - (void)uploadAvatar:(NSNotification *)notification  {
     imageToUpload = [[notification userInfo] objectForKey:UIImagePickerControllerEditedImage];
-    // self.good.image = [PFFile fileWithData:UIImagePNGRepresentation(imageToUpload)];
     self.good.image = imageToUpload;
-    DebugLog(@"imagetoupload");
     GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
     cell.image.image = imageToUpload;
 }
 
 - (void)deleteAvatar {
     imageToUpload = nil;
-    DebugLog(@"remove");
     GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
     cell.image.image = nil;
     self.good.image = nil;
@@ -275,30 +262,21 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex != actionSheet.cancelButtonIndex) {
         if (actionSheet == categorySheet) {
-            DebugLog(@"button index %d", buttonIndex);
             if (buttonIndex == remove_button) {
-                DebugLog(@"remove");
                 self.good.category = nil;
                 [self.tableView reloadData];
             } else if (buttonIndex == select_new_button) {
                 [self showCategoryChooser];
-                DebugLog(@"select new");
             }
         }
         if (actionSheet == locationSheet) {
-            DebugLog(@"button index %d", buttonIndex);
             if (buttonIndex == remove_button) {
-                DebugLog(@"remove");
                 self.good.location_name = nil;
                 [self.tableView reloadData];
             } else if (buttonIndex == select_new_button) {
                 [self showLocationChooser];
-                DebugLog(@"select new");
             }
         }
-    } else {
-        DebugLog(@"button index %d, %d", buttonIndex, actionSheet.cancelButtonIndex);
-        // [actionSheet dismissWithClickedButtonIndex:actionSheet.cancelButtonIndex animated:YES];
     }
 }
 
@@ -310,11 +288,8 @@
 }
 
 - (void)receiveUpdatedLocation:(NSNotification *)notification {
-    DebugLog(@"receiving");
     FSLocation *location = [[notification userInfo] valueForKey:@"location"];
-    DebugLog(@"location %@ %@ %@", location.displayName, location.lat, location.imageURL);
     [self.good setValuesForLocation:location];
-    DebugLog(@"location %@", self.good.location_image);
     [self.tableView reloadData];
 }
 
@@ -325,11 +300,8 @@
 
     UISwitch *twitter = (UISwitch *)[self.tableView viewWithTag:share_twitter_cell_tag];
     self.good.shareTwitter = twitter.on;
-    DebugLog(@"sharin %d %d", twitter.on, self.good.shareTwitter);
     UISwitch *facebook = (UISwitch *)[self.tableView viewWithTag:share_facebook_cell_tag];
     self.good.shareFacebook = facebook.on;
-    DebugLog(@"post good %@", self.good);
-    DebugLog(@"location %@", self.good.location_image);
     self.good.entities = cell.entities;
 
     bool errors = YES;
@@ -350,7 +322,6 @@
             if (self.good.image) {
                 UIImage *resizedImage = [self.good.image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 480) interpolationQuality:kCGInterpolationHigh];
 
-                DebugLog(@"uiimage size %@", NSStringFromCGSize(resizedImage.size));
                 [formData appendPartWithFileData:UIImagePNGRepresentation(resizedImage)
                                             name:@"good[evidence]"
                                         fileName:@"evidence.png"
@@ -367,7 +338,6 @@
                 DebugLog(@"post to twitter");
                 [twitterManager postToTwitter:[NSString stringWithFormat:@"I did some good! %@", self.good.caption] andImage:self.good.image withSuccess:^(BOOL success, NSString *msg, ACAccount *account) {
                     [[DGUser currentUser] saveSocialID:[twitterManager getTwitterIDFromAccount:account] withType:@"twitter"];
-                    DebugLog(@"%@", msg);
                 } failure:^(NSError *error) {
                     DebugLog(@"error %@ %@", [error localizedRecoverySuggestion], [error localizedDescription]);
                 }];
@@ -385,7 +355,6 @@
                 params[@"caption"] = self.good.caption;
                 params[@"picture"] = NSNullIfNil(postedGood.evidence);
                 [facebookManager postToFacebook:params andImage:self.good.image withSuccess:^(BOOL success, NSString *msg, ACAccount *account) {
-                    DebugLog(@"%@", msg);
                     [facebookManager findFacebookIDForAccount:account withSuccess:^(BOOL success, NSString *facebookID) {
                         [[DGUser currentUser] saveSocialID:facebookID withType:@"facebook"];
                     } failure:^(NSError *findError) {

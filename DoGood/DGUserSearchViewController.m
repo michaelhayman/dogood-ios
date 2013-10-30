@@ -11,7 +11,6 @@
     UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"UserCell"];
 
-    DebugLog(@"frameage");
 }
 
 - (void)dealloc {
@@ -24,7 +23,6 @@
     UserCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     DGUser *user = users[indexPath.row];
     cell.user = user;
-    DebugLog(@"user %@", user);
     [cell setValues];
     cell.navigationController = self.navigationController;
     return cell;

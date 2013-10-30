@@ -87,7 +87,6 @@
 
         [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             users = [[NSArray alloc] initWithArray:mappingResult.array];
-            // DebugLog(@"do good users on facebook %@", users);
             [tableView reloadData];
             if ([users count] > 0) {
                 [self showAuthorized];
@@ -99,7 +98,6 @@
             [self showUnauthorized];
         }];
     } else {
-        // DebugLog(@"no data returned from fb");
         [self showNoUsersFoundMessage];
     }
 }
@@ -110,7 +108,6 @@
     UserCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     DGUser *user = users[indexPath.row];
     cell.user = user;
-    // DebugLog(@"user %@", user);
     [cell setValues];
     cell.navigationController = self.navigationController;
     return cell;

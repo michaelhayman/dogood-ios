@@ -51,9 +51,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex != actionSheet.cancelButtonIndex) {
         if (actionSheet == photoSheet) {
-            DebugLog(@"button index %d", buttonIndex);
             if (buttonIndex == photoSheet.destructiveButtonIndex) {
-                DebugLog(@"remove");
                 [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidRemovePhotoNotification object:nil];
             } else if (buttonIndex == photoSheet.firstOtherButtonIndex) {
                 [self showCamera];
@@ -61,14 +59,10 @@
                 [self showCameraRoll];
             }
         }
-    } else {
-        DebugLog(@"button index %d, %d", buttonIndex, actionSheet.cancelButtonIndex);
-        // [actionSheet dismissWithClickedButtonIndex:actionSheet.cancelButtonIndex animated:YES];
     }
 }
 
 - (void)showCameraRoll {
-    DebugLog(@"Show camera roll.");
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     imagePicker.delegate = self;
     imagePicker.allowsEditing = YES;
@@ -78,7 +72,6 @@
 - (void)showCamera {
     if ([UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera])
     {
-        DebugLog(@"Show camera.");
         UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.delegate = self;
         imagePicker.allowsEditing = YES;

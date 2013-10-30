@@ -39,7 +39,6 @@
 
 #pragma mark - Contacts
 - (void)showAddressBook {
-    DebugLog(@"show address book");
     contentDescription.text = @"Find Friends from your Address Book";
     [self checkContactsAccess];
 }
@@ -108,7 +107,6 @@
     CFArrayRef allContacts = ABAddressBookCopyArrayOfAllPeople(allPeople);
     CFIndex numberOfContacts  = ABAddressBookGetPersonCount(allPeople);
 
-    DebugLog(@"numberOfContacts: %ld",numberOfContacts);
 
     NSMutableArray *emails = [[NSMutableArray alloc] init];
 
@@ -130,8 +128,6 @@
             }
         }
 
-        DebugLog(@"EMAIL: %@",email);
-        DebugLog(@"\n");
         [emails addObjectsFromArray:emailArray];
     }
 
@@ -142,7 +138,6 @@
 
     [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:dictionary success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         users = [[NSArray alloc] initWithArray:mappingResult.array];
-        DebugLog(@"users %@", users);
         if ([users count] > 0) {
             [self performSelectorOnMainThread:@selector(showAuthorized) withObject:nil waitUntilDone:NO];
             [tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
@@ -168,7 +163,6 @@
     // NSArray *users;
     DGUser *user = users[indexPath.row];
     cell.user = user;
-    DebugLog(@"user %@", user);
     [cell setValues];
     cell.navigationController = self.navigationController;
     return cell;

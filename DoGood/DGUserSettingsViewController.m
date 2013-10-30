@@ -83,17 +83,12 @@
 }
 
 - (void)setupHeader {
-    DebugLog(@"setting header %@", [DGUser currentUser].avatar);
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[DGUser currentUser].avatar] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        DebugLog(@"set avatar");
         avatar.image = image;
-        // not sure I need this
-        // avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         DebugLog(@"failed to set avatar");
     }];
-    DebugLog(@"gestures");
 }
 
 #pragma mark - Avatar
@@ -102,7 +97,6 @@
 }
 
 - (void)uploadAvatar:(NSNotification *)notification  {
-    DebugLog(@"uploading");
     imageToUpload = [[notification userInfo] objectForKey:UIImagePickerControllerEditedImage];
 
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -180,7 +174,6 @@
                                     subtitle:NSLocalizedString(@"Couldn't update your name.", nil)
                                        type:TSMessageNotificationTypeError];
             }];
-            DebugLog(@"update full name");
         } else {
             DebugLog(@"don't update full name");
         }
@@ -204,7 +197,6 @@
     }
     if (textField.tag == location_tag) {
         if (![textField.text isEqualToString:[DGUser currentUser].location]) {
-            DebugLog(@"update location");
             DGUser *user = [DGUser new];
             user.location = textField.text;
             [[RKObjectManager sharedManager] putObject:user path:user_update_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -235,7 +227,6 @@
                                     subtitle:NSLocalizedString(@"Couldn't update your biography.", nil)
                                        type:TSMessageNotificationTypeError];
             }];
-            DebugLog(@"update phone");
         } else {
             DebugLog(@"don't update phone");
         }
@@ -272,7 +263,6 @@
 }
 
 - (void)resetPassword {
-    DebugLog(@"reset password");
     UIStoryboard *storyboard;
     storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
     DGUserTwitterViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UpdatePassword"];
@@ -495,15 +485,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    DebugLog(@"selected a row");
     if (indexPath.section == accountDetails) {
         if (indexPath.row == resetPassword) {
-            DebugLog(@"trying to reset password");
             [self resetPassword];
         }
     }
     if (indexPath.section == findFriends) {
-        DebugLog(@"find friends");
         if (indexPath.row == bySearching) {
             [self findFriendsSearch];
         }

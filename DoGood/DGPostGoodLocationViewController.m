@@ -43,7 +43,6 @@
 
 #pragma mark - CLLocationManager delegate
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)foundLocations {
-    DebugLog(@"array of locations %@", foundLocations);
     userLocation = [foundLocations lastObject];
     [locationManager stopUpdatingLocation];
     [self findVenuesAtLocation:[foundLocations lastObject] matchingQuery:nil];
@@ -94,11 +93,9 @@
             location.lat = [NSNumber numberWithDouble:[(NSString*)(element[@"location"][@"lat"]) doubleValue]];
             location.lng = [NSNumber numberWithDouble:[(NSString*)(element[@"location"][@"lng"]) doubleValue]];
             location.address = (NSString*)(element[@"location"][@"address"]);
-            DebugLog(@"category %@", element[@"categories"]);
             if ([element[@"categories"] count] > 0) {
                 location.imageURL = [NSString stringWithFormat:@"%@%@%@", element[@"categories"][0][@"icon"][@"prefix"], @"88", element[@"categories"][0][@"icon"][@"suffix"]];
             }
-            DebugLog(@"location %@ %@ %@", location.displayName, location.lat, location.lng);
             [locations addObject:location];
         }
         [tableView reloadData];
@@ -137,7 +134,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     FSLocation *location = locations[indexPath.row];
-    DebugLog(@"location %@ %@ %@", location.displayName, location.lat, location.imageURL);
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:location, @"location", nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DGUserDidUpdateGoodLocation"
                                                         object:nil
