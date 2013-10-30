@@ -1,6 +1,7 @@
 #import "DGSignUpViewController.h"
 #import "DGSignUpDetailsViewController.h"
 #import "DGPhotoPickerViewController.h"
+#import <MBProgressHUD.h>
 
 @interface DGSignUpViewController ()
 
@@ -43,26 +44,26 @@
 
 #pragma mark - Verify account creation
 - (IBAction)verifyNext:(id)sender {
-    if ([name.text isEqualToString:@""]) {
-        [TSMessage showNotificationInViewController:self.navigationController
-                                  title:nil
-                                           subtitle:@"Name required"
-                                   type:TSMessageNotificationTypeError];
-    } else {
+    DGUser *submitUser = [DGUser new];
+    submitUser.full_name = name.text;
+
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Checking name...";
+    [[RKObjectManager sharedManager] postObject:submitUser path:@"/users/validate_name" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [name resignFirstResponder];
         if (user.image == nil) {
-            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"No photo?"
-                                                            message:@"C'mon, upload an image!"
-                                                           delegate:self
-                                                  cancelButtonTitle:nil
-                                                  otherButtonTitles:@"Yes", @"No", nil];
+            UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"No photo?" message:@"C'mon, upload an image!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Yes", @"No", nil];
             alert.cancelButtonIndex = 1;
             alert.tag = 59;
             [alert show];
         } else {
             [self showNextStep];
         }
-    }
+        [hud hide:YES];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [TSMessage showNotificationInViewController:self.navigationController title:@"Oops" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
+        [hud hide:YES];
+    }];
 }
 
 #pragma mark - UIAlertViewDelegate methods
