@@ -6,8 +6,8 @@
 #import "DGPhotoPickerViewController.h"
 #import <UIImage+Resize.h>
 #import <MBProgressHUD.h>
-
-// #import "ThirdParties.h"
+#import "DGTwitterManager.h"
+#import "DGFacebookManager.h"
 
 #define full_name_tag 101
 #define biography_tag 102
@@ -35,14 +35,11 @@
     self.tableView.backgroundView = nil;
     self.tableView.opaque = NO;
     self.view.backgroundColor = NEUTRAL_BACKGROUND_COLOUR;
-     */
+    */
 
     UINib *nib = [UINib nibWithNibName:UITextFieldCellIdentifier bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:UITextFieldCellIdentifier];
 
-    // watch for events to change settings values
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(twitterConnected:) name:DGUserDidCheckIfTwitterIsConnected object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(facebookConnected:) name:DGUserDidCheckIfFacebookIsConnected object:nil];
     // watch keyboard
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -65,16 +62,17 @@
     [avatar addGestureRecognizer:avatarGesture];
     [self setupHeader];
 
-    // connection status
+    // social connection status
+    twitterManager = [[DGTwitterManager alloc] initWithAppName:APP_NAME];
+    facebookManager = [[DGFacebookManager alloc] initWithAppName:APP_NAME];
+    twitterConnectedStatus = @"-";
+    facebookConnectedStatus = @"-";
+    [self checkTwitter:NO];
+    [self checkFacebook:NO];
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    // [ThirdParties checkTwitterAccess:NO];
-    // [ThirdParties checkFacebookAccess];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -125,10 +123,7 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateAccountNotification object:nil];
 
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [TSMessage showNotificationInViewController:self.navigationController
-                                  title:nil
-                                subtitle:NSLocalizedString(@"Avatar upload failed", nil)
-                                   type:TSMessageNotificationTypeError];
+        [TSMessage showNotificationInViewController:self.navigationController title:nil subtitle:NSLocalizedString(@"Avatar upload failed", nil) type:TSMessageNotificationTypeError];
         [hud hide:YES];
     }];
 
@@ -276,13 +271,7 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
-- (void)facebook {
-    DebugLog(@"Debugging: %@", @"facebook");
-}
-
 - (void)findFriendsSearch {
-    DebugLog(@"Debugging: %@", @"find friends search");
-
     UIStoryboard *storyboard;
     storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
     DGUserFindFriendsViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"FindFriends"];
@@ -329,6 +318,7 @@
     if (indexPath.row == email) {
         cell.heading.text = @"Email";
         cell.textField.text = [DGUser currentUser].email;
+        cell.textField.textColor = [UIColor lightGrayColor];
         cell.textField.tag = email_tag;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.textField.userInteractionEnabled = NO;
@@ -400,6 +390,7 @@
         UIButton *button;
         button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.frame = [cell contentView].frame;
+        // button.frame = CGRectMake(10, 0, 300, button.frame.size.width);
         button.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [button setTitle:@"Sign Out" forState:UIControlStateNormal];
         [button setBackgroundImage:[UIImage imageNamed:@"SignOutButton"] forState:UIControlStateNormal];
@@ -505,39 +496,40 @@
     }
     if (indexPath.section == socialNetworks) {
         if (indexPath.row == twitter) {
-            // [ThirdParties checkTwitterAccess:YES];
+            [self checkTwitter:YES];
         }
         if (indexPath.row == facebook) {
-            if ([facebookConnectedStatus isEqualToString:@"Connected"]) {
-                // [ThirdParties removeFacebookAccess];
-            } else {
-                // [ThirdParties checkFacebookAccessForPosting];
-            }
+            [self checkFacebook:YES];
         }
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - Social Network Receivers
-- (void)twitterConnected:(NSNotification *)notification {
-    NSNumber* connected = [[notification userInfo] objectForKey:@"connected"];
-    if ([connected boolValue]) {
+- (void)checkTwitter:(BOOL)prompt {
+    [twitterManager checkTwitterPostAccessWithSuccess:^(BOOL success, NSString *msg) {
         twitterConnectedStatus = @"Connected";
-    } else {
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
         twitterConnectedStatus = @"Not connected";
-    }
-    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        if (prompt) {
+            [twitterManager promptForPostAccess];
+        }
+        [self.tableView reloadData];
+    }];
 }
 
-- (void)facebookConnected:(NSNotification *)notification {
-    NSNumber* connected = [[notification userInfo] objectForKey:@"connected"];
-    DebugLog(@"connected to fb? %@", connected);
-    if ([connected boolValue]) {
+- (void)checkFacebook:(BOOL)prompt {
+    [facebookManager checkFacebookPostAccessWithSuccess:^(BOOL success, NSString *msg) {
         facebookConnectedStatus = @"Connected";
-    } else {
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
         facebookConnectedStatus = @"Not connected";
-    }
-    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+        if (prompt) {
+            [facebookManager promptForPostAccess];
+        }
+        [self.tableView reloadData];
+    }];
 }
 
 #pragma mark - UIAlertViewDelegate methods

@@ -1,5 +1,9 @@
 @class DGUserInvitesViewController;
 @class DGPhotoPickerViewController;
+
+@class DGTwitterManager;
+@class DGFacebookManager;
+
 @interface DGUserSettingsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIAlertViewDelegate> {
     UITapGestureRecognizer *dismissTap;
     
@@ -12,6 +16,9 @@
 
     NSString *twitterConnectedStatus;
     NSString *facebookConnectedStatus;
+
+    DGTwitterManager *twitterManager;
+    DGFacebookManager *facebookManager;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
