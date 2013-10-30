@@ -39,8 +39,14 @@
     } else {
         self.follow.hidden = NO;
     }
-    // user
+    // name
     self.username.text = self.user.full_name;
+    // location
+    if (self.user.location) {
+        self.location.text = self.user.location;
+    } else {
+        self.location.text = @"";
+    }
     [self.avatar setImageWithURL:[NSURL URLWithString:self.user.avatar]];
     // follows
     if ([self.user.current_user_following boolValue]) {

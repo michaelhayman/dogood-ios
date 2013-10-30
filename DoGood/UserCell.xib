@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4511" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3745"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -15,13 +15,19 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38">
-                        <rect key="frame" x="74" y="19" width="168" height="21"/>
+                        <rect key="frame" x="74" y="13" width="168" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </label>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1sc-W5-ay4">
+                        <rect key="frame" x="74" y="29" width="168" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="404"/>
-                            <constraint firstAttribute="width" constant="168" id="420"/>
+                            <constraint firstAttribute="width" constant="168" id="3or-dG-Fi7"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
@@ -48,18 +54,26 @@
                         </constraints>
                     </imageView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="1sc-W5-ay4" firstAttribute="leading" secondItem="191" secondAttribute="trailing" constant="8" symbolic="YES" id="3cg-Yb-La0"/>
+                    <constraint firstItem="1sc-W5-ay4" firstAttribute="trailing" secondItem="38" secondAttribute="trailing" id="DcL-av-E4l"/>
+                    <constraint firstItem="1sc-W5-ay4" firstAttribute="top" secondItem="g5e-0o-Erw" secondAttribute="top" constant="29" id="FCg-RP-rfO"/>
+                    <constraint firstAttribute="bottom" secondItem="1sc-W5-ay4" secondAttribute="bottom" constant="9" id="diI-Pn-0EO"/>
+                    <constraint firstItem="38" firstAttribute="leading" secondItem="191" secondAttribute="trailing" constant="8" symbolic="YES" id="ipI-yc-I4P"/>
+                    <constraint firstItem="38" firstAttribute="top" secondItem="335" secondAttribute="top" id="k4S-4f-AsQ"/>
+                    <constraint firstAttribute="bottom" secondItem="38" secondAttribute="bottom" constant="25" id="wmj-Xb-QLc"/>
+                </constraints>
             </tableViewCellContentView>
             <constraints>
                 <constraint firstItem="191" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="10" id="6nH-eC-stf"/>
-                <constraint firstAttribute="centerY" secondItem="38" secondAttribute="centerY" id="EZo-nJ-W8N"/>
                 <constraint firstAttribute="trailing" secondItem="335" secondAttribute="trailing" constant="13" id="Hdg-Ch-oKi"/>
-                <constraint firstItem="38" firstAttribute="leading" secondItem="191" secondAttribute="trailing" constant="8" symbolic="YES" id="YrM-fR-GgA"/>
                 <constraint firstAttribute="centerY" secondItem="191" secondAttribute="centerY" id="aAn-Ie-qQF"/>
                 <constraint firstAttribute="centerY" secondItem="335" secondAttribute="centerY" id="qhw-s3-etg"/>
             </constraints>
             <connections>
                 <outlet property="avatar" destination="191" id="421"/>
                 <outlet property="follow" destination="335" id="423"/>
+                <outlet property="location" destination="1sc-W5-ay4" id="o8P-VQ-wXa"/>
                 <outlet property="username" destination="38" id="422"/>
             </connections>
         </tableViewCell>
