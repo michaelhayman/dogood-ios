@@ -10,6 +10,7 @@
 #import "UIScrollView+SVInfiniteScrolling.h"
 #import "DGAppearance.h"
 #import "DGComment.h"
+#import "DGLoadingView.h"
 
 @interface DGGoodListViewController ()
 
@@ -32,6 +33,7 @@
         [self setupMenuTitle:@"Do Good"];
         [self addMenuButton:@"MenuFromHomeIconTap" withTapButton:@"MenuFromHomeIcon"];
     }
+    loadingView = [[DGLoadingView alloc] initCenteredOnView:tableView];
 
     showNoResultsMessage = NO;
 
@@ -210,10 +212,12 @@
         }
         [tableView reloadData];
         [tableView.infiniteScrollingView stopAnimating];
+        [loadingView loadingSucceeded];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [TSMessage showNotificationInViewController:self.navigationController title:@"Oops" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
+        // [TSMessage showNotificationInViewController:self.navigationController title:@"Oops" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
         [tableView.infiniteScrollingView stopAnimating];
         DebugLog(@"Operation failed with error: %@", error);
+        [loadingView loadingFailed];
     }];
 }
 
@@ -229,9 +233,10 @@
 }
 
 - (void)reloadGood {
+    [loadingView startLoading];
     [self resetGood];
     [self getGood];
-    [tableView reloadData];
+    // [tableView reloadData];
 }
 
 - (void)setupInfiniteScroll {

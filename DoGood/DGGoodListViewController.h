@@ -3,6 +3,7 @@
 @class UserOverview;
 @class DGTag;
 @class DGGood;
+@class DGLoadingView;
 
 @interface DGGoodListViewController : RootViewController <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableView *tableView;
@@ -11,6 +12,7 @@
     NSMutableArray *goods;
     NSMutableArray *cellHeights;
     UserOverview *userView;
+    DGLoadingView *loadingView;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
