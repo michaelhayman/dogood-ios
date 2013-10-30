@@ -5,6 +5,7 @@
 #import "DGCategory.h"
 #import "DGGoodListViewController.h"
 #import "DGAppearance.h"
+#import "DGLoadingView.h"
 
 @implementation DGExploreCategoriesViewController
 
@@ -19,8 +20,8 @@
     [tableView setTableHeaderView:exploreHighlights];
     [tableView setTableFooterView:explorePopularTags];
 
-    loadingView = [DGAppearance createLoadingViewCenteredOn:tableView];
-    [self.view addSubview:loadingView];
+    loadingView = [[DGLoadingView alloc] initCenteredOnView:tableView];
+
     [self stylePage];
     [self getCategories];
 
@@ -37,14 +38,14 @@
 }
 
 - (void)getCategories {
-    loadingView.hidden = NO;
+    [loadingView startLoading];
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/categories" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         categories = [[NSArray alloc] initWithArray:mappingResult.array];
         [tableView reloadData];
-        loadingView.hidden = YES;
+        [loadingView loadingSucceeded];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
-        loadingView.hidden = YES;
+        [loadingView loadingFailed];
     }];
 }
 
