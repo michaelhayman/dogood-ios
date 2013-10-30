@@ -10,6 +10,7 @@
 #import "DGReport.h"
 #import "DGUserInvitesViewController.h"
 #import "DGAppearance.h"
+#import "DGLoadingView.h"
 
 @interface DGUserProfileViewController ()
 
@@ -22,8 +23,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
 
-    loadingView = [DGAppearance createLoadingViewCenteredOn:tableView];
-    [self.view addSubview:loadingView];
+    loadingView = [[DGLoadingView alloc] initCenteredOnView:tableView];
 
     // assume it's the current user's profile if no ID was specified
     if (self.userID == nil) {
@@ -111,7 +111,7 @@
 
 #pragma mark - User retrieval
 - (void)getProfile {
-    loadingView.hidden = NO;
+    [loadingView startLoading];
     [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/users/%@", self.userID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         user = [DGUser new];
         user = mappingResult.array[0];
@@ -140,10 +140,10 @@
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
             DebugLog(@"FAILING RETRIEVE");
         }];
-        loadingView.hidden = YES;
+        [loadingView loadingSucceeded];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
-        loadingView.hidden = YES;
+        [loadingView loadingFailed];
     }];
 }
 

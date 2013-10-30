@@ -1,6 +1,7 @@
 #import "RootViewController.h"
 @class DGUserInvitesViewController;
 @class DGGoodListViewController;
+@class DGLoadingView;
 
 @interface DGUserProfileViewController : RootViewController <UIActionSheetDelegate, UIAlertViewDelegate> {
     IBOutlet UIButton *centralButton;
@@ -25,7 +26,7 @@
 
     UIActionSheet *moreOptionsSheet;
     UIActionSheet *shareOptionsSheet;
-    UIView *loadingView;
+    DGLoadingView *loadingView;
 }
 
 @property (weak, nonatomic) NSNumber *userID;
