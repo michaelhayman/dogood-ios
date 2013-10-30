@@ -4,6 +4,7 @@
 @class DGTextFieldSearchPeopleTableViewController;
 @class GoodCell;
 @class DGEntityHandler;
+@class DGLoadingView;
 
 @interface DGGoodCommentsViewController : UIViewController <UITextViewDelegate> {
     __weak IBOutlet NSLayoutConstraint *commentFieldBottom;
@@ -14,6 +15,8 @@
 
     __weak IBOutlet UITableView *tableView;
     NSMutableArray *comments;
+    int page;
+
     __weak IBOutlet NSLayoutConstraint *tableViewBottom;
     __weak IBOutlet UIButton *sendButton;
 
@@ -22,7 +25,7 @@
     CGFloat totalKeyboardHeight;
     NSMutableArray *entities;
     DGEntityHandler *entityHandler;
-    UIView *loadingView;
+    DGLoadingView *loadingView;
     NSString *loadingStatus;
 }
 

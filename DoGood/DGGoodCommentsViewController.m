@@ -7,8 +7,9 @@
 #import "DGTextFieldSearchPeopleTableViewController.h"
 #import "DGAppearance.h"
 #import "NoResultsCell.h"
-
 #import "DGEntityHandler.h"
+#import "DGLoadingView.h"
+#import "UIScrollView+SVInfiniteScrolling.h"
 
 @interface DGGoodCommentsViewController ()
 
@@ -32,11 +33,9 @@
     [tableView registerNib:noResultsNib forCellReuseIdentifier:@"NoResultsCell"];
     comments = [[NSMutableArray alloc] init];
 
-    tableView.hidden = YES;
     tableView.tableFooterView = [[UIView alloc] init];
 
-    loadingView = [DGAppearance createLoadingViewCenteredOn:tableView];
-    [self.view addSubview:loadingView];
+    loadingView = [[DGLoadingView alloc] initCenteredOnView:tableView];
 
     characterLimit = 120;
     entities = [[NSMutableArray alloc] init];
@@ -45,7 +44,9 @@
 
     tableView.transform = CGAffineTransformMakeRotation(-M_PI);
     [self setupKeyboardBehaviour];
-    [self fetchComments];
+    [self setupInfiniteScroll];
+
+    [self reloadComments];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -67,29 +68,57 @@
 }
 
 #pragma mark - Comment retrieval ----------
-- (void)fetchComments {
-    NSDictionary *params = [NSDictionary dictionaryWithObject:self.good.goodID forKey:@"good_id"];
-    loadingView.hidden = NO;
+- (void)getComments {
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:page], @"page", self.good.goodID, @"good_id", nil];
 
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/comments.json" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [comments removeAllObjects];
         [comments addObjectsFromArray:mappingResult.array];
         loadingStatus = @"No comments posted yet";
 
-        tableView.hidden = NO;
-        loadingView.hidden = YES;
         [tableView reloadData];
+        [tableView.infiniteScrollingView stopAnimating];
+        [loadingView loadingSucceeded];
         DebugLog(@"reloading data");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         loadingStatus = @"Couldn't connect";
 
-        tableView.hidden = NO;
-        loadingView.hidden = YES;
+        [loadingView loadingFailed];
         DebugLog(@"Operation failed with error: %@", error);
         [tableView reloadData];
     }];
 }
 
+- (void)loadMoreComments {
+    page++;
+    [self getComments];
+}
+
+- (void)resetComments {
+    page = 1;
+    [comments removeAllObjects];
+}
+
+- (void)reloadComments {
+    [loadingView startLoading];
+    [self resetComments];
+    [self getComments];
+}
+
+- (void)setupInfiniteScroll {
+    tableView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+
+    __weak DGGoodCommentsViewController *weakSelf = self;
+    __weak UITableView *weakTableView = tableView;
+
+    [tableView addInfiniteScrollingWithActionHandler:^{
+        __strong DGGoodCommentsViewController *strongSelf = weakSelf;
+        __strong UITableView *strongTableView = weakTableView;
+        [strongTableView.infiniteScrollingView startAnimating];
+        [strongSelf loadMoreComments];
+    }];
+}
+
+#pragma mark - UITableViewDelegate methods
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([comments count] == 0) {
         tableView.transform = CGAffineTransformMakeRotation(M_PI);
@@ -164,7 +193,7 @@
             commentInputField.text = @"";
             [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Comment Saved!", nil) subtitle:nil type:TSMessageNotificationTypeSuccess];
             [entities removeAllObjects];
-            // [self fetchComments];
+            // [self getComments];
             [self textViewDidChange:commentInputField];
             [self resetTextView];
             [self addComment:[mappingResult.array objectAtIndex:0]];
