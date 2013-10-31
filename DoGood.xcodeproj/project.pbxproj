@@ -84,6 +84,7 @@
 		638647F217AC087A00167F15 /* DGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 638647F117AC087A00167F15 /* DGAppDelegate.m */; };
 		6386481D17ACEF2100167F15 /* DGWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386481C17ACEF2100167F15 /* DGWelcomeViewController.m */; };
 		6386481F17ACEFAE00167F15 /* DGGoodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386481E17ACEFAE00167F15 /* DGGoodListViewController.m */; };
+		63902CEE1821C6D0003B84A1 /* DGGoodListNearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63902CED1821C6D0003B84A1 /* DGGoodListNearbyViewController.m */; };
 		6397318E17C1733D001B96BF /* DGUserTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */; };
 		639B88E417B9A25B005E2B62 /* DGVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B88E317B9A25A005E2B62 /* DGVote.m */; };
 		639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B891017BAEC1D005E2B62 /* DGFollow.m */; };
@@ -289,6 +290,8 @@
 		6386481C17ACEF2100167F15 /* DGWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWelcomeViewController.m; sourceTree = "<group>"; };
 		6386481E17ACEFAE00167F15 /* DGGoodListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGGoodListViewController.m; sourceTree = "<group>"; };
 		6386482017ACEFBA00167F15 /* DGGoodListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGoodListViewController.h; sourceTree = "<group>"; };
+		63902CEC1821C6D0003B84A1 /* DGGoodListNearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGoodListNearbyViewController.h; sourceTree = "<group>"; };
+		63902CED1821C6D0003B84A1 /* DGGoodListNearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGGoodListNearbyViewController.m; sourceTree = "<group>"; };
 		6397318C17C1733D001B96BF /* DGUserTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserTwitterViewController.h; sourceTree = "<group>"; };
 		6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserTwitterViewController.m; sourceTree = "<group>"; };
 		639B88E217B9A25A005E2B62 /* DGVote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGVote.h; sourceTree = "<group>"; };
@@ -576,6 +579,8 @@
 			children = (
 				6386482017ACEFBA00167F15 /* DGGoodListViewController.h */,
 				6386481E17ACEFAE00167F15 /* DGGoodListViewController.m */,
+				63902CEC1821C6D0003B84A1 /* DGGoodListNearbyViewController.h */,
+				63902CED1821C6D0003B84A1 /* DGGoodListNearbyViewController.m */,
 				636AEA9D17AD66C8002A3494 /* GoodCell.h */,
 				636AEA9E17AD66C8002A3494 /* GoodCell.m */,
 				636AEA9A17AD63EC002A3494 /* GoodCell.xib */,
@@ -1005,6 +1010,7 @@
 				6355EC1217B0EDA300EE91C0 /* DGRewardsListViewController.m in Sources */,
 				63D4BD2818024E0700ACF1B9 /* DGRewardPopupViewController.m in Sources */,
 				6355EC1717B0EF2700EE91C0 /* DGRewardCell.m in Sources */,
+				63902CEE1821C6D0003B84A1 /* DGGoodListNearbyViewController.m in Sources */,
 				6355EC1C17B5BA4600EE91C0 /* DGUser.m in Sources */,
 				6355EC1F17B601BF00EE91C0 /* DGError.m in Sources */,
 				6355EC2817B68F3200EE91C0 /* DGUpdatePasswordViewController.m in Sources */,
