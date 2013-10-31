@@ -17,5 +17,6 @@
 - (void)startLoading;
 - (void)loadingSucceeded;
 - (void)loadingFailed;
+- (void)changeMessage:(NSString *)msg;
 
 @end

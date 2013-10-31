@@ -47,11 +47,16 @@
     [self addSubview:spinner];
 }
 
+- (void)changeMessage:(NSString *)msg {
+    message.text = msg;
+}
+
 - (void)setupMessage {
-    message = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    message = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 120)];
     message.textAlignment = NSTextAlignmentCenter;
     message.center = self.center;
     message.text = @"Failed to load";
+    message.numberOfLines = 0;
     message.font = [UIFont systemFontOfSize:15];
     message.textColor = [UIColor lightGrayColor];
     message.frame = CGRectMake(message.frame.origin.x, message.frame.origin.y  / 2, message.frame.size.width, message.frame.size.height);

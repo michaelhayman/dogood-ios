@@ -12,9 +12,9 @@
     NSMutableArray *goods;
     NSMutableArray *cellHeights;
     UserOverview *userView;
-    DGLoadingView *loadingView;
 }
 
+@property (nonatomic, retain) DGLoadingView *loadingView;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSString *path;
 @property (nonatomic, retain) NSString *titleForPath;
@@ -27,6 +27,10 @@
 - (void)reloadCellAtIndexPath:(NSIndexPath *)indexPath withGood:(DGGood *)good;
 - (void)getGood;
 - (void)reloadGood;
+- (void)loadMoreGood;
+- (void)resetGood;
 - (void)initializeTable;
+- (void)setupRefresh;
+- (void)setupInfiniteScroll;
 
 @end

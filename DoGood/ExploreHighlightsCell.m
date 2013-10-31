@@ -1,6 +1,7 @@
 #import "ExploreHighlightsCell.h"
 #import "HighlightCollectionCell.h"
 #import "DGGoodListViewController.h"
+#import "DGGoodListNearbyViewController.h"
 
 #define cellName @"HighlightCollectionCell"
 
@@ -43,15 +44,15 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-    DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
     if (indexPath.row == popular) {
+        DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
         controller.path = @"/goods/popular";
         controller.titleForPath = @"Popular";
+        [self.navigationController pushViewController:controller animated:YES];
     } else {
-        controller.path = @"/goods/nearby";
-        controller.titleForPath = @"Nearby";
+        DGGoodListNearbyViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodListNearby"];
+        [self.navigationController pushViewController:controller animated:YES];
     }
-    [self.navigationController pushViewController:controller animated:YES];
 }
 
 @end

@@ -357,6 +357,61 @@
             </objects>
             <point key="canvasLocation" x="1961" y="527"/>
         </scene>
+        <!--Good List Nearby View Controller-->
+        <scene sceneID="Af7-av-Ha4">
+            <objects>
+                <viewController storyboardIdentifier="GoodListNearby" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sSS-uo-ElV" customClass="DGGoodListNearbyViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rua-1V-3Kw"/>
+                        <viewControllerLayoutGuide type="bottom" id="Xkj-L7-1df"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yU6-EY-Hcd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="eUE-B9-cdk">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Listing" id="aQU-gK-LbB">
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aQU-gK-LbB" id="ucn-XD-EHg">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="sSS-uo-ElV" id="k6A-UU-KVq"/>
+                                    <outlet property="delegate" destination="sSS-uo-ElV" id="XVf-ut-Wzd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eUE-B9-cdk" firstAttribute="top" secondItem="yU6-EY-Hcd" secondAttribute="top" id="Gum-3r-0Bo"/>
+                            <constraint firstAttribute="bottom" secondItem="eUE-B9-cdk" secondAttribute="bottom" id="Pzz-H5-JI1"/>
+                            <constraint firstItem="eUE-B9-cdk" firstAttribute="leading" secondItem="yU6-EY-Hcd" secondAttribute="leading" id="iGF-du-pex"/>
+                            <constraint firstItem="eUE-B9-cdk" firstAttribute="trailing" secondItem="yU6-EY-Hcd" secondAttribute="trailing" id="q3g-Ff-Dwj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Dly-jl-rOL">
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="shC-FH-LtY">
+                            <connections>
+                                <segue destination="YhS-Q4-hGW" kind="push" id="9nR-Ig-xFY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="eUE-B9-cdk" id="iKf-sP-oLZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1mb-2d-yzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="583" y="-577"/>
+        </scene>
     </scenes>
     <color key="tintColor" red="0.0" green="0.70196078429999997" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -364,4 +419,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="9nR-Ig-xFY"/>
+    </inferredMetricsTieBreakers>
 </document>

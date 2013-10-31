@@ -68,6 +68,8 @@
     tableView.delegate = goodList;
     goodList.tableView = tableView;
     [goodList initializeTable];
+    [goodList setupRefresh];
+    [goodList setupInfiniteScroll];
     [self getUserGood];
     [tableView setTableHeaderView:headerView];
 

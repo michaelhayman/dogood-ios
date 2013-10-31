@@ -33,11 +33,12 @@
         [self setupMenuTitle:@"Do Good"];
         [self addMenuButton:@"MenuFromHomeIconTap" withTapButton:@"MenuFromHomeIcon"];
     }
-    loadingView = [[DGLoadingView alloc] initCenteredOnView:tableView];
 
     showNoResultsMessage = NO;
 
     [self initializeTable];
+    [self setupRefresh];
+    [self setupInfiniteScroll];
 
     userView = [[UserOverview alloc] initWithController:self.navigationController];
     [self setupUserPoints];
@@ -65,8 +66,7 @@
     showNoResultsMessage = NO;
     goods = [[NSMutableArray alloc] init];
     cellHeights = [[NSMutableArray alloc] init];
-    [self setupRefresh];
-    [self setupInfiniteScroll];
+    _loadingView = [[DGLoadingView alloc] initCenteredOnView:tableView];
 }
 
 - (void)displayPostSuccessMessage {
@@ -74,7 +74,7 @@
 }
 
 - (void)setupUserPoints {
-    if (self.category == nil && self.tag == nil) {
+    if (_category == nil && _tag == nil && _path == nil) {
         [tableView setTableHeaderView:userView];
     }
 }
@@ -188,8 +188,9 @@
 #pragma mark - Retrieval methods
 - (void)getGood {
     NSString *path;
-    if (self.path) {
-        path = self.path;
+    DebugLog(@"path ...? %@", _path);
+    if (_path) {
+        path = _path;
     } else if (_category) {
         path = [NSString stringWithFormat:@"/goods?category_id=%@", _category.categoryID];
     } else if (_goodID) {
@@ -212,12 +213,11 @@
         }
         [tableView reloadData];
         [tableView.infiniteScrollingView stopAnimating];
-        [loadingView loadingSucceeded];
+        [_loadingView loadingSucceeded];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        // [TSMessage showNotificationInViewController:self.navigationController title:@"Oops" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
         [tableView.infiniteScrollingView stopAnimating];
         DebugLog(@"Operation failed with error: %@", error);
-        [loadingView loadingFailed];
+        [_loadingView loadingFailed];
     }];
 }
 
@@ -230,13 +230,13 @@
     page = 1;
     [goods removeAllObjects];
     [cellHeights removeAllObjects];
+    [tableView reloadData];
 }
 
 - (void)reloadGood {
-    [loadingView startLoading];
+    [_loadingView startLoading];
     [self resetGood];
     [self getGood];
-    // [tableView reloadData];
 }
 
 - (void)setupInfiniteScroll {
