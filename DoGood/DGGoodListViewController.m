@@ -105,7 +105,7 @@
 #pragma mark - Points
 - (void)showWelcome {
     if (![[DGUser currentUser] isSignedIn]) {
-        [self welcomeScreen];
+        // [self welcomeScreen];
     } else {
         if ([goods count] == 0) {
             [self reloadGood];
