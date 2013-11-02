@@ -103,7 +103,7 @@
 
     if (!errors) {
         [self.view endEditing:YES];
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:tableView animated:YES];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         hud.labelText = @"Creating account...";
 
         NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:self.user method:RKRequestMethodPOST path:user_registration_path parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {

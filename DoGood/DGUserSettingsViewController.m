@@ -97,7 +97,7 @@
 - (void)uploadAvatar:(NSNotification *)notification  {
     imageToUpload = [[notification userInfo] objectForKey:UIImagePickerControllerEditedImage];
 
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.labelText = @"Changing avatar...";
     NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:nil method:RKRequestMethodPUT path:user_update_path parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
 

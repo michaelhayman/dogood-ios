@@ -43,7 +43,7 @@
     DGUser *user = [DGUser new];
     user.email = email;
     user.password = password;
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.labelText = @"Signing in...";
     [self.view endEditing:YES];
 
