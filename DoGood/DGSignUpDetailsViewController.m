@@ -162,6 +162,7 @@
         cell.textField.autocorrectionType = UITextAutocorrectionTypeNo;
         cell.textField.tag = sign_up_email_tag;
         cell.tag = sign_up_email_cell_tag;
+        [cell.textField becomeFirstResponder];
     } else if (indexPath.row == password) {
         cell.heading.text = @"Password";
         cell.textField.placeholder = @"at least 8 characters";
