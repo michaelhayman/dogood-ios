@@ -15,7 +15,7 @@ pod 'MJPopupViewController', :git => "git@github.com:doPanic/MJPopupViewControll
 pod 'NSDate+TimeAgo', '~> 1.0.2'
 pod 'SVPullToRefresh', '~> 0.4.1'
 # social
-pod 'SocialAuth', :git => "git@github.com:evadne/SocialAuth.git"
+pod 'SocialAuth', :git => "git@github.com:michaelhayman/SocialAuth.git"
 pod 'TestFlightSDK'
 
 target :DoGoodTests, :exclusive => true do

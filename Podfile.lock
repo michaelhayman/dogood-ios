@@ -51,7 +51,7 @@ DEPENDENCIES:
   - RestKit (~> 0.20.3)
   - RestKit/Testing (~> 0.20.0)
   - RFKeychain (~> 0.1)
-  - SocialAuth (from `git@github.com:evadne/SocialAuth.git`)
+  - SocialAuth (from `git@github.com:michaelhayman/SocialAuth.git`)
   - SVPullToRefresh (~> 0.4.1)
   - TestFlightSDK
   - TSMessages (~> 0.9.4)
@@ -62,7 +62,7 @@ EXTERNAL SOURCES:
   MJPopupViewController:
     :git: git@github.com:doPanic/MJPopupViewController.git
   SocialAuth:
-    :git: git@github.com:evadne/SocialAuth.git
+    :git: git@github.com:michaelhayman/SocialAuth.git
 
 SPEC CHECKSUMS:
   AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
