@@ -159,12 +159,14 @@
         cell.textField.placeholder = @"example@abc.com";
         cell.textField.keyboardType = UIKeyboardTypeEmailAddress;
         cell.textField.returnKeyType = UIReturnKeyNext;
+        cell.textField.autocorrectionType = UITextAutocorrectionTypeNo;
         cell.textField.tag = sign_up_email_tag;
         cell.tag = sign_up_email_cell_tag;
     } else if (indexPath.row == password) {
         cell.heading.text = @"Password";
         cell.textField.placeholder = @"at least 8 characters";
         cell.textField.keyboardType = UIKeyboardTypeDefault;
+        cell.textField.autocorrectionType = UITextAutocorrectionTypeNo;
         cell.textField.returnKeyType = UIReturnKeyNext;
         cell.textField.tag = sign_up_password_tag;
         cell.tag = sign_up_password_cell_tag;
@@ -172,6 +174,7 @@
         cell.heading.text = @"Phone";
         cell.textField.placeholder = @"optional";
         cell.textField.keyboardType = UIKeyboardTypeNumberPad;
+        cell.textField.autocorrectionType = UITextAutocorrectionTypeNo;
         cell.textField.tag = sign_up_phone_tag;
         cell.tag = sign_up_phone_cell_tag;
         cell.textField.returnKeyType = UIReturnKeyDone;
