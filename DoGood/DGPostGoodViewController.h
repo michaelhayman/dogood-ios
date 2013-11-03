@@ -4,7 +4,7 @@
 @class DGTwitterManager;
 @class DGEntityHandler;
 
-@interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, UITextViewDelegate> {
+@interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate> {
     UIActionSheet *categorySheet;
     UIActionSheet *locationSheet;
     UIImage *imageToUpload;
