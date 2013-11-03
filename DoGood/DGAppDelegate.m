@@ -46,6 +46,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
 }
 
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
+    DebugLog(@"memory warning... ");
+}
+
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     DebugLog(@"handle open url");
     URLHandler *handler = [[URLHandler alloc] init];
