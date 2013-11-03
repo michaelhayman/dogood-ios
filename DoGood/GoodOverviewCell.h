@@ -4,11 +4,11 @@
     // entities
     int characterLimit;
     CGFloat totalKeyboardHeight;
-    DGEntityHandler *entityHandler;
 }
 
 @property (weak, nonatomic) IBOutlet UITextView *description;
 @property (weak, nonatomic) IBOutlet UILabel *placeholder;
+@property (strong, nonatomic) DGEntityHandler *entityHandler;
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
 @property (nonatomic) NSMutableArray *entities;

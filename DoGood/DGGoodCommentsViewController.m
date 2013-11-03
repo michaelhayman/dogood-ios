@@ -54,6 +54,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     tableView.transform = CGAffineTransformMakeRotation(-M_PI);
     [TSMessage dismissActiveNotification];
+    entityHandler = nil;
     // [commentInputField resignFirstResponder];
 }
 

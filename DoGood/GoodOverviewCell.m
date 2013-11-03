@@ -14,11 +14,16 @@
 }
 
 - (void)initEntityHandler {
-    entityHandler = [[DGEntityHandler alloc] initWithTextView:self.description andEntities:self.entities inController:self.parent withType:@"Good" reverseScroll:NO tableOffset:100 secondTableOffset:64];
+    _entityHandler = [[DGEntityHandler alloc] initWithTextView:self.description andEntities:self.entities inController:self.parent withType:@"Good" reverseScroll:NO tableOffset:100 secondTableOffset:64];
+}
+
+- (void)prepareForReuse {
+    _entityHandler = nil;
 }
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    _entityHandler = nil;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -54,13 +59,13 @@
     */
 
     // [self setTextViewHeight];
-    [entityHandler setLimitText];
+    [_entityHandler setLimitText];
 
-    BOOL sup = [entityHandler check:textField range:(NSRange)range forEntities:self.entities completion:^BOOL(BOOL end, NSMutableArray *newEntities) {
+    BOOL sup = [_entityHandler check:textField range:(NSRange)range forEntities:self.entities completion:^BOOL(BOOL end, NSMutableArray *newEntities) {
         self.entities = newEntities;
         return end;
     }];
-    [entityHandler resetTypingAttributes:textField];
+    [_entityHandler resetTypingAttributes:textField];
     return sup;
 }
 
@@ -85,8 +90,8 @@
         self.placeholder.hidden = YES;
     }
 
-    [entityHandler watchForEntities:textField];
-    [entityHandler setLimitText];
+    [_entityHandler watchForEntities:textField];
+    [_entityHandler setLimitText];
 
     if ([textField.text length] >= characterLimit) {
         // sendButton.enabled = NO;
