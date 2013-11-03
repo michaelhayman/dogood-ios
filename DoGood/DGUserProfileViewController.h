@@ -4,7 +4,7 @@
 @class DGLoadingView;
 
 @interface DGUserProfileViewController : RootViewController <UIActionSheetDelegate, UIAlertViewDelegate> {
-    IBOutlet UIButton *centralButton;
+    __weak IBOutlet UIButton *centralButton;
     __weak IBOutlet UIImageView *avatarOverlay;
     __weak IBOutlet UIImageView *avatar;
     __weak IBOutlet UILabel *name;

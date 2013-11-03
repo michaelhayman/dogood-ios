@@ -1,5 +1,5 @@
 @interface DGUserListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
-    IBOutlet UITableView *tableView;
+    __weak IBOutlet UITableView *tableView;
     NSArray *users;
 }
 

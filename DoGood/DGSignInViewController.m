@@ -3,8 +3,8 @@
 #import <MBProgressHUD.h>
 
 @interface DGSignInViewController ()
-@property (strong, nonatomic) IBOutlet UITextField *emailField;
-@property (strong, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
 
 @end
 

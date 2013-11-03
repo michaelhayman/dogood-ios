@@ -3,7 +3,7 @@
     __weak IBOutlet UICollectionView *collectionView;
 }
 
-@property (nonatomic, retain) IBOutlet UIView *view;
+@property (nonatomic, weak) IBOutlet UIView *view;
 @property (weak, nonatomic) UINavigationController *navigationController;
 
 - (id)initWithController:(UINavigationController *)controller;

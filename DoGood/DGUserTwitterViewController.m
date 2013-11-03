@@ -1,8 +1,8 @@
 #import "DGUserTwitterViewController.h"
 
 @interface DGUserTwitterViewController ()
-@property (strong, nonatomic) IBOutlet UITextField *emailField;
-@property (strong, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
 
 @end
 

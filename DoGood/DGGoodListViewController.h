@@ -6,7 +6,7 @@
 @class DGLoadingView;
 
 @interface DGGoodListViewController : RootViewController <UITableViewDelegate, UITableViewDataSource> {
-    IBOutlet UITableView *tableView;
+    __weak IBOutlet UITableView *tableView;
     int page;
     bool showNoResultsMessage;
     NSMutableArray *goods;
@@ -15,7 +15,7 @@
 }
 
 @property (nonatomic, retain) DGLoadingView *loadingView;
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSString *path;
 @property (nonatomic, retain) NSString *titleForPath;
 @property (nonatomic, retain) DGCategory *category;
