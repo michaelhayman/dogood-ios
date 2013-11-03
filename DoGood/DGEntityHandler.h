@@ -5,9 +5,9 @@
 @class GoodCell;
 
 @interface DGEntityHandler : NSObject <UITextViewDelegate> {
-    UIViewController *parent;
+    __weak UIViewController *parent;
 
-    UITextView *entityTextView;
+    __weak UITextView *entityTextView;
     NSString *entityType;
 
     // keyboard
