@@ -135,7 +135,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     FSLocation *location = locations[indexPath.row];
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:location, @"location", nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"DGUserDidUpdateGoodLocation"
+    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateGoodLocation
                                                         object:nil
                                                       userInfo:userInfo];
     [self.navigationController popViewControllerAnimated:YES];

@@ -42,6 +42,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         [headerView layoutIfNeeded];
     }];
+    [self watchKeyboard];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -53,8 +54,9 @@
     [UIView commitAnimations];
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidStartBrowsingSearchTable object:nil];
 }
 
 #pragma mark - Tables

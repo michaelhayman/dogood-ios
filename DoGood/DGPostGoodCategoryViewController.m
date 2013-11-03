@@ -56,7 +56,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     DGCategory *category = categories[indexPath.row];
     NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:category, @"category", nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"DGUserDidUpdateGoodCategory"
+    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateGoodCategory
                                                         object:nil
                                                       userInfo:userInfo];
 

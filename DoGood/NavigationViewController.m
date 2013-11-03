@@ -24,16 +24,16 @@
     [weakSelf setViewControllers:@[controller] animated:NO];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    DebugLog(@"did appear");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu) name:DGUserDidToggleMenu object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRewards) name:DGUserDidSelectRewards object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showGoodList) name:DGUserDidSignOutNotification object:nil];
+}
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(showGoodList)
-                                                 name:DGUserDidSignOutNotification
-                                               object:nil];
+- (void)viewDidLoad {
+    [super viewDidLoad];
 
     __typeof (&*self) __weak weakSelf = self;
 
@@ -93,8 +93,13 @@
     _menu.waitUntilAnimationIsComplete = NO;
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+// - (void)dealloc {
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    DebugLog(@"navigation controller disappeared");
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidToggleMenu object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSelectRewards object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSignOutNotification object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

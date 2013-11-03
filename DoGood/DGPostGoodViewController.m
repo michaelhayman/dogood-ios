@@ -31,15 +31,6 @@
     [super viewDidLoad];
     [self setupMenuTitle:@"Post Good"];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receiveUpdatedCategory:)
-                                                 name:@"DGUserDidUpdateGoodCategory"
-                                               object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(receiveUpdatedLocation:)
-                                                 name:@"DGUserDidUpdateGoodLocation"
-                                               object:nil];
 
     UINib *nib = [UINib nibWithNibName:@"GoodOverviewCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"GoodOverviewCell"];
@@ -60,13 +51,8 @@
     // photos
     photos = [[DGPhotoPickerViewController alloc] init];
     photos.parent = self;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadAvatar:) name:DGUserDidAddPhotoNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteAvatar) name:DGUserDidRemovePhotoNotification object:nil];
-
-    // keyboard
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 }
+
 
 - (void)keyboardWillShow:(NSNotification *)notification {
     self.tableView.bounces = NO;
@@ -78,12 +64,33 @@
     self.tableView.bouncesZoom = YES;
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUpdatedCategory:) name:DGUserDidUpdateGoodCategory object:nil];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUpdatedLocation:) name:DGUserDidUpdateGoodLocation object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadAvatar:) name:DGUserDidAddPhotoNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteAvatar) name:DGUserDidRemovePhotoNotification object:nil];
+
+    // keyboard
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidUpdateGoodCategory object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidUpdateGoodLocation object:nil];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidAddPhotoNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidRemovePhotoNotification object:nil];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+
     GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
     cell.entityHandler = nil;
-    // [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidAddPhotoNotification object:nil];
-    // [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidRemovePhotoNotification object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

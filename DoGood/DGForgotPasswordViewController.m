@@ -10,17 +10,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(popController)
-                                                 name:DGUserDidSendPasswordNotification
-                                               object:nil];
     self.navigationItem.title = @"Forgot Password";
     self.emailField.text = self.signInEmail;
     [self.emailField becomeFirstResponder];
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popController) name:DGUserDidSendPasswordNotification object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSendPasswordNotification object:nil];
 }
 
 - (void)popController {

@@ -13,13 +13,17 @@
     tableView.delegate = self;
     tableView.dataSource = self;
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayAddressBookView:) name:DGUserDidCheckIfAddressBookIsConnected object:nil];
-
     [self showAddressBook];
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayAddressBookView:) name:DGUserDidCheckIfAddressBookIsConnected object:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidCheckIfAddressBookIsConnected object:nil];
 }
 
 #pragma mark - Search Networks method overrides

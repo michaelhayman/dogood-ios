@@ -50,7 +50,10 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    DebugLog(@"deallocing user overview!");
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidUpdatePointsNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidPostGood object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidClaimRewardNotification object:nil];
 }
 
 #pragma mark - Content methods

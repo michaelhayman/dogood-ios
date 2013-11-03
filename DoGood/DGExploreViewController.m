@@ -33,18 +33,22 @@
     self.currentViewController = vc;
     [self addChildViewController:vc];
     [self.contentView addSubview:vc.view];
+}
 
-    // watch notifications
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(peopleSelected) name:DGUserDidStartSearchingPeople object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagsSelected) name:DGUserDidStartSearchingTags object:nil];
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchFieldDidBeginEditing) name:DGSearchTextFieldDidBeginEditing object:nil];
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchFieldDidEndEditing) name:DGSearchTextFieldDidEndEditing object:nil];
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidStartSearchingPeople object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidStartSearchingTags object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGSearchTextFieldDidBeginEditing object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGSearchTextFieldDidEndEditing object:nil];
 }
 
 - (void)viewWillLayoutSubviews {

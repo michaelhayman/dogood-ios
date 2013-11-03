@@ -32,6 +32,14 @@
     return self;
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidNotFindPeopleForTextField object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSelectPersonForTextField object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidNotFindTagsForTextField object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSelectTagForTextField object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+}
+
 - (BOOL)check:(UITextView *)textField range:(NSRange)range forEntities:(NSMutableArray *)theseEntities completion:(CheckEntitiesBlock)completion {
      for (DGEntity *entity in theseEntities) {
         DebugLog(@"entity");
@@ -285,10 +293,6 @@
     searchTags = NO;
     [searchTagsTableController purge];
     [self resetTypingAttributes:entityTextView];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 // keep the # symbol in the textfield on insertion

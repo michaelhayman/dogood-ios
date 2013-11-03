@@ -306,6 +306,10 @@
 
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGConnectionFailure object:nil];
+}
+
 + (void)connectionFailedWithOperation:(NSNotification *)notification {
     RKObjectRequestOperation *operation = (RKObjectRequestOperation *)notification.object;
     DebugLog(@"failed!");

@@ -210,7 +210,12 @@ static DGUser* currentUser = nil;
 
 #pragma mark - Clean up
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+   	[[NSNotificationCenter defaultCenter] removeObserver:self
+                                                 name:DGUserDidSignInNotification
+                                               object:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self
+                                                 name:DGUserDidSignOutNotification
+                                               object:nil];
 }
 
 @end
