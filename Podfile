@@ -8,7 +8,8 @@ pod 'RFKeychain', '~> 0.1'
 # ui
 pod 'TSMessages', '~> 0.9.4'
 pod 'MBProgressHUD'
-pod 'REMenu', '~> 1.3.5'
+# pod 'REMenu', '~> 1.3.5'
+pod 'REMenu', '~> 1.6'
 pod 'UIImage-Categories', '~> 0.0.1'
 pod 'TTTAttributedLabel', '~> 1.7.1'
 pod 'MJPopupViewController', :git => "git@github.com:doPanic/MJPopupViewController.git"
