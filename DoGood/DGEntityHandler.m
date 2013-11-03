@@ -234,21 +234,19 @@
     [self resetTypingAttributes:entityTextView];
 }
 
-// here take an arbitrary string
-// the idea here is to
 // strip out the @ symbol from the textfield on insertion
 - (void)selectedPerson:(NSNotification *)notification {
     DGUser *user = [[notification userInfo] valueForKey:@"user"];
-    int startOfPersonRange = MAX(0, startOfRange - 1);
+    int startOfPersonPosition = MAX(0, startOfRange - 1);
     int personLength = [user.full_name length];
-    int endOfPersonRange = startOfPersonRange + personLength;
+    int endOfPersonPosition = startOfPersonPosition + personLength;
 
-    DebugLog(@"debugging info: %i %@", startOfPersonRange, entityTextView.attributedText);
-    NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[entityTextView.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfPersonRange)];
+    DebugLog(@"Debugging: %@ %@ %@ %d %d %d", user.full_name, entityTextView.attributedText, entityTextView.text, startOfPersonPosition, personLength, endOfPersonPosition);
+    NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[entityTextView.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfPersonPosition)];
     entityTextView.attributedText = [self insert:[user.full_name stringByAppendingString:@" "] atEndOf:originalComment];
     [self setLimitText];
 
-    NSRange range = NSMakeRange(startOfPersonRange, endOfPersonRange - startOfPersonRange);
+    NSRange range = NSMakeRange(startOfPersonPosition, endOfPersonPosition - startOfPersonPosition);
 
     DGEntity *entity = [DGEntity new];
     [entity setArrayFromRange:range];
@@ -293,24 +291,26 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+// keep the # symbol in the textfield on insertion
 - (void)selectedTag:(NSNotification *)notification {
     DGTag *tag = [[notification userInfo] valueForKey:@"tag"];
 
-    int startOfTagRange = MAX(-1, startOfRange);
-    int personLength = [tag.name length];
-    int endOfPersonRange = startOfTagRange + personLength;
+    int startOfTagPosition = MAX(-1, startOfRange);
+    int tagLength = [tag.name length];
+    int endOfTagPosition = startOfTagPosition + tagLength;
 
     NSString *entityName = tag.name;
-    NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[entityTextView.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfTagRange)];
+    DebugLog(@"Debugging: %@ %@ %@ %d %d %d", entityName, entityTextView.attributedText, entityTextView.text, startOfTagPosition, tagLength, endOfTagPosition);
+    NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[entityTextView.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfTagPosition)];
 
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:LINK_COLOUR forKey:NSForegroundColorAttributeName];
     originalComment = [self insert:[entityName stringByAppendingString:@" "] atEndOf:originalComment];
-    [originalComment addAttributes:attributes range:NSMakeRange(startOfTagRange, 1)];
+    [originalComment addAttributes:attributes range:NSMakeRange(startOfTagPosition, 1)];
 
     entityTextView.attributedText = originalComment;
     [self setLimitText];
 
-    NSRange range = NSMakeRange(startOfTagRange, endOfPersonRange - startOfTagRange);
+    NSRange range = NSMakeRange(startOfTagPosition, endOfTagPosition - startOfTagPosition);
 
     DGEntity *entity = [DGEntity new];
     [entity setArrayFromRange:range];
