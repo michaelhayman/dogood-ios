@@ -40,7 +40,6 @@
     [self setupRefresh];
     [self setupInfiniteScroll];
 
-    userView = [[UserOverview alloc] initWithController:self.navigationController];
     [self setupUserPoints];
 
 
@@ -90,6 +89,7 @@
 
 - (void)setupUserPoints {
     if (_category == nil && _tag == nil && _path == nil) {
+        userView = [[UserOverview alloc] initWithController:self.navigationController];
         [tableView setTableHeaderView:userView];
     }
 }
