@@ -26,6 +26,7 @@
 
     [self stylePage];
     [self setupClearButton];
+    [self hideCancelButton];
 
     // setup initial container view
     segmentIndex = 1;
@@ -53,8 +54,6 @@
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-    // this should be moved elsewhere as we don't want it called constantly
-    [self hideCancelButton];
 }
 
 - (void)stylePage {
