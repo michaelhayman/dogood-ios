@@ -13,12 +13,13 @@
     tableView.delegate = self;
     tableView.dataSource = self;
 
-    [self showAddressBook];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    DebugLog(@"notif here");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayAddressBookView:) name:DGUserDidCheckIfAddressBookIsConnected object:nil];
+    [self showAddressBook];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
