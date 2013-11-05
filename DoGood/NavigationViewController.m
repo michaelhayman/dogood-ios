@@ -12,16 +12,20 @@
 
 - (void)showGoodList {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-    DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
+    if (goodListController == nil) {
+        goodListController = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
+    }
     __typeof (&*self) __weak weakSelf = self;
-    [weakSelf setViewControllers:@[controller] animated:NO];
+    [weakSelf setViewControllers:@[goodListController] animated:NO];
 }
 
 - (void)showRewards {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
-    DGRewardsListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"rewardList"];
+    if (rewardListController == nil) {
+        rewardListController = [storyboard instantiateViewControllerWithIdentifier:@"rewardList"];
+    }
     __typeof (&*self) __weak weakSelf = self;
-    [weakSelf setViewControllers:@[controller] animated:NO];
+    [weakSelf setViewControllers:@[rewardListController] animated:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -45,8 +49,10 @@
     REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"Explore" subtitle:nil image:[UIImage imageNamed:@"MenuIconExplore"] highlightedImage:[UIImage imageNamed:@"MenuIconExploreTap"] action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Explore" bundle:nil];
-        DGExploreViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"explore"];
-        [weakSelf setViewControllers:@[controller] animated:NO];
+        if (exploreController == nil) {
+            exploreController = [storyboard instantiateViewControllerWithIdentifier:@"explore"];
+        }
+        [weakSelf setViewControllers:@[exploreController] animated:NO];
     }];
 
     REMenuItem *rewardsItem = [[REMenuItem alloc] initWithTitle:@"Rewards" subtitle:nil image:[UIImage imageNamed:@"MenuIconRewards"] highlightedImage:[UIImage imageNamed:@"MenuIconRewardsTap"] action:^(REMenuItem *item) {
@@ -57,9 +63,11 @@
     REMenuItem *profileItem = [[REMenuItem alloc] initWithTitle:@"Profile" image:[UIImage imageNamed:@"MenuIconProfile"] highlightedImage:[UIImage imageNamed:@"MenuIconProfileTap"] action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
-        DGUserProfileViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
-        controller.fromMenu = YES;
-        [weakSelf setViewControllers:@[controller] animated:NO];
+        if (userProfileController == nil) {
+            userProfileController = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
+        }
+        userProfileController.fromMenu = YES;
+        [weakSelf setViewControllers:@[userProfileController] animated:NO];
     }];
 
     homeItem.tag = 0;
