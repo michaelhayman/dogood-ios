@@ -2,12 +2,10 @@
 // views
 #import "NavigationViewController.h"
 #import "DGGoodListViewController.h"
-// #import "DGWelcomeViewController.h"
 // global set up
 #import "RestKit.h"
 #import "DGAppearance.h"
 #import "URLHandler.h"
-#import <TTTAttributedLabel.h>
 #import "TestFlight.h"
 
 @implementation DGAppDelegate
