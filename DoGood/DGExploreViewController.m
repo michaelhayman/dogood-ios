@@ -14,15 +14,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addMenuButton:@"MenuFromExploreIconTap" withTapButton:@"MenuFromExploreIcon"];
-
     [self setupMenuTitle:@"Explore"];
 
-    self.exploreSearch = [self.storyboard instantiateViewControllerWithIdentifier:@"exploreSearch"];
+    _exploreSearch = [self.storyboard instantiateViewControllerWithIdentifier:@"exploreSearch"];
     searchField.delegate = self.exploreSearch;
-    self.exploreSearch.parent = self;
-    self.exploreSearch.searchField = searchField;
+    _exploreSearch.parent = self;
+    _exploreSearch.searchField = searchField;
 
-    self.exploreCategories = [self.storyboard instantiateViewControllerWithIdentifier:@"exploreCategories"];
+    _exploreCategories = [self.storyboard instantiateViewControllerWithIdentifier:@"exploreCategories"];
 
     [self stylePage];
     [self setupClearButton];

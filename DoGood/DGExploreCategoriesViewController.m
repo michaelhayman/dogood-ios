@@ -10,17 +10,24 @@
 @implementation DGExploreCategoriesViewController
 
 - (void)viewDidLoad {
+    [super viewDidLoad];
     self.title = @"Categories";
     UINib *categoryNib = [UINib nibWithNibName:@"CategoryCell" bundle:nil];
     [tableView registerNib:categoryNib forCellReuseIdentifier:@"CategoryCell"];
 
-    exploreHighlights = [[ExploreHighlightsCell alloc] initWithController:self.navigationController];
-    explorePopularTags = [[ExplorePopularTagsCell alloc] initWithController:self.navigationController];
+    if (exploreHighlights == nil) {
+        exploreHighlights = [[ExploreHighlightsCell alloc] initWithController:self.navigationController];
+    }
+    if (explorePopularTags == nil) {
+        explorePopularTags = [[ExplorePopularTagsCell alloc] initWithController:self.navigationController];
+    }
 
     [tableView setTableHeaderView:exploreHighlights];
     [tableView setTableFooterView:explorePopularTags];
 
-    loadingView = [[DGLoadingView alloc] initCenteredOnView:tableView];
+    if (loadingView == nil) {
+        loadingView = [[DGLoadingView alloc] initCenteredOnView:tableView];
+    }
 
     [self stylePage];
     [self getCategories];

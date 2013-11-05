@@ -33,6 +33,9 @@
 }
 
 - (void)dealloc {
+    DebugLog(@"entity dealloced");
+    searchPeopleTableController = nil;
+    searchTagsTableController = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidNotFindPeopleForTextField object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSelectPersonForTextField object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidNotFindTagsForTextField object:nil];
@@ -124,7 +127,9 @@
 
 #pragma mark - Keyboard management
 - (void)setupAccessoryView {
-    accessoryView = [[UIInputView alloc] initWithFrame:CGRectMake(0, 0, 320, kToolbarHeight) inputViewStyle:UIInputViewStyleKeyboard];
+    if (accessoryView == nil) {
+        accessoryView = [[UIInputView alloc] initWithFrame:CGRectMake(0, 0, 320, kToolbarHeight) inputViewStyle:UIInputViewStyleKeyboard];
+    }
 
     accessoryButtonMention = [UIButton buttonWithType:UIButtonTypeCustom];
     [accessoryButtonMention setFrame:CGRectMake(10.0f, 10.0f, 26.0f, 23.0f)];
@@ -190,7 +195,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 
     searchTable = [[UITableView alloc] init];
-    searchPeopleTableController =  [[DGTextFieldSearchPeopleTableViewController alloc] initWithScrolling:reverseScroll];
+    if (searchPeopleTableController == nil) {
+        searchPeopleTableController =  [[DGTextFieldSearchPeopleTableViewController alloc] initWithScrolling:reverseScroll];
+    }
     searchPeopleTableController.tableView = searchTable;
     searchTable.delegate = searchPeopleTableController;
     searchTable.dataSource = searchPeopleTableController;
@@ -212,7 +219,9 @@
         searchTagsTable.transform = CGAffineTransformMakeRotation(-M_PI);
     }
 
-    searchTagsTableController =  [[DGTextFieldSearchTagsTableViewController alloc] initWithScrolling:reverseScroll];
+    if (searchTagsTableController == nil) {
+        searchTagsTableController =  [[DGTextFieldSearchTagsTableViewController alloc] initWithScrolling:reverseScroll];
+    }
     searchTagsTableController.tableView = searchTagsTable;
     searchTagsTable.delegate = searchTagsTableController;
     searchTagsTable.dataSource = searchTagsTableController;

@@ -61,9 +61,13 @@
 
 #pragma mark - Tables
 - (void)initTables {
-    searchPeopleTable = [[DGExploreSearchPeopleTableViewController alloc] init];
+    if (searchPeopleTable == nil) {
+        searchPeopleTable = [[DGExploreSearchPeopleTableViewController alloc] init];
+    }
     searchPeopleTable.tableView = tableView;
-    searchTagsTable = [[DGExploreSearchTagsTableViewController alloc] init];
+    if (searchTagsTable == nil) {
+        searchTagsTable = [[DGExploreSearchTagsTableViewController alloc] init];
+    }
     searchTagsTable.tableView = tableView;
     searchTagsTable.navigationController = self.navigationController;
 }
