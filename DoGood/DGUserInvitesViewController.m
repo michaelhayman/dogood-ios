@@ -16,7 +16,7 @@
 // setInviteText or setCustomText
 // then change names to sendViaText & sendViaEmail
 - (void)setInviteText {
-    bodyText = [NSString stringWithFormat:@"Get rewarded for doing good - follow me on Do Good! dogood://users/%@\n\n---\nDon't have Do Good? Get it from the App Store: https://get.dogood.co", [DGUser currentUser].userID];
+    bodyText = [NSString stringWithFormat:@"Get rewarded for doing good - follow me on Do Good! dogood://users/%@\n\n---\nDon't have Do Good? Get it from the App Store: http://dogood.springbox.ca", [DGUser currentUser].userID];
     subjectText = @"Do Good with me";
 }
 
@@ -88,7 +88,7 @@
 			break;
 	}
     DebugLog(@"%@", feedbackMsg);
-    
+ 
 	[_parent dismissViewControllerAnimated:YES completion:NULL];
 }
 
