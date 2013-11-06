@@ -116,6 +116,19 @@
     }
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
+    goodListController = nil;
+    userProfileController = nil;
+    rewardListController = nil;
+    exploreController = nil;
+}
+
+- (void)dealloc {
+    DebugLog(@"dealloc");
+}
+
 - (void)toggleMenu {
     if (_menu.isOpen)
         return [_menu close];

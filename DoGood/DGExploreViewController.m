@@ -16,12 +16,16 @@
     [self addMenuButton:@"MenuFromExploreIconTap" withTapButton:@"MenuFromExploreIcon"];
     [self setupMenuTitle:@"Explore"];
 
-    _exploreSearch = [self.storyboard instantiateViewControllerWithIdentifier:@"exploreSearch"];
+    if (_exploreSearch == nil) {
+        _exploreSearch = [self.storyboard instantiateViewControllerWithIdentifier:@"exploreSearch"];
+    }
     searchField.delegate = self.exploreSearch;
     _exploreSearch.parent = self;
     _exploreSearch.searchField = searchField;
 
-    _exploreCategories = [self.storyboard instantiateViewControllerWithIdentifier:@"exploreCategories"];
+    if (_exploreCategories == nil) {
+        _exploreCategories = [self.storyboard instantiateViewControllerWithIdentifier:@"exploreCategories"];
+    }
 
     [self stylePage];
     [self setupClearButton];

@@ -3,7 +3,7 @@
     BOOL reverseScroll;
 }
 
-@property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, weak) UITableView *tableView;
 
 - (void)getTagsByName:(NSString *)searchText;
 - (void)purge;

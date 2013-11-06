@@ -3,8 +3,9 @@
     NSArray *tags;
 }
 
-@property (nonatomic, retain) IBOutlet UIView *view;
-@property (weak, nonatomic) UINavigationController *navigationController;
+@property (nonatomic, weak) IBOutlet UIView *view;
+@property (nonatomic, weak) UINavigationController *navigationController;
+
 - (id)initWithController:(UINavigationController *)controller;
 
 @end

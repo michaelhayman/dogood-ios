@@ -4,7 +4,7 @@
 }
 
 @property (nonatomic, weak) IBOutlet UIView *view;
-@property (weak, nonatomic) UINavigationController *navigationController;
+@property (nonatomic, weak) UINavigationController *navigationController;
 
 - (id)initWithController:(UINavigationController *)controller;
 

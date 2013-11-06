@@ -3,7 +3,7 @@
     NSString *subjectText;
 }
 
-@property (nonatomic, retain) UIViewController *parent;
+@property (nonatomic, weak) UIViewController *parent;
 
 - (void)setInviteText;
 - (void)setCustomText:(NSString *)body withSubject:(NSString *)subject;

@@ -10,10 +10,10 @@
 #define kTabSelectionAnimationDuration 0.2
 
 @interface DGUserFindFriendsViewController ()
-    @property (nonatomic, retain) DGUserSearchAddressBookViewController *userAddressBook;
-    @property (nonatomic, retain) DGUserSearchTwitterViewController *userTwitter;
-    @property (nonatomic, retain) DGUserSearchFacebookViewController *userFacebook;
-    @property (nonatomic, retain) DGUserSearchOtherViewController *userOther;
+    @property (nonatomic, strong) DGUserSearchAddressBookViewController *userAddressBook;
+    @property (nonatomic, strong) DGUserSearchTwitterViewController *userTwitter;
+    @property (nonatomic, strong) DGUserSearchFacebookViewController *userFacebook;
+    @property (nonatomic, strong) DGUserSearchOtherViewController *userOther;
 @end
 
 @implementation DGUserFindFriendsViewController
@@ -22,10 +22,18 @@
     [super viewDidLoad];
     [self setupMenuTitle:@"Find Friends"];
 
-    self.userAddressBook = [[DGUserSearchAddressBookViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];
-    self.userTwitter = [[DGUserSearchTwitterViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];
-    self.userFacebook = [[DGUserSearchFacebookViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];
-    self.userOther = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchOther"];
+    if (_userAddressBook == nil) {
+        _userAddressBook = [[DGUserSearchAddressBookViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];
+    }
+    if (_userTwitter == nil) {
+        _userTwitter = [[DGUserSearchTwitterViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];
+    }
+    if (_userFacebook == nil) {
+        _userFacebook = [[DGUserSearchFacebookViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];
+    }
+    if (_userOther == nil) {
+        _userOther = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchOther"];
+    }
 
     // self.typeSegmentedControl.selectedSegmentIndex = 1;
     segmentIndex = 1;
@@ -44,11 +52,26 @@
     [self.view addSubview:arrow];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
+}
+
 - (void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
     self.currentViewController.view.frame = self.contentView.bounds;
 
     CGFloat y = buttonRow.frame.origin.y + buttonRow.frame.size.height - 2;
     arrow.frame = CGRectMake([self getX], y, 14, 8);
+}
+
+- (void)dealloc {
+    DebugLog(@"deallocing find friends");
+    _currentViewController = nil;
+    _userAddressBook = nil;
+    _userTwitter = nil;
+    _userFacebook = nil;
+    _userOther = nil;
 }
 
 - (CGFloat)getX {

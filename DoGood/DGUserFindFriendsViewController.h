@@ -10,8 +10,8 @@
     __weak IBOutlet UIButton *addressBook;
 }
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *typeSegmentedControl;
-@property (nonatomic, retain)    UIViewController *currentViewController;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *typeSegmentedControl;
+@property (nonatomic, strong) UIViewController *currentViewController;
+@property (nonatomic, weak) IBOutlet UIView *contentView;
 
 @end

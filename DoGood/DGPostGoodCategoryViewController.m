@@ -44,7 +44,8 @@
     if ([category image]) {
         cell.imageView.image = [category image];
     } else {
-        [cell.imageView setImageWithURL:[NSURL URLWithString:category.image_url] placeholderImage:[UIImage imageNamed:@"category_empty.png"]];
+        NSURL *url = [NSURL URLWithString:category.image_url];
+        [cell.imageView setImageWithURL:url placeholderImage:[UIImage imageNamed:@"category_empty.png"]];
     }
     return cell;
 }

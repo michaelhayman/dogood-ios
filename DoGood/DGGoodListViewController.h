@@ -14,14 +14,14 @@
     UserOverview *userView;
 }
 
-@property (nonatomic, retain) DGLoadingView *loadingView;
+@property (nonatomic, strong) DGLoadingView *loadingView;
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
-@property (nonatomic, retain) NSString *path;
-@property (nonatomic, retain) NSString *titleForPath;
-@property (nonatomic, retain) DGCategory *category;
-@property (nonatomic, retain) DGTag *tag;
-@property (nonatomic, retain) NSNumber *goodID;
-@property (nonatomic, retain) UINavigationController *loadController;
+@property (nonatomic, copy) NSString *path;
+@property (nonatomic, strong) NSString *titleForPath;
+@property (nonatomic, weak) DGCategory *category;
+@property (nonatomic, weak) DGTag *tag;
+@property (nonatomic, strong) NSNumber *goodID;
+@property (nonatomic, weak) UINavigationController *loadController;
 
 - (void)showWelcome;
 - (void)reloadCellAtIndexPath:(NSIndexPath *)indexPath withGood:(DGGood *)good;

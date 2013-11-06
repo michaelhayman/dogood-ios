@@ -6,7 +6,7 @@
     
     UIActionSheet *photoSheet;
 }
-@property (nonatomic, retain) UIViewController *parent;
+@property (nonatomic, weak) UIViewController *parent;
 @property bool hasImage;
 
 - (void)openPhotoSheet:(UIImage *)image;

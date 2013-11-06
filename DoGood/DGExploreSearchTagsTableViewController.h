@@ -5,8 +5,8 @@
     bool showNoResultsMessage;
 }
 
-@property (nonatomic, retain) UITableView *tableView;
-@property (nonatomic, retain) UINavigationController *navigationController;
+@property (nonatomic, weak) UITableView *tableView;
+@property (nonatomic, weak) UINavigationController *navigationController;
 
 - (void)getTagsByName:(NSString *)searchText;
 - (void)purge;

@@ -3,10 +3,10 @@
     __weak IBOutlet UICollectionView *rewardCollectionView;
 }
 
-@property (nonatomic, retain) IBOutlet UIView *view;
-@property (nonatomic, retain) IBOutlet UIImageView *image;
-@property (nonatomic, retain) IBOutlet UILabel *username;
-@property (nonatomic, retain) IBOutlet UILabel *points;
+@property (nonatomic, strong) IBOutlet UIView *view;
+@property (nonatomic, strong) IBOutlet UIImageView *image;
+@property (nonatomic, strong) IBOutlet UILabel *username;
+@property (nonatomic, strong) IBOutlet UILabel *points;
 
 @property (weak, nonatomic) UINavigationController *navigationController;
 

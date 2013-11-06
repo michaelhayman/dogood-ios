@@ -20,7 +20,7 @@
 
 }
 
-@property (nonatomic, retain) DGExploreViewController* parent;
-@property (nonatomic, retain) UITextField* searchField;
+@property (nonatomic, weak) DGExploreViewController* parent;
+@property (nonatomic, weak) UITextField* searchField;
 
 @end

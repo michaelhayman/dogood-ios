@@ -29,9 +29,9 @@
     NSString *loadingStatus;
 }
 
-@property bool makeComment;
+@property BOOL makeComment;
 @property DGGood *good;
-@property (nonatomic, retain) DGComment *comment;
-@property (nonatomic, retain) GoodCell *goodCell;
+@property (nonatomic, strong) DGComment *comment;
+@property (nonatomic, weak) GoodCell *goodCell;
 
 @end

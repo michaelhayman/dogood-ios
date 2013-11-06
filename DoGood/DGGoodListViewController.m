@@ -18,8 +18,6 @@
 
 @implementation DGGoodListViewController
 
-@synthesize tableView;
-
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -74,13 +72,13 @@
 
 - (void)initializeTable {
     UINib *nib = [UINib nibWithNibName:@"GoodCell" bundle:nil];
-    [tableView registerNib:nib forCellReuseIdentifier:@"GoodCell"];
+    [_tableView registerNib:nib forCellReuseIdentifier:@"GoodCell"];
     UINib *noResultsNib = [UINib nibWithNibName:@"NoResultsCell" bundle:nil];
-    [tableView registerNib:noResultsNib forCellReuseIdentifier:@"NoResultsCell"];
+    [_tableView registerNib:noResultsNib forCellReuseIdentifier:@"NoResultsCell"];
     showNoResultsMessage = NO;
     goods = [[NSMutableArray alloc] init];
     cellHeights = [[NSMutableArray alloc] init];
-    _loadingView = [[DGLoadingView alloc] initCenteredOnView:tableView];
+    _loadingView = [[DGLoadingView alloc] initCenteredOnView:_tableView];
 }
 
 - (void)displayPostSuccessMessage {
@@ -90,7 +88,7 @@
 - (void)setupUserPoints {
     if (_category == nil && _tag == nil && _path == nil) {
         userView = [[UserOverview alloc] initWithController:self.navigationController];
-        [tableView setTableHeaderView:userView];
+        [_tableView setTableHeaderView:userView];
     }
 }
 
@@ -99,7 +97,7 @@
 
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     refreshControl.tintColor = COLOUR_GREEN;
-    [tableView addSubview:refreshControl];
+    [_tableView addSubview:refreshControl];
 }
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
@@ -163,7 +161,7 @@
 
 - (void)reloadCellAtIndexPath:(NSIndexPath *)indexPath withGood:(DGGood *)good {
     cellHeights[indexPath.row] = [self calculateHeightForGood:good];
-    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -226,11 +224,11 @@
             showNoResultsMessage = NO;
             [self estimateHeightsForGoods:mappingResult.array];
         }
-        [tableView reloadData];
-        [tableView.infiniteScrollingView stopAnimating];
+        [_tableView reloadData];
+        [_tableView.infiniteScrollingView stopAnimating];
         [_loadingView loadingSucceeded];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [tableView.infiniteScrollingView stopAnimating];
+        [_tableView.infiniteScrollingView stopAnimating];
         DebugLog(@"Operation failed with error: %@", error);
         [_loadingView loadingFailed];
     }];
@@ -245,7 +243,7 @@
     page = 1;
     [goods removeAllObjects];
     [cellHeights removeAllObjects];
-    [tableView reloadData];
+    [_tableView reloadData];
 }
 
 - (void)reloadGood {
@@ -255,12 +253,12 @@
 }
 
 - (void)setupInfiniteScroll {
-    tableView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    _tableView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
 
     __weak DGGoodListViewController *weakSelf = self;
-    __weak UITableView *weakTableView = self.tableView;
+    __weak UITableView *weakTableView = _tableView;
 
-    [tableView addInfiniteScrollingWithActionHandler:^{
+    [_tableView addInfiniteScrollingWithActionHandler:^{
         __strong DGGoodListViewController *strongSelf = weakSelf;
         __strong UITableView *strongTableView = weakTableView;
         [strongTableView.infiniteScrollingView startAnimating];

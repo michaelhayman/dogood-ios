@@ -3,7 +3,7 @@
     bool showNoResultsMessage;
 }
 
-@property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, weak) UITableView *tableView;
 
 - (void)getUsersByName:(NSString *)searchText;
 - (void)purge;
