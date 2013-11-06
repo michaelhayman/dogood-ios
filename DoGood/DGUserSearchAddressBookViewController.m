@@ -121,20 +121,29 @@
         ABRecordRef aPerson = CFArrayGetValueAtIndex(allContacts, i);
         ABMultiValueRef emailProperty = ABRecordCopyValue(aPerson, kABPersonEmailProperty);
 
-        NSArray *emailArray = (__bridge NSArray *)ABMultiValueCopyArrayOfAllValues(emailProperty);
+        NSArray *emailArray = (__bridge_transfer NSArray *)ABMultiValueCopyArrayOfAllValues(emailProperty);
 
         if ([emailArray count] > 0) {
             if ([emailArray count] > 1) {
                 for (int i = 0; i < [emailArray count]; i++) {
                     email = [email stringByAppendingString:[NSString stringWithFormat:@"%@\n", [emailArray objectAtIndex:i]]];
                 }
-            }else {
+            } else {
                 email = [NSString stringWithFormat:@"%@", [emailArray objectAtIndex:0]];
             }
         }
 
+        if (emailProperty) {
+            CFRelease(emailProperty);
+        }
+        if (aPerson) {
+            CFRelease(aPerson);
+        }
+
         [emails addObjectsFromArray:emailArray];
     }
+
+    CFRelease(allContacts);
 
     NSString *path = [NSString stringWithFormat:@"/users/search_by_emails"];
 
