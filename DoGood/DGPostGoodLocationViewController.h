@@ -1,4 +1,6 @@
 #import <CoreLocation/CoreLocation.h>
+@protocol DGPostGoodLocationViewControllerDelegate;
+@class FSLocation;
 
 @interface DGPostGoodLocationViewController : UIViewController <CLLocationManagerDelegate, UISearchBarDelegate> {
     NSMutableArray *locations;
@@ -9,5 +11,13 @@
     __weak IBOutlet UITableView *tableView;
 }
 
+@property (nonatomic, weak) id<DGPostGoodLocationViewControllerDelegate> delegate;
+
 @end
 
+@protocol DGPostGoodLocationViewControllerDelegate <NSObject>
+
+- (void)childViewController:(DGPostGoodLocationViewController* )viewController
+    didChooseLocation:(FSLocation *)location;
+
+@end

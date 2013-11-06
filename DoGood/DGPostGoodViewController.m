@@ -66,9 +66,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUpdatedCategory:) name:DGUserDidUpdateGoodCategory object:nil];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveUpdatedLocation:) name:DGUserDidUpdateGoodLocation object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadAvatar:) name:DGUserDidAddPhotoNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteAvatar) name:DGUserDidRemovePhotoNotification object:nil];
 
@@ -80,9 +77,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
 
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidUpdateGoodCategory object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidUpdateGoodLocation object:nil];
-
+    // can't do these this way anymore
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidAddPhotoNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidRemovePhotoNotification object:nil];
 
@@ -99,10 +94,11 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    // [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UITableView data source
@@ -219,6 +215,7 @@
     UIStoryboard *storyboard;
     storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     DGPostGoodCategoryViewController *categoryController = [storyboard instantiateViewControllerWithIdentifier:@"PostGoodCategory"];
+    categoryController.delegate = self;
 
     [self.navigationController pushViewController:categoryController animated:YES];
 }
@@ -227,6 +224,7 @@
     UIStoryboard *storyboard;
     storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     DGPostGoodLocationViewController *locationController = [storyboard instantiateViewControllerWithIdentifier:@"PostGoodLocation"];
+    locationController.delegate = self;
 
     [self.navigationController pushViewController:locationController animated:YES];
 }
@@ -290,14 +288,13 @@
 }
 
 #pragma mark - Change data responses
-- (void)receiveUpdatedCategory:(NSNotification *)notification {
-    self.good.category = [[notification userInfo] valueForKey:@"category"];
+- (void)childViewController:(DGPostGoodCategoryViewController *)viewController didChooseCategory:(DGCategory *)category {
+    self.good.category = category;
     [self.good setValuesForCategory:self.good.category];
     [self.tableView reloadData];
 }
 
-- (void)receiveUpdatedLocation:(NSNotification *)notification {
-    FSLocation *location = [[notification userInfo] valueForKey:@"location"];
+- (void)childViewController:(DGPostGoodLocationViewController *)viewController didChooseLocation:(FSLocation *)location {
     [self.good setValuesForLocation:location];
     [self.tableView reloadData];
 }

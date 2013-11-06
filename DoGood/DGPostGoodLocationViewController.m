@@ -134,10 +134,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     FSLocation *location = locations[indexPath.row];
-    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:location, @"location", nil];
-    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateGoodLocation
-                                                        object:nil
-                                                      userInfo:userInfo];
+
+    if ([self.delegate respondsToSelector:@selector(childViewController:didChooseLocation:)]) {
+        [self.delegate childViewController:self didChooseLocation:location];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

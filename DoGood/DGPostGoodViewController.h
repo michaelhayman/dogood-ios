@@ -3,8 +3,10 @@
 @class DGFacebookManager;
 @class DGTwitterManager;
 @class DGEntityHandler;
+#import "DGPostGoodCategoryViewController.h"
+#import "DGPostGoodLocationViewController.h"
 
-@interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate> {
+@interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, DGPostGoodCategoryViewControllerDelegate, DGPostGoodLocationViewControllerDelegate> {
     UIActionSheet *categorySheet;
     UIActionSheet *locationSheet;
     UIImage *imageToUpload;
