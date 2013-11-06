@@ -52,6 +52,7 @@
 		6355EC3317B75EB600EE91C0 /* constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3217B75EB300EE91C0 /* constants.m */; };
 		6355EC3A17B8680300EE91C0 /* SignUpOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC3917B8680300EE91C0 /* SignUpOverviewCell.xib */; };
 		6355EC3D17B86B8400EE91C0 /* SignUpOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3C17B86B7B00EE91C0 /* SignUpOverviewCell.m */; };
+		6356BDB2182891F4006AF033 /* UIViewController+DGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6356BDB1182891F4006AF033 /* UIViewController+DGViewController.m */; };
 		6358340B17C885D700F997F6 /* DGUserSearchTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358340A17C885D700F997F6 /* DGUserSearchTwitterViewController.m */; };
 		6358341617C88D3700F997F6 /* DGUserSearchFacebookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358341517C88D3700F997F6 /* DGUserSearchFacebookViewController.m */; };
 		6358341917C88F3C00F997F6 /* DGUserSearchOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358341817C88F3C00F997F6 /* DGUserSearchOtherViewController.m */; };
@@ -107,7 +108,6 @@
 		63D4BD251802484800ACF1B9 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D4BD241802484800ACF1B9 /* Rewards.storyboard */; };
 		63D4BD2818024E0700ACF1B9 /* DGRewardPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BD2718024E0700ACF1B9 /* DGRewardPopupViewController.m */; };
 		63D9F1FE18107E1000B9207F /* DGEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D9F1FD18107E1000B9207F /* DGEntity.m */; };
-		63DA644417DBEA52003DFF03 /* UIViewController+DGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DA644317DBEA52003DFF03 /* UIViewController+DGViewController.m */; };
 		63DA644817DC0F04003DFF03 /* DGExploreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DA644717DC0F04003DFF03 /* DGExploreViewController.m */; };
 		63DA644B17DC0F28003DFF03 /* DGExploreCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DA644A17DC0F28003DFF03 /* DGExploreCategoriesViewController.m */; };
 		63DA644E17DC0F55003DFF03 /* DGExploreSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DA644D17DC0F55003DFF03 /* DGExploreSearchViewController.m */; };
@@ -239,6 +239,8 @@
 		6355EC3917B8680300EE91C0 /* SignUpOverviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpOverviewCell.xib; sourceTree = "<group>"; };
 		6355EC3B17B86B7800EE91C0 /* SignUpOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpOverviewCell.h; sourceTree = "<group>"; };
 		6355EC3C17B86B7B00EE91C0 /* SignUpOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpOverviewCell.m; sourceTree = "<group>"; };
+		6356BDB0182891F4006AF033 /* UIViewController+DGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DGViewController.h"; sourceTree = "<group>"; };
+		6356BDB1182891F4006AF033 /* UIViewController+DGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DGViewController.m"; sourceTree = "<group>"; };
 		6358340917C885D700F997F6 /* DGUserSearchTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchTwitterViewController.h; sourceTree = "<group>"; };
 		6358340A17C885D700F997F6 /* DGUserSearchTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchTwitterViewController.m; sourceTree = "<group>"; };
 		6358341417C88D3700F997F6 /* DGUserSearchFacebookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchFacebookViewController.h; sourceTree = "<group>"; };
@@ -325,8 +327,6 @@
 		63D4BD2718024E0700ACF1B9 /* DGRewardPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRewardPopupViewController.m; sourceTree = "<group>"; };
 		63D9F1FC18107E1000B9207F /* DGEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGEntity.h; sourceTree = "<group>"; };
 		63D9F1FD18107E1000B9207F /* DGEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEntity.m; sourceTree = "<group>"; };
-		63DA644217DBEA52003DFF03 /* UIViewController+DGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+DGViewController.h"; sourceTree = "<group>"; };
-		63DA644317DBEA52003DFF03 /* UIViewController+DGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+DGViewController.m"; sourceTree = "<group>"; };
 		63DA644617DC0F04003DFF03 /* DGExploreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGExploreViewController.h; sourceTree = "<group>"; };
 		63DA644717DC0F04003DFF03 /* DGExploreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGExploreViewController.m; sourceTree = "<group>"; };
 		63DA644917DC0F28003DFF03 /* DGExploreCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGExploreCategoriesViewController.h; sourceTree = "<group>"; };
@@ -416,8 +416,6 @@
 			children = (
 				63F2BD181820D923003D746E /* DGLoadingView.h */,
 				63F2BD191820D923003D746E /* DGLoadingView.m */,
-				63DA644217DBEA52003DFF03 /* UIViewController+DGViewController.h */,
-				63DA644317DBEA52003DFF03 /* UIViewController+DGViewController.m */,
 				63C15488181F555A00DA81B9 /* TTTAttributedLabel+Tag.h */,
 				63C15489181F555A00DA81B9 /* TTTAttributedLabel+Tag.m */,
 				630046CE1810E619001529E5 /* URLHandler.h */,
@@ -586,6 +584,8 @@
 				636AEA9A17AD63EC002A3494 /* GoodCell.xib */,
 				636AEAA117AD77F0002A3494 /* DGPostGoodViewController.h */,
 				636AEAA217AD77F0002A3494 /* DGPostGoodViewController.m */,
+				6356BDB0182891F4006AF033 /* UIViewController+DGViewController.h */,
+				6356BDB1182891F4006AF033 /* UIViewController+DGViewController.m */,
 				63D4BCDD17FFDF7000ACF1B9 /* DGGoodCommentsViewController.h */,
 				63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */,
 				633DBF6517ADACEE0038BC2D /* DGPostGoodCategoryViewController.h */,
@@ -1051,8 +1051,8 @@
 				6358341917C88F3C00F997F6 /* DGUserSearchOtherViewController.m in Sources */,
 				6358342E17C8A09700F997F6 /* Arrow.m in Sources */,
 				635A232017CAB5150045C256 /* DGCategories.m in Sources */,
-				63DA644417DBEA52003DFF03 /* UIViewController+DGViewController.m in Sources */,
 				63DA644817DC0F04003DFF03 /* DGExploreViewController.m in Sources */,
+				6356BDB2182891F4006AF033 /* UIViewController+DGViewController.m in Sources */,
 				6330B69E1812D891005DC78B /* DGEditableTextView.m in Sources */,
 				6330B6A11812FC28005DC78B /* DGEntityHandler.m in Sources */,
 				63DA644B17DC0F28003DFF03 /* DGExploreCategoriesViewController.m in Sources */,
