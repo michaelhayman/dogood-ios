@@ -11,12 +11,13 @@
 
 #pragma mark - Set values when cell becomes visible
 - (void)setValues {
-    categoryName.text = self.category.name;
+    categoryName.text = _category.name;
 
-    if ([self.category image]) {
+    if ([_category image]) {
         categoryImage.image = [self.category image];
     } else {
-        [categoryImage setImageWithURL:[NSURL URLWithString:self.category.image_url] placeholderImage:[UIImage imageNamed:@"category_empty.png"]];
+        NSURL *url = [NSURL URLWithString:_category.image_url];
+        [categoryImage setImageWithURL:url placeholderImage:[UIImage imageNamed:@"category_empty.png"]];
     }
 }
 
