@@ -2,7 +2,7 @@
     NSArray *categories;
 }
 
-@property (nonatomic, retain) NSArray *categories;
+@property (nonatomic, strong) NSArray *categories;
 
 + (id)sharedManager;
 

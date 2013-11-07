@@ -8,7 +8,7 @@
     NSInteger segmentIndex;
 }
 
-@property (nonatomic, retain)    UIViewController *currentViewController;
+@property (nonatomic, strong) UIViewController *currentViewController;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UITextField *searchField;
 
