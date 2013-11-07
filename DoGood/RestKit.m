@@ -14,12 +14,6 @@
 
 @implementation RestKit
 
-/*
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-*/
-
 + (void)setupRestKit {
     #if DEVELOPMENT_LOGS
         RKLogConfigureByName("RestKit", RKLogLevelTrace);
@@ -297,13 +291,6 @@
      }];
     RKResponseDescriptor *errorResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:errorMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"errors" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
     [objectManager addResponseDescriptor:errorResponseDescriptor];
-
-    // RELATIONSHIPS
-    /*
-    [eventMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"bets" toKeyPath:@"bets" withMapping:betMapping]];
-    [eventRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"bets" toKeyPath:@"bets_attributes" withMapping:betRequestMapping]];
-    */
-
 }
 
 - (void)dealloc {

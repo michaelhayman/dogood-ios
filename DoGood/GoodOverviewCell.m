@@ -23,7 +23,6 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     _entityHandler = nil;
 }
 

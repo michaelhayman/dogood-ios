@@ -52,7 +52,6 @@
 
 - (void)dealloc {
     DebugLog(@"dealloc called");
-//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
