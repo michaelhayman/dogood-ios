@@ -1,6 +1,8 @@
 PODS:
   - AFNetworking (1.3.1)
   - HexColors (2.2.1)
+  - ISO8601DateFormatterValueTransformer (0.5.0):
+    - RKValueTransformers (~> 1.0.0)
   - Kiwi/ARC (2.2.2)
   - Kiwi/NonARC (2.2.2)
   - Kiwi/XCTest (2.2.2):
@@ -13,23 +15,26 @@ PODS:
   - OAuthCore (0.0.1):
     - NSData+Base64
   - REMenu (1.6)
-  - RestKit (0.20.3):
+  - RestKit (0.21.0):
     - RestKit/Core
-  - RestKit/Core (0.20.3):
+  - RestKit/Core (0.21.0):
     - RestKit/CoreData
     - RestKit/Network
     - RestKit/ObjectMapping
-  - RestKit/CoreData (0.20.3)
-  - RestKit/Network (0.20.3):
+  - RestKit/CoreData (0.21.0)
+  - RestKit/Network (0.21.0):
     - AFNetworking (~> 1.3.0)
     - RestKit/ObjectMapping
     - RestKit/Support
     - SOCKit
-  - RestKit/ObjectMapping (0.20.3)
-  - RestKit/Support (0.20.3):
+  - RestKit/ObjectMapping (0.21.0):
+    - ISO8601DateFormatterValueTransformer (~> 0.5.0)
+    - RestKit/Support
+    - RKValueTransformers (~> 1.0.0)
+  - RestKit/Support (0.21.0):
     - TransitionKit (= 1.1.1)
-  - RestKit/Testing (0.20.3)
   - RFKeychain (0.1)
+  - RKValueTransformers (1.0.0)
   - SocialAuth (1.0.4):
     - OAuthCore
   - SOCKit (1.1)
@@ -48,8 +53,7 @@ DEPENDENCIES:
   - MJPopupViewController (from `git@github.com:doPanic/MJPopupViewController.git`)
   - NSDate+TimeAgo (~> 1.0.2)
   - REMenu (~> 1.6)
-  - RestKit (~> 0.20.3)
-  - RestKit/Testing (~> 0.20.0)
+  - RestKit (~> 0.21.0)
   - RFKeychain (~> 0.1)
   - SocialAuth (from `git@github.com:michaelhayman/SocialAuth.git`)
   - SVPullToRefresh (~> 0.4.1)
@@ -67,6 +71,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
   HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
+  ISO8601DateFormatterValueTransformer: d0af1f50a9df42db72d7418db31938b8473e0af8
   Kiwi: 03539aeb004ccd42bdbc31253617b26364315df4
   MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
   MJPopupViewController: 89f932b2a44b8348355300c99e8d3d6d5e3ee59a
@@ -74,8 +79,9 @@ SPEC CHECKSUMS:
   NSDate+TimeAgo: fe93d3042e83093ae3630bc47ae7d57f782733f6
   OAuthCore: 4164eec5e28c68f794953446e68f91054ffe570c
   REMenu: 65aee777063bc70210d8257d4a935a4fb98cad52
-  RestKit: 1f181c180105a92f11ec4f6cd7de37625e516d83
+  RestKit: c11a30e7bc73513d9d2c2695672aba7697d24181
   RFKeychain: 6f70ff418c01b5d76b84796941f3d63672c9e316
+  RKValueTransformers: 01dc043fd853f6e40459b2e732dff545298a0f91
   SocialAuth: 53f5e770e4d01084f809ff231533196826f767d6
   SOCKit: 2f3bc4d07910de12dcc202815e07db68a3802581
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2

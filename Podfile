@@ -1,8 +1,8 @@
 platform :ios, '6.0'
 # networking
 pod 'AFNetworking', '~> 1.3.1'
-pod 'RestKit', '~> 0.20.3'
-pod 'RestKit/Testing', '~> 0.20.0'
+pod 'RestKit', '~> 0.21.0'
+# pod 'RestKit/Testing', '~> 0.20.0'
 # security
 pod 'RFKeychain', '~> 0.1'
 # ui
