@@ -43,15 +43,19 @@
     entityHandler = [[DGEntityHandler alloc] initWithTextView:commentInputField andEntities:entities inController:self withType:@"Comment" reverseScroll:YES tableOffset:0 secondTableOffset:44];
 
     tableView.transform = CGAffineTransformMakeRotation(-M_PI);
-    [self setupKeyboardBehaviour];
+    // [self setupKeyboardBehaviour];
     [self setupInfiniteScroll];
 
     [self reloadComments];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:NO];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super viewWillDisappear:animated];
     tableView.transform = CGAffineTransformMakeRotation(-M_PI);
     [TSMessage dismissActiveNotification];
     entityHandler = nil;
@@ -64,8 +68,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self setupKeyboardBehaviour];
 }
 

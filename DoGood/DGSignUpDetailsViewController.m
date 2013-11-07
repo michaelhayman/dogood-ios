@@ -45,7 +45,9 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
 }
+
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];

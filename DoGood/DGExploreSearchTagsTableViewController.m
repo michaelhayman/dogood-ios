@@ -24,6 +24,15 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(emptyTable) name:DGSearchTextFieldDidBeginEditing object:nil];
 }
 
+- (void)dealloc {
+    DebugLog(@"dealloc..");
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
+}
+
 - (void)viewDidDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGSearchTextFieldDidBeginEditing object:nil];
 }

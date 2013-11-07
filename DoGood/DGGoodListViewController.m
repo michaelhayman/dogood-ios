@@ -40,19 +40,23 @@
 
     [self setupUserPoints];
 
-
     if (!self.loadController) {
         self.loadController = self.navigationController;
     }
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
+}
+
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    DebugLog(@"dealloc called");
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(welcomeScreen) name:DGUserDidFailSilentAuthenticationNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:userView selector:@selector(setContent) name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];
@@ -66,8 +70,17 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidFailSilentAuthenticationNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:userView name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSignOutNotification object:nil];
-    // need to work out another way of doing this
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidPostGood object:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self showWelcome];
+//    [tableView reloadData];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 }
 
 - (void)initializeTable {
@@ -103,16 +116,6 @@
 - (void)refresh:(UIRefreshControl *)refreshControl {
     [self reloadGood];
     [refreshControl endRefreshing];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self showWelcome];
-    [tableView reloadData];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
 }
 
 #pragma mark - Points
@@ -273,6 +276,7 @@
     }
 }
 
+// move to model
 - (NSNumber *)calculateHeightForGood:(DGGood *)good {
     CGFloat height = 110;
 

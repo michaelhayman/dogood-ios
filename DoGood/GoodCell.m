@@ -100,6 +100,10 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     locationImage.image = [UIImage imageNamed:@"LocationIconOn"];
 }
 
+- (void)dealloc {
+    DebugLog(@"umm");
+}
+
 - (void)showLocation {
     locationImageHeight.constant = 20;
     locationImage.hidden = NO;

@@ -38,7 +38,13 @@
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    DebugLog(@"dealloc called");
+    // [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
 }
 
 - (void)stylePage {
@@ -85,10 +91,10 @@
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     DGGoodListViewController *goodListController = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
-
     goodListController.category = category;
 
     [self.navigationController pushViewController:goodListController animated:YES];
 }
 
 @end
+

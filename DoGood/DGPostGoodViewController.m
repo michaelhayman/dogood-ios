@@ -31,7 +31,6 @@
     [super viewDidLoad];
     [self setupMenuTitle:@"Post Good"];
 
-
     UINib *nib = [UINib nibWithNibName:@"GoodOverviewCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"GoodOverviewCell"];
     UINib *shareNib = [UINib nibWithNibName:@"GoodShareCell" bundle:nil];
@@ -78,8 +77,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 
-    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
-    cell.entityHandler = nil;
+//    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
+//    cell.entityHandler = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

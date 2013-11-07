@@ -6,7 +6,6 @@
 @class DGLoadingView;
 
 @interface DGGoodListViewController : RootViewController <UITableViewDelegate, UITableViewDataSource> {
-    __weak IBOutlet UITableView *tableView;
     int page;
     bool showNoResultsMessage;
     NSMutableArray *goods;

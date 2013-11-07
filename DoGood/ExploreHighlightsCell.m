@@ -24,6 +24,10 @@
     return self;
 }
 
+- (void)dealloc {
+    DebugLog(@"dealloc called");
+}
+
 #pragma mark - UICollectionView methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return 2;

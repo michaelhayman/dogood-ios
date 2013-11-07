@@ -13,4 +13,8 @@
     tagName.text = string;
 }
 
+- (void)dealloc {
+    DebugLog(@"dealloc");
+}
+
 @end

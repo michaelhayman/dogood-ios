@@ -72,6 +72,11 @@
     }];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
+}
+
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == _emailField) {

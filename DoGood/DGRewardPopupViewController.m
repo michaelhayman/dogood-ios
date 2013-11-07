@@ -23,6 +23,11 @@
     self.teaser.contentMode = UIViewContentModeScaleAspectFit;
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
+}
+
 - (void)setContents {
     [self.teaser setImageWithURL:[NSURL URLWithString:self.reward.teaser]];
     self.heading.text = self.reward.title;

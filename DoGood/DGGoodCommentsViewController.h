@@ -1,7 +1,6 @@
 #import "DGComment.h"
 @class DGGood;
 @class DGComment;
-@class DGTextFieldSearchPeopleTableViewController;
 @class GoodCell;
 @class DGEntityHandler;
 @class DGLoadingView;

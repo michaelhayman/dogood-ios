@@ -17,6 +17,7 @@
     _entityHandler = [[DGEntityHandler alloc] initWithTextView:self.description andEntities:self.entities inController:self.parent withType:@"Good" reverseScroll:NO tableOffset:100 secondTableOffset:64];
 }
 
+
 - (void)prepareForReuse {
     _entityHandler = nil;
 }

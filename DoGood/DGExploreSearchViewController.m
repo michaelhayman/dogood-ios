@@ -34,6 +34,11 @@
     DebugLog(@"- will layout called each time");
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     DebugLog(@"2. did appear called each time");
     headerViewToTopConstraint.constant = 0;

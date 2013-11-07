@@ -27,6 +27,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidCheckIfAddressBookIsConnected object:nil];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
+}
+
 #pragma mark - Search Networks method overrides
 - (void)showAuthorized {
     [super showAuthorized];
@@ -111,7 +116,6 @@
     ABAddressBookRef allPeople = ABAddressBookCreateWithOptions(NULL, NULL);
     CFArrayRef allContacts = ABAddressBookCopyArrayOfAllPeople(allPeople);
     CFIndex numberOfContacts  = ABAddressBookGetPersonCount(allPeople);
-
 
     NSMutableArray *emails = [[NSMutableArray alloc] init];
 

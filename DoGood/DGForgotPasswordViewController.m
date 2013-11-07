@@ -31,6 +31,7 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
 }
 
 - (void)viewWillAppear:(BOOL)animated {

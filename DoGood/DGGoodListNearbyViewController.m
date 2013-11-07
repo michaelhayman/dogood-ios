@@ -30,7 +30,11 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:YES];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
 }
 
 - (void)kickOffLocation {

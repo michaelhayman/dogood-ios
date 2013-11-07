@@ -61,6 +61,7 @@
 
     // get good list
     goodList = [[DGGoodListViewController alloc] init];
+
     goodList.loadController = self.navigationController;
     tableView.dataSource = goodList;
     tableView.delegate = goodList;
@@ -94,7 +95,11 @@
 
     invites = [[DGUserInvitesViewController alloc] init];
     invites.parent = (UIViewController *)self;
+}
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
 }
 
 - (void)viewDidAppear:(BOOL)animated {

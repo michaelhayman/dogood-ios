@@ -13,8 +13,9 @@
     [super viewDidLoad];
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
 }
 
 #pragma mark - Camera helpers

@@ -55,6 +55,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGSearchTextFieldDidEndEditing object:nil];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
+}
+
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
 }
@@ -123,7 +128,6 @@
     [self showSectionAtIndex:1];
 }
 
-// - (void)textFieldDidBeginEditing:(UITextField *)textField {
 - (void)searchFieldDidBeginEditing {
     [self showCancelButton];
     [self showSearch];
