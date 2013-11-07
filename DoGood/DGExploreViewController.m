@@ -34,9 +34,9 @@
     // setup initial container view
     segmentIndex = 1;
     UIViewController *vc = [self viewControllerForSegmentIndex:segmentIndex];
-    self.currentViewController = vc;
+    _currentViewController = vc;
     [self addChildViewController:vc];
-    [self.contentView addSubview:vc.view];
+    [_contentView addSubview:vc.view];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
