@@ -1,6 +1,7 @@
 @class DGPhotoPickerViewController;
+#import "DGPhotoPickerViewController.h"
 
-@interface DGSignUpViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, UIActionSheetDelegate> {
+@interface DGSignUpViewController : UIViewController <UITextFieldDelegate, UIAlertViewDelegate, UIActionSheetDelegate, DGPhotoPickerViewControllerDelegate> {
     __weak IBOutlet UIImageView *avatar;
     __weak IBOutlet UIImageView *avatarOverlay;
     __weak IBOutlet UITextField *name;

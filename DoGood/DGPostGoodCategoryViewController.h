@@ -11,7 +11,6 @@
 
 @protocol DGPostGoodCategoryViewControllerDelegate <NSObject>
 
-- (void)childViewController:(DGPostGoodCategoryViewController* )viewController
-    didChooseCategory:(DGCategory *)category;
+- (void)childViewController:(DGPostGoodCategoryViewController* )viewController didChooseCategory:(DGCategory *)category;
 
 @end

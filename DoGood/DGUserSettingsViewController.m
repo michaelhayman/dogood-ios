@@ -47,6 +47,7 @@
     // photos
     photos = [[DGPhotoPickerViewController alloc] init];
     photos.parent = self;
+    photos.delegate = self;
 
     // setup avatar
     avatar.contentMode = UIViewContentModeScaleAspectFit;
@@ -71,19 +72,19 @@
     // watch keyboard
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadAvatar:) name:DGUserDidAddPhotoNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteAvatar) name:DGUserDidRemovePhotoNotification object:nil];
 
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
+}
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidAddPhotoNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidRemovePhotoNotification object:nil];
 }
 
 - (void)setupHeader {
@@ -100,8 +101,8 @@
     [photos openPhotoSheet:avatar.image];
 }
 
-- (void)uploadAvatar:(NSNotification *)notification  {
-    imageToUpload = [[notification userInfo] objectForKey:UIImagePickerControllerEditedImage];
+- (void)childViewController:(DGPhotoPickerViewController *)viewController didChoosePhoto:(NSDictionary *)dictionary {
+    imageToUpload = [dictionary objectForKey:UIImagePickerControllerEditedImage];
 
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.labelText = @"Changing avatar...";
@@ -136,7 +137,7 @@
     [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
 }
 
-- (void)deleteAvatar {
+- (void)removePhoto {
     [[RKObjectManager sharedManager] deleteObject:nil path:user_remove_avatar_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         avatar.image = nil;
         [DGUser currentUser].avatar = nil;

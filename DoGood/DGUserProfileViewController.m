@@ -146,7 +146,7 @@
                 [avatar bringSubviewToFront:avatarOverlay];
             }
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-            DebugLog(@"FAILING RETRIEVE");
+            DebugLog(@"Failed to retrieve avatar.");
         }];
         [loadingView loadingSucceeded];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {

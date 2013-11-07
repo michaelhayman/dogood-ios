@@ -156,8 +156,6 @@ extern NSString* const DGUserDidNotFindTagsForTextField;
 
 // Notifications
 extern NSString* const DGUserDidPostGood;
-extern NSString* const DGUserDidUpdateGoodCategory;
-extern NSString* const DGUserDidUpdateGoodLocation;
 
 // Text field cells
 extern NSString* const UITextFieldCellIdentifier;

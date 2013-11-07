@@ -2,15 +2,6 @@
 #import <UIImage+Resize.h>
 #import <MBProgressHUD.h>
 
-/* 
- send NSNotifications:
- - did delete image
- - did select image
- 
- then decide what to do
- remove NSNotificationObservers in willDisappear.  Can also remove them specifically.
- */
-
 @interface DGPhotoPickerViewController ()
 
 @end
@@ -52,7 +43,9 @@
     if (buttonIndex != actionSheet.cancelButtonIndex) {
         if (actionSheet == photoSheet) {
             if (buttonIndex == photoSheet.destructiveButtonIndex) {
-                [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidRemovePhotoNotification object:nil];
+                if ([self.delegate respondsToSelector:@selector(removePhoto)]) {
+                    [self.delegate removePhoto];
+                }
             } else if (buttonIndex == photoSheet.firstOtherButtonIndex) {
                 [self showCamera];
             } else if (buttonIndex == photoSheet.firstOtherButtonIndex + 1) {
@@ -90,7 +83,10 @@
 
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithDictionary:info];
     [dictionary setObject:resizedImage forKey:UIImagePickerControllerEditedImage];
-    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidAddPhotoNotification object:nil userInfo:dictionary];
+
+    if ([self.delegate respondsToSelector:@selector(childViewController:didChoosePhoto:)]) {
+        [self.delegate childViewController:self didChoosePhoto:dictionary];
+    }
 }
 
 @end

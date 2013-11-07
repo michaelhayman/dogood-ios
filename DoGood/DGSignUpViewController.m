@@ -22,25 +22,23 @@
 
     photos = [[DGPhotoPickerViewController alloc] init];
     photos.parent = self;
+    photos.delegate = self;
     // [[UITextField appearance] setBorderStyle:UITextBorderStyleNone];
     [name becomeFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadAvatar:) name:DGUserDidAddPhotoNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteAvatar) name:DGUserDidRemovePhotoNotification object:nil];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    DebugLog(@"sup?");
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidAddPhotoNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidRemovePhotoNotification object:nil];
-}
-
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Verify account creation
@@ -93,15 +91,15 @@
     [photos openPhotoSheet:avatar.image];
 }
 
-- (void)uploadAvatar:(NSNotification *)notification  {
-    imageToUpload = [[notification userInfo] objectForKey:UIImagePickerControllerEditedImage];
+- (void)childViewController:(DGPhotoPickerViewController *)viewController didChoosePhoto:(NSDictionary *)dictionary {
+    imageToUpload = [dictionary objectForKey:UIImagePickerControllerEditedImage];
     user.image = imageToUpload;
     avatar.image = user.image;
     avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
     [avatar bringSubviewToFront:avatarOverlay];
 }
 
-- (void)deleteAvatar {
+- (void)removePhoto {
     avatar.image = nil;
     user.image = nil;
     avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];

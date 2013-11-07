@@ -5,8 +5,9 @@
 @class DGEntityHandler;
 #import "DGPostGoodCategoryViewController.h"
 #import "DGPostGoodLocationViewController.h"
+#import "DGPhotoPickerViewController.h"
 
-@interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, DGPostGoodCategoryViewControllerDelegate, DGPostGoodLocationViewControllerDelegate> {
+@interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, DGPostGoodCategoryViewControllerDelegate, DGPostGoodLocationViewControllerDelegate, DGPhotoPickerViewControllerDelegate> {
     UIActionSheet *categorySheet;
     UIActionSheet *locationSheet;
     UIImage *imageToUpload;

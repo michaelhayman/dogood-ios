@@ -3,8 +3,9 @@
 
 @class DGTwitterManager;
 @class DGFacebookManager;
+#import "DGPhotoPickerViewController.h"
 
-@interface DGUserSettingsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIAlertViewDelegate> {
+@interface DGUserSettingsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIAlertViewDelegate, DGPhotoPickerViewControllerDelegate> {
     UITapGestureRecognizer *dismissTap;
     
     __weak IBOutlet UIImageView *avatar;

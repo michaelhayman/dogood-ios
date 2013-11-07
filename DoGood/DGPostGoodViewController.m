@@ -51,8 +51,8 @@
     // photos
     photos = [[DGPhotoPickerViewController alloc] init];
     photos.parent = self;
+    photos.delegate = self;
 }
-
 
 - (void)keyboardWillShow:(NSNotification *)notification {
     self.tableView.bounces = NO;
@@ -66,8 +66,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadAvatar:) name:DGUserDidAddPhotoNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteAvatar) name:DGUserDidRemovePhotoNotification object:nil];
 
     // keyboard
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -76,10 +74,6 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-
-    // can't do these this way anymore
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidAddPhotoNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidRemovePhotoNotification object:nil];
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
@@ -245,21 +239,6 @@
     [locationSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
 }
 
-- (void)uploadAvatar:(NSNotification *)notification  {
-    imageToUpload = [[notification userInfo] objectForKey:UIImagePickerControllerEditedImage];
-    self.good.image = imageToUpload;
-    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
-    cell.image.image = imageToUpload;
-}
-
-- (void)deleteAvatar {
-    imageToUpload = nil;
-    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
-    cell.image.image = nil;
-    self.good.image = nil;
-    [self.tableView reloadData];
-}
-
 - (void)openPhotoSheet {
     [photos openPhotoSheet:self.good.image];
 }
@@ -296,6 +275,21 @@
 
 - (void)childViewController:(DGPostGoodLocationViewController *)viewController didChooseLocation:(FSLocation *)location {
     [self.good setValuesForLocation:location];
+    [self.tableView reloadData];
+}
+
+- (void)childViewController:(DGPhotoPickerViewController* )viewController didChoosePhoto:(NSDictionary *)dictionary {
+    imageToUpload = [dictionary objectForKey:UIImagePickerControllerEditedImage];
+    self.good.image = imageToUpload;
+    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
+    cell.image.image = imageToUpload;
+}
+
+- (void)removePhoto {
+    imageToUpload = nil;
+    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
+    cell.image.image = nil;
+    self.good.image = nil;
     [self.tableView reloadData];
 }
 
