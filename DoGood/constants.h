@@ -13,7 +13,7 @@
 #if DEVELOPMENT
     #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3002/"
 #else
-    #define JSON_API_HOST_ADDRESS @"http://dogood-app.herokuapp.com/"
+    #define JSON_API_HOST_ADDRESS @"http://dogood-api.springbox.ca/"
 #endif
 
 #pragma mark - Convenience -----
