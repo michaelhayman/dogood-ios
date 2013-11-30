@@ -1,3 +1,0 @@
-@interface DGPostGoodImageViewController : UIViewController
-
-@end
