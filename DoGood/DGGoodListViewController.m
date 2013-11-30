@@ -28,7 +28,7 @@
     } else if (_path) {
         [self setupMenuTitle:_titleForPath];
     } else {
-        [self setupMenuTitle:@"Do Good"];
+        [self setupMenuTitle:@"Good Done"];
         [self addMenuButton:@"MenuFromHomeIconTap" withTapButton:@"MenuFromHomeIcon"];
     }
 
@@ -114,6 +114,7 @@
 
 - (void)refresh:(UIRefreshControl *)refreshControl {
     [self reloadGood];
+    [userView setContent];
     [refreshControl endRefreshing];
 }
 

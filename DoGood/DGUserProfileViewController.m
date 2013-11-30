@@ -36,7 +36,7 @@
     }
 
     // conditional settings on user
-    [self setupMenuTitle:@"Profile"];
+    [self setupMenuTitle:@"You"];
     UIBarButtonItem *connectButton;
     if (ownProfile) {
         connectButton = [[UIBarButtonItem alloc] initWithTitle:@"Find Friends" style: UIBarButtonItemStylePlain target:self action:@selector(findFriends:)];

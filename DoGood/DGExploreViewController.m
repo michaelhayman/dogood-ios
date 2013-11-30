@@ -14,7 +14,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addMenuButton:@"MenuFromExploreIconTap" withTapButton:@"MenuFromExploreIcon"];
-    [self setupMenuTitle:@"Explore"];
+    [self setupMenuTitle:@"To Do"];
 
     if (_exploreSearch == nil) {
         _exploreSearch = [self.storyboard instantiateViewControllerWithIdentifier:@"exploreSearch"];

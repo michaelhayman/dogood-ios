@@ -41,12 +41,12 @@
 
     __typeof (&*self) __weak weakSelf = self;
 
-    REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"Do Good" subtitle:nil image:[UIImage imageNamed:@"MenuIconHome"] highlightedImage:[UIImage imageNamed:@"MenuIconHomeTap"] action:^(REMenuItem *item) {
+    REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"Done" subtitle:nil image:[UIImage imageNamed:@"MenuIconHome"] highlightedImage:[UIImage imageNamed:@"MenuIconHomeTap"] action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
         [self showGoodList];
     }];
 
-    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"Explore" subtitle:nil image:[UIImage imageNamed:@"MenuIconExplore"] highlightedImage:[UIImage imageNamed:@"MenuIconExploreTap"] action:^(REMenuItem *item) {
+    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"To Do" subtitle:nil image:[UIImage imageNamed:@"MenuIconExplore"] highlightedImage:[UIImage imageNamed:@"MenuIconExploreTap"] action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Explore" bundle:nil];
         if (exploreController == nil) {
@@ -60,7 +60,7 @@
         [self showRewards];
     }];
 
-    REMenuItem *profileItem = [[REMenuItem alloc] initWithTitle:@"Profile" image:[UIImage imageNamed:@"MenuIconProfile"] highlightedImage:[UIImage imageNamed:@"MenuIconProfileTap"] action:^(REMenuItem *item) {
+    REMenuItem *profileItem = [[REMenuItem alloc] initWithTitle:@"You" image:[UIImage imageNamed:@"MenuIconProfile"] highlightedImage:[UIImage imageNamed:@"MenuIconProfileTap"] action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
         if (userProfileController == nil) {
