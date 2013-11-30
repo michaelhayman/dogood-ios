@@ -130,6 +130,7 @@
     if (accessoryView == nil) {
         accessoryView = [[UIInputView alloc] initWithFrame:CGRectMake(0, 0, 320, kToolbarHeight) inputViewStyle:UIInputViewStyleKeyboard];
     }
+    [entityTextView setInputAccessoryView:accessoryView];
 
     accessoryButtonMention = [UIButton buttonWithType:UIButtonTypeCustom];
     [accessoryButtonMention setFrame:CGRectMake(10.0f, 10.0f, 26.0f, 23.0f)];
