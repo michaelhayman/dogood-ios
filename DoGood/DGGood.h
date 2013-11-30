@@ -1,6 +1,7 @@
 @class DGCategory;
 @class DGUser;
 @class FSLocation;
+@class DGNominee;
 
 @interface DGGood : NSObject
 
@@ -14,6 +15,8 @@
 @property (retain) NSNumber *category_id;
 // user
 @property (retain) DGUser *user;
+// nominee
+@property (retain) DGNominee *nominee;
 // likes
 @property (retain) NSNumber *current_user_liked;
 @property (retain) NSNumber *likes_count;

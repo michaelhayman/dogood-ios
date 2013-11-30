@@ -4,10 +4,12 @@
 @class DGTwitterManager;
 @class DGEntityHandler;
 #import "DGPostGoodCategoryViewController.h"
+#import "DGPostGoodNomineeViewController.h"
 #import "DGPostGoodLocationViewController.h"
 #import "DGPhotoPickerViewController.h"
 
-@interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, DGPostGoodCategoryViewControllerDelegate, DGPostGoodLocationViewControllerDelegate, DGPhotoPickerViewControllerDelegate> {
+@interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, DGPostGoodCategoryViewControllerDelegate, DGPostGoodLocationViewControllerDelegate, DGPhotoPickerViewControllerDelegate, DGPostGoodNomineeViewControllerDelegate> {
+    UIActionSheet *nomineeSheet;
     UIActionSheet *categorySheet;
     UIActionSheet *locationSheet;
     UIImage *imageToUpload;
@@ -26,9 +28,9 @@
 
 typedef enum {
     overview,
+    nominee,
     category,
     location,
-    who,
     share,
     numAgentListRows
 } PostGoodRowType;

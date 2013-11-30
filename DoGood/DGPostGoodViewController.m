@@ -2,10 +2,12 @@
 #import "GoodOverviewCell.h"
 #import "GoodShareCell.h"
 #import "DGGood.h"
+#import "DGNominee.h"
 #import "DGCategory.h"
 #import "FSLocation.h"
 #import "DGPostGoodCategoryViewController.h"
 #import "DGPostGoodLocationViewController.h"
+#import "DGPostGoodNomineeViewController.h"
 #import "DGTwitterManager.h"
 #import "DGFacebookManager.h"
 #import "DGEntityHandler.h"
@@ -102,12 +104,12 @@
     if (section == share) {
         // return 3;
         return 2;
-    } else if (section == who) {
-        return 0;
     } else {
         return 1;
     }
 }
+
+#define kNomineeCell @"nominee"
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == overview) {
@@ -119,6 +121,16 @@
         [cell.image setUserInteractionEnabled:YES];
         [cell.image addGestureRecognizer:imageGesture];
         cell.tag = good_overview_cell_tag;
+        return cell;
+    } else if (indexPath.section == nominee) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kNomineeCell forIndexPath:indexPath];
+        if (self.good.nominee) {
+            cell.imageView.image = [UIImage imageNamed:@"NomineeIconOn.png"];
+            cell.textLabel.text = self.good.nominee.fullName;
+        } else {
+            cell.textLabel.text = @"Add a nominee";
+            cell.imageView.image = [UIImage imageNamed:@"NomineeIconOff.png"];
+        }
         return cell;
     } else if (indexPath.section == category) {
         static NSString *CellIdentifier = @"category";
@@ -144,13 +156,6 @@
             cell.textLabel.text = @"Add a location";
             cell.imageView.image = [UIImage imageNamed:@"LocationIconOff.png"];
         }
-        // Configure the cell...
-        
-        return cell;
-    } else if (indexPath.section == who) {
-        static NSString *CellIdentifier = @"who";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-        
         // Configure the cell...
         
         return cell;
@@ -184,7 +189,13 @@
     GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
     [cell.description resignFirstResponder];
 
-    if (indexPath.section == category) {
+    if (indexPath.section == nominee) {
+        if (self.good.nominee != nil) {
+            [nomineeSheet showInView:self.view];
+        } else {
+            [self showNomineeChooser];
+        }
+    } else if (indexPath.section == category) {
         if (self.good.category != nil) {
             [categorySheet showInView:self.view];
         } else {
@@ -196,26 +207,26 @@
         } else {
             [self showLocationChooser];
         }
-    } else if (indexPath.section == who) {
-        DebugLog(@"who");
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - UIActionSheets
-- (void) showCategoryChooser {
-    UIStoryboard *storyboard;
-    storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-    DGPostGoodCategoryViewController *categoryController = [storyboard instantiateViewControllerWithIdentifier:@"PostGoodCategory"];
+- (void)showNomineeChooser {
+    DGPostGoodNomineeViewController *nomineeController = [self.storyboard instantiateViewControllerWithIdentifier:@"PostGoodNominee"];
+    nomineeController.delegate = self;
+    [self.navigationController pushViewController:nomineeController animated:YES];
+}
+
+- (void)showCategoryChooser {
+    DGPostGoodCategoryViewController *categoryController = [self.storyboard instantiateViewControllerWithIdentifier:@"PostGoodCategory"];
     categoryController.delegate = self;
 
     [self.navigationController pushViewController:categoryController animated:YES];
 }
 
 - (void) showLocationChooser {
-    UIStoryboard *storyboard;
-    storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-    DGPostGoodLocationViewController *locationController = [storyboard instantiateViewControllerWithIdentifier:@"PostGoodLocation"];
+    DGPostGoodLocationViewController *locationController = [self.storyboard instantiateViewControllerWithIdentifier:@"PostGoodLocation"];
     locationController.delegate = self;
 
     [self.navigationController pushViewController:locationController animated:YES];
@@ -265,6 +276,12 @@
 }
 
 #pragma mark - Change data responses
+- (void)childViewController:(DGPostGoodNomineeViewController *)viewController didChooseNominee:(DGNominee *)nominee {
+    self.good.nominee = nominee;
+    // [self.good setValuesForNominee:self.good.nominee];
+    [self.tableView reloadData];
+}
+
 - (void)childViewController:(DGPostGoodCategoryViewController *)viewController didChooseCategory:(DGCategory *)category {
     self.good.category = category;
     [self.good setValuesForCategory:self.good.category];

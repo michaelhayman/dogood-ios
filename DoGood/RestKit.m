@@ -1,6 +1,7 @@
 #import "RestKit.h"
 // models
 #import "DGGood.h"
+#import "DGNominee.h"
 #import "DGCategory.h"
 #import "DGComment.h"
 #import "DGError.h"
@@ -78,6 +79,33 @@
 
     RKRequestDescriptor *userRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:userRequestMapping objectClass:[DGUser class] rootKeyPath:@"user" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:userRequestDescriptor];
+
+    // --------------------------------
+    // nominee
+    // --------------------------------
+    RKObjectMapping *nomineeMapping = [RKObjectMapping mappingForClass:[DGNominee class]];
+
+    [nomineeMapping addAttributeMappingsFromDictionary:@{
+        @"id" : @"nomineeID",
+    }];
+    NSArray *nomineeArray = @[
+      @"name",
+      @"twitter_id",
+      @"facebook_id",
+      @"email",
+      @"phone",
+      @"user_id"
+    ];
+    [nomineeMapping addAttributeMappingsFromArray:nomineeArray];
+
+    RKResponseDescriptor *nomineeResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:nomineeMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"nominee" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [objectManager addResponseDescriptor:nomineeResponseDescriptor];
+
+    RKObjectMapping* nomineeRequestMapping = [RKObjectMapping requestMapping];
+    [nomineeRequestMapping addAttributeMappingsFromArray:nomineeArray];
+
+    RKRequestDescriptor *nomineeRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:nomineeRequestMapping objectClass:[DGNominee class] rootKeyPath:@"nominee" method:RKRequestMethodAny];
+    [objectManager addRequestDescriptor:nomineeRequestDescriptor];
 
     // --------------------------------
     // vote

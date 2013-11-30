@@ -28,7 +28,7 @@
 		633DBF6717ADACEE0038BC2D /* DGPostGoodCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6617ADACEE0038BC2D /* DGPostGoodCategoryViewController.m */; };
 		633DBF6C17ADBF9F0038BC2D /* DGPostGoodLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6B17ADBF9F0038BC2D /* DGPostGoodLocationViewController.m */; };
 		633DBF6F17ADC0AF0038BC2D /* FSLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6E17ADC0AF0038BC2D /* FSLocation.m */; };
-		633DBF7217ADC4E60038BC2D /* DGPostGoodImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF7117ADC4E50038BC2D /* DGPostGoodImageViewController.m */; };
+		633DBF7217ADC4E60038BC2D /* DGPostGoodNomineeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF7117ADC4E50038BC2D /* DGPostGoodNomineeSearchViewController.m */; };
 		633DBF7417ADD5360038BC2D /* GoodShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633DBF7317ADD5360038BC2D /* GoodShareCell.xib */; };
 		633DBF7717ADD57E0038BC2D /* GoodShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF7617ADD57E0038BC2D /* GoodShareCell.m */; };
 		633DBF7917AE02580038BC2D /* UserOverview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633DBF7817AE02570038BC2D /* UserOverview.xib */; };
@@ -36,6 +36,7 @@
 		633DBF7E17AE25CF0038BC2D /* DGUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF7D17AE25CF0038BC2D /* DGUserProfileViewController.m */; };
 		633DBF8417AE92E00038BC2D /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF8117AE92E00038BC2D /* NavigationViewController.m */; };
 		633DBF8517AE92E00038BC2D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF8317AE92E00038BC2D /* RootViewController.m */; };
+		63451D521840E72300B713F0 /* DGNominee.m in Sources */ = {isa = PBXBuildFile; fileRef = 63451D511840E72300B713F0 /* DGNominee.m */; };
 		6355EC0717B0C83100EE91C0 /* DGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC0617B0C83100EE91C0 /* DGComment.m */; };
 		6355EC0C17B0D4C300EE91C0 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC0A17B0D4C300EE91C0 /* CommentCell.m */; };
 		6355EC0D17B0D4C300EE91C0 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC0B17B0D4C300EE91C0 /* CommentCell.xib */; };
@@ -71,6 +72,8 @@
 		636AEAA317AD77F0002A3494 /* DGPostGoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636AEAA217AD77F0002A3494 /* DGPostGoodViewController.m */; };
 		636AEAA717AD79AA002A3494 /* GoodOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636AEAA617AD79AA002A3494 /* GoodOverviewCell.m */; };
 		636AEAA917AD79B1002A3494 /* GoodOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636AEAA817AD79B1002A3494 /* GoodOverviewCell.xib */; };
+		636FF5E918493F4A003774AE /* DGPostGoodNomineeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636FF5E818493F4A003774AE /* DGPostGoodNomineeViewController.m */; };
+		636FF5EF184AA19E003774AE /* DGPostGoodNomineeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636FF5EE184AA19E003774AE /* DGPostGoodNomineeAddViewController.m */; };
 		6378AE1E1818BA50001DB9BF /* DGRKObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6378AE1D1818BA50001DB9BF /* DGRKObjectRequestOperation.m */; };
 		637ABAD317C7C6F4004AA4C9 /* SearchUserNetworks.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637ABAD217C7C6F4004AA4C9 /* SearchUserNetworks.xib */; };
 		637CC94217C5527E007619F5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637CC94117C5527E007619F5 /* Accounts.framework */; };
@@ -195,8 +198,8 @@
 		633DBF6B17ADBF9F0038BC2D /* DGPostGoodLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPostGoodLocationViewController.m; sourceTree = "<group>"; };
 		633DBF6D17ADC0AF0038BC2D /* FSLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSLocation.h; sourceTree = "<group>"; };
 		633DBF6E17ADC0AF0038BC2D /* FSLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSLocation.m; sourceTree = "<group>"; };
-		633DBF7017ADC4E50038BC2D /* DGPostGoodImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPostGoodImageViewController.h; sourceTree = "<group>"; };
-		633DBF7117ADC4E50038BC2D /* DGPostGoodImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPostGoodImageViewController.m; sourceTree = "<group>"; };
+		633DBF7017ADC4E50038BC2D /* DGPostGoodNomineeSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPostGoodNomineeSearchViewController.h; sourceTree = "<group>"; };
+		633DBF7117ADC4E50038BC2D /* DGPostGoodNomineeSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPostGoodNomineeSearchViewController.m; sourceTree = "<group>"; };
 		633DBF7317ADD5360038BC2D /* GoodShareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodShareCell.xib; sourceTree = "<group>"; };
 		633DBF7517ADD57D0038BC2D /* GoodShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodShareCell.h; sourceTree = "<group>"; };
 		633DBF7617ADD57E0038BC2D /* GoodShareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodShareCell.m; sourceTree = "<group>"; };
@@ -208,6 +211,8 @@
 		633DBF8117AE92E00038BC2D /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		633DBF8217AE92E00038BC2D /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		633DBF8317AE92E00038BC2D /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		63451D501840E72300B713F0 /* DGNominee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGNominee.h; sourceTree = "<group>"; };
+		63451D511840E72300B713F0 /* DGNominee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNominee.m; sourceTree = "<group>"; };
 		6355EC0617B0C83100EE91C0 /* DGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGComment.m; sourceTree = "<group>"; };
 		6355EC0817B0C84100EE91C0 /* DGComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGComment.h; sourceTree = "<group>"; };
 		6355EC0917B0D4C200EE91C0 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
@@ -268,6 +273,10 @@
 		636AEAA517AD79AA002A3494 /* GoodOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodOverviewCell.h; sourceTree = "<group>"; };
 		636AEAA617AD79AA002A3494 /* GoodOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodOverviewCell.m; sourceTree = "<group>"; };
 		636AEAA817AD79B1002A3494 /* GoodOverviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodOverviewCell.xib; sourceTree = "<group>"; };
+		636FF5E718493F4A003774AE /* DGPostGoodNomineeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPostGoodNomineeViewController.h; sourceTree = "<group>"; };
+		636FF5E818493F4A003774AE /* DGPostGoodNomineeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPostGoodNomineeViewController.m; sourceTree = "<group>"; };
+		636FF5ED184AA19E003774AE /* DGPostGoodNomineeAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPostGoodNomineeAddViewController.h; sourceTree = "<group>"; };
+		636FF5EE184AA19E003774AE /* DGPostGoodNomineeAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPostGoodNomineeAddViewController.m; sourceTree = "<group>"; };
 		6378AE1C1818BA50001DB9BF /* DGRKObjectRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGRKObjectRequestOperation.h; sourceTree = "<group>"; };
 		6378AE1D1818BA50001DB9BF /* DGRKObjectRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRKObjectRequestOperation.m; sourceTree = "<group>"; };
 		637ABAD217C7C6F4004AA4C9 /* SearchUserNetworks.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchUserNetworks.xib; sourceTree = "<group>"; };
@@ -480,6 +489,8 @@
 				6355EC0617B0C83100EE91C0 /* DGComment.m */,
 				633DBF6217ADA61C0038BC2D /* DGGood.h */,
 				633DBF6317ADA61C0038BC2D /* DGGood.m */,
+				63451D501840E72300B713F0 /* DGNominee.h */,
+				63451D511840E72300B713F0 /* DGNominee.m */,
 				633DBF6D17ADC0AF0038BC2D /* FSLocation.h */,
 				633DBF6E17ADC0AF0038BC2D /* FSLocation.m */,
 				63DA645717DC16A2003DFF03 /* DGTag.h */,
@@ -575,6 +586,12 @@
 		636AEA6917AD4776002A3494 /* Do */ = {
 			isa = PBXGroup;
 			children = (
+				636FF5E718493F4A003774AE /* DGPostGoodNomineeViewController.h */,
+				636FF5E818493F4A003774AE /* DGPostGoodNomineeViewController.m */,
+				633DBF7017ADC4E50038BC2D /* DGPostGoodNomineeSearchViewController.h */,
+				633DBF7117ADC4E50038BC2D /* DGPostGoodNomineeSearchViewController.m */,
+				636FF5ED184AA19E003774AE /* DGPostGoodNomineeAddViewController.h */,
+				636FF5EE184AA19E003774AE /* DGPostGoodNomineeAddViewController.m */,
 				6386482017ACEFBA00167F15 /* DGGoodListViewController.h */,
 				6386481E17ACEFAE00167F15 /* DGGoodListViewController.m */,
 				63902CEC1821C6D0003B84A1 /* DGGoodListNearbyViewController.h */,
@@ -592,8 +609,6 @@
 				633DBF6617ADACEE0038BC2D /* DGPostGoodCategoryViewController.m */,
 				633DBF6A17ADBF9F0038BC2D /* DGPostGoodLocationViewController.h */,
 				633DBF6B17ADBF9F0038BC2D /* DGPostGoodLocationViewController.m */,
-				633DBF7017ADC4E50038BC2D /* DGPostGoodImageViewController.h */,
-				633DBF7117ADC4E50038BC2D /* DGPostGoodImageViewController.m */,
 				633DBF7317ADD5360038BC2D /* GoodShareCell.xib */,
 				633DBF7517ADD57D0038BC2D /* GoodShareCell.h */,
 				633DBF7617ADD57E0038BC2D /* GoodShareCell.m */,
@@ -997,7 +1012,7 @@
 				63FDAC42181C601000668B15 /* ExplorePopularTagsCell.m in Sources */,
 				633DBF6C17ADBF9F0038BC2D /* DGPostGoodLocationViewController.m in Sources */,
 				633DBF6F17ADC0AF0038BC2D /* FSLocation.m in Sources */,
-				633DBF7217ADC4E60038BC2D /* DGPostGoodImageViewController.m in Sources */,
+				633DBF7217ADC4E60038BC2D /* DGPostGoodNomineeSearchViewController.m in Sources */,
 				633DBF7717ADD57E0038BC2D /* GoodShareCell.m in Sources */,
 				633DBF7E17AE25CF0038BC2D /* DGUserProfileViewController.m in Sources */,
 				6311488D180F3CA5008278E5 /* DGFacebookManager.m in Sources */,
@@ -1006,7 +1021,9 @@
 				633DBF8517AE92E00038BC2D /* RootViewController.m in Sources */,
 				6355EC0717B0C83100EE91C0 /* DGComment.m in Sources */,
 				63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */,
+				636FF5E918493F4A003774AE /* DGPostGoodNomineeViewController.m in Sources */,
 				6355EC0C17B0D4C300EE91C0 /* CommentCell.m in Sources */,
+				636FF5EF184AA19E003774AE /* DGPostGoodNomineeAddViewController.m in Sources */,
 				6355EC1217B0EDA300EE91C0 /* DGRewardsListViewController.m in Sources */,
 				63D4BD2818024E0700ACF1B9 /* DGRewardPopupViewController.m in Sources */,
 				6355EC1717B0EF2700EE91C0 /* DGRewardCell.m in Sources */,
@@ -1042,6 +1059,7 @@
 				63FBF60A180CD5F3005686A6 /* RestKit.m in Sources */,
 				6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */,
 				6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */,
+				63451D521840E72300B713F0 /* DGNominee.m in Sources */,
 				63FDAC52181C651400668B15 /* HighlightCollectionCell.m in Sources */,
 				6308162217C41EA0004DE5D7 /* DGTwitterManager.m in Sources */,
 				63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */,
