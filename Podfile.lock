@@ -34,12 +34,12 @@ PODS:
   - RestKit/Support (0.21.0):
     - TransitionKit (= 1.1.1)
   - RFKeychain (0.1)
-  - RKValueTransformers (1.0.0)
+  - RKValueTransformers (1.0.1)
   - SocialAuth (1.0.4):
     - OAuthCore
   - SOCKit (1.1)
   - SVPullToRefresh (0.4.1)
-  - TestFlightSDK (2.1.1-beta)
+  - TPKeyboardAvoiding (1.2.1)
   - TransitionKit (1.1.1)
   - TSMessages (0.9.4):
     - HexColors
@@ -57,7 +57,7 @@ DEPENDENCIES:
   - RFKeychain (~> 0.1)
   - SocialAuth (from `git@github.com:michaelhayman/SocialAuth.git`)
   - SVPullToRefresh (~> 0.4.1)
-  - TestFlightSDK
+  - TPKeyboardAvoiding
   - TSMessages (~> 0.9.4)
   - TTTAttributedLabel (~> 1.7.1)
   - UIImage-Categories (~> 0.0.1)
@@ -81,14 +81,14 @@ SPEC CHECKSUMS:
   REMenu: 65aee777063bc70210d8257d4a935a4fb98cad52
   RestKit: c11a30e7bc73513d9d2c2695672aba7697d24181
   RFKeychain: 6f70ff418c01b5d76b84796941f3d63672c9e316
-  RKValueTransformers: 01dc043fd853f6e40459b2e732dff545298a0f91
+  RKValueTransformers: 1562d458b9c9d59ce777bfc5982f2e1aef2e9182
   SocialAuth: 53f5e770e4d01084f809ff231533196826f767d6
   SOCKit: 2f3bc4d07910de12dcc202815e07db68a3802581
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
-  TestFlightSDK: dea28c16f0bf65c49c4ed8939b2ae0b0ed9bf8b0
+  TPKeyboardAvoiding: 0536c563e6c8b8e95a7c4bf87fca9c0991f5e826
   TransitionKit: d0e3344aac92991395d4c2e72d9c5a8ceeb12910
   TSMessages: 5ab92604b02e49a755d2cc2baf114d2248a90977
   TTTAttributedLabel: e504133915a9b11de63cb470ffa2790383a3eb23
   UIImage-Categories: d9f10e0afb9b281b35a3c2b0c7d16d1ca251d824
 
-COCOAPODS: 0.27.1
+COCOAPODS: 0.28.0

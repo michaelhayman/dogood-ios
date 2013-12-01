@@ -410,7 +410,7 @@
                         <viewControllerLayoutGuide type="top" id="GmU-y7-o3K"/>
                         <viewControllerLayoutGuide type="bottom" id="act-fo-14d"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Omk-3e-yZ3" customClass="UIScrollView">
+                    <view key="view" contentMode="scaleToFill" id="Omk-3e-yZ3" customClass="TPKeyboardAvoidingScrollView">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
@@ -543,6 +543,9 @@
                             <constraint firstItem="Ktb-F6-Y1I" firstAttribute="trailing" secondItem="eua-Om-KEB" secondAttribute="trailing" id="tME-1E-Rja"/>
                             <constraint firstItem="Ktb-F6-Y1I" firstAttribute="leading" secondItem="eua-Om-KEB" secondAttribute="leading" constant="1" id="uh2-ed-3qh"/>
                         </constraints>
+                        <connections>
+                            <outlet property="delegate" destination="686-RO-lOI" id="w9y-Sr-K16"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="2fp-bP-ki7" id="Edw-r5-iAY"/>
@@ -551,6 +554,7 @@
                         <outlet property="nameField" destination="Ktb-F6-Y1I" id="leI-ih-B6b"/>
                         <outlet property="nominateButton" destination="Dqc-cb-pW7" id="JYV-rx-akF"/>
                         <outlet property="phoneField" destination="eua-Om-KEB" id="9Ry-5b-5Kz"/>
+                        <outlet property="scrollView" destination="Omk-3e-yZ3" id="Fo2-uO-uOK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ajv-zd-24G" userLabel="First Responder" sceneMemberID="firstResponder"/>
