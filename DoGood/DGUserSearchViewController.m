@@ -1,5 +1,6 @@
 #import "DGUserSearchViewController.h"
 #import "UserCell.h"
+#import "DGNominee.h"
 
 @implementation DGUserSearchViewController
 
@@ -10,6 +11,10 @@
 
     UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"UserCell"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
 
 }
 
@@ -23,6 +28,7 @@
     DGUser *user = users[indexPath.row];
     cell.user = user;
     [cell setValues];
+    cell.disableSelection = YES;
     cell.navigationController = self.navigationController;
     return cell;
 }
@@ -37,6 +43,14 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DGUser *user = users[indexPath.row];
+    DGNominee *nominee = [DGNominee new];
+    [nominee configureForUser:user];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObject:nominee forKey:@"nominee"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DGNomineeWasChosen object:nil userInfo:dictionary];
 }
 
 #pragma mark - Retrieval methods

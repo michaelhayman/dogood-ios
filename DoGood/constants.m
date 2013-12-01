@@ -100,3 +100,5 @@ NSString* const DGUserDidStartSearchingPeople = @"DGUserDidStartSearchingPeople"
 NSString* const DGSearchTextFieldDidBeginEditing = @"DGSearchTextFieldDidBeginEditing";
 NSString* const DGSearchTextFieldDidEndEditing = @"DGSearchTextFieldDidEndEditing";
 NSString* const DGUserDidStartBrowsingSearchTable = @"DGUserDidStartBrowsingSearchTable";
+
+NSString* const DGNomineeWasChosen = @"DGNomineeWasChosen";

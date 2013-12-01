@@ -1,4 +1,5 @@
 #import "DGPostGoodNomineeAddViewController.h"
+#import "DGNominee.h"
 
 @implementation DGPostGoodNomineeAddViewController
 
@@ -8,6 +9,11 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)fillInNominee:(DGNominee *)theNominee {
+    nominee = theNominee;
+    nameField.text = nominee.fullName;
 }
 
 - (IBAction)nominate:(id)sender {

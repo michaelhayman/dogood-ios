@@ -12,6 +12,8 @@
 
 @property (nonatomic, weak) id <DGPostGoodNomineeAddViewControllerDelegate> delegate;
 
+- (void)fillInNominee:(DGNominee *)theNominee;
+
 @end
 
 @protocol DGPostGoodNomineeAddViewControllerDelegate <NSObject>

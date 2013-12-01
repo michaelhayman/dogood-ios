@@ -38,8 +38,6 @@
     segmentIndex = 1;
     dogood.selected = YES;
 
-    [self setupNavigationBar];
-
     UIViewController *vc = [self viewControllerForSegmentIndex:segmentIndex];
     self.currentViewController = vc;
     [self addChildViewController:vc];
@@ -56,21 +54,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [tabControl setSelectedSegmentIndex:1];
-}
-
-- (void)setupNavigationBar {
-    tabControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Add", @"Search", nil]];
-    [tabControl setImage:[UIImage imageNamed:@"SearchIcon"] forSegmentAtIndex:1];
-    [tabControl setImage:[UIImage imageNamed:@"AddIcon"] forSegmentAtIndex:0];
-    [tabControl setSelectedSegmentIndex:1];
-    [tabControl sizeToFit];
-    [tabControl addTarget:self action:@selector(chooseTab:) forControlEvents:UIControlEventValueChanged];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:tabControl];
-}
-
-- (IBAction)chooseTab:(id)sender {
-    DebugLog(@"sup %d", tabControl.selectedSegmentIndex);
-    [self.navigationController popViewControllerAnimated:NO];
 }
 
 - (void)dismiss {

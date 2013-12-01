@@ -170,6 +170,8 @@ extern NSString* const DGSearchTextFieldDidBeginEditing;
 extern NSString* const DGSearchTextFieldDidEndEditing;
 extern NSString* const DGUserDidStartBrowsingSearchTable;
 
+extern NSString* const DGNomineeWasChosen;
+
 #pragma mark - Convenience -----
 
 #define NSNullIfNil(v) (v ? v : [NSNull null])

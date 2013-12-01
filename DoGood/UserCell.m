@@ -20,10 +20,9 @@
         [self.username setUserInteractionEnabled:YES];
         [self.username addGestureRecognizer:userGesture];
         self.username.textColor = LINK_COLOUR;
-    }
 
-    // likes
-    [self.follow addTarget:self action:@selector(followUser) forControlEvents:UIControlEventTouchUpInside];
+        [self.follow addTarget:self action:@selector(followUser) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 #pragma mark - Set values when cell becomes visible
