@@ -102,3 +102,4 @@ NSString* const DGSearchTextFieldDidEndEditing = @"DGSearchTextFieldDidEndEditin
 NSString* const DGUserDidStartBrowsingSearchTable = @"DGUserDidStartBrowsingSearchTable";
 
 NSString* const DGNomineeWasChosen = @"DGNomineeWasChosen";
+NSString* const ExternalNomineeWasChosen = @"ExternalNomineeWasChosen";

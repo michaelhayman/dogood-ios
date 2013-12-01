@@ -22,6 +22,8 @@
     [self setupNavigationBar];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nomineeChosen:) name:DGNomineeWasChosen object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(externalNomineeChosen:) name:ExternalNomineeWasChosen object:nil];
+
 
     UIViewController *vc = [self viewControllerForSegmentIndex:tabControl.selectedSegmentIndex];
     self.currentViewController = vc;
@@ -44,6 +46,11 @@
 }
 
 - (void)nomineeChosen:(NSNotification *)notification {
+    DGNominee *nominee = [[notification userInfo] valueForKey:@"nominee"];
+    [self populateNominee:nominee];
+}
+
+- (void)externalNomineeChosen:(NSNotification *)notification {
     DGNominee *nominee = [[notification userInfo] valueForKey:@"nominee"];
     [self.addView fillInNominee:nominee];
     [tabControl setSelectedSegmentIndex:0];
@@ -95,8 +102,13 @@
     return vc;
 }
 
+
 #pragma mark - other methods
 - (void)childViewController:(DGPostGoodNomineeViewController *)viewController didChooseNominee:(DGNominee *)nominee {
+    [self populateNominee:nominee];
+}
+
+- (void)populateNominee:(DGNominee *)nominee {
     if ([self.delegate respondsToSelector:@selector(childViewController:didChooseNominee:)]) {
         [self.delegate childViewController:self didChooseNominee:nominee];
     }

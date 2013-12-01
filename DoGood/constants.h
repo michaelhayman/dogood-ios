@@ -171,6 +171,7 @@ extern NSString* const DGSearchTextFieldDidEndEditing;
 extern NSString* const DGUserDidStartBrowsingSearchTable;
 
 extern NSString* const DGNomineeWasChosen;
+extern NSString* const ExternalNomineeWasChosen;
 
 #pragma mark - Convenience -----
 
