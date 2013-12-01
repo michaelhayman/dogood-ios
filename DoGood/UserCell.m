@@ -13,16 +13,6 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 
     self.avatar.contentMode = UIViewContentModeScaleAspectFit;
-
-    // user
-    if (!self.disableSelection) {
-        UITapGestureRecognizer* userGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userProfile)];
-        [self.username setUserInteractionEnabled:YES];
-        [self.username addGestureRecognizer:userGesture];
-        self.username.textColor = LINK_COLOUR;
-
-        [self.follow addTarget:self action:@selector(followUser) forControlEvents:UIControlEventTouchUpInside];
-    }
 }
 
 #pragma mark - Set values when cell becomes visible
@@ -30,6 +20,14 @@
      if (self.disableSelection) {
         [self.username setUserInteractionEnabled:NO];
         [self.avatar setUserInteractionEnabled:NO];
+    }
+    if (!self.disableSelection) {
+        UITapGestureRecognizer* userGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userProfile)];
+        [self.username setUserInteractionEnabled:YES];
+        [self.username addGestureRecognizer:userGesture];
+        self.username.textColor = LINK_COLOUR;
+
+        [self.follow addTarget:self action:@selector(followUser) forControlEvents:UIControlEventTouchUpInside];
     }
 
     // hide the follow button for the own user
