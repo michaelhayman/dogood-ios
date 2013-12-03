@@ -1,6 +1,4 @@
 #import "UserCell.h"
-// #import "DGGood.h"
-// #import "DGVote.h"
 #import "DGFollow.h"
 #import <TTTAttributedLabel.h>
 #import "DGUserProfileViewController.h"
@@ -20,8 +18,7 @@
      if (self.disableSelection) {
         [self.username setUserInteractionEnabled:NO];
         [self.avatar setUserInteractionEnabled:NO];
-    }
-    if (!self.disableSelection) {
+    } else {
         UITapGestureRecognizer* userGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userProfile)];
         [self.username setUserInteractionEnabled:YES];
         [self.username addGestureRecognizer:userGesture];

@@ -21,7 +21,7 @@ pod 'SVPullToRefresh', '~> 0.4.1'
 pod 'SocialAuth', :git => "git@github.com:michaelhayman/SocialAuth.git"
 # testing
 # pod 'TestFlightSDK'
-
+pod 'ReactiveCocoa'
 
 target :DoGoodTests, :exclusive => true do
     pod 'Kiwi/XCTest'

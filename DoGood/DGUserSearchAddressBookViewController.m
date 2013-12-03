@@ -1,6 +1,7 @@
 #import "DGUserSearchAddressBookViewController.h"
 #import <AddressBook/AddressBook.h>
 #import "UserCell.h"
+#import "DGNominee.h"
 
 @implementation DGUserSearchAddressBookViewController
 
@@ -181,8 +182,9 @@
     // NSArray *users;
     DGUser *user = users[indexPath.row];
     cell.user = user;
-    [cell setValues];
+    cell.disableSelection = YES;
     cell.navigationController = self.navigationController;
+    [cell setValues];
     return cell;
 }
 
@@ -192,6 +194,14 @@
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
     return [users count];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DGUser *user = users[indexPath.row];
+    DGNominee *nominee = [DGNominee new];
+    [nominee configureForUser:user];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObject:nominee forKey:@"nominee"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:ExternalNomineeWasChosen object:nil userInfo:dictionary];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

@@ -41,7 +41,7 @@
 
     __typeof (&*self) __weak weakSelf = self;
 
-    REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"Done" subtitle:nil image:[UIImage imageNamed:@"MenuIconHome"] highlightedImage:[UIImage imageNamed:@"MenuIconHomeTap"] action:^(REMenuItem *item) {
+    REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"Good Done" subtitle:nil image:[UIImage imageNamed:@"MenuIconHome"] highlightedImage:[UIImage imageNamed:@"MenuIconHomeTap"] action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
         [self showGoodList];
     }];

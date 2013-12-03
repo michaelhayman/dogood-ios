@@ -1,6 +1,9 @@
 @protocol DGPostGoodNomineeAddViewControllerDelegate;
 @class DGNominee;
-@interface DGPostGoodNomineeAddViewController : UIViewController {
+
+#import "DGPhotoPickerViewController.h"
+
+@interface DGPostGoodNomineeAddViewController : UIViewController <DGPhotoPickerViewControllerDelegate> {
     __weak IBOutlet UITextField *nameField;
     __weak IBOutlet UITextField *emailField;
     __weak IBOutlet UITextField *phoneField;
@@ -8,6 +11,8 @@
     __weak IBOutlet UILabel *inviteText;
     __weak IBOutlet UIButton *nominateButton;
     DGNominee *nominee;
+    DGPhotoPickerViewController *photos;
+    __weak IBOutlet UIImageView *avatarImage;
 }
 
 @property (nonatomic, weak) id <DGPostGoodNomineeAddViewControllerDelegate> delegate;

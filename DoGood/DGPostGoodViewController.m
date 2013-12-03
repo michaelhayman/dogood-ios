@@ -31,14 +31,13 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupMenuTitle:@"Post Good"];
+    [self setupMenuTitle:@"Post"];
 
     UINib *nib = [UINib nibWithNibName:@"GoodOverviewCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"GoodOverviewCell"];
     UINib *shareNib = [UINib nibWithNibName:@"GoodShareCell" bundle:nil];
     [[self tableView] registerNib:shareNib forCellReuseIdentifier:@"GoodShareCell"];
 
-    // UIFont *font = [UIFont boldSystemFontOfSize:17];
     [postButton setTitleTextAttributes:FONT_BAR_BUTTON_ITEM_BOLD
                                      forState:UIControlStateNormal];
 
@@ -53,6 +52,10 @@
     photos = [[DGPhotoPickerViewController alloc] init];
     photos.parent = self;
     photos.delegate = self;
+}
+
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 - (void)keyboardWillShow:(NSNotification *)notification {
@@ -123,10 +126,13 @@
         cell.tag = good_overview_cell_tag;
         return cell;
     } else if (indexPath.section == nominee) {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kNomineeCell forIndexPath:indexPath];
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kNomineeCell];
         if (self.good.nominee) {
             cell.imageView.image = [UIImage imageNamed:@"NomineeIconOn.png"];
-            cell.textLabel.text = self.good.nominee.fullName;
+            cell.textLabel.text = self.good.nominee.full_name;
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:cell.accessoryView.frame];
+            imageView.image = self.good.nominee.avatarImage;
+            cell.accessoryView = imageView;
         } else {
             cell.textLabel.text = @"Add a nominee";
             cell.imageView.image = [UIImage imageNamed:@"NomineeIconOff.png"];
@@ -233,6 +239,13 @@
 }
 
 - (void)setUpActionSheets {
+    nomineeSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                delegate:self
+                                       cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:@"Remove nominee"
+                                       otherButtonTitles:@"Select new nominee", nil];
+    [nomineeSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+
     categorySheet = [[UIActionSheet alloc] initWithTitle:nil
                                                 delegate:self
                                        cancelButtonTitle:@"Cancel"
@@ -256,6 +269,14 @@
 #define select_new_button 1
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex != actionSheet.cancelButtonIndex) {
+        if (actionSheet == nomineeSheet) {
+            if (buttonIndex == remove_button) {
+                self.good.nominee = nil;
+                [self.tableView reloadData];
+            } else if (buttonIndex == select_new_button) {
+                [self showNomineeChooser];
+            }
+        }
         if (actionSheet == categorySheet) {
             if (buttonIndex == remove_button) {
                 self.good.category = nil;

@@ -427,9 +427,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <action selector="nominate:" destination="686-RO-lOI" eventType="touchUpInside" id="aWu-PI-GNb"/>
-                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nominee's name" textAlignment="center" minimumFontSize="19" background="Textfield" translatesAutoresizingMaskIntoConstraints="NO" id="Ktb-F6-Y1I">
                                 <rect key="frame" x="36" y="26" width="250" height="40"/>
@@ -442,6 +439,7 @@
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r0y-eg-YHZ">
                                 <rect key="frame" x="125" y="120" width="70" height="70"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="EditProfilePhotoFrame" translatesAutoresizingMaskIntoConstraints="NO" id="yFo-Zu-VDq">
                                 <rect key="frame" x="125" y="120" width="70" height="70"/>
@@ -468,7 +466,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                             </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jlx-xR-MfF">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jlx-xR-MfF">
                                 <rect key="frame" x="235" y="288" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -548,13 +546,13 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="avatarImage" destination="r0y-eg-YHZ" id="SQ0-98-zCX"/>
                         <outlet property="emailField" destination="2fp-bP-ki7" id="Edw-r5-iAY"/>
                         <outlet property="inviteField" destination="jlx-xR-MfF" id="ASX-Zj-4iU"/>
                         <outlet property="inviteText" destination="J8Y-YB-d7o" id="8Tj-Gs-FGx"/>
                         <outlet property="nameField" destination="Ktb-F6-Y1I" id="leI-ih-B6b"/>
                         <outlet property="nominateButton" destination="Dqc-cb-pW7" id="JYV-rx-akF"/>
                         <outlet property="phoneField" destination="eua-Om-KEB" id="9Ry-5b-5Kz"/>
-                        <outlet property="scrollView" destination="Omk-3e-yZ3" id="Fo2-uO-uOK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ajv-zd-24G" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -826,6 +824,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="oJB-HK-VD6"/>
+        <segue reference="9nR-Ig-xFY"/>
     </inferredMetricsTieBreakers>
 </document>

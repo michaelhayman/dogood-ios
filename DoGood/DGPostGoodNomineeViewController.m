@@ -24,7 +24,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nomineeChosen:) name:DGNomineeWasChosen object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(externalNomineeChosen:) name:ExternalNomineeWasChosen object:nil];
 
-
     UIViewController *vc = [self viewControllerForSegmentIndex:tabControl.selectedSegmentIndex];
     self.currentViewController = vc;
     [self addChildViewController:vc];
@@ -39,6 +38,10 @@
     [tabControl sizeToFit];
     [tabControl addTarget:self action:@selector(chooseTab:) forControlEvents:UIControlEventValueChanged];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:tabControl];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
 - (IBAction)next:(id)sender {
