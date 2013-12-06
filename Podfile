@@ -1,4 +1,4 @@
-platform :ios, '6.0'
+platform :ios, '7.0'
 # networking
 pod 'AFNetworking', '~> 1.3.1'
 pod 'RestKit', '~> 0.21.0'
