@@ -23,6 +23,8 @@ pod 'SocialAuth', :git => "git@github.com:michaelhayman/SocialAuth.git"
 # pod 'TestFlightSDK'
 pod 'ReactiveCocoa'
 
+pod 'CRNavigationController'
+
 target :DoGoodTests, :exclusive => true do
     pod 'Kiwi/XCTest'
     # pod 'RKKiwiMatchers'
