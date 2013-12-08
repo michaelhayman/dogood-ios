@@ -33,6 +33,7 @@
     }
 
     showNoResultsMessage = NO;
+    self.navigationController.navigationBar.barTintColor = VIVID;
 
     [self initializeTable];
     [self setupRefresh];

@@ -817,13 +817,13 @@
         <image name="TwitterOff" width="47" height="38"/>
         <image name="TwitterOn" width="46" height="38"/>
     </resources>
-    <color key="tintColor" red="0.0" green="0.70196078429999997" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="9nR-Ig-xFY"/>
+        <segue reference="oJB-HK-VD6"/>
     </inferredMetricsTieBreakers>
 </document>

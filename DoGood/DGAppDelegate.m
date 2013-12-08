@@ -23,6 +23,7 @@
 
 - (void)setupViewsForUser {
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     DGGoodListViewController *goodListController = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
     self.window.rootViewController = [[NavigationViewController alloc] initWithRootViewController:goodListController];

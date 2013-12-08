@@ -4,9 +4,9 @@
 @implementation DGAppearance
 
 + (void)setupAppearance {
-    [[UIBarButtonItem appearance] setTintColor:COLOUR_GREEN];
-    [[UINavigationBar appearance] setTintColor:COLOUR_GREEN];
-    [[UIApplication sharedApplication] keyWindow].tintColor = COLOUR_GREEN;
+    [[UIBarButtonItem appearance] setTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UIApplication sharedApplication] keyWindow].tintColor = [UIColor whiteColor];
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }

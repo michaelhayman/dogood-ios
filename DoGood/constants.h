@@ -45,11 +45,17 @@
 #define FONT_BAR_BUTTON_ITEM_BOLD @{NSFontAttributeName: [UIFont boldSystemFontOfSize: 17]}
 // global colours
 #define COLOUR_OFF_WHITE [UIColor colorWithRed:248.0/255.0 green:248.0/255.0 blue:248.0/255.0 alpha:1.0]
-#define COLOUR_GREEN [UIColor colorWithRed:0.0/255.0 green:179.0/255.0 blue:134.0/255.0 alpha:1.0]
+#define COLOUR_GREEN [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
 #define COLOUR_BROWN [UIColor colorWithRed:179.0/255.0 green:113.0/255.0 blue:0.0/255.0 alpha:1.0]
 #define COLOUR_REDDISH_BROWN [UIColor colorWithRed:171.0/255.0 green:71.0/255.0 blue:32.0/255.0 alpha:1.0]
 #define COLOUR_YELLOW [UIColor colorWithRed:255.0/255.0 green:185.0/255.0 blue:0.0/255.0 alpha:1.0]
 //#define COLOR_ORANGE
+
+// new global colours
+#define VIVID [UIColor colorWithRed:27.0/255.0 green:202.0/255.0 blue:1.0/255.0 alpha:1.0]
+#define MUD [UIColor colorWithRed:51.0/255.0 green:41.0/255.0 blue:38.0/255.0 alpha:1.0]
+#define CREAM [UIColor colorWithRed:229.0/255.0 green:231.0/255.0 blue:213.0/255.0 alpha:1.0]
+#define CLAY [UIColor colorWithRed:232.0/255.0 green:234.0/255.0 blue:219.0/255.0 alpha:1.0]
 
 #define MENU_FONT_COLOR [UIColor blackColor]
 
