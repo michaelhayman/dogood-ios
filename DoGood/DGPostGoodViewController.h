@@ -27,8 +27,8 @@
 @end
 
 typedef enum {
-    overview,
     nominee,
+    overview,
     category,
     location,
     share,
