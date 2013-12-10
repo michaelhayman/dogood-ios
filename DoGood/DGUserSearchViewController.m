@@ -71,4 +71,8 @@
     }
 }
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)theSearchBar {
+    [theSearchBar resignFirstResponder];
+}
+
 @end
