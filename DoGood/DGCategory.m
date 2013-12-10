@@ -13,7 +13,7 @@
     if (self.colour != nil) {
         return [DGAppearance getColorFromHexValue:self.colour];
     } else {
-        return [UIColor whiteColor];
+        return [UIColor lightGrayColor];
     }
 }
 

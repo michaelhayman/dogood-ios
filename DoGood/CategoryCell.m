@@ -9,6 +9,7 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.selectedBackgroundView = [[UIView alloc] initWithFrame:[self contentView].frame];
     self.backgroundView = [[UIView alloc] initWithFrame:[self contentView].frame];
+    categoryName.textColor = [UIColor whiteColor];
 }
 
 #pragma mark - Set values when cell becomes visible
