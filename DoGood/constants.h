@@ -20,44 +20,41 @@
 #define iPad    UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
 
 #pragma mark - Styles -----
+
+// fonts
 #define kSummaryCommentFont [UIFont systemFontOfSize:10]
 #define kGoodCaptionFont [UIFont systemFontOfSize:14.]
+#define MENU_FONT [UIFont fontWithName:@"HelveticaNeue-Bold" size:20]
+#define MENU_FONT_COLOR [UIColor blackColor]
 
+// widths
 #define kGoodRightColumnWidth 236.0
 #define kCommentRightColumnWidth 248.0
 #define kSummaryCommentRightColumnWidth 221.0
 
-// Styles
-#define LINK_COLOUR [UIColor colorWithRed:5.0/255.0 green:171.0/255.0 blue:117.0/255.0 alpha:1.0]
-// nice neutral
-#define NEUTRAL_BACKGROUND_COLOUR [UIColor colorWithRed:237.0/255.0 green:234.0/255.0 blue:227.0/255.0 alpha:1.0]
-// brown
-#define BUTTON_COLOR [UIColor colorWithRed:122.0/255.0 green:106.0/255.0 blue:83.0/255.0 alpha:1.0]
-#define GRAYED_OUT [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.8]
-#define ACTIVE [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
-#define REALLY_LIGHT_GRAY [UIColor colorWithRed:233.0/255.0 green:238.0/255.0 blue:226.0/255.0 alpha:1.0]
-#define COLOUR_SEARCH_NETWORKS_BACKGROUND [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]
-#define TEXT_VIEW_BORDER_COLOR [UIColor colorWithRed:233.0/255.0 green:238.0/255.0 blue:226.0/255.0 alpha:1.0]
+// named colours
+#define MUD [UIColor colorWithRed:65/255.0 green:53.0/255.0 blue:41.0/255.0 alpha:1.0]
+#define VIVID [UIColor colorWithRed:43.0/255.0 green:200.0/255.0 blue:35.0/255.0 alpha:1.0]
+#define CREAM [UIColor colorWithRed:229.0/255.0 green:231.0/255.0 blue:213.0/255.0 alpha:1.0]
+#define CLAY [UIColor colorWithRed:232.0/255.0 green:234.0/255.0 blue:219.0/255.0 alpha:1.0]
 
-// global text
-#define MENU_FONT [UIFont fontWithName:@"HelveticaNeue-Bold" size:20]
-
-#define FONT_BAR_BUTTON_ITEM_BOLD @{NSFontAttributeName: [UIFont boldSystemFontOfSize: 17]}
-// global colours
 #define COLOUR_OFF_WHITE [UIColor colorWithRed:248.0/255.0 green:248.0/255.0 blue:248.0/255.0 alpha:1.0]
 #define COLOUR_GREEN [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
 #define COLOUR_BROWN [UIColor colorWithRed:179.0/255.0 green:113.0/255.0 blue:0.0/255.0 alpha:1.0]
 #define COLOUR_REDDISH_BROWN [UIColor colorWithRed:171.0/255.0 green:71.0/255.0 blue:32.0/255.0 alpha:1.0]
 #define COLOUR_YELLOW [UIColor colorWithRed:255.0/255.0 green:185.0/255.0 blue:0.0/255.0 alpha:1.0]
-//#define COLOR_ORANGE
 
-// new global colours
-#define VIVID [UIColor colorWithRed:27.0/255.0 green:202.0/255.0 blue:1.0/255.0 alpha:1.0]
-#define MUD [UIColor colorWithRed:51.0/255.0 green:41.0/255.0 blue:38.0/255.0 alpha:1.0]
-#define CREAM [UIColor colorWithRed:229.0/255.0 green:231.0/255.0 blue:213.0/255.0 alpha:1.0]
-#define CLAY [UIColor colorWithRed:232.0/255.0 green:234.0/255.0 blue:219.0/255.0 alpha:1.0]
+// descriptors
+#define LINK_COLOUR VIVID
 
-#define MENU_FONT_COLOR [UIColor blackColor]
+#define NEUTRAL_BACKGROUND_COLOUR [UIColor colorWithRed:237.0/255.0 green:234.0/255.0 blue:227.0/255.0 alpha:1.0]
+#define BUTTON_COLOR VIVID
+#define GRAYED_OUT [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:0.8]
+#define ACTIVE [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
+#define REALLY_LIGHT_GRAY [UIColor colorWithRed:233.0/255.0 green:238.0/255.0 blue:226.0/255.0 alpha:1.0]
+#define COLOUR_SEARCH_NETWORKS_BACKGROUND [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1.0]
+#define TEXT_VIEW_BORDER_COLOR [UIColor colorWithRed:233.0/255.0 green:238.0/255.0 blue:226.0/255.0 alpha:1.0]
+#define FONT_BAR_BUTTON_ITEM_BOLD @{NSFontAttributeName: [UIFont boldSystemFontOfSize: 17]}
 
 #pragma mark - User -----
 
