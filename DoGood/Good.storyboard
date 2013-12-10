@@ -45,7 +45,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Cxk-Ur-GNh">
-                        <barButtonItem key="rightBarButtonItem" title="Post" id="vaR-fS-HBJ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="vaR-fS-HBJ">
                             <connections>
                                 <segue destination="YhS-Q4-hGW" kind="push" id="oJB-HK-VD6"/>
                             </connections>
