@@ -1,4 +1,5 @@
-@interface DGAppDelegate : UIResponder <UIApplicationDelegate>
+#import <HockeySDK/HockeySDK.h>
+@interface DGAppDelegate : UIResponder <UIApplicationDelegate, BITHockeyManagerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

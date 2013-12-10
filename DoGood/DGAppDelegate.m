@@ -13,7 +13,10 @@
     [DGAppearance setupAppearance];
     [DGUser setUpUserAuthentication];
     [RestKit setupRestKit];
-    // [TestFlight takeOff:@"737117dd-7de4-44f2-8be8-4a3782b60517"];
+
+    [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"2aabe4790ed577f27e56c2d215bb9d3d"
+                                                           delegate:self];
+    [[BITHockeyManager sharedHockeyManager] startManager];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self setupViewsForUser];
