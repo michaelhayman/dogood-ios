@@ -246,6 +246,7 @@
     [categoryMapping addAttributeMappingsFromArray:@[
      @"name",
      @"name_constant",
+     @"colour",
      @"image_url"
     ]];
     [categoryMapping addAttributeMappingsFromDictionary:@{ @"id" : @"categoryID" }];
