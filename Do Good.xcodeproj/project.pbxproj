@@ -37,6 +37,10 @@
 		633DBF8417AE92E00038BC2D /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF8117AE92E00038BC2D /* NavigationViewController.m */; };
 		633DBF8517AE92E00038BC2D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF8317AE92E00038BC2D /* RootViewController.m */; };
 		63451D521840E72300B713F0 /* DGNominee.m in Sources */ = {isa = PBXBuildFile; fileRef = 63451D511840E72300B713F0 /* DGNominee.m */; };
+		634D80F218623D1C005BD0EC /* tour_do.png in Resources */ = {isa = PBXBuildFile; fileRef = 634D80EE18623D1C005BD0EC /* tour_do.png */; };
+		634D80F318623D1C005BD0EC /* tour_find.png in Resources */ = {isa = PBXBuildFile; fileRef = 634D80EF18623D1C005BD0EC /* tour_find.png */; };
+		634D80F418623D1C005BD0EC /* tour_nominate.png in Resources */ = {isa = PBXBuildFile; fileRef = 634D80F018623D1C005BD0EC /* tour_nominate.png */; };
+		634D80F518623D1C005BD0EC /* tour_rewards.png in Resources */ = {isa = PBXBuildFile; fileRef = 634D80F118623D1C005BD0EC /* tour_rewards.png */; };
 		6355EC0717B0C83100EE91C0 /* DGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC0617B0C83100EE91C0 /* DGComment.m */; };
 		6355EC0C17B0D4C300EE91C0 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC0A17B0D4C300EE91C0 /* CommentCell.m */; };
 		6355EC0D17B0D4C300EE91C0 /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6355EC0B17B0D4C300EE91C0 /* CommentCell.xib */; };
@@ -103,6 +107,7 @@
 		63AAFB191815FAB500C8CA0B /* DGRestKitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AAFB181815FAB500C8CA0B /* DGRestKitTest.m */; };
 		63AAFB1B1816070F00C8CA0B /* DGTagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AAFB1A1816070F00C8CA0B /* DGTagTests.m */; };
 		63AAFB1D181607B600C8CA0B /* DGEntityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AAFB1C181607B600C8CA0B /* DGEntityTests.m */; };
+		63B546A61859D17E00673B6C /* DGAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B546A51859D17E00673B6C /* DGAuthenticateViewController.m */; };
 		63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */; };
 		63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */; };
 		63C1548A181F555A00DA81B9 /* TTTAttributedLabel+Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C15489181F555A00DA81B9 /* TTTAttributedLabel+Tag.m */; };
@@ -213,6 +218,10 @@
 		633DBF8317AE92E00038BC2D /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		63451D501840E72300B713F0 /* DGNominee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGNominee.h; sourceTree = "<group>"; };
 		63451D511840E72300B713F0 /* DGNominee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNominee.m; sourceTree = "<group>"; };
+		634D80EE18623D1C005BD0EC /* tour_do.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tour_do.png; sourceTree = "<group>"; };
+		634D80EF18623D1C005BD0EC /* tour_find.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tour_find.png; sourceTree = "<group>"; };
+		634D80F018623D1C005BD0EC /* tour_nominate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tour_nominate.png; sourceTree = "<group>"; };
+		634D80F118623D1C005BD0EC /* tour_rewards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tour_rewards.png; sourceTree = "<group>"; };
 		6355EC0617B0C83100EE91C0 /* DGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGComment.m; sourceTree = "<group>"; };
 		6355EC0817B0C84100EE91C0 /* DGComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGComment.h; sourceTree = "<group>"; };
 		6355EC0917B0D4C200EE91C0 /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
@@ -321,6 +330,8 @@
 		63AAFB181815FAB500C8CA0B /* DGRestKitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRestKitTest.m; sourceTree = "<group>"; };
 		63AAFB1A1816070F00C8CA0B /* DGTagTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTagTests.m; sourceTree = "<group>"; };
 		63AAFB1C181607B600C8CA0B /* DGEntityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEntityTests.m; sourceTree = "<group>"; };
+		63B546A41859D17E00673B6C /* DGAuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAuthenticateViewController.h; sourceTree = "<group>"; };
+		63B546A51859D17E00673B6C /* DGAuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAuthenticateViewController.m; sourceTree = "<group>"; };
 		63BFB1E517C818DE004D990F /* DGUserSearchAddressBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchAddressBookViewController.h; sourceTree = "<group>"; };
 		63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchAddressBookViewController.m; sourceTree = "<group>"; };
 		63BFB1EA17C81E11004D990F /* DGUserSearchNetworksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchNetworksViewController.h; sourceTree = "<group>"; };
@@ -501,6 +512,17 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		634D80ED18623D0A005BD0EC /* JPEG */ = {
+			isa = PBXGroup;
+			children = (
+				634D80EE18623D1C005BD0EC /* tour_do.png */,
+				634D80EF18623D1C005BD0EC /* tour_find.png */,
+				634D80F018623D1C005BD0EC /* tour_nominate.png */,
+				634D80F118623D1C005BD0EC /* tour_rewards.png */,
+			);
+			name = JPEG;
+			sourceTree = "<group>";
+		};
 		636A5A601814D82500FB708A /* DoGoodTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +599,8 @@
 				6355EC2D17B69F1D00EE91C0 /* DGSignInViewController.m */,
 				6355EC2317B6723D00EE91C0 /* Users.storyboard */,
 				636AEA5C17AD43CC002A3494 /* Good.storyboard */,
+				63B546A41859D17E00673B6C /* DGAuthenticateViewController.h */,
+				63B546A51859D17E00673B6C /* DGAuthenticateViewController.m */,
 				6386481B17ACEF2100167F15 /* DGWelcomeViewController.h */,
 				6386481C17ACEF2100167F15 /* DGWelcomeViewController.m */,
 			);
@@ -683,6 +707,7 @@
 		636AEA6C17AD4B8A002A3494 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				634D80ED18623D0A005BD0EC /* JPEG */,
 				6303A33517FE322100E2EACD /* Media.xcassets */,
 			);
 			name = Assets;
@@ -884,11 +909,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				634D80F518623D1C005BD0EC /* tour_rewards.png in Resources */,
 				638647EC17AC087A00167F15 /* InfoPlist.strings in Resources */,
 				63FDAC4E181C630B00668B15 /* ExploreHighlightsCell.xib in Resources */,
 				63D4BD251802484800ACF1B9 /* Rewards.storyboard in Resources */,
 				636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */,
 				636AEA9B17AD63EC002A3494 /* GoodCell.xib in Resources */,
+				634D80F218623D1C005BD0EC /* tour_do.png in Resources */,
 				636AEAA917AD79B1002A3494 /* GoodOverviewCell.xib in Resources */,
 				63FDAC44181C603B00668B15 /* ExplorePopularTagsCell.xib in Resources */,
 				6303A33617FE322100E2EACD /* Media.xcassets in Resources */,
@@ -897,6 +924,7 @@
 				633DBF7B17AE1E530038BC2D /* DoGood.nss in Resources */,
 				6355EC0D17B0D4C300EE91C0 /* CommentCell.xib in Resources */,
 				63FBF608180B0C06005686A6 /* RewardMiniCell.xib in Resources */,
+				634D80F418623D1C005BD0EC /* tour_nominate.png in Resources */,
 				6355EC1417B0EE1E00EE91C0 /* RewardCell.xib in Resources */,
 				6355EC2417B6723E00EE91C0 /* Users.storyboard in Resources */,
 				63FDAC49181C61BA00668B15 /* TagCollectionCell.xib in Resources */,
@@ -905,6 +933,7 @@
 				63FDAC53181C651400668B15 /* HighlightCollectionCell.xib in Resources */,
 				632A36BD17BCAEE8004EED26 /* UserCell.xib in Resources */,
 				637ABAD317C7C6F4004AA4C9 /* SearchUserNetworks.xib in Resources */,
+				634D80F318623D1C005BD0EC /* tour_find.png in Resources */,
 				635A232217CABEB30045C256 /* Categories.plist in Resources */,
 				63DA645017DC0F6D003DFF03 /* Explore.storyboard in Resources */,
 				63DA645E17DC1715003DFF03 /* TagCell.xib in Resources */,
@@ -1072,6 +1101,7 @@
 				6358341917C88F3C00F997F6 /* DGUserSearchOtherViewController.m in Sources */,
 				6358342E17C8A09700F997F6 /* Arrow.m in Sources */,
 				635A232017CAB5150045C256 /* DGCategories.m in Sources */,
+				63B546A61859D17E00673B6C /* DGAuthenticateViewController.m in Sources */,
 				63DA644817DC0F04003DFF03 /* DGExploreViewController.m in Sources */,
 				6356BDB2182891F4006AF033 /* UIViewController+DGViewController.m in Sources */,
 				6330B69E1812D891005DC78B /* DGEditableTextView.m in Sources */,

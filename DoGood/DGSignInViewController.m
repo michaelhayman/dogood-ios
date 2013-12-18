@@ -22,7 +22,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (IBAction)signIn:(id)sender {

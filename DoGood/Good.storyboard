@@ -47,7 +47,7 @@
                     <navigationItem key="navigationItem" id="Cxk-Ur-GNh">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vaR-fS-HBJ">
                             <connections>
-                                <segue destination="YhS-Q4-hGW" kind="push" id="oJB-HK-VD6"/>
+                                <action selector="postGood:" destination="zmU-nz-K8B" id="teA-fM-x9X"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -183,7 +183,7 @@
         <!--Post Good View Controller-->
         <scene sceneID="usq-DP-YSy">
             <objects>
-                <tableViewController id="YhS-Q4-hGW" customClass="DGPostGoodViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PostGood" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YhS-Q4-hGW" customClass="DGPostGoodViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="vSU-uk-Qvk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -823,7 +823,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="oJB-HK-VD6"/>
-    </inferredMetricsTieBreakers>
 </document>

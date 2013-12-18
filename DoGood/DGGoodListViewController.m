@@ -1,4 +1,5 @@
 #import "DGGoodListViewController.h"
+#import "DGPostGoodViewController.h"
 #import "GoodCell.h"
 #import "DGGood.h"
 #import "DGTag.h"
@@ -43,6 +44,16 @@
 
     if (!self.loadController) {
         self.loadController = self.navigationController;
+    }
+}
+
+- (IBAction)postGood:(id)sender {
+    BOOL access = NO;
+    access = [[DGUser currentUser] authorizeAccess:self];
+    if (access) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+        DGPostGoodViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"PostGood"];
+        [self.navigationController pushViewController:controller animated:YES];
     }
 }
 
@@ -126,7 +137,7 @@
 #pragma mark - Points
 - (void)showWelcome {
     if (![[DGUser currentUser] isSignedIn]) {
-        // [self welcomeScreen];
+        [self welcomeScreen];
     } else {
         if ([goods count] == 0) {
             [self reloadGood];

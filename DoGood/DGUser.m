@@ -2,6 +2,7 @@
 #import "DGError.h"
 #import "RFKeychain.h"
 #import "DGUserProfileViewController.h"
+#import "DGAuthenticateViewController.h"
 
 static DGUser* currentUser = nil;
 
@@ -199,6 +200,18 @@ static DGUser* currentUser = nil;
     DGUserProfileViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
     controller.userID = userID;
     [nav pushViewController:controller animated:YES];
+}
+
+- (BOOL)authorizeAccess:(UIViewController *)controller {
+    if ([self isSignedIn]) {
+        return YES;
+    } else {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+        DGAuthenticateViewController *authenticate = [storyboard instantiateViewControllerWithIdentifier:@"Authenticate"];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:authenticate];
+        [controller presentViewController:nav animated:YES completion:nil];
+        return NO;
+    }
 }
 
 #pragma mark - Formatters
