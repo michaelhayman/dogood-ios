@@ -13,6 +13,12 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = YES;
     self.navigationController.navigationBar.barTintColor = VIVID;
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationFade];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 
 - (void)didReceiveMemoryWarning {
