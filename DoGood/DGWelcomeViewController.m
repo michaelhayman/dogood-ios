@@ -37,7 +37,7 @@
         [UIImage imageNamed:@"tour_find"],
         [UIImage imageNamed:@"tour_nominate"],
         [UIImage imageNamed:@"tour_do"],
-        [UIImage imageNamed:@"tour_reward"],
+        [UIImage imageNamed:@"tour_rewards"],
         nil
     ];
 
