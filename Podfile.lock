@@ -43,6 +43,7 @@ PODS:
     - TransitionKit (= 1.1.1)
   - RFKeychain (0.1)
   - RKValueTransformers (1.0.1)
+  - SAMLoadingView (0.1.0)
   - SocialAuth (1.0.4):
     - OAuthCore
   - SOCKit (1.1)
@@ -66,6 +67,7 @@ DEPENDENCIES:
   - REMenu (~> 1.6)
   - RestKit (~> 0.21.0)
   - RFKeychain (~> 0.1)
+  - SAMLoadingView
   - SocialAuth (from `git@github.com:michaelhayman/SocialAuth.git`)
   - SVPullToRefresh (~> 0.4.1)
   - TPKeyboardAvoiding
@@ -96,6 +98,7 @@ SPEC CHECKSUMS:
   RestKit: c11a30e7bc73513d9d2c2695672aba7697d24181
   RFKeychain: 6f70ff418c01b5d76b84796941f3d63672c9e316
   RKValueTransformers: 1562d458b9c9d59ce777bfc5982f2e1aef2e9182
+  SAMLoadingView: aaab718284bfe0e28c2303ba765329f068d173e9
   SocialAuth: 53f5e770e4d01084f809ff231533196826f767d6
   SOCKit: 2f3bc4d07910de12dcc202815e07db68a3802581
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
