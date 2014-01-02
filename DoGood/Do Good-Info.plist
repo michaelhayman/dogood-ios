@@ -47,6 +47,8 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>MarkusInk.ttf</string>
+		<string>HandTest.ttf</string>
 		<string>Calibre-Black.otf</string>
 		<string>Calibre-Bold.otf</string>
 		<string>Calibre-Light.otf</string>
