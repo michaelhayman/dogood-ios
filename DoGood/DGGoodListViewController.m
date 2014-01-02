@@ -22,19 +22,20 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.barTintColor = VIVID;
     if (_category) {
         [self setupMenuTitle:_category.name];
+        self.navigationController.navigationBar.barTintColor = [self.category rgbColour];
     } else if (_tag) {
        [self setupMenuTitle:[_tag hashifiedName]];
     } else if (_path) {
         [self setupMenuTitle:_titleForPath];
     } else {
         [self setupMenuTitle:@"Good Done"];
-        [self addMenuButton:@"MenuFromHomeIconTap" withTapButton:@"MenuFromHomeIcon"];
+        [self addMenuButton:@"icon_menu" withTapButton:@"icon_menu"];
     }
 
     showNoResultsMessage = NO;
-    self.navigationController.navigationBar.barTintColor = VIVID;
 
     [self initializeTable];
     [self setupRefresh];
@@ -96,6 +97,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.barTintColor = VIVID;
 }
 
 - (void)initializeTable {
