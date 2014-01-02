@@ -74,7 +74,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 90;
+    return 80;
 }
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {

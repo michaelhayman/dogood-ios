@@ -25,7 +25,7 @@
 #define kSummaryCommentFont [UIFont systemFontOfSize:10]
 #define kGoodCaptionFont [UIFont systemFontOfSize:14.]
 #define MENU_FONT [UIFont fontWithName:@"Markus Ink" size:56]
-#define CATEGORY_FONT [UIFont fontWithName:@"Markus Ink" size:42]
+#define CATEGORY_FONT [UIFont fontWithName:@"Markus Ink" size:48]
 #define MENU_FONT_COLOR [UIColor blackColor]
 
 // widths
