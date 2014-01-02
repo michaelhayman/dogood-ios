@@ -15,6 +15,7 @@
     UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleMenu)];
     [view addGestureRecognizer:tap];
     self.navigationItem.titleView = view;
+    self.navigationController.navigationBar.barTintColor = VIVID;
 }
 
 - (void)toggleMenu {
