@@ -34,10 +34,15 @@
     [super viewDidLoad];
 
     tourImages = [NSArray arrayWithObjects:
+        [UIImage imageNamed:@"dg_tour1_iphone5"],
+        [UIImage imageNamed:@"dg_tour2_iphone5"],
+        [UIImage imageNamed:@"dg_tour3_iphone5"],
+        /*
         [UIImage imageNamed:@"tour_find"],
         [UIImage imageNamed:@"tour_nominate"],
         [UIImage imageNamed:@"tour_do"],
         [UIImage imageNamed:@"tour_rewards"],
+        */
         nil
     ];
 
@@ -127,11 +132,12 @@
         
         // 3
         UIImageView *newPageView = [[UIImageView alloc] init];
+        newPageView.contentMode = UIViewContentModeTop;
         newPageView.tag = page;
         newPageView.image = (tourImages)[page];
 
         // newPageView.contentMode = UIViewContentModeScaleAspectFill;
-        newPageView.contentMode = UIViewContentModeScaleAspectFit;
+        // newPageView.contentMode = UIViewContentModeScaleAspectFit;
         newPageView.frame = frame;
         [gallery addSubview:newPageView];
 
