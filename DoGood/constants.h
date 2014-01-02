@@ -24,7 +24,8 @@
 // fonts
 #define kSummaryCommentFont [UIFont systemFontOfSize:10]
 #define kGoodCaptionFont [UIFont systemFontOfSize:14.]
-#define MENU_FONT [UIFont fontWithName:@"HelveticaNeue-Bold" size:20]
+#define MENU_FONT [UIFont fontWithName:@"Markus Ink" size:56]
+#define CATEGORY_FONT [UIFont fontWithName:@"Markus Ink" size:42]
 #define MENU_FONT_COLOR [UIColor blackColor]
 
 // widths
@@ -33,8 +34,10 @@
 #define kSummaryCommentRightColumnWidth 221.0
 
 // named colours
-#define MUD [UIColor colorWithRed:65/255.0 green:53.0/255.0 blue:41.0/255.0 alpha:1.0]
 #define VIVID [UIColor colorWithRed:43.0/255.0 green:200.0/255.0 blue:35.0/255.0 alpha:1.0]
+#define MUD [UIColor colorWithRed:65/255.0 green:53.0/255.0 blue:41.0/255.0 alpha:1.0]
+#define MUD_TRANSPARENT [UIColor colorWithRed:65/255.0 green:53.0/255.0 blue:41.0/255.0 alpha:0.5]
+
 #define CREAM [UIColor colorWithRed:229.0/255.0 green:231.0/255.0 blue:213.0/255.0 alpha:1.0]
 #define CLAY [UIColor colorWithRed:232.0/255.0 green:234.0/255.0 blue:219.0/255.0 alpha:1.0]
 

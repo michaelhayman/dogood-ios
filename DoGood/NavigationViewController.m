@@ -41,12 +41,12 @@
 
     __typeof (&*self) __weak weakSelf = self;
 
-    REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"Good Done" subtitle:nil image:[UIImage imageNamed:@"MenuIconHome"] highlightedImage:[UIImage imageNamed:@"MenuIconHomeTap"] action:^(REMenuItem *item) {
+    REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"Done" subtitle:nil image:nil highlightedImage:nil action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
         [self showGoodList];
     }];
 
-    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"To Do" subtitle:nil image:[UIImage imageNamed:@"MenuIconExplore"] highlightedImage:[UIImage imageNamed:@"MenuIconExploreTap"] action:^(REMenuItem *item) {
+    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"To Do" subtitle:nil image:nil highlightedImage:nil action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Explore" bundle:nil];
         if (exploreController == nil) {
@@ -55,12 +55,12 @@
         [weakSelf setViewControllers:@[exploreController] animated:NO];
     }];
 
-    REMenuItem *rewardsItem = [[REMenuItem alloc] initWithTitle:@"Rewards" subtitle:nil image:[UIImage imageNamed:@"MenuIconRewards"] highlightedImage:[UIImage imageNamed:@"MenuIconRewardsTap"] action:^(REMenuItem *item) {
+    REMenuItem *rewardsItem = [[REMenuItem alloc] initWithTitle:@"Rewards" subtitle:nil image:nil highlightedImage:nil action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
         [self showRewards];
     }];
 
-    REMenuItem *profileItem = [[REMenuItem alloc] initWithTitle:@"You" image:[UIImage imageNamed:@"MenuIconProfile"] highlightedImage:[UIImage imageNamed:@"MenuIconProfileTap"] action:^(REMenuItem *item) {
+    REMenuItem *profileItem = [[REMenuItem alloc] initWithTitle:@"My Profile" image:nil highlightedImage:nil action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
         if (userProfileController == nil) {
@@ -85,18 +85,22 @@
     //_menu.textAlignment = NSTextAlignmentLeft;
     //_menu.textOffset = CGSizeMake(80, 0);
 
-    _menu.backgroundColor = [UIColor colorWithRed:244.0/255.0 green:244.0/255.0 blue:244.0/255.0 alpha:1.0];
+    _menu.backgroundColor = MUD_TRANSPARENT;
     _menu.textShadowOffset = CGSizeMake(0, 0);
     _menu.textShadowColor = [UIColor clearColor];
     _menu.highlightedTextShadowColor = _menu.textShadowColor;
     _menu.separatorColor = [UIColor colorWithRed:224.0/255.0 green:224.0/255.0 blue:224.0/255.0 alpha:1.0];
     _menu.borderColor = _menu.backgroundColor;
 
-    _menu.highlightedBackgroundColor = [UIColor colorWithRed:233.0/255.0 green:233.0/255.0 blue:233.0/255.0 alpha:1.0];
+    _menu.highlightedBackgroundColor = [UIColor blackColor];
     _menu.highlightedSeparatorColor = _menu.highlightedBackgroundColor;
     _menu.highlightedTextShadowOffset = CGSizeMake(0, 0);
-    _menu.highlightedTextColor = MENU_FONT_COLOR;
+    _menu.highlightedTextColor = [UIColor whiteColor];
     _menu.font = MENU_FONT;
+    _menu.textColor = [UIColor whiteColor];
+    _menu.itemHeight = 75;
+    _menu.liveBlur = YES;
+    _menu.liveBlurTintColor = MUD;
     // _menu.backgroundColor = [UIColor clearColor];
     _menu.waitUntilAnimationIsComplete = NO;
 }
