@@ -10,6 +10,7 @@
     self.selectedBackgroundView = [[UIView alloc] initWithFrame:[self contentView].frame];
     self.backgroundView = [[UIView alloc] initWithFrame:[self contentView].frame];
     categoryName.textColor = [UIColor whiteColor];
+    categoryName.font = CATEGORY_FONT;
 }
 
 #pragma mark - Set values when cell becomes visible

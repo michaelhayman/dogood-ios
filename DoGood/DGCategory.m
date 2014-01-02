@@ -5,7 +5,7 @@
 @implementation DGCategory
 
 - (UIImage *)image {
-   NSString *iconName = [NSString stringWithFormat:@"category_%@.png", self.name_constant];
+    NSString *iconName = [NSString stringWithFormat:@"icon_menu_%@.png", self.name_constant];
     return [UIImage imageNamed:iconName];
 }
 
