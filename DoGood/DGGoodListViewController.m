@@ -26,6 +26,7 @@
     if (_category) {
         [self setupMenuTitle:_category.name];
         self.navigationController.navigationBar.barTintColor = [self.category rgbColour];
+        [self updateTitleColor:[self.category rgbColour]];
     } else if (_tag) {
        [self setupMenuTitle:[_tag hashifiedName]];
     } else if (_path) {
