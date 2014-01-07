@@ -38,10 +38,10 @@
     HighlightCollectionCell *cell = [aCollectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     if (indexPath.row == popular) {
         [cell setName:@"Popular"];
-        cell.backgroundColor = COLOUR_BROWN;
+        cell.backgroundColor = SKY;
     } else {
         [cell setName:@"Nearby"];
-        cell.backgroundColor = COLOUR_YELLOW;
+        cell.backgroundColor = CAMO;
     }
     return cell;
 }

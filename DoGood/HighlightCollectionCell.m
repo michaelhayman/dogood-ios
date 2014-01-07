@@ -6,6 +6,8 @@
 #pragma mark - Initial setup
 - (void)awakeFromNib {
     [super awakeFromNib];
+    tagName.font = HIGHLIGHT_COLLECTION_FONT;
+    tagName.textColor = [UIColor whiteColor];
 }
 
 #pragma mark - Set values when cell becomes visible

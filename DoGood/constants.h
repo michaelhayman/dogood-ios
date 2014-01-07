@@ -28,6 +28,7 @@
 #define kGoodCaptionFont [UIFont systemFontOfSize:14.]
 #define MENU_FONT [UIFont fontWithName:@"Markus Ink" size:56]
 #define CATEGORY_FONT [UIFont fontWithName:@"Markus Ink" size:48]
+#define HIGHLIGHT_COLLECTION_FONT [UIFont fontWithName:@"Markus Ink" size:20]
 #define MENU_FONT_COLOR [UIColor blackColor]
 
 // widths
@@ -42,6 +43,9 @@
 
 #define CREAM [UIColor colorWithRed:229.0/255.0 green:231.0/255.0 blue:213.0/255.0 alpha:1.0]
 #define CLAY [UIColor colorWithRed:232.0/255.0 green:234.0/255.0 blue:219.0/255.0 alpha:1.0]
+
+#define SKY [UIColor colorWithRed:87.0/255.0 green:214.0/255.0 blue:252.0/255.0 alpha:1.0]
+#define CAMO [UIColor colorWithRed:82.0/255.0 green:159.0/255.0 blue:36.0/255.0 alpha:1.0]
 
 #define COLOUR_OFF_WHITE [UIColor colorWithRed:248.0/255.0 green:248.0/255.0 blue:248.0/255.0 alpha:1.0]
 #define COLOUR_GREEN [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
