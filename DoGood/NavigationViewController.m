@@ -55,10 +55,13 @@
         [weakSelf setViewControllers:@[exploreController] animated:NO];
     }];
 
-    REMenuItem *rewardsItem = [[REMenuItem alloc] initWithTitle:@"Rewards" subtitle:nil image:nil highlightedImage:nil action:^(REMenuItem *item) {
-        NSLog(@"Item: %@", item);
-        [self showRewards];
-    }];
+    REMenuItem *rewardsItem;
+    if (REWARDS_ENABLED) {
+        REMenuItem *rewardsItem = [[REMenuItem alloc] initWithTitle:@"Rewards" subtitle:nil image:nil highlightedImage:nil action:^(REMenuItem *item) {
+            NSLog(@"Item: %@", item);
+            [self showRewards];
+        }];
+    }
 
     REMenuItem *profileItem = [[REMenuItem alloc] initWithTitle:@"My Profile" image:nil highlightedImage:nil action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
@@ -74,8 +77,13 @@
     exploreItem.tag = 1;
     rewardsItem.tag = 3;
     profileItem.tag = 4;
-    
-    _menu = [[REMenu alloc] initWithItems:@[homeItem, exploreItem, rewardsItem, profileItem]];
+
+    if (REWARDS_ENABLED) {
+        _menu = [[REMenu alloc] initWithItems:@[homeItem, exploreItem, rewardsItem, profileItem]];
+    } else {
+        _menu = [[REMenu alloc] initWithItems:@[homeItem, exploreItem, profileItem]];
+    }
+
     _menu.cornerRadius = 4;
     _menu.shadowRadius = 1;
     _menu.shadowColor = [UIColor blackColor];

@@ -8,6 +8,8 @@
     #define LOCALHOST @"http://192.168.59.8"
 #endif
 
+#define REWARDS_ENABLED 0
+
 #define DEVELOPMENT_LOGS 0
 #define DEVELOPMENT 1
 #if DEVELOPMENT

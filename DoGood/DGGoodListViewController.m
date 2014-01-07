@@ -117,7 +117,7 @@
 }
 
 - (void)setupUserPoints {
-    if (_category == nil && _tag == nil && _path == nil) {
+    if (_category == nil && _tag == nil && _path == nil && REWARDS_ENABLED) {
         userView = [[UserOverview alloc] initWithController:self.navigationController];
         [_tableView setTableHeaderView:userView];
     }
