@@ -134,7 +134,7 @@
             imageView.image = self.good.nominee.avatarImage;
             cell.accessoryView = imageView;
         } else {
-            cell.textLabel.text = @"Add a nominee";
+            cell.textLabel.text = @"Who did good?";
             cell.imageView.image = [UIImage imageNamed:@"NomineeIconOff.png"];
         }
         return cell;
@@ -159,7 +159,7 @@
             cell.imageView.image = [UIImage imageNamed:@"LocationIconOn.png"];
             cell.textLabel.text = self.good.location_name;
         } else {
-            cell.textLabel.text = @"Add a location";
+            cell.textLabel.text = @"Where?";
             cell.imageView.image = [UIImage imageNamed:@"LocationIconOff.png"];
         }
         // Configure the cell...
