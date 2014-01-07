@@ -338,7 +338,7 @@
         DebugLog(@"failed! %i", statusCode);
 
         switch (statusCode) {
-            case 0: // No internet connection
+            case 0: // no internet connection
             {
                 [TSMessage showNotificationInViewController:nav title:@"Couldn't connect" subtitle:@"No internet connection" type:TSMessageNotificationTypeError];
             }
@@ -346,7 +346,7 @@
             case  401: // not authenticated
             {
                 [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailSilentAuthenticationNotification object:nil];
-                DebugLog(@"present welcome screen");
+                DebugLog(@"present create account/sign up screen");
             }
                 break;
 
