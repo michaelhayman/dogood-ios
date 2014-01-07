@@ -200,3 +200,5 @@ extern NSString* const ExternalNomineeWasChosen;
 #define FACEBOOK_APP_ID @"151726295032833"
 
 
+// reusable tableview cells
+#define kCategoryCell @"CategoryCell"

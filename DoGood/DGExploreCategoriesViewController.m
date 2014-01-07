@@ -12,8 +12,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Categories";
-    UINib *categoryNib = [UINib nibWithNibName:@"CategoryCell" bundle:nil];
-    [tableView registerNib:categoryNib forCellReuseIdentifier:@"CategoryCell"];
+    UINib *categoryNib = [UINib nibWithNibName:kCategoryCell bundle:nil];
+    [tableView registerNib:categoryNib forCellReuseIdentifier:kCategoryCell];
 
     if (exploreHighlights == nil) {
         exploreHighlights = [[ExploreHighlightsCell alloc] initWithController:self.navigationController];

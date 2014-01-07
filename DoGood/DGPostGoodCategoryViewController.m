@@ -1,5 +1,6 @@
 #import "DGPostGoodCategoryViewController.h"
 #import "DGCategory.h"
+#import "CategoryCell.h"
 
 @interface DGPostGoodCategoryViewController ()
 
@@ -11,6 +12,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupMenuTitle:@"Category"];
+    UINib *categoryNib = [UINib nibWithNibName:kCategoryCell bundle:nil];
+    [self.tableView registerNib:categoryNib forCellReuseIdentifier:kCategoryCell];
 
     // customize look
     self.tableView.backgroundColor = [UIColor clearColor];
@@ -36,22 +39,18 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"category";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString * reuseIdentifier = @"CategoryCell";
+    CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     DGCategory *category = categories[indexPath.row];
-    cell.textLabel.text = category.name;
-
-    if ([category image]) {
-        cell.imageView.image = [category image];
-    } else {
-        NSURL *url = [NSURL URLWithString:category.image_url];
-        [cell.imageView setImageWithURL:url placeholderImage:[UIImage imageNamed:@"category_empty.png"]];
-    }
+    cell.category = category;
+    [cell setValues];
+    cell.navigationController = self.navigationController;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
+    return 80;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
