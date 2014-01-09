@@ -47,6 +47,12 @@
     [self setupInfiniteScroll];
 
     [self reloadComments];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authenticate) name:DGUserDidFailSilentAuthenticationNotification object:nil];
+}
+
+- (void)authenticate {
+    [[DGUser currentUser] authorizeAccess:self];
 }
 
 - (void)didReceiveMemoryWarning {
