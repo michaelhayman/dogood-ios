@@ -159,16 +159,18 @@
         }
         [self setupTabs];
 
-        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:user.avatar] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
-        [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-            avatar.image = image;
-            if (ownProfile) {
-               avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
-                [avatar bringSubviewToFront:avatarOverlay];
-            }
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-            DebugLog(@"Failed to retrieve avatar.");
-        }];
+        if (!avatar.image) {
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:user.avatar] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
+            [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                avatar.image = image;
+                if (ownProfile) {
+                   avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
+                    [avatar bringSubviewToFront:avatarOverlay];
+                }
+            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                DebugLog(@"Failed to retrieve avatar.");
+            }];
+        }
         [loadingView loadingSucceeded];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
