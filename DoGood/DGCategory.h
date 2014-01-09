@@ -7,6 +7,7 @@
 @property (copy) NSString *image_url;
 
 - (UIImage *)image;
+- (UIImage *)contentIcon;
 - (UIColor *)rgbColour;
 
 @end

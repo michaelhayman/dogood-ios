@@ -96,8 +96,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     [self.moreOptions addTarget:self action:@selector(openMoreOptions) forControlEvents:UIControlEventTouchUpInside];
     [self setupMoreOptions];
 
-    categoryImage.image = [UIImage imageNamed:@"CategoryIconOn"];
-    locationImage.image = [UIImage imageNamed:@"LocationIconOn"];
+    locationImage.image = [UIImage imageNamed:@"icon_content_pin"];
 }
 
 - (void)dealloc {
@@ -199,6 +198,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     if (self.good.category) {
         categoryTitle.text = self.good.category.name;
         [self showCategory];
+        categoryImage.image = [self.good.category contentIcon];
     } else {
         categoryTitle.text = nil;
         [self hideCategory];
