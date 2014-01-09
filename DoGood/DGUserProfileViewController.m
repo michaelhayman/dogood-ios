@@ -144,7 +144,9 @@
         user = mappingResult.array[0];
 
         followers.text = [NSString stringWithFormat:@"%@ follower%@", user.followers_count, [DGAppearance pluralForCount:user.followers_count]];
+        [followers sizeToFit];
         following.text = [NSString stringWithFormat:@"%@ following", user.following_count];
+        [following sizeToFit];
 
         name.text = user.full_name;
         if ([user.current_user_following boolValue] == YES) {
