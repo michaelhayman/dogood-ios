@@ -47,7 +47,7 @@
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HI5-RN-LeS">
-                        <rect key="frame" x="94" y="407" width="200" height="20"/>
+                        <rect key="frame" x="101" y="407" width="200" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -59,7 +59,7 @@
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WnP-ZZ-Lfp">
-                        <rect key="frame" x="94" y="382" width="200" height="20"/>
+                        <rect key="frame" x="101" y="382" width="200" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -236,10 +236,10 @@
                     <constraint firstItem="335" firstAttribute="height" secondItem="178" secondAttribute="height" id="PjQ-kR-rcz"/>
                     <constraint firstItem="217" firstAttribute="leading" secondItem="178" secondAttribute="trailing" constant="2" id="UXC-Uf-c9F"/>
                     <constraint firstItem="EJn-jJ-p9f" firstAttribute="leading" secondItem="191" secondAttribute="leading" id="YgE-hN-0ld"/>
-                    <constraint firstItem="WnP-ZZ-Lfp" firstAttribute="leading" secondItem="58K-AX-OCA" secondAttribute="trailing" id="aGG-6f-qRa"/>
+                    <constraint firstItem="WnP-ZZ-Lfp" firstAttribute="leading" secondItem="58K-AX-OCA" secondAttribute="trailing" constant="7" id="aGG-6f-qRa"/>
                     <constraint firstItem="9n7-gP-4eG" firstAttribute="top" secondItem="58K-AX-OCA" secondAttribute="bottom" constant="5" id="ajs-TZ-3Ze"/>
                     <constraint firstItem="166" firstAttribute="leading" secondItem="335" secondAttribute="trailing" constant="3" id="gLG-wO-n1D"/>
-                    <constraint firstItem="HI5-RN-LeS" firstAttribute="leading" secondItem="9n7-gP-4eG" secondAttribute="trailing" id="ixO-2o-Bhd"/>
+                    <constraint firstItem="HI5-RN-LeS" firstAttribute="leading" secondItem="9n7-gP-4eG" secondAttribute="trailing" constant="7" id="ixO-2o-Bhd"/>
                     <constraint firstItem="WCI-2A-oec" firstAttribute="leading" secondItem="191" secondAttribute="trailing" constant="8" id="l4L-jq-E8h"/>
                     <constraint firstItem="HI5-RN-LeS" firstAttribute="top" secondItem="9n7-gP-4eG" secondAttribute="top" id="sxJ-Br-9Z3"/>
                     <constraint firstItem="73" firstAttribute="leading" secondItem="WCI-2A-oec" secondAttribute="leading" id="uSk-Mp-Qy6"/>
