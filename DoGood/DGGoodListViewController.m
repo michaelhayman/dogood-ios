@@ -40,6 +40,7 @@
     goodTableView.navigationController = self.navigationController;
     goodTableView.parent = self;
     [goodTableView setupRefresh];
+    [self getGood];
 
     [self setupUserPoints];
 }
@@ -52,6 +53,10 @@
         DGPostGoodViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"PostGood"];
         [self.navigationController pushViewController:controller animated:YES];
     }
+}
+
+- (void)authenticate {
+    [[DGUser currentUser] authorizeAccess:self];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -69,7 +74,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(welcomeScreen) name:DGUserDidFailSilentAuthenticationNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authenticate) name:DGUserDidFailSilentAuthenticationNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:userView selector:@selector(setContent) name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayPostSuccessMessage) name:DGUserDidPostGood object:nil];
@@ -113,8 +118,6 @@
 - (void)showWelcome {
     if (![[DGUser currentUser] isSignedIn]) {
         [self welcomeScreen];
-    } else {
-        [self getGood];
     }
 }
 
