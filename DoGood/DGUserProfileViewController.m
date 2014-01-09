@@ -143,8 +143,7 @@
         user = [DGUser new];
         user = mappingResult.array[0];
 
-        followers.text = [NSString stringWithFormat:@"%@ FOLLOWERS", user.followers_count];
-        following.text = [NSString stringWithFormat:@"%@ FOLLOWING", user.following_count];
+        followers.text = [NSString stringWithFormat:@"%@ FOLLOWERS, %@ FOLLOWING", user.followers_count, user.following_count];
 
         name.text = user.full_name;
         if ([user.current_user_following boolValue] == YES) {
