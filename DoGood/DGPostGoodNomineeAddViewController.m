@@ -8,22 +8,8 @@
     [super viewDidLoad];
     nominee = [DGNominee new];
     [[nominateButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        NSLog(@"button tapped");
-        BOOL errors = YES;
-        NSString *message;
-        if ([nameField.text length] == 0) {
-            errors = YES;
-            message = @"Insufficient name input.";
-        } else {
-            errors = NO;
-        }
-
-        if (!errors) {
-            [self fillInNomineeFromFields];
-            [self nominate:nil];
-        } else {
-            DebugLog(@"%@", message);
-        }
+        DebugLog(@"button tapped");
+        [self checkInputSilently:NO];
     }];
 
     // photos
@@ -33,6 +19,26 @@
     UITapGestureRecognizer* imageGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoSheet)];
     [avatarImage setUserInteractionEnabled:YES];
     [avatarImage addGestureRecognizer:imageGesture];
+}
+
+- (void)checkInputSilently:(BOOL)silent {
+    BOOL errors = YES;
+    NSString *message;
+    if ([nameField.text length] == 0) {
+        errors = YES;
+        message = @"Insufficient name input.";
+    } else {
+        errors = NO;
+    }
+
+    if (!errors) {
+        [self fillInNomineeFromFields];
+        [self nominate:nil];
+    } else {
+        if (silent == NO) {
+            DebugLog(@"%@", message);
+        }
+    }
 }
 
 - (void)openPhotoSheet {

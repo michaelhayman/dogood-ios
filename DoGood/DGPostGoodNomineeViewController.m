@@ -49,8 +49,7 @@
 - (void)didMoveToParentViewController:(UIViewController *)parent {
     if (![parent isEqual:self.parentViewController]) {
         DebugLog(@"Back pressed");
-        [self.addView fillInNomineeFromFields];
-        [self.addView nominate:nil];
+        [self.addView checkInputSilently:YES];
     }
 }
 
