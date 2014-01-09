@@ -60,6 +60,7 @@
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     imagePicker.delegate = self;
     imagePicker.allowsEditing = YES;
+    imagePicker.navigationBar.barTintColor = VIVID;
     [_parent presentViewController:imagePicker animated:YES completion:nil];
 }
 
