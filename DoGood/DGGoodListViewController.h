@@ -13,8 +13,8 @@
 
 @property (nonatomic, copy) NSString *path;
 @property (nonatomic, strong) NSString *titleForPath;
-@property (nonatomic, weak) DGCategory *category;
-@property (nonatomic, weak) DGTag *tag;
+@property (nonatomic, strong) DGCategory *category;
+@property (nonatomic, strong) DGTag *tag;
 @property (nonatomic, strong) NSNumber *goodID;
 
 - (void)showWelcome;
