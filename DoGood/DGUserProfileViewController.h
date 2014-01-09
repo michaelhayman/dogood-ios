@@ -33,7 +33,7 @@
     __weak IBOutlet AuthenticateView *authenticateView;
 }
 
-@property (weak, nonatomic) NSNumber *userID;
+@property (strong, nonatomic) NSNumber *userID;
 @property bool fromMenu;
 
 - (void)toggleFollow;
