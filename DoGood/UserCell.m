@@ -27,8 +27,8 @@
         [self.follow addTarget:self action:@selector(followUser) forControlEvents:UIControlEventTouchUpInside];
     }
 
-    // hide the follow button for the own user
-    if ([self.user.userID isEqualToNumber:[DGUser currentUser].userID]) {
+    // hide the follow button for ther user's own record or if they aren't signed in
+    if ([self.user.userID isEqualToNumber:[DGUser currentUser].userID] || ![[DGUser currentUser] isSignedIn]) {
         self.follow.hidden = YES;
     } else {
         self.follow.hidden = NO;
