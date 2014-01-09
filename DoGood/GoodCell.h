@@ -51,7 +51,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *regood;
 @property (weak, nonatomic) IBOutlet UIButton *moreOptions;
 @property (weak, nonatomic) DGGood *good;
-@property (weak, nonatomic) DGGoodListViewController *parent;
+@property (weak, nonatomic) UIViewController *parent;
 @property (weak, nonatomic) UINavigationController *navigationController;
 @property (weak, nonatomic) IBOutlet UIImageView *done;
 

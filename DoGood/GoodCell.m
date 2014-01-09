@@ -534,7 +534,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 - (void)reloadCell {
     UITableView *table = (UITableView *)self.superview.superview;
     NSIndexPath *indexPath = [table indexPathForCell:(UITableViewCell *)self];
-    [self.parent reloadCellAtIndexPath:indexPath withGood:self.good];
+    // [self.parent reloadCellAtIndexPath:indexPath withGood:self.good];
 }
 
 @end

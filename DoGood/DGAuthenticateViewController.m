@@ -1,4 +1,5 @@
 #import "DGAuthenticateViewController.h"
+#import "AuthenticateView.h"
 
 @interface DGAuthenticateViewController ()
 @end
@@ -9,6 +10,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.barTintColor = VIVID;
+    authenticateView.navigationController = self.navigationController;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -1,7 +1,7 @@
 #import "DGUserProfileViewController.h"
 #import "DGWelcomeViewController.h"
 #import "DGUserSettingsViewController.h"
-#import "DGGoodListViewController.h"
+#import "GoodTableView.h"
 #import "DGUserListViewController.h"
 #import "DGUserFindFriendsViewController.h"
 #import "GoodCell.h"
@@ -11,6 +11,7 @@
 #import "DGUserInvitesViewController.h"
 #import "DGAppearance.h"
 #import "DGLoadingView.h"
+#import "GoodTableView.h"
 
 @interface DGUserProfileViewController ()
 
@@ -39,6 +40,7 @@
     [self setupMenuTitle:@"You"];
     UIBarButtonItem *connectButton;
     if (ownProfile) {
+        [self setDefaults];
         connectButton = [[UIBarButtonItem alloc] initWithTitle:@"Find Friends" style: UIBarButtonItemStylePlain target:self action:@selector(findFriends:)];
         [centralButton addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
         [centralButton setTitle:@"Settings" forState:UIControlStateNormal];
@@ -60,17 +62,10 @@
     [self getProfile];
 
     // get good list
-    goodList = [[DGGoodListViewController alloc] init];
-
-    goodList.loadController = self.navigationController;
-    tableView.dataSource = goodList;
-    tableView.delegate = goodList;
-    goodList.tableView = tableView;
-    [goodList initializeTable];
-    [goodList setupRefresh];
-    [goodList setupInfiniteScroll];
+    goodTableView.navigationController = self.navigationController;
+    goodTableView.parent = self;
+    [goodTableView setupRefresh];
     [self getUserGood];
-    [tableView setTableHeaderView:headerView];
 
     // setup following / followers text
     UITapGestureRecognizer* followersGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFollowers)];
@@ -95,6 +90,25 @@
 
     invites = [[DGUserInvitesViewController alloc] init];
     invites.parent = (UIViewController *)self;
+    authenticateView.navigationController = self.navigationController;
+
+    name.font = PROFILE_FONT;
+    name.textColor = [UIColor whiteColor];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.view bringSubviewToFront:authenticateView];
+    authenticateView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    if (![[DGUser currentUser] isSignedIn]) {
+        authenticateView.hidden = NO;
+    } else {
+        authenticateView.hidden = YES;
+    }
+}
+
+- (void)setDefaults {
+    name.text = [DGUser currentUser].full_name;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -157,6 +171,7 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
         [loadingView loadingFailed];
+        [loadingView loadingSucceeded];
     }];
 }
 
@@ -313,8 +328,8 @@
         [goodsButton setSelected:YES];
         [likesButton setSelected:NO];
         NSString *path = [NSString stringWithFormat:@"/goods/posted_or_followed_by?user_id=%@", self.userID];
-        goodList.path = path;
-        [goodList reloadGood];
+        [goodTableView resetGood];
+        [goodTableView loadGoodsAtPath:path];
     }
 }
 
@@ -323,20 +338,9 @@
         [goodsButton setSelected:NO];
         [likesButton setSelected:YES];
         NSString *path = [NSString stringWithFormat:@"/goods/liked_by?user_id=%@", self.userID];
-        goodList.path = path;
-        [goodList reloadGood];
+        [goodTableView resetGood];
+        [goodTableView loadGoodsAtPath:path];
     }
 }
-
-/*
-- (void)getGoodsAtPath:(NSString *)path {
-    [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        goods = [[NSArray alloc] initWithArray:mappingResult.array];
-        [tableView reloadData];
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        DebugLog(@"Operation failed with error: %@", error);
-    }];
-}
- */
 
 @end

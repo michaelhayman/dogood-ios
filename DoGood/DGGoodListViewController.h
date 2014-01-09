@@ -4,32 +4,20 @@
 @class DGTag;
 @class DGGood;
 @class DGLoadingView;
+@class GoodTableView;
 
-@interface DGGoodListViewController : RootViewController <UITableViewDelegate, UITableViewDataSource> {
-    int page;
-    bool showNoResultsMessage;
-    NSMutableArray *goods;
-    NSMutableArray *cellHeights;
+@interface DGGoodListViewController : RootViewController {
     UserOverview *userView;
+    __weak IBOutlet GoodTableView *goodTableView;
 }
 
-@property (nonatomic, strong) DGLoadingView *loadingView;
-@property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, copy) NSString *path;
 @property (nonatomic, strong) NSString *titleForPath;
 @property (nonatomic, weak) DGCategory *category;
 @property (nonatomic, weak) DGTag *tag;
 @property (nonatomic, strong) NSNumber *goodID;
-@property (nonatomic, weak) UINavigationController *loadController;
 
 - (void)showWelcome;
-- (void)reloadCellAtIndexPath:(NSIndexPath *)indexPath withGood:(DGGood *)good;
 - (void)getGood;
-- (void)reloadGood;
-- (void)loadMoreGood;
-- (void)resetGood;
-- (void)initializeTable;
-- (void)setupRefresh;
-- (void)setupInfiniteScroll;
 
 @end

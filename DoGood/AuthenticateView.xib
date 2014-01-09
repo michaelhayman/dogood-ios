@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AuthenticateView">
+            <connections>
+                <outlet property="view" destination="1" id="OKP-34-CSk"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tour_do" translatesAutoresizingMaskIntoConstraints="NO" id="xPS-OF-pal">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pSG-l8-fAX">
+                    <rect key="frame" x="49" y="382" width="223" height="40"/>
+                    <color key="backgroundColor" red="0.1058823529" green="0.79215686269999996" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="nuJ-uJ-ozp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Create Account">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="createAccount:" destination="-1" eventType="touchUpInside" id="7v7-4y-dnm"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pod-dS-f7H">
+                    <rect key="frame" x="49" y="438" width="223" height="40"/>
+                    <color key="backgroundColor" red="0.1058823529" green="0.79215686269999996" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="f0k-UL-RHC"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                    <state key="normal" title="Sign In">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="signIn:" destination="-1" eventType="touchUpInside" id="9fb-Dc-JcX"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="pSG-l8-fAX" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="49" id="5ed-aX-Ocv"/>
+                <constraint firstAttribute="bottom" secondItem="pod-dS-f7H" secondAttribute="bottom" constant="26" id="5xp-io-Egn"/>
+                <constraint firstItem="pod-dS-f7H" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="49" id="Bif-sA-eEK"/>
+                <constraint firstItem="pod-dS-f7H" firstAttribute="top" secondItem="pSG-l8-fAX" secondAttribute="bottom" constant="16" id="FNN-ih-Pii"/>
+                <constraint firstAttribute="trailing" secondItem="pSG-l8-fAX" secondAttribute="trailing" constant="48" id="MHr-83-8Rl"/>
+                <constraint firstAttribute="trailing" secondItem="pod-dS-f7H" secondAttribute="trailing" constant="48" id="WpD-dP-7KO"/>
+                <constraint firstItem="xPS-OF-pal" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="bjg-gI-A22"/>
+                <constraint firstAttribute="bottom" secondItem="xPS-OF-pal" secondAttribute="bottom" id="cb0-lU-KiX"/>
+                <constraint firstItem="xPS-OF-pal" firstAttribute="top" secondItem="1" secondAttribute="top" id="iav-ma-h0b"/>
+                <constraint firstAttribute="trailing" secondItem="xPS-OF-pal" secondAttribute="trailing" id="vLd-JX-fiM"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="tour_do" width="320" height="568"/>
+    </resources>
+</document>

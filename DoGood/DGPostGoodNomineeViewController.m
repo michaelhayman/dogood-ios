@@ -41,13 +41,29 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(pop)];
 }
 
 - (IBAction)next:(id)sender {
     DebugLog(@"next");
 }
 
+- (void)pop {
+    DebugLog(@"save");
+    [self.addView nominate:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+//    [self.addView nominate:nil];
+    /*
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        // back button was pressed.  We know this is true because self is no longer
+        // in the navigation stack.
+    }
+    */
+}
 - (void)nomineeChosen:(NSNotification *)notification {
     DGNominee *nominee = [[notification userInfo] valueForKey:@"nominee"];
     [self populateNominee:nominee];
@@ -104,7 +120,6 @@
     tabControl.selectedSegmentIndex = index;
     return vc;
 }
-
 
 #pragma mark - other methods
 - (void)childViewController:(DGPostGoodNomineeViewController *)viewController didChooseNominee:(DGNominee *)nominee {

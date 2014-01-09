@@ -28,6 +28,7 @@
 #define kGoodCaptionFont [UIFont systemFontOfSize:14.]
 #define MENU_FONT [UIFont fontWithName:@"Markus Ink" size:56]
 #define CATEGORY_FONT [UIFont fontWithName:@"Markus Ink" size:48]
+#define PROFILE_FONT [UIFont fontWithName:@"Markus Ink" size:32]
 #define HIGHLIGHT_COLLECTION_FONT [UIFont fontWithName:@"Markus Ink" size:20]
 #define MENU_FONT_COLOR [UIColor blackColor]
 

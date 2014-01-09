@@ -1,6 +1,7 @@
+@class AuthenticateView;
+
 @interface DGAuthenticateViewController : UIViewController {
-    __weak IBOutlet UIButton *signInButton;
-    __weak IBOutlet UIButton *signUpButton;
+    __weak IBOutlet AuthenticateView *authenticateView;
 }
 
 @end

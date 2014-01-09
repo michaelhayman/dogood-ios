@@ -93,6 +93,9 @@
 		6386481F17ACEFAE00167F15 /* DGGoodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386481E17ACEFAE00167F15 /* DGGoodListViewController.m */; };
 		63902CEE1821C6D0003B84A1 /* DGGoodListNearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63902CED1821C6D0003B84A1 /* DGGoodListNearbyViewController.m */; };
 		6397318E17C1733D001B96BF /* DGUserTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */; };
+		639B1232187C0FA3005C9BD9 /* GoodTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B1231187C0FA3005C9BD9 /* GoodTableView.m */; };
+		639B1236187D0CB2005C9BD9 /* AuthenticateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B1234187D0CB2005C9BD9 /* AuthenticateView.m */; };
+		639B1237187D0CB2005C9BD9 /* AuthenticateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639B1235187D0CB2005C9BD9 /* AuthenticateView.xib */; };
 		639B88E417B9A25B005E2B62 /* DGVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B88E317B9A25A005E2B62 /* DGVote.m */; };
 		639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B891017BAEC1D005E2B62 /* DGFollow.m */; };
 		63A38D84181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A38D83181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m */; };
@@ -311,6 +314,11 @@
 		63902CED1821C6D0003B84A1 /* DGGoodListNearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGGoodListNearbyViewController.m; sourceTree = "<group>"; };
 		6397318C17C1733D001B96BF /* DGUserTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserTwitterViewController.h; sourceTree = "<group>"; };
 		6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserTwitterViewController.m; sourceTree = "<group>"; };
+		639B1230187C0FA3005C9BD9 /* GoodTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodTableView.h; sourceTree = "<group>"; };
+		639B1231187C0FA3005C9BD9 /* GoodTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodTableView.m; sourceTree = "<group>"; };
+		639B1233187D0CB2005C9BD9 /* AuthenticateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticateView.h; sourceTree = "<group>"; };
+		639B1234187D0CB2005C9BD9 /* AuthenticateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthenticateView.m; sourceTree = "<group>"; };
+		639B1235187D0CB2005C9BD9 /* AuthenticateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuthenticateView.xib; sourceTree = "<group>"; };
 		639B88E217B9A25A005E2B62 /* DGVote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGVote.h; sourceTree = "<group>"; };
 		639B88E317B9A25A005E2B62 /* DGVote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGVote.m; sourceTree = "<group>"; };
 		639B890F17BAEC1D005E2B62 /* DGFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFollow.h; sourceTree = "<group>"; };
@@ -455,6 +463,8 @@
 				63E0798717BC59C7006FC42E /* UITextFieldCell.xib */,
 				6308161317C3C19F004DE5D7 /* DGPhotoPickerViewController.h */,
 				6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */,
+				6356BDB0182891F4006AF033 /* UIViewController+DGViewController.h */,
+				6356BDB1182891F4006AF033 /* UIViewController+DGViewController.m */,
 				63E0798917BC5A6F006FC42E /* UITextFieldCell.h */,
 				63E0798A17BC5A6F006FC42E /* UITextFieldCell.m */,
 				635A232117CABEB30045C256 /* Categories.plist */,
@@ -560,6 +570,9 @@
 				6355EC3917B8680300EE91C0 /* SignUpOverviewCell.xib */,
 				6355EC3B17B86B7800EE91C0 /* SignUpOverviewCell.h */,
 				6355EC3C17B86B7B00EE91C0 /* SignUpOverviewCell.m */,
+				639B1233187D0CB2005C9BD9 /* AuthenticateView.h */,
+				639B1234187D0CB2005C9BD9 /* AuthenticateView.m */,
+				639B1235187D0CB2005C9BD9 /* AuthenticateView.xib */,
 				63BFB1E517C818DE004D990F /* DGUserSearchAddressBookViewController.h */,
 				63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */,
 				6358341717C88F3C00F997F6 /* DGUserSearchOtherViewController.h */,
@@ -608,6 +621,8 @@
 		636AEA6917AD4776002A3494 /* Do */ = {
 			isa = PBXGroup;
 			children = (
+				639B1230187C0FA3005C9BD9 /* GoodTableView.h */,
+				639B1231187C0FA3005C9BD9 /* GoodTableView.m */,
 				636FF5E718493F4A003774AE /* DGPostGoodNomineeViewController.h */,
 				636FF5E818493F4A003774AE /* DGPostGoodNomineeViewController.m */,
 				633DBF7017ADC4E50038BC2D /* DGPostGoodNomineeSearchViewController.h */,
@@ -623,8 +638,6 @@
 				636AEA9A17AD63EC002A3494 /* GoodCell.xib */,
 				636AEAA117AD77F0002A3494 /* DGPostGoodViewController.h */,
 				636AEAA217AD77F0002A3494 /* DGPostGoodViewController.m */,
-				6356BDB0182891F4006AF033 /* UIViewController+DGViewController.h */,
-				6356BDB1182891F4006AF033 /* UIViewController+DGViewController.m */,
 				63D4BCDD17FFDF7000ACF1B9 /* DGGoodCommentsViewController.h */,
 				63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */,
 				633DBF6517ADACEE0038BC2D /* DGPostGoodCategoryViewController.h */,
@@ -936,6 +949,7 @@
 				63DA645017DC0F6D003DFF03 /* Explore.storyboard in Resources */,
 				63DA645E17DC1715003DFF03 /* TagCell.xib in Resources */,
 				63DA646317DC189C003DFF03 /* CategoryCell.xib in Resources */,
+				639B1237187D0CB2005C9BD9 /* AuthenticateView.xib in Resources */,
 				63DBEE9017DD599600230D81 /* NoResultsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1067,6 +1081,7 @@
 				63A38D84181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m in Sources */,
 				6355EC3317B75EB600EE91C0 /* constants.m in Sources */,
 				63F2BD1A1820D923003D746E /* DGLoadingView.m in Sources */,
+				639B1232187C0FA3005C9BD9 /* GoodTableView.m in Sources */,
 				6355EC3D17B86B8400EE91C0 /* SignUpOverviewCell.m in Sources */,
 				639B88E417B9A25B005E2B62 /* DGVote.m in Sources */,
 				630046D01810E619001529E5 /* URLHandler.m in Sources */,
@@ -1098,6 +1113,7 @@
 				6358341617C88D3700F997F6 /* DGUserSearchFacebookViewController.m in Sources */,
 				6358341917C88F3C00F997F6 /* DGUserSearchOtherViewController.m in Sources */,
 				6358342E17C8A09700F997F6 /* Arrow.m in Sources */,
+				639B1236187D0CB2005C9BD9 /* AuthenticateView.m in Sources */,
 				635A232017CAB5150045C256 /* DGCategories.m in Sources */,
 				63B546A61859D17E00673B6C /* DGAuthenticateViewController.m in Sources */,
 				63DA644817DC0F04003DFF03 /* DGExploreViewController.m in Sources */,

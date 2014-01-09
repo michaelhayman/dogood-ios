@@ -1,7 +1,10 @@
 #import "RootViewController.h"
+#import "AuthenticateView.h"
+
 @class DGUserInvitesViewController;
 @class DGGoodListViewController;
 @class DGLoadingView;
+@class GoodTableView;
 
 @interface DGUserProfileViewController : RootViewController <UIActionSheetDelegate, UIAlertViewDelegate> {
     __weak IBOutlet UIButton *centralButton;
@@ -22,11 +25,12 @@
     __weak IBOutlet UIButton *likesButton;
 
     DGUserInvitesViewController *invites;
-    DGGoodListViewController *goodList;
+    __weak IBOutlet GoodTableView *goodTableView;
 
     UIActionSheet *moreOptionsSheet;
     UIActionSheet *shareOptionsSheet;
     DGLoadingView *loadingView;
+    __weak IBOutlet AuthenticateView *authenticateView;
 }
 
 @property (weak, nonatomic) NSNumber *userID;
