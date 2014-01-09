@@ -19,24 +19,13 @@
         }
 
         if (!errors) {
-            nominee.full_name = nameField.text;
-            nominee.avatarImage = avatarImage.image;
+            [self fillInNomineeFromFields];
             [self nominate:nil];
         } else {
             DebugLog(@"%@", message);
         }
     }];
 
-    /*
-    RACSignal *nameSignal = [nameField.rac_textSignal map:^id(NSString *value) {
-        return value;
-    }];
-
-    [nameSignal map:^id(NSString *value) {
-        nominee.full_name = value;
-        return nominee;
-    }];
-    */
     // photos
     photos = [[DGPhotoPickerViewController alloc] init];
     photos.parent = self;
@@ -50,7 +39,6 @@
     [photos openPhotoSheet:nominee.avatarImage];
 }
 
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
@@ -59,11 +47,19 @@
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
-- (void)fillInNominee:(DGNominee *)theNominee {
+- (void)fillInFieldsFromNominee:(DGNominee *)theNominee {
     nominee = theNominee;
     nameField.text = nominee.full_name;
-    emailField.text = nominee.email;
     avatarImage.image = nominee.avatarImage;
+    phoneField.text = nominee.phone;
+    emailField.text = nominee.email;
+}
+
+- (void)fillInNomineeFromFields {
+    nominee.full_name = nameField.text;
+    nominee.avatarImage = avatarImage.image;
+    nominee.phone = phoneField.text;
+    nominee.email = emailField.text;
 }
 
 - (IBAction)nominate:(id)sender {

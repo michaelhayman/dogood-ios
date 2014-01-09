@@ -40,30 +40,28 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:tabControl];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+// customize back button
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     self.navigationController.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(pop)];
 }
 
-- (IBAction)next:(id)sender {
-    DebugLog(@"next");
+// handle 'back' button
+- (void)didMoveToParentViewController:(UIViewController *)parent {
+    if (![parent isEqual:self.parentViewController]) {
+        DebugLog(@"Back pressed");
+        [self.addView fillInNomineeFromFields];
+        [self.addView nominate:nil];
+    }
 }
 
 - (void)pop {
-    DebugLog(@"save");
-    [self.addView nominate:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
--(void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-//    [self.addView nominate:nil];
-    /*
-    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
-        // back button was pressed.  We know this is true because self is no longer
-        // in the navigation stack.
-    }
-    */
 }
+
 - (void)nomineeChosen:(NSNotification *)notification {
     DGNominee *nominee = [[notification userInfo] valueForKey:@"nominee"];
     [self populateNominee:nominee];
@@ -71,7 +69,7 @@
 
 - (void)externalNomineeChosen:(NSNotification *)notification {
     DGNominee *nominee = [[notification userInfo] valueForKey:@"nominee"];
-    [self.addView fillInNominee:nominee];
+    [self.addView fillInFieldsFromNominee:nominee];
     [tabControl setSelectedSegmentIndex:0];
     [self showSectionAtIndex:tabControl.selectedSegmentIndex];
 }
