@@ -464,6 +464,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="10y-Ur-fpJ"/>
                                 </constraints>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="onTintColor" red="0.1058823529" green="0.79215686269999996" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="185" translatesAutoresizingMaskIntoConstraints="NO" id="J8Y-YB-d7o">
