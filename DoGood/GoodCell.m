@@ -393,7 +393,6 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     [self layoutIfNeeded];
 }
 
-
 #pragma mark - Description
 - (void)setCaptionText {
     NSDictionary *attributes = @{NSFontAttributeName : self.description.font};

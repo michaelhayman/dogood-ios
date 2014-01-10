@@ -28,20 +28,25 @@
     }
 
     // hide the follow button for ther user's own record or if they aren't signed in
+    // crashing here
     if ([self.user.userID isEqualToNumber:[DGUser currentUser].userID] || ![[DGUser currentUser] isSignedIn]) {
         self.follow.hidden = YES;
     } else {
         self.follow.hidden = NO;
     }
+
     // name
     self.username.text = self.user.full_name;
+
     // location
     if (self.user.location) {
         self.location.text = self.user.location;
     } else {
         self.location.text = @"";
     }
+
     [self.avatar setImageWithURL:[NSURL URLWithString:self.user.avatar]];
+
     // follows
     if ([self.user.current_user_following boolValue]) {
         [self.follow setSelected:YES];
