@@ -26,7 +26,7 @@
     UserCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     DGUser *user = users[indexPath.row];
     cell.user = user;
-    cell.disableSelection = YES;
+    cell.disableSelection = NO;
     cell.navigationController = self.navigationController;
     [cell setValues];
     return cell;
