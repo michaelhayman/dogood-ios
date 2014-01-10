@@ -65,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Lu-SN-yMJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="559" y="-925"/>
+            <point key="canvasLocation" x="890" y="-923"/>
         </scene>
         <!--Authenticate View Controller - Authenticate-->
         <scene sceneID="SHX-0D-525">
@@ -717,8 +717,11 @@
                                         </state>
                                         <state key="selected" backgroundImage="ProfileSettingsButtonTap">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="highlighted" backgroundImage="ProfileSettingsButtonTap"/>
+                                        <state key="highlighted" backgroundImage="ProfileSettingsButtonTap">
+                                            <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f9o-JQ-Apv">
                                         <rect key="frame" x="10" y="15" width="70" height="70"/>
@@ -918,7 +921,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tE8-Cb-sVN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="964" y="-925"/>
+            <point key="canvasLocation" x="1320" y="-923"/>
         </scene>
         <!--User Twitter View Controller - Twitter-->
         <scene sceneID="PPn-Um-flT">
