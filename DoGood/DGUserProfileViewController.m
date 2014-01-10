@@ -348,7 +348,7 @@
     if (goodsButton.selected == NO) {
         [goodsButton setSelected:YES];
         [likesButton setSelected:NO];
-        NSString *path = [NSString stringWithFormat:@"/goods/posted_or_followed_by?user_id=%@", self.userID];
+        NSString *path = [NSString stringWithFormat:@"/goods/nominations?user_id=%@", self.userID];
         [goodTableView resetGood];
         [goodTableView loadGoodsAtPath:path];
     }
