@@ -89,7 +89,7 @@
         @"id" : @"nomineeID",
     }];
     NSArray *nomineeArray = @[
-      @"name",
+      @"full_name",
       @"twitter_id",
       @"facebook_id",
       @"email",
@@ -288,6 +288,7 @@
     RKObjectMapping* goodRequestMapping = [RKObjectMapping requestMapping];
     [goodRequestMapping addAttributeMappingsFromArray:@[ @"caption", @"category_id", @"location_name", @"location_image", @"lat", @"lng" ]];
     [goodRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"entities" toKeyPath:@"entities_attributes" withMapping:entityRequestMapping]];
+    [goodRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"nominee" toKeyPath:@"nominee_attributes" withMapping:nomineeRequestMapping]];
     RKRequestDescriptor *goodRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:goodRequestMapping objectClass:[DGGood class] rootKeyPath:@"good" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:goodRequestDescriptor];
 
