@@ -30,6 +30,7 @@
     if (self.userID == nil) {
         self.userID = [DGUser currentUser].userID;
     }
+
     ownProfile = [self.userID isEqualToNumber:[DGUser currentUser].userID];
 
     if (self.fromMenu) {
@@ -38,25 +39,8 @@
 
     // conditional settings on user
     [self setupMenuTitle:@"You"];
-    UIBarButtonItem *connectButton;
-    if (ownProfile) {
-        [self setDefaults];
-        connectButton = [[UIBarButtonItem alloc] initWithTitle:@"Find Friends" style: UIBarButtonItemStylePlain target:self action:@selector(findFriends:)];
-        [centralButton addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
-        [centralButton setTitle:@"Settings" forState:UIControlStateNormal];
-    } else {
-        // block menu options
-        connectButton = [[UIBarButtonItem alloc] initWithTitle:@"..." style: UIBarButtonItemStylePlain target:self action:@selector(openActionMenu:)];
-        [self setupMoreOptions];
 
-        [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButton"] forState:UIControlStateNormal];
-        [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButtonTap"] forState:UIControlStateHighlighted];
-        [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowingButton"] forState:UIControlStateSelected];
-        [centralButton setTitle:@"Follow" forState:UIControlStateNormal];
-        [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [centralButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
-    }
-    self.navigationItem.rightBarButtonItem = connectButton;
+    [self setupMoreOptions];
 
     // retrieve profile
     [self getProfile];
@@ -102,8 +86,10 @@
     authenticateView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     if (![[DGUser currentUser] isSignedIn]) {
         authenticateView.hidden = NO;
+        [self removeMoreOptions];
     } else {
         authenticateView.hidden = YES;
+        [self setupMoreOptions];
     }
 }
 
@@ -118,12 +104,14 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getProfile) name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getProfile) name:DGUserDidUpdateAccountNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getProfile) name:DGUserDidUpdateFollowingsNotification object:nil];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidUpdateAccountNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidUpdateFollowingsNotification object:nil];
 }
@@ -131,9 +119,9 @@
 #pragma mark - Tabs
 - (void)setupTabs {
     [goodsButton addTarget:self action:@selector(getUserGood) forControlEvents:UIControlEventTouchUpInside];
-    [goodsButton setTitle:[NSString stringWithFormat:@"%@ GOODS", user.posted_or_followed_goods_count] forState:UIControlStateNormal];
+    [goodsButton setTitle:[NSString stringWithFormat:@"%@ Nominations", user.posted_or_followed_goods_count] forState:UIControlStateNormal];
     [likesButton addTarget:self action:@selector(getUserLikes) forControlEvents:UIControlEventTouchUpInside];
-    [likesButton setTitle:[NSString stringWithFormat:@"%@ LIKES", user.liked_goods_count] forState:UIControlStateNormal];
+    [likesButton setTitle:[NSString stringWithFormat:@"%@ Likes", user.liked_goods_count] forState:UIControlStateNormal];
 }
 
 #pragma mark - User retrieval
@@ -149,11 +137,15 @@
         [following sizeToFit];
 
         name.text = user.full_name;
+
         if ([user.current_user_following boolValue] == YES) {
             centralButton.selected = YES;
             [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowingButtonTap"] forState:UIControlStateHighlighted];
             [centralButton setTitle:@"Following" forState:UIControlStateNormal];
+        } else {
+            DebugLog(@"not following");
         }
+
         if (!ownProfile) {
             [self setupMenuTitle:@"Profile"];
         }
@@ -230,14 +222,39 @@
 }
 
 - (void)setupMoreOptions {
-    moreOptionsSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                delegate:self
-                                       cancelButtonTitle:@"Cancel"
-                                  destructiveButtonTitle:@"Report user"
-                                       otherButtonTitles:@"Share profile", nil];
-    [moreOptionsSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-    moreOptionsSheet.delegate = self;
-    [self setupShareOptions];
+    if (ownProfile) {
+        [self setDefaults];
+        UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:@"Find Friends" style: UIBarButtonItemStylePlain target:self action:@selector(findFriends:)];
+        [centralButton addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
+        [centralButton setTitle:@"Settings" forState:UIControlStateNormal];
+        self.navigationItem.rightBarButtonItem = connectButton;
+    } else {
+        // block menu options
+
+        [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButton"] forState:UIControlStateNormal];
+        [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButtonTap"] forState:UIControlStateHighlighted];
+        [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowingButton"] forState:UIControlStateSelected];
+        [centralButton setTitle:@"Follow" forState:UIControlStateNormal];
+        [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+        [centralButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
+
+        UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:@"..." style: UIBarButtonItemStylePlain target:self action:@selector(openActionMenu:)];
+        self.navigationItem.rightBarButtonItem = connectButton;
+
+        moreOptionsSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                    delegate:self
+                                           cancelButtonTitle:@"Cancel"
+                                      destructiveButtonTitle:@"Report user"
+                                           otherButtonTitles:@"Share profile", nil];
+        [moreOptionsSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+        moreOptionsSheet.delegate = self;
+
+        [self setupShareOptions];
+    }
+}
+
+- (void)removeMoreOptions {
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 - (void)setupShareOptions {
