@@ -430,12 +430,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
 #pragma mark - Share options
 - (void)setupShareOptions {
-    shareOptionsSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                    delegate:self
-                                           cancelButtonTitle:@"Cancel"
-                                      destructiveButtonTitle:nil
-                                           otherButtonTitles:@"Text message", @"Email", nil];
-                                           // otherButtonTitles:@"Text message", @"Email", @"Facebook", @"Twitter", nil];
+    shareOptionsSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Text message", @"Email", nil]; // otherButtonTitles:@"Text message", @"Email", @"Facebook", @"Twitter", nil];
     [shareOptionsSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
     shareOptionsSheet.delegate = self;
 }
