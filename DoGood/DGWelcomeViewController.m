@@ -27,6 +27,7 @@
 }
 
 - (IBAction)getStarted:(id)sender {
+    [DGUser welcomeMessageShown];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

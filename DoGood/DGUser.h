@@ -28,6 +28,10 @@
 + (void)setCurrentUser:(DGUser*)user;
 + (void)signInWasSuccessful;
 
+#pragma mark - Welcome screen
++ (BOOL)showWelcomeMessage;
++ (void)welcomeMessageShown;
+
 #pragma mark - HTTP Headers
 + (void)setAuthorizationHeader;
 + (void)setUpUserAuthentication;

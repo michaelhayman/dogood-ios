@@ -118,7 +118,7 @@
 
 #pragma mark - Points
 - (void)showWelcome {
-    if (![[DGUser currentUser] isSignedIn]) {
+    if ([DGUser showWelcomeMessage]) {
         [self welcomeScreen];
     }
 }

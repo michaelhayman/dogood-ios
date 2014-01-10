@@ -38,6 +38,19 @@ static DGUser* currentUser = nil;
 	currentUser = user;
 }
 
+#pragma mark - Welcome screen
++ (BOOL)showWelcomeMessage {
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"welcomeShown"]) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
++ (void)welcomeMessageShown {
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"welcomeShown"];
+}
+
 #pragma mark - HTTP Headers
 + (void)setAuthorizationHeader {
     [[RKObjectManager sharedManager].HTTPClient setAuthorizationHeaderWithUsername:currentUser.email password:currentUser.password];
