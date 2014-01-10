@@ -403,6 +403,12 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
     [self.description hashIfy:self.description.attributedText inLabel:self.description];
 
+    // duplicate hashing here
+    for (DGEntity *entity in self.good.entities) {
+        NSURL *url = [NSURL URLWithString:entity.link];
+        [self.description addLinkToURL:url withRange:[entity rangeFromArrayWithOffset:0]];
+    }
+
     self.description.delegate = self;
 }
 

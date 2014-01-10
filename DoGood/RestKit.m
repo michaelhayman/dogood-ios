@@ -287,7 +287,7 @@
 
     RKObjectMapping* goodRequestMapping = [RKObjectMapping requestMapping];
     [goodRequestMapping addAttributeMappingsFromArray:@[ @"caption", @"category_id", @"location_name", @"location_image", @"lat", @"lng" ]];
-    [goodRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"entities" toKeyPath:@"entities_attributes" withMapping:entityMapping]];
+    [goodRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"entities" toKeyPath:@"entities_attributes" withMapping:entityRequestMapping]];
     RKRequestDescriptor *goodRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:goodRequestMapping objectClass:[DGGood class] rootKeyPath:@"good" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:goodRequestDescriptor];
 
