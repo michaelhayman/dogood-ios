@@ -40,8 +40,10 @@
 @property (retain) NSArray *entities;
 // done status
 @property (retain) NSNumber *done;
+@property (retain) NSDate *created_at;
 
 - (void)setValuesForLocation:(FSLocation *)location;
 - (void)setValuesForCategory:(DGCategory *)category;
+- (NSString *)createdAgoInWords;
 
 @end

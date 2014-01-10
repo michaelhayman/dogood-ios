@@ -274,7 +274,8 @@
      @"regoods_count",
      @"comments_count",
      @"evidence",
-     @"done"
+     @"done",
+     @"created_at"
     ]];
 
     RKResponseDescriptor *goodResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:goodMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"goods" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];

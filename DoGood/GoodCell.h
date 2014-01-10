@@ -15,6 +15,7 @@
     __weak IBOutlet NSLayoutConstraint *commentsHeight;
     __weak IBOutlet NSLayoutConstraint *regoodsHeight;
     __weak IBOutlet NSLayoutConstraint *likesHeight;
+    __weak IBOutlet NSLayoutConstraint *postedByHeight;
     __weak IBOutlet UIView *comments;
 
     // location
@@ -45,6 +46,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *avatarHeightSpacing;
 
 @property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *postedBy;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *description;
 @property (weak, nonatomic) IBOutlet UIButton *like;
 @property (weak, nonatomic) IBOutlet UIButton *comment;

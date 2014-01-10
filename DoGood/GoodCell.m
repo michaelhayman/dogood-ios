@@ -15,6 +15,7 @@
 #import "URLHandler.h"
 #import "DGAppearance.h"
 #import "CommentCell.h"
+#import "DGNominee.h"
 #import "TTTAttributedLabel+Tag.h"
 
 static inline NSRegularExpression * NameRegularExpression() {
@@ -136,8 +137,8 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
 #pragma mark - Set values when cell becomes visible
 - (void)setupAvatar {
-    if (self.good.user.avatar) {
-        [self.avatar setImageWithURL:[NSURL URLWithString:self.good.user.avatar]];
+    if (self.good.nominee.avatar) {
+        [self.avatar setImageWithURL:[NSURL URLWithString:self.good.nominee.avatar]];
         self.avatar.hidden = NO;
         self.avatarHeight.constant = 57;
         self.avatarHeightSpacing.constant = 8;
@@ -150,12 +151,14 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
 - (void)setValues {
     // user
-    self.username.text = self.good.user.full_name;
+    self.username.text = self.good.nominee.full_name;
     [self setupAvatar];
     // description
     [self setCaptionText];
     // image
     [self.overviewImage setImageWithURL:[NSURL URLWithString:self.good.evidence]];
+
+    [self setPostedByText];
 
     if (self.good.evidence) {
         self.overviewImageHeight.constant = 302;
@@ -171,6 +174,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
         [self.like setSelected:NO];
     }
     [self setLikesText];
+
     // comments
     if ([self.good.current_user_commented boolValue]) {
         [self.comment setSelected:YES];
@@ -220,6 +224,23 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     } else {
         self.done.hidden = YES;
     }
+}
+
+#pragma mark - PostedBy
+- (void)setPostedByText {
+    NSDictionary *attributes = @{ NSFontAttributeName : self.postedBy.font };
+    NSString *text =[NSString stringWithFormat:@"Posted by %@ %@", self.good.user.full_name, [self.good createdAgoInWords]];
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    self.postedBy.attributedText = attrString;
+    postedByHeight.constant = [DGAppearance calculateHeightForText:attrString andWidth:kGoodRightColumnWidth];
+    self.postedBy.linkAttributes = [DGAppearance linkAttributes];
+    self.postedBy.activeLinkAttributes = [DGAppearance activeLinkAttributes];
+    self.postedBy.delegate = self;
+
+    NSString *urlString = [NSString stringWithFormat:@"dogood://users/%@", self.good.user.userID];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSRange stringRange = NSMakeRange(10, [self.good.user.full_name length]);
+    [self.postedBy addLinkToURL:url withRange:stringRange];
 }
 
 #pragma mark - Regoods
@@ -494,7 +515,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
 #pragma mark - User profile helper
 - (void)showGoodUserProfile {
-    [DGUser openProfilePage:self.good.user.userID inController:self.navigationController];
+    [DGUser openProfilePage:self.good.nominee.user_id inController:self.navigationController];
 }
 
 #pragma mark - User list helper
@@ -534,8 +555,8 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
 #pragma mark - Utility functions
 - (void)reloadCell {
-    UITableView *table = (UITableView *)self.superview.superview;
-    NSIndexPath *indexPath = [table indexPathForCell:(UITableViewCell *)self];
+    // UITableView *table = (UITableView *)self.superview.superview;
+    // NSIndexPath *indexPath = [table indexPathForCell:(UITableViewCell *)self];
     // [self.parent reloadCellAtIndexPath:indexPath withGood:self.good];
 }
 

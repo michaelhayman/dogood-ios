@@ -1,6 +1,7 @@
 #import "DGGood.h"
 #import "FSLocation.h"
 #import "DGCategory.h"
+#import <NSDate+TimeAgo.h>
 
 @implementation DGGood
 
@@ -13,6 +14,10 @@
 
 - (void)setValuesForCategory:(DGCategory *)category {
     self.category_id = category.categoryID;
+}
+
+- (NSString *)createdAgoInWords {
+    return [self.created_at timeAgo];
 }
 
 @end
