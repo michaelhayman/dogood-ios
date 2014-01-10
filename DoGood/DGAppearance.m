@@ -27,6 +27,10 @@
     return linkAttributes;
 }
 
++ (NSDictionary *)activeLinkAttributes {
+    return [self linkAttributes];
+}
+
 + (CGFloat)calculateHeightForText:(NSAttributedString *)string andWidth:(CGFloat)width {
     CGRect rect = [string boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil];
     CGSize size = rect.size;

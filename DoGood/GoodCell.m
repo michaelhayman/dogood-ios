@@ -357,6 +357,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     label.numberOfLines = 0;
 
     label.linkAttributes = [DGAppearance linkAttributes];
+    label.activeLinkAttributes = [DGAppearance activeLinkAttributes];
     return label;
 }
 
@@ -400,6 +401,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     self.description.attributedText = attrString;
     captionHeight.constant = [DGAppearance calculateHeightForText:attrString andWidth:kGoodRightColumnWidth];
     self.description.linkAttributes = [DGAppearance linkAttributes];
+    self.description.activeLinkAttributes = [DGAppearance activeLinkAttributes];
 
     [self.description hashIfy:self.description.attributedText inLabel:self.description];
 

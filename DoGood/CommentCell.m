@@ -16,6 +16,7 @@
     [self.avatar setUserInteractionEnabled:YES];
     [self.avatar addGestureRecognizer:avatarGesture];
     self.commentBody.linkAttributes = [DGAppearance linkAttributes];
+    self.commentBody.activeLinkAttributes = [DGAppearance activeLinkAttributes];
     self.commentBody.delegate = self;
 }
 
