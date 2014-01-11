@@ -111,10 +111,15 @@
     CGFloat height = 110;
 
     NSDictionary *attributes = @{NSFontAttributeName : kGoodCaptionFont};
+
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:good.caption attributes:attributes];
 
     CGFloat captionHeight = [DGAppearance calculateHeightForText:attrString andWidth:kGoodRightColumnWidth];
     height += captionHeight;
+
+    NSAttributedString *postedByAttrString = [[NSAttributedString alloc] initWithString:[good postedByLine] attributes:attributes];
+    CGFloat postedByHeight = [DGAppearance calculateHeightForText:postedByAttrString andWidth:kGoodRightColumnWidth];
+    height += postedByHeight;
 
     if (good.evidence) {
         height+= 300;

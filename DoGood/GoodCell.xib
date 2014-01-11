@@ -42,7 +42,7 @@
                             <constraint firstAttribute="height" constant="21" id="RIG-be-djh"/>
                         </constraints>
                         <attributedString key="attributedText">
-                            <fragment content="Posted by">
+                            <fragment content="Nominated by">
                                 <attributes>
                                     <color key="NSColor" red="0.4039215686" green="0.4039215686" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
                                     <font key="NSFont" size="12" name="HelveticaNeue"/>

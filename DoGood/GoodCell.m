@@ -229,7 +229,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 #pragma mark - PostedBy
 - (void)setPostedByText {
     NSDictionary *attributes = @{ NSFontAttributeName : self.postedBy.font };
-    NSString *text =[NSString stringWithFormat:@"Posted by %@ %@", self.good.user.full_name, [self.good createdAgoInWords]];
+    NSString *text = [self.good postedByLine];
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:text attributes:attributes];
     self.postedBy.attributedText = attrString;
     postedByHeight.constant = [DGAppearance calculateHeightForText:attrString andWidth:kGoodRightColumnWidth];
@@ -239,7 +239,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
     NSString *urlString = [NSString stringWithFormat:@"dogood://users/%@", self.good.user.userID];
     NSURL *url = [NSURL URLWithString:urlString];
-    NSRange stringRange = NSMakeRange(10, [self.good.user.full_name length]);
+    NSRange stringRange = NSMakeRange(13, [self.good.user.full_name length]);
     [self.postedBy addLinkToURL:url withRange:stringRange];
 }
 

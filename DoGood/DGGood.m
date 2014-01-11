@@ -20,4 +20,8 @@
     return [self.created_at timeAgo];
 }
 
+- (NSString *)postedByLine {
+    return [NSString stringWithFormat:@"Nominated by %@ %@", self.user.full_name, [self  createdAgoInWords]];
+}
+
 @end

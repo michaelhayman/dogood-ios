@@ -45,5 +45,6 @@
 - (void)setValuesForLocation:(FSLocation *)location;
 - (void)setValuesForCategory:(DGCategory *)category;
 - (NSString *)createdAgoInWords;
+- (NSString *)postedByLine;
 
 @end
