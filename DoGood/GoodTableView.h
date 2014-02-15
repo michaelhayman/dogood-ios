@@ -1,10 +1,12 @@
+@class SAMLoadingView;
+
 @interface GoodTableView : UITableView <UITableViewDataSource, UITableViewDelegate> {
     int page;
     NSMutableArray *cellHeights;
     BOOL showNoResultsMessage;
     NSMutableArray *goods;
     NSString *goodsPath;
-
+    SAMLoadingView *loadingView;
 }
 
 @property (nonatomic, weak) UINavigationController *navigationController;

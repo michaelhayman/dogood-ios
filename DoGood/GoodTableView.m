@@ -5,6 +5,7 @@
 #import "UIScrollView+SVInfiniteScrolling.h"
 #import "DGAppearance.h"
 #import "DGComment.h"
+#import <SAMLoadingView/SAMLoadingView.h>
 
 @implementation GoodTableView
 
@@ -27,6 +28,9 @@
     showNoResultsMessage = NO;
     goods = [[NSMutableArray alloc] init];
     cellHeights = [[NSMutableArray alloc] init];
+
+    loadingView = [[SAMLoadingView alloc] initWithFrame:self.bounds];
+    loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
 
 - (void)setupRefresh {
@@ -45,6 +49,7 @@
 - (void)loadGoodsAtPath:(NSString *)path {
     goodsPath = path;
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:page], @"page", nil];
+    [self addSubview:loadingView];
 
     [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [goods addObjectsFromArray:mappingResult.array];
@@ -57,11 +62,13 @@
         [self reloadData];
         [self.infiniteScrollingView stopAnimating];
         // [_loadingView loadingSucceeded];
+        [loadingView removeFromSuperview];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [self.infiniteScrollingView stopAnimating];
         DebugLog(@"Operation failed with error: %@", error);
         // [_loadingView loadingFailed];
         // [_loadingView loadingSucceeded];
+        [loadingView removeFromSuperview];
     }];
 }
 
