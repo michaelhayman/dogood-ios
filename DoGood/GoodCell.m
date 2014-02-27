@@ -333,7 +333,14 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 - (void)setLikesText {
     if ([self.good.likes_count intValue] > 0) {
         likesHeight.constant = 21.0;
-        self.likes.text = [NSString stringWithFormat:@"%@ likes", self.good.likes_count];
+        NSString *plural;
+
+        if ([self.good.likes_count intValue] == 1) {
+            plural = @"";
+        } else {
+            plural = @"s";
+        }
+        self.likes.text = [NSString stringWithFormat:@"%@ good%@", self.good.likes_count, plural];
     } else {
         likesHeight.constant = 0.0;
     }
