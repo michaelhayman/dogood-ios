@@ -61,7 +61,7 @@
      @"facebook_id"
      ]];
 
-    RKResponseDescriptor *userResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"user" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *userResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:userMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"DAPI.response.users" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:userResponseDescriptor];
 
     RKObjectMapping* userRequestMapping = [RKObjectMapping requestMapping ];
@@ -98,7 +98,7 @@
     ];
     [nomineeMapping addAttributeMappingsFromArray:nomineeArray];
 
-    RKResponseDescriptor *nomineeResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:nomineeMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"nominee" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *nomineeResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:nomineeMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"DAPI.response.nominee" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:nomineeResponseDescriptor];
 
     RKObjectMapping* nomineeRequestMapping = [RKObjectMapping requestMapping];
@@ -114,7 +114,7 @@
     [voteMapping addAttributeMappingsFromArray:@[
         @"voteable_id", @"voteable_type", @"user_id"
     ]];
-    RKResponseDescriptor *voteResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:voteMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"votes" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *voteResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:voteMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"DAPI.response.votes" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:voteResponseDescriptor];
 
     RKObjectMapping* voteRequestMapping = [RKObjectMapping requestMapping ];
@@ -156,7 +156,7 @@
         @"range"
     ];
     [entityMapping addAttributeMappingsFromArray:entityArray ];
-    RKResponseDescriptor *entityResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"entities" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *entityResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:entityMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"DAPI.response.entities" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:entityResponseDescriptor];
 
     RKObjectMapping* entityRequestMapping = [RKObjectMapping requestMapping ];
@@ -176,7 +176,7 @@
     [tagMapping addAttributeMappingsFromArray:@[
      @"name"
     ]];
-    RKResponseDescriptor *tagResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:tagMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"tags" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *tagResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:tagMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"DAPI.response.tags" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:tagResponseDescriptor];
 
     // --------------------------------
@@ -189,7 +189,7 @@
      @"followable_type",
      @"user_id"
     ]];
-    RKResponseDescriptor *followResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:followMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"follows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *followResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:followMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"DAPI.response.follows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:followResponseDescriptor];
 
     RKObjectMapping* followRequestMapping = [RKObjectMapping requestMapping ];
@@ -208,8 +208,8 @@
      @"created_at"
     ]];
     [commentMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:userMapping]];
-    RKResponseDescriptor *commentResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:commentMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"comments" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [commentMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"entities" toKeyPath:@"entities" withMapping:entityMapping]];
+    RKResponseDescriptor *commentResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:commentMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"DAPI.response.comments" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    [commentMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"DAPI.response.entities" toKeyPath:@"entities" withMapping:entityMapping]];
     [objectManager addResponseDescriptor:commentResponseDescriptor];
 
     RKObjectMapping* commentRequestMapping = [RKObjectMapping requestMapping ];
@@ -231,7 +231,7 @@
     [rewardMapping addAttributeMappingsFromDictionary:@{ @"id" : @"rewardID" }];
     [rewardMapping addAttributeMappingsFromArray:@[ @"title", @"subtitle", @"teaser", @"full_description", @"user_id", @"cost", @"quantity", @"quantity_remaining", @"instructions" ]];
     // [rewardMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:rewardMapping]];
-    RKResponseDescriptor *rewardResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:rewardMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"rewards" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *rewardResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:rewardMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"DAPI.response.rewards" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:rewardResponseDescriptor];
 
     RKObjectMapping* claimRewardRequestMapping = [RKObjectMapping requestMapping ];
@@ -250,7 +250,7 @@
      @"image_url"
     ]];
     [categoryMapping addAttributeMappingsFromDictionary:@{ @"id" : @"categoryID" }];
-    RKResponseDescriptor *categoryResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:categoryMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"categories" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *categoryResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:categoryMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"DAPI.response.categories" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:categoryResponseDescriptor];
 
     // --------------------------------
@@ -278,7 +278,7 @@
      @"created_at"
     ]];
 
-    RKResponseDescriptor *goodResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:goodMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"goods" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *goodResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:goodMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"DAPI.response.goods" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [goodMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"user" toKeyPath:@"user" withMapping:userMapping]];
     [goodMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"nominee" toKeyPath:@"nominee" withMapping:nomineeMapping]];
     [goodMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"comments" toKeyPath:@"comments" withMapping:commentMapping]];
@@ -306,7 +306,7 @@
      @"reportable_id"
     ]];
 
-    RKResponseDescriptor *reportResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:reportMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"reports" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
+    RKResponseDescriptor *reportResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:reportMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"DAPI.response.reports" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:reportResponseDescriptor];
 
     RKObjectMapping* reportRequestMapping = [RKObjectMapping requestMapping];
@@ -321,7 +321,7 @@
     [errorMapping addAttributeMappingsFromDictionary:@{
         @"messages" : @"messages",
      }];
-    RKResponseDescriptor *errorResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:errorMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"errors" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
+    RKResponseDescriptor *errorResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:errorMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"DAPI.response.errors" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
     [objectManager addResponseDescriptor:errorResponseDescriptor];
 }
 
