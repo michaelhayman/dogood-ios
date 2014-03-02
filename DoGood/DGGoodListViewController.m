@@ -140,7 +140,7 @@
     } else if (_category) {
         path = [NSString stringWithFormat:@"/goods?category_id=%@", _category.categoryID];
     } else if (_goodID) {
-        path = [NSString stringWithFormat:@"/goods?good_id=%@", _goodID];
+        path = [NSString stringWithFormat:@"/goods/%@", _goodID];
     } else if (_tag) {
         path = [NSString stringWithFormat:@"/goods/tagged?id=%@&name=%@", _tag.tagID, _tag.name];
     } else {
