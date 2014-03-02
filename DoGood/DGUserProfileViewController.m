@@ -31,7 +31,9 @@
         self.userID = [DGUser currentUser].userID;
     }
 
-    ownProfile = [self.userID isEqualToNumber:[DGUser currentUser].userID];
+    if ([[DGUser currentUser] isSignedIn]) {
+        ownProfile = [self.userID isEqualToNumber:[DGUser currentUser].userID];
+    }
 
     if (self.fromMenu) {
         [self addMenuButton:@"MenuFromProfileIconTap" withTapButton:@"MenuFromProfileIcon"];
