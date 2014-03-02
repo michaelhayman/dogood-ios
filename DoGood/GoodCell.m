@@ -257,7 +257,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
         }];
     } else {
         [self decreaseRegood];
-        [[RKObjectManager sharedManager] postObject:regood path:@"/follows/remove" parameters:nil success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [[RKObjectManager sharedManager] deleteObject:regood path:@"/follows/remove" parameters:nil success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [self increaseRegood];
             DebugLog(@"failed to remove regood");
         }];
@@ -307,7 +307,7 @@ static inline  NSRegularExpression * UserNameRegularExpression()
         }];
     } else {
         [self decreaseLike];
-        [[RKObjectManager sharedManager] postObject:vote path:@"/votes/remove" parameters:nil success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [[RKObjectManager sharedManager] deleteObject:vote path:@"/votes/remove" parameters:nil success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [self increaseLike];
             DebugLog(@"failed to remove like");
         }];

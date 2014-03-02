@@ -188,7 +188,7 @@
         }];
     } else {
         [self decreaseFollow];
-        [[RKObjectManager sharedManager] postObject:followUser path:@"/follows/remove" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [[RKObjectManager sharedManager] deleteObject:followUser path:@"/follows/remove" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateFollowingsNotification object:nil];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [self increaseFollow];
