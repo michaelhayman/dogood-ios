@@ -79,9 +79,9 @@
     profileItem.tag = 4;
 
     if (REWARDS_ENABLED) {
-        _menu = [[REMenu alloc] initWithItems:@[homeItem, exploreItem, rewardsItem, profileItem]];
+        _menu = [[REMenu alloc] initWithItems:@[exploreItem, homeItem, rewardsItem, profileItem]];
     } else {
-        _menu = [[REMenu alloc] initWithItems:@[homeItem, exploreItem, profileItem]];
+        _menu = [[REMenu alloc] initWithItems:@[exploreItem, homeItem, profileItem]];
     }
 
     _menu.cornerRadius = 4;

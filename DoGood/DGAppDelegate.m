@@ -1,7 +1,7 @@
 #import "DGAppDelegate.h"
 // views
 #import "NavigationViewController.h"
-#import "DGGoodListViewController.h"
+#import "DGExploreViewController.h"
 // global set up
 #import "RestKit.h"
 #import "DGAppearance.h"
@@ -27,8 +27,8 @@
 - (void)setupViewsForUser {
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-    DGGoodListViewController *goodListController = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Explore" bundle:nil];
+    DGExploreViewController *goodListController = [storyboard instantiateViewControllerWithIdentifier:@"explore"];
     self.window.rootViewController = [[NavigationViewController alloc] initWithRootViewController:goodListController];
 }
 
