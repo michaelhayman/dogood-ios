@@ -245,21 +245,23 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
 #pragma mark - Regoods
 - (void)addUserRegood {
-    DGFollow *regood = [DGFollow new];
-    regood.followable_id = self.good.goodID;
-    regood.followable_type = @"Good";
-
     if (self.regood.isSelected == NO) {
         [self increaseRegood];
-        [[RKObjectManager sharedManager] postObject:regood path:@"/follows" parameters:nil success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            DebugLog(@"failed to add regood");
+
+        [DGFollow followType:@"Good" withID:self.good.goodID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+            DebugLog(@"%@", msg);
+        } failure:^(NSError *error) {
             [self decreaseRegood];
+            DebugLog(@"failed to remove follow");
         }];
     } else {
         [self decreaseRegood];
-        [[RKObjectManager sharedManager] deleteObject:regood path:@"/follows/remove" parameters:nil success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
+
+        [DGFollow unfollowType:@"Good" withID:self.good.goodID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+            DebugLog(@"%@", msg);
+        } failure:^(NSError *error) {
             [self increaseRegood];
-            DebugLog(@"failed to remove regood");
+            DebugLog(@"failed to remove follow");
         }];
     }
 }

@@ -60,25 +60,21 @@
 }
 
 - (void)followUser {
-    DGFollow *followUser = [DGFollow new];
-    followUser.followable_id = self.user.userID;
-    followUser.followable_type = @"User";
-
     if (self.follow.isSelected == NO) {
         [self increaseFollow];
-        [[RKObjectManager sharedManager] postObject:followUser path:@"/follows" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateFollowingsNotification object:nil];
-        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            DebugLog(@"failed to add follow");
+        [DGFollow followType:@"User" withID:self.user.userID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+            DebugLog(@"%@", msg);
+        } failure:^(NSError *error) {
             [self decreaseFollow];
+            DebugLog(@"failed to remove follow");
         }];
     } else {
         [self decreaseFollow];
-        [[RKObjectManager sharedManager] deleteObject:followUser path:@"/follows/remove" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateFollowingsNotification object:nil];
-        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [DGFollow unfollowType:@"User" withID:self.user.userID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+            DebugLog(@"%@", msg);
+        } failure:^(NSError *error) {
             [self increaseFollow];
-            DebugLog(@"failed to remove regood");
+            DebugLog(@"failed to remove follow");
         }];
     }
 }

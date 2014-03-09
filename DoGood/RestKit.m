@@ -5,7 +5,6 @@
 #import "DGCategory.h"
 #import "DGComment.h"
 #import "DGError.h"
-#import "DGFollow.h"
 #import "DGVote.h"
 #import "DGReward.h"
 #import "DGReport.h"
@@ -178,24 +177,6 @@
     ]];
     RKResponseDescriptor *tagResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:tagMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"tags" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
     [objectManager addResponseDescriptor:tagResponseDescriptor];
-
-    // --------------------------------
-    // follow
-    // --------------------------------
-    RKObjectMapping *followMapping = [RKObjectMapping mappingForClass:[DGFollow class]];
-
-    [followMapping addAttributeMappingsFromArray:@[
-     @"followable_id",
-     @"followable_type",
-     @"user_id"
-    ]];
-    RKResponseDescriptor *followResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:followMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"follows" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:followResponseDescriptor];
-
-    RKObjectMapping* followRequestMapping = [RKObjectMapping requestMapping ];
-    [followRequestMapping addAttributeMappingsFromArray:@[ @"followable_id", @"followable_type", @"user_id" ]];
-    RKRequestDescriptor *followRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:followRequestMapping objectClass:[DGFollow class] rootKeyPath:@"follow" method:RKRequestMethodAny];
-    [objectManager addRequestDescriptor:followRequestDescriptor];
 
     // --------------------------------
     // comment
