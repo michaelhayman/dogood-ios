@@ -28,6 +28,15 @@
     [weakSelf setViewControllers:@[rewardListController] animated:NO];
 }
 
+- (void)showExplore {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Explore" bundle:nil];
+    if (exploreController == nil) {
+        exploreController = [storyboard instantiateViewControllerWithIdentifier:@"explore"];
+    }
+    __typeof (&*self) __weak weakSelf = self;
+    [weakSelf setViewControllers:@[exploreController] animated:NO];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     DebugLog(@"did appear");
@@ -48,11 +57,7 @@
 
     REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"To Do" subtitle:nil image:nil highlightedImage:nil action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Explore" bundle:nil];
-        if (exploreController == nil) {
-            exploreController = [storyboard instantiateViewControllerWithIdentifier:@"explore"];
-        }
-        [weakSelf setViewControllers:@[exploreController] animated:NO];
+        [self showExplore];
     }];
 
     REMenuItem *rewardsItem;
