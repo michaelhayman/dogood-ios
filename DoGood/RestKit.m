@@ -48,7 +48,7 @@
      @"location",
      @"biography",
      @"email",
-     @"avatar",
+     @"avatar_url",
      @"followers_count",
      @"following_count",
      @"current_user_following",

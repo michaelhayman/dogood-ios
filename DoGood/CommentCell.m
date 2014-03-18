@@ -26,7 +26,7 @@
 }
 
 - (void)setValues {
-    [self.avatar setImageWithURL:[NSURL URLWithString:self.comment.user.avatar]];
+    [self.avatar setImageWithURL:[NSURL URLWithString:self.comment.user.avatar_url]];
 
     self.timePosted.text = [[self.comment createdAgoInWords] uppercaseString];
 

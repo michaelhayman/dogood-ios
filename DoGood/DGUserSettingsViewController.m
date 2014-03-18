@@ -88,7 +88,7 @@
 }
 
 - (void)setupHeader {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[DGUser currentUser].avatar] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[DGUser currentUser].avatar_url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         avatar.image = image;
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
@@ -123,7 +123,7 @@
 
         avatar.image = imageToUpload;
         DGUser *user = (mappingResult.array)[0];
-        [DGUser currentUser].avatar = user.avatar;
+        [DGUser currentUser].avatar_url = user.avatar_url;
         [DGUser assignDefaults];
         avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
         // [avatar bringSubviewToFront:avatarOverlay];
@@ -140,7 +140,7 @@
 - (void)removePhoto {
     [[RKObjectManager sharedManager] deleteObject:nil path:user_remove_avatar_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         avatar.image = nil;
-        [DGUser currentUser].avatar = nil;
+        [DGUser currentUser].avatar_url = nil;
         [DGUser currentUser].image = nil;
         [DGUser assignDefaults];
         [TSMessage showNotificationInViewController:self.navigationController

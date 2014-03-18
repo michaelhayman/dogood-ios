@@ -154,7 +154,7 @@
         [self setupTabs];
 
         if (!avatar.image) {
-            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:user.avatar] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
+            NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:user.avatar_url] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
             [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                 avatar.image = image;
                 if (ownProfile) {

@@ -17,7 +17,7 @@
 @property (nonatomic, copy) NSNumber* liked_goods_count;
 @property (nonatomic, copy) NSNumber* posted_or_followed_goods_count;
 @property (nonatomic, copy) NSString* message;
-@property (nonatomic, copy) NSString* avatar;
+@property (nonatomic, copy) NSString* avatar_url;
 @property (nonatomic, copy) UIImage* image;
 #pragma mark - Social
 @property (nonatomic, copy) NSString* twitter_id;
