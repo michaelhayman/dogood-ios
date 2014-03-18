@@ -1,6 +1,7 @@
 #import "DGExploreViewController.h"
 #import "DGExploreSearchViewController.h"
 #import "DGExploreCategoriesViewController.h"
+#import "DGWelcomeViewController.h"
 
 @interface DGExploreViewController ()
     @property (nonatomic, retain) DGExploreSearchViewController *exploreSearch;
@@ -39,8 +40,14 @@
     [_contentView addSubview:vc.view];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self showWelcome];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(peopleSelected) name:DGUserDidStartSearchingPeople object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagsSelected) name:DGUserDidStartSearchingTags object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(searchFieldDidBeginEditing) name:DGSearchTextFieldDidBeginEditing object:nil];
@@ -49,6 +56,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidStartSearchingPeople object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidStartSearchingTags object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGSearchTextFieldDidBeginEditing object:nil];
@@ -93,6 +101,20 @@
     [self hideCancelButton];
     [self nothingSelected];
     [self showCategories];
+}
+
+- (void)showWelcome {
+    if ([DGUser showWelcomeMessage]) {
+        [self welcomeScreen];
+    }
+}
+
+- (void)welcomeScreen {
+    UIStoryboard *storyboard;
+    storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+    DGWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
+    [self presentViewController:navigationController animated:NO completion:nil];
 }
 
 - (void)showCancelButton {

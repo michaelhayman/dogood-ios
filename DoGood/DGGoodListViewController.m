@@ -6,7 +6,6 @@
 #import "NoResultsCell.h"
 #import "DGCategory.h"
 #import "FSLocation.h"
-#import "DGWelcomeViewController.h"
 #import "UserOverview.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
 #import "DGAppearance.h"
@@ -74,7 +73,6 @@
     [super viewDidAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authenticate) name:DGUserDidFailSilentAuthenticationNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:userView selector:@selector(setContent) name:DGUserDidSignInNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayPostSuccessMessage) name:DGUserDidPostGood object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getGood) name:DGUserDidPostGood object:nil];
 }
@@ -84,13 +82,11 @@
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidFailSilentAuthenticationNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:userView name:DGUserDidSignInNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidPostGood object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self showWelcome];
     if (self.category) {
         self.navigationController.navigationBar.barTintColor = [self.category rgbColour];
     } else {
@@ -114,21 +110,6 @@
         [_tableView setTableHeaderView:userView];
     }
     */
-}
-
-#pragma mark - Points
-- (void)showWelcome {
-    if ([DGUser showWelcomeMessage]) {
-        [self welcomeScreen];
-    }
-}
-
-- (void)welcomeScreen {
-    UIStoryboard *storyboard;
-    storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
-    DGWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
-    [self presentViewController:navigationController animated:NO completion:nil];
 }
 
 #pragma mark - Retrieval methods
