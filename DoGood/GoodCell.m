@@ -17,6 +17,7 @@
 #import "CommentCell.h"
 #import "DGNominee.h"
 #import "TTTAttributedLabel+Tag.h"
+#import "NSString+Inflections.h"
 
 static inline NSRegularExpression * NameRegularExpression() {
     static NSRegularExpression *_nameRegularExpression = nil;
@@ -285,7 +286,13 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 - (void)setRegoodsText {
     if ([self.good.regoods_count intValue] > 0) {
         regoodsHeight.constant = 21.0;
-        self.regoods.text = [NSString stringWithFormat:@"%@ regoods", self.good.regoods_count];
+
+        NSString *follower = @"follower";
+
+        if ([self.good.regoods_count intValue] != 1) {
+            follower = [follower pluralize];
+        }
+        self.regoods.text = [NSString stringWithFormat:@"%@ %@", self.good.regoods_count, follower];
     } else {
         regoodsHeight.constant = 0.0;
     }
@@ -335,14 +342,12 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 - (void)setLikesText {
     if ([self.good.likes_count intValue] > 0) {
         likesHeight.constant = 21.0;
-        NSString *plural;
 
-        if ([self.good.likes_count intValue] == 1) {
-            plural = @"";
-        } else {
-            plural = @"s";
+        NSString *vote = @"vote";
+        if ([self.good.likes_count intValue] != 1) {
+            vote = [vote pluralize];
         }
-        self.likes.text = [NSString stringWithFormat:@"%@ good%@", self.good.likes_count, plural];
+        self.likes.text = [NSString stringWithFormat:@"%@ %@", self.good.likes_count, vote];
     } else {
         likesHeight.constant = 0.0;
     }
@@ -373,7 +378,12 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 - (void)setCommentsText {
     if ([self.good.comments_count intValue] > 0) {
         commentsHeight.constant = 21.0;
-        self.commentsCount.text = [NSString stringWithFormat:@"%@ comments", self.good.comments_count];
+        NSString *comment = @"comment";
+
+        if ([self.good.comments_count intValue] != 1) {
+            comment = [comment pluralize];
+        }
+        self.commentsCount.text = [NSString stringWithFormat:@"%@ %@", self.good.comments_count, comment];
     } else {
         commentsHeight.constant = 0.0;
     }
