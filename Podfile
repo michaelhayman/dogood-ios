@@ -3,6 +3,8 @@ platform :ios, '7.0'
 # language add-ons
 pod 'ReactiveCocoa'
 
+pod 'Inflections'
+
 # networking
 pod 'AFNetworking', '~> 1.3.1'
 pod 'RestKit', '~> 0.21.0'
