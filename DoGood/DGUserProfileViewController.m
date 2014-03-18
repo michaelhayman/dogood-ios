@@ -128,6 +128,8 @@
 
 #pragma mark - User retrieval
 - (void)getProfile {
+    dispatch_async(dispatch_get_main_queue(), ^{
+
     [loadingView startLoading];
     [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/users/%@", self.userID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         user = [DGUser new];
