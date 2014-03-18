@@ -1,9 +1,8 @@
 #import "GoodCell.h"
 #import "DGGood.h"
 #import "DGCategory.h"
-#import "DGVote.h"
-#import "DGFollow.h"
 #import "DGReport.h"
+#import "DGFollow.h"
 #import "DGTag.h"
 #import "DGEntity.h"
 #import "DGGoodCommentsViewController.h"
@@ -304,21 +303,31 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
 #pragma mark - Likes
 - (void)addUserLike {
-    DGVote *vote = [DGVote new];
-    vote.voteable_id = self.good.goodID;
-    vote.voteable_type = @"Good";
+    NSString *type = @"Good";
+    NSDictionary *voteDict = [NSDictionary dictionaryWithObjectsAndKeys:self.good.goodID, @"votable_id", type, @"votable_type", nil];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:voteDict, @"vote", nil];
 
     if (self.like.isSelected == NO) {
         [self increaseLike];
-        [[RKObjectManager sharedManager] postObject:vote path:@"/votes" parameters:nil success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [[RKObjectManager sharedManager] postObject:nil path:@"/votes" parameters:params success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
             DebugLog(@"failed to add");
             [self decreaseLike];
+            DebugLog(@"%@", [error userInfo]);
+            [TSMessage showNotificationInViewController:self.navigationController
+                                      title:nil
+                                    subtitle:[error localizedDescription]
+                                       type:TSMessageNotificationTypeError];
         }];
     } else {
         [self decreaseLike];
-        [[RKObjectManager sharedManager] deleteObject:vote path:@"/votes/remove" parameters:nil success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [[RKObjectManager sharedManager] deleteObject:nil path:[NSString stringWithFormat:@"/votes/%@", self.good.goodID] parameters:params success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [self increaseLike];
-            DebugLog(@"failed to remove like");
+            DebugLog(@"%@", [error userInfo]);
+
+            [TSMessage showNotificationInViewController:self.navigationController
+                                      title:nil
+                                    subtitle:[error localizedDescription]
+                                       type:TSMessageNotificationTypeError];
         }];
     }
 }

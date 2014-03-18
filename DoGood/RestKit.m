@@ -5,9 +5,7 @@
 #import "DGCategory.h"
 #import "DGComment.h"
 #import "DGError.h"
-#import "DGVote.h"
 #import "DGReward.h"
-#import "DGReport.h"
 #import "DGTag.h"
 #import "DGEntity.h"
 #import "DGRKObjectRequestOperation.h"
@@ -105,25 +103,6 @@
 
     RKRequestDescriptor *nomineeRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:nomineeRequestMapping objectClass:[DGNominee class] rootKeyPath:@"nominee" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:nomineeRequestDescriptor];
-
-    // --------------------------------
-    // vote
-    // --------------------------------
-    RKObjectMapping *voteMapping = [RKObjectMapping mappingForClass:[DGVote class]];
-    [voteMapping addAttributeMappingsFromArray:@[
-        @"voteable_id", @"voteable_type", @"user_id"
-    ]];
-    RKResponseDescriptor *voteResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:voteMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"votes" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:voteResponseDescriptor];
-
-    RKObjectMapping* voteRequestMapping = [RKObjectMapping requestMapping ];
-    [voteRequestMapping addAttributeMappingsFromArray:@[
-     @"voteable_id",
-     @"voteable_type",
-     @"user_id"
-    ]];
-    RKRequestDescriptor *voteRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:voteRequestMapping objectClass:[DGVote class] rootKeyPath:@"vote" method:RKRequestMethodAny];
-    [objectManager addRequestDescriptor:voteRequestDescriptor];
 
     // --------------------------------
     // entity
@@ -273,27 +252,6 @@
     [goodRequestMapping addPropertyMapping:[RKRelationshipMapping relationshipMappingFromKeyPath:@"nominee" toKeyPath:@"nominee_attributes" withMapping:nomineeRequestMapping]];
     RKRequestDescriptor *goodRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:goodRequestMapping objectClass:[DGGood class] rootKeyPath:@"good" method:RKRequestMethodAny];
     [objectManager addRequestDescriptor:goodRequestDescriptor];
-
-    // --------------------------------
-    // report
-    // --------------------------------
-    RKObjectMapping *reportMapping = [RKObjectMapping mappingForClass:[DGReport class]];
-
-    [reportMapping addAttributeMappingsFromDictionary:@{
-        @"id" : @"reportID",
-     }];
-    [reportMapping addAttributeMappingsFromArray:@[
-     @"reportable_type",
-     @"reportable_id"
-    ]];
-
-    RKResponseDescriptor *reportResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:reportMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"reports" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful)];
-    [objectManager addResponseDescriptor:reportResponseDescriptor];
-
-    RKObjectMapping* reportRequestMapping = [RKObjectMapping requestMapping];
-    [reportRequestMapping addAttributeMappingsFromArray:@[ @"reportable_type", @"reportable_id" ]];
-    RKRequestDescriptor *reportRequestDescriptor = [RKRequestDescriptor requestDescriptorWithMapping:reportRequestMapping objectClass:[DGReport class] rootKeyPath:@"report" method:RKRequestMethodAny];
-    [objectManager addRequestDescriptor:reportRequestDescriptor];
 
     // --------------------------------
     // error
