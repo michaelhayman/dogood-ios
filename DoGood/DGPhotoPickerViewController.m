@@ -1,6 +1,5 @@
 #import "DGPhotoPickerViewController.h"
 #import <UIImage+Resize.h>
-#import <MBProgressHUD.h>
 
 @interface DGPhotoPickerViewController ()
 

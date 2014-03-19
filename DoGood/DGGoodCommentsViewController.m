@@ -8,8 +8,8 @@
 #import "DGAppearance.h"
 #import "NoResultsCell.h"
 #import "DGEntityHandler.h"
-#import "DGLoadingView.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
+#import <SAMLoadingView/SAMLoadingView.h>
 
 @interface DGGoodCommentsViewController ()
 
@@ -35,7 +35,8 @@
 
     tableView.tableFooterView = [[UIView alloc] init];
 
-    loadingView = [[DGLoadingView alloc] initCenteredOnView:tableView];
+    loadingView = [[SAMLoadingView alloc] initWithFrame:self.view.bounds];
+    loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     characterLimit = 120;
     entities = [[NSMutableArray alloc] init];
@@ -89,12 +90,12 @@
 
         [tableView reloadData];
         [tableView.infiniteScrollingView stopAnimating];
-        [loadingView loadingSucceeded];
+        [loadingView removeFromSuperview];
         DebugLog(@"reloading data");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         loadingStatus = @"Couldn't connect";
 
-        [loadingView loadingFailed];
+        [loadingView removeFromSuperview];
         DebugLog(@"Operation failed with error: %@", error);
         [tableView reloadData];
     }];
@@ -111,7 +112,7 @@
 }
 
 - (void)reloadComments {
-    [loadingView startLoading];
+    [self.view addSubview:loadingView];
     [self resetComments];
     [self getComments];
 }

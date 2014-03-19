@@ -10,8 +10,8 @@
 #import "DGReport.h"
 #import "DGUserInvitesViewController.h"
 #import "DGAppearance.h"
-#import "DGLoadingView.h"
 #import "GoodTableView.h"
+#import <SAMLoadingView/SAMLoadingView.h>
 
 @interface DGUserProfileViewController ()
 
@@ -24,7 +24,9 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
 
-    loadingView = [[DGLoadingView alloc] initCenteredOnView:tableView];
+    loadingView = [[SAMLoadingView alloc] initWithFrame:self.view.bounds];
+    loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.view addSubview:loadingView];
 
     // assume it's the current user's profile if no ID was specified
     if (self.userID == nil) {
@@ -128,9 +130,9 @@
 
 #pragma mark - User retrieval
 - (void)getProfile {
-    dispatch_async(dispatch_get_main_queue(), ^{
+    DebugLog(@"profile called");
 
-    [loadingView startLoading];
+    dispatch_async(dispatch_get_main_queue(), ^{
     [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/users/%@", self.userID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         user = [DGUser new];
         user = mappingResult.array[0];
@@ -155,23 +157,24 @@
         }
         [self setupTabs];
 
-        if (!avatar.image && [user avatarURL]) {
-            NSURLRequest *request = [NSURLRequest requestWithURL:[user avatarURL] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
-            [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                avatar.image = image;
-                if (ownProfile) {
-                   avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
-                    [avatar bringSubviewToFront:avatarOverlay];
-                }
-            } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-                DebugLog(@"Failed to retrieve avatar.");
-            }];
+        if (!avatar.image) {
+            if ([user avatarURL]) {
+                NSURLRequest *request = [NSURLRequest requestWithURL:[user avatarURL] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
+                [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                    avatar.image = image;
+                    if (ownProfile) {
+                       avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
+                        [avatar bringSubviewToFront:avatarOverlay];
+                    }
+                } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+                    DebugLog(@"Failed to retrieve avatar.");
+                }];
+            }
         }
-        [loadingView loadingSucceeded];
+        [loadingView removeFromSuperview];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
-        [loadingView loadingFailed];
-        [loadingView loadingSucceeded];
+        [loadingView removeFromSuperview];
     }];
 
     });

@@ -1,13 +1,13 @@
 #import "DGExploreCategoriesViewController.h"
 @class ExplorePopularTagsCell;
 @class ExploreHighlightsCell;
-@class DGLoadingView;
+@class SAMLoadingView;
 
 @interface DGExploreCategoriesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate> {
     NSArray *categories;
     
     __weak IBOutlet UITableView *tableView;
-    DGLoadingView *loadingView;
+    SAMLoadingView *loadingView;
 
     ExploreHighlightsCell *exploreHighlights;
     ExplorePopularTagsCell *explorePopularTags;

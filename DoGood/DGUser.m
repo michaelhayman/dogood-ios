@@ -209,7 +209,11 @@ static DGUser* currentUser = nil;
 
 #pragma mark - Decoration
 - (NSURL *)avatarURL {
-    return [NSURL URLWithString:self.avatar_url];
+    if ([self.avatar_url isEqualToString:@""]) {
+        return nil;
+    } else {
+        return [NSURL URLWithString:self.avatar_url];
+    }
 }
 
 #pragma mark - Profile helper

@@ -5,12 +5,13 @@
 #import "DGCategory.h"
 #import "DGGoodListViewController.h"
 #import "DGAppearance.h"
-#import "DGLoadingView.h"
+#import <SAMLoadingView/SAMLoadingView.h>
 
 @implementation DGExploreCategoriesViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view addSubview:loadingView];
     self.title = @"Categories";
     UINib *categoryNib = [UINib nibWithNibName:kCategoryCell bundle:nil];
     [tableView registerNib:categoryNib forCellReuseIdentifier:kCategoryCell];
@@ -25,9 +26,8 @@
     [tableView setTableHeaderView:exploreHighlights];
     [tableView setTableFooterView:explorePopularTags];
 
-    if (loadingView == nil) {
-        loadingView = [[DGLoadingView alloc] initCenteredOnView:tableView];
-    }
+    loadingView = [[SAMLoadingView alloc] initWithFrame:self.view.bounds];
+    loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     [self stylePage];
     [self getCategories];
@@ -35,6 +35,10 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
 }
 
 - (void)dealloc {
@@ -50,14 +54,13 @@
 }
 
 - (void)getCategories {
-    [loadingView startLoading];
     [[RKObjectManager sharedManager] getObjectsAtPath:@"/categories" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         categories = [[NSArray alloc] initWithArray:mappingResult.array];
         [tableView reloadData];
-        [loadingView loadingSucceeded];
+        [loadingView removeFromSuperview];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
-        [loadingView loadingFailed];
+        [loadingView removeFromSuperview];
     }];
 }
 

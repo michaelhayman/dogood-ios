@@ -1,7 +1,7 @@
 #import "DGGoodListNearbyViewController.h"
 #import "DGAppearance.h"
 #import "GoodTableView.h"
-#import "DGLoadingView.h"
+#import <ProgressHUD/ProgressHUD.h>
 
 @interface DGGoodListNearbyViewController ()
 
@@ -15,8 +15,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     [self setupMenuTitle:@"Nearby"];
-
-    loadingView = [[DGLoadingView alloc] initCenteredOnView:self.view];
 
     goodTableView.navigationController = self.navigationController;
     goodTableView.parent = self;
@@ -36,20 +34,19 @@
 
 - (void)kickOffLocation {
     [goodTableView resetGood];
+    [ProgressHUD show:@"Locating..."];
     if (![CLLocationManager locationServicesEnabled]) {
-        [loadingView loadingFailed];
-        [loadingView changeMessage:@"Enable Location Services.\n\nSettings > Privacy > Location Services"];
+        [ProgressHUD showError:@"Enable Location Services.\n\nSettings > Privacy > Location Services"];
         DebugLog(@"location services not enabled");
         return;
     }
 
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
-        [loadingView loadingFailed];
-        [loadingView changeMessage:@"Enable Location Services for Do Good.\n\nSettings > Privacy > Location Services"];
+        [ProgressHUD showError:@"Enable Location Services for Do Good.\n\nSettings > Privacy > Location Services"];
         DebugLog(@"location services access denied");
         return;
     }
-    [loadingView loadingSucceeded];
+    [ProgressHUD dismiss];
 
     DebugLog(@"location services enabled");
 

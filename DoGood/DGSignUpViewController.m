@@ -1,7 +1,7 @@
 #import "DGSignUpViewController.h"
 #import "DGSignUpDetailsViewController.h"
 #import "DGPhotoPickerViewController.h"
-#import <MBProgressHUD.h>
+#import <ProgressHUD/ProgressHUD.h>
 
 @interface DGSignUpViewController ()
 
@@ -45,8 +45,7 @@
     DGUser *submitUser = [DGUser new];
     submitUser.full_name = name.text;
 
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.labelText = @"Checking name...";
+    [ProgressHUD show:@"Checking name..."];
     [[RKObjectManager sharedManager] postObject:submitUser path:@"/users/validate_name" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [name resignFirstResponder];
         if (user.image == nil) {
@@ -57,10 +56,9 @@
         } else {
             [self showNextStep];
         }
-        [hud hide:YES];
+        [ProgressHUD dismiss];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [TSMessage showNotificationInViewController:self.navigationController title:@"Oops" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
-        [hud hide:YES];
+        [ProgressHUD showError:[error localizedDescription]];
     }];
 }
 

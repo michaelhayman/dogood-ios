@@ -3,7 +3,7 @@
 
 @class DGUserInvitesViewController;
 @class DGGoodListViewController;
-@class DGLoadingView;
+@class SAMLoadingView;
 @class GoodTableView;
 
 @interface DGUserProfileViewController : RootViewController <UIActionSheetDelegate, UIAlertViewDelegate> {
@@ -29,7 +29,7 @@
 
     UIActionSheet *moreOptionsSheet;
     UIActionSheet *shareOptionsSheet;
-    DGLoadingView *loadingView;
+    SAMLoadingView *loadingView;
     __weak IBOutlet AuthenticateView *authenticateView;
 }
 

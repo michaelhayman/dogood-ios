@@ -1,6 +1,6 @@
 #import "DGSignInViewController.h"
 #import "DGForgotPasswordViewController.h"
-#import <MBProgressHUD.h>
+#import <ProgressHUD/ProgressHUD.h>
 
 @interface DGSignInViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
@@ -41,8 +41,7 @@
     DGUser *user = [DGUser new];
     user.email = email;
     user.password = password;
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.labelText = @"Signing in...";
+    [ProgressHUD show:@"Signing in..."];
     [self.view endEditing:YES];
 
     [[RKObjectManager sharedManager] postObject:user path:user_session_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
@@ -56,18 +55,22 @@
         if (message == YES) {
             DebugLog(@"success");
         }
+        /*
         [TSMessage showNotificationInViewController:self.presentingViewController
                                   title:nil
                                            subtitle:NSLocalizedString(@"Welcome to Do Good!", nil)
                                    type:TSMessageNotificationTypeSuccess];
-        [hud hide:YES];
+         */
+        [ProgressHUD showSuccess:@"Welcome back!"];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        /*
         [TSMessage showNotificationInViewController:self.navigationController
                                   title:@"Oops"
                                 subtitle:[error localizedDescription]
                                    type:TSMessageNotificationTypeError];
+        */
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailSignInNotification object:self];
-        [hud hide:YES];
+        [ProgressHUD showError:[error localizedDescription]];
     }];
 }
 

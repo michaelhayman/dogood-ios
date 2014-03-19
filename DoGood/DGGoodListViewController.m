@@ -10,7 +10,6 @@
 #import "UIScrollView+SVInfiniteScrolling.h"
 #import "DGAppearance.h"
 #import "DGComment.h"
-#import "DGLoadingView.h"
 #import "GoodTableView.h"
 #import "URLHandler.h"
 

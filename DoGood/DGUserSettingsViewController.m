@@ -5,7 +5,7 @@
 #import "DGUserInvitesViewController.h"
 #import "DGPhotoPickerViewController.h"
 #import <UIImage+Resize.h>
-#import <MBProgressHUD.h>
+#import <ProgressHUD/ProgressHUD.h>
 #import "DGTwitterManager.h"
 #import "DGFacebookManager.h"
 
@@ -106,8 +106,7 @@
 - (void)childViewController:(DGPhotoPickerViewController *)viewController didChoosePhoto:(NSDictionary *)dictionary {
     imageToUpload = [dictionary objectForKey:UIImagePickerControllerEditedImage];
 
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-    hud.labelText = @"Changing avatar...";
+    [ProgressHUD showSuccess:@"Changing avatar..."];
     NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:nil method:RKRequestMethodPUT path:user_update_path parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
 
             [formData appendPartWithFileData:UIImagePNGRepresentation(imageToUpload)
@@ -118,10 +117,7 @@
 
     RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 
-        hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-        hud.mode = MBProgressHUDModeCustomView;
-        hud.labelText = @"Completed";
-        [hud hide:YES];
+        [ProgressHUD showSuccess:@"Completed"];
 
         avatar.image = imageToUpload;
         DGUser *user = (mappingResult.array)[0];
@@ -133,7 +129,7 @@
 
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [TSMessage showNotificationInViewController:self.navigationController title:nil subtitle:NSLocalizedString(@"Avatar upload failed", nil) type:TSMessageNotificationTypeError];
-        [hud hide:YES];
+        [ProgressHUD showError:[error localizedDescription]];
     }];
 
     [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started

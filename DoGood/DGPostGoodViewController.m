@@ -11,9 +11,9 @@
 #import "DGTwitterManager.h"
 #import "DGFacebookManager.h"
 #import "DGEntityHandler.h"
+#import <ProgressHUD/ProgressHUD.h>
 
 #import <UIImage+Resize.h>
-#import <MBProgressHUD.h>
 
 #import "DGPhotoPickerViewController.h"
 
@@ -352,8 +352,7 @@
 
     if (!errors) {
         [cell.description resignFirstResponder];
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-        hud.labelText = @"Posting good...";
+        [ProgressHUD show:@"Posting good..."];
 
         NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:self.good method:RKRequestMethodPOST path:@"/goods.json" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             if (self.good.image) {
@@ -406,17 +405,13 @@
 
             [self.navigationController popViewControllerAnimated:YES];
 
-            hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-            // Set custom view mode
-            hud.mode = MBProgressHUDModeCustomView;
-            hud.labelText = @"Completed";
-            [hud hide:YES];
+            [ProgressHUD showSuccess:@"Good posted!"];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [TSMessage showNotificationInViewController:self.navigationController
                                       title:nil
                                     subtitle:[error localizedDescription]
                                        type:TSMessageNotificationTypeError];
-            [hud hide:YES];
+            [ProgressHUD showError:nil];
         }];
 
         [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started

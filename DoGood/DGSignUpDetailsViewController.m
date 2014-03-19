@@ -2,7 +2,7 @@
 #import "UITextFieldCell.h"
 
 #import <UIImage+Resize.h>
-#import <MBProgressHUD.h>
+#import <ProgressHUD/ProgressHUD.h>
 
 #define sign_up_overview_cell_tag 100
 #define sign_up_email_cell_tag 200
@@ -104,8 +104,7 @@
 
     if (!errors) {
         [self.view endEditing:YES];
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-        hud.labelText = @"Creating account...";
+        [ProgressHUD showSuccess:@"Creating account..."];
 
         NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:self.user method:RKRequestMethodPOST path:user_registration_path parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             if (self.user.image) {
@@ -129,16 +128,12 @@
                 [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
             }];
             [TSMessage showNotificationInViewController:self.presentingViewController title:nil subtitle:NSLocalizedString(@"Welcome to Do Good!", nil) type:TSMessageNotificationTypeSuccess];
-            hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"37x-Checkmark.png"]];
-            // Set custom view mode
-            hud.mode = MBProgressHUDModeCustomView;
-            hud.labelText = @"Completed";
-            [hud hide:YES];
+            [ProgressHUD showSuccess:@"Completed"];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             DebugLog(@"fail");
             [TSMessage showNotificationInViewController:self.navigationController title:@"Error" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
             [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailCreateAccountNotification object:self];
-            [hud hide:YES];
+            [ProgressHUD showError:[error localizedDescription]];
         }];
 
         [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];

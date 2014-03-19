@@ -136,7 +136,6 @@
 		63E4424D17BC3010000224E8 /* DGSignUpDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E4424C17BC3010000224E8 /* DGSignUpDetailsViewController.m */; };
 		63EB262E17C2C8BC006D520A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EB262D17C2C8BC006D520A /* AddressBook.framework */; };
 		63EB263017C2F029006D520A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EB262F17C2F029006D520A /* MessageUI.framework */; };
-		63F2BD1A1820D923003D746E /* DGLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63F2BD191820D923003D746E /* DGLoadingView.m */; };
 		63FBF603180830C4005686A6 /* DGReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF602180830C4005686A6 /* DGReport.m */; };
 		63FBF606180AECFF005686A6 /* UIImage+Grayscale.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF605180AECFF005686A6 /* UIImage+Grayscale.m */; };
 		63FBF608180B0C06005686A6 /* RewardMiniCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FBF607180B0C06005686A6 /* RewardMiniCell.xib */; };
@@ -381,8 +380,6 @@
 		63E4424C17BC3010000224E8 /* DGSignUpDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGSignUpDetailsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		63EB262D17C2C8BC006D520A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		63EB262F17C2F029006D520A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		63F2BD181820D923003D746E /* DGLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLoadingView.h; sourceTree = "<group>"; };
-		63F2BD191820D923003D746E /* DGLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGLoadingView.m; sourceTree = "<group>"; };
 		63FBF601180830C4005686A6 /* DGReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGReport.h; sourceTree = "<group>"; };
 		63FBF602180830C4005686A6 /* DGReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGReport.m; sourceTree = "<group>"; };
 		63FBF604180AECFF005686A6 /* UIImage+Grayscale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Grayscale.h"; sourceTree = "<group>"; };
@@ -442,8 +439,6 @@
 		6319D39017BDF05C0071DA71 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				63F2BD181820D923003D746E /* DGLoadingView.h */,
-				63F2BD191820D923003D746E /* DGLoadingView.m */,
 				63C15488181F555A00DA81B9 /* TTTAttributedLabel+Tag.h */,
 				63C15489181F555A00DA81B9 /* TTTAttributedLabel+Tag.m */,
 				630046CE1810E619001529E5 /* URLHandler.h */,
@@ -1080,7 +1075,6 @@
 				6355EC3117B69F2800EE91C0 /* DGSignUpViewController.m in Sources */,
 				63A38D84181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m in Sources */,
 				6355EC3317B75EB600EE91C0 /* constants.m in Sources */,
-				63F2BD1A1820D923003D746E /* DGLoadingView.m in Sources */,
 				639B1232187C0FA3005C9BD9 /* GoodTableView.m in Sources */,
 				6355EC3D17B86B8400EE91C0 /* SignUpOverviewCell.m in Sources */,
 				639B88E417B9A25B005E2B62 /* DGVote.m in Sources */,

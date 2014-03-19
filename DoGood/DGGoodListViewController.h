@@ -3,7 +3,6 @@
 @class UserOverview;
 @class DGTag;
 @class DGGood;
-@class DGLoadingView;
 @class GoodTableView;
 
 @interface DGGoodListViewController : RootViewController {

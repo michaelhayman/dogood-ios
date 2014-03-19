@@ -3,7 +3,7 @@
 @class DGComment;
 @class GoodCell;
 @class DGEntityHandler;
-@class DGLoadingView;
+@class SAMLoadingView;
 
 @interface DGGoodCommentsViewController : UIViewController <UITextViewDelegate> {
     __weak IBOutlet NSLayoutConstraint *commentFieldBottom;
@@ -24,7 +24,7 @@
     CGFloat totalKeyboardHeight;
     NSMutableArray *entities;
     DGEntityHandler *entityHandler;
-    DGLoadingView *loadingView;
+    SAMLoadingView *loadingView;
     NSString *loadingStatus;
 }
 
