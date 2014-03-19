@@ -266,12 +266,12 @@
 		635A231E17CAB5150045C256 /* DGCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCategories.h; sourceTree = "<group>"; };
 		635A231F17CAB5150045C256 /* DGCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCategories.m; sourceTree = "<group>"; };
 		635A232117CABEB30045C256 /* Categories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Categories.plist; sourceTree = "<group>"; };
-		636A5A5B1814D82500FB708A /* Do GoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Do GoodTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		636A5A5B1814D82500FB708A /* DoGoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoGoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		636A5A5C1814D82500FB708A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		636A5A621814D82500FB708A /* DoGoodTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoGoodTests-Info.plist"; sourceTree = "<group>"; };
 		636A5A641814D82500FB708A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		636A5A661814D82500FB708A /* DoGoodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoGoodTests.m; sourceTree = "<group>"; };
-		636A5A681814D82500FB708A /* Do GoodTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Do GoodTests-Prefix.pch"; sourceTree = "<group>"; };
+		636A5A681814D82500FB708A /* DoGoodTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DoGoodTests-Prefix.pch"; sourceTree = "<group>"; };
 		636A5A6E1814ECA800FB708A /* DGUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserTests.m; sourceTree = "<group>"; };
 		636AEA5C17AD43CC002A3494 /* Good.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Good.storyboard; sourceTree = "<group>"; };
 		636AEA9A17AD63EC002A3494 /* GoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodCell.xib; sourceTree = "<group>"; };
@@ -293,17 +293,17 @@
 		637CC94417C553D9007619F5 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		63834D0217DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTextFieldSearchPeopleTableViewController.h; sourceTree = "<group>"; };
 		63834D0317DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTextFieldSearchPeopleTableViewController.m; sourceTree = "<group>"; };
-		638647DE17AC087A00167F15 /* Do Good.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Do Good.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		638647DE17AC087A00167F15 /* DoGood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoGood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		638647E117AC087A00167F15 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		638647E317AC087A00167F15 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		638647E517AC087A00167F15 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		638647E917AC087A00167F15 /* Do Good-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Do Good-Info.plist"; sourceTree = "<group>"; };
+		638647E917AC087A00167F15 /* DoGood-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoGood-Info.plist"; sourceTree = "<group>"; };
 		638647EB17AC087A00167F15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		638647ED17AC087A00167F15 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		638647EF17AC087A00167F15 /* Do Good-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Do Good-Prefix.pch"; sourceTree = "<group>"; };
+		638647EF17AC087A00167F15 /* DoGood-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DoGood-Prefix.pch"; sourceTree = "<group>"; };
 		638647F017AC087A00167F15 /* DGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAppDelegate.h; sourceTree = "<group>"; };
 		638647F117AC087A00167F15 /* DGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		6386480B17AC087A00167F15 /* Do GoodTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Do GoodTests-Info.plist"; sourceTree = "<group>"; };
+		6386480B17AC087A00167F15 /* DoGoodTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoGoodTests-Info.plist"; sourceTree = "<group>"; };
 		6386480D17AC087A00167F15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6386480F17AC087A00167F15 /* DoGoodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoGoodTests.m; sourceTree = "<group>"; };
 		6386481B17ACEF2100167F15 /* DGWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGWelcomeViewController.h; sourceTree = "<group>"; };
@@ -556,7 +556,7 @@
 			children = (
 				636A5A621814D82500FB708A /* DoGoodTests-Info.plist */,
 				636A5A631814D82500FB708A /* InfoPlist.strings */,
-				636A5A681814D82500FB708A /* Do GoodTests-Prefix.pch */,
+				636A5A681814D82500FB708A /* DoGoodTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -741,8 +741,8 @@
 		638647DF17AC087A00167F15 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				638647DE17AC087A00167F15 /* Do Good.app */,
-				636A5A5B1814D82500FB708A /* Do GoodTests.xctest */,
+				638647DE17AC087A00167F15 /* DoGood.app */,
+				636A5A5B1814D82500FB708A /* DoGoodTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -793,10 +793,10 @@
 		638647E817AC087A00167F15 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				638647E917AC087A00167F15 /* Do Good-Info.plist */,
+				638647E917AC087A00167F15 /* DoGood-Info.plist */,
 				638647EA17AC087A00167F15 /* InfoPlist.strings */,
 				638647ED17AC087A00167F15 /* main.m */,
-				638647EF17AC087A00167F15 /* Do Good-Prefix.pch */,
+				638647EF17AC087A00167F15 /* DoGood-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -813,7 +813,7 @@
 		6386480A17AC087A00167F15 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				6386480B17AC087A00167F15 /* Do GoodTests-Info.plist */,
+				6386480B17AC087A00167F15 /* DoGoodTests-Info.plist */,
 				6386480C17AC087A00167F15 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -833,9 +833,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		636A5A5A1814D82500FB708A /* Do GoodTests */ = {
+		636A5A5A1814D82500FB708A /* DoGoodTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 636A5A6D1814D82500FB708A /* Build configuration list for PBXNativeTarget "Do GoodTests" */;
+			buildConfigurationList = 636A5A6D1814D82500FB708A /* Build configuration list for PBXNativeTarget "DoGoodTests" */;
 			buildPhases = (
 				412CB5CCB81643B18BB47DB7 /* Check Pods Manifest.lock */,
 				636A5A571814D82500FB708A /* Sources */,
@@ -848,14 +848,14 @@
 			dependencies = (
 				636A5A6A1814D82500FB708A /* PBXTargetDependency */,
 			);
-			name = "Do GoodTests";
+			name = DoGoodTests;
 			productName = DoGoodTests;
-			productReference = 636A5A5B1814D82500FB708A /* Do GoodTests.xctest */;
+			productReference = 636A5A5B1814D82500FB708A /* DoGoodTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		638647DD17AC087A00167F15 /* Do Good */ = {
+		638647DD17AC087A00167F15 /* DoGood */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6386481317AC087A00167F15 /* Build configuration list for PBXNativeTarget "Do Good" */;
+			buildConfigurationList = 6386481317AC087A00167F15 /* Build configuration list for PBXNativeTarget "DoGood" */;
 			buildPhases = (
 				436891D47140469292DED439 /* Check Pods Manifest.lock */,
 				638647DA17AC087A00167F15 /* Sources */,
@@ -867,9 +867,9 @@
 			);
 			dependencies = (
 			);
-			name = "Do Good";
+			name = DoGood;
 			productName = DoGood;
-			productReference = 638647DE17AC087A00167F15 /* Do Good.app */;
+			productReference = 638647DE17AC087A00167F15 /* DoGood.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -890,7 +890,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 638647D917AC087A00167F15 /* Build configuration list for PBXProject "Do Good" */;
+			buildConfigurationList = 638647D917AC087A00167F15 /* Build configuration list for PBXProject "DoGood" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -903,8 +903,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				638647DD17AC087A00167F15 /* Do Good */,
-				636A5A5A1814D82500FB708A /* Do GoodTests */,
+				638647DD17AC087A00167F15 /* DoGood */,
+				636A5A5A1814D82500FB708A /* DoGoodTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1139,7 +1139,7 @@
 /* Begin PBXTargetDependency section */
 		636A5A6A1814D82500FB708A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 638647DD17AC087A00167F15 /* Do Good */;
+			target = 638647DD17AC087A00167F15 /* DoGood */;
 			targetProxy = 636A5A691814D82500FB708A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1184,15 +1184,15 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DoGoodTests/Do GoodTests-Prefix.pch";
+				GCC_PREFIX_HEADER = "DoGoodTests/DoGoodTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "DoGoodTests/Do GoodTests-Info.plist";
+				INFOPLIST_FILE = "DoGoodTests/DoGoodTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "Do GoodTests";
+				PRODUCT_NAME = DoGoodTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1210,11 +1210,11 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DoGoodTests/Do GoodTests-Prefix.pch";
+				GCC_PREFIX_HEADER = "DoGoodTests/DoGoodTests-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "DoGoodTests/Do GoodTests-Info.plist";
+				INFOPLIST_FILE = "DoGoodTests/DoGoodTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "Do GoodTests";
+				PRODUCT_NAME = DoGoodTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1299,10 +1299,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DoGood/Do Good-Prefix.pch";
-				INFOPLIST_FILE = "DoGood/Do Good-Info.plist";
+				GCC_PREFIX_HEADER = "DoGood/DoGood-Prefix.pch";
+				INFOPLIST_FILE = "DoGood/DoGood-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "Do Good";
+				PRODUCT_NAME = DoGood;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1317,10 +1317,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "DoGood/Do Good-Prefix.pch";
-				INFOPLIST_FILE = "DoGood/Do Good-Info.plist";
+				GCC_PREFIX_HEADER = "DoGood/DoGood-Prefix.pch";
+				INFOPLIST_FILE = "DoGood/DoGood-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "Do Good";
+				PRODUCT_NAME = DoGood;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1329,7 +1329,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		636A5A6D1814D82500FB708A /* Build configuration list for PBXNativeTarget "Do GoodTests" */ = {
+		636A5A6D1814D82500FB708A /* Build configuration list for PBXNativeTarget "DoGoodTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				636A5A6B1814D82500FB708A /* Debug */,
@@ -1338,7 +1338,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		638647D917AC087A00167F15 /* Build configuration list for PBXProject "Do Good" */ = {
+		638647D917AC087A00167F15 /* Build configuration list for PBXProject "DoGood" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6386481117AC087A00167F15 /* Debug */,
@@ -1347,7 +1347,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6386481317AC087A00167F15 /* Build configuration list for PBXNativeTarget "Do Good" */ = {
+		6386481317AC087A00167F15 /* Build configuration list for PBXNativeTarget "DoGood" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6386481417AC087A00167F15 /* Debug */,
