@@ -15,7 +15,8 @@ pod 'RFKeychain', '~> 0.1'
 
 # ui
 pod 'TSMessages', '~> 0.9.4'
-pod 'MBProgressHUD'
+pod 'ProgressHUD', :git => "git@github.com:relatedcode/ProgressHUD.git"
+
 pod 'SAMLoadingView'
 pod 'UIImage-Categories', '~> 0.0.1'
 pod 'NSDate+TimeAgo', '~> 1.0.2'
@@ -34,7 +35,7 @@ pod 'SocialAuth', :git => "git@github.com:michaelhayman/SocialAuth.git"
 # pod 'TestFlightSDK'
 pod 'HockeySDK'
 
-target "Do GoodTests", :exclusive => true do
+target "DoGoodTests", :exclusive => true do
     pod 'Kiwi/XCTest'
     # pod 'RKKiwiMatchers'
 end

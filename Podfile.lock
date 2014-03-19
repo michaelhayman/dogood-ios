@@ -12,12 +12,12 @@ PODS:
   - Kiwi/XCTest (2.2.2):
     - Kiwi/ARC
     - Kiwi/NonARC
-  - MBProgressHUD (0.7)
   - MJPopupViewController (1.1.1)
   - NSData+Base64 (1.0.0)
   - NSDate+TimeAgo (1.0.2)
   - OAuthCore (0.0.1):
     - NSData+Base64
+  - ProgressHUD (1.3)
   - ReactiveCocoa (2.1.7):
     - ReactiveCocoa/Core
     - ReactiveCocoa/no-arc
@@ -64,9 +64,9 @@ DEPENDENCIES:
   - HockeySDK
   - Inflections
   - Kiwi/XCTest
-  - MBProgressHUD
   - MJPopupViewController (from `git@github.com:doPanic/MJPopupViewController.git`)
   - NSDate+TimeAgo (~> 1.0.2)
+  - ProgressHUD (from `git@github.com:relatedcode/ProgressHUD.git`)
   - ReactiveCocoa
   - REMenu (~> 1.6)
   - RestKit (~> 0.21.0)
@@ -82,6 +82,8 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   MJPopupViewController:
     :git: git@github.com:doPanic/MJPopupViewController.git
+  ProgressHUD:
+    :git: git@github.com:relatedcode/ProgressHUD.git
   SocialAuth:
     :git: git@github.com:michaelhayman/SocialAuth.git
 
@@ -93,11 +95,11 @@ SPEC CHECKSUMS:
   Inflections: e77c455409381402163911a75835892fd406ff99
   ISO8601DateFormatterValueTransformer: d0af1f50a9df42db72d7418db31938b8473e0af8
   Kiwi: 03539aeb004ccd42bdbc31253617b26364315df4
-  MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
   MJPopupViewController: 89f932b2a44b8348355300c99e8d3d6d5e3ee59a
   NSData+Base64: 4819562faee4544e3cf5703f2139820b09732b28
   NSDate+TimeAgo: fe93d3042e83093ae3630bc47ae7d57f782733f6
   OAuthCore: 4164eec5e28c68f794953446e68f91054ffe570c
+  ProgressHUD: 9d9e2fd571d18e0de5ab4b1a69336f8c890a700b
   ReactiveCocoa: 1117f7968c8667d2ca00b5aa47156fabcb56af75
   RegexKitLite: f7af7b4d2b675cd2ec9a4abab6aad6ae1f6499c0
   REMenu: 65aee777063bc70210d8257d4a935a4fb98cad52
