@@ -42,7 +42,7 @@
     DebugLog(@"did appear");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toggleMenu) name:DGUserDidToggleMenu object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showRewards) name:DGUserDidSelectRewards object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showGoodList) name:DGUserDidSignOutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showExplore) name:DGUserDidSignOutNotification object:nil];
 }
 
 - (void)viewDidLoad {
