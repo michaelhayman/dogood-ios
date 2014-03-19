@@ -47,6 +47,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authenticate) name:DGUserDidFailSilentAuthenticationNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(peopleSelected) name:DGUserDidStartSearchingPeople object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tagsSelected) name:DGUserDidStartSearchingTags object:nil];
@@ -56,6 +57,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidFailSilentAuthenticationNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidStartSearchingPeople object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidStartSearchingTags object:nil];
@@ -70,6 +72,10 @@
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
+}
+
+- (void)authenticate {
+    [[DGUser currentUser] authorizeAccess:self];
 }
 
 - (void)stylePage {

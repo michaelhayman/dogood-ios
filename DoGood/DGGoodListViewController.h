@@ -17,7 +17,6 @@
 @property (nonatomic, strong) DGTag *tag;
 @property (nonatomic, strong) NSNumber *goodID;
 
-- (void)showWelcome;
 - (void)getGood;
 
 @end
