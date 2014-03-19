@@ -12,6 +12,7 @@
 #import "DGComment.h"
 #import "DGLoadingView.h"
 #import "GoodTableView.h"
+#import "URLHandler.h"
 
 @interface DGGoodListViewController ()
 
@@ -43,13 +44,11 @@
 }
 
 - (IBAction)postGood:(id)sender {
-    BOOL access = NO;
-    access = [[DGUser currentUser] authorizeAccess:self];
-    if (access) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-        DGPostGoodViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"PostGood"];
-        [self.navigationController pushViewController:controller animated:YES];
-    }
+    URLHandler *handler = [[URLHandler alloc] init];
+    NSURL *url = [NSURL URLWithString:@"dogood://goods/new"];
+    [handler openURL:url andReturn:^(BOOL matched) {
+        return matched;
+    }];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

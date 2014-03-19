@@ -34,6 +34,14 @@
     }];
 }
 
+- (void)testCanHandlePostingNewGoods {
+    NSURL *url = [NSURL URLWithString:@"dogood://goods/new"];
+    [handler openURL:url andReturn:^(BOOL matched) {
+        XCTAssertTrue(matched, @"it should match the URL");
+        return matched;
+    }];
+}
+
 - (void)testCanHandleTaggedGoods {
     NSURL *url = [NSURL URLWithString:@"dogood://goods/tagged/5"];
     [handler openURL:url andReturn:^(BOOL matched) {

@@ -2,6 +2,7 @@
 #import "DGExploreSearchViewController.h"
 #import "DGExploreCategoriesViewController.h"
 #import "DGWelcomeViewController.h"
+#import "URLHandler.h"
 
 @interface DGExploreViewController ()
     @property (nonatomic, retain) DGExploreSearchViewController *exploreSearch;
@@ -43,6 +44,14 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self showWelcome];
+}
+
+- (IBAction)postGood:(id)sender {
+    URLHandler *handler = [[URLHandler alloc] init];
+    NSURL *url = [NSURL URLWithString:@"dogood://goods/new"];
+    [handler openURL:url andReturn:^(BOOL matched) {
+        return matched;
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
