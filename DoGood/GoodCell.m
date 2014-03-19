@@ -137,15 +137,15 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
 #pragma mark - Set values when cell becomes visible
 - (void)setupAvatar {
-    if (self.good.nominee.avatar) {
-        [self.avatar setImageWithURL:[NSURL URLWithString:self.good.nominee.avatar]];
+    self.avatar.hidden = YES;
+    self.avatarHeight.constant = 0;
+    self.avatarHeightSpacing.constant = 0;
+
+    if ([self.good.nominee avatarURL]) {
+        [self.avatar setImageWithURL:[self.good.nominee avatarURL]];
         self.avatar.hidden = NO;
         self.avatarHeight.constant = 57;
         self.avatarHeightSpacing.constant = 8;
-    } else {
-        self.avatar.hidden = YES;
-        self.avatarHeight.constant = 0;
-        self.avatarHeightSpacing.constant = 0;
     }
 }
 
@@ -155,18 +155,18 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     [self setupAvatar];
     // description
     [self setCaptionText];
-    // image
-    [self.overviewImage setImageWithURL:[NSURL URLWithString:self.good.evidence]];
 
     [self setPostedByText];
 
-    if (self.good.evidence) {
+    self.overviewImageHeight.constant = 0;
+    self.overviewImage.hidden = YES;
+
+    if ([self.good evidenceURL]) {
+        [self.overviewImage setImageWithURL:[self.good evidenceURL]];
         self.overviewImageHeight.constant = 302;
         self.overviewImage.hidden = NO;
-    } else {
-        self.overviewImageHeight.constant = 0;
-        self.overviewImage.hidden = YES;
     }
+
     // likes
     if ([self.good.current_user_liked boolValue]) {
         [self.like setSelected:YES];

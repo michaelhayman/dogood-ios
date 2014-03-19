@@ -24,4 +24,8 @@
     return type;
 }
 
+- (NSURL *)avatarURL {
+    return [NSURL URLWithString:self.avatar];
+}
+
 @end

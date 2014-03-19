@@ -46,5 +46,6 @@
 - (void)setValuesForCategory:(DGCategory *)category;
 - (NSString *)createdAgoInWords;
 - (NSString *)postedByLine;
+- (NSURL *)evidenceURL;
 
 @end

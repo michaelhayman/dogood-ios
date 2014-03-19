@@ -24,4 +24,8 @@
     return [NSString stringWithFormat:@"Nominated by %@ %@", self.user.full_name, [self  createdAgoInWords]];
 }
 
+- (NSURL *)evidenceURL {
+    return [NSURL URLWithString:self.evidence];
+}
+
 @end

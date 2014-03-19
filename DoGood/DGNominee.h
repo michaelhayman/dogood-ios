@@ -11,5 +11,6 @@
 @property (retain) NSString *avatar;
 
 - (void)configureForUser:(DGUser *)user;
+- (NSURL *)avatarURL;
 
 @end

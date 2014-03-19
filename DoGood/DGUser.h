@@ -56,6 +56,9 @@
 #pragma mark - Social
 - (void)saveSocialID:(NSString *)socialID withType:(NSString *)socialType;
 
+#pragma mark - Decoration
+- (NSURL *)avatarURL;
+
 #pragma mark - Profile helpers
 + (void)openProfilePage:(NSNumber *)userID inController:(UINavigationController *)nav;
 - (BOOL)authorizeAccess:(UIViewController *)controller;

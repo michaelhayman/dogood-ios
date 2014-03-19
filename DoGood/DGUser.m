@@ -207,6 +207,11 @@ static DGUser* currentUser = nil;
     } failure:nil];
 }
 
+#pragma mark - Decoration
+- (NSURL *)avatarURL {
+    return [NSURL URLWithString:self.avatar_url];
+}
+
 #pragma mark - Profile helper
 + (void)openProfilePage:(NSNumber *)userID inController:(UINavigationController *)nav  {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];

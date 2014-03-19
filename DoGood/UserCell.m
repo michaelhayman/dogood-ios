@@ -45,7 +45,9 @@
         self.location.text = @"";
     }
 
-    [self.avatar setImageWithURL:[NSURL URLWithString:self.user.avatar_url]];
+    if ([self.user avatarURL]) {
+        [self.avatar setImageWithURL:[self.user avatarURL]];
+    }
 
     // follows
     if ([self.user.current_user_following boolValue]) {

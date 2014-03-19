@@ -88,12 +88,14 @@
 }
 
 - (void)setupHeader {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[DGUser currentUser].avatar_url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
-    [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        avatar.image = image;
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-        DebugLog(@"failed to set avatar");
-    }];
+    if ([[DGUser currentUser] avatarURL]) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:[[DGUser currentUser] avatarURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
+        [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+            avatar.image = image;
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+            DebugLog(@"failed to set avatar");
+        }];
+    }
 }
 
 #pragma mark - Avatar
