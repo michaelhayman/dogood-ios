@@ -32,7 +32,7 @@
            }
             [(UINavigationController *)[[UIApplication sharedApplication] keyWindow].rootViewController pushViewController:controller animated:YES];
         }
-       match(YES);
+        match(YES);
     } else {
         match(NO);
     }
