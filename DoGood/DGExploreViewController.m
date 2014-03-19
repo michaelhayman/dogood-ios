@@ -17,15 +17,15 @@
     [self addMenuButton:@"MenuFromExploreIconTap" withTapButton:@"MenuFromExploreIcon"];
     [self setupMenuTitle:@"Do Good"];
 
-    if (_exploreSearch == nil) {
-        _exploreSearch = [self.storyboard instantiateViewControllerWithIdentifier:@"exploreSearch"];
+    if (self.exploreSearch == nil) {
+        self.exploreSearch = [self.storyboard instantiateViewControllerWithIdentifier:@"exploreSearch"];
     }
     searchField.delegate = self.exploreSearch;
-    _exploreSearch.parent = self;
-    _exploreSearch.searchField = searchField;
+    self.exploreSearch.parent = self;
+    self.exploreSearch.searchField = searchField;
 
-    if (_exploreCategories == nil) {
-        _exploreCategories = [self.storyboard instantiateViewControllerWithIdentifier:@"exploreCategories"];
+    if (self.exploreCategories == nil) {
+        self.exploreCategories = [self.storyboard instantiateViewControllerWithIdentifier:@"exploreCategories"];
     }
 
     [self stylePage];
@@ -35,9 +35,9 @@
     // setup initial container view
     segmentIndex = 1;
     UIViewController *vc = [self viewControllerForSegmentIndex:segmentIndex];
-    _currentViewController = vc;
+    self.currentViewController = vc;
     [self addChildViewController:vc];
-    [_contentView addSubview:vc.view];
+    [self.contentView addSubview:vc.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

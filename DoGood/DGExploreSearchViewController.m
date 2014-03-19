@@ -21,7 +21,7 @@
     UINib *noResultsNib = [UINib nibWithNibName:@"NoResultsCell" bundle:nil];
     [tableView registerNib:noResultsNib forCellReuseIdentifier:@"NoResultsCell"];
 
-    [_searchField addTarget:self action:@selector(searchFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [self.searchField addTarget:self action:@selector(searchFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -102,7 +102,7 @@
 
 #pragma mark - Keyboard handler
 - (void)closeKeyboard {
-    [_parent.searchField resignFirstResponder];
+    [self.parent.searchField resignFirstResponder];
 }
 
 - (void)watchKeyboard {
@@ -119,23 +119,23 @@
 }
 
 - (void)searchFieldDidChange:(id)sender {
-    if ([_searchField.text length] == 0) {
-        _searchField.rightView.hidden = YES;
+    if ([self.searchField.text length] == 0) {
+        self.searchField.rightView.hidden = YES;
     } else {
-        _searchField.rightView.hidden = NO;
+        self.searchField.rightView.hidden = NO;
     }
     if (peopleButton.selected) {
-        if ([_searchField.text length] > 1) {
+        if ([self.searchField.text length] > 1) {
             tableView.hidden = NO;
-            [searchPeopleTable getUsersByName:_searchField.text];
+            [searchPeopleTable getUsersByName:self.searchField.text];
         } else {
             tableView.hidden = YES;
             [searchPeopleTable purge];
         }
     } else if (tagsButton.selected) {
-        if ([_searchField.text length] > 1) {
+        if ([self.searchField.text length] > 1) {
             tableView.hidden = NO;
-            [searchTagsTable getTagsByName:_searchField.text];
+            [searchTagsTable getTagsByName:self.searchField.text];
         } else {
             tableView.hidden = YES;
             [searchTagsTable purge];
