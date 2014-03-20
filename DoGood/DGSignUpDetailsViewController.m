@@ -104,7 +104,7 @@
 
     if (!errors) {
         [self.view endEditing:YES];
-        [ProgressHUD showSuccess:@"Creating account..."];
+        [ProgressHUD show:@"Creating account..."];
 
         NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:self.user method:RKRequestMethodPOST path:user_registration_path parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             if (self.user.image) {
@@ -124,6 +124,7 @@
             [DGUser setCurrentUser:user];
             [DGUser signInWasSuccessful];
             [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidCreateAccountNotification object:self];
+            [self.navigationController popToRootViewControllerAnimated:YES];
             [self.presentingViewController dismissViewControllerAnimated:YES completion:^(void) {
                 [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
             }];
@@ -131,7 +132,6 @@
             [ProgressHUD showSuccess:@"Completed"];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             DebugLog(@"fail");
-            [TSMessage showNotificationInViewController:self.navigationController title:@"Error" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
             [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailCreateAccountNotification object:self];
             [ProgressHUD showError:[error localizedDescription]];
         }];
