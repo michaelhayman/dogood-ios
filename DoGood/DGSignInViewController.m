@@ -47,7 +47,6 @@
     [[RKObjectManager sharedManager] postObject:user path:user_session_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [DGUser setCurrentUser:user];
 		[DGUser signInWasSuccessful];
-        [self.navigationController popToRootViewControllerAnimated:YES];
         [self.presentingViewController dismissViewControllerAnimated:YES completion:^(void) {
             [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
         }];
