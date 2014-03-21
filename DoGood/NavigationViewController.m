@@ -75,6 +75,7 @@
             userProfileController = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
         }
         userProfileController.fromMenu = YES;
+        userProfileController.userID = [DGUser currentUser].userID;
         [weakSelf setViewControllers:@[userProfileController] animated:NO];
     }];
 

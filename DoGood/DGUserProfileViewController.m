@@ -12,6 +12,8 @@
 #import "DGAppearance.h"
 #import "GoodTableView.h"
 #import <SAMLoadingView/SAMLoadingView.h>
+#import "AuthenticateView.h"
+#import <ProgressHUD/ProgressHUD.h>
 
 @interface DGUserProfileViewController ()
 
@@ -22,38 +24,17 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // one time events
+    [self registerNotifications];
     self.view.backgroundColor = [UIColor whiteColor];
 
     loadingView = [[SAMLoadingView alloc] initWithFrame:self.view.bounds];
     loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:loadingView];
 
-    // assume it's the current user's profile if no ID was specified
-    if (self.userID == nil) {
-        self.userID = [DGUser currentUser].userID;
-    }
-
-    if ([[DGUser currentUser] isSignedIn]) {
-        ownProfile = [self.userID isEqualToNumber:[DGUser currentUser].userID];
-    }
-
-    if (self.fromMenu) {
-        [self addMenuButton:@"MenuFromProfileIconTap" withTapButton:@"MenuFromProfileIcon"];
-    }
-
-    // conditional settings on user
-    [self setupMenuTitle:@"You"];
-
-    [self setupMoreOptions];
-
-    // retrieve profile
-    [self getProfile];
-
-    // get good list
-    goodTableView.navigationController = self.navigationController;
-    goodTableView.parent = self;
-    [goodTableView setupRefresh];
-    [self getUserGood];
+    authenticateView.navigationController = self.navigationController;
+    [self.view bringSubviewToFront:authenticateView];
+    authenticateView.hidden = YES;
 
     // setup following / followers text
     UITapGestureRecognizer* followersGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFollowers)];
@@ -66,35 +47,74 @@
 
     avatar.contentMode = UIViewContentModeScaleAspectFit;
 
-    if (ownProfile) {
-        [avatarOverlay setUserInteractionEnabled:YES];
-        UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
-                                       initWithTarget:self
-                                       action:@selector(openSettings)];
-        [avatarOverlay addGestureRecognizer:tap];
-    } else {
-        avatarOverlay.hidden = YES;
-    }
+    // get good list
+    goodTableView.navigationController = self.navigationController;
+    goodTableView.parent = self;
+    [goodTableView setupRefresh];
 
     invites = [[DGUserInvitesViewController alloc] init];
     invites.parent = (UIViewController *)self;
-    authenticateView.navigationController = self.navigationController;
 
     name.font = PROFILE_FONT;
     name.textColor = [UIColor whiteColor];
+
+    [self initialize];
+}
+
+- (BOOL)isOwnProfile {
+    return [[DGUser currentUser] isSignedIn] && [self.userID isEqualToNumber:[DGUser currentUser].userID];
+}
+
+- (void)setupOwnProfile {
+    authenticateView.hidden = YES;
+    DebugLog(@"from menu");
+    self.userID = [DGUser currentUser].userID;
+    [self setupMenuTitle:@"You"];
+    [avatarOverlay setUserInteractionEnabled:YES];
+    UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
+                                   initWithTarget:self
+                                   action:@selector(openSettings)];
+    [avatarOverlay addGestureRecognizer:tap];
+    DebugLog(@"menu doesn't really help; because we have to checknot from menu");
+
+    [self setupMoreOptions];
+    [self getProfile];
+}
+
+- (void)setupProfile {
+    [self setupMenuTitle:user.full_name];
+
+    if (!profileLoaded) {
+        [self getProfile];
+    }
+}
+
+- (void)setupAuth {
+    authenticateView.hidden = NO;
+    [self removeMoreOptions];
+}
+
+- (void)initialize {
+    if (self.fromMenu) {
+        if ([[DGUser currentUser] isSignedIn]) {
+            [self setupOwnProfile];
+            [self addMenuButton:@"MenuFromProfileIconTap" withTapButton:@"MenuFromProfileIcon"];
+        } else {
+            [self setupAuth];
+        }
+    } else {
+        if ([self isOwnProfile]) {
+            [self setupOwnProfile];
+        } else {
+            [self setupProfile];
+        }
+    }
+
+    [self getUserGood];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.view bringSubviewToFront:authenticateView];
-    authenticateView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    if (![[DGUser currentUser] isSignedIn]) {
-        authenticateView.hidden = NO;
-        [self removeMoreOptions];
-    } else {
-        authenticateView.hidden = YES;
-        [self setupMoreOptions];
-    }
 }
 
 - (void)setDefaults {
@@ -108,24 +128,38 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getProfile) name:DGUserDidSignInNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getProfile) name:DGUserDidUpdateAccountNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getProfile) name:DGUserDidUpdateFollowingsNotification object:nil];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
+- (void)registerNotifications {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initialize) name:DGUserDidSignInNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initialize) name:DGUserDidSignOutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initialize) name:DGUserDidUpdateAccountNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initialize) name:DGUserDidUpdateFollowingsNotification object:nil];
+}
+
+- (void)deregisterNotifications {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSignInNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidUpdateAccountNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidUpdateFollowingsNotification object:nil];
+}
+
+- (void)dealloc {
+    DebugLog(@"dealloc %@", [self class]);
+    [self deregisterNotifications];
 }
 
 #pragma mark - Tabs
 - (void)setupTabs {
     [goodsButton addTarget:self action:@selector(getUserGood) forControlEvents:UIControlEventTouchUpInside];
     [goodsButton setTitle:[NSString stringWithFormat:@"%@ Nominations", user.posted_or_followed_goods_count] forState:UIControlStateNormal];
+    [goodsButton setTitle:[NSString stringWithFormat:@"%@ Nominations", user.posted_or_followed_goods_count] forState:UIControlStateSelected];
     [likesButton addTarget:self action:@selector(getUserLikes) forControlEvents:UIControlEventTouchUpInside];
     [likesButton setTitle:[NSString stringWithFormat:@"%@ Likes", user.liked_goods_count] forState:UIControlStateNormal];
+}
+
+- (void)resetProfile {
+    self.userID = nil;
 }
 
 #pragma mark - User retrieval
@@ -152,9 +186,6 @@
             DebugLog(@"not following");
         }
 
-        if (!ownProfile) {
-            [self setupMenuTitle:@"Profile"];
-        }
         [self setupTabs];
 
         if (!avatar.image) {
@@ -162,7 +193,7 @@
                 NSURLRequest *request = [NSURLRequest requestWithURL:[user avatarURL] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
                 [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                     avatar.image = image;
-                    if (ownProfile) {
+                    if ([self isOwnProfile]) {
                        avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
                         [avatar bringSubviewToFront:avatarOverlay];
                     }
@@ -175,6 +206,7 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
         [loadingView removeFromSuperview];
+        // [ProgressHUD showError:[error localizedDescription]];
     }];
 
     });
@@ -229,7 +261,7 @@
 }
 
 - (void)setupMoreOptions {
-    if (ownProfile) {
+    if ([self isOwnProfile]) {
         [self setDefaults];
         UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:@"Find Friends" style: UIBarButtonItemStylePlain target:self action:@selector(findFriends:)];
         [centralButton addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];

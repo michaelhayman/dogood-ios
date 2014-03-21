@@ -8,10 +8,34 @@
 - (id)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
-        [[NSBundle mainBundle] loadNibNamed:@"AuthenticateView" owner:self options:nil];
-        [self addSubview:self.view];
+        [self initialize];
     }
     return self;
+}
+
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (void)initialize {
+    [[NSBundle mainBundle] loadNibNamed:@"AuthenticateView" owner:self options:nil];
+    self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.backgroundColor = [UIColor whiteColor];
+    self.opaque = YES;
+    self.contentMode = UIViewContentModeRedraw;
+
+    [self addSubview:self.view];
+    [self layoutSubviews];
+    // [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+}
+
++ (BOOL)translatesAutoresizingMaskIntoConstraints {
+    return YES;
 }
 
 - (void) awakeFromNib {

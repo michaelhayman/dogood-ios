@@ -12,7 +12,8 @@
     __weak IBOutlet UIImageView *avatar;
     __weak IBOutlet UILabel *name;
     DGUser *user;
-    bool ownProfile;
+    BOOL profileLoaded;
+
     __weak IBOutlet UILabel *followers;
     __weak IBOutlet UILabel *following;
     NSArray *goods;
