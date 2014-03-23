@@ -18,27 +18,6 @@
 #import "TTTAttributedLabel+Tag.h"
 #import "NSString+Inflections.h"
 
-static inline NSRegularExpression * NameRegularExpression() {
-    static NSRegularExpression *_nameRegularExpression = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _nameRegularExpression = [[NSRegularExpression alloc] initWithPattern:@"^\\w+" options:NSRegularExpressionCaseInsensitive error:nil];
-    });
-    
-    return _nameRegularExpression;
-}
-
-static inline  NSRegularExpression * UserNameRegularExpression()
-{
-    static NSRegularExpression *_usernameRegularExpression = nil;
-
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _usernameRegularExpression = [[NSRegularExpression alloc] initWithPattern:@"(?:^|\\s|[\\p{Punct}&&[^/]])((#[\\p{L}0-9-_]+)|(@[\\p{L}0-9-_\\.]+))" options:NSRegularExpressionCaseInsensitive error:nil];
-    });
-    return _usernameRegularExpression;
-}
-
 @implementation GoodCell
 
 #pragma mark - Initial setup
@@ -61,9 +40,6 @@ static inline  NSRegularExpression * UserNameRegularExpression()
     self.overviewImage.contentMode = UIViewContentModeScaleAspectFill;
     // UIViewContentModeScaleAspectFit;
     [self.overviewImage setClipsToBounds:YES];
-
-    // description
-    // self.description.contentInset = UIEdgeInsetsMake(-10,-4,0,-10);
 
     // likes
     [self.like addTarget:self action:@selector(addUserLike) forControlEvents:UIControlEventTouchUpInside];
