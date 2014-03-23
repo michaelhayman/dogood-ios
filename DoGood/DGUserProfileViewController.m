@@ -99,7 +99,6 @@
     if (self.fromMenu) {
         if ([[DGUser currentUser] isSignedIn]) {
             [self setupOwnProfile];
-            [self addMenuButton:@"MenuFromProfileIconTap" withTapButton:@"MenuFromProfileIcon"];
         } else {
             [self setupAuth];
         }
@@ -116,6 +115,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    if (self.fromMenu) {
+         [self addMenuButton:@"MenuFromProfileIconTap" withTapButton:@"MenuFromProfileIcon"];
+    }
 }
 
 - (void)setDefaults {
