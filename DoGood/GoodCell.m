@@ -245,24 +245,26 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
 #pragma mark - Regoods
 - (void)addUserRegood {
-    if (self.regood.isSelected == NO) {
-        [self increaseRegood];
-
-        [DGFollow followType:@"Good" withID:self.good.goodID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
-            DebugLog(@"%@", msg);
-        } failure:^(NSError *error) {
-            [self decreaseRegood];
-            DebugLog(@"failed to remove follow");
-        }];
-    } else {
-        [self decreaseRegood];
-
-        [DGFollow unfollowType:@"Good" withID:self.good.goodID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
-            DebugLog(@"%@", msg);
-        } failure:^(NSError *error) {
+    if ([[DGUser currentUser] authorizeAccess:self.navigationController.visibleViewController]) {
+        if (self.regood.isSelected == NO) {
             [self increaseRegood];
-            DebugLog(@"failed to remove follow");
-        }];
+
+            [DGFollow followType:@"Good" withID:self.good.goodID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+                DebugLog(@"%@", msg);
+            } failure:^(NSError *error) {
+                [self decreaseRegood];
+                DebugLog(@"failed to remove follow");
+            }];
+        } else {
+            [self decreaseRegood];
+
+            [DGFollow unfollowType:@"Good" withID:self.good.goodID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+                DebugLog(@"%@", msg);
+            } failure:^(NSError *error) {
+                [self increaseRegood];
+                DebugLog(@"failed to remove follow");
+            }];
+        }
     }
 }
 
@@ -303,32 +305,34 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
 #pragma mark - Likes
 - (void)addUserLike {
-    NSString *type = @"Good";
-    NSDictionary *voteDict = [NSDictionary dictionaryWithObjectsAndKeys:self.good.goodID, @"votable_id", type, @"votable_type", nil];
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:voteDict, @"vote", nil];
+    if ([[DGUser currentUser] authorizeAccess:self.navigationController.visibleViewController]) {
+        NSString *type = @"Good";
+        NSDictionary *voteDict = [NSDictionary dictionaryWithObjectsAndKeys:self.good.goodID, @"votable_id", type, @"votable_type", nil];
+        NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:voteDict, @"vote", nil];
 
-    if (self.like.isSelected == NO) {
-        [self increaseLike];
-        [[RKObjectManager sharedManager] postObject:nil path:@"/votes" parameters:params success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            DebugLog(@"failed to add");
-            [self decreaseLike];
-            DebugLog(@"%@", [error userInfo]);
-            [TSMessage showNotificationInViewController:self.navigationController
-                                      title:nil
-                                    subtitle:[error localizedDescription]
-                                       type:TSMessageNotificationTypeError];
-        }];
-    } else {
-        [self decreaseLike];
-        [[RKObjectManager sharedManager] deleteObject:nil path:[NSString stringWithFormat:@"/votes/%@", self.good.goodID] parameters:params success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        if (self.like.isSelected == NO) {
             [self increaseLike];
-            DebugLog(@"%@", [error userInfo]);
+            [[RKObjectManager sharedManager] postObject:nil path:@"/votes" parameters:params success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                DebugLog(@"failed to add");
+                [self decreaseLike];
+                DebugLog(@"%@", [error userInfo]);
+                [TSMessage showNotificationInViewController:self.navigationController
+                                          title:nil
+                                        subtitle:[error localizedDescription]
+                                           type:TSMessageNotificationTypeError];
+            }];
+        } else {
+            [self decreaseLike];
+            [[RKObjectManager sharedManager] deleteObject:nil path:[NSString stringWithFormat:@"/votes/%@", self.good.goodID] parameters:params success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
+                [self increaseLike];
+                DebugLog(@"%@", [error userInfo]);
 
-            [TSMessage showNotificationInViewController:self.navigationController
-                                      title:nil
-                                    subtitle:[error localizedDescription]
-                                       type:TSMessageNotificationTypeError];
-        }];
+                [TSMessage showNotificationInViewController:self.navigationController
+                                          title:nil
+                                        subtitle:[error localizedDescription]
+                                           type:TSMessageNotificationTypeError];
+            }];
+        }
     }
 }
 
@@ -368,12 +372,14 @@ static inline  NSRegularExpression * UserNameRegularExpression()
 
 #pragma mark - Comments
 - (void)addComment {
-    UIStoryboard *goodS = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
-    DGGoodCommentsViewController *commentsView = [goodS instantiateViewControllerWithIdentifier:@"GoodComments"];
-    commentsView.good = self.good;
-    commentsView.makeComment = YES;
-    commentsView.goodCell = self;
-    [self.navigationController pushViewController:commentsView animated:YES];
+    if ([[DGUser currentUser] authorizeAccess:self.navigationController.visibleViewController]) {
+        UIStoryboard *goodS = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+        DGGoodCommentsViewController *commentsView = [goodS instantiateViewControllerWithIdentifier:@"GoodComments"];
+        commentsView.good = self.good;
+        commentsView.makeComment = YES;
+        commentsView.goodCell = self;
+        [self.navigationController pushViewController:commentsView animated:YES];
+    }
 }
 
 - (void)showComments {

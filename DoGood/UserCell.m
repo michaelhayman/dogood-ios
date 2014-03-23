@@ -62,22 +62,24 @@
 }
 
 - (void)followUser {
-    if (self.follow.isSelected == NO) {
-        [self increaseFollow];
-        [DGFollow followType:@"User" withID:self.user.userID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
-            DebugLog(@"%@", msg);
-        } failure:^(NSError *error) {
-            [self decreaseFollow];
-            DebugLog(@"failed to remove follow");
-        }];
-    } else {
-        [self decreaseFollow];
-        [DGFollow unfollowType:@"User" withID:self.user.userID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
-            DebugLog(@"%@", msg);
-        } failure:^(NSError *error) {
+    if ([[DGUser currentUser] authorizeAccess:self.navigationController.visibleViewController]) {
+        if (self.follow.isSelected == NO) {
             [self increaseFollow];
-            DebugLog(@"failed to remove follow");
-        }];
+            [DGFollow followType:@"User" withID:self.user.userID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+                DebugLog(@"%@", msg);
+            } failure:^(NSError *error) {
+                [self decreaseFollow];
+                DebugLog(@"failed to remove follow");
+            }];
+        } else {
+            [self decreaseFollow];
+            [DGFollow unfollowType:@"User" withID:self.user.userID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+                DebugLog(@"%@", msg);
+            } failure:^(NSError *error) {
+                [self increaseFollow];
+                DebugLog(@"failed to remove follow");
+            }];
+        }
     }
 }
 
