@@ -90,6 +90,7 @@
 }
 
 - (void)setupAuth {
+    [self setupMenuTitle:@"Join Do Good"];
     authenticateView.hidden = NO;
     [self removeMoreOptions];
 }
