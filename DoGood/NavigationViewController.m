@@ -62,7 +62,7 @@
 
     REMenuItem *rewardsItem;
     if (REWARDS_ENABLED) {
-        REMenuItem *rewardsItem = [[REMenuItem alloc] initWithTitle:@"Rewards" subtitle:nil image:nil highlightedImage:nil action:^(REMenuItem *item) {
+        rewardsItem = [[REMenuItem alloc] initWithTitle:@"Rewards" subtitle:nil image:nil highlightedImage:nil action:^(REMenuItem *item) {
             NSLog(@"Item: %@", item);
             [self showRewards];
         }];
