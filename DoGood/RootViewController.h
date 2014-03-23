@@ -1,5 +1,4 @@
 #import "REMenu.h"
-#import "DGViewController.h"
 
 @interface RootViewController : DGViewController
 

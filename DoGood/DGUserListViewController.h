@@ -1,4 +1,4 @@
-@interface DGUserListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface DGUserListViewController : DGViewController <UITableViewDelegate, UITableViewDataSource> {
     __weak IBOutlet UITableView *tableView;
     NSArray *users;
 }

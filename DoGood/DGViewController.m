@@ -1,5 +1,3 @@
-#import "DGViewController.h"
-
 @interface DGViewController ()
 
 @end

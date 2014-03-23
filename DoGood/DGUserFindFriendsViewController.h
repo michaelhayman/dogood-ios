@@ -1,5 +1,6 @@
 @class Arrow;
-@interface DGUserFindFriendsViewController : UIViewController {
+
+@interface DGUserFindFriendsViewController : DGViewController {
     Arrow *arrow;
     NSInteger segmentIndex;
 
