@@ -1,4 +1,5 @@
 platform :ios, '7.0'
+inhibit_all_warnings!
 
 # language add-ons
 pod 'ReactiveCocoa'
@@ -16,6 +17,7 @@ pod 'RFKeychain', '~> 0.1'
 # ui
 pod 'TSMessages', '~> 0.9.4'
 pod 'ProgressHUD', :git => "git@github.com:relatedcode/ProgressHUD.git"
+
 
 pod 'SAMLoadingView'
 pod 'UIImage-Categories', '~> 0.0.1'
