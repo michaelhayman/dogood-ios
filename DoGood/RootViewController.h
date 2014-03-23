@@ -1,6 +1,7 @@
 #import "REMenu.h"
+#import "DGViewController.h"
 
-@interface RootViewController : UIViewController
+@interface RootViewController : DGViewController
 
 - (void)addMenuButton:(NSString *)menuButton withTapButton:(NSString *)tapButton;
 
