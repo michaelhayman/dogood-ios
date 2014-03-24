@@ -31,11 +31,6 @@
     [self.avatar setUserInteractionEnabled:YES];
     [self.avatar addGestureRecognizer:userAvatarGesture];
 
-    UITapGestureRecognizer* userGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGoodUserProfile)];
-    [self.username setUserInteractionEnabled:YES];
-    [self.username addGestureRecognizer:userGesture];
-    self.username.textColor = LINK_COLOUR;
-
     // image
     self.overviewImage.contentMode = UIViewContentModeScaleAspectFill;
     // UIViewContentModeScaleAspectFit;
@@ -126,8 +121,17 @@
 }
 
 - (void)setValues {
-    // user
+    // nominee
     self.username.text = self.good.nominee.full_name;
+
+    if (self.good.nominee.user_id) {
+        UITapGestureRecognizer* userGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGoodUserProfile)];
+        [self.username setUserInteractionEnabled:YES];
+        [self.username addGestureRecognizer:userGesture];
+
+        self.username.textColor = LINK_COLOUR;
+    }
+
     [self setupAvatar];
     // description
     [self setCaptionText];
