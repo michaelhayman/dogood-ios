@@ -119,10 +119,8 @@
     _menu.waitUntilAnimationIsComplete = NO;
 }
 
-// - (void)dealloc {
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    DebugLog(@"navigation controller disappeared");
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidToggleMenu object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSelectRewards object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSignOutNotification object:nil];
