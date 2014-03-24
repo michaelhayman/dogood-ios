@@ -18,6 +18,7 @@
      if (self.disableSelection) {
         [self.username setUserInteractionEnabled:NO];
         [self.avatar setUserInteractionEnabled:NO];
+        [self.follow setUserInteractionEnabled:NO];
     } else {
         UITapGestureRecognizer* userGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userProfile)];
         [self.username setUserInteractionEnabled:YES];
