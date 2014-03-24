@@ -7,9 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A1A804F21B647EA86D44767 /* libPods-Do GoodTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF1EF43B964447B18C340AD9 /* libPods-Do GoodTests.a */; };
 		630046D01810E619001529E5 /* URLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 630046CF1810E619001529E5 /* URLHandler.m */; };
 		6303A33617FE322100E2EACD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6303A33517FE322100E2EACD /* Media.xcassets */; };
+		6304B64718E0DC2600CA0E36 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636A5A5C1814D82500FB708A /* XCTest.framework */; };
+		6304B64818E0DC2600CA0E36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E117AC087A00167F15 /* Foundation.framework */; };
+		6304B64918E0DC2600CA0E36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E517AC087A00167F15 /* UIKit.framework */; };
+		6304B64F18E0DC2600CA0E36 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6304B64D18E0DC2600CA0E36 /* InfoPlist.strings */; };
+		6304B66318E0DCA200CA0E36 /* DGURLHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65818E0DCA200CA0E36 /* DGURLHandlerTests.m */; };
+		6304B66418E0DCA200CA0E36 /* DGEntityHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65918E0DCA200CA0E36 /* DGEntityHandlerTests.m */; };
+		6304B66518E0DCA200CA0E36 /* DGUserKiwiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65A18E0DCA200CA0E36 /* DGUserKiwiTests.m */; };
+		6304B66618E0DCA200CA0E36 /* DGUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65B18E0DCA200CA0E36 /* DGUserTests.m */; };
+		6304B66718E0DCA200CA0E36 /* DGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65C18E0DCA200CA0E36 /* DGComment.m */; };
+		6304B66818E0DCA200CA0E36 /* DGErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65D18E0DCA200CA0E36 /* DGErrorTests.m */; };
+		6304B66918E0DCA200CA0E36 /* DGRewardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65E18E0DCA200CA0E36 /* DGRewardTests.m */; };
+		6304B66A18E0DCA200CA0E36 /* DGBlankTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65F18E0DCA200CA0E36 /* DGBlankTests.m */; };
+		6304B66B18E0DCA200CA0E36 /* DGEntityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B66018E0DCA200CA0E36 /* DGEntityTests.m */; };
+		6304B66C18E0DCA200CA0E36 /* DGTagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B66118E0DCA200CA0E36 /* DGTagTests.m */; };
+		6304B66D18E0DCA200CA0E36 /* DGRestKitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B66218E0DCA200CA0E36 /* DGRestKitTest.m */; };
+		6304B66F18E0DCC900CA0E36 /* DoGoodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B66E18E0DCC900CA0E36 /* DoGoodTests.m */; };
 		6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */; };
 		6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */; };
 		6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161E17C41E0D004DE5D7 /* DGAppearance.m */; };
@@ -63,12 +78,6 @@
 		6358342E17C8A09700F997F6 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358342D17C8A09700F997F6 /* Arrow.m */; };
 		635A232017CAB5150045C256 /* DGCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 635A231F17CAB5150045C256 /* DGCategories.m */; };
 		635A232217CABEB30045C256 /* Categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 635A232117CABEB30045C256 /* Categories.plist */; };
-		636A5A5D1814D82500FB708A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636A5A5C1814D82500FB708A /* XCTest.framework */; };
-		636A5A5E1814D82500FB708A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E117AC087A00167F15 /* Foundation.framework */; };
-		636A5A5F1814D82500FB708A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E517AC087A00167F15 /* UIKit.framework */; };
-		636A5A651814D82500FB708A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 636A5A631814D82500FB708A /* InfoPlist.strings */; };
-		636A5A671814D82500FB708A /* DoGoodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 636A5A661814D82500FB708A /* DoGoodTests.m */; };
-		636A5A6F1814ECA800FB708A /* DGUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 636A5A6E1814ECA800FB708A /* DGUserTests.m */; };
 		636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA5C17AD43CC002A3494 /* Good.storyboard */; };
 		636AEA9B17AD63EC002A3494 /* GoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA9A17AD63EC002A3494 /* GoodCell.xib */; };
 		636AEA9F17AD66C8002A3494 /* GoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636AEA9E17AD66C8002A3494 /* GoodCell.m */; };
@@ -100,16 +109,6 @@
 		639B88E417B9A25B005E2B62 /* DGVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B88E317B9A25A005E2B62 /* DGVote.m */; };
 		639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B891017BAEC1D005E2B62 /* DGFollow.m */; };
 		63A38D84181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A38D83181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m */; };
-		63A7964218160AC80065740C /* DGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A7964118160AC80065740C /* DGComment.m */; };
-		63A7964418160CBB0065740C /* DGRewardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A7964318160CBB0065740C /* DGRewardTests.m */; };
-		63A7964618160DA90065740C /* DGBlankTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A7964518160DA90065740C /* DGBlankTests.m */; };
-		63A7964818168D510065740C /* DGErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A7964718168D510065740C /* DGErrorTests.m */; };
-		63A7964A18168E510065740C /* DGURLHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A7964918168E510065740C /* DGURLHandlerTests.m */; };
-		63A7964C1816914F0065740C /* DGEntityHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A7964B1816914F0065740C /* DGEntityHandlerTests.m */; };
-		63AAFB171815EE7B00C8CA0B /* DGUserKiwiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AAFB161815EE7B00C8CA0B /* DGUserKiwiTests.m */; };
-		63AAFB191815FAB500C8CA0B /* DGRestKitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AAFB181815FAB500C8CA0B /* DGRestKitTest.m */; };
-		63AAFB1B1816070F00C8CA0B /* DGTagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AAFB1A1816070F00C8CA0B /* DGTagTests.m */; };
-		63AAFB1D181607B600C8CA0B /* DGEntityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63AAFB1C181607B600C8CA0B /* DGEntityTests.m */; };
 		63B546A61859D17E00673B6C /* DGAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B546A51859D17E00673B6C /* DGAuthenticateViewController.m */; };
 		63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */; };
 		63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */; };
@@ -149,12 +148,12 @@
 		63FDAC4E181C630B00668B15 /* ExploreHighlightsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FDAC4C181C630B00668B15 /* ExploreHighlightsCell.xib */; };
 		63FDAC52181C651400668B15 /* HighlightCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FDAC50181C651400668B15 /* HighlightCollectionCell.m */; };
 		63FDAC53181C651400668B15 /* HighlightCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FDAC51181C651400668B15 /* HighlightCollectionCell.xib */; };
-		E089C59523974EB7AAC5AA4B /* libPods-DoGoodTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0BAA39630D48588922091A /* libPods-DoGoodTests.a */; };
+		E578DDEDCDFA4248B1C63E59 /* libPods-DoGoodTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FE41B560D84B2CBCCF920E /* libPods-DoGoodTests.a */; };
 		EBCC96E10520469A951D5018 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0150758A9E934060AF039752 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		636A5A691814D82500FB708A /* PBXContainerItemProxy */ = {
+		6304B65318E0DC2600CA0E36 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 638647D617AC087A00167F15 /* Project object */;
 			proxyType = 1;
@@ -165,10 +164,26 @@
 
 /* Begin PBXFileReference section */
 		0150758A9E934060AF039752 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C0BAA39630D48588922091A /* libPods-DoGoodTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DoGoodTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		11FE41B560D84B2CBCCF920E /* libPods-DoGoodTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DoGoodTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		630046CE1810E619001529E5 /* URLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLHandler.h; sourceTree = "<group>"; };
 		630046CF1810E619001529E5 /* URLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLHandler.m; sourceTree = "<group>"; };
 		6303A33517FE322100E2EACD /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		6304B64618E0DC2600CA0E36 /* DoGoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoGoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6304B64C18E0DC2600CA0E36 /* DoGoodTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoGoodTests-Info.plist"; sourceTree = "<group>"; };
+		6304B64E18E0DC2600CA0E36 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6304B65218E0DC2600CA0E36 /* DoGoodTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DoGoodTests-Prefix.pch"; sourceTree = "<group>"; };
+		6304B65818E0DCA200CA0E36 /* DGURLHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGURLHandlerTests.m; sourceTree = "<group>"; };
+		6304B65918E0DCA200CA0E36 /* DGEntityHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEntityHandlerTests.m; sourceTree = "<group>"; };
+		6304B65A18E0DCA200CA0E36 /* DGUserKiwiTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserKiwiTests.m; sourceTree = "<group>"; };
+		6304B65B18E0DCA200CA0E36 /* DGUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserTests.m; sourceTree = "<group>"; };
+		6304B65C18E0DCA200CA0E36 /* DGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGComment.m; sourceTree = "<group>"; };
+		6304B65D18E0DCA200CA0E36 /* DGErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGErrorTests.m; sourceTree = "<group>"; };
+		6304B65E18E0DCA200CA0E36 /* DGRewardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRewardTests.m; sourceTree = "<group>"; };
+		6304B65F18E0DCA200CA0E36 /* DGBlankTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGBlankTests.m; sourceTree = "<group>"; };
+		6304B66018E0DCA200CA0E36 /* DGEntityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEntityTests.m; sourceTree = "<group>"; };
+		6304B66118E0DCA200CA0E36 /* DGTagTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTagTests.m; sourceTree = "<group>"; };
+		6304B66218E0DCA200CA0E36 /* DGRestKitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRestKitTest.m; sourceTree = "<group>"; };
+		6304B66E18E0DCC900CA0E36 /* DoGoodTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoGoodTests.m; sourceTree = "<group>"; };
 		6308161017C3BB11004DE5D7 /* DGUserInvitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserInvitesViewController.h; sourceTree = "<group>"; };
 		6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserInvitesViewController.m; sourceTree = "<group>"; };
 		6308161317C3C19F004DE5D7 /* DGPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPhotoPickerViewController.h; sourceTree = "<group>"; };
@@ -266,13 +281,7 @@
 		635A231E17CAB5150045C256 /* DGCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCategories.h; sourceTree = "<group>"; };
 		635A231F17CAB5150045C256 /* DGCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCategories.m; sourceTree = "<group>"; };
 		635A232117CABEB30045C256 /* Categories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Categories.plist; sourceTree = "<group>"; };
-		636A5A5B1814D82500FB708A /* DoGoodTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DoGoodTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		636A5A5C1814D82500FB708A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		636A5A621814D82500FB708A /* DoGoodTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoGoodTests-Info.plist"; sourceTree = "<group>"; };
-		636A5A641814D82500FB708A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		636A5A661814D82500FB708A /* DoGoodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoGoodTests.m; sourceTree = "<group>"; };
-		636A5A681814D82500FB708A /* DoGoodTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DoGoodTests-Prefix.pch"; sourceTree = "<group>"; };
-		636A5A6E1814ECA800FB708A /* DGUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserTests.m; sourceTree = "<group>"; };
 		636AEA5C17AD43CC002A3494 /* Good.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Good.storyboard; sourceTree = "<group>"; };
 		636AEA9A17AD63EC002A3494 /* GoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodCell.xib; sourceTree = "<group>"; };
 		636AEA9D17AD66C8002A3494 /* GoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodCell.h; sourceTree = "<group>"; };
@@ -303,9 +312,6 @@
 		638647EF17AC087A00167F15 /* DoGood-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DoGood-Prefix.pch"; sourceTree = "<group>"; };
 		638647F017AC087A00167F15 /* DGAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGAppDelegate.h; sourceTree = "<group>"; };
 		638647F117AC087A00167F15 /* DGAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		6386480B17AC087A00167F15 /* DoGoodTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoGoodTests-Info.plist"; sourceTree = "<group>"; };
-		6386480D17AC087A00167F15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6386480F17AC087A00167F15 /* DoGoodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DoGoodTests.m; sourceTree = "<group>"; };
 		6386481B17ACEF2100167F15 /* DGWelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGWelcomeViewController.h; sourceTree = "<group>"; };
 		6386481C17ACEF2100167F15 /* DGWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWelcomeViewController.m; sourceTree = "<group>"; };
 		6386481E17ACEFAE00167F15 /* DGGoodListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGGoodListViewController.m; sourceTree = "<group>"; };
@@ -327,16 +333,6 @@
 		639B891017BAEC1D005E2B62 /* DGFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFollow.m; sourceTree = "<group>"; };
 		63A38D82181358FD00590D24 /* DGTextFieldSearchTagsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTextFieldSearchTagsTableViewController.h; sourceTree = "<group>"; };
 		63A38D83181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTextFieldSearchTagsTableViewController.m; sourceTree = "<group>"; };
-		63A7964118160AC80065740C /* DGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGComment.m; sourceTree = "<group>"; };
-		63A7964318160CBB0065740C /* DGRewardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRewardTests.m; sourceTree = "<group>"; };
-		63A7964518160DA90065740C /* DGBlankTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGBlankTests.m; sourceTree = "<group>"; };
-		63A7964718168D510065740C /* DGErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGErrorTests.m; sourceTree = "<group>"; };
-		63A7964918168E510065740C /* DGURLHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGURLHandlerTests.m; sourceTree = "<group>"; };
-		63A7964B1816914F0065740C /* DGEntityHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEntityHandlerTests.m; sourceTree = "<group>"; };
-		63AAFB161815EE7B00C8CA0B /* DGUserKiwiTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserKiwiTests.m; sourceTree = "<group>"; };
-		63AAFB181815FAB500C8CA0B /* DGRestKitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRestKitTest.m; sourceTree = "<group>"; };
-		63AAFB1A1816070F00C8CA0B /* DGTagTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTagTests.m; sourceTree = "<group>"; };
-		63AAFB1C181607B600C8CA0B /* DGEntityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEntityTests.m; sourceTree = "<group>"; };
 		63B546A41859D17E00673B6C /* DGAuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAuthenticateViewController.h; sourceTree = "<group>"; };
 		63B546A51859D17E00673B6C /* DGAuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAuthenticateViewController.m; sourceTree = "<group>"; };
 		63BFB1E517C818DE004D990F /* DGUserSearchAddressBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchAddressBookViewController.h; sourceTree = "<group>"; };
@@ -402,21 +398,18 @@
 		63FDAC50181C651400668B15 /* HighlightCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighlightCollectionCell.m; sourceTree = "<group>"; };
 		63FDAC51181C651400668B15 /* HighlightCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HighlightCollectionCell.xib; sourceTree = "<group>"; };
 		66189FDD6F34462B8CF25EBA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		8E6129EACE704B7B99C91CCA /* Pods-Do GoodTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Do GoodTests.xcconfig"; path = "Pods/Pods-Do GoodTests.xcconfig"; sourceTree = "<group>"; };
-		DCCD2B3CE45847B7B6BA9FD5 /* Pods-DoGoodTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoGoodTests.xcconfig"; path = "Pods/Pods-DoGoodTests.xcconfig"; sourceTree = "<group>"; };
-		DF1EF43B964447B18C340AD9 /* libPods-Do GoodTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Do GoodTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C887EBE07C4143FEBAED6057 /* Pods-DoGoodTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoGoodTests.xcconfig"; path = "Pods/Pods-DoGoodTests.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		636A5A581814D82500FB708A /* Frameworks */ = {
+		6304B64318E0DC2600CA0E36 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				636A5A5D1814D82500FB708A /* XCTest.framework in Frameworks */,
-				636A5A5F1814D82500FB708A /* UIKit.framework in Frameworks */,
-				636A5A5E1814D82500FB708A /* Foundation.framework in Frameworks */,
-				E089C59523974EB7AAC5AA4B /* libPods-DoGoodTests.a in Frameworks */,
-				4A1A804F21B647EA86D44767 /* libPods-Do GoodTests.a in Frameworks */,
+				6304B64718E0DC2600CA0E36 /* XCTest.framework in Frameworks */,
+				6304B64918E0DC2600CA0E36 /* UIKit.framework in Frameworks */,
+				6304B64818E0DC2600CA0E36 /* Foundation.framework in Frameworks */,
+				E578DDEDCDFA4248B1C63E59 /* libPods-DoGoodTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +432,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6304B64A18E0DC2600CA0E36 /* DoGoodTests */ = {
+			isa = PBXGroup;
+			children = (
+				6304B66E18E0DCC900CA0E36 /* DoGoodTests.m */,
+				6304B65818E0DCA200CA0E36 /* DGURLHandlerTests.m */,
+				6304B65918E0DCA200CA0E36 /* DGEntityHandlerTests.m */,
+				6304B65A18E0DCA200CA0E36 /* DGUserKiwiTests.m */,
+				6304B65B18E0DCA200CA0E36 /* DGUserTests.m */,
+				6304B65C18E0DCA200CA0E36 /* DGComment.m */,
+				6304B65D18E0DCA200CA0E36 /* DGErrorTests.m */,
+				6304B65E18E0DCA200CA0E36 /* DGRewardTests.m */,
+				6304B65F18E0DCA200CA0E36 /* DGBlankTests.m */,
+				6304B66018E0DCA200CA0E36 /* DGEntityTests.m */,
+				6304B66118E0DCA200CA0E36 /* DGTagTests.m */,
+				6304B66218E0DCA200CA0E36 /* DGRestKitTest.m */,
+				6304B64B18E0DC2600CA0E36 /* Supporting Files */,
+			);
+			path = DoGoodTests;
+			sourceTree = "<group>";
+		};
+		6304B64B18E0DC2600CA0E36 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6304B64C18E0DC2600CA0E36 /* DoGoodTests-Info.plist */,
+				6304B64D18E0DC2600CA0E36 /* InfoPlist.strings */,
+				6304B65218E0DC2600CA0E36 /* DoGoodTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		6319D39017BDF05C0071DA71 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -529,36 +552,6 @@
 				634EA1F61874F67000F9F00D /* MarkusInk.ttf */,
 			);
 			name = Fonts;
-			sourceTree = "<group>";
-		};
-		636A5A601814D82500FB708A /* DoGoodTests */ = {
-			isa = PBXGroup;
-			children = (
-				63A7964B1816914F0065740C /* DGEntityHandlerTests.m */,
-				63A7964918168E510065740C /* DGURLHandlerTests.m */,
-				63A7964718168D510065740C /* DGErrorTests.m */,
-				63A7964518160DA90065740C /* DGBlankTests.m */,
-				63A7964318160CBB0065740C /* DGRewardTests.m */,
-				63A7964118160AC80065740C /* DGComment.m */,
-				63AAFB1C181607B600C8CA0B /* DGEntityTests.m */,
-				63AAFB1A1816070F00C8CA0B /* DGTagTests.m */,
-				63AAFB181815FAB500C8CA0B /* DGRestKitTest.m */,
-				63AAFB161815EE7B00C8CA0B /* DGUserKiwiTests.m */,
-				636A5A6E1814ECA800FB708A /* DGUserTests.m */,
-				636A5A661814D82500FB708A /* DoGoodTests.m */,
-				636A5A611814D82500FB708A /* Supporting Files */,
-			);
-			path = DoGoodTests;
-			sourceTree = "<group>";
-		};
-		636A5A611814D82500FB708A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				636A5A621814D82500FB708A /* DoGoodTests-Info.plist */,
-				636A5A631814D82500FB708A /* InfoPlist.strings */,
-				636A5A681814D82500FB708A /* DoGoodTests-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		636AEA6817AD4764002A3494 /* Users */ = {
@@ -728,13 +721,11 @@
 			isa = PBXGroup;
 			children = (
 				638647E717AC087A00167F15 /* DoGood */,
-				6386480917AC087A00167F15 /* DoGoodTests */,
-				636A5A601814D82500FB708A /* DoGoodTests */,
+				6304B64A18E0DC2600CA0E36 /* DoGoodTests */,
 				638647E017AC087A00167F15 /* Frameworks */,
 				638647DF17AC087A00167F15 /* Products */,
 				66189FDD6F34462B8CF25EBA /* Pods.xcconfig */,
-				DCCD2B3CE45847B7B6BA9FD5 /* Pods-DoGoodTests.xcconfig */,
-				8E6129EACE704B7B99C91CCA /* Pods-Do GoodTests.xcconfig */,
+				C887EBE07C4143FEBAED6057 /* Pods-DoGoodTests.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -742,7 +733,7 @@
 			isa = PBXGroup;
 			children = (
 				638647DE17AC087A00167F15 /* DoGood.app */,
-				636A5A5B1814D82500FB708A /* DoGoodTests.xctest */,
+				6304B64618E0DC2600CA0E36 /* DoGoodTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -760,8 +751,7 @@
 				638647E517AC087A00167F15 /* UIKit.framework */,
 				0150758A9E934060AF039752 /* libPods.a */,
 				636A5A5C1814D82500FB708A /* XCTest.framework */,
-				5C0BAA39630D48588922091A /* libPods-DoGoodTests.a */,
-				DF1EF43B964447B18C340AD9 /* libPods-Do GoodTests.a */,
+				11FE41B560D84B2CBCCF920E /* libPods-DoGoodTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -801,24 +791,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		6386480917AC087A00167F15 /* DoGoodTests */ = {
-			isa = PBXGroup;
-			children = (
-				6386480F17AC087A00167F15 /* DoGoodTests.m */,
-				6386480A17AC087A00167F15 /* Supporting Files */,
-			);
-			path = DoGoodTests;
-			sourceTree = "<group>";
-		};
-		6386480A17AC087A00167F15 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				6386480B17AC087A00167F15 /* DoGoodTests-Info.plist */,
-				6386480C17AC087A00167F15 /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		63DA644517DC0E76003DFF03 /* Social */ = {
 			isa = PBXGroup;
 			children = (
@@ -833,24 +805,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		636A5A5A1814D82500FB708A /* DoGoodTests */ = {
+		6304B64518E0DC2600CA0E36 /* DoGoodTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 636A5A6D1814D82500FB708A /* Build configuration list for PBXNativeTarget "DoGoodTests" */;
+			buildConfigurationList = 6304B65518E0DC2600CA0E36 /* Build configuration list for PBXNativeTarget "DoGoodTests" */;
 			buildPhases = (
-				412CB5CCB81643B18BB47DB7 /* Check Pods Manifest.lock */,
-				636A5A571814D82500FB708A /* Sources */,
-				636A5A581814D82500FB708A /* Frameworks */,
-				636A5A591814D82500FB708A /* Resources */,
-				258919A05AD14B1FB490172F /* Copy Pods Resources */,
+				C748F4145C9C4F3192AB0F41 /* Check Pods Manifest.lock */,
+				6304B64218E0DC2600CA0E36 /* Sources */,
+				6304B64318E0DC2600CA0E36 /* Frameworks */,
+				6304B64418E0DC2600CA0E36 /* Resources */,
+				1F5C025F2A3E44CFA58F7922 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				636A5A6A1814D82500FB708A /* PBXTargetDependency */,
+				6304B65418E0DC2600CA0E36 /* PBXTargetDependency */,
 			);
 			name = DoGoodTests;
 			productName = DoGoodTests;
-			productReference = 636A5A5B1814D82500FB708A /* DoGoodTests.xctest */;
+			productReference = 6304B64618E0DC2600CA0E36 /* DoGoodTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		638647DD17AC087A00167F15 /* DoGood */ = {
@@ -879,10 +851,10 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = DG;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Michael;
 				TargetAttributes = {
-					636A5A5A1814D82500FB708A = {
+					6304B64518E0DC2600CA0E36 = {
 						TestTargetID = 638647DD17AC087A00167F15;
 					};
 					638647DD17AC087A00167F15 = {
@@ -904,17 +876,17 @@
 			projectRoot = "";
 			targets = (
 				638647DD17AC087A00167F15 /* DoGood */,
-				636A5A5A1814D82500FB708A /* DoGoodTests */,
+				6304B64518E0DC2600CA0E36 /* DoGoodTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		636A5A591814D82500FB708A /* Resources */ = {
+		6304B64418E0DC2600CA0E36 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				636A5A651814D82500FB708A /* InfoPlist.strings in Resources */,
+				6304B64F18E0DC2600CA0E36 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -957,7 +929,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		258919A05AD14B1FB490172F /* Copy Pods Resources */ = {
+		1F5C025F2A3E44CFA58F7922 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -969,10 +941,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-Do GoodTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-DoGoodTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		412CB5CCB81643B18BB47DB7 /* Check Pods Manifest.lock */ = {
+		436891D47140469292DED439 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -987,7 +959,7 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		436891D47140469292DED439 /* Check Pods Manifest.lock */ = {
+		C748F4145C9C4F3192AB0F41 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1020,22 +992,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		636A5A571814D82500FB708A /* Sources */ = {
+		6304B64218E0DC2600CA0E36 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				636A5A671814D82500FB708A /* DoGoodTests.m in Sources */,
-				63AAFB1D181607B600C8CA0B /* DGEntityTests.m in Sources */,
-				63A7964218160AC80065740C /* DGComment.m in Sources */,
-				63A7964A18168E510065740C /* DGURLHandlerTests.m in Sources */,
-				63A7964618160DA90065740C /* DGBlankTests.m in Sources */,
-				636A5A6F1814ECA800FB708A /* DGUserTests.m in Sources */,
-				63AAFB1B1816070F00C8CA0B /* DGTagTests.m in Sources */,
-				63A7964418160CBB0065740C /* DGRewardTests.m in Sources */,
-				63AAFB171815EE7B00C8CA0B /* DGUserKiwiTests.m in Sources */,
-				63AAFB191815FAB500C8CA0B /* DGRestKitTest.m in Sources */,
-				63A7964C1816914F0065740C /* DGEntityHandlerTests.m in Sources */,
-				63A7964818168D510065740C /* DGErrorTests.m in Sources */,
+				6304B66518E0DCA200CA0E36 /* DGUserKiwiTests.m in Sources */,
+				6304B66718E0DCA200CA0E36 /* DGComment.m in Sources */,
+				6304B66A18E0DCA200CA0E36 /* DGBlankTests.m in Sources */,
+				6304B66818E0DCA200CA0E36 /* DGErrorTests.m in Sources */,
+				6304B66618E0DCA200CA0E36 /* DGUserTests.m in Sources */,
+				6304B66918E0DCA200CA0E36 /* DGRewardTests.m in Sources */,
+				6304B66D18E0DCA200CA0E36 /* DGRestKitTest.m in Sources */,
+				6304B66B18E0DCA200CA0E36 /* DGEntityTests.m in Sources */,
+				6304B66F18E0DCC900CA0E36 /* DoGoodTests.m in Sources */,
+				6304B66418E0DCA200CA0E36 /* DGEntityHandlerTests.m in Sources */,
+				6304B66318E0DCA200CA0E36 /* DGURLHandlerTests.m in Sources */,
+				6304B66C18E0DCA200CA0E36 /* DGTagTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1137,18 +1109,18 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		636A5A6A1814D82500FB708A /* PBXTargetDependency */ = {
+		6304B65418E0DC2600CA0E36 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 638647DD17AC087A00167F15 /* DoGood */;
-			targetProxy = 636A5A691814D82500FB708A /* PBXContainerItemProxy */;
+			targetProxy = 6304B65318E0DC2600CA0E36 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		636A5A631814D82500FB708A /* InfoPlist.strings */ = {
+		6304B64D18E0DC2600CA0E36 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				636A5A641814D82500FB708A /* en */,
+				6304B64E18E0DC2600CA0E36 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1161,22 +1133,13 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		6386480C17AC087A00167F15 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6386480D17AC087A00167F15 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		636A5A6B1814D82500FB708A /* Debug */ = {
+		6304B65618E0DC2600CA0E36 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E6129EACE704B7B99C91CCA /* Pods-Do GoodTests.xcconfig */;
+			baseConfigurationReference = C887EBE07C4143FEBAED6057 /* Pods-DoGoodTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DoGood.app/DoGood";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1190,19 +1153,19 @@
 					"$(inherited)",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "DoGoodTests/DoGoodTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = DoGoodTests;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
-		636A5A6C1814D82500FB708A /* Release */ = {
+		6304B65718E0DC2600CA0E36 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E6129EACE704B7B99C91CCA /* Pods-Do GoodTests.xcconfig */;
+			baseConfigurationReference = C887EBE07C4143FEBAED6057 /* Pods-DoGoodTests.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DoGood.app/DoGood";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1212,9 +1175,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DoGoodTests/DoGoodTests-Prefix.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				INFOPLIST_FILE = "DoGoodTests/DoGoodTests-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = DoGoodTests;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1301,7 +1265,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DoGood/DoGood-Prefix.pch";
 				INFOPLIST_FILE = "DoGood/DoGood-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRANK_LIBRARY_SEARCH_PATHS)",
@@ -1312,6 +1276,7 @@
 				);
 				PRODUCT_NAME = DoGood;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1327,9 +1292,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DoGood/DoGood-Prefix.pch";
 				INFOPLIST_FILE = "DoGood/DoGood-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = DoGood;
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1337,11 +1303,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		636A5A6D1814D82500FB708A /* Build configuration list for PBXNativeTarget "DoGoodTests" */ = {
+		6304B65518E0DC2600CA0E36 /* Build configuration list for PBXNativeTarget "DoGoodTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				636A5A6B1814D82500FB708A /* Debug */,
-				636A5A6C1814D82500FB708A /* Release */,
+				6304B65618E0DC2600CA0E36 /* Debug */,
+				6304B65718E0DC2600CA0E36 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

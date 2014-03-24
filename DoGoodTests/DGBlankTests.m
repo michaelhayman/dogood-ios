@@ -15,6 +15,7 @@
 }
 
 - (void)testExample {
+    XCTAssert(true, @"yup");
 }
 
 @end
