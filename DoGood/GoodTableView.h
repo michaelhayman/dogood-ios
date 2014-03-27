@@ -15,5 +15,6 @@
 - (void)loadGoodsAtPath:(NSString *)path;
 - (void)resetGood;
 - (void)setupRefresh;
+- (void)setupInfiniteScroll;
 
 @end

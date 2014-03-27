@@ -15,7 +15,6 @@
         self.delegate = self;
         self.dataSource = self;
         [self initializeTable];
-        [self setupInfiniteScroll];
     }
     return self;
 }

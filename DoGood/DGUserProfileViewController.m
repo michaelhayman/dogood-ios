@@ -51,6 +51,7 @@
     goodTableView.navigationController = self.navigationController;
     goodTableView.parent = self;
     [goodTableView setupRefresh];
+    [goodTableView setupInfiniteScroll];
 
     invites = [[DGUserInvitesViewController alloc] init];
     invites.parent = (UIViewController *)self;

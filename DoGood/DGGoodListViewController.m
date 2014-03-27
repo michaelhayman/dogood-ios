@@ -37,6 +37,7 @@
     goodTableView.navigationController = self.navigationController;
     goodTableView.parent = self;
     [goodTableView setupRefresh];
+    [goodTableView setupInfiniteScroll];
     [self getGood];
 
     [self setupUserPoints];
