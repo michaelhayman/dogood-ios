@@ -25,6 +25,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:YES];
+    [ProgressHUD dismiss];
 }
 
 - (void)didReceiveMemoryWarning {
