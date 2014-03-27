@@ -154,11 +154,14 @@
 
 #pragma mark - Tabs
 - (void)setupTabs {
+    NSString *nominationsPlural = [DGAppearance pluralForCount:user.posted_or_followed_goods_count];
+    NSString *nominationsTitle = [NSString stringWithFormat:@"%@ Nomination%@", user.posted_or_followed_goods_count, nominationsPlural];
     [goodsButton addTarget:self action:@selector(getUserGood) forControlEvents:UIControlEventTouchUpInside];
-    [goodsButton setTitle:[NSString stringWithFormat:@"%@ Nominations", user.posted_or_followed_goods_count] forState:UIControlStateNormal];
-    [goodsButton setTitle:[NSString stringWithFormat:@"%@ Nominations", user.posted_or_followed_goods_count] forState:UIControlStateSelected];
+    [goodsButton setTitle:nominationsTitle forState:UIControlStateNormal];
+    [goodsButton setTitle:nominationsTitle forState:UIControlStateSelected];
     [likesButton addTarget:self action:@selector(getUserLikes) forControlEvents:UIControlEventTouchUpInside];
-    [likesButton setTitle:[NSString stringWithFormat:@"%@ Likes", user.liked_goods_count] forState:UIControlStateNormal];
+    NSString *votesPlural = [DGAppearance pluralForCount:user.liked_goods_count];
+    [likesButton setTitle:[NSString stringWithFormat:@"%@ Vote%@", user.liked_goods_count, votesPlural] forState:UIControlStateNormal];
 }
 
 - (void)resetProfile {
