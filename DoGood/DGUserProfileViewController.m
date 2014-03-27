@@ -77,13 +77,16 @@
     [avatarOverlay addGestureRecognizer:tap];
     DebugLog(@"menu doesn't really help; because we have to checknot from menu");
 
-    [self setupMoreOptions];
+    [self setupOwnProfileButtons];
+    // name.text = [DGUser currentUser].full_name;
+
     [self getProfile];
 }
 
 - (void)setupProfile {
     [self setupMenuTitle:user.full_name];
 
+    [self setupProfileButtons];
     if (!profileLoaded) {
         [self getProfile];
     }
@@ -118,10 +121,6 @@
     if (self.fromMenu) {
          [self addMenuButton:@"MenuFromProfileIconTap" withTapButton:@"MenuFromProfileIcon"];
     }
-}
-
-- (void)setDefaults {
-    name.text = [DGUser currentUser].full_name;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -263,36 +262,33 @@
     [moreOptionsSheet showInView:self.navigationController.view];
 }
 
-- (void)setupMoreOptions {
-    if ([self isOwnProfile]) {
-        [self setDefaults];
-        UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:@"Find Friends" style: UIBarButtonItemStylePlain target:self action:@selector(findFriends:)];
-        [centralButton addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
-        [centralButton setTitle:@"Settings" forState:UIControlStateNormal];
-        self.navigationItem.rightBarButtonItem = connectButton;
-    } else {
-        // block menu options
+- (void)setupOwnProfileButtons {
+    UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:@"Find Friends" style: UIBarButtonItemStylePlain target:self action:@selector(findFriends:)];
+    [centralButton addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
+    [centralButton setTitle:@"Settings" forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = connectButton;
+}
 
-        [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButton"] forState:UIControlStateNormal];
-        [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButtonTap"] forState:UIControlStateHighlighted];
-        [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowingButton"] forState:UIControlStateSelected];
-        [centralButton setTitle:@"Follow" forState:UIControlStateNormal];
-        [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [centralButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
+- (void)setupProfileButtons {
+    [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButton"] forState:UIControlStateNormal];
+    [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButtonTap"] forState:UIControlStateHighlighted];
+    [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowingButton"] forState:UIControlStateSelected];
+    [centralButton setTitle:@"Follow" forState:UIControlStateNormal];
+    [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [centralButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
 
-        UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:@"..." style: UIBarButtonItemStylePlain target:self action:@selector(openActionMenu:)];
-        self.navigationItem.rightBarButtonItem = connectButton;
+    UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:@"..." style: UIBarButtonItemStylePlain target:self action:@selector(openActionMenu:)];
+    self.navigationItem.rightBarButtonItem = connectButton;
 
-        moreOptionsSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                    delegate:self
-                                           cancelButtonTitle:@"Cancel"
-                                      destructiveButtonTitle:@"Report user"
-                                           otherButtonTitles:@"Share profile", nil];
-        [moreOptionsSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
-        moreOptionsSheet.delegate = self;
+    moreOptionsSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                delegate:self
+                                       cancelButtonTitle:@"Cancel"
+                                  destructiveButtonTitle:@"Report user"
+                                       otherButtonTitles:@"Share profile", nil];
+    [moreOptionsSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
+    moreOptionsSheet.delegate = self;
 
-        [self setupShareOptions];
-    }
+    [self setupShareOptions];
 }
 
 - (void)removeMoreOptions {
