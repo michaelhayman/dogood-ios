@@ -60,13 +60,10 @@
         }
         [self reloadData];
         [self.infiniteScrollingView stopAnimating];
-        // [_loadingView loadingSucceeded];
         [loadingView removeFromSuperview];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [self.infiniteScrollingView stopAnimating];
         DebugLog(@"Operation failed with error: %@", error);
-        // [_loadingView loadingFailed];
-        // [_loadingView loadingSucceeded];
         [loadingView removeFromSuperview];
     }];
 }
