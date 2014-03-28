@@ -20,6 +20,10 @@
     goodTableView.parent = self;
 
     [self setupRefresh];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self kickOffLocation];
 }
 

@@ -18,8 +18,8 @@
     UINib *tagNib = [UINib nibWithNibName:@"TagCell" bundle:nil];
     [tableView registerNib:tagNib forCellReuseIdentifier:@"TagCell"];
 
-    UINib *noResultsNib = [UINib nibWithNibName:@"NoResultsCell" bundle:nil];
-    [tableView registerNib:noResultsNib forCellReuseIdentifier:@"NoResultsCell"];
+    UINib *noResultsNib = [UINib nibWithNibName:kNoResultsCell bundle:nil];
+    [tableView registerNib:noResultsNib forCellReuseIdentifier:kNoResultsCell];
 
     [self.searchField addTarget:self action:@selector(searchFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 }

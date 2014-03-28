@@ -52,9 +52,9 @@
         [cell setValues];
         return cell;
    } else {
-        static NSString * reuseIdentifier = @"NoResultsCell";
+        static NSString * reuseIdentifier = kNoResultsCell;
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        cell.explanation.text = @"No tags found";
+        [cell setHeading:nil andExplanation:@"No tags found"];
         return cell;
    }
 }
@@ -67,7 +67,7 @@
     if (indexPath.section == 0) {
         return 44;
     } else {
-        return 205;
+        return kNoResultsCellHeight;
     }
 }
 

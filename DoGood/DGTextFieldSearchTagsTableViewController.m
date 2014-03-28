@@ -22,13 +22,13 @@
 #pragma mark - UITableView delegate methods
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([tags count] == 0) {
-        static NSString * reuseIdentifier = @"NoResultsCell";
+        static NSString * reuseIdentifier = kNoResultsCell;
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
                if (reverseScroll) {
             _tableView.transform = CGAffineTransformMakeRotation(M_PI);
             cell.transform = CGAffineTransformMakeRotation(-M_PI);
                }
-        cell.explanation.text = @"No tags found";
+        [cell setHeading:nil andExplanation:@"No tags found"];
         return cell;
     }
 
@@ -49,7 +49,7 @@
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([tags count] == 0) {
-       return 204;
+       return kNoResultsCellHeight;
     }
     return 30;
 }

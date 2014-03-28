@@ -3,7 +3,6 @@
 #import "GoodCell.h"
 #import "DGGood.h"
 #import "DGTag.h"
-#import "NoResultsCell.h"
 #import "DGCategory.h"
 #import "FSLocation.h"
 #import "UserOverview.h"

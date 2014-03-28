@@ -22,8 +22,8 @@
 - (void)initializeTable {
     UINib *nib = [UINib nibWithNibName:@"GoodCell" bundle:nil];
     [self registerNib:nib forCellReuseIdentifier:@"GoodCell"];
-    UINib *noResultsNib = [UINib nibWithNibName:@"NoResultsCell" bundle:nil];
-    [self registerNib:noResultsNib forCellReuseIdentifier:@"NoResultsCell"];
+    UINib *noResultsNib = [UINib nibWithNibName:kNoResultsCell bundle:nil];
+    [self registerNib:noResultsNib forCellReuseIdentifier:kNoResultsCell];
     showNoResultsMessage = NO;
     goods = [[NSMutableArray alloc] init];
     cellHeights = [[NSMutableArray alloc] init];
@@ -163,9 +163,9 @@
         [cell setValues];
         return cell;
     } else {
-        static NSString * reuseIdentifier = @"NoResultsCell";
+        static NSString * reuseIdentifier = kNoResultsCell;
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        cell.explanation.text = @"No good found";
+        [cell setHeading:@"No posts found" explanation:@"Add something good with the + button up there" andImage:[UIImage imageNamed:@"NoPeople"]];
         return cell;
     }
 }
@@ -186,7 +186,7 @@
         NSNumber *height = [cellHeights objectAtIndex:indexPath.row];
         return [height floatValue];
     } else {
-        return 205;
+        return kNoResultsCellHeight;
     }
 }
 

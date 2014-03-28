@@ -203,3 +203,5 @@ extern NSString* const ExternalNomineeWasChosen;
 
 // reusable tableview cells
 #define kCategoryCell @"CategoryCell"
+#define kNoResultsCell @"NoResultsCell"
+#define kNoResultsCellHeight 290

@@ -29,14 +29,15 @@
     // comments list
     UINib *nib = [UINib nibWithNibName:@"CommentCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"CommentCell"];
-    UINib *noResultsNib = [UINib nibWithNibName:@"NoResultsCell" bundle:nil];
-    [tableView registerNib:noResultsNib forCellReuseIdentifier:@"NoResultsCell"];
+    UINib *noResultsNib = [UINib nibWithNibName:kNoResultsCell bundle:nil];
+    [tableView registerNib:noResultsNib forCellReuseIdentifier:kNoResultsCell];
     comments = [[NSMutableArray alloc] init];
 
     tableView.tableFooterView = [[UIView alloc] init];
 
     loadingView = [[SAMLoadingView alloc] initWithFrame:self.view.bounds];
     loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    loadingStatus = @"Loading...";
 
     characterLimit = 120;
     entities = [[NSMutableArray alloc] init];
@@ -135,9 +136,9 @@
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([comments count] == 0) {
         tableView.transform = CGAffineTransformMakeRotation(M_PI);
-        static NSString * reuseIdentifier = @"NoResultsCell";
+        static NSString * reuseIdentifier = kNoResultsCell;
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        cell.explanation.text = loadingStatus;
+        [cell setHeading:nil andExplanation:loadingStatus];
         cell.transform = CGAffineTransformMakeRotation(-M_PI);
         return cell;
     }
@@ -154,7 +155,7 @@
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([comments count] == 0) {
-        return 204;
+        return 210;
     }
 
     DGComment * comment = comments[indexPath.row];

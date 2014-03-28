@@ -47,9 +47,9 @@
         cell.navigationController = self.navigationController;
         return cell;
     } else {
-        static NSString * reuseIdentifier = @"NoResultsCell";
+        static NSString * reuseIdentifier = kNoResultsCell;
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        cell.explanation.text = @"No people found";
+        [cell setHeading:nil andExplanation:@"No people found"];
         return cell;
     }
 }
@@ -58,7 +58,7 @@
     if (indexPath.section == 0) {
         return 60;
     } else {
-        return 205;
+        return kNoResultsCellHeight;
     }
 }
 

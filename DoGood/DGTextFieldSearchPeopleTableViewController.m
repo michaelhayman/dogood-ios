@@ -21,9 +21,9 @@
 #pragma mark - UITableView delegate methods
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([users count] == 0) {
-        static NSString * reuseIdentifier = @"NoResultsCell";
+        static NSString * reuseIdentifier = kNoResultsCell;
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        cell.explanation.text = @"No comments posted yet";
+        [cell setHeading:nil andExplanation:@"No comments posted yet"];
         if (reverseScroll) {
             _tableView.transform = CGAffineTransformMakeRotation(M_PI);
             cell.transform = CGAffineTransformMakeRotation(-M_PI);
@@ -48,7 +48,7 @@
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([users count] == 0) {
-       return 204;
+       return kNoResultsCellHeight;
     }
     return 60;
 }
