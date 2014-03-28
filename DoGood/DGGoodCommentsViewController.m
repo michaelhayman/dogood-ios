@@ -139,6 +139,7 @@
         static NSString * reuseIdentifier = kNoResultsCell;
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
         [cell setHeading:nil andExplanation:loadingStatus];
+        [cell setHeading:nil explanation:loadingStatus andImage:[UIImage imageNamed:@"NoComments"]];
         cell.transform = CGAffineTransformMakeRotation(-M_PI);
         return cell;
     }
@@ -155,7 +156,7 @@
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([comments count] == 0) {
-        return 210;
+        return 150;
     }
 
     DGComment * comment = comments[indexPath.row];

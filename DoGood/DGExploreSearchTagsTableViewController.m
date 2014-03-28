@@ -54,7 +54,7 @@
    } else {
         static NSString * reuseIdentifier = kNoResultsCell;
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        [cell setHeading:nil andExplanation:@"No tags found"];
+        [cell setHeading:nil explanation:@"No tags found" andImage:[UIImage imageNamed:@"NoTags"]];
         return cell;
    }
 }

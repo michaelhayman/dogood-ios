@@ -20,7 +20,7 @@
         self.headingSpacer.constant = 0;
     } else {
         self.headingHeight.constant = 40;
-        self.headingSpacer.constant = 25;
+        self.headingSpacer.constant = 5;
     }
     self.heading.text = heading;
 
@@ -33,8 +33,8 @@
     }
 
     if (image) {
-        self.imageHeight.constant = 117;
-        self.imageSpacer.constant = 40;
+        self.imageHeight.constant = 100;
+        self.imageSpacer.constant = 10;
         self.image.image = image;
     } else {
         self.imageHeight.constant = 0;

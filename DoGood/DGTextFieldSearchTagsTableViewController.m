@@ -28,7 +28,7 @@
             _tableView.transform = CGAffineTransformMakeRotation(M_PI);
             cell.transform = CGAffineTransformMakeRotation(-M_PI);
                }
-        [cell setHeading:nil andExplanation:@"No tags found"];
+        [cell setHeading:nil explanation:@"No tags found" andImage:[UIImage imageNamed:@"NoTags"]];
         return cell;
     }
 

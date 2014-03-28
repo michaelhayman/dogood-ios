@@ -49,7 +49,7 @@
     } else {
         static NSString * reuseIdentifier = kNoResultsCell;
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        [cell setHeading:nil andExplanation:@"No people found"];
+        [cell setHeading:nil explanation:@"No people found" andImage:[UIImage imageNamed:@"NoPeople"]];
         return cell;
     }
 }

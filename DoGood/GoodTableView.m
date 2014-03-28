@@ -165,7 +165,7 @@
     } else {
         static NSString * reuseIdentifier = kNoResultsCell;
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        [cell setHeading:@"No posts found" explanation:@"Add something good with the + button up there" andImage:[UIImage imageNamed:@"NoPeople"]];
+        [cell setHeading:@"No posts found" explanation:@"Add something good with the + button up there" andImage:[UIImage imageNamed:@"NoPosts"]];
         return cell;
     }
 }

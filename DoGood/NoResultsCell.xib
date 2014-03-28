@@ -15,7 +15,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="#" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="226" translatesAutoresizingMaskIntoConstraints="NO" id="38">
-                        <rect key="frame" x="47" y="242" width="226" height="40"/>
+                        <rect key="frame" x="47" y="192" width="226" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="226" id="463"/>
@@ -26,7 +26,7 @@
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="#" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="226" translatesAutoresizingMaskIntoConstraints="NO" id="bav-Qj-B8W">
-                        <rect key="frame" x="47" y="182" width="226" height="40"/>
+                        <rect key="frame" x="47" y="147" width="226" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="226" id="1Xk-37-OOz"/>
@@ -37,7 +37,7 @@
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="440">
-                        <rect key="frame" x="102" y="40" width="117" height="117"/>
+                        <rect key="frame" x="102" y="5" width="117" height="117"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="117" id="EDd-3c-EcC"/>
@@ -48,11 +48,11 @@
                 <constraints>
                     <constraint firstAttribute="centerX" secondItem="bav-Qj-B8W" secondAttribute="centerX" id="9SH-u3-gHy"/>
                     <constraint firstItem="bav-Qj-B8W" firstAttribute="top" secondItem="440" secondAttribute="bottom" constant="25" id="DUG-G1-ZM3"/>
-                    <constraint firstItem="38" firstAttribute="top" secondItem="bav-Qj-B8W" secondAttribute="bottom" constant="20" id="Win-08-4WS"/>
+                    <constraint firstItem="38" firstAttribute="top" secondItem="bav-Qj-B8W" secondAttribute="bottom" constant="5" id="Win-08-4WS"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
-                <constraint firstItem="440" firstAttribute="top" secondItem="3" secondAttribute="top" constant="40" id="ter-Y9-5q4"/>
+                <constraint firstItem="440" firstAttribute="top" secondItem="3" secondAttribute="top" constant="5" id="ter-Y9-5q4"/>
                 <constraint firstItem="440" firstAttribute="centerX" secondItem="38" secondAttribute="centerX" id="vaf-EA-xD9"/>
                 <constraint firstItem="38" firstAttribute="centerX" secondItem="3" secondAttribute="centerX" id="wRq-MX-wQq"/>
             </constraints>
