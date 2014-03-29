@@ -85,9 +85,9 @@
 }
 
 - (void)setupProfile {
-    [self setupMenuTitle:user.full_name];
 
     [self setupProfileButtons];
+
     if (!profileLoaded) {
         [self getProfile];
     }
