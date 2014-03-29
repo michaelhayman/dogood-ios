@@ -152,7 +152,7 @@
             cell.imageView.image = [UIImage imageNamed:@"NomineeIconOff.png"];
         }
         return cell;
-    if (indexPath.section == overview) {
+    } else if (indexPath.section == overview) {
         GoodOverviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodOverviewCell"];
         // cell.description.delegate = self;
         cell.parent = self;
