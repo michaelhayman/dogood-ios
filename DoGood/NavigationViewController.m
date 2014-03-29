@@ -50,12 +50,12 @@
 
     __typeof (&*self) __weak weakSelf = self;
 
-    REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"Done" subtitle:nil image:nil highlightedImage:nil action:^(REMenuItem *item) {
+    REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"My Activity" subtitle:nil image:nil highlightedImage:nil action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
         [self showGoodList];
     }];
 
-    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"To Do" subtitle:nil image:nil highlightedImage:nil action:^(REMenuItem *item) {
+    REMenuItem *exploreItem = [[REMenuItem alloc] initWithTitle:@"Do Good" subtitle:nil image:nil highlightedImage:nil action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
         [self showExplore];
     }];
