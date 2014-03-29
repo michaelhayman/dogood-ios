@@ -284,6 +284,7 @@
     [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButtonTap"] forState:UIControlStateHighlighted];
     [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowingButton"] forState:UIControlStateSelected];
     [centralButton setTitle:@"Follow" forState:UIControlStateNormal];
+    [centralButton setTitle:@"Following" forState:UIControlStateSelected];
     [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
     [centralButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
 
