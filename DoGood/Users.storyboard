@@ -681,7 +681,7 @@
             </objects>
             <point key="canvasLocation" x="869" y="460"/>
         </scene>
-        <!--User Profile View Controller - Your Profile-->
+        <!--User Profile View Controller - Profile-->
         <scene sceneID="p08-Pb-Nvv">
             <objects>
                 <viewController storyboardIdentifier="UserProfile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="r2B-cS-g4r" customClass="DGUserProfileViewController" sceneMemberID="viewController">
@@ -838,7 +838,7 @@
                             <constraint firstAttribute="trailing" secondItem="E8Y-A7-Cff" secondAttribute="trailing" id="z3z-BU-vXM"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Your Profile" id="cwB-sb-sZt"/>
+                    <navigationItem key="navigationItem" title="Profile" id="cwB-sb-sZt"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="authenticateView" destination="RBN-zd-QTC" id="u3c-7l-hwF"/>
