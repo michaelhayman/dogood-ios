@@ -1,5 +1,6 @@
 #import "DGPostGoodNomineeSearchViewController.h"
 #import "DGUserSearchViewController.h"
+#import "DGPostGoodNomineeAddViewController.h"
 #import "DGUserSearchAddressBookViewController.h"
 #import "DGUserSearchTwitterViewController.h"
 #import "DGUserSearchFacebookViewController.h"
@@ -9,6 +10,7 @@
 #define kTabSelectionAnimationDuration 0.2
 
 @interface DGPostGoodNomineeSearchViewController ()
+@property (nonatomic, strong) DGPostGoodNomineeAddViewController *addView;
 @property (nonatomic, strong) DGUserSearchAddressBookViewController *userAddressBook;
 @property (nonatomic, strong) DGUserSearchTwitterViewController *userTwitter;
 @property (nonatomic, strong) DGUserSearchFacebookViewController *userFacebook;
@@ -21,6 +23,10 @@
     [super viewDidLoad];
     [self setupMenuTitle:@"Nominate"];
 
+    if (self.addView == nil) {
+        self.addView = [self.storyboard instantiateViewControllerWithIdentifier:@"nomineeAdd"];
+        // self.addView.delegate = self;
+    }
     if (self.userOther == nil) {
         self.userOther = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchDoGood"];
     }
@@ -36,7 +42,7 @@
 
     // self.typeSegmentedControl.selectedSegmentIndex = 1;
     segmentIndex = 1;
-    dogood.selected = YES;
+    add.selected = YES;
 
     UIViewController *vc = [self viewControllerForSegmentIndex:segmentIndex];
     self.currentViewController = vc;
@@ -75,15 +81,16 @@
 
 - (void)dealloc {
     DebugLog(@"deallocing find friends");
-    _currentViewController = nil;
-    _userAddressBook = nil;
-    _userTwitter = nil;
-    _userFacebook = nil;
-    _userOther = nil;
+    self.currentViewController = nil;
+    self.addView = nil;
+    self.userAddressBook = nil;
+    self.userTwitter = nil;
+    self.userFacebook = nil;
+    self.userOther = nil;
 }
 
 - (CGFloat)getX {
-    CGFloat tabWidth = self.view.frame.size.width / 4;
+    CGFloat tabWidth = self.view.frame.size.width / 5;
     return (tabWidth) * (segmentIndex) - (tabWidth / 2 + arrow.frame.size.width / 2);
 }
 
@@ -132,15 +139,18 @@
     UIViewController *vc;
     switch (index) {
         case 1:
-            vc = self.userOther;
+            vc = self.addView;
             break;
         case 2:
-            vc = self.userAddressBook;
+            vc = self.userOther;
             break;
         case 3:
-            vc = self.userTwitter;
+            vc = self.userAddressBook;
             break;
         case 4:
+            vc = self.userTwitter;
+            break;
+        case 5:
             vc = self.userFacebook;
             break;
     }
@@ -149,4 +159,3 @@
 }
 
 @end
-
