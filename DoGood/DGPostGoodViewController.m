@@ -139,17 +139,7 @@
 #define kNomineeCell @"nominee"
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == overview) {
-        GoodOverviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodOverviewCell"];
-        // cell.description.delegate = self;
-        cell.parent = self;
-        [cell initEntityHandler];
-        UITapGestureRecognizer* imageGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoSheet)];
-        [cell.image setUserInteractionEnabled:YES];
-        [cell.image addGestureRecognizer:imageGesture];
-        cell.tag = good_overview_cell_tag;
-        return cell;
-    } else if (indexPath.section == nominee) {
+    if (indexPath.section == nominee) {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kNomineeCell];
         if (self.good.nominee) {
             cell.imageView.image = [UIImage imageNamed:@"NomineeIconOn.png"];
@@ -161,6 +151,16 @@
             cell.textLabel.text = @"Who did good?";
             cell.imageView.image = [UIImage imageNamed:@"NomineeIconOff.png"];
         }
+        return cell;
+    if (indexPath.section == overview) {
+        GoodOverviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodOverviewCell"];
+        // cell.description.delegate = self;
+        cell.parent = self;
+        [cell initEntityHandler];
+        UITapGestureRecognizer* imageGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoSheet)];
+        [cell.image setUserInteractionEnabled:YES];
+        [cell.image addGestureRecognizer:imageGesture];
+        cell.tag = good_overview_cell_tag;
         return cell;
     } else if (indexPath.section == category) {
         static NSString *CellIdentifier = @"category";
