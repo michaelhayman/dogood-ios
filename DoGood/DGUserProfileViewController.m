@@ -193,6 +193,12 @@
         }
 
         [self setupTabs];
+        if ([self isOwnProfile]) {
+           avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
+            [avatar bringSubviewToFront:avatarOverlay];
+        } else {
+            avatarOverlay.hidden = YES;
+        }
 
         if (!avatar.image) {
             if ([user avatarURL]) {
