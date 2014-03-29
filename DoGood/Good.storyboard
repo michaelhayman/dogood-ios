@@ -476,7 +476,7 @@
                                     <constraint firstAttribute="width" constant="185" id="peF-KH-Pje"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="Invite nominee to Do Good?">
+                                    <fragment content="Invite nominee to Do Good on your behalf?">
                                         <attributes>
                                             <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <font key="NSFont" size="14" name="Helvetica"/>
