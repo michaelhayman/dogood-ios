@@ -9,6 +9,8 @@
 #import "DGPhotoPickerViewController.h"
 
 @interface DGPostGoodViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, UIActionSheetDelegate, DGPostGoodCategoryViewControllerDelegate, DGPostGoodLocationViewControllerDelegate, DGPhotoPickerViewControllerDelegate, DGPostGoodNomineeViewControllerDelegate> {
+    UISegmentedControl *tabControl;
+
     UIActionSheet *nomineeSheet;
     UIActionSheet *categorySheet;
     UIActionSheet *locationSheet;
