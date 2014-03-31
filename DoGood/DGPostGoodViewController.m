@@ -77,7 +77,7 @@
 }
 
 - (void)setupNavigationBar {
-    tabControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Ask for help", @"Nominate", nil]];
+    tabControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Nominate", @"Ask for help", nil]];
 
     [tabControl setSelectedSegmentIndex:0];
 
