@@ -53,8 +53,6 @@
     photos.parent = self;
     photos.delegate = self;
     if (self.category) {
-        // [self setupMenuTitle:nil];
-        // [self updateTitleColor:[self.category rgbColour]];
         self.navigationController.navigationBar.barTintColor = [self.category rgbColour];
         self.good.category = self.category;
     }
