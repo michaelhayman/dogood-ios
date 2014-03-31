@@ -21,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupMenuTitle:@"Nominate"];
 
     if (self.addView == nil) {
         self.addView = [self.storyboard instantiateViewControllerWithIdentifier:@"nomineeAdd"];
