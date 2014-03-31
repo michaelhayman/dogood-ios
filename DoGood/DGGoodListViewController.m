@@ -21,11 +21,12 @@
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     if (self.category) {
         [self setupMenuTitle:self.category.name];
         [self updateTitleColor:[self.category rgbColour]];
     } else if (self.tag) {
-       [self setupMenuTitle:[self.tag hashifiedName]];
+        [self setupMenuTitle:[self.tag hashifiedName]];
     } else if (self.path) {
         [self setupMenuTitle:self.titleForPath];
     } else {
