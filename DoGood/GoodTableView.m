@@ -28,8 +28,41 @@
     goods = [[NSMutableArray alloc] init];
     cellHeights = [[NSMutableArray alloc] init];
 
+    doneGoods = YES;
+
     loadingView = [[SAMLoadingView alloc] initWithFrame:self.bounds];
     loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+}
+
+- (void)showTabs {
+    tabControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"", @"", nil]];
+    tabControl.frame = CGRectMake(5, 5, 310, 25);
+
+    [tabControl setImage:[UIImage imageNamed:@"AddIcon"] forSegmentAtIndex:1];
+    [tabControl setTitle:@"To Do" forSegmentAtIndex:1];
+    [tabControl setImage:[UIImage imageNamed:@"SearchIcon"] forSegmentAtIndex:0];
+    [tabControl setTitle:@"Done" forSegmentAtIndex:0];
+
+    [tabControl setSelectedSegmentIndex:0];
+
+    [tabControl addTarget:self action:@selector(chooseTab:) forControlEvents:UIControlEventValueChanged];
+
+    tabsShowing = YES;
+
+    UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    [tableHeaderView addSubview:tabControl];
+    self.tableHeaderView = tableHeaderView;
+}
+
+- (IBAction)chooseTab:(id)sender {
+    DebugLog(@"sup %d", tabControl.selectedSegmentIndex);
+    if (tabControl.selectedSegmentIndex == 0) {
+        doneGoods = YES;
+    } else {
+        doneGoods = NO;
+    }
+    [self resetGood];
+    [self loadGoodsAtPath:goodsPath];
 }
 
 - (void)setupRefresh {
@@ -48,6 +81,11 @@
 - (void)loadGoodsAtPath:(NSString *)path {
     goodsPath = path;
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:page], @"page", nil];
+
+    if (tabsShowing) {
+        [params setObject:[NSNumber numberWithBool:doneGoods] forKey:@"done"];
+    }
+
     [self addSubview:loadingView];
 
     [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {

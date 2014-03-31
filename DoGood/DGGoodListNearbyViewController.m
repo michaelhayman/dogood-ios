@@ -18,6 +18,7 @@
 
     goodTableView.navigationController = self.navigationController;
     goodTableView.parent = self;
+    [goodTableView showTabs];
 
     [self setupRefresh];
 }
@@ -28,7 +29,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:YES];
+    [super viewWillDisappear:animated];
     [ProgressHUD dismiss];
 }
 
