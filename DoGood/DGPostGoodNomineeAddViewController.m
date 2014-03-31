@@ -1,6 +1,8 @@
 #import "DGPostGoodNomineeAddViewController.h"
+#import "DGPostGoodNomineeSearchViewController.h"
 #import "DGNominee.h"
 #import <ReactiveCocoa/ReactiveCocoa.h>
+#import <ProgressHUD/ProgressHUD.h>
 
 @implementation DGPostGoodNomineeAddViewController
 
@@ -35,7 +37,9 @@
         [self fillInNomineeFromFields];
         [self nominate:nil];
     } else {
-        if (silent == NO) {
+        if (!silent) {
+            [ProgressHUD showError:message];
+        } else {
             DebugLog(@"%@", message);
         }
     }
@@ -69,9 +73,8 @@
 }
 
 - (IBAction)nominate:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(childViewController:didChooseNominee:)]) {
-        [self.delegate childViewController:self didChooseNominee:nominee];
-    }
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObject:nominee forKey:@"nominee"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:DGNomineeWasChosen object:nil userInfo:dictionary];
 }
 
 - (void)childViewController:(DGPhotoPickerViewController* )viewController didChoosePhoto:(NSDictionary *)dictionary {

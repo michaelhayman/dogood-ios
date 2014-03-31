@@ -84,7 +84,6 @@
 		636AEAA317AD77F0002A3494 /* DGPostGoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636AEAA217AD77F0002A3494 /* DGPostGoodViewController.m */; };
 		636AEAA717AD79AA002A3494 /* GoodOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636AEAA617AD79AA002A3494 /* GoodOverviewCell.m */; };
 		636AEAA917AD79B1002A3494 /* GoodOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636AEAA817AD79B1002A3494 /* GoodOverviewCell.xib */; };
-		636FF5E918493F4A003774AE /* DGPostGoodNomineeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636FF5E818493F4A003774AE /* DGPostGoodNomineeViewController.m */; };
 		636FF5EF184AA19E003774AE /* DGPostGoodNomineeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636FF5EE184AA19E003774AE /* DGPostGoodNomineeAddViewController.m */; };
 		6378AE1E1818BA50001DB9BF /* DGRKObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6378AE1D1818BA50001DB9BF /* DGRKObjectRequestOperation.m */; };
 		637ABAD317C7C6F4004AA4C9 /* SearchUserNetworks.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637ABAD217C7C6F4004AA4C9 /* SearchUserNetworks.xib */; };
@@ -291,8 +290,6 @@
 		636AEAA517AD79AA002A3494 /* GoodOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodOverviewCell.h; sourceTree = "<group>"; };
 		636AEAA617AD79AA002A3494 /* GoodOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodOverviewCell.m; sourceTree = "<group>"; };
 		636AEAA817AD79B1002A3494 /* GoodOverviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodOverviewCell.xib; sourceTree = "<group>"; };
-		636FF5E718493F4A003774AE /* DGPostGoodNomineeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPostGoodNomineeViewController.h; sourceTree = "<group>"; };
-		636FF5E818493F4A003774AE /* DGPostGoodNomineeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPostGoodNomineeViewController.m; sourceTree = "<group>"; };
 		636FF5ED184AA19E003774AE /* DGPostGoodNomineeAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPostGoodNomineeAddViewController.h; sourceTree = "<group>"; };
 		636FF5EE184AA19E003774AE /* DGPostGoodNomineeAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPostGoodNomineeAddViewController.m; sourceTree = "<group>"; };
 		6378AE1C1818BA50001DB9BF /* DGRKObjectRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGRKObjectRequestOperation.h; sourceTree = "<group>"; };
@@ -616,8 +613,6 @@
 			children = (
 				639B1230187C0FA3005C9BD9 /* GoodTableView.h */,
 				639B1231187C0FA3005C9BD9 /* GoodTableView.m */,
-				636FF5E718493F4A003774AE /* DGPostGoodNomineeViewController.h */,
-				636FF5E818493F4A003774AE /* DGPostGoodNomineeViewController.m */,
 				633DBF7017ADC4E50038BC2D /* DGPostGoodNomineeSearchViewController.h */,
 				633DBF7117ADC4E50038BC2D /* DGPostGoodNomineeSearchViewController.m */,
 				636FF5ED184AA19E003774AE /* DGPostGoodNomineeAddViewController.h */,
@@ -1037,7 +1032,6 @@
 				633DBF8517AE92E00038BC2D /* RootViewController.m in Sources */,
 				6355EC0717B0C83100EE91C0 /* DGComment.m in Sources */,
 				63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */,
-				636FF5E918493F4A003774AE /* DGPostGoodNomineeViewController.m in Sources */,
 				6355EC0C17B0D4C300EE91C0 /* CommentCell.m in Sources */,
 				636FF5EF184AA19E003774AE /* DGPostGoodNomineeAddViewController.m in Sources */,
 				6355EC1217B0EDA300EE91C0 /* DGRewardsListViewController.m in Sources */,

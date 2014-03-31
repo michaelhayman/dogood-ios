@@ -1,4 +1,5 @@
 @protocol DGNomineeSearchViewControllerDelegate;
+@protocol DGPostGoodNomineeViewControllerDelegate;
 @class DGNominee;
 
 @class Arrow;
@@ -19,5 +20,12 @@
 @property (nonatomic, strong) UIViewController *currentViewController;
 @property (nonatomic, weak) IBOutlet UIView *contentView;
 @property (nonatomic, weak) id <DGNomineeSearchViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <DGPostGoodNomineeViewControllerDelegate> postGoodDelegate;
+
+@end
+
+@protocol DGPostGoodNomineeViewControllerDelegate <NSObject>
+
+- (void)childViewController:(DGPostGoodNomineeSearchViewController* )viewController didChooseNominee:(DGNominee *)nominee;
 
 @end

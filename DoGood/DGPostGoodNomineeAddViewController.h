@@ -1,4 +1,4 @@
-@protocol DGPostGoodNomineeAddViewControllerDelegate;
+@protocol DGPostGoodNomineeViewControllerDelegate;
 @class DGNominee;
 
 #import "DGPhotoPickerViewController.h"
@@ -15,16 +15,10 @@
     __weak IBOutlet UIImageView *avatarImage;
 }
 
-@property (nonatomic, weak) id <DGPostGoodNomineeAddViewControllerDelegate> delegate;
+@property (nonatomic, weak) id <DGPostGoodNomineeViewControllerDelegate> delegate;
 
 - (void)checkInputSilently:(BOOL)silent;
 - (void)fillInFieldsFromNominee:(DGNominee *)theNominee;
 - (IBAction)nominate:(id)sender;
-
-@end
-
-@protocol DGPostGoodNomineeAddViewControllerDelegate <NSObject>
-
-- (void)childViewController:(DGPostGoodNomineeAddViewController* )viewController didChooseNominee:(DGNominee *)nominee;
 
 @end

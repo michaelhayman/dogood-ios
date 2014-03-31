@@ -4,7 +4,7 @@
 @class DGTwitterManager;
 @class DGEntityHandler;
 #import "DGPostGoodCategoryViewController.h"
-#import "DGPostGoodNomineeViewController.h"
+#import "DGPostGoodNomineeSearchViewController.h"
 #import "DGPostGoodLocationViewController.h"
 #import "DGPhotoPickerViewController.h"
 

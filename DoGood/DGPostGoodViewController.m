@@ -7,7 +7,6 @@
 #import "FSLocation.h"
 #import "DGPostGoodCategoryViewController.h"
 #import "DGPostGoodLocationViewController.h"
-#import "DGPostGoodNomineeViewController.h"
 #import "DGTwitterManager.h"
 #import "DGFacebookManager.h"
 #import "DGEntityHandler.h"
@@ -58,10 +57,10 @@
 - (void)setupNavigationBar {
     tabControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Add", @"Search", nil]];
 
-    [tabControl setImage:[UIImage imageNamed:@"AddIcon"] forSegmentAtIndex:0];
-    [tabControl setTitle:@"Ask for help" forSegmentAtIndex:0];
-    [tabControl setImage:[UIImage imageNamed:@"SearchIcon"] forSegmentAtIndex:1];
-    [tabControl setTitle:@"Nominate" forSegmentAtIndex:1];
+    [tabControl setImage:[UIImage imageNamed:@"AddIcon"] forSegmentAtIndex:1];
+    [tabControl setTitle:@"Ask for help" forSegmentAtIndex:1];
+    [tabControl setImage:[UIImage imageNamed:@"SearchIcon"] forSegmentAtIndex:0];
+    [tabControl setTitle:@"Nominate" forSegmentAtIndex:0];
 
     [tabControl setSelectedSegmentIndex:0];
 
@@ -69,12 +68,26 @@
 
     [tabControl addTarget:self action:@selector(chooseTab:) forControlEvents:UIControlEventValueChanged];
 
+    [self setTableMode];
+
     self.navigationItem.titleView = tabControl;
 }
 
 - (IBAction)chooseTab:(id)sender {
     DebugLog(@"sup %d", tabControl.selectedSegmentIndex);
-    self.good.done = [NSNumber numberWithInt:tabControl.selectedSegmentIndex];
+    [self setTableMode];
+    [self.tableView reloadData];
+}
+
+- (void)setTableMode {
+    if (tabControl.selectedSegmentIndex == 0) {
+        self.good.done = [NSNumber numberWithBool:YES];
+    } else {
+        self.good.done = [NSNumber numberWithBool:NO];
+    }
+
+    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
+    [cell setDoneMode:[self.good.done boolValue]];
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -131,6 +144,12 @@
     if (section == share) {
         // return 3;
         return 2;
+    } else if (section == nominee) {
+        if ([self.good.done boolValue]) {
+            return 1;
+        } else {
+            return 0;
+        }
     } else {
         return 1;
     }
@@ -243,8 +262,8 @@
 
 #pragma mark - UIActionSheets
 - (void)showNomineeChooser {
-    DGPostGoodNomineeViewController *nomineeController = [self.storyboard instantiateViewControllerWithIdentifier:@"PostGoodNominee"];
-    nomineeController.delegate = self;
+    DGPostGoodNomineeSearchViewController *nomineeController = [self.storyboard instantiateViewControllerWithIdentifier:@"PostGoodNominee"];
+    nomineeController.postGoodDelegate = self;
     [self.navigationController pushViewController:nomineeController animated:YES];
 }
 

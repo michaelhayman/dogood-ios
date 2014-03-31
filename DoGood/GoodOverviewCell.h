@@ -8,6 +8,9 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *description;
 @property (weak, nonatomic) IBOutlet UILabel *placeholder;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *placeholderHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *placeholderWidth;
+
 @property (strong, nonatomic) DGEntityHandler *entityHandler;
 
 @property (weak, nonatomic) IBOutlet UIImageView *image;
@@ -16,5 +19,6 @@
 
 - (UIImage *)defaultImage;
 - (void)initEntityHandler;
+- (void)setDoneMode:(BOOL)done;
 
 @end

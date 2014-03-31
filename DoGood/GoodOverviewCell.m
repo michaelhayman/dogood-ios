@@ -1,5 +1,6 @@
 #import "GoodOverviewCell.h"
 #import "DGEntityHandler.h"
+#import "DGAppearance.h"
 
 @implementation GoodOverviewCell
 
@@ -11,15 +12,24 @@
     self.description.allowsEditingTextAttributes = NO;
     self.description.delegate = self;
     self.placeholder.hidden = NO;
+    [self setDoneMode:NO];
 }
 
 - (void)initEntityHandler {
     _entityHandler = [[DGEntityHandler alloc] initWithTextView:self.description andEntities:self.entities inController:self.parent withType:@"Good" reverseScroll:NO tableOffset:100 secondTableOffset:64];
 }
 
-
 - (void)prepareForReuse {
     _entityHandler = nil;
+}
+
+- (void)setDoneMode:(BOOL)done {
+    if (done) {
+        self.placeholder.text = @"Write a story about a good thing someone did";
+    } else {
+        self.placeholder.text = @"Persuade people to help";
+    }
+    self.placeholderHeight.constant = [DGAppearance calculateHeightForString:self.placeholder.text WithFont:self.placeholder.font andWidth:186];
 }
 
 - (void)dealloc {

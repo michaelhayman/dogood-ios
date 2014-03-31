@@ -25,7 +25,6 @@
 
     if (self.addView == nil) {
         self.addView = [self.storyboard instantiateViewControllerWithIdentifier:@"nomineeAdd"];
-        // self.addView.delegate = self;
     }
     if (self.userOther == nil) {
         self.userOther = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchDoGood"];
@@ -40,7 +39,6 @@
         self.userFacebook = [[DGUserSearchFacebookViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];
     }
 
-    // self.typeSegmentedControl.selectedSegmentIndex = 1;
     segmentIndex = 1;
     add.selected = YES;
 
@@ -60,6 +58,20 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [tabControl setSelectedSegmentIndex:1];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nomineeChosen:) name:DGNomineeWasChosen object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nomineeChosen:) name:ExternalNomineeWasChosen object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGNomineeWasChosen object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:ExternalNomineeWasChosen object:nil];
 }
 
 - (void)dismiss {
@@ -156,6 +168,19 @@
     }
     segmentIndex = index;
     return vc;
+}
+
+- (void)nomineeChosen:(NSNotification *)notification {
+    DGNominee *nominee = [[notification userInfo] valueForKey:@"nominee"];
+    [self populateNominee:nominee];
+}
+
+#pragma mark - other methods
+- (void)populateNominee:(DGNominee *)nominee {
+    if ([self.postGoodDelegate respondsToSelector:@selector(childViewController:didChooseNominee:)]) {
+        [self.postGoodDelegate childViewController:self didChooseNominee:nominee];
+    }
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end
