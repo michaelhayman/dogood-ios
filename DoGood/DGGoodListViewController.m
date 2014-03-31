@@ -33,9 +33,14 @@
         [self addMenuButton:@"icon_menu" withTapButton:@"icon_menu"];
     }
 
+    if (self.category) {
+        [goodTableView showTabsWithColor:[self.category rgbColour]];
+    } else {
+        [goodTableView showTabs];
+    }
+
     goodTableView.navigationController = self.navigationController;
     goodTableView.parent = self;
-    [goodTableView showTabs];
     [goodTableView setupRefresh];
     [goodTableView setupInfiniteScroll];
     [self getGood];

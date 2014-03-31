@@ -1,4 +1,5 @@
 #import "UIViewController+DGViewController.h"
+#import "DGAppearance.h"
 
 @implementation UIViewController (DGViewController)
 
@@ -21,17 +22,7 @@
 
 - (void)updateTitleColor:(UIColor *)newColor {
     UILabel *view = (UILabel *)[self.navigationItem.titleView viewWithTag:669];
-    const CGFloat *componentColors = CGColorGetComponents(newColor.CGColor);
-
-    CGFloat colorBrightness = ((componentColors[0] * 299) + (componentColors[1] * 587) + (componentColors[2] * 114)) / 1000;
-    if (colorBrightness < 0.5) {
-        view.textColor = [UIColor whiteColor];
-        NSLog(@"my color is dark");
-    }
-    else {
-        view.textColor = MUD;
-        NSLog(@"my color is light");
-    }
+    view.textColor = [DGAppearance makeContrastingColorFromColor:newColor];
 }
 
 - (void)toggleMenu {

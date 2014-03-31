@@ -24,6 +24,7 @@
 }
 
 @property (nonatomic, retain) DGGood *good;
+@property (nonatomic, retain) DGCategory *category;
 
 - (IBAction)post:(id)sender;
 

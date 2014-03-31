@@ -51,16 +51,14 @@
     photos = [[DGPhotoPickerViewController alloc] init];
     photos.parent = self;
     photos.delegate = self;
+    if (self.category) {
+        [self updateTitleColor:[self.category rgbColour]];
+    }
     [self setupNavigationBar];
 }
 
 - (void)setupNavigationBar {
-    tabControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Add", @"Search", nil]];
-
-    [tabControl setImage:[UIImage imageNamed:@"AddIcon"] forSegmentAtIndex:1];
-    [tabControl setTitle:@"Ask for help" forSegmentAtIndex:1];
-    [tabControl setImage:[UIImage imageNamed:@"SearchIcon"] forSegmentAtIndex:0];
-    [tabControl setTitle:@"Nominate" forSegmentAtIndex:0];
+    tabControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Ask for help", @"Nominate", nil]];
 
     [tabControl setSelectedSegmentIndex:0];
 

@@ -14,6 +14,7 @@
     if (self) {
         self.delegate = self;
         self.dataSource = self;
+
         [self initializeTable];
     }
     return self;
@@ -28,41 +29,77 @@
     goods = [[NSMutableArray alloc] init];
     cellHeights = [[NSMutableArray alloc] init];
 
-    doneGoods = YES;
+    [self chooseDone];
 
     loadingView = [[SAMLoadingView alloc] initWithFrame:self.bounds];
     loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
 
 - (void)showTabs {
-    tabControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"", @"", nil]];
-    tabControl.frame = CGRectMake(5, 5, 310, 25);
+    [self showTabsWithColor:VIVID];
+}
 
-    [tabControl setImage:[UIImage imageNamed:@"AddIcon"] forSegmentAtIndex:1];
-    [tabControl setTitle:@"To Do" forSegmentAtIndex:1];
-    [tabControl setImage:[UIImage imageNamed:@"SearchIcon"] forSegmentAtIndex:0];
-    [tabControl setTitle:@"Done" forSegmentAtIndex:0];
+- (UIButton *)tabButtonWithOffset:(CGFloat)offset {
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(offset, 0, 160, 30)];
+    button.tintColor = [UIColor blackColor];
+    button.titleLabel.font = [UIFont systemFontOfSize:15];
+    [button addTarget:self action:@selector(chooseTab:) forControlEvents:UIControlEventTouchUpInside];
+    button.userInteractionEnabled = YES;
+    [button setTitleColor:MUD forState:UIControlStateSelected];
+    [button setTitleColor:[DGAppearance makeContrastingColorFromColor:tabColor] forState:UIControlStateNormal];
 
-    [tabControl setSelectedSegmentIndex:0];
+    return button;
+}
 
-    [tabControl addTarget:self action:@selector(chooseTab:) forControlEvents:UIControlEventValueChanged];
+- (void)showTabsWithColor:(UIColor *)color {
+    tabColor = color;
+
+    done = [self tabButtonWithOffset:0];
+    [done setTitle:@"Done" forState:UIControlStateNormal];
+    done.tag = 0;
+    done.selected = YES;
+
+    todo = [self tabButtonWithOffset:160];
+    todo.tag = 1;
+    [todo setTitle:@"To Do" forState:UIControlStateNormal];
 
     tabsShowing = YES;
 
     UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-    [tableHeaderView addSubview:tabControl];
+    [tableHeaderView addSubview:done];
+    [tableHeaderView addSubview:todo];
     self.tableHeaderView = tableHeaderView;
+
+    [self chooseDone];
 }
 
 - (IBAction)chooseTab:(id)sender {
-    DebugLog(@"sup %d", tabControl.selectedSegmentIndex);
-    if (tabControl.selectedSegmentIndex == 0) {
-        doneGoods = YES;
+    UIButton *button = (UIButton *)sender;
+
+    if (button.tag == 0) {
+        [self chooseDone];
     } else {
-        doneGoods = NO;
+        [self chooseTodo];
     }
+
     [self resetGood];
     [self loadGoodsAtPath:goodsPath];
+}
+
+- (void)chooseDone {
+    doneGoods = YES;
+    todo.selected = NO;
+    done.selected = YES;
+    todo.backgroundColor = tabColor;
+    done.backgroundColor = [UIColor whiteColor];
+}
+
+- (void)chooseTodo {
+    doneGoods = NO;
+    done.selected = NO;
+    todo.selected = YES;
+    done.backgroundColor = tabColor;
+    todo.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)setupRefresh {

@@ -18,6 +18,24 @@
     }
 }
 
++ (UIColor *)makeContrastingColorFromColor:(UIColor *)newColor {
+    UIColor *color;
+    if (newColor == nil) {
+        return MUD;
+    }
+
+    const CGFloat *componentColors = CGColorGetComponents(newColor.CGColor);
+
+    CGFloat colorBrightness = ((componentColors[0] * 299) + (componentColors[1] * 587) + (componentColors[2] * 114)) / 1000;
+    if (colorBrightness < 0.5) {
+        color = [UIColor whiteColor];
+    }
+    else {
+        color = MUD;
+    }
+    return color;
+}
+
 + (NSDictionary *)linkAttributes {
     NSArray *keys = [[NSArray alloc] initWithObjects:(id)kCTForegroundColorAttributeName, (id)kCTUnderlineStyleAttributeName, nil];
     NSArray *objects = [[NSArray alloc] initWithObjects:LINK_COLOUR, [NSNumber numberWithInt:kCTUnderlineStyleNone], nil];

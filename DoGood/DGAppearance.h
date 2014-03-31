@@ -8,5 +8,6 @@
 + (UIView *)createLoadingViewCenteredOn:(UIView *)view;
 + (UIColor *)getColorFromHexValue:(NSString *)hex;
 + (NSString *)pluralForCount:(NSNumber *)count;
++ (UIColor *)makeContrastingColorFromColor:(UIColor *)newColor;
 
 @end

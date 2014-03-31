@@ -1,3 +1,5 @@
+#import "UINavigationBar+Addition.h"
+
 @interface DGViewController ()
 
 @end
@@ -11,6 +13,8 @@
                                              style:UIBarButtonItemStylePlain
                                              target:nil
                                              action:nil];
+    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    [navigationBar hideBottomHairline];
 }
 
 @end

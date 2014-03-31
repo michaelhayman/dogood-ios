@@ -3,6 +3,7 @@ inhibit_all_warnings!
 
 # language add-ons
 # pod 'ReactiveCocoa'
+pod "UINavigationBar+Addition"
 
 pod 'Inflections'
 
