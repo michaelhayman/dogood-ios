@@ -1,7 +1,6 @@
 #import "DGPostGoodNomineeAddViewController.h"
 #import "DGPostGoodNomineeSearchViewController.h"
 #import "DGNominee.h"
-#import <ReactiveCocoa/ReactiveCocoa.h>
 #import <ProgressHUD/ProgressHUD.h>
 
 @implementation DGPostGoodNomineeAddViewController
@@ -9,10 +8,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     nominee = [DGNominee new];
-    [[nominateButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-        DebugLog(@"button tapped");
-        [self checkInputSilently:NO];
-    }];
 
     // photos
     photos = [[DGPhotoPickerViewController alloc] init];

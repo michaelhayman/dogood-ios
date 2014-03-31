@@ -407,20 +407,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dqc-cb-pW7">
-                                <rect key="frame" x="85" y="254" width="150" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.10588235294117647" green="0.792156862745098" blue="0.0039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="RPm-YR-l9z"/>
-                                    <constraint firstAttribute="width" constant="150" id="h79-2j-cbL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Nominate!">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nominee's name" textAlignment="center" minimumFontSize="19" background="Textfield" translatesAutoresizingMaskIntoConstraints="NO" id="Ktb-F6-Y1I">
                                 <rect key="frame" x="36" y="26" width="250" height="40"/>
                                 <constraints>
@@ -513,8 +499,6 @@
                             <constraint firstItem="Ktb-F6-Y1I" firstAttribute="leading" secondItem="Omk-3e-yZ3" secondAttribute="leading" constant="36" id="52A-M3-pOJ"/>
                             <constraint firstItem="r0y-eg-YHZ" firstAttribute="bottom" secondItem="yFo-Zu-VDq" secondAttribute="bottom" id="5Ib-zx-BCb"/>
                             <constraint firstItem="r0y-eg-YHZ" firstAttribute="leading" secondItem="yFo-Zu-VDq" secondAttribute="leading" id="7zn-7A-BlM"/>
-                            <constraint firstItem="Dqc-cb-pW7" firstAttribute="top" secondItem="J8Y-YB-d7o" secondAttribute="bottom" constant="16" id="8CR-ga-9E6"/>
-                            <constraint firstAttribute="centerX" secondItem="Dqc-cb-pW7" secondAttribute="centerX" id="Deo-HL-RqL"/>
                             <constraint firstItem="jlx-xR-MfF" firstAttribute="leading" secondItem="J8Y-YB-d7o" secondAttribute="trailing" constant="14" id="EBw-xm-9Gd"/>
                             <constraint firstItem="2fp-bP-ki7" firstAttribute="top" secondItem="r0y-eg-YHZ" secondAttribute="bottom" constant="-70" id="F9G-b2-fj5"/>
                             <constraint firstItem="yFo-Zu-VDq" firstAttribute="top" secondItem="Omk-3e-yZ3" secondAttribute="top" constant="120" id="RF5-Z0-dQf"/>
@@ -530,7 +514,6 @@
                             <constraint firstItem="r0y-eg-YHZ" firstAttribute="trailing" secondItem="yFo-Zu-VDq" secondAttribute="trailing" id="g6L-06-Vts"/>
                             <constraint firstAttribute="centerX" secondItem="UoW-tB-aF2" secondAttribute="centerX" constant="61" id="iE5-L4-hvW"/>
                             <constraint firstItem="r0y-eg-YHZ" firstAttribute="top" secondItem="yFo-Zu-VDq" secondAttribute="top" id="imG-hK-mZk"/>
-                            <constraint firstItem="act-fo-14d" firstAttribute="top" secondItem="Dqc-cb-pW7" secondAttribute="bottom" constant="189" id="meJ-4M-DWp"/>
                             <constraint firstAttribute="trailing" secondItem="yFo-Zu-VDq" secondAttribute="trailing" constant="214" id="p4M-0O-iLo"/>
                             <constraint firstItem="Ktb-F6-Y1I" firstAttribute="trailing" secondItem="eua-Om-KEB" secondAttribute="trailing" id="tME-1E-Rja"/>
                             <constraint firstItem="Ktb-F6-Y1I" firstAttribute="leading" secondItem="eua-Om-KEB" secondAttribute="leading" constant="-80" id="uh2-ed-3qh"/>
@@ -545,7 +528,6 @@
                         <outlet property="inviteField" destination="jlx-xR-MfF" id="ASX-Zj-4iU"/>
                         <outlet property="inviteText" destination="J8Y-YB-d7o" id="8Tj-Gs-FGx"/>
                         <outlet property="nameField" destination="Ktb-F6-Y1I" id="leI-ih-B6b"/>
-                        <outlet property="nominateButton" destination="Dqc-cb-pW7" id="JYV-rx-akF"/>
                         <outlet property="phoneField" destination="eua-Om-KEB" id="9Ry-5b-5Kz"/>
                     </connections>
                 </viewController>
