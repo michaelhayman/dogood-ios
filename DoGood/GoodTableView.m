@@ -77,13 +77,19 @@
     UIButton *button = (UIButton *)sender;
 
     if (button.tag == 0) {
-        [self chooseDone];
+        if (!doneGoods) {
+            [self chooseDone];
+            [self resetGood];
+            [self loadGoodsAtPath:goodsPath];
+        }
     } else {
-        [self chooseTodo];
+        if (doneGoods) {
+            [self chooseTodo];
+            [self resetGood];
+            [self loadGoodsAtPath:goodsPath];
+        }
     }
 
-    [self resetGood];
-    [self loadGoodsAtPath:goodsPath];
 }
 
 - (void)chooseDone {
