@@ -186,7 +186,6 @@
 
         if ([user.current_user_following boolValue] == YES) {
             centralButton.selected = YES;
-            [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowingButtonTap"] forState:UIControlStateHighlighted];
             [centralButton setTitle:@"Following" forState:UIControlStateNormal];
         } else {
             DebugLog(@"not following");
@@ -276,16 +275,20 @@
     UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:@"Find Friends" style: UIBarButtonItemStylePlain target:self action:@selector(findFriends:)];
     [centralButton addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
     [centralButton setTitle:@"Settings" forState:UIControlStateNormal];
+    [centralButton setBackgroundColor:[UIColor clearColor]];
+    [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     self.navigationItem.rightBarButtonItem = connectButton;
 }
 
 - (void)setupProfileButtons {
     [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButton"] forState:UIControlStateNormal];
-    [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButtonTap"] forState:UIControlStateHighlighted];
     [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowingButton"] forState:UIControlStateSelected];
+    [centralButton setBackgroundImage:nil forState:UIControlStateHighlighted];
     [centralButton setTitle:@"Follow" forState:UIControlStateNormal];
     [centralButton setTitle:@"Following" forState:UIControlStateSelected];
     [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+    [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [centralButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
 
     UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:@"..." style: UIBarButtonItemStylePlain target:self action:@selector(openActionMenu:)];

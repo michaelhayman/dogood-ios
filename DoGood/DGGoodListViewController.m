@@ -32,6 +32,7 @@
     } else {
         [self setupMenuTitle:@"Good Done"];
         [self addMenuButton:@"icon_menu" withTapButton:@"icon_menu"];
+
     }
 
     if (self.category) {
