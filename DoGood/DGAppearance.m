@@ -38,6 +38,17 @@
     return height;
 }
 
++ (CGFloat)calculateHeightForString:(NSString *)string WithFont:(UIFont *)font andWidth:(CGFloat)width {
+    NSDictionary *attributes = @{ NSFontAttributeName : font };
+    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:string attributes:attributes];
+
+    CGRect rect = [attrString boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading context:nil];
+    CGSize size = rect.size;
+    CGFloat height = ceilf(size.height);
+
+    return height;
+}
+
 + (UIView *)createLoadingViewCenteredOn:(UIView *)view {
     UIView *loadingView = [[UIView alloc] initWithFrame:view.frame];
     loadingView.backgroundColor = [UIColor whiteColor];
