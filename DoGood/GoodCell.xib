@@ -235,6 +235,15 @@
                         </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4j-fz-N02">
+                        <rect key="frame" x="11" y="707" width="300" height="1"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.89900775550000001" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="300" id="109-CR-R4r"/>
+                            <constraint firstAttribute="height" constant="1" id="DS9-iK-MPt"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
@@ -246,9 +255,11 @@
                     <constraint firstItem="335" firstAttribute="width" secondItem="166" secondAttribute="width" id="7XP-sn-GE4"/>
                     <constraint firstItem="58K-AX-OCA" firstAttribute="top" secondItem="WnP-ZZ-Lfp" secondAttribute="top" id="7rk-AK-uaN"/>
                     <constraint firstItem="9n7-gP-4eG" firstAttribute="leading" secondItem="XiP-RE-4tV" secondAttribute="leading" constant="74" id="9pq-T0-X28"/>
+                    <constraint firstItem="v4j-fz-N02" firstAttribute="top" secondItem="217" secondAttribute="bottom" constant="20" id="9qc-il-A2e"/>
                     <constraint firstItem="58K-AX-OCA" firstAttribute="top" secondItem="47n-5v-B1M" secondAttribute="bottom" constant="8" id="C9u-E2-pHW"/>
                     <constraint firstItem="58K-AX-OCA" firstAttribute="leading" secondItem="XiP-RE-4tV" secondAttribute="leading" constant="74" id="E4g-K4-zbq"/>
                     <constraint firstItem="EJn-jJ-p9f" firstAttribute="top" secondItem="191" secondAttribute="bottom" constant="8" id="EvH-db-7j1"/>
+                    <constraint firstItem="v4j-fz-N02" firstAttribute="leading" secondItem="XiP-RE-4tV" secondAttribute="leading" constant="11" id="FKU-ld-pb0"/>
                     <constraint firstItem="335" firstAttribute="width" secondItem="217" secondAttribute="width" id="Ige-AH-aJh"/>
                     <constraint firstItem="47n-5v-B1M" firstAttribute="top" secondItem="WCI-2A-oec" secondAttribute="bottom" id="Iq3-He-aiW"/>
                     <constraint firstItem="335" firstAttribute="height" secondItem="217" secondAttribute="height" id="L2F-XK-mKW"/>

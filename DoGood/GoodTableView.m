@@ -25,6 +25,7 @@
     [self registerNib:nib forCellReuseIdentifier:@"GoodCell"];
     UINib *noResultsNib = [UINib nibWithNibName:kNoResultsCell bundle:nil];
     [self registerNib:noResultsNib forCellReuseIdentifier:kNoResultsCell];
+    self.separatorStyle = UITableViewCellSeparatorStyleNone;
     showNoResultsMessage = NO;
     goods = [[NSMutableArray alloc] init];
     cellHeights = [[NSMutableArray alloc] init];
