@@ -16,7 +16,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addMenuButton:@"MenuFromExploreIconTap" withTapButton:@"MenuFromExploreIcon"];
-    [self setupMenuTitle:@"Do Good"];
+    [self setupMenuImage:[UIImage imageNamed:@"DoGoodLogo"]];
 
     if (self.exploreSearch == nil) {
         self.exploreSearch = [self.storyboard instantiateViewControllerWithIdentifier:@"exploreSearch"];

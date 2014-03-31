@@ -12,6 +12,16 @@
     view.textAlignment = NSTextAlignmentCenter;
     view.backgroundColor = [UIColor clearColor];
     view.userInteractionEnabled = YES;
+    [self setupMenuView:view];
+}
+
+- (void)setupMenuImage:(UIImage *)image {
+    UIImageView *logo = [[UIImageView alloc] initWithImage:image];
+    [self setupMenuView:logo];
+}
+
+- (void)setupMenuView:(UIView *)view {
+    view.userInteractionEnabled = YES;
     view.tag = 669;
     [view sizeToFit];
     UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleMenu)];
