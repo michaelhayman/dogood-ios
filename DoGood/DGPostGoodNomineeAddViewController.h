@@ -20,5 +20,6 @@
 - (void)checkInputSilently:(BOOL)silent;
 - (void)fillInFieldsFromNominee:(DGNominee *)theNominee;
 - (IBAction)nominate:(id)sender;
+- (IBAction)nominateButtonPressed:(id)sender;
 
 @end

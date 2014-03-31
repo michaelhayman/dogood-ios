@@ -23,6 +23,10 @@
     [avatarImage addGestureRecognizer:imageGesture];
 }
 
+- (IBAction)nominateButtonPressed:(id)sender {
+    [self checkInputSilently:NO];
+}
+
 - (void)checkInputSilently:(BOOL)silent {
     BOOL errors = YES;
     NSString *message;

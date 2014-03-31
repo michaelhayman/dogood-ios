@@ -41,6 +41,7 @@
 
     segmentIndex = 1;
     add.selected = YES;
+    [self setAddButton];
 
     UIViewController *vc = [self viewControllerForSegmentIndex:segmentIndex];
     self.currentViewController = vc;
@@ -53,6 +54,10 @@
     arrow = [[Arrow alloc] initWithFrame:CGRectMake(x, y, 14, 8)];
 
     [self.view addSubview:arrow];
+}
+
+- (void)setAddButton {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Nominate!" style:UIBarButtonItemStyleDone target:self.addView action:@selector(nominateButtonPressed:)];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -145,6 +150,13 @@
         self.currentViewController = vc;
     }];
     self.navigationItem.title = vc.title;
+    self.navigationItem.title = nil;
+
+    if (segmentIndex == 1) {
+        [self setAddButton];
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
 - (UIViewController *)viewControllerForSegmentIndex:(NSInteger)index {
