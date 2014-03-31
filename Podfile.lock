@@ -18,12 +18,6 @@ PODS:
   - OAuthCore (0.0.1):
     - NSData+Base64
   - ProgressHUD (1.3)
-  - ReactiveCocoa (2.1.7):
-    - ReactiveCocoa/Core
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/Core (2.1.7):
-    - ReactiveCocoa/no-arc
-  - ReactiveCocoa/no-arc (2.1.7)
   - RegexKitLite (4.0)
   - REMenu (1.6)
   - RestKit (0.21.0):
@@ -67,7 +61,6 @@ DEPENDENCIES:
   - MJPopupViewController (from `git@github.com:doPanic/MJPopupViewController.git`)
   - NSDate+TimeAgo (~> 1.0.2)
   - ProgressHUD (from `git@github.com:relatedcode/ProgressHUD.git`)
-  - ReactiveCocoa
   - REMenu (~> 1.6)
   - RestKit (~> 0.21.0)
   - RFKeychain (~> 0.1)
@@ -100,7 +93,6 @@ SPEC CHECKSUMS:
   NSDate+TimeAgo: fe93d3042e83093ae3630bc47ae7d57f782733f6
   OAuthCore: 4164eec5e28c68f794953446e68f91054ffe570c
   ProgressHUD: 9d9e2fd571d18e0de5ab4b1a69336f8c890a700b
-  ReactiveCocoa: 1117f7968c8667d2ca00b5aa47156fabcb56af75
   RegexKitLite: f7af7b4d2b675cd2ec9a4abab6aad6ae1f6499c0
   REMenu: 65aee777063bc70210d8257d4a935a4fb98cad52
   RestKit: c11a30e7bc73513d9d2c2695672aba7697d24181

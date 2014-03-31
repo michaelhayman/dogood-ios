@@ -2,7 +2,7 @@ platform :ios, '7.1'
 inhibit_all_warnings!
 
 # language add-ons
-pod 'ReactiveCocoa'
+# pod 'ReactiveCocoa'
 
 pod 'Inflections'
 
