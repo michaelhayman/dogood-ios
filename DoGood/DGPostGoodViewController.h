@@ -20,6 +20,7 @@
     DGPhotoPickerViewController *photos;
     DGFacebookManager *facebookManager;
     DGTwitterManager *twitterManager;
+    DGPostGoodNomineeSearchViewController *nomineeController;
 }
 
 @property (nonatomic, retain) DGGood *good;

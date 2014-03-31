@@ -262,8 +262,10 @@
 
 #pragma mark - UIActionSheets
 - (void)showNomineeChooser {
-    DGPostGoodNomineeSearchViewController *nomineeController = [self.storyboard instantiateViewControllerWithIdentifier:@"PostGoodNominee"];
-    nomineeController.postGoodDelegate = self;
+    if (nomineeController == nil) {
+        nomineeController = [self.storyboard instantiateViewControllerWithIdentifier:@"PostGoodNominee"];
+        nomineeController.postGoodDelegate = self;
+    }
     [self.navigationController pushViewController:nomineeController animated:YES];
 }
 
