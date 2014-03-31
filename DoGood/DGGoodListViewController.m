@@ -50,11 +50,12 @@
 }
 
 - (IBAction)postGood:(id)sender {
-    URLHandler *handler = [[URLHandler alloc] init];
-    NSURL *url = [NSURL URLWithString:@"dogood://goods/new"];
-    [handler openURL:url andReturn:^(BOOL matched) {
-        return matched;
-    }];
+    if ([[DGUser currentUser] authorizeAccess:self.navigationController.visibleViewController]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+        DGPostGoodViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"PostGood"];
+        controller.category = self.category;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -88,14 +89,17 @@
     [super viewWillAppear:animated];
     if (self.category) {
         self.navigationController.navigationBar.barTintColor = [self.category rgbColour];
+        self.navigationController.navigationBar.tintColor = [DGAppearance makeContrastingColorFromColor:[self.category rgbColour]];
     } else {
         self.navigationController.navigationBar.barTintColor = VIVID;
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.barTintColor = VIVID;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 - (void)displayPostSuccessMessage {

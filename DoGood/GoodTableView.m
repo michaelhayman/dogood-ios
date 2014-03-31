@@ -41,8 +41,7 @@
 
 - (UIButton *)tabButtonWithOffset:(CGFloat)offset {
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(offset, 0, 160, 30)];
-    button.tintColor = [UIColor blackColor];
-    button.titleLabel.font = [UIFont systemFontOfSize:15];
+    button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
     [button addTarget:self action:@selector(chooseTab:) forControlEvents:UIControlEventTouchUpInside];
     button.userInteractionEnabled = YES;
     [button setTitleColor:MUD forState:UIControlStateSelected];

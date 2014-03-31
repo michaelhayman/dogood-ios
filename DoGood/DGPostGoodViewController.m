@@ -9,6 +9,7 @@
 #import "DGPostGoodLocationViewController.h"
 #import "DGTwitterManager.h"
 #import "DGFacebookManager.h"
+#import "DGAppearance.h"
 #import "DGEntityHandler.h"
 #import <ProgressHUD/ProgressHUD.h>
 
@@ -52,9 +53,29 @@
     photos.parent = self;
     photos.delegate = self;
     if (self.category) {
-        [self updateTitleColor:[self.category rgbColour]];
+        // [self setupMenuTitle:nil];
+        // [self updateTitleColor:[self.category rgbColour]];
+        self.navigationController.navigationBar.barTintColor = [self.category rgbColour];
+        self.good.category = self.category;
     }
     [self setupNavigationBar];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (self.category) {
+        self.navigationController.navigationBar.barTintColor = [self.category rgbColour];
+        self.good.category = self.category;
+        self.navigationController.navigationBar.tintColor = [DGAppearance makeContrastingColorFromColor:[self.category rgbColour]];
+    } else {
+        self.navigationController.navigationBar.barTintColor = VIVID;
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.barTintColor = VIVID;
 }
 
 - (void)setupNavigationBar {
@@ -119,10 +140,6 @@
 
 //    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
 //    cell.entityHandler = nil;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning {
