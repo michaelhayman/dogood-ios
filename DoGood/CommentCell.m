@@ -42,7 +42,7 @@
 
     [self.commentBody hashIfy:attrString inLabel:self.commentBody];
 
-    CGFloat height = [DGAppearance calculateHeightForText:self.commentBody.attributedText andWidth:kCommentRightColumnWidth];
+    CGFloat height = [DGAppearance calculateHeightForString:self.commentBody.text WithFont:self.commentBody.font andWidth:kCommentRightColumnWidth];
 
     self.commentBody.delegate = self;
     self.commentBodyHeight.constant = height;
