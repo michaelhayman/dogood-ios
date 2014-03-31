@@ -124,12 +124,16 @@
             [DGUser setCurrentUser:user];
             [DGUser signInWasSuccessful];
             [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidCreateAccountNotification object:self];
-            [self.navigationController popToRootViewControllerAnimated:YES];
-            [self.presentingViewController dismissViewControllerAnimated:YES completion:^(void) {
-                [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-            }];
-            [TSMessage showNotificationInViewController:self.presentingViewController title:nil subtitle:NSLocalizedString(@"Welcome to Do Good!", nil) type:TSMessageNotificationTypeSuccess];
-            [ProgressHUD showSuccess:@"Completed"];
+
+            if (self.presentingViewController) {
+                [self.presentingViewController dismissViewControllerAnimated:YES completion:^(void) {
+                    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+                }];
+            } else {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            }
+
+            [ProgressHUD showSuccess:NSLocalizedString(@"Welcome to Do Good!", nil)];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             DebugLog(@"fail");
             [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailCreateAccountNotification object:self];

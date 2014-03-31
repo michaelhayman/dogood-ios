@@ -47,27 +47,17 @@
     [[RKObjectManager sharedManager] postObject:user path:user_session_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [DGUser setCurrentUser:user];
 		[DGUser signInWasSuccessful];
-        [self.presentingViewController dismissViewControllerAnimated:YES completion:^(void) {
-            [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
-        }];
 
-        if (message == YES) {
-            DebugLog(@"success");
-        }
-        /*
-        [TSMessage showNotificationInViewController:self.presentingViewController
-                                  title:nil
-                                           subtitle:NSLocalizedString(@"Welcome to Do Good!", nil)
-                                   type:TSMessageNotificationTypeSuccess];
-         */
         [ProgressHUD showSuccess:@"Welcome back!"];
+
+        if (self.presentingViewController) {
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:^(void) {
+                [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
+            }];
+        } else {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        /*
-        [TSMessage showNotificationInViewController:self.navigationController
-                                  title:@"Oops"
-                                subtitle:[error localizedDescription]
-                                   type:TSMessageNotificationTypeError];
-        */
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailSignInNotification object:self];
         [ProgressHUD showError:[error localizedDescription]];
     }];
