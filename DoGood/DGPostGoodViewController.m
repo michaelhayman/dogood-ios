@@ -340,7 +340,7 @@
 }
 
 #pragma mark - Change data responses
-- (void)childViewController:(DGPostGoodNomineeViewController *)viewController didChooseNominee:(DGNominee *)nominee {
+- (void)childViewController:(DGPostGoodNomineeSearchViewController *)viewController didChooseNominee:(DGNominee *)nominee {
     self.good.nominee = nominee;
     // [self.good setValuesForNominee:self.good.nominee];
     [self.tableView reloadData];
