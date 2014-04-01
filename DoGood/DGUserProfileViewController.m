@@ -174,7 +174,7 @@
 
     dispatch_async(dispatch_get_main_queue(), ^{
     [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/users/%@", self.userID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        user = [DGUser new];
+        user = [[DGUser alloc] init];
         user = mappingResult.array[0];
 
         followers.text = [NSString stringWithFormat:@"%@ follower%@", user.followers_count, [DGAppearance pluralForCount:user.followers_count]];
