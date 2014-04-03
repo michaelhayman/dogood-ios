@@ -31,6 +31,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [ProgressHUD dismiss];
+    [locationManager stopUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning {
