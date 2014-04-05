@@ -34,7 +34,28 @@
         exploreController = [storyboard instantiateViewControllerWithIdentifier:@"explore"];
     }
     __typeof (&*self) __weak weakSelf = self;
-    [weakSelf setViewControllers:@[exploreController] animated:NO];
+
+    [UIView animateWithDuration:0.75 animations:^{
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [weakSelf setViewControllers:@[exploreController] animated:YES];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:weakSelf.view cache:NO];
+    }];
+}
+
+- (void)showProfile {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+    if (userProfileController == nil) {
+        userProfileController = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
+    }
+    userProfileController.fromMenu = YES;
+    userProfileController.userID = [DGUser currentUser].userID;
+    __typeof (&*self) __weak weakSelf = self;
+
+    [UIView animateWithDuration:0.75 animations:^{
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+        [weakSelf setViewControllers:@[userProfileController] animated:YES];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:weakSelf.view cache:NO];
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -47,8 +68,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    __typeof (&*self) __weak weakSelf = self;
 
     REMenuItem *homeItem = [[REMenuItem alloc] initWithTitle:@"My Activity" subtitle:nil image:nil highlightedImage:nil action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
@@ -70,13 +89,7 @@
 
     REMenuItem *profileItem = [[REMenuItem alloc] initWithTitle:@"My Profile" image:nil highlightedImage:nil action:^(REMenuItem *item) {
         NSLog(@"Item: %@", item);
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
-        if (userProfileController == nil) {
-            userProfileController = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
-        }
-        userProfileController.fromMenu = YES;
-        userProfileController.userID = [DGUser currentUser].userID;
-        [weakSelf setViewControllers:@[userProfileController] animated:NO];
+        [self showProfile];
     }];
 
     homeItem.tag = 0;
@@ -146,10 +159,20 @@
 }
 
 - (void)toggleMenu {
-    if (_menu.isOpen)
-        return [_menu close];
-    
-    [_menu showFromNavigationController:self];
+    if (isHome) {
+        [self showExplore];
+    } else {
+        [self showProfile];
+    }
+    isHome = !isHome;
+
+    [UIView beginAnimations:nil context:NULL];
+
+    [UIView setAnimationDuration:.8];
+
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
+    [UIView commitAnimations];
 }
 
 @end

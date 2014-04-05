@@ -10,6 +10,7 @@
     DGRewardListViewController *rewardListController;
     DGUserProfileViewController *userProfileController;
     DGExploreViewController *exploreController;
+    BOOL isHome;
 }
 
 @property (strong, readonly, nonatomic) REMenu *menu;
