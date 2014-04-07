@@ -7,6 +7,8 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+
+    [[[UIApplication sharedApplication] delegate] window].backgroundColor = MUD;
 }
 
 - (void)listFonts {
