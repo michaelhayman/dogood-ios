@@ -29,6 +29,7 @@
 		6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */; };
 		6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161E17C41E0D004DE5D7 /* DGAppearance.m */; };
 		6308162217C41EA0004DE5D7 /* DGTwitterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308162117C41EA0004DE5D7 /* DGTwitterManager.m */; };
+		630C09CD18F22C2D006B16E3 /* DGLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 630C09CC18F22C2D006B16E3 /* DGLocator.m */; };
 		6311488D180F3CA5008278E5 /* DGFacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6311488C180F3CA5008278E5 /* DGFacebookManager.m */; };
 		6319D38F17BDED080071DA71 /* DGReward.m in Sources */ = {isa = PBXBuildFile; fileRef = 6319D38E17BDED080071DA71 /* DGReward.m */; };
 		6319D39517BE5A230071DA71 /* DGUserSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6319D39417BE5A220071DA71 /* DGUserSearchViewController.m */; };
@@ -192,6 +193,8 @@
 		6308161E17C41E0D004DE5D7 /* DGAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAppearance.m; sourceTree = "<group>"; };
 		6308162017C41EA0004DE5D7 /* DGTwitterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTwitterManager.h; sourceTree = "<group>"; };
 		6308162117C41EA0004DE5D7 /* DGTwitterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTwitterManager.m; sourceTree = "<group>"; };
+		630C09CB18F22C2D006B16E3 /* DGLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLocator.h; sourceTree = "<group>"; };
+		630C09CC18F22C2D006B16E3 /* DGLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGLocator.m; sourceTree = "<group>"; };
 		6311488B180F3CA5008278E5 /* DGFacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFacebookManager.h; sourceTree = "<group>"; };
 		6311488C180F3CA5008278E5 /* DGFacebookManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFacebookManager.m; sourceTree = "<group>"; };
 		6319D38D17BDED080071DA71 /* DGReward.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGReward.h; sourceTree = "<group>"; };
@@ -462,6 +465,8 @@
 		6319D39017BDF05C0071DA71 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				630C09CB18F22C2D006B16E3 /* DGLocator.h */,
+				630C09CC18F22C2D006B16E3 /* DGLocator.m */,
 				6393062B18DF3DBF0058A515 /* DGViewController.h */,
 				6393062C18DF3DBF0058A515 /* DGViewController.m */,
 				63C15488181F555A00DA81B9 /* TTTAttributedLabel+Tag.h */,
@@ -1071,6 +1076,7 @@
 				6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */,
 				63451D521840E72300B713F0 /* DGNominee.m in Sources */,
 				63FDAC52181C651400668B15 /* HighlightCollectionCell.m in Sources */,
+				630C09CD18F22C2D006B16E3 /* DGLocator.m in Sources */,
 				6308162217C41EA0004DE5D7 /* DGTwitterManager.m in Sources */,
 				63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */,
 				63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */,
