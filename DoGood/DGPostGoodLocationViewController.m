@@ -1,6 +1,8 @@
 #import "DGPostGoodLocationViewController.h"
 #import "FSLocation.h"
 #import "AFNetworking.h"
+#import "DGLocator.h"
+#import <ProgressHUD/ProgressHUD.h>
 
 @interface DGPostGoodLocationViewController ()
 
@@ -13,9 +15,6 @@
     [super viewDidLoad];
     [self setupMenuTitle:@"Location"];
 
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    [locationManager startUpdatingLocation];
     locations = [[NSMutableArray alloc] init];
 
     logo.contentMode = UIViewContentModeCenter;
@@ -27,6 +26,24 @@
 
     UINib *nib = [UINib nibWithNibName:@"UserCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:@"UserCell"];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self kickOffLocation];
+}
+
+- (void)kickOffLocation {
+    [ProgressHUD show:@"Locating..."];
+    [DGLocator checkLocationAccessWithSuccess:^(BOOL success, NSString *msg) {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        [locationManager startUpdatingLocation];
+        located = YES;
+    } failure:^(NSError *error) {
+        located = NO;
+        [ProgressHUD showError:@"Enable Location Services.\n\nSettings > Privacy > Location Services"];
+    }];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -49,6 +66,11 @@
 
 #pragma mark - Find locations
 - (void)findVenuesAtLocation:(CLLocation *)location matchingQuery:(NSString *)query {
+
+    if (!located) {
+        return;
+    }
+
     [AFNetworkActivityIndicatorManager sharedManager].enabled = YES;
     NSURL *baseURL = [NSURL URLWithString:FOURSQUARE_API_URL];
     AFHTTPClient* client = [[AFHTTPClient alloc] initWithBaseURL:baseURL];

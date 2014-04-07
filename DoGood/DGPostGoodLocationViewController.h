@@ -6,6 +6,7 @@
     NSMutableArray *locations;
     CLLocationManager *locationManager;
     CLLocation *userLocation;
+    BOOL located;
     __weak IBOutlet UISearchBar *searchBar;
     __weak IBOutlet UIImageView *logo;
     __weak IBOutlet UITableView *tableView;

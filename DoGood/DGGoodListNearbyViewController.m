@@ -2,6 +2,7 @@
 #import "DGAppearance.h"
 #import "GoodTableView.h"
 #import <ProgressHUD/ProgressHUD.h>
+#import "DGLocator.h"
 
 @interface DGGoodListNearbyViewController ()
 
@@ -41,30 +42,18 @@
 
 - (void)kickOffLocation {
     [goodTableView resetGood];
+
     [ProgressHUD show:@"Locating..."];
-    if (![CLLocationManager locationServicesEnabled]) {
+    [DGLocator checkLocationAccessWithSuccess:^(BOOL success, NSString *msg) {
+        locationManager = [[CLLocationManager alloc] init];
+        locationManager.delegate = self;
+        [locationManager startUpdatingLocation];
+
+        [ProgressHUD dismiss];
+    } failure:^(NSError *error) {
+        DebugLog(@"big time fail");
         [ProgressHUD showError:@"Enable Location Services.\n\nSettings > Privacy > Location Services"];
-        DebugLog(@"location services not enabled");
-        return;
-    }
-
-    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
-        [ProgressHUD showError:@"Enable Location Services for Do Good.\n\nSettings > Privacy > Location Services"];
-        DebugLog(@"location services access denied");
-        return;
-    }
-    [ProgressHUD dismiss];
-
-    DebugLog(@"location services enabled");
-
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    [locationManager startUpdatingLocation];
-}
-
-- (BOOL)locationPossible {
-   return [CLLocationManager locationServicesEnabled] &&
-    ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied);
+    }];
 }
 
 - (void)setupRefresh {
