@@ -35,9 +35,9 @@
     }
     __typeof (&*self) __weak weakSelf = self;
 
-    [UIView animateWithDuration:0.75 animations:^{
+    [UIView animateWithDuration:0.5 animations:^{
         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        [weakSelf setViewControllers:@[exploreController] animated:YES];
+        [weakSelf setViewControllers:@[exploreController] animated:NO];
         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:weakSelf.view cache:NO];
     }];
 }
@@ -51,9 +51,9 @@
     userProfileController.userID = [DGUser currentUser].userID;
     __typeof (&*self) __weak weakSelf = self;
 
-    [UIView animateWithDuration:0.75 animations:^{
+    [UIView animateWithDuration:0.5 animations:^{
         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        [weakSelf setViewControllers:@[userProfileController] animated:YES];
+        [weakSelf setViewControllers:@[userProfileController] animated:NO];
         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:weakSelf.view cache:NO];
     }];
 }
@@ -159,20 +159,14 @@
 }
 
 - (void)toggleMenu {
-    if (isHome) {
-        [self showExplore];
-    } else {
-        [self showProfile];
-    }
-    isHome = !isHome;
-
-    [UIView beginAnimations:nil context:NULL];
-
-    [UIView setAnimationDuration:.8];
-
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
-    [UIView commitAnimations];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (isHome) {
+            [self showExplore];
+        } else {
+            [self showProfile];
+        }
+        isHome = !isHome;
+    });
 }
 
 @end
