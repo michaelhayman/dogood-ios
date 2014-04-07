@@ -17,11 +17,6 @@
 
     [self setupMenuTitle:@"Nearby"];
 
-    goodTableView.navigationController = self.navigationController;
-    goodTableView.parent = self;
-    [goodTableView showTabs];
-
-    [self setupRefresh];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -49,6 +44,14 @@
         locationManager.delegate = self;
         [locationManager startUpdatingLocation];
 
+        if (!initialized) {
+            goodTableView.navigationController = self.navigationController;
+            goodTableView.parent = self;
+            [goodTableView showTabs];
+
+            [self setupRefresh];
+            initialized = YES;
+        }
         [ProgressHUD dismiss];
     } failure:^(NSError *error) {
         DebugLog(@"big time fail");

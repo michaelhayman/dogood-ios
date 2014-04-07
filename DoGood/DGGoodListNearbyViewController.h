@@ -6,6 +6,7 @@
     CLLocation *userLocation;
     UIRefreshControl *refreshControl;
     __weak IBOutlet GoodTableView *goodTableView;
+    BOOL initialized;
 }
 
 @end
