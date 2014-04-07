@@ -57,7 +57,6 @@
     invites.parent = (UIViewController *)self;
 
     name.font = PROFILE_FONT;
-    name.textColor = [UIColor whiteColor];
 
     [self initialize];
 }
