@@ -123,6 +123,7 @@
 
 - (void)loadGoodsAtPath:(NSString *)path {
     goodsPath = path;
+
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:page], @"page", nil];
 
     if (tabsShowing) {

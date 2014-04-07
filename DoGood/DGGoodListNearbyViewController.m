@@ -85,6 +85,7 @@
 #pragma mark - Good Listings
 - (void)findGoodAtLocation:(CLLocation *)location matchingQuery:(NSString *)query {
     NSString *path = [NSString stringWithFormat:@"/goods/nearby?lat=%f&lng=%f", location.coordinate.latitude, location.coordinate.longitude];
+
     [goodTableView resetGood];
     [goodTableView loadGoodsAtPath:path];
 }
