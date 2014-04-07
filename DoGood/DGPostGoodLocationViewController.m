@@ -40,6 +40,7 @@
         locationManager.delegate = self;
         [locationManager startUpdatingLocation];
         located = YES;
+        [ProgressHUD dismiss];
     } failure:^(NSError *error) {
         located = NO;
         [ProgressHUD showError:@"Enable Location Services.\n\nSettings > Privacy > Location Services"];
