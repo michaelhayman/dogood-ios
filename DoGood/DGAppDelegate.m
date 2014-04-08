@@ -10,6 +10,9 @@
 @implementation DGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // set window first so that its background colour can be modified by appearance
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
     [DGAppearance setupAppearance];
     [DGUser setUpUserAuthentication];
     [RestKit setupRestKit];
@@ -18,7 +21,6 @@
                                                            delegate:self];
     [[BITHockeyManager sharedHockeyManager] startManager];
 
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self setupViewsForUser];
     [self.window makeKeyAndVisible];
     return YES;
