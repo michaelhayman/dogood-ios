@@ -10,6 +10,14 @@
 
 @implementation NavigationViewController
 
+- (id)initWithRootViewController:(UIViewController *)rootViewController {
+    self = [super initWithRootViewController:rootViewController];
+    if (self) {
+        isHome = YES;
+    }
+    return self;
+}
+
 - (void)showGoodList {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     if (goodListController == nil) {
@@ -29,6 +37,7 @@
 }
 
 - (void)showExplore {
+    isHome = YES;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Explore" bundle:nil];
     if (exploreController == nil) {
         exploreController = [storyboard instantiateViewControllerWithIdentifier:@"explore"];
@@ -161,11 +170,11 @@
 - (void)toggleMenu {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (isHome) {
-            [self showExplore];
-        } else {
             [self showProfile];
+            isHome = NO;
+        } else {
+            [self showExplore];
         }
-        isHome = !isHome;
     });
 }
 
