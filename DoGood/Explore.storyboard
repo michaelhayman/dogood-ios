@@ -54,7 +54,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.1058823529" green="0.79215686269999996" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.74901960779999999" green="0.74901960779999999" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="DoQ-X7-ekC" firstAttribute="centerY" secondItem="X8T-x2-bh9" secondAttribute="centerY" id="1tb-7f-FnC"/>
                                     <constraint firstItem="DoQ-X7-ekC" firstAttribute="top" secondItem="eUT-09-Ba1" secondAttribute="top" id="1vI-xf-80c"/>
@@ -87,6 +87,7 @@
                         <outlet property="searchButton" destination="DoQ-X7-ekC" id="vGn-Kw-b1n"/>
                         <outlet property="searchField" destination="eUT-09-Ba1" id="8CO-oU-scI"/>
                         <outlet property="searchFieldWidth" destination="6Ht-wg-FgJ" id="wCR-7k-cvv"/>
+                        <outlet property="searchFieldWrapper" destination="X8T-x2-bh9" id="qUQ-Yt-moc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kwh-Ra-eQ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -136,7 +137,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gxE-qT-rmk">
                                         <rect key="frame" x="165" y="0.0" width="145" height="30"/>
-                                        <color key="backgroundColor" red="0.3803921569" green="0.3411764706" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.89900775550000001" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="145" id="QEt-jH-X22"/>
                                             <constraint firstAttribute="height" constant="30" id="Zk1-Cs-znS"/>
@@ -176,6 +177,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Your Profile" id="cwB-sb-sZt"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="headerView" destination="9sJ-xO-V5S" id="REn-Ro-J6R"/>
