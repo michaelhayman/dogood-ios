@@ -26,7 +26,7 @@
 
 #pragma mark - Custom button
 - (void)addMenuButton:(NSString *)menuButton withTapButton:(NSString *)tapButton {
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_menu"] style:UIBarButtonItemStylePlain target:self.navigationController action:@selector(toggleMenu)];
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:menuButton] style:UIBarButtonItemStylePlain target:self.navigationController action:@selector(toggleMenu)];
     self.navigationItem.leftBarButtonItem = leftButton;
 }
 

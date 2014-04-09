@@ -119,7 +119,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (self.fromMenu) {
-         [self addMenuButton:@"MenuFromProfileIconTap" withTapButton:@"MenuFromProfileIcon"];
+         [self addMenuButton:@"icon_back_to_app" withTapButton:@"icon_back_to_app"];
     }
 }
 

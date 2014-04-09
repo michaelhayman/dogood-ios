@@ -15,7 +15,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self addMenuButton:@"MenuFromExploreIconTap" withTapButton:@"MenuFromExploreIcon"];
+    [self addMenuButton:@"icon_menu" withTapButton:@"icon_menu"];
     [self setupMenuImage:[UIImage imageNamed:@"DoGoodLogo"]];
 
     if (self.exploreSearch == nil) {
