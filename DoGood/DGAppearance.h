@@ -9,5 +9,7 @@
 + (UIColor *)getColorFromHexValue:(NSString *)hex;
 + (NSString *)pluralForCount:(NSNumber *)count;
 + (UIColor *)makeContrastingColorFromColor:(UIColor *)newColor;
++ (void)tabOn:(UIButton *)button;
++ (void)tabOff:(UIButton *)button;
 
 @end

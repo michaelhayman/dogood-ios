@@ -98,4 +98,16 @@
     return plural;
 }
 
++ (void)tabOn:(UIButton *)button {
+    [button setSelected:YES];
+    button.backgroundColor = [UIColor whiteColor];
+    button.titleLabel.textColor = MUD;
+}
+
++ (void)tabOff:(UIButton *)button {
+    [button setSelected:NO];
+    button.backgroundColor = BARK;
+    button.titleLabel.textColor = [UIColor whiteColor];
+}
+
 @end

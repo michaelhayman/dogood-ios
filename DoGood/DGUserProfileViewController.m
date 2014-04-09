@@ -397,8 +397,8 @@
 #pragma mark - Good Listings
 - (void)getUserGood {
     if (goodsButton.selected == NO) {
-        [goodsButton setSelected:YES];
-        [likesButton setSelected:NO];
+        [DGAppearance tabOn:goodsButton];
+        [DGAppearance tabOff:likesButton];
         NSString *path = [NSString stringWithFormat:@"/goods/nominations?user_id=%@", self.userID];
         [goodTableView resetGood];
         [goodTableView loadGoodsAtPath:path];
@@ -407,12 +407,13 @@
 
 - (void)getUserLikes {
     if (likesButton.selected == NO) {
-        [goodsButton setSelected:NO];
-        [likesButton setSelected:YES];
+        [DGAppearance tabOn:likesButton];
+        [DGAppearance tabOff:goodsButton];
         NSString *path = [NSString stringWithFormat:@"/goods/liked_by?user_id=%@", self.userID];
         [goodTableView resetGood];
         [goodTableView loadGoodsAtPath:path];
     }
 }
+
 
 @end

@@ -2,6 +2,7 @@
 #import "DGExploreSearchPeopleTableViewController.h"
 #import "DGExploreSearchTagsTableViewController.h"
 #import "DGExploreViewController.h"
+#import "DGAppearance.h"
 
 @implementation DGExploreSearchViewController
 
@@ -81,8 +82,8 @@
 - (IBAction)selectPeople:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidStartSearchingPeople object:nil];
 
-    peopleButton.selected = YES;
-    tagsButton.selected = NO;
+    [DGAppearance tabOn:peopleButton];
+    [DGAppearance tabOff:tagsButton];
     tableView.delegate = searchPeopleTable;
     tableView.dataSource = searchPeopleTable;
     [tableView reloadData];
@@ -92,8 +93,8 @@
 - (IBAction)selectTags:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidStartSearchingTags object:nil];
 
-    peopleButton.selected = NO;
-    tagsButton.selected = YES;
+    [DGAppearance tabOn:tagsButton];
+    [DGAppearance tabOff:peopleButton];
     tableView.delegate = searchTagsTable;
     tableView.dataSource = searchTagsTable;
     [tableView reloadData];
