@@ -32,8 +32,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Your name" textAlignment="center" minimumFontSize="19" background="Textfield" translatesAutoresizingMaskIntoConstraints="NO" id="nlU-lb-fFH">
-                                <rect key="frame" x="45" y="173" width="231" height="40"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your name" textAlignment="center" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="nlU-lb-fFH">
+                                <rect key="frame" x="45" y="173" width="231" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
@@ -1259,7 +1259,6 @@
         <image name="FacebookOn.png" width="40" height="40"/>
         <image name="FindButtonOff" width="36" height="36"/>
         <image name="FindButtonOn.png" width="36" height="36"/>
-        <image name="Textfield" width="234" height="31"/>
         <image name="TwitterOff" width="47" height="38"/>
         <image name="TwitterOn.png" width="46" height="38"/>
     </resources>
