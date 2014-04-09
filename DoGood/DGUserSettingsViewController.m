@@ -387,22 +387,11 @@
 }
 
 - (UITableViewCell *)setupSession:(NSIndexPath *)indexPath {
-    static NSString *reuseIdentifier = @"SessionCell";
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"SessionCell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier];
-        cell.backgroundView = [UIView new];
-        UIButton *button;
-        button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = [cell contentView].frame;
-        // button.frame = CGRectMake(10, 0, 300, button.frame.size.width);
-        button.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        [button setTitle:@"Sign Out" forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"SignOutButton"] forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:@"SignOutButtonTap"] forState:UIControlStateHighlighted];
-        [button addTarget:self action:@selector(signOut) forControlEvents:UIControlEventTouchUpInside];
-        [[cell contentView] addSubview:button];
-    }
+    UITextFieldCell *cell = [self.tableView dequeueReusableCellWithIdentifier:UITextFieldCellIdentifier];
+    cell.heading.text = @"Sign Out";
+    cell.heading.textColor = ERRONEOUS;
+    cell.textField.enabled = NO;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
 
@@ -506,6 +495,9 @@
         if (indexPath.row == facebook) {
             [self checkFacebook:YES];
         }
+    }
+    if (indexPath.section == session) {
+        [self signOut];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
