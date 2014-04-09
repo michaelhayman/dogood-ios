@@ -82,8 +82,8 @@
 - (IBAction)selectPeople:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidStartSearchingPeople object:nil];
 
-    [DGAppearance tabOn:peopleButton];
-    [DGAppearance tabOff:tagsButton];
+    [DGAppearance tabButton:peopleButton on:YES withBackgroundColor:BRILLIANCE andTextColor:MUD];
+    [DGAppearance tabButton:tagsButton on:NO withBackgroundColor:EASING andTextColor:MUD];
     tableView.delegate = searchPeopleTable;
     tableView.dataSource = searchPeopleTable;
     [tableView reloadData];
@@ -93,8 +93,8 @@
 - (IBAction)selectTags:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidStartSearchingTags object:nil];
 
-    [DGAppearance tabOn:tagsButton];
-    [DGAppearance tabOff:peopleButton];
+    [DGAppearance tabButton:tagsButton on:YES withBackgroundColor:BRILLIANCE andTextColor:MUD];
+    [DGAppearance tabButton:peopleButton on:NO withBackgroundColor:EASING andTextColor:MUD];
     tableView.delegate = searchTagsTable;
     tableView.dataSource = searchTagsTable;
     [tableView reloadData];

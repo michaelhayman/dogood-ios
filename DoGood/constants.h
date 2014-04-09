@@ -41,19 +41,18 @@
 #define VIVID [UIColor colorWithRed:43.0/255.0 green:200.0/255.0 blue:35.0/255.0 alpha:1.0]
 #define MUD [UIColor colorWithRed:65/255.0 green:53.0/255.0 blue:41.0/255.0 alpha:1.0]
 #define BARK [UIColor colorWithRed:97/255.0 green:87.0/255.0 blue:78.0/255.0 alpha:1.0]
+#define BRILLIANCE [UIColor colorWithRed:255/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0]
+#define GLOOM [UIColor colorWithRed:191/255.0 green:191.0/255.0 blue:189.0/255.0 alpha:1.0]
+#define EASING [UIColor colorWithRed:229/255.0 green:229.0/255.0 blue:229.0/255.0 alpha:1.0]
 #define MUD_TRANSPARENT [UIColor colorWithRed:65/255.0 green:53.0/255.0 blue:41.0/255.0 alpha:0.5]
 
-#define CREAM [UIColor colorWithRed:229.0/255.0 green:231.0/255.0 blue:213.0/255.0 alpha:1.0]
-#define CLAY [UIColor colorWithRed:232.0/255.0 green:234.0/255.0 blue:219.0/255.0 alpha:1.0]
+#define ERRONEOUS [UIColor colorWithRed:224.0/255.0 green:65.0/255.0 blue:49.0/255.0 alpha:1.0]
 
 #define SKY [UIColor colorWithRed:87.0/255.0 green:214.0/255.0 blue:252.0/255.0 alpha:1.0]
 #define CAMO [UIColor colorWithRed:82.0/255.0 green:159.0/255.0 blue:36.0/255.0 alpha:1.0]
 
 #define COLOUR_OFF_WHITE [UIColor colorWithRed:248.0/255.0 green:248.0/255.0 blue:248.0/255.0 alpha:1.0]
 #define COLOUR_GREEN [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
-#define COLOUR_BROWN [UIColor colorWithRed:179.0/255.0 green:113.0/255.0 blue:0.0/255.0 alpha:1.0]
-#define COLOUR_REDDISH_BROWN [UIColor colorWithRed:171.0/255.0 green:71.0/255.0 blue:32.0/255.0 alpha:1.0]
-#define COLOUR_YELLOW [UIColor colorWithRed:255.0/255.0 green:185.0/255.0 blue:0.0/255.0 alpha:1.0]
 
 // descriptors
 #define LINK_COLOUR VIVID

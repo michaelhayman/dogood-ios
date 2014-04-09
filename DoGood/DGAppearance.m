@@ -98,16 +98,19 @@
     return plural;
 }
 
-+ (void)tabOn:(UIButton *)button {
-    [button setSelected:YES];
-    button.backgroundColor = [UIColor whiteColor];
-    button.titleLabel.textColor = MUD;
++ (void)styleActionButton:(UIButton *)button {
+    UIImage *configImage = [[UIImage imageNamed:@"bt_lrg_off"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
+    UIImage *configImageOn = [[UIImage imageNamed:@"bt_lrg_on"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
+    [button setBackgroundImage:configImage forState:UIControlStateNormal];
+    [button setBackgroundImage:configImageOn forState:UIControlStateSelected];
+    [button setBackgroundImage:configImageOn forState:UIControlStateHighlighted];
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:15];
 }
 
-+ (void)tabOff:(UIButton *)button {
-    [button setSelected:NO];
-    button.backgroundColor = BARK;
-    button.titleLabel.textColor = [UIColor whiteColor];
++ (void)tabButton:(UIButton *)button on:(BOOL)on  withBackgroundColor:(UIColor *)color andTextColor:(UIColor *)textColor {
+    [button setSelected:on];
+    button.backgroundColor = color;
+    button.titleLabel.textColor = [DGAppearance makeContrastingColorFromColor:color];
 }
 
 @end

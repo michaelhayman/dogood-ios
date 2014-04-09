@@ -272,22 +272,21 @@
 
 - (void)setupOwnProfileButtons {
     UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:@"Find Friends" style: UIBarButtonItemStylePlain target:self action:@selector(findFriends:)];
+    self.navigationItem.rightBarButtonItem = connectButton;
+
+    // centralButton = [DGAppearance actionButton];
+    [DGAppearance styleActionButton:centralButton];
     [centralButton addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
     [centralButton setTitle:@"Settings" forState:UIControlStateNormal];
-    [centralButton setBackgroundColor:[UIColor clearColor]];
-    [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-    self.navigationItem.rightBarButtonItem = connectButton;
+//    [centralButton setBackgroundColor:[UIColor clearColor]];
+//    [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
+//    [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
 }
 
 - (void)setupProfileButtons {
-    [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowButton"] forState:UIControlStateNormal];
-    [centralButton setBackgroundImage:[UIImage imageNamed:@"ProfileFollowingButton"] forState:UIControlStateSelected];
-    [centralButton setBackgroundImage:nil forState:UIControlStateHighlighted];
+    [DGAppearance styleActionButton:centralButton];
     [centralButton setTitle:@"Follow" forState:UIControlStateNormal];
     [centralButton setTitle:@"Following" forState:UIControlStateSelected];
-    [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-    [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
     [centralButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
 
     UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:@"..." style: UIBarButtonItemStylePlain target:self action:@selector(openActionMenu:)];
@@ -397,8 +396,8 @@
 #pragma mark - Good Listings
 - (void)getUserGood {
     if (goodsButton.selected == NO) {
-        [DGAppearance tabOn:goodsButton];
-        [DGAppearance tabOff:likesButton];
+        [self reselect:goodsButton];
+        [self deselect:likesButton];
         NSString *path = [NSString stringWithFormat:@"/goods/nominations?user_id=%@", self.userID];
         [goodTableView resetGood];
         [goodTableView loadGoodsAtPath:path];
@@ -407,12 +406,20 @@
 
 - (void)getUserLikes {
     if (likesButton.selected == NO) {
-        [DGAppearance tabOn:likesButton];
-        [DGAppearance tabOff:goodsButton];
+        [self deselect:goodsButton];
+        [self reselect:likesButton];
         NSString *path = [NSString stringWithFormat:@"/goods/liked_by?user_id=%@", self.userID];
         [goodTableView resetGood];
         [goodTableView loadGoodsAtPath:path];
     }
+}
+
+- (void)deselect:(UIButton *)button {
+    [DGAppearance tabButton:button on:NO withBackgroundColor:BARK andTextColor:BRILLIANCE];
+}
+
+- (void)reselect:(UIButton *)button {
+    [DGAppearance tabButton:button on:YES withBackgroundColor:BRILLIANCE andTextColor:MUD];
 }
 
 
