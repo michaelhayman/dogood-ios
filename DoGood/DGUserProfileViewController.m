@@ -177,9 +177,9 @@
         user = mappingResult.array[0];
 
         followers.text = [NSString stringWithFormat:@"%@ follower%@", user.followers_count, [DGAppearance pluralForCount:user.followers_count]];
-        [followers sizeToFit];
+        //[followers sizeToFit];
         following.text = [NSString stringWithFormat:@"%@ following", user.following_count];
-        [following sizeToFit];
+        //[following sizeToFit];
 
         name.text = user.full_name;
 
@@ -191,22 +191,19 @@
         }
 
         [self setupTabs];
+
         if ([self isOwnProfile]) {
            avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
-            [avatar bringSubviewToFront:avatarOverlay];
         } else {
-            avatarOverlay.hidden = YES;
+           avatarOverlay.image = [UIImage imageNamed:@"ProfilePhotoFrame"];
         }
+        [avatar bringSubviewToFront:avatarOverlay];
 
         if (!avatar.image) {
             if ([user avatarURL]) {
                 NSURLRequest *request = [NSURLRequest requestWithURL:[user avatarURL] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
                 [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                     avatar.image = image;
-                    if ([self isOwnProfile]) {
-                       avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
-                        [avatar bringSubviewToFront:avatarOverlay];
-                    }
                 } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
                     DebugLog(@"Failed to retrieve avatar.");
                 }];
