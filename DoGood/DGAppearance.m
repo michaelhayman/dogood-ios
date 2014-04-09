@@ -102,8 +102,8 @@
     UIImage *configImage = [[UIImage imageNamed:@"bt_lrg_off"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
     UIImage *configImageOn = [[UIImage imageNamed:@"bt_lrg_on"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
     [button setBackgroundImage:configImage forState:UIControlStateNormal];
+    [button setBackgroundImage:configImage forState:UIControlStateHighlighted];
     [button setBackgroundImage:configImageOn forState:UIControlStateSelected];
-    [button setBackgroundImage:configImageOn forState:UIControlStateHighlighted];
     button.titleLabel.font = [UIFont boldSystemFontOfSize:15];
 }
 
