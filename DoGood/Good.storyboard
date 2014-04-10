@@ -578,12 +578,12 @@
                                             <constraint firstAttribute="width" constant="64" id="e0a-pr-D6d"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" image="AddIcon">
+                                        <state key="normal" image="AddIconOff">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="AddIcon"/>
-                                        <state key="highlighted" image="AddIcon">
+                                        <state key="selected" image="AddIconOn"/>
+                                        <state key="highlighted" image="AddIconOn">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -746,17 +746,18 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AddIcon" width="16" height="16"/>
-        <image name="AddressBookOff" width="40" height="40"/>
-        <image name="AddressBookOn" width="40" height="40"/>
-        <image name="EditProfilePhotoFrame" width="75" height="76"/>
-        <image name="FacebookOff" width="40" height="40"/>
-        <image name="FacebookOn" width="40" height="40"/>
-        <image name="FindButtonOff" width="36" height="36"/>
-        <image name="FindButtonOn" width="36" height="36"/>
+        <image name="AddIconOff" width="38" height="38"/>
+        <image name="AddIconOn" width="38" height="38"/>
+        <image name="AddressBookOff" width="38" height="38"/>
+        <image name="AddressBookOn" width="38" height="38"/>
+        <image name="EditProfilePhotoFrame" width="75" height="75"/>
+        <image name="FacebookOff" width="38" height="38"/>
+        <image name="FacebookOn" width="38" height="38"/>
+        <image name="FindButtonOff" width="38" height="38"/>
+        <image name="FindButtonOn" width="38" height="38"/>
         <image name="Textfield" width="234" height="31"/>
-        <image name="TwitterOff" width="47" height="38"/>
-        <image name="TwitterOn" width="46" height="38"/>
+        <image name="TwitterOff" width="38" height="38"/>
+        <image name="TwitterOn" width="38" height="38"/>
     </resources>
     <color key="tintColor" red="0.1058823529" green="0.79215686269999996" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
