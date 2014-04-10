@@ -407,7 +407,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nominee's name" textAlignment="center" minimumFontSize="19" background="Textfield" translatesAutoresizingMaskIntoConstraints="NO" id="Ktb-F6-Y1I">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nominee's name" textAlignment="center" minimumFontSize="19" background="Textfield" translatesAutoresizingMaskIntoConstraints="NO" id="Ktb-F6-Y1I">
                                 <rect key="frame" x="36" y="26" width="250" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="3Rs-PE-Fiw"/>
