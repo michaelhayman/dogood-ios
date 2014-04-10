@@ -174,14 +174,14 @@
     if (indexPath.section == nominee) {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kNomineeCell];
         if (self.good.nominee) {
-            cell.imageView.image = [UIImage imageNamed:@"NomineeIconOn.png"];
+            cell.imageView.image = [UIImage imageNamed:@"NomineeIconOn"];
             cell.textLabel.text = self.good.nominee.full_name;
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:cell.accessoryView.frame];
             imageView.image = self.good.nominee.avatarImage;
             cell.accessoryView = imageView;
         } else {
             cell.textLabel.text = @"Who did good?";
-            cell.imageView.image = [UIImage imageNamed:@"NomineeIconOff.png"];
+            cell.imageView.image = [UIImage imageNamed:@"NomineeIconOff"];
         }
         return cell;
     } else if (indexPath.section == overview) {
@@ -198,11 +198,11 @@
         static NSString *CellIdentifier = @"category";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         if (self.good.category) {
-            cell.imageView.image = [UIImage imageNamed:@"CategoryIconOn.png"];
+            cell.imageView.image = [UIImage imageNamed:@"CategoryIconOn"];
             cell.textLabel.text = self.good.category.name;
         } else {
             cell.textLabel.text = @"Add a category";
-            cell.imageView.image = [UIImage imageNamed:@"CategoryIconOff.png"];
+            cell.imageView.image = [UIImage imageNamed:@"CategoryIconOff"];
         }
 
         // Configure the cell...
@@ -212,11 +212,11 @@
         static NSString *CellIdentifier = @"location";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
         if (self.good.location_name) {
-            cell.imageView.image = [UIImage imageNamed:@"LocationIconOn.png"];
+            cell.imageView.image = [UIImage imageNamed:@"LocationIconOn"];
             cell.textLabel.text = self.good.location_name;
         } else {
             cell.textLabel.text = @"Where?";
-            cell.imageView.image = [UIImage imageNamed:@"LocationIconOff.png"];
+            cell.imageView.image = [UIImage imageNamed:@"LocationIconOff"];
         }
         // Configure the cell...
         

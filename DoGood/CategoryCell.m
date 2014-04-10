@@ -21,7 +21,7 @@
         categoryImage.image = [self.category image];
     } else {
         NSURL *url = [NSURL URLWithString:_category.image_url];
-        [categoryImage setImageWithURL:url placeholderImage:[UIImage imageNamed:@"category_empty.png"]];
+        [categoryImage setImageWithURL:url placeholderImage:[UIImage imageNamed:@"category_empty"]];
     }
     self.backgroundView.backgroundColor = [self.category rgbColour];
 }
