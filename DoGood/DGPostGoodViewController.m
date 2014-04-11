@@ -174,14 +174,17 @@
     if (indexPath.section == nominee) {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kNomineeCell];
         if (self.good.nominee) {
-            cell.imageView.image = [UIImage imageNamed:@"NomineeIconOn"];
             cell.textLabel.text = self.good.nominee.full_name;
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:cell.accessoryView.frame];
-            imageView.image = self.good.nominee.avatarImage;
-            cell.accessoryView = imageView;
+            if (self.good.nominee.avatarImage) {
+                UIImageView *imageView = [[UIImageView alloc] initWithFrame:cell.accessoryView.frame];
+                imageView.image = self.good.nominee.avatarImage;
+                cell.accessoryView = imageView;
+            } else {
+                cell.imageView.image = [UIImage imageNamed:@"PostNomineeOn"];
+            }
         } else {
             cell.textLabel.text = @"Who did good?";
-            cell.imageView.image = [UIImage imageNamed:@"NomineeIconOff"];
+            cell.imageView.image = [UIImage imageNamed:@"PostNomineeOff"];
         }
         return cell;
     } else if (indexPath.section == overview) {
