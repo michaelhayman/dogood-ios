@@ -134,15 +134,15 @@
 
     accessoryButtonMention = [UIButton buttonWithType:UIButtonTypeCustom];
     [accessoryButtonMention setFrame:CGRectMake(10.0f, 10.0f, 26.0f, 23.0f)];
-    [accessoryButtonMention setImage:[UIImage imageNamed:@"KeyboardMention"] forState:UIControlStateNormal];
-    [accessoryButtonMention setImage:[UIImage imageNamed:@"KeyboardMentionActive"] forState:UIControlStateSelected];
+    [accessoryButtonMention setImage:[UIImage imageNamed:@"InsertPersonOff"] forState:UIControlStateNormal];
+    [accessoryButtonMention setImage:[UIImage imageNamed:@"InsertPersonOn"] forState:UIControlStateSelected];
     [accessoryButtonMention addTarget:self action:@selector(selectPeople:) forControlEvents:UIControlEventTouchUpInside];
     [accessoryView addSubview:accessoryButtonMention];
 
     accessoryButtonTag = [UIButton buttonWithType:UIButtonTypeCustom];
     [accessoryButtonTag setFrame:CGRectMake(50.0f, 10.0f, 33.0f, 23.0f)];
-    [accessoryButtonTag setImage:[UIImage imageNamed:@"KeyboardTag"] forState:UIControlStateNormal];
-    [accessoryButtonTag setImage:[UIImage imageNamed:@"KeyboardTagActive"] forState:UIControlStateSelected];
+    [accessoryButtonTag setImage:[UIImage imageNamed:@"InsertTagOff"] forState:UIControlStateNormal];
+    [accessoryButtonTag setImage:[UIImage imageNamed:@"InsertTagOn"] forState:UIControlStateSelected];
     [accessoryButtonTag addTarget:self action:@selector(selectTag:) forControlEvents:UIControlEventTouchUpInside];
     [accessoryView addSubview:accessoryButtonTag];
 
