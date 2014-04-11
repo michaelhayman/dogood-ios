@@ -267,16 +267,16 @@
 }
 
 - (void)setupOwnProfileButtons {
-    UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:@"Find Friends" style: UIBarButtonItemStylePlain target:self action:@selector(findFriends:)];
+    UIButton *a1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [a1 addTarget:self action:@selector(findFriends:) forControlEvents:UIControlEventTouchUpInside];
+    [a1 setImage:[UIImage imageNamed:@"FindFriends"] forState:UIControlStateNormal];
+    [a1 sizeToFit];
+    UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithCustomView:a1];
     self.navigationItem.rightBarButtonItem = connectButton;
 
-    // centralButton = [DGAppearance actionButton];
     [DGAppearance styleActionButton:centralButton];
     [centralButton addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
     [centralButton setTitle:@"Settings" forState:UIControlStateNormal];
-//    [centralButton setBackgroundColor:[UIColor clearColor]];
-//    [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-//    [centralButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
 }
 
 - (void)setupProfileButtons {
