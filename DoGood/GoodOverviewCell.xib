@@ -14,14 +14,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="UploadImage" translatesAutoresizingMaskIntoConstraints="NO" id="263">
-                        <rect key="frame" x="225" y="5" width="90" height="90"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <imageView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="x38-h0-bgy">
+                    <imageView contentMode="scaleAspectFit" image="UploadImage" highlightedImage="UploadImageTap" translatesAutoresizingMaskIntoConstraints="NO" id="x38-h0-bgy">
                         <rect key="frame" x="235" y="15" width="70" height="70"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="70" id="hWO-Fu-cEz"/>
                             <constraint firstAttribute="width" constant="70" id="zVJ-tx-SuJ"/>
                         </constraints>
                     </imageView>
@@ -45,18 +42,13 @@
                     </textView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="x38-h0-bgy" firstAttribute="centerY" secondItem="263" secondAttribute="centerY" id="4Dk-S6-SIR"/>
                     <constraint firstItem="296" firstAttribute="leading" secondItem="Fqe-Dx-qRL" secondAttribute="leading" constant="13" id="Dub-S9-Fua"/>
                     <constraint firstItem="x38-h0-bgy" firstAttribute="top" secondItem="Fqe-Dx-qRL" secondAttribute="top" constant="15" id="FUV-Rv-yiG"/>
-                    <constraint firstItem="263" firstAttribute="top" secondItem="296" secondAttribute="top" id="Jdn-Nt-Apv"/>
                     <constraint firstAttribute="trailing" secondItem="x38-h0-bgy" secondAttribute="trailing" constant="15" id="KEn-Zf-7kH"/>
                     <constraint firstItem="296" firstAttribute="leading" secondItem="qqf-EE-YsG" secondAttribute="leading" id="LtU-4i-5nY"/>
                     <constraint firstItem="296" firstAttribute="top" secondItem="qqf-EE-YsG" secondAttribute="top" id="T8S-lF-VYJ"/>
                     <constraint firstItem="x38-h0-bgy" firstAttribute="leading" secondItem="296" secondAttribute="trailing" constant="18" id="VW0-Ig-SQg"/>
-                    <constraint firstItem="x38-h0-bgy" firstAttribute="centerX" secondItem="263" secondAttribute="centerX" id="ZNi-oI-O5j"/>
                     <constraint firstItem="296" firstAttribute="top" secondItem="Fqe-Dx-qRL" secondAttribute="top" constant="5" id="cpn-d3-FMc"/>
-                    <constraint firstItem="263" firstAttribute="leading" secondItem="296" secondAttribute="trailing" constant="8" symbolic="YES" id="gxq-IJ-rIF"/>
-                    <constraint firstItem="263" firstAttribute="bottom" secondItem="296" secondAttribute="bottom" id="h3U-TE-Tx3"/>
                     <constraint firstItem="296" firstAttribute="centerY" secondItem="Fqe-Dx-qRL" secondAttribute="centerY" id="qHH-dI-SkU"/>
                     <constraint firstItem="296" firstAttribute="bottom" secondItem="qqf-EE-YsG" secondAttribute="bottom" id="s7G-fz-ggX"/>
                     <constraint firstItem="296" firstAttribute="trailing" secondItem="qqf-EE-YsG" secondAttribute="trailing" id="xGX-IH-ASJ"/>
@@ -70,6 +62,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="UploadImage" width="73" height="73"/>
+        <image name="UploadImage" width="69" height="69"/>
+        <image name="UploadImageTap" width="69" height="69"/>
     </resources>
 </document>
