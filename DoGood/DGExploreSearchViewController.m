@@ -81,8 +81,8 @@
 - (IBAction)selectPeople:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidStartSearchingPeople object:nil];
 
-    [DGAppearance tabButton:peopleButton on:YES withBackgroundColor:BRILLIANCE andTextColor:MUD];
-    [DGAppearance tabButton:tagsButton on:NO withBackgroundColor:EASING andTextColor:MUD];
+    [self reselect:peopleButton];
+    [self deselect:tagsButton];
     tableView.delegate = searchPeopleTable;
     tableView.dataSource = searchPeopleTable;
     [tableView reloadData];
@@ -92,12 +92,20 @@
 - (IBAction)selectTags:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidStartSearchingTags object:nil];
 
-    [DGAppearance tabButton:tagsButton on:YES withBackgroundColor:BRILLIANCE andTextColor:MUD];
-    [DGAppearance tabButton:peopleButton on:NO withBackgroundColor:EASING andTextColor:MUD];
+    [self reselect:tagsButton];
+    [self deselect:peopleButton];
     tableView.delegate = searchTagsTable;
     tableView.dataSource = searchTagsTable;
     [tableView reloadData];
     [self searchFieldDidChange:nil];
+}
+
+- (void)deselect:(UIButton *)button {
+    [DGAppearance tabButton:button on:NO withBackgroundColor:EASING andTextColor:MUD];
+}
+
+- (void)reselect:(UIButton *)button {
+    [DGAppearance tabButton:button on:YES withBackgroundColor:BRILLIANCE andTextColor:MUD];
 }
 
 #pragma mark - Keyboard handler
