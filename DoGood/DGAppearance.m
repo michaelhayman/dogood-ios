@@ -99,8 +99,8 @@
 }
 
 + (void)styleActionButton:(UIButton *)button {
-    UIImage *configImage = [[UIImage imageNamed:@"bt_lrg_off"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
-    UIImage *configImageOn = [[UIImage imageNamed:@"bt_lrg_on"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
+    UIImage *configImage = [[UIImage imageNamed:@"LargeGrayButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
+    UIImage *configImageOn = [[UIImage imageNamed:@"LargeGreenButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
     [button setBackgroundImage:configImage forState:UIControlStateNormal];
     [button setBackgroundImage:configImage forState:UIControlStateHighlighted];
     [button setBackgroundImage:configImageOn forState:UIControlStateSelected];

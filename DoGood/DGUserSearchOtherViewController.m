@@ -2,6 +2,7 @@
 
 #import "DGUserInvitesViewController.h"
 #import "DGUserFindFriendsViewController.h"
+#import "DGAppearance.h"
 
 @implementation DGUserSearchOtherViewController
 
@@ -9,6 +10,9 @@
     self.title = @"Search";
     invites = [[DGUserInvitesViewController alloc] init];
     invites.parent = self;
+    [DGAppearance styleActionButton:searchButton];
+    [DGAppearance styleActionButton:inviteTextButton];
+    [DGAppearance styleActionButton:inviteEmailButton];
 }
 
 - (void)dealloc {
