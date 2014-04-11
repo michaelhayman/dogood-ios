@@ -2,8 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "bt_sml_on.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",

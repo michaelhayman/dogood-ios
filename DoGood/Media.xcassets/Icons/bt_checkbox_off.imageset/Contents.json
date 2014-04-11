@@ -2,8 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "bt_checkbox_off.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
