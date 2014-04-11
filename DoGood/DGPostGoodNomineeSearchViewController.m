@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self setupMenuTitle:@"Nominate" withColor:[UIColor whiteColor]];
+
     if (self.addView == nil) {
         self.addView = [self.storyboard instantiateViewControllerWithIdentifier:@"nomineeAdd"];
     }
