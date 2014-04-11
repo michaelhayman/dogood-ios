@@ -14,7 +14,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    [[UIColor whiteColor] set];
+    [MUD set];
 
     UIBezierPath *trianglePath = [UIBezierPath bezierPath];
     [trianglePath moveToPoint:CGPointMake(rect.size.width / 2 - kTriangleHeight, 0)];
