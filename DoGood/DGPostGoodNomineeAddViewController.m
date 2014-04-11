@@ -16,6 +16,9 @@
     UITapGestureRecognizer* imageGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoSheet)];
     [avatarImage setUserInteractionEnabled:YES];
     [avatarImage addGestureRecognizer:imageGesture];
+
+    [DGAppearance styleActionButton:nominateButton];
+    [nominateButton addTarget:self action:@selector(nominateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (IBAction)nominateButtonPressed:(id)sender {

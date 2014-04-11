@@ -493,13 +493,14 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3CO-5f-3bZ">
                                 <rect key="frame" x="10" y="259" width="300" height="42"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="VK8-kk-sXr"/>
                                     <constraint firstAttribute="height" constant="42" id="xVH-W8-f9O"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Nominate">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted" backgroundImage="BasicButtonTap.png">
@@ -545,6 +546,7 @@
                         <outlet property="inviteField" destination="jlx-xR-MfF" id="ASX-Zj-4iU"/>
                         <outlet property="inviteText" destination="J8Y-YB-d7o" id="8Tj-Gs-FGx"/>
                         <outlet property="nameField" destination="Ktb-F6-Y1I" id="leI-ih-B6b"/>
+                        <outlet property="nominateButton" destination="3CO-5f-3bZ" id="l2S-Gh-OlM"/>
                         <outlet property="phoneField" destination="eua-Om-KEB" id="9Ry-5b-5Kz"/>
                     </connections>
                 </viewController>
