@@ -54,7 +54,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.74901960779999999" green="0.74901960779999999" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.89900775550000001" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="DoQ-X7-ekC" firstAttribute="centerY" secondItem="X8T-x2-bh9" secondAttribute="centerY" id="1tb-7f-FnC"/>
                                     <constraint firstItem="DoQ-X7-ekC" firstAttribute="top" secondItem="eUT-09-Ba1" secondAttribute="top" id="1vI-xf-80c"/>
@@ -125,12 +125,12 @@
                                             <constraint firstAttribute="width" constant="145" id="gBM-w6-NcI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" title="  People" image="PeopleIconOff">
+                                        <state key="normal" title="  People" image="SearchPeopleIconOff">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="PeopleIconOn"/>
-                                        <state key="highlighted" image="PeopleIconOn"/>
+                                        <state key="selected" image="SearchPeopleIconOn"/>
+                                        <state key="highlighted" image="SearchPeopleIconOn"/>
                                         <connections>
                                             <action selector="selectPeople:" destination="r2B-cS-g4r" eventType="touchUpInside" id="kVD-H1-aID"/>
                                         </connections>
@@ -143,18 +143,18 @@
                                             <constraint firstAttribute="height" constant="30" id="Zk1-Cs-znS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" title="  Tags" image="TagIconOff">
+                                        <state key="normal" title="  Tags" image="SearchTagsIconOff">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="TagIconOn"/>
-                                        <state key="highlighted" image="TagIconOn"/>
+                                        <state key="selected" image="SearchTagsIconOn"/>
+                                        <state key="highlighted" image="SearchTagsIconOn"/>
                                         <connections>
                                             <action selector="selectTags:" destination="r2B-cS-g4r" eventType="touchUpInside" id="sGP-qB-Jku"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.74901960779999999" green="0.74901960779999999" blue="0.74117647060000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.89900775550000001" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="5Kp-Ph-KQs" firstAttribute="top" secondItem="9sJ-xO-V5S" secondAttribute="top" id="8CJ-6L-x1b"/>
                                     <constraint firstItem="gxE-qT-rmk" firstAttribute="top" secondItem="9sJ-xO-V5S" secondAttribute="top" id="Ch7-rv-nXp"/>
@@ -231,12 +231,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="GreyButton" width="61" height="30"/>
-        <image name="GreyButtonTap.png" width="61" height="30"/>
-        <image name="PeopleIconOff" width="18" height="15"/>
-        <image name="PeopleIconOn" width="18" height="15"/>
-        <image name="TagIconOff" width="15" height="15"/>
-        <image name="TagIconOn" width="15" height="15"/>
+        <image name="CancelSearchButton" width="61" height="30"/>
+        <image name="CancelSearchButtonTap" width="61" height="30"/>
+        <image name="SearchPeopleIconOff" width="18" height="15"/>
+        <image name="SearchPeopleIconOn" width="18" height="15"/>
+        <image name="SearchTagsIconOff" width="15" height="15"/>
+        <image name="SearchTagsIconOn" width="15" height="15"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
