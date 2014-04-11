@@ -32,6 +32,8 @@
         if ([self.user.userID isEqualToNumber:[DGUser currentUser].userID]) {
             self.follow.hidden = YES;
         }
+    } else if (self.disableSelection && ![self.user.current_user_following boolValue]) {
+        self.follow.hidden = YES;
     } else {
         self.follow.hidden = NO;
     }
