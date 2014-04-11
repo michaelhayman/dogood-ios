@@ -1259,7 +1259,7 @@
         <image name="FacebookTabOff" width="17" height="30"/>
         <image name="FacebookTabOn" width="17" height="30"/>
         <image name="SearchTabOff" width="28" height="31"/>
-        <image name="SearchTabOn" width="48" height="33"/>
+        <image name="SearchTabOn" width="28" height="31"/>
         <image name="TwitterTabOff" width="32" height="30"/>
         <image name="TwitterTabOn" width="32" height="30"/>
     </resources>
