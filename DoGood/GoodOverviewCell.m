@@ -12,7 +12,7 @@
     self.description.allowsEditingTextAttributes = NO;
     self.description.delegate = self;
     self.placeholder.hidden = NO;
-    [self setDoneMode:NO];
+    [self setDoneMode:YES];
 }
 
 - (void)initEntityHandler {
@@ -29,7 +29,7 @@
     } else {
         self.placeholder.text = @"Persuade people to help";
     }
-    self.placeholderHeight.constant = [DGAppearance calculateHeightForString:self.placeholder.text WithFont:self.placeholder.font andWidth:186];
+    self.placeholder.textColor = [UIColor grayColor];
 }
 
 - (void)dealloc {

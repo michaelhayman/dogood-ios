@@ -7,9 +7,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITextView *description;
-@property (weak, nonatomic) IBOutlet UILabel *placeholder;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *placeholderHeight;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *placeholderWidth;
+@property (weak, nonatomic) IBOutlet UITextView *placeholder;
 
 @property (strong, nonatomic) DGEntityHandler *entityHandler;
 
