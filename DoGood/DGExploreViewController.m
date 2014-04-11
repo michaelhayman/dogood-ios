@@ -3,6 +3,7 @@
 #import "DGExploreCategoriesViewController.h"
 #import "DGWelcomeViewController.h"
 #import "URLHandler.h"
+#import "DGUserProfileViewController.h"
 
 @interface DGExploreViewController ()
     @property (nonatomic, retain) DGExploreSearchViewController *exploreSearch;
@@ -15,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self addMenuButton:@"icon_menu" withTapButton:@"icon_menu"];
     [self setupMenuImage:[UIImage imageNamed:@"DoGoodLogo"]];
 
     if (self.exploreSearch == nil) {
@@ -40,6 +40,18 @@
     [self addChildViewController:vc];
     [self.contentView addSubview:vc.view];
     self.navigationItem.rightBarButtonItem = [DGAppearance postBarButtonItemFor:self];
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_menu"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
+}
+
+- (void)showProfile {
+    if (userProfileController == nil) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+        userProfileController = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
+    }
+    userProfileController.userID = [DGUser currentUser].userID;
+
+    [self.navigationController pushViewController:userProfileController animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
