@@ -109,6 +109,7 @@
 		639B88E417B9A25B005E2B62 /* DGVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B88E317B9A25A005E2B62 /* DGVote.m */; };
 		639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B891017BAEC1D005E2B62 /* DGFollow.m */; };
 		63A38D84181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A38D83181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m */; };
+		63A819D318F4E8E4006900F3 /* DGActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A819D218F4E8E4006900F3 /* DGActionButton.m */; };
 		63B546A61859D17E00673B6C /* DGAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B546A51859D17E00673B6C /* DGAuthenticateViewController.m */; };
 		63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */; };
 		63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */; };
@@ -333,6 +334,8 @@
 		639B891017BAEC1D005E2B62 /* DGFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFollow.m; sourceTree = "<group>"; };
 		63A38D82181358FD00590D24 /* DGTextFieldSearchTagsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTextFieldSearchTagsTableViewController.h; sourceTree = "<group>"; };
 		63A38D83181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGTextFieldSearchTagsTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		63A819D118F4E8E4006900F3 /* DGActionButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActionButton.h; sourceTree = "<group>"; };
+		63A819D218F4E8E4006900F3 /* DGActionButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActionButton.m; sourceTree = "<group>"; };
 		63B546A41859D17E00673B6C /* DGAuthenticateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGAuthenticateViewController.h; sourceTree = "<group>"; };
 		63B546A51859D17E00673B6C /* DGAuthenticateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGAuthenticateViewController.m; sourceTree = "<group>"; };
 		63BFB1E517C818DE004D990F /* DGUserSearchAddressBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchAddressBookViewController.h; sourceTree = "<group>"; };
@@ -465,6 +468,8 @@
 		6319D39017BDF05C0071DA71 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				63A819D118F4E8E4006900F3 /* DGActionButton.h */,
+				63A819D218F4E8E4006900F3 /* DGActionButton.m */,
 				630C09CB18F22C2D006B16E3 /* DGLocator.h */,
 				630C09CC18F22C2D006B16E3 /* DGLocator.m */,
 				6393062B18DF3DBF0058A515 /* DGViewController.h */,
@@ -1043,6 +1048,7 @@
 				63D4BD2818024E0700ACF1B9 /* DGRewardPopupViewController.m in Sources */,
 				6355EC1717B0EF2700EE91C0 /* DGRewardCell.m in Sources */,
 				63902CEE1821C6D0003B84A1 /* DGGoodListNearbyViewController.m in Sources */,
+				63A819D318F4E8E4006900F3 /* DGActionButton.m in Sources */,
 				6355EC1C17B5BA4600EE91C0 /* DGUser.m in Sources */,
 				6355EC1F17B601BF00EE91C0 /* DGError.m in Sources */,
 				6355EC2817B68F3200EE91C0 /* DGUpdatePasswordViewController.m in Sources */,
