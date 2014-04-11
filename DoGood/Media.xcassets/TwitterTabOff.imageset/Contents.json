@@ -2,13 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "TwitterOn.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "TwitterOn@2x.png"
+      "filename" : "TwitterTabOff@2x.png"
     }
   ],
   "info" : {

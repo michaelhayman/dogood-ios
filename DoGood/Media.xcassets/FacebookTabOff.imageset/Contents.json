@@ -2,13 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "AddressBookOn.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "AddressBookOn@2x.png"
+      "filename" : "FacebookTabOff@2x.png"
     }
   ],
   "info" : {

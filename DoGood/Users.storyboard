@@ -183,12 +183,12 @@
                                             <constraint firstAttribute="width" constant="80" id="dDn-kh-vr4"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" image="AddressBookOff">
+                                        <state key="normal" image="AddressBookTabOff">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="AddressBookOn.png"/>
-                                        <state key="highlighted" image="AddressBookOn.png">
+                                        <state key="selected" image="AddressBookTabOn"/>
+                                        <state key="highlighted" image="AddressBookTabOn">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -201,12 +201,12 @@
                                             <constraint firstAttribute="width" constant="80" id="2Zz-c9-AO6"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" image="TwitterOff">
+                                        <state key="normal" image="TwitterTabOff">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="TwitterOn.png"/>
-                                        <state key="highlighted" image="TwitterOn.png">
+                                        <state key="selected" image="TwitterTabOn"/>
+                                        <state key="highlighted" image="TwitterTabOn">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -219,12 +219,12 @@
                                             <constraint firstAttribute="width" constant="80" id="zl5-rT-lRz"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" image="FacebookOff">
+                                        <state key="normal" image="FacebookTabOff">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="selected" image="FacebookOn.png"/>
-                                        <state key="highlighted">
+                                        <state key="highlighted" image="FacebookTabOn">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -237,12 +237,12 @@
                                             <constraint firstAttribute="width" constant="80" id="kMm-GI-Nut"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" image="FindButtonOff">
+                                        <state key="normal" image="SearchTabOff">
                                             <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="selected" image="FindButtonOn.png"/>
-                                        <state key="highlighted" image="FindButtonOn.png">
+                                        <state key="selected" image="SearchTabOn"/>
+                                        <state key="highlighted" image="SearchTabOn">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -703,15 +703,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z5S-HF-AiX">
-                                        <rect key="frame" x="10" y="157" width="300" height="41"/>
+                                        <rect key="frame" x="10" y="156" width="300" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="KrZ-z1-Vyg"/>
-                                            <constraint firstAttribute="height" constant="41" id="y7n-1H-mTo"/>
+                                            <constraint firstAttribute="height" constant="42" id="y7n-1H-mTo"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Settings">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="disabled">
@@ -808,7 +808,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.20784313730000001" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Z5S-HF-AiX" firstAttribute="top" secondItem="4XF-yq-YOd" secondAttribute="bottom" constant="24" id="07X-7t-nuq"/>
+                                    <constraint firstItem="Z5S-HF-AiX" firstAttribute="top" secondItem="4XF-yq-YOd" secondAttribute="bottom" constant="23" id="07X-7t-nuq"/>
                                     <constraint firstItem="4XF-yq-YOd" firstAttribute="top" secondItem="hLK-Ik-Pzk" secondAttribute="bottom" constant="-6" id="3L2-Bm-3d9"/>
                                     <constraint firstItem="hLK-Ik-Pzk" firstAttribute="top" secondItem="f9o-JQ-Apv" secondAttribute="bottom" id="A5E-Yw-2aW"/>
                                     <constraint firstItem="4XF-yq-YOd" firstAttribute="top" secondItem="12J-Yx-5dG" secondAttribute="top" id="DiP-Ax-arg"/>
@@ -1250,17 +1250,18 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AddressBookOff" width="40" height="40"/>
-        <image name="AddressBookOn.png" width="40" height="40"/>
+        <image name="AddressBookTabOff" width="34" height="31"/>
+        <image name="AddressBookTabOn" width="34" height="31"/>
         <image name="BasicButton" width="300" height="41"/>
         <image name="BasicButtonTap.png" width="300" height="41"/>
-        <image name="EditProfilePhotoFrame" width="75" height="76"/>
-        <image name="FacebookOff" width="40" height="40"/>
+        <image name="EditProfilePhotoFrame" width="75" height="75"/>
         <image name="FacebookOn.png" width="40" height="40"/>
-        <image name="FindButtonOff" width="36" height="36"/>
-        <image name="FindButtonOn.png" width="36" height="36"/>
-        <image name="TwitterOff" width="47" height="38"/>
-        <image name="TwitterOn.png" width="46" height="38"/>
+        <image name="FacebookTabOff" width="17" height="30"/>
+        <image name="FacebookTabOn" width="17" height="30"/>
+        <image name="SearchTabOff" width="28" height="31"/>
+        <image name="SearchTabOn" width="48" height="33"/>
+        <image name="TwitterTabOff" width="32" height="30"/>
+        <image name="TwitterTabOn" width="32" height="30"/>
     </resources>
     <color key="tintColor" red="0.1058823529" green="0.79215686269999996" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
