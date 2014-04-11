@@ -16,7 +16,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     [self setupMenuTitle:@"Nearby"];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
