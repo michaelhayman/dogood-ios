@@ -39,14 +39,12 @@
     self.currentViewController = vc;
     [self addChildViewController:vc];
     [self.contentView addSubview:vc.view];
+    self.navigationItem.rightBarButtonItem = [DGAppearance postBarButtonItemFor:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self showWelcome];
-    NSString *menuButton = @"Post";
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:menuButton] style:UIBarButtonItemStylePlain target:self action:@selector(postGood:)];
-    self.navigationItem.rightBarButtonItem = rightButton;
 }
 
 - (IBAction)postGood:(id)sender {

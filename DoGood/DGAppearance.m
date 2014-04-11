@@ -124,4 +124,14 @@
     button.titleLabel.textColor = [DGAppearance makeContrastingColorFromColor:color];
 }
 
++ (UIBarButtonItem *)postBarButtonItemFor:(UIViewController *)controller {
+    NSString *menuButton = @"Post";
+    SEL selector = NSSelectorFromString(@"postGood:");
+    //if ([controller respondsToSelector:selector])
+    return [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:menuButton] style:UIBarButtonItemStylePlain target:controller action:selector];
+}
+
++ (UIBarButtonItem *)barButtonItemWithNoText {
+    return [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+}
 @end

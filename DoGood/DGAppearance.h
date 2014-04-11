@@ -13,5 +13,7 @@
 
 + (void)styleActionButton:(UIButton *)button;
 + (void)styleSelectionButton:(UIButton *)button;
++ (UIBarButtonItem *)postBarButtonItemFor:(UIViewController *)controller;
++ (UIBarButtonItem *)barButtonItemWithNoText;
 
 @end

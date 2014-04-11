@@ -29,11 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // [self setupMenuTitle:@"Post"];
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
-                                             initWithTitle:@""
-                                             style:UIBarButtonItemStylePlain
-                                             target:nil
-                                             action:nil];
+    self.navigationItem.backBarButtonItem = [DGAppearance barButtonItemWithNoText];
 
     UINib *nib = [UINib nibWithNibName:@"GoodOverviewCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"GoodOverviewCell"];

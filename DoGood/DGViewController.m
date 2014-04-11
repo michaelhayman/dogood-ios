@@ -8,11 +8,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
-                                             initWithTitle:@""
-                                             style:UIBarButtonItemStylePlain
-                                             target:nil
-                                             action:nil];
+    self.navigationItem.backBarButtonItem = [DGAppearance barButtonItemWithNoText];
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     [navigationBar hideBottomHairline];
 }
