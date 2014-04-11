@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		630046D01810E619001529E5 /* URLHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 630046CF1810E619001529E5 /* URLHandler.m */; };
 		6303A33617FE322100E2EACD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6303A33517FE322100E2EACD /* Media.xcassets */; };
-		6304B64718E0DC2600CA0E36 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 636A5A5C1814D82500FB708A /* XCTest.framework */; };
-		6304B64818E0DC2600CA0E36 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E117AC087A00167F15 /* Foundation.framework */; };
-		6304B64918E0DC2600CA0E36 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E517AC087A00167F15 /* UIKit.framework */; };
 		6304B64F18E0DC2600CA0E36 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6304B64D18E0DC2600CA0E36 /* InfoPlist.strings */; };
 		6304B66318E0DCA200CA0E36 /* DGURLHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65818E0DCA200CA0E36 /* DGURLHandlerTests.m */; };
 		6304B66418E0DCA200CA0E36 /* DGEntityHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65918E0DCA200CA0E36 /* DGEntityHandlerTests.m */; };
@@ -88,13 +85,7 @@
 		636FF5EF184AA19E003774AE /* DGPostGoodNomineeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636FF5EE184AA19E003774AE /* DGPostGoodNomineeAddViewController.m */; };
 		6378AE1E1818BA50001DB9BF /* DGRKObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6378AE1D1818BA50001DB9BF /* DGRKObjectRequestOperation.m */; };
 		637ABAD317C7C6F4004AA4C9 /* SearchUserNetworks.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637ABAD217C7C6F4004AA4C9 /* SearchUserNetworks.xib */; };
-		637CC94217C5527E007619F5 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637CC94117C5527E007619F5 /* Accounts.framework */; };
-		637CC94317C55290007619F5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6355EC1817B531C700EE91C0 /* Social.framework */; };
-		637CC94517C553D9007619F5 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 637CC94417C553D9007619F5 /* Twitter.framework */; };
 		63834D0417DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63834D0317DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.m */; };
-		638647E217AC087A00167F15 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E117AC087A00167F15 /* Foundation.framework */; };
-		638647E417AC087A00167F15 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E317AC087A00167F15 /* CoreGraphics.framework */; };
-		638647E617AC087A00167F15 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638647E517AC087A00167F15 /* UIKit.framework */; };
 		638647EC17AC087A00167F15 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 638647EA17AC087A00167F15 /* InfoPlist.strings */; };
 		638647EE17AC087A00167F15 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 638647ED17AC087A00167F15 /* main.m */; };
 		638647F217AC087A00167F15 /* DGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 638647F117AC087A00167F15 /* DGAppDelegate.m */; };
@@ -135,8 +126,6 @@
 		63E0798817BC59C7006FC42E /* UITextFieldCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63E0798717BC59C7006FC42E /* UITextFieldCell.xib */; };
 		63E0798B17BC5A6F006FC42E /* UITextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E0798A17BC5A6F006FC42E /* UITextFieldCell.m */; };
 		63E4424D17BC3010000224E8 /* DGSignUpDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63E4424C17BC3010000224E8 /* DGSignUpDetailsViewController.m */; };
-		63EB262E17C2C8BC006D520A /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EB262D17C2C8BC006D520A /* AddressBook.framework */; };
-		63EB263017C2F029006D520A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63EB262F17C2F029006D520A /* MessageUI.framework */; };
 		63FBF603180830C4005686A6 /* DGReport.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF602180830C4005686A6 /* DGReport.m */; };
 		63FBF606180AECFF005686A6 /* UIImage+Grayscale.m in Sources */ = {isa = PBXBuildFile; fileRef = 63FBF605180AECFF005686A6 /* UIImage+Grayscale.m */; };
 		63FBF608180B0C06005686A6 /* RewardMiniCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63FBF607180B0C06005686A6 /* RewardMiniCell.xib */; };
@@ -250,7 +239,6 @@
 		6355EC1317B0EE1E00EE91C0 /* RewardCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RewardCell.xib; sourceTree = "<group>"; };
 		6355EC1517B0EF2700EE91C0 /* DGRewardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGRewardCell.h; sourceTree = "<group>"; };
 		6355EC1617B0EF2700EE91C0 /* DGRewardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRewardCell.m; sourceTree = "<group>"; };
-		6355EC1817B531C700EE91C0 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		6355EC1A17B5BA4500EE91C0 /* DGUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUser.h; sourceTree = "<group>"; };
 		6355EC1B17B5BA4500EE91C0 /* DGUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUser.m; sourceTree = "<group>"; };
 		6355EC1D17B601BE00EE91C0 /* DGError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGError.h; sourceTree = "<group>"; };
@@ -284,7 +272,6 @@
 		635A231E17CAB5150045C256 /* DGCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCategories.h; sourceTree = "<group>"; };
 		635A231F17CAB5150045C256 /* DGCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCategories.m; sourceTree = "<group>"; };
 		635A232117CABEB30045C256 /* Categories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Categories.plist; sourceTree = "<group>"; };
-		636A5A5C1814D82500FB708A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		636AEA5C17AD43CC002A3494 /* Good.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Good.storyboard; sourceTree = "<group>"; };
 		636AEA9A17AD63EC002A3494 /* GoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodCell.xib; sourceTree = "<group>"; };
 		636AEA9D17AD66C8002A3494 /* GoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodCell.h; sourceTree = "<group>"; };
@@ -299,14 +286,9 @@
 		6378AE1C1818BA50001DB9BF /* DGRKObjectRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGRKObjectRequestOperation.h; sourceTree = "<group>"; };
 		6378AE1D1818BA50001DB9BF /* DGRKObjectRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRKObjectRequestOperation.m; sourceTree = "<group>"; };
 		637ABAD217C7C6F4004AA4C9 /* SearchUserNetworks.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchUserNetworks.xib; sourceTree = "<group>"; };
-		637CC94117C5527E007619F5 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		637CC94417C553D9007619F5 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		63834D0217DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTextFieldSearchPeopleTableViewController.h; sourceTree = "<group>"; };
 		63834D0317DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGTextFieldSearchPeopleTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		638647DE17AC087A00167F15 /* DoGood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoGood.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		638647E117AC087A00167F15 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		638647E317AC087A00167F15 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		638647E517AC087A00167F15 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		638647E917AC087A00167F15 /* DoGood-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DoGood-Info.plist"; sourceTree = "<group>"; };
 		638647EB17AC087A00167F15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		638647ED17AC087A00167F15 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -380,8 +362,6 @@
 		63E0798A17BC5A6F006FC42E /* UITextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITextFieldCell.m; sourceTree = "<group>"; };
 		63E4424B17BC3010000224E8 /* DGSignUpDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSignUpDetailsViewController.h; sourceTree = "<group>"; };
 		63E4424C17BC3010000224E8 /* DGSignUpDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGSignUpDetailsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		63EB262D17C2C8BC006D520A /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
-		63EB262F17C2F029006D520A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		63FBF601180830C4005686A6 /* DGReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGReport.h; sourceTree = "<group>"; };
 		63FBF602180830C4005686A6 /* DGReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGReport.m; sourceTree = "<group>"; };
 		63FBF604180AECFF005686A6 /* UIImage+Grayscale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Grayscale.h"; sourceTree = "<group>"; };
@@ -409,9 +389,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6304B64718E0DC2600CA0E36 /* XCTest.framework in Frameworks */,
-				6304B64918E0DC2600CA0E36 /* UIKit.framework in Frameworks */,
-				6304B64818E0DC2600CA0E36 /* Foundation.framework in Frameworks */,
 				E578DDEDCDFA4248B1C63E59 /* libPods-DoGoodTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,14 +397,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				637CC94517C553D9007619F5 /* Twitter.framework in Frameworks */,
-				637CC94317C55290007619F5 /* Social.framework in Frameworks */,
-				637CC94217C5527E007619F5 /* Accounts.framework in Frameworks */,
-				63EB263017C2F029006D520A /* MessageUI.framework in Frameworks */,
-				63EB262E17C2C8BC006D520A /* AddressBook.framework in Frameworks */,
-				638647E417AC087A00167F15 /* CoreGraphics.framework in Frameworks */,
-				638647E617AC087A00167F15 /* UIKit.framework in Frameworks */,
-				638647E217AC087A00167F15 /* Foundation.framework in Frameworks */,
 				EBCC96E10520469A951D5018 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +432,17 @@
 				6304B65218E0DC2600CA0E36 /* DoGoodTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		630DE1F118F86D8400F6208F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0150758A9E934060AF039752 /* libPods.a */,
+				11FE41B560D84B2CBCCF920E /* libPods-DoGoodTests.a */,
+				66189FDD6F34462B8CF25EBA /* Pods.xcconfig */,
+				C887EBE07C4143FEBAED6057 /* Pods-DoGoodTests.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		6319D39017BDF05C0071DA71 /* Components */ = {
@@ -727,10 +707,8 @@
 			children = (
 				638647E717AC087A00167F15 /* DoGood */,
 				6304B64A18E0DC2600CA0E36 /* DoGoodTests */,
-				638647E017AC087A00167F15 /* Frameworks */,
 				638647DF17AC087A00167F15 /* Products */,
-				66189FDD6F34462B8CF25EBA /* Pods.xcconfig */,
-				C887EBE07C4143FEBAED6057 /* Pods-DoGoodTests.xcconfig */,
+				630DE1F118F86D8400F6208F /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -743,44 +721,26 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		638647E017AC087A00167F15 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				637CC94417C553D9007619F5 /* Twitter.framework */,
-				637CC94117C5527E007619F5 /* Accounts.framework */,
-				63EB262F17C2F029006D520A /* MessageUI.framework */,
-				63EB262D17C2C8BC006D520A /* AddressBook.framework */,
-				6355EC1817B531C700EE91C0 /* Social.framework */,
-				638647E117AC087A00167F15 /* Foundation.framework */,
-				638647E317AC087A00167F15 /* CoreGraphics.framework */,
-				638647E517AC087A00167F15 /* UIKit.framework */,
-				0150758A9E934060AF039752 /* libPods.a */,
-				636A5A5C1814D82500FB708A /* XCTest.framework */,
-				11FE41B560D84B2CBCCF920E /* libPods-DoGoodTests.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		638647E717AC087A00167F15 /* DoGood */ = {
 			isa = PBXGroup;
 			children = (
 				636AEA6C17AD4B8A002A3494 /* Assets */,
-				63DA644517DC0E76003DFF03 /* Social */,
 				6319D39017BDF05C0071DA71 /* Components */,
-				633DBF9217AED2480038BC2D /* Models */,
-				633DBF7F17AE92D20038BC2D /* Menu */,
-				636AEA6B17AD477F002A3494 /* Explore */,
-				636AEA6A17AD477A002A3494 /* Rewards */,
-				636AEA6917AD4776002A3494 /* Do */,
-				636AEA6817AD4764002A3494 /* Users */,
-				633DBF7A17AE1E530038BC2D /* DoGood.nss */,
 				6355EC2517B674E900EE91C0 /* constants.h */,
 				6355EC3217B75EB300EE91C0 /* constants.m */,
-				6308161D17C41E0D004DE5D7 /* DGAppearance.h */,
-				6308161E17C41E0D004DE5D7 /* DGAppearance.m */,
 				638647F017AC087A00167F15 /* DGAppDelegate.h */,
 				638647F117AC087A00167F15 /* DGAppDelegate.m */,
+				6308161D17C41E0D004DE5D7 /* DGAppearance.h */,
+				6308161E17C41E0D004DE5D7 /* DGAppearance.m */,
+				636AEA6917AD4776002A3494 /* Do */,
+				633DBF7A17AE1E530038BC2D /* DoGood.nss */,
+				636AEA6B17AD477F002A3494 /* Explore */,
+				633DBF7F17AE92D20038BC2D /* Menu */,
+				633DBF9217AED2480038BC2D /* Models */,
+				636AEA6A17AD477A002A3494 /* Rewards */,
+				63DA644517DC0E76003DFF03 /* Social */,
 				638647E817AC087A00167F15 /* Supporting Files */,
+				636AEA6817AD4764002A3494 /* Users */,
 			);
 			path = DoGood;
 			sourceTree = "<group>";
