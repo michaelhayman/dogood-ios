@@ -24,8 +24,6 @@
     view.userInteractionEnabled = YES;
     view.tag = 669;
     [view sizeToFit];
-    UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleMenu)];
-    //[view addGestureRecognizer:tap];
     self.navigationItem.titleView = view;
     self.navigationController.navigationBar.barTintColor = VIVID;
 }
