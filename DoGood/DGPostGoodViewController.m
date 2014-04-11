@@ -168,6 +168,22 @@
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return [self heightForSection:section];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return [self heightForSection:section];
+}
+
+- (CGFloat)heightForSection:(NSInteger)section {
+    if (section == nominee && ![self.good.done boolValue]) {
+        return 0.01f;
+    } else {
+        return 8;
+    }
+}
+
 #define kNomineeCell @"nominee"
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
