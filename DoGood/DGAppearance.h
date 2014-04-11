@@ -12,5 +12,6 @@
 + (void)tabButton:(UIButton *)button on:(BOOL)on  withBackgroundColor:(UIColor *)color andTextColor:(UIColor *)textColor;
 
 + (void)styleActionButton:(UIButton *)button;
++ (void)styleSelectionButton:(UIButton *)button;
 
 @end

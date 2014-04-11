@@ -99,12 +99,23 @@
 }
 
 + (void)styleActionButton:(UIButton *)button {
-    UIImage *configImage = [[UIImage imageNamed:@"LargeGrayButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
-    UIImage *configImageOn = [[UIImage imageNamed:@"LargeGreenButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
-    [button setBackgroundImage:configImage forState:UIControlStateNormal];
-    [button setBackgroundImage:configImage forState:UIControlStateHighlighted];
-    [button setBackgroundImage:configImageOn forState:UIControlStateSelected];
+    UIImage *imgOff = [[UIImage imageNamed:@"LargeGreenButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
+    UIImage *imgTap = [[UIImage imageNamed:@"LargeGreenButtonTap"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
+    [button setBackgroundImage:imgOff forState:UIControlStateNormal];
+    [button setBackgroundImage:imgTap forState:UIControlStateHighlighted];
     button.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+    button.titleLabel.textColor = [UIColor whiteColor];
+}
+
++ (void)styleSelectionButton:(UIButton *)button {
+    UIImage *imgOff = [[UIImage imageNamed:@"LargeGrayButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
+    UIImage *imgOn = [[UIImage imageNamed:@"LargeGreenButton"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
+    UIImage *imgTap = [[UIImage imageNamed:@"LargeGreenButtonTap"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 11, 0, 6)];
+    [button setBackgroundImage:imgOff forState:UIControlStateNormal];
+    [button setBackgroundImage:imgTap forState:UIControlStateHighlighted];
+    [button setBackgroundImage:imgOn forState:UIControlStateSelected];
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:15];
+    button.titleLabel.textColor = [UIColor whiteColor];
 }
 
 + (void)tabButton:(UIButton *)button on:(BOOL)on  withBackgroundColor:(UIColor *)color andTextColor:(UIColor *)textColor {
