@@ -28,8 +28,8 @@
 - (void)setupView {
     [authorizeButton setTitle:@"Search for Facebook friends" forState:UIControlStateNormal];
     unauthorizedBackground.image = [UIImage imageNamed:@"FacebookWatermark"];
-    [authorizeButton setBackgroundImage:[UIImage imageNamed:@"FacebookButton"] forState:UIControlStateNormal];
-    [authorizeButton setBackgroundImage:[UIImage imageNamed:@"FacebookButtonTap"] forState:UIControlStateHighlighted];
+    [authorizeButton setBackgroundImage:[UIImage imageNamed:@"SearchFacebookButton"] forState:UIControlStateNormal];
+    [authorizeButton setBackgroundImage:[UIImage imageNamed:@"SearchFacebookButtonTap"] forState:UIControlStateHighlighted];
     [authorizeButton addTarget:self action:@selector(searchFacebookWithWarning) forControlEvents:UIControlEventTouchUpInside];
     contentDescription.text = @"Find Facebook friends on Do Good";
 }

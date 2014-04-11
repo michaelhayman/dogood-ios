@@ -30,8 +30,8 @@
 - (void)setupView {
     unauthorizedBackground.image = [UIImage imageNamed:@"TwitterWatermark"];
     [authorizeButton setTitle:@"Search Twitter friends" forState:UIControlStateNormal];
-    [authorizeButton setBackgroundImage:[UIImage imageNamed:@"TwitterButton"] forState:UIControlStateNormal];
-    [authorizeButton setBackgroundImage:[UIImage imageNamed:@"TwitterButtonTap"] forState:UIControlStateHighlighted];
+    [authorizeButton setBackgroundImage:[UIImage imageNamed:@"SearchTwitterButton"] forState:UIControlStateNormal];
+    [authorizeButton setBackgroundImage:[UIImage imageNamed:@"SearchTwitterButtonTap"] forState:UIControlStateHighlighted];
     [authorizeButton addTarget:self action:@selector(searchTwitterWithWarning) forControlEvents:UIControlEventTouchUpInside];
     contentDescription.text = @"Find Twitter friends on Do Good";
 }

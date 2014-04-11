@@ -42,8 +42,8 @@
     [super showUnauthorized];
     unauthorizedBackground.image = [UIImage imageNamed:@"AddressBookWatermark"];
     [authorizeButton setTitle:@"Search Address Book Contacts" forState:UIControlStateNormal];
-    [authorizeButton setBackgroundImage:[UIImage imageNamed:@"AddressBookButton"] forState:UIControlStateNormal];
-    [authorizeButton setBackgroundImage:[UIImage imageNamed:@"AddressBookButtonTap"] forState:UIControlStateHighlighted];
+    [authorizeButton setBackgroundImage:[UIImage imageNamed:@"SearchAddressBookButton"] forState:UIControlStateNormal];
+    [authorizeButton setBackgroundImage:[UIImage imageNamed:@"SearchAddressBookButtonTap"] forState:UIControlStateHighlighted];
 
     [authorizeButton addTarget:self action:@selector(getAccessToContacts:) forControlEvents:UIControlEventTouchUpInside];
 }
