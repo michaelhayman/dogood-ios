@@ -1,5 +1,5 @@
 #import "DGGoodListNearbyViewController.h"
-#import "DGAppearance.h"
+
 #import "GoodTableView.h"
 #import <ProgressHUD/ProgressHUD.h>
 #import "DGLocator.h"

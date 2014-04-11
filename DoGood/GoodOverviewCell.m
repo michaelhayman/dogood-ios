@@ -1,6 +1,5 @@
 #import "GoodOverviewCell.h"
 #import "DGEntityHandler.h"
-#import "DGAppearance.h"
 
 @implementation GoodOverviewCell
 

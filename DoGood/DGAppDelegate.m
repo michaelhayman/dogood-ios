@@ -4,7 +4,6 @@
 #import "DGExploreViewController.h"
 // global set up
 #import "RestKit.h"
-#import "DGAppearance.h"
 #import "URLHandler.h"
 
 @implementation DGAppDelegate

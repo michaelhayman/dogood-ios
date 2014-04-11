@@ -9,12 +9,9 @@
 #import "DGPostGoodLocationViewController.h"
 #import "DGTwitterManager.h"
 #import "DGFacebookManager.h"
-#import "DGAppearance.h"
 #import "DGEntityHandler.h"
 #import <ProgressHUD/ProgressHUD.h>
-
 #import <UIImage+Resize.h>
-
 #import "DGPhotoPickerViewController.h"
 
 #define good_overview_cell_tag 69

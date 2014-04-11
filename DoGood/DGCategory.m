@@ -1,5 +1,4 @@
 #import "DGCategory.h"
-#import "DGAppearance.h"
 #import "constants.h"
 
 @implementation DGCategory

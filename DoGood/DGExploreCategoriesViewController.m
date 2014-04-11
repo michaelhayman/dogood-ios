@@ -4,7 +4,6 @@
 #import "ExploreHighlightsCell.h"
 #import "DGCategory.h"
 #import "DGGoodListViewController.h"
-#import "DGAppearance.h"
 #import <SAMLoadingView/SAMLoadingView.h>
 
 @implementation DGExploreCategoriesViewController

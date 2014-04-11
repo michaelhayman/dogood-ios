@@ -5,7 +5,7 @@
 #import "CommentCell.h"
 #import "DGEntity.h"
 #import "DGTextFieldSearchPeopleTableViewController.h"
-#import "DGAppearance.h"
+
 #import "NoResultsCell.h"
 #import "DGEntityHandler.h"
 #import "UIScrollView+SVInfiniteScrolling.h"

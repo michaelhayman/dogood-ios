@@ -4,7 +4,6 @@
 #import "DGTag.h"
 #import <TTTAttributedLabel.h>
 #import "URLHandler.h"
-#import "DGAppearance.h"
 #import "TTTAttributedLabel+Tag.h"
 
 @implementation CommentCell

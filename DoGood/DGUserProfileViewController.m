@@ -9,7 +9,6 @@
 #import "DGFollow.h"
 #import "DGReport.h"
 #import "DGUserInvitesViewController.h"
-#import "DGAppearance.h"
 #import "GoodTableView.h"
 #import <SAMLoadingView/SAMLoadingView.h>
 #import "AuthenticateView.h"

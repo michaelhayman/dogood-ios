@@ -2,7 +2,6 @@
 #import "DGExploreSearchPeopleTableViewController.h"
 #import "DGExploreSearchTagsTableViewController.h"
 #import "DGExploreViewController.h"
-#import "DGAppearance.h"
 
 @implementation DGExploreSearchViewController
 

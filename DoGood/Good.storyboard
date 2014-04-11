@@ -491,6 +491,21 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3CO-5f-3bZ">
+                                <rect key="frame" x="10" y="259" width="300" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="VK8-kk-sXr"/>
+                                    <constraint firstAttribute="height" constant="42" id="xVH-W8-f9O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Nominate">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" backgroundImage="BasicButtonTap.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.89900775550000001" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -502,11 +517,13 @@
                             <constraint firstItem="jlx-xR-MfF" firstAttribute="leading" secondItem="J8Y-YB-d7o" secondAttribute="trailing" constant="14" id="EBw-xm-9Gd"/>
                             <constraint firstItem="2fp-bP-ki7" firstAttribute="top" secondItem="r0y-eg-YHZ" secondAttribute="bottom" constant="-70" id="F9G-b2-fj5"/>
                             <constraint firstItem="yFo-Zu-VDq" firstAttribute="top" secondItem="Omk-3e-yZ3" secondAttribute="top" constant="120" id="RF5-Z0-dQf"/>
+                            <constraint firstItem="3CO-5f-3bZ" firstAttribute="top" secondItem="J8Y-YB-d7o" secondAttribute="bottom" constant="21" id="RqU-RU-Dsr"/>
                             <constraint firstItem="UoW-tB-aF2" firstAttribute="top" secondItem="Ktb-F6-Y1I" secondAttribute="bottom" constant="17" id="SYg-h6-iM2"/>
                             <constraint firstItem="yFo-Zu-VDq" firstAttribute="leading" secondItem="Omk-3e-yZ3" secondAttribute="leading" constant="36" id="T1W-4Y-H9k"/>
                             <constraint firstItem="eua-Om-KEB" firstAttribute="top" secondItem="2fp-bP-ki7" secondAttribute="bottom" constant="10" id="TF0-QV-Xce"/>
                             <constraint firstItem="Ktb-F6-Y1I" firstAttribute="trailing" secondItem="2fp-bP-ki7" secondAttribute="trailing" id="TkP-Oj-bIT"/>
                             <constraint firstItem="jlx-xR-MfF" firstAttribute="top" secondItem="J8Y-YB-d7o" secondAttribute="top" id="Tn4-n8-gxY"/>
+                            <constraint firstAttribute="centerX" secondItem="3CO-5f-3bZ" secondAttribute="centerX" id="Wvd-ui-q1j"/>
                             <constraint firstItem="Ktb-F6-Y1I" firstAttribute="trailing" secondItem="jlx-xR-MfF" secondAttribute="trailing" constant="2" id="X20-l1-TQs"/>
                             <constraint firstItem="J8Y-YB-d7o" firstAttribute="top" secondItem="eua-Om-KEB" secondAttribute="bottom" constant="13" id="bcW-ig-2ma"/>
                             <constraint firstAttribute="centerX" secondItem="yFo-Zu-VDq" secondAttribute="centerX" constant="89" id="dLK-qa-XoF"/>
@@ -750,6 +767,7 @@
         <image name="AddIconTabOn" width="28" height="31"/>
         <image name="AddressBookTabOff" width="34" height="31"/>
         <image name="AddressBookTabOn" width="34" height="31"/>
+        <image name="BasicButtonTap.png" width="48" height="33"/>
         <image name="EditProfilePhotoFrame" width="75" height="75"/>
         <image name="FacebookTabOff" width="17" height="30"/>
         <image name="FacebookTabOn" width="17" height="30"/>

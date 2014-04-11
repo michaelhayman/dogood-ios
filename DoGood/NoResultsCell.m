@@ -1,5 +1,4 @@
 #import "NoResultsCell.h"
-#import "DGAppearance.h"
 
 @implementation NoResultsCell
 

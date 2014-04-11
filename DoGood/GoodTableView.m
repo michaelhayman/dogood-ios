@@ -3,7 +3,6 @@
 #import "DGGood.h"
 #import "NoResultsCell.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
-#import "DGAppearance.h"
 #import "DGComment.h"
 #import <SAMLoadingView/SAMLoadingView.h>
 

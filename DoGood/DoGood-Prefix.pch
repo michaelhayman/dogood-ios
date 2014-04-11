@@ -17,6 +17,7 @@
     #import "DGUser.h"
     #import "DGViewController.h"
     #import "constants.h"
+    #import "DGAppearance.h"
     #import "UIViewController+DGViewController.h"
     #import <RestKit/RestKit.h>
 #endif

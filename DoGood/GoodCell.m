@@ -12,7 +12,6 @@
 #import "DGUserInvitesViewController.h"
 #import "DGGoodListViewController.h"
 #import "URLHandler.h"
-#import "DGAppearance.h"
 #import "CommentCell.h"
 #import "DGNominee.h"
 #import "TTTAttributedLabel+Tag.h"

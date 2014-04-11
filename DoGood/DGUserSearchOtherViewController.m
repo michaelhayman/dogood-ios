@@ -1,8 +1,7 @@
 #import "DGUserSearchOtherViewController.h"
-
 #import "DGUserInvitesViewController.h"
 #import "DGUserFindFriendsViewController.h"
-#import "DGAppearance.h"
+
 
 @implementation DGUserSearchOtherViewController
 
