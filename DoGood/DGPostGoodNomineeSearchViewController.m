@@ -147,12 +147,6 @@
     }];
     self.navigationItem.title = vc.title;
     self.navigationItem.title = nil;
-
-    if (segmentIndex == 1) {
-        [self setAddButton];
-    } else {
-        self.navigationItem.rightBarButtonItem = nil;
-    }
 }
 
 - (UIViewController *)viewControllerForSegmentIndex:(NSInteger)index {
