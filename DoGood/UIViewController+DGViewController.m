@@ -12,6 +12,8 @@
     view.textAlignment = NSTextAlignmentCenter;
     view.backgroundColor = [UIColor clearColor];
     view.userInteractionEnabled = YES;
+    UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleMenu)];
+    [view addGestureRecognizer:tap];
     [self setupMenuView:view];
 }
 
@@ -38,7 +40,7 @@
 }
 
 - (void)toggleMenu {
-    [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidToggleMenu object:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 @end
