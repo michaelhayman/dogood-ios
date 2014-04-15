@@ -68,7 +68,7 @@
     authenticateView.hidden = YES;
     DebugLog(@"from menu");
     self.userID = [DGUser currentUser].userID;
-    [self setupMenuTitle:@"You"];
+    [self setupMenuTitle:@"Your Profile"];
     [avatarOverlay setUserInteractionEnabled:YES];
     UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
