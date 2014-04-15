@@ -101,7 +101,7 @@
         self.good.done = [NSNumber numberWithBool:NO];
     }
 
-    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
+    GoodOverviewCell *cell = [self overviewCell];
     [cell setDoneMode:[self.good.done boolValue]];
 }
 
@@ -133,9 +133,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
     [TSMessage dismissActiveNotification];
-
-//    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
-//    cell.entityHandler = nil;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -265,7 +262,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
+    GoodOverviewCell *cell = [self overviewCell];
     [cell.description resignFirstResponder];
 
     if (indexPath.section == nominee) {
@@ -340,6 +337,10 @@
     [photos openPhotoSheet:self.good.image];
 }
 
+- (GoodOverviewCell *)overviewCell {
+    return (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
+}
+
 #define remove_button 0
 #define select_new_button 1
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -392,13 +393,13 @@
 - (void)childViewController:(DGPhotoPickerViewController* )viewController didChoosePhoto:(NSDictionary *)dictionary {
     imageToUpload = [dictionary objectForKey:UIImagePickerControllerEditedImage];
     self.good.image = imageToUpload;
-    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
+    GoodOverviewCell *cell = [self overviewCell];
     cell.image.image = imageToUpload;
 }
 
 - (void)removePhoto {
     imageToUpload = nil;
-    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
+    GoodOverviewCell *cell = [self overviewCell];
     cell.image.image = nil;
     self.good.image = nil;
     [self.tableView reloadData];
@@ -406,7 +407,7 @@
 
 #pragma mark - actions
 - (IBAction)post:(id)sender {
-    GoodOverviewCell *cell = (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
+    GoodOverviewCell *cell = [self overviewCell];
     self.good.caption = cell.description.text;
 
     UISwitch *twitter = (UISwitch *)[self.tableView viewWithTag:share_twitter_cell_tag];
