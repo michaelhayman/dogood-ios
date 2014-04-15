@@ -335,6 +335,8 @@
 
 - (void)openPhotoSheet {
     [photos openPhotoSheet:self.good.image];
+    GoodOverviewCell *cell = [self overviewCell];
+    [cell.description resignFirstResponder];
 }
 
 - (GoodOverviewCell *)overviewCell {
