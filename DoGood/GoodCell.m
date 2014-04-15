@@ -197,9 +197,8 @@
 }
 
 - (void)setDoneImage {
-    if ([self.good.done boolValue] == NO) {
-        self.done.image = [UIImage imageNamed:@"ToDoGood"];
-        self.done.hidden = NO;
+    if ([self.good.done boolValue]) {
+        self.done.hidden = YES;
     } else {
         self.done.hidden = YES;
     }
