@@ -1,5 +1,4 @@
 #import "HighlightCollectionCell.h"
-#import "DGTag.h"
 
 @implementation HighlightCollectionCell
 
