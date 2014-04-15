@@ -1,8 +1,5 @@
-@class DGGood;
-@class DGComment;
 @class DGTextFieldSearchPeopleTableViewController;
 @class DGTextFieldSearchTagsTableViewController;
-@class GoodCell;
 
 @interface DGEntityHandler : NSObject <UITextViewDelegate> {
     __weak UIViewController *parent;
