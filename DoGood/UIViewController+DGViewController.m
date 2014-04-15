@@ -1,6 +1,5 @@
 #import "UIViewController+DGViewController.h"
 
-
 @implementation UIViewController (DGViewController)
 
 - (void)setupMenuTitle:(NSString *)title withColor:(UIColor *)color {
