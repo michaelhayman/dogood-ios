@@ -1,4 +1,5 @@
 #import "HighlightCollectionCell.h"
+#import "DGAppearance.h"
 
 @implementation HighlightCollectionCell
 
@@ -12,6 +13,13 @@
 #pragma mark - Set values when cell becomes visible
 - (void)setName:(NSString *)string {
     tagName.text = string;
+}
+
+- (void)setName:(NSString *)string backgroundColor:(UIColor *)color andIcon:(UIImage *)image {
+    [self setName:string];
+    self.backgroundColor = color;
+    tagName.textColor = [DGAppearance makeContrastingColorFromColor:color];
+    icon.image = image;
 }
 
 - (void)dealloc {

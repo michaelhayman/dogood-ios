@@ -51,6 +51,7 @@
 
 #define SKY [UIColor colorWithRed:87.0/255.0 green:214.0/255.0 blue:252.0/255.0 alpha:1.0]
 #define CAMO [UIColor colorWithRed:82.0/255.0 green:159.0/255.0 blue:36.0/255.0 alpha:1.0]
+#define PINEAPPLE [UIColor colorWithRed:249.0/255.0 green:200.0/255.0 blue:0.0/255.0 alpha:1.0]
 
 #define COLOUR_OFF_WHITE [UIColor colorWithRed:248.0/255.0 green:248.0/255.0 blue:248.0/255.0 alpha:1.0]
 #define COLOUR_GREEN [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]

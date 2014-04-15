@@ -36,13 +36,16 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)aCollectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *reuseIdentifier = cellName;
     HighlightCollectionCell *cell = [aCollectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+    NSString *name;
+    UIColor *color;
     if (indexPath.row == popular) {
-        [cell setName:@"Popular"];
-        cell.backgroundColor = SKY;
+        name = @"Popular";
+        color = PINEAPPLE;
     } else {
-        [cell setName:@"Nearby"];
-        cell.backgroundColor = CAMO;
+        name = @"Nearby";
+        color = SKY;
     }
+    [cell setName:name backgroundColor:color andIcon:[UIImage imageNamed:name]];
     return cell;
 }
 
