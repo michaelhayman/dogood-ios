@@ -55,8 +55,6 @@
     invites = [[DGUserInvitesViewController alloc] init];
     invites.parent = (UIViewController *)self;
 
-    name.font = PROFILE_FONT;
-
     [self initialize];
 }
 

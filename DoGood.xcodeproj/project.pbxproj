@@ -799,6 +799,7 @@
 				638647DB17AC087A00167F15 /* Frameworks */,
 				638647DC17AC087A00167F15 /* Resources */,
 				F3D0D79116FB4646BCA44F74 /* Copy Pods Resources */,
+				632FC68318FD72B100AA447D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -923,6 +924,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		632FC68318FD72B100AA447D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/bash -e";
+			shellScript = "mdfind -onlyin \"${SRCROOT}\" \"kMDItemContentTypeTree == public.font\" -0 | sort -z | xargs -0 /usr/local/bin/moarfonts install";
 		};
 		C748F4145C9C4F3192AB0F41 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
