@@ -13,6 +13,7 @@
 #import <ProgressHUD/ProgressHUD.h>
 #import <UIImage+Resize.h>
 #import "DGPhotoPickerViewController.h"
+#import "DGGoodListViewController.h"
 
 #define good_overview_cell_tag 69
 #define share_do_good_cell_tag 501
@@ -480,8 +481,16 @@
                 DebugLog(@"not sharing to fb");
             }
 
-            [self.navigationController popViewControllerAnimated:YES];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+            DGGoodListViewController *list = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
+            list.goodID = postedGood.goodID;
+            list.category = postedGood.category;
 
+            [self.navigationController pushViewController:list animated:YES];
+            // now remove VC2 from the view controllers array so we will jump straight back to VC1
+            NSMutableArray *viewHierarchy =[[NSMutableArray alloc] initWithArray:[self.navigationController viewControllers]];
+            [viewHierarchy removeObject:self];
+            self.navigationController.viewControllers = viewHierarchy;
             [ProgressHUD showSuccess:@"Good posted!"];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [TSMessage showNotificationInViewController:self.navigationController
