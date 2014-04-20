@@ -217,7 +217,7 @@
 
     NSString *urlString = [NSString stringWithFormat:@"dogood://users/%@", self.good.user.userID];
     NSURL *url = [NSURL URLWithString:urlString];
-    NSRange stringRange = NSMakeRange(13, [self.good.user.full_name length]);
+    NSRange stringRange = NSMakeRange(3, [self.good.user.full_name length]);
     [self.postedBy addLinkToURL:url withRange:stringRange];
 }
 
