@@ -54,7 +54,9 @@
 
 #pragma mark - Retrieval methods
 - (void)getUsersByName:(NSString *)searchText {
-    [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/users/search?search=%@", searchText] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    NSString *encodedSearch = [searchText stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/users/search?search=%@", encodedSearch] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         users = [[NSArray alloc] initWithArray:mappingResult.array];
         [tableView reloadData];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
