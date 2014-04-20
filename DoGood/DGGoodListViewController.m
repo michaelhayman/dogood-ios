@@ -7,7 +7,6 @@
 #import "FSLocation.h"
 #import "UserOverview.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
-
 #import "DGComment.h"
 #import "GoodTableView.h"
 #import "URLHandler.h"
