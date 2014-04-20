@@ -116,9 +116,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (self.fromMenu && [[DGUser currentUser] isSignedIn]) {
-         [self addMenuButton:@"icon_back_to_app" withTapButton:@"icon_back_to_app"];
-    }
 }
 
 - (void)didReceiveMemoryWarning {
