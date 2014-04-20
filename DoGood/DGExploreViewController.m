@@ -50,6 +50,7 @@
         userProfileController = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
     }
     userProfileController.userID = [DGUser currentUser].userID;
+    userProfileController.fromMenu = YES;
 
     [self.navigationController pushViewController:userProfileController animated:YES];
 }
