@@ -21,7 +21,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Nearby" translatesAutoresizingMaskIntoConstraints="NO" id="csY-Lz-3Fz">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="csY-Lz-3Fz">
                         <rect key="frame" x="10" y="0.0" width="65" height="65"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <userDefinedRuntimeAttributes>
@@ -45,7 +45,4 @@
             </connections>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="Nearby" width="63" height="61"/>
-    </resources>
 </document>
