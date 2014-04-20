@@ -101,6 +101,7 @@
             [self setupOwnProfile];
         } else {
             [self setupAuth];
+            return;
         }
     } else {
         if ([self isOwnProfile]) {
