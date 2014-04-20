@@ -14,7 +14,7 @@
 @property (nonatomic, strong) DGUserSearchAddressBookViewController *userAddressBook;
 @property (nonatomic, strong) DGUserSearchTwitterViewController *userTwitter;
 @property (nonatomic, strong) DGUserSearchFacebookViewController *userFacebook;
-@property (nonatomic, strong) DGUserSearchOtherViewController *userOther;
+@property (nonatomic, strong) DGUserSearchViewController *userOther;
 @end
 
 @implementation DGPostGoodNomineeSearchViewController
