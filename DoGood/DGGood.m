@@ -21,7 +21,7 @@
 }
 
 - (NSString *)postedByLine {
-    return [NSString stringWithFormat:@"Nominated by %@ %@", self.user.full_name, [self  createdAgoInWords]];
+    return [NSString stringWithFormat:@"By %@ %@", self.user.full_name, [self  createdAgoInWords]];
 }
 
 - (NSURL *)evidenceURL {
