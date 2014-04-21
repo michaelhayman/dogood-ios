@@ -44,6 +44,7 @@
 
     self.good = [DGGood new];
     self.good.user = [DGUser currentUser];
+    [self.good setValuesForCategory:self.category];
     facebookManager = [[DGFacebookManager alloc] initWithAppName:APP_NAME];
     twitterManager = [[DGTwitterManager alloc] initWithAppName:APP_NAME];
 
