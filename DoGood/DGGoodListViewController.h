@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSString *titleForPath;
 @property (nonatomic, strong) DGCategory *category;
 @property (nonatomic, strong) DGTag *tag;
+@property (nonatomic, strong) DGUser *user;
 @property (nonatomic, strong) NSNumber *goodID;
 
 - (void)getGood;

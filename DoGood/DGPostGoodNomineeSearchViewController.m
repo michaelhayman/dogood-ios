@@ -32,6 +32,7 @@
     }
     if (self.userAddressBook == nil) {
         self.userAddressBook = [[DGUserSearchAddressBookViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];
+        self.userAddressBook.disableSelection = YES;
     }
     if (self.userTwitter == nil) {
         self.userTwitter = [[DGUserSearchTwitterViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];

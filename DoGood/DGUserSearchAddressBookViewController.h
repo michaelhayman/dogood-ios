@@ -4,4 +4,6 @@
     NSArray *users;
 }
 
+@property BOOL disableSelection;
+
 @end

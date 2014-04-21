@@ -47,7 +47,7 @@
 }
 
 - (IBAction)claim:(id)sender {
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You want this?" message:@"Are you sure?" delegate:self cancelButtonTitle:@"No..." otherButtonTitles:@"Yes!", nil];
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You want this?" message:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Claim Reward", nil];
     [alert show];
 }
 

@@ -1,7 +1,7 @@
 @class ACAccount;
 typedef void (^ErrorBlock)(NSError *error);
 
-typedef void (^PostAccessBlock)(BOOL success, NSString *msg);
+typedef void (^PostAccessBlock)(BOOL success, ACAccount *account, NSString *msg);
 typedef void (^PostCompletionBlock)(BOOL success, NSString *msg, ACAccount *account);
 typedef void (^FindFriendsBlock)(BOOL success, NSArray *msg, ACAccount *account);
 

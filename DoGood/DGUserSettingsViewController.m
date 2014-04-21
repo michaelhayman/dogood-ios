@@ -8,6 +8,7 @@
 #import <ProgressHUD/ProgressHUD.h>
 #import "DGTwitterManager.h"
 #import "DGFacebookManager.h"
+#import "DGGoodListViewController.h"
 
 #define full_name_tag 101
 #define biography_tag 102
@@ -17,6 +18,10 @@
 
 #define twitter_connected_tag 601
 #define facebook_connected_tag 602
+
+#define signOutAlertTag 499
+#define disconnectTwitterAlertTag 559
+#define disconnectFacebookAlertTag 569
 
 @interface DGUserSettingsViewController ()
 
@@ -60,10 +65,7 @@
     // social connection status
     twitterManager = [[DGTwitterManager alloc] initWithAppName:APP_NAME];
     facebookManager = [[DGFacebookManager alloc] initWithAppName:APP_NAME];
-    twitterConnectedStatus = @"-";
-    facebookConnectedStatus = @"-";
-    [self checkTwitter:NO];
-    [self checkFacebook:NO];
+    [self setSocialConnectionsStatus];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -255,10 +257,9 @@
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:nil
                                                     message:@"Are you sure you want to sign out?"
                                                    delegate:self
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:@"Yes", @"No", nil];
-    alert.cancelButtonIndex = 1;
-    alert.tag = 59;
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Sign Out", nil];
+    alert.tag = signOutAlertTag;
     [alert show];
 }
 
@@ -344,7 +345,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     if (indexPath.row == yourContent) {
-        cell.heading.text = @"Your content";
+        cell.heading.text = @"Your posts";
         cell.textField.userInteractionEnabled = NO;
         cell.userInteractionEnabled = YES;
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -384,6 +385,21 @@
     }
     cell.textField.userInteractionEnabled = NO;
     return cell;
+}
+
+- (void)setSocialConnectionsStatus {
+    connectedText = @"Connected";
+    disconnectedText = @"Not connected";
+    if ([[DGUser currentUser].twitter_id isEqualToString:@""]) {
+        twitterConnectedStatus = disconnectedText;
+    } else {
+        twitterConnectedStatus = connectedText;
+    }
+    if ([[DGUser currentUser].facebook_id isEqualToString:@""]) {
+        facebookConnectedStatus = disconnectedText;
+    } else {
+        facebookConnectedStatus = connectedText;
+    }
 }
 
 - (UITableViewCell *)setupSession:(NSIndexPath *)indexPath {
@@ -469,10 +485,20 @@
     }
 }
 
+- (void)loadYourContent {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+    DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
+    controller.user = [DGUser currentUser];
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == accountDetails) {
         if (indexPath.row == resetPassword) {
             [self resetPassword];
+        }
+        if (indexPath.row == yourContent) {
+            [self loadYourContent];
         }
     }
     if (indexPath.section == findFriends) {
@@ -490,10 +516,18 @@
     }
     if (indexPath.section == socialNetworks) {
         if (indexPath.row == twitter) {
-            [self checkTwitter:YES];
+            if ([twitterConnectedStatus isEqualToString:disconnectedText]) {
+                [self checkTwitter:YES];
+            } else {
+                [self disconnectTwitter];
+            }
         }
         if (indexPath.row == facebook) {
-            [self checkFacebook:YES];
+            if ([facebookConnectedStatus isEqualToString:disconnectedText]) {
+                [self checkFacebook:YES];
+            } else {
+                [self disconnectFacebook];
+            }
         }
     }
     if (indexPath.section == session) {
@@ -502,13 +536,48 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-#pragma mark - Social Network Receivers
-- (void)checkTwitter:(BOOL)prompt {
-    [twitterManager checkTwitterPostAccessWithSuccess:^(BOOL success, NSString *msg) {
-        twitterConnectedStatus = @"Connected";
+- (void)disconnectTwitter {
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Disconnect your Twitter account?" message:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Disconnect", nil];
+    alert.tag = disconnectTwitterAlertTag;
+    [alert show];
+}
+
+- (void)reallyDisconnectTwitter {
+    [[DGUser currentUser] saveSocialID:@"" withType:@"twitter" success:^(BOOL success) {
+        twitterConnectedStatus = disconnectedText;
         [self.tableView reloadData];
     } failure:^(NSError *error) {
-        twitterConnectedStatus = @"Not connected";
+        DebugLog(@"failed");
+    }];
+}
+
+- (void)disconnectFacebook {
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Disconnect your Facebook account?" message:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Disconnect", nil];
+    alert.tag = disconnectFacebookAlertTag;
+    [alert show];
+}
+
+- (void)reallyDisconnectFacebook {
+    [[DGUser currentUser] saveSocialID:@"" withType:@"facebook" success:^(BOOL success) {
+        facebookConnectedStatus = disconnectedText;
+        [self.tableView reloadData];
+    } failure:^(NSError *error) {
+        DebugLog(@"failed");
+    }];
+}
+
+#pragma mark - Social Network Receivers
+- (void)checkTwitter:(BOOL)prompt {
+    [twitterManager checkTwitterPostAccessWithSuccess:^(BOOL success, ACAccount *account, NSString *msg) {
+        NSString *twitterID = [twitterManager getTwitterIDFromAccount:account];
+        [[DGUser currentUser] saveSocialID:twitterID withType:@"twitter" success:^(BOOL success) {
+            twitterConnectedStatus = connectedText;
+            [self.tableView reloadData];
+        } failure:^(NSError *error) {
+            DebugLog(@"failed");
+        }];
+    } failure:^(NSError *error) {
+        twitterConnectedStatus = disconnectedText;
         if (prompt) {
             [twitterManager promptForPostAccess];
         }
@@ -517,11 +586,20 @@
 }
 
 - (void)checkFacebook:(BOOL)prompt {
-    [facebookManager checkFacebookPostAccessWithSuccess:^(BOOL success, NSString *msg) {
-        facebookConnectedStatus = @"Connected";
-        [self.tableView reloadData];
+    [facebookManager checkFacebookPostAccessWithSuccess:^(BOOL success, ACAccount *account, NSString *msg) {
+        [facebookManager findFacebookIDForAccount:account withSuccess:^(BOOL success, NSString *facebookID) {
+            [[DGUser currentUser] saveSocialID:facebookID withType:@"facebook" success:^(BOOL success) {
+                facebookConnectedStatus = connectedText;
+                [self.tableView reloadData];
+            } failure:^(NSError *error) {
+                DebugLog(@"failed");
+            }];
+        } failure:^(NSError *error) {
+            facebookConnectedStatus = disconnectedText;
+            DebugLog(@"couldnt find id");
+        }];
     } failure:^(NSError *error) {
-        facebookConnectedStatus = @"Not connected";
+        facebookConnectedStatus = disconnectedText;
         if (prompt) {
             [facebookManager promptForPostAccess];
         }
@@ -531,12 +609,16 @@
 
 #pragma mark - UIAlertViewDelegate methods
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if(alertView.tag == 59) {
-        if(buttonIndex == 0) {
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        if(alertView.tag == signOutAlertTag) {
             [[DGUser currentUser] signOutWithMessage:YES];
-        } else {
-            [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+        } else if (alertView.tag == disconnectTwitterAlertTag) {
+            [self reallyDisconnectTwitter];
+        } else if (alertView.tag == disconnectFacebookAlertTag) {
+            [self reallyDisconnectFacebook];
         }
+    } else {
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
     }
 }
 

@@ -18,22 +18,24 @@
      if (self.disableSelection) {
         [self.username setUserInteractionEnabled:NO];
         [self.avatar setUserInteractionEnabled:NO];
-        [self.follow setUserInteractionEnabled:NO];
+         // [self.follow setUserInteractionEnabled:NO];
     } else {
         UITapGestureRecognizer* userGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userProfile)];
         [self.username setUserInteractionEnabled:YES];
         [self.username addGestureRecognizer:userGesture];
         self.username.textColor = LINK_COLOUR;
 
-        [self.follow addTarget:self action:@selector(followUser) forControlEvents:UIControlEventTouchUpInside];
     }
+        [self.follow addTarget:self action:@selector(followUser) forControlEvents:UIControlEventTouchUpInside];
 
     if ([[DGUser currentUser] isSignedIn]) {
         if ([self.user.userID isEqualToNumber:[DGUser currentUser].userID]) {
             self.follow.hidden = YES;
+        } else if (self.disableSelection && ![self.user.current_user_following boolValue]) {
+            // self.follow.hidden = YES;
         }
     } else if (self.disableSelection && ![self.user.current_user_following boolValue]) {
-        self.follow.hidden = YES;
+        //self.follow.hidden = YES;
     } else {
         self.follow.hidden = NO;
     }

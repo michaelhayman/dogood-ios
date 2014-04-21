@@ -26,12 +26,13 @@
         [self updateTitleColor:[self.category rgbColour]];
     } else if (self.tag) {
         [self setupMenuTitle:[self.tag hashifiedName]];
+    } else if (self.user) {
+        [self setupMenuTitle:[self.user full_name]];
     } else if (self.path) {
         [self setupMenuTitle:self.titleForPath];
     } else {
         [self setupMenuTitle:@"Good Done"];
         [self addMenuButton:@"icon_menu" withTapButton:@"icon_menu"];
-
     }
 
     if (self.category) {
@@ -127,6 +128,8 @@
         path = [NSString stringWithFormat:@"/goods/%@", _goodID];
     } else if (_tag) {
         path = [NSString stringWithFormat:@"/goods/tagged?id=%@&name=%@", _tag.tagID, _tag.name];
+    } else if (self.user) {
+        path = [NSString stringWithFormat:@"/goods/posted_or_followed_by?user_id=%@", self.user.userID];
     } else {
         path = @"/goods";
     }

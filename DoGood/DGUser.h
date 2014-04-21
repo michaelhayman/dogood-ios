@@ -54,6 +54,10 @@
 - (void)updatePoints;
 
 #pragma mark - Social
+typedef void (^SocialSuccessBlock)(BOOL success);
+typedef void (^ErrorBlock)(NSError *error);
+
+- (void)saveSocialID:(NSString *)socialID withType:(NSString *)socialType success:(SocialSuccessBlock)completion failure:(ErrorBlock)failure;
 - (void)saveSocialID:(NSString *)socialID withType:(NSString *)socialType;
 
 #pragma mark - Decoration

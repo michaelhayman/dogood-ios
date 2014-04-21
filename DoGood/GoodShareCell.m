@@ -32,7 +32,7 @@
 
 - (void)checkTwitter {
     if([self.share isOn]) {
-        [self.twitterManager checkTwitterPostAccessWithSuccess:^(BOOL success, NSString *msg) {
+        [self.twitterManager checkTwitterPostAccessWithSuccess:^(BOOL success, ACAccount *account, NSString *msg) {
             self.share.on = YES;
         } failure:^(NSError *error) {
             self.share.on = NO;
@@ -49,7 +49,7 @@
 
 - (void)checkFacebook {
     if([self.share isOn]) {
-        [self.facebookManager checkFacebookPostAccessWithSuccess:^(BOOL success, NSString *msg) {
+        [self.facebookManager checkFacebookPostAccessWithSuccess:^(BOOL success, ACAccount *account, NSString *msg) {
             self.share.on = YES;
         } failure:^(NSError *error) {
             self.share.on = NO;

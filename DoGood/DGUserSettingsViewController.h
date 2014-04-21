@@ -18,6 +18,9 @@
     NSString *twitterConnectedStatus;
     NSString *facebookConnectedStatus;
 
+    NSString *connectedText;
+    NSString *disconnectedText;
+
     DGTwitterManager *twitterManager;
     DGFacebookManager *facebookManager;
 }

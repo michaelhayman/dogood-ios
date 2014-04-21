@@ -66,7 +66,7 @@
    	ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
    	[self.accountStore requestAccountTyped:accountType withOptions:postOptions completion:^(BOOL didFinish, ACAccount *account, NSError *error) {
 		if (account) {
-            success(YES, @"Posting access granted.");
+            success(YES, account, @"Posting access granted.");
         } else {
             failure(unableToPostError);
         }

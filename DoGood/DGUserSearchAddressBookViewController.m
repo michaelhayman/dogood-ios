@@ -182,7 +182,7 @@
     // NSArray *users;
     DGUser *user = users[indexPath.row];
     cell.user = user;
-    cell.disableSelection = YES;
+    cell.disableSelection = self.disableSelection || NO;
     cell.navigationController = self.navigationController;
     [cell setValues];
     return cell;

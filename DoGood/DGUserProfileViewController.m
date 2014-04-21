@@ -349,8 +349,8 @@
     UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You want to report this user?"
                                                     message:@"Are you sure?"
                                                    delegate:self
-                                          cancelButtonTitle:@"No..."
-                                          otherButtonTitles:@"Yes!", nil];
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Report", nil];
     [alert show];
 }
 

@@ -70,7 +70,7 @@
    	ACAccountType *accountType = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
    	[self.accountStore requestAccountTyped:accountType withOptions:postOptions  completion:^(BOOL didFinish, ACAccount *account, NSError *error) {
         if (account) {
-            success(YES, @"Permission granted to post.");
+            success(YES, account, @"Permission granted to post.");
         } else {
             failure(unableToPostError);
         }

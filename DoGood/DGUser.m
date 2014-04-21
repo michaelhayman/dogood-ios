@@ -175,9 +175,8 @@ static DGUser* currentUser = nil;
 }
 
 #pragma mark - Social
-- (void)saveSocialID:(NSString *)socialID withType:(NSString *)socialType {
-
-    if (socialID == nil || socialType == nil) {
+- (void)saveSocialID:(NSString *)socialID withType:(NSString *)socialType success:(SocialSuccessBlock)completion failure:(ErrorBlock)failure {
+    if (socialType == nil) {
         return;
     }
 
@@ -187,12 +186,14 @@ static DGUser* currentUser = nil;
         if (![self.twitter_id  isEqualToString:socialID]) {
             user.twitter_id = socialID;
         } else {
+            completion(YES);
             return;
         }
     } else if ([socialType isEqualToString:@"facebook"]) {
         if (![self.facebook_id isEqualToString:socialID]) {
             user.facebook_id = socialID;
         } else {
+            completion(YES);
             return;
         }
     }
@@ -204,7 +205,16 @@ static DGUser* currentUser = nil;
             self.facebook_id = user.facebook_id;
         }
         [DGUser assignDefaults];
-    } failure:nil];
+        completion(YES);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        failure(error);
+    }];
+}
+
+- (void)saveSocialID:(NSString *)socialID withType:(NSString *)socialType {
+    [self saveSocialID:socialID withType:socialType success:^(BOOL success) {
+    } failure:^(NSError *error) {
+    }];
 }
 
 #pragma mark - Decoration
