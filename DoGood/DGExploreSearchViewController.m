@@ -25,18 +25,15 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     DebugLog(@"1. will appear called each time");
     // headerViewToTopConstraint.constant = -30;
     headerViewToTopConstraint.constant = -130;
 }
 
-- (void)viewWillLayoutSubviews {
-    DebugLog(@"- will layout called each time");
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    DebugLog(@"sup?");
+    DebugLog(@"memory warning from %@", [self class]);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -51,6 +48,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
