@@ -1,7 +1,7 @@
 @class DGNominee;
 @class DGGood;
 
-@interface NomineeCell : UITableViewCell {
+@interface NomineeCell : UITableViewCell <UIAlertViewDelegate> {
     UIButton *inviteButton;
 }
 

@@ -1,5 +1,6 @@
 #import "NomineeCell.h"
 #import "DGNominee.h"
+#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
 
 @implementation NomineeCell
 
@@ -53,10 +54,34 @@
 }
 
 - (void)changeInvite:(UIButton *)button {
-    inviteButton.selected = !inviteButton.selected;
-    self.nominee.invite = inviteButton.selected;
-    [self setNeedsLayout];
+    if (![inviteButton isSelected]) {
+        [self invite];
+    } else {
+        [self uninvite];
+    }
     DebugLog(@"invite %@", [NSNumber numberWithBool:inviteButton.selected]);
+}
+
+- (void)invite {
+     [UIAlertView showWithTitle:[NSString stringWithFormat:@"Invite %@", self.nominee.full_name] message:@"Send an invite to Do Good?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Invite"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+         if (buttonIndex == [alertView cancelButtonIndex]) {
+             DebugLog(@"Cancelled");
+         } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Invite"]) {
+             self.nominee.invite = inviteButton.selected; NSLog(@"Invite");
+             inviteButton.selected = !inviteButton.selected;
+         }
+    }];
+}
+
+- (void)uninvite {
+     [UIAlertView showWithTitle:[NSString stringWithFormat:@"Don't invite %@?", self.nominee.full_name] message:@"Remove invitation to Do Good?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Remove"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+         if (buttonIndex == [alertView cancelButtonIndex]) {
+             DebugLog(@"Cancelled");
+         } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Remove"]) {
+             self.nominee.invite = inviteButton.selected; NSLog(@"Invite");
+             inviteButton.selected = !inviteButton.selected;
+         }
+    }];
 }
 
 @end
