@@ -3,9 +3,9 @@ inhibit_all_warnings!
 
 # language add-ons
 # pod 'ReactiveCocoa'
-pod "UINavigationBar+Addition"
+pod "UINavigationBar+Addition", '~> 1.0.0'
 
-pod 'Inflections'
+pod 'Inflections', '~> 1.0.0'
 
 # networking
 pod 'AFNetworking', '~> 1.3.1'
@@ -20,26 +20,26 @@ pod 'TSMessages', '~> 0.9.4'
 pod 'ProgressHUD', :git => "git@github.com:relatedcode/ProgressHUD.git"
 
 
-pod 'SAMLoadingView'
+pod 'SAMLoadingView', '~> 0.1.0'
 pod 'UIImage-Categories', '~> 0.0.1'
 pod 'NSDate+TimeAgo', '~> 1.0.2'
-pod 'TPKeyboardAvoiding'
 # pod 'REMenu', '~> 1.3.5'
 pod 'REMenu', '~> 1.6'
+pod 'TPKeyboardAvoiding', '~> 1.2.1'
 pod 'TTTAttributedLabel', '~> 1.7.1'
 pod 'MJPopupViewController', :git => "git@github.com:doPanic/MJPopupViewController.git"
 pod 'SVPullToRefresh', '~> 0.4.1'
-pod 'CRNavigationController'
+pod 'CRNavigationController', '~> 0.0.1'
 
 # social
 pod 'SocialAuth', :git => "git@github.com:michaelhayman/SocialAuth.git"
 
 # testing
 # pod 'TestFlightSDK'
-pod 'HockeySDK'
+pod 'HockeySDK', '~> 3.5.0'
 
 target "DoGoodTests", :exclusive => true do
-    pod 'Kiwi/XCTest'
+    pod 'Kiwi/XCTest', '~> 2.2.2'
     # pod 'RKKiwiMatchers'
 end
 
