@@ -23,8 +23,6 @@ pod 'ProgressHUD', :git => "git@github.com:relatedcode/ProgressHUD.git"
 pod 'SAMLoadingView', '~> 0.1.0'
 pod 'UIImage-Categories', '~> 0.0.1'
 pod 'NSDate+TimeAgo', '~> 1.0.2'
-# pod 'REMenu', '~> 1.3.5'
-pod 'REMenu', '~> 1.6'
 pod 'TPKeyboardAvoiding', '~> 1.2.1'
 pod 'TTTAttributedLabel', '~> 1.7.1'
 pod 'MJPopupViewController', :git => "git@github.com:doPanic/MJPopupViewController.git"
