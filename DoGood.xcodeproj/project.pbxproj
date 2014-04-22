@@ -90,6 +90,7 @@
 		638647F217AC087A00167F15 /* DGAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 638647F117AC087A00167F15 /* DGAppDelegate.m */; };
 		6386481D17ACEF2100167F15 /* DGWelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386481C17ACEF2100167F15 /* DGWelcomeViewController.m */; };
 		6386481F17ACEFAE00167F15 /* DGGoodListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6386481E17ACEFAE00167F15 /* DGGoodListViewController.m */; };
+		638E5B7D19061FFC0096CB59 /* NomineeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 638E5B7C19061FFC0096CB59 /* NomineeCell.m */; };
 		63902CEE1821C6D0003B84A1 /* DGGoodListNearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63902CED1821C6D0003B84A1 /* DGGoodListNearbyViewController.m */; };
 		6393062D18DF3DBF0058A515 /* DGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393062C18DF3DBF0058A515 /* DGViewController.m */; };
 		6397318E17C1733D001B96BF /* DGUserTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */; };
@@ -296,6 +297,8 @@
 		6386481C17ACEF2100167F15 /* DGWelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGWelcomeViewController.m; sourceTree = "<group>"; };
 		6386481E17ACEFAE00167F15 /* DGGoodListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGGoodListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6386482017ACEFBA00167F15 /* DGGoodListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGoodListViewController.h; sourceTree = "<group>"; };
+		638E5B7B19061FFC0096CB59 /* NomineeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NomineeCell.h; sourceTree = "<group>"; };
+		638E5B7C19061FFC0096CB59 /* NomineeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NomineeCell.m; sourceTree = "<group>"; };
 		63902CEC1821C6D0003B84A1 /* DGGoodListNearbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGoodListNearbyViewController.h; sourceTree = "<group>"; };
 		63902CED1821C6D0003B84A1 /* DGGoodListNearbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGGoodListNearbyViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6393062B18DF3DBF0058A515 /* DGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGViewController.h; sourceTree = "<group>"; };
@@ -593,9 +596,11 @@
 			name = Users;
 			sourceTree = "<group>";
 		};
-		636AEA6917AD4776002A3494 /* Do */ = {
+		636AEA6917AD4776002A3494 /* Posts */ = {
 			isa = PBXGroup;
 			children = (
+				638E5B7B19061FFC0096CB59 /* NomineeCell.h */,
+				638E5B7C19061FFC0096CB59 /* NomineeCell.m */,
 				639B1230187C0FA3005C9BD9 /* GoodTableView.h */,
 				639B1231187C0FA3005C9BD9 /* GoodTableView.m */,
 				633DBF7017ADC4E50038BC2D /* DGPostGoodNomineeSearchViewController.h */,
@@ -630,7 +635,7 @@
 				6355EC0A17B0D4C300EE91C0 /* CommentCell.m */,
 				6355EC0B17B0D4C300EE91C0 /* CommentCell.xib */,
 			);
-			name = Do;
+			name = Posts;
 			sourceTree = "<group>";
 		};
 		636AEA6A17AD477A002A3494 /* Rewards */ = {
@@ -727,8 +732,8 @@
 				638647F117AC087A00167F15 /* DGAppDelegate.m */,
 				6308161D17C41E0D004DE5D7 /* DGAppearance.h */,
 				6308161E17C41E0D004DE5D7 /* DGAppearance.m */,
-				636AEA6917AD4776002A3494 /* Do */,
 				633DBF7A17AE1E530038BC2D /* DoGood.nss */,
+				636AEA6917AD4776002A3494 /* Posts */,
 				636AEA6B17AD477F002A3494 /* Explore */,
 				633DBF7F17AE92D20038BC2D /* Menu */,
 				633DBF9217AED2480038BC2D /* Models */,
@@ -1033,6 +1038,7 @@
 				63E4424D17BC3010000224E8 /* DGSignUpDetailsViewController.m in Sources */,
 				63E0798B17BC5A6F006FC42E /* UITextFieldCell.m in Sources */,
 				63FBF603180830C4005686A6 /* DGReport.m in Sources */,
+				638E5B7D19061FFC0096CB59 /* NomineeCell.m in Sources */,
 				632A36BC17BCAEE8004EED26 /* UserCell.m in Sources */,
 				632A36C017BCAF00004EED26 /* DGUserListViewController.m in Sources */,
 				632A36D217BD1157004EED26 /* DGUserSettingsViewController.m in Sources */,

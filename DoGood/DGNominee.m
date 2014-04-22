@@ -28,4 +28,12 @@
     return [NSURL URLWithString:self.avatar];
 }
 
+- (BOOL)isPopulated {
+    if (![self.full_name isEqualToString:@""]) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 @end

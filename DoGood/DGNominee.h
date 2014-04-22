@@ -9,8 +9,10 @@
 @property (retain) NSString *facebook_id;
 @property (retain) UIImage *avatarImage;
 @property (retain) NSString *avatar;
+@property BOOL invite;
 
 - (void)configureForUser:(DGUser *)user;
 - (NSURL *)avatarURL;
+- (BOOL)isPopulated;
 
 @end

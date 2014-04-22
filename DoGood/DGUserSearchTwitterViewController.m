@@ -1,6 +1,7 @@
 #import "DGUserSearchTwitterViewController.h"
 #import "UserCell.h"
 #import "DGTwitterManager.h"
+#import "DGNominee.h"
 
 @implementation DGUserSearchTwitterViewController
 
@@ -104,6 +105,7 @@
     // NSArray *users;
     DGUser *user = users[indexPath.row];
     cell.user = user;
+    cell.disableSelection = self.disableSelection || NO;
     [cell setValues];
     cell.navigationController = self.navigationController;
     return cell;
@@ -115,6 +117,14 @@
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
     return [users count];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    DGUser *user = users[indexPath.row];
+    DGNominee *nominee = [DGNominee new];
+    [nominee configureForUser:user];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObject:nominee forKey:@"nominee"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:ExternalNomineeWasChosen object:nil userInfo:dictionary];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

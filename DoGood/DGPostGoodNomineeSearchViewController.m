@@ -36,6 +36,7 @@
     }
     if (self.userTwitter == nil) {
         self.userTwitter = [[DGUserSearchTwitterViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];
+        self.userTwitter.disableSelection = YES;
     }
     if (self.userFacebook == nil) {
         self.userFacebook = [[DGUserSearchFacebookViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];
@@ -55,6 +56,8 @@
     arrow = [[Arrow alloc] initWithFrame:CGRectMake(x, y, 14, 8)];
 
     [self.view addSubview:arrow];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nomineeChosen:) name:DGNomineeWasChosen object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nomineeChosen:) name:ExternalNomineeWasChosen object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -65,15 +68,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nomineeChosen:) name:DGNomineeWasChosen object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nomineeChosen:) name:ExternalNomineeWasChosen object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGNomineeWasChosen object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:ExternalNomineeWasChosen object:nil];
 }
 
 - (void)dismiss {
@@ -101,6 +100,8 @@
     self.userTwitter = nil;
     self.userFacebook = nil;
     self.userOther = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGNomineeWasChosen object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:ExternalNomineeWasChosen object:nil];
 }
 
 - (CGFloat)getX {

@@ -1,6 +1,7 @@
 #import "DGPostGoodViewController.h"
 #import "GoodOverviewCell.h"
 #import "GoodShareCell.h"
+#import "NomineeCell.h"
 #import "DGGood.h"
 #import "DGNominee.h"
 #import "DGCategory.h"
@@ -15,6 +16,7 @@
 #import "DGPhotoPickerViewController.h"
 #import "DGGoodListViewController.h"
 
+#define kNomineeCell @"nominee"
 #define good_overview_cell_tag 69
 #define share_do_good_cell_tag 501
 #define share_facebook_cell_tag 502
@@ -34,6 +36,10 @@
 
     UINib *nib = [UINib nibWithNibName:@"GoodOverviewCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"GoodOverviewCell"];
+    // UINib *nomineeNib = [UINib nibWithNibName:kNomineeCell bundle:nil];
+    // [[self tableView] registerNib:nomineeNib forCellReuseIdentifier:kNomineeCell];
+    [[self tableView] registerClass:[NomineeCell class] forCellReuseIdentifier:kNomineeCell];
+
     UINib *shareNib = [UINib nibWithNibName:@"GoodShareCell" bundle:nil];
     [[self tableView] registerNib:shareNib forCellReuseIdentifier:@"GoodShareCell"];
 
@@ -181,24 +187,12 @@
     }
 }
 
-#define kNomineeCell @"nominee"
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == nominee) {
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:kNomineeCell];
-        if (self.good.nominee) {
-            cell.textLabel.text = self.good.nominee.full_name;
-            if (self.good.nominee.avatarImage) {
-                UIImageView *imageView = [[UIImageView alloc] initWithFrame:cell.accessoryView.frame];
-                imageView.image = self.good.nominee.avatarImage;
-                cell.accessoryView = imageView;
-            } else {
-                cell.imageView.image = [UIImage imageNamed:@"PostNomineeOn"];
-            }
-        } else {
-            cell.textLabel.text = @"Who did good?";
-            cell.imageView.image = [UIImage imageNamed:@"PostNomineeOff"];
-        }
+        static NSString * reuseIdentifier = kNomineeCell;
+        NomineeCell *cell = (NomineeCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+        cell.nominee = self.good.nominee;
+        [cell setValues];
         return cell;
     } else if (indexPath.section == overview) {
         GoodOverviewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodOverviewCell"];

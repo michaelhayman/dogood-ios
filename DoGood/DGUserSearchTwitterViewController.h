@@ -6,4 +6,6 @@
     DGTwitterManager *twitterManager;
 }
 
+@property BOOL disableSelection;
+
 @end

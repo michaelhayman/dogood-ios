@@ -61,6 +61,7 @@
     avatarImage.image = nominee.avatarImage;
     phoneField.text = nominee.phone;
     emailField.text = nominee.email;
+    inviteField.on = nominee.invite;
 }
 
 - (void)fillInNomineeFromFields {
@@ -68,6 +69,7 @@
     nominee.avatarImage = avatarImage.image;
     nominee.phone = phoneField.text;
     nominee.email = emailField.text;
+    nominee.invite = inviteField.on;
 }
 
 - (IBAction)nominate:(id)sender {
