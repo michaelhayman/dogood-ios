@@ -40,7 +40,7 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <state key="selected" image="FollowingButton"/>
-                        <state key="highlighted" image="FollowButtonTap">
+                        <state key="highlighted" image="FollowingButton">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
@@ -80,7 +80,6 @@
     </objects>
     <resources>
         <image name="FollowButton" width="48" height="33"/>
-        <image name="FollowButtonTap" width="48" height="33"/>
         <image name="FollowingButton" width="48" height="33"/>
     </resources>
 </document>
