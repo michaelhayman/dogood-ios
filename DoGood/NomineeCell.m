@@ -63,20 +63,22 @@
 }
 
 - (void)invite {
-     [UIAlertView showWithTitle:[NSString stringWithFormat:@"Invite %@", self.nominee.full_name] message:@"Send an invite to Do Good?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Invite"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    NSString *actionTitle = @"Invite";
+     [UIAlertView showWithTitle:[NSString stringWithFormat:@"Invite %@", self.nominee.full_name] message:@"Send an invite to Do Good?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[actionTitle] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
          if (buttonIndex == [alertView cancelButtonIndex]) {
              DebugLog(@"Cancelled");
-         } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Invite"]) {
+         } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:actionTitle]) {
              [self changeInvite];
          }
     }];
 }
 
 - (void)uninvite {
-     [UIAlertView showWithTitle:[NSString stringWithFormat:@"Don't invite %@?", self.nominee.full_name] message:@"Remove invitation to Do Good?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[@"Remove"] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    NSString *actionTitle = @"Uninvite";
+     [UIAlertView showWithTitle:[NSString stringWithFormat:@"Don't invite %@?", self.nominee.full_name] message:@"Remove invitation to Do Good?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[actionTitle] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
          if (buttonIndex == [alertView cancelButtonIndex]) {
              DebugLog(@"Cancelled");
-         } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Remove"]) {
+         } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:actionTitle]) {
              [self changeInvite];
          }
     }];
