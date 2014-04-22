@@ -67,8 +67,7 @@
          if (buttonIndex == [alertView cancelButtonIndex]) {
              DebugLog(@"Cancelled");
          } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Invite"]) {
-             self.nominee.invite = inviteButton.selected; NSLog(@"Invite");
-             inviteButton.selected = !inviteButton.selected;
+             [self changeInvite];
          }
     }];
 }
@@ -78,10 +77,14 @@
          if (buttonIndex == [alertView cancelButtonIndex]) {
              DebugLog(@"Cancelled");
          } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"Remove"]) {
-             self.nominee.invite = inviteButton.selected; NSLog(@"Invite");
-             inviteButton.selected = !inviteButton.selected;
+             [self changeInvite];
          }
     }];
+}
+
+- (void)changeInvite {
+     self.nominee.invite = inviteButton.selected; NSLog(@"Invite");
+     inviteButton.selected = !inviteButton.selected;
 }
 
 @end

@@ -8,5 +8,6 @@
 @property (nonatomic, weak) DGNominee *nominee;
 
 - (void)setValues;
+- (void)invite;
 
 @end

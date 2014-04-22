@@ -17,6 +17,7 @@
 #import "DGGoodListViewController.h"
 
 #define kNomineeCell @"nominee"
+#define nomineeCellTag 59
 #define good_overview_cell_tag 69
 #define share_do_good_cell_tag 501
 #define share_facebook_cell_tag 502
@@ -191,6 +192,7 @@
     if (indexPath.section == nominee) {
         static NSString * reuseIdentifier = kNomineeCell;
         NomineeCell *cell = (NomineeCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+        cell.tag = nomineeCellTag;
         cell.nominee = self.good.nominee;
         [cell setValues];
         return cell;
@@ -339,6 +341,10 @@
     return (GoodOverviewCell *)[self.tableView viewWithTag:good_overview_cell_tag];
 }
 
+- (NomineeCell *)nomineeCell {
+    return (NomineeCell *)[self.tableView viewWithTag:nomineeCellTag];
+}
+
 #define remove_button 0
 #define select_new_button 1
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -373,8 +379,12 @@
 #pragma mark - Change data responses
 - (void)childViewController:(DGPostGoodNomineeSearchViewController *)viewController didChooseNominee:(DGNominee *)nominee {
     self.good.nominee = nominee;
-    // [self.good setValuesForNominee:self.good.nominee];
     [self.tableView reloadData];
+    if (!nominee.invite) {
+        NomineeCell *cell = [self nomineeCell];
+        cell.nominee = nominee;
+        [cell invite];
+    }
 }
 
 - (void)childViewController:(DGPostGoodCategoryViewController *)viewController didChooseCategory:(DGCategory *)category {
