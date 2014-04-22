@@ -18,7 +18,7 @@ pod 'RFKeychain', '~> 0.1'
 # ui
 pod 'TSMessages', '~> 0.9.4'
 pod 'ProgressHUD', :git => "git@github.com:relatedcode/ProgressHUD.git"
-
+pod 'UIAlertView+Blocks', '~> 0.8.1'
 
 pod 'SAMLoadingView', '~> 0.1.0'
 pod 'UIImage-Categories', '~> 0.0.1'

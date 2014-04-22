@@ -49,6 +49,7 @@ PODS:
   - TSMessages (0.9.4):
     - HexColors
   - TTTAttributedLabel (1.7.1)
+  - UIAlertView+Blocks (0.8.1)
   - UIImage-Categories (0.0.1)
   - UINavigationBar+Addition (1.0.0)
 
@@ -69,6 +70,7 @@ DEPENDENCIES:
   - TPKeyboardAvoiding (~> 1.2.1)
   - TSMessages (~> 0.9.4)
   - TTTAttributedLabel (~> 1.7.1)
+  - UIAlertView+Blocks (~> 0.8.1)
   - UIImage-Categories (~> 0.0.1)
   - UINavigationBar+Addition (~> 1.0.0)
 
@@ -105,6 +107,7 @@ SPEC CHECKSUMS:
   TransitionKit: d0e3344aac92991395d4c2e72d9c5a8ceeb12910
   TSMessages: 5ab92604b02e49a755d2cc2baf114d2248a90977
   TTTAttributedLabel: e504133915a9b11de63cb470ffa2790383a3eb23
+  UIAlertView+Blocks: bac565670861210aff25f574638f0c552648a0a8
   UIImage-Categories: 15e4859f6025bd785a241b113b89165fa030ca1a
   UINavigationBar+Addition: 61609ae85b650093dd39331686f15a1d83d21823
 
