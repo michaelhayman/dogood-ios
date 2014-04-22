@@ -15,6 +15,7 @@
 @property (nonatomic, strong) DGTag *tag;
 @property (nonatomic, strong) DGUser *user;
 @property (nonatomic, strong) NSNumber *goodID;
+@property (nonatomic, strong) UIColor *color;
 
 - (void)getGood;
 

@@ -21,10 +21,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self kickOffLocation];
+    [self customizeNavColor:SKY];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [self resetToDefaultNavColor];
     [ProgressHUD dismiss];
     [locationManager stopUpdatingLocation];
 }
@@ -46,7 +48,7 @@
         if (!initialized) {
             goodTableView.navigationController = self.navigationController;
             goodTableView.parent = self;
-            [goodTableView showTabs];
+            [goodTableView showTabsWithColor:SKY];
 
             [self setupRefresh];
             initialized = YES;

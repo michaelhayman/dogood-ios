@@ -30,13 +30,16 @@
         [self setupMenuTitle:[self.user full_name]];
     } else if (self.path) {
         [self setupMenuTitle:self.titleForPath];
+        [self customizeNavColor:self.color];
     } else {
         [self setupMenuTitle:@"Good Done"];
-        [self addMenuButton:@"icon_menu" withTapButton:@"icon_menu"];
     }
 
     if (self.category) {
         [goodTableView showTabsWithColor:[self.category rgbColour]];
+    } else if (self.color) {
+        [self customizeNavColor:self.color];
+        [goodTableView showTabsWithColor:self.color];
     } else {
         [goodTableView showTabs];
     }
@@ -89,18 +92,17 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (self.category) {
-        self.navigationController.navigationBar.barTintColor = [self.category rgbColour];
-        self.navigationController.navigationBar.tintColor = [DGAppearance makeContrastingColorFromColor:[self.category rgbColour]];
+        [self customizeNavColor:[self.category rgbColour]];
+    } else if (self.color) {
+        [self customizeNavColor:self.color];
     } else {
-        self.navigationController.navigationBar.barTintColor = VIVID;
-        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        [self resetToDefaultNavColor];
     }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.barTintColor = VIVID;
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    [self resetToDefaultNavColor];
 }
 
 - (void)displayPostSuccessMessage {

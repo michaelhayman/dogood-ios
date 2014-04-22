@@ -55,6 +55,7 @@
         DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
         controller.path = @"/goods/popular";
         controller.titleForPath = @"Popular";
+        controller.color = PINEAPPLE;
         [self.navigationController pushViewController:controller animated:YES];
     } else {
         DGGoodListNearbyViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodListNearby"];

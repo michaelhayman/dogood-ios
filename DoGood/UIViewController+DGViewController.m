@@ -48,4 +48,17 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
+- (void)customizeNavColor:(UIColor *)color {
+    if (color) {
+        self.navigationController.navigationBar.barTintColor = color;
+        self.navigationController.navigationBar.tintColor = [DGAppearance makeContrastingColorFromColor:color];
+        self.view.backgroundColor = color;
+    }
+}
+
+- (void)resetToDefaultNavColor {
+    self.navigationController.navigationBar.barTintColor = VIVID;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+}
+
 @end
