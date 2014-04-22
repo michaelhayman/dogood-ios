@@ -55,10 +55,6 @@
     [super didReceiveMemoryWarning];
 }
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
-}
-
 - (void)fillInFieldsFromNominee:(DGNominee *)theNominee {
     nominee = theNominee;
     nameField.text = nominee.full_name;
