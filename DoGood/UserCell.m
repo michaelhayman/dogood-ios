@@ -26,16 +26,16 @@
         self.username.textColor = LINK_COLOUR;
 
     }
-        [self.follow addTarget:self action:@selector(followUser) forControlEvents:UIControlEventTouchUpInside];
+    [self.follow addTarget:self action:@selector(followUser) forControlEvents:UIControlEventTouchUpInside];
 
     if ([[DGUser currentUser] isSignedIn]) {
         if ([self.user.userID isEqualToNumber:[DGUser currentUser].userID]) {
             self.follow.hidden = YES;
         } else if (self.disableSelection && ![self.user.current_user_following boolValue]) {
-            // self.follow.hidden = YES;
+            self.follow.hidden = YES;
         }
     } else if (self.disableSelection && ![self.user.current_user_following boolValue]) {
-        //self.follow.hidden = YES;
+        self.follow.hidden = YES;
     } else {
         self.follow.hidden = NO;
     }
