@@ -49,7 +49,6 @@
 		633DBF7B17AE1E530038BC2D /* DoGood.nss in Resources */ = {isa = PBXBuildFile; fileRef = 633DBF7A17AE1E530038BC2D /* DoGood.nss */; };
 		633DBF7E17AE25CF0038BC2D /* DGUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF7D17AE25CF0038BC2D /* DGUserProfileViewController.m */; };
 		633DBF8417AE92E00038BC2D /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF8117AE92E00038BC2D /* NavigationViewController.m */; };
-		633DBF8517AE92E00038BC2D /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF8317AE92E00038BC2D /* RootViewController.m */; };
 		63451D521840E72300B713F0 /* DGNominee.m in Sources */ = {isa = PBXBuildFile; fileRef = 63451D511840E72300B713F0 /* DGNominee.m */; };
 		634EA1F71874F67000F9F00D /* HandTest.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 634EA1F51874F67000F9F00D /* HandTest.ttf */; };
 		634EA1F81874F67000F9F00D /* MarkusInk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 634EA1F61874F67000F9F00D /* MarkusInk.ttf */; };
@@ -223,8 +222,6 @@
 		633DBF7D17AE25CF0038BC2D /* DGUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGUserProfileViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		633DBF8017AE92E00038BC2D /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
 		633DBF8117AE92E00038BC2D /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
-		633DBF8217AE92E00038BC2D /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		633DBF8317AE92E00038BC2D /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		63451D501840E72300B713F0 /* DGNominee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGNominee.h; sourceTree = "<group>"; };
 		63451D511840E72300B713F0 /* DGNominee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNominee.m; sourceTree = "<group>"; };
 		634EA1F51874F67000F9F00D /* HandTest.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HandTest.ttf; sourceTree = "<group>"; };
@@ -487,8 +484,6 @@
 			children = (
 				633DBF8017AE92E00038BC2D /* NavigationViewController.h */,
 				633DBF8117AE92E00038BC2D /* NavigationViewController.m */,
-				633DBF8217AE92E00038BC2D /* RootViewController.h */,
-				633DBF8317AE92E00038BC2D /* RootViewController.m */,
 			);
 			name = Menu;
 			sourceTree = "<group>";
@@ -1013,7 +1008,6 @@
 				6311488D180F3CA5008278E5 /* DGFacebookManager.m in Sources */,
 				63C1BA501806026300CB95CF /* UserOverview.m in Sources */,
 				633DBF8417AE92E00038BC2D /* NavigationViewController.m in Sources */,
-				633DBF8517AE92E00038BC2D /* RootViewController.m in Sources */,
 				6355EC0717B0C83100EE91C0 /* DGComment.m in Sources */,
 				63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */,
 				6355EC0C17B0D4C300EE91C0 /* CommentCell.m in Sources */,

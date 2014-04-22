@@ -1,4 +1,3 @@
-#import "RootViewController.h"
 #import "AuthenticateView.h"
 
 @class DGUserInvitesViewController;
@@ -6,7 +5,7 @@
 @class SAMLoadingView;
 @class GoodTableView;
 
-@interface DGUserProfileViewController : RootViewController <UIActionSheetDelegate, UIAlertViewDelegate> {
+@interface DGUserProfileViewController : DGViewController <UIActionSheetDelegate, UIAlertViewDelegate> {
     __weak IBOutlet UIButton *centralButton;
     __weak IBOutlet UIImageView *avatarOverlay;
     __weak IBOutlet UIImageView *avatar;

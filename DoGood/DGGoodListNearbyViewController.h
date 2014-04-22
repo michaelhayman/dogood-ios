@@ -1,7 +1,7 @@
 @class GoodTableView;
 #import <CoreLocation/CoreLocation.h>
 
-@interface DGGoodListNearbyViewController : UIViewController <CLLocationManagerDelegate> {
+@interface DGGoodListNearbyViewController : DGViewController <CLLocationManagerDelegate> {
     CLLocationManager *locationManager;
     CLLocation *userLocation;
     UIRefreshControl *refreshControl;

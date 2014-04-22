@@ -17,8 +17,6 @@
     [collectionView registerNib:nib forCellWithReuseIdentifier:@"RewardCell"];
 
     [self setupTabs];
-
-    [self addMenuButton:@"MenuFromRewardsIconTap" withTapButton:@"MenuFromRewardsIcon"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

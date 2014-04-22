@@ -1,11 +1,10 @@
-#import "RootViewController.h"
 @class DGCategory;
 @class UserOverview;
 @class DGTag;
 @class DGGood;
 @class GoodTableView;
 
-@interface DGGoodListViewController : RootViewController {
+@interface DGGoodListViewController : DGViewController {
     UserOverview *userView;
     __weak IBOutlet GoodTableView *goodTableView;
 }

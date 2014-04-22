@@ -1,7 +1,6 @@
-#import "RootViewController.h"
 @class DGUserProfileViewController;
 
-@interface DGExploreViewController : RootViewController <UITextFieldDelegate> {
+@interface DGExploreViewController : DGViewController <UITextFieldDelegate> {
     __weak IBOutlet UIView *searchFieldWrapper;
     __weak IBOutlet UITextField *searchField;
     __weak IBOutlet UIButton *searchButton;
