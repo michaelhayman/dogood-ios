@@ -37,8 +37,7 @@
 
     UINib *nib = [UINib nibWithNibName:@"GoodOverviewCell" bundle:nil];
     [[self tableView] registerNib:nib forCellReuseIdentifier:@"GoodOverviewCell"];
-    // UINib *nomineeNib = [UINib nibWithNibName:kNomineeCell bundle:nil];
-    // [[self tableView] registerNib:nomineeNib forCellReuseIdentifier:kNomineeCell];
+
     [[self tableView] registerClass:[NomineeCell class] forCellReuseIdentifier:kNomineeCell];
 
     UINib *shareNib = [UINib nibWithNibName:@"GoodShareCell" bundle:nil];
