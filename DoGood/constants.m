@@ -53,6 +53,7 @@ NSString* const DGUserDidAddPhotoNotification = @"DGUserDidAddPhotoNotification"
 NSString* const DGUserDidRemovePhotoNotification = @"DGUserDidRemovePhotoNotification";
 
 NSString* const DGUserDidToggleMenu = @"DGUserDidToggleMenu";
+NSString* const DGTourWasRequested = @"DGTourWasRequested";
 
 // rewards
 NSString* const DGUserDidSelectRewards = @"DGUserDidSelectRewards";

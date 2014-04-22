@@ -172,6 +172,8 @@ extern NSString* const DGUserDidNotFindTagsForTextField;
 // Notifications
 extern NSString* const DGUserDidPostGood;
 
+extern NSString* const DGTourWasRequested;
+
 // Text field cells
 extern NSString* const UITextFieldCellIdentifier;
 

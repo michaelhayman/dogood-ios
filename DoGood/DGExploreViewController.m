@@ -70,6 +70,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(welcomeScreen) name:DGTourWasRequested object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authenticate) name:DGUserDidFailSilentAuthenticationNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(peopleSelected) name:DGUserDidStartSearchingPeople object:nil];
@@ -80,6 +81,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGTourWasRequested object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidFailSilentAuthenticationNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidStartSearchingPeople object:nil];
@@ -134,16 +136,20 @@
 
 - (void)showWelcome {
     if ([DGUser showWelcomeMessage]) {
-        [self welcomeScreen];
+        [self presentWelcomeScreen:NO];
     }
 }
 
 - (void)welcomeScreen {
+    [self presentWelcomeScreen:YES];
+}
+
+- (void)presentWelcomeScreen:(BOOL)animated {
     UIStoryboard *storyboard;
     storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
     DGWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
-    [self presentViewController:navigationController animated:NO completion:nil];
+    [self presentViewController:navigationController animated:animated completion:nil];
 }
 
 - (void)showCancelButton {

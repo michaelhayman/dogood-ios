@@ -10,7 +10,6 @@
     view.textColor = color;
     view.textAlignment = NSTextAlignmentCenter;
     view.backgroundColor = [UIColor clearColor];
-    view.userInteractionEnabled = YES;
     UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleMenu)];
     [view addGestureRecognizer:tap];
     [self setupMenuView:view];
@@ -21,8 +20,11 @@
 }
 
 - (void)setupMenuImage:(UIImage *)image {
-    UIImageView *logo = [[UIImageView alloc] initWithImage:image];
-    [self setupMenuView:logo];
+    UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 130, 40)];
+    view.image = image;
+    UIGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tour)];
+    [view addGestureRecognizer:tap];
+    [self setupMenuView:view];
 }
 
 - (void)setupMenuView:(UIView *)view {
@@ -31,6 +33,10 @@
     [view sizeToFit];
     self.navigationItem.titleView = view;
     self.navigationController.navigationBar.barTintColor = VIVID;
+}
+
+- (void)tour {
+    [[NSNotificationCenter defaultCenter] postNotificationName:DGTourWasRequested object:nil];
 }
 
 - (void)updateTitleColor:(UIColor *)newColor {
