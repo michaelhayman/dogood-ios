@@ -94,8 +94,12 @@
 }
 
 - (void)changeInvite {
-     self.nominee.invite = inviteButton.selected; NSLog(@"Invite");
-     inviteButton.selected = !inviteButton.selected;
+    if (![self.nominee isContactable]) {
+        [UIAlertView showWithTitle:@"Enter Contact Details" message:@"Enter an email address or phone number to invite a nominee." cancelButtonTitle:@"OK" otherButtonTitles:@[] tapBlock:nil];
+    } else {
+        self.nominee.invite = inviteButton.selected; NSLog(@"Invite");
+        inviteButton.selected = !inviteButton.selected;
+    }
 }
 
 @end

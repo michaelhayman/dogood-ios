@@ -2,6 +2,7 @@
 #import "DGPostGoodNomineeSearchViewController.h"
 #import "DGNominee.h"
 #import <ProgressHUD/ProgressHUD.h>
+#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
 
 @implementation DGPostGoodNomineeAddViewController
 
@@ -19,6 +20,18 @@
 
     [DGAppearance styleActionButton:nominateButton];
     [nominateButton addTarget:self action:@selector(nominateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [inviteField addTarget:self action:@selector(checkInvite) forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)checkInvite {
+    if ([inviteField isOn]) {
+        [self fillInNomineeFromFields];
+        if (![nominee isContactable]) {
+            [UIAlertView showWithTitle:@"Enter Contact Details" message:@"Enter an email address or phone number to invite a nominee." cancelButtonTitle:@"OK" otherButtonTitles:@[] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                inviteField.on = NO;
+            }];
+        }
+    }
 }
 
 - (IBAction)nominateButtonPressed:(id)sender {

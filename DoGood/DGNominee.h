@@ -15,5 +15,6 @@
 - (NSURL *)avatarURL;
 - (BOOL)isPopulated;
 - (BOOL)isDGUser;
+- (BOOL)isContactable;
 
 @end

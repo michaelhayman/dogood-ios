@@ -14,6 +14,24 @@
    return [self.user_id intValue] > 0;
 }
 
+- (BOOL)isContactable {
+    return [self hasValidEmail] || [self hasValidPhone];
+}
+
+- (BOOL)hasValidEmail {
+    if (![self.email isEqualToString:@""]) {
+        return true;
+    }
+    return false;
+}
+
+- (BOOL)hasValidPhone {
+    if (![self.phone isEqualToString:@""]) {
+        return true;
+    }
+    return false;
+}
+
 - (NSString *)type {
     static NSString *type;
     if (self.user_id) {
