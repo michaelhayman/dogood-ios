@@ -467,7 +467,7 @@
 
                 NSMutableDictionary *params = [NSMutableDictionary dictionary];
                 params[@"message"] = @"I did some good!";
-                params[@"link"] = @"http://dogood.springbox.ca/";
+                params[@"link"] = @"http://www.dogood.mobi/";
                 params[@"name"] = @"Compete with me on Do Good! Get a high score and earn rewards.";
                 params[@"caption"] = self.good.caption;
                 params[@"picture"] = NSNullIfNil(postedGood.evidence);
