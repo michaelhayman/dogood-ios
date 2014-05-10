@@ -113,7 +113,7 @@
     [cell setDoneMode:[self.good.done boolValue]];
 }
 
--(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
 
@@ -300,7 +300,7 @@
     [self.navigationController pushViewController:categoryController animated:YES];
 }
 
-- (void) showLocationChooser {
+- (void)showLocationChooser {
     DGPostGoodLocationViewController *locationController = [self.storyboard instantiateViewControllerWithIdentifier:@"PostGoodLocation"];
     locationController.delegate = self;
 
