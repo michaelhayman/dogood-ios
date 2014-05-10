@@ -1,4 +1,5 @@
 #import "DGNominee.h"
+#import <SHEmailValidator/SHEmailValidator.h>
 
 @implementation DGNominee
 
@@ -19,7 +20,10 @@
 }
 
 - (BOOL)hasValidEmail {
-    if (![self.email isEqualToString:@""]) {
+    NSError *error = nil;
+    [[SHEmailValidator validator] validateSyntaxOfEmailAddress:self.email withError:&error];
+
+    if (!error) {
         return true;
     }
     return false;

@@ -40,6 +40,7 @@ PODS:
   - RFKeychain (0.1)
   - RKValueTransformers (1.0.1)
   - SAMLoadingView (0.1.0)
+  - SHEmailValidator (1.0.2)
   - SocialAuth (1.0.4):
     - OAuthCore
   - SOCKit (1.1)
@@ -65,6 +66,7 @@ DEPENDENCIES:
   - RestKit (~> 0.21.0)
   - RFKeychain (~> 0.1)
   - SAMLoadingView (~> 0.1.0)
+  - SHEmailValidator
   - SocialAuth (from `git@github.com:michaelhayman/SocialAuth.git`)
   - SVPullToRefresh (~> 0.4.1)
   - TPKeyboardAvoiding (~> 1.2.1)
@@ -100,6 +102,7 @@ SPEC CHECKSUMS:
   RFKeychain: 6f70ff418c01b5d76b84796941f3d63672c9e316
   RKValueTransformers: 1562d458b9c9d59ce777bfc5982f2e1aef2e9182
   SAMLoadingView: aaab718284bfe0e28c2303ba765329f068d173e9
+  SHEmailValidator: 485a8ed44c3eda3bf25072f248818f81f8aecd3b
   SocialAuth: 53f5e770e4d01084f809ff231533196826f767d6
   SOCKit: 8871d058926a6c6cc144f0c5eee82c5d0ec274a3
   SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2

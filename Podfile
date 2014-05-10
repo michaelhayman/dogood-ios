@@ -5,6 +5,8 @@ inhibit_all_warnings!
 # pod 'ReactiveCocoa'
 pod "UINavigationBar+Addition", '~> 1.0.0'
 
+pod 'SHEmailValidator'
+
 pod 'Inflections', '~> 1.0.0'
 
 # networking
