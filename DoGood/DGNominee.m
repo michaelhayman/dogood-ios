@@ -10,6 +10,10 @@
     self.facebook_id = user.facebook_id;
 }
 
+- (BOOL)isDGUser {
+   return [self.user_id intValue] > 0;
+}
+
 - (NSString *)type {
     static NSString *type;
     if (self.user_id) {

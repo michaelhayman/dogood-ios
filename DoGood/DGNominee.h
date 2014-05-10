@@ -14,5 +14,6 @@
 - (void)configureForUser:(DGUser *)user;
 - (NSURL *)avatarURL;
 - (BOOL)isPopulated;
+- (BOOL)isDGUser;
 
 @end
