@@ -260,7 +260,12 @@
     [errorMapping addAttributeMappingsFromDictionary:@{
         @"messages" : @"messages",
      }];
-    RKResponseDescriptor *errorResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:errorMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"errors" statusCodes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
+
+    NSMutableIndexSet *errorIndexSet = [[NSMutableIndexSet alloc] init];
+    [errorIndexSet addIndexes:RKStatusCodeIndexSetForClass(RKStatusCodeClassClientError)];
+    [errorIndexSet addIndexes:RKStatusCodeIndexSetForClass(RKStatusCodeClassServerError)];
+
+    RKResponseDescriptor *errorResponseDescriptor = [RKResponseDescriptor responseDescriptorWithMapping:errorMapping method:RKRequestMethodAny pathPattern:nil keyPath:@"errors" statusCodes:errorIndexSet];
     [objectManager addResponseDescriptor:errorResponseDescriptor];
 }
 
