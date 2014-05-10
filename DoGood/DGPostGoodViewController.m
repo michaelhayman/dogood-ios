@@ -382,7 +382,6 @@
     if (!nominee.invite) {
         NomineeCell *cell = [self nomineeCell];
         cell.nominee = nominee;
-        [cell invite];
     }
 }
 
