@@ -36,7 +36,7 @@
 typedef BOOL (^CheckEntitiesBlock)(BOOL end, NSMutableArray *entities);
 - (BOOL)check:(UITextView *)textField range:(NSRange)range forEntities:(NSMutableArray *)entities completion:(CheckEntitiesBlock)completion;
 - (void)watchForEntities:(UITextView *)textField;
-- (id)initWithTextView:(UITextView *)textView andEntities:(NSMutableArray *)inputEntities inController:(UIViewController *)controller withType:(NSString *)type reverseScroll:(BOOL)reverse tableOffset:(int)firstOffset secondTableOffset:(int)secondOffset;
+- (id)initWithTextView:(UITextView *)textView andEntities:(NSMutableArray *)inputEntities inController:(UIViewController *)controller withType:(NSString *)type reverseScroll:(BOOL)reverse tableOffset:(int)firstOffset secondTableOffset:(int)secondOffset characterLimit:(int)inputCharacterLimit;
 - (void)resetTypingAttributes:(UITextView *)textField;
 - (void)setLimitText;
 

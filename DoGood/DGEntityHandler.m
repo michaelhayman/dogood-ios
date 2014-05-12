@@ -13,7 +13,7 @@
 
 @implementation DGEntityHandler
 
-- (id)initWithTextView:(UITextView *)textView andEntities:(NSMutableArray *)inputEntities inController:(UIViewController *)controller withType:(NSString *)type reverseScroll:(BOOL)reverse tableOffset:(int)firstOffset secondTableOffset:(int)secondOffset
+- (id)initWithTextView:(UITextView *)textView andEntities:(NSMutableArray *)inputEntities inController:(UIViewController *)controller withType:(NSString *)type reverseScroll:(BOOL)reverse tableOffset:(int)firstOffset secondTableOffset:(int)secondOffset characterLimit:(int)inputCharacterLimit
 {
     self = [super init];
     if (self) {
@@ -21,7 +21,7 @@
         entities = inputEntities;
         entityType = type;
         parent = controller;
-        characterLimit = 120;
+        characterLimit = inputCharacterLimit;
         tableOffset = firstOffset;
         secondTableOffset = secondOffset;
         reverseScroll = reverse;

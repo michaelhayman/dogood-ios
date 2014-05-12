@@ -42,7 +42,7 @@
     characterLimit = 120;
     entities = [[NSMutableArray alloc] init];
     commentInputField.allowsEditingTextAttributes = NO;
-    entityHandler = [[DGEntityHandler alloc] initWithTextView:commentInputField andEntities:entities inController:self withType:@"Comment" reverseScroll:YES tableOffset:0 secondTableOffset:44];
+    entityHandler = [[DGEntityHandler alloc] initWithTextView:commentInputField andEntities:entities inController:self withType:@"Comment" reverseScroll:YES tableOffset:0 secondTableOffset:44 characterLimit:characterLimit];
 
     tableView.transform = CGAffineTransformMakeRotation(-M_PI);
     // [self setupKeyboardBehaviour];
