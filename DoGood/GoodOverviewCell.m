@@ -6,7 +6,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
        // entities
-    characterLimit = 120;
+    characterLimit = 500;
     self.entities = [[NSMutableArray alloc] init];
     self.description.allowsEditingTextAttributes = NO;
     self.description.delegate = self;
