@@ -15,7 +15,7 @@
 #if DEVELOPMENT
     #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3002/"
 #else
-    #define JSON_API_HOST_ADDRESS @"http://dogood-api.springbox.ca/"
+    #define JSON_API_HOST_ADDRESS @"http://api.dogood.mobi/"
 #endif
 
 #pragma mark - Convenience -----
