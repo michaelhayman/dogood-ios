@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -22,7 +22,7 @@
                             <constraint firstAttribute="height" constant="302" id="327"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nominee" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38">
                         <rect key="frame" x="74" y="319" width="236" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -329,6 +329,8 @@
                 <outlet property="locationImageHeight" destination="bd9-Ej-Qqh" id="HMI-0U-d7x"/>
                 <outlet property="locationTitle" destination="WnP-ZZ-Lfp" id="Lx8-lu-r2P"/>
                 <outlet property="moreOptions" destination="217" id="257"/>
+                <outlet property="nominee" destination="38" id="rI7-AE-NtK"/>
+                <outlet property="nomineeHeight" destination="145" id="Cw1-iS-GKc"/>
                 <outlet property="overviewImage" destination="4" id="259"/>
                 <outlet property="overviewImageHeight" destination="327" id="h35-W3-Oal"/>
                 <outlet property="postedBy" destination="47n-5v-B1M" id="ycT-vA-cWQ"/>
@@ -336,7 +338,6 @@
                 <outlet property="regood" destination="178" id="256"/>
                 <outlet property="regoods" destination="73" id="250"/>
                 <outlet property="regoodsHeight" destination="142" id="360"/>
-                <outlet property="username" destination="38" id="242"/>
             </connections>
         </tableViewCell>
     </objects>

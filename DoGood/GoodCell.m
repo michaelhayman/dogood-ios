@@ -120,16 +120,7 @@
 }
 
 - (void)setValues {
-    // nominee
-    self.username.text = self.good.nominee.full_name;
-
-    if (self.good.nominee.user_id) {
-        UITapGestureRecognizer* userGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGoodUserProfile)];
-        [self.username setUserInteractionEnabled:YES];
-        [self.username addGestureRecognizer:userGesture];
-
-        self.username.textColor = LINK_COLOUR;
-    }
+    [self setNominee];
 
     [self setupAvatar];
     // description
@@ -196,6 +187,23 @@
     }
 }
 
+- (void)setNominee {
+    if (self.good.nominee) {
+        self.nomineeHeight.constant = 21.0;
+        self.nominee.text = self.good.nominee.full_name;
+        if (self.good.nominee.user_id) {
+            UITapGestureRecognizer* userGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showGoodUserProfile)];
+            [self.nominee setUserInteractionEnabled:YES];
+            [self.nominee addGestureRecognizer:userGesture];
+
+            self.nominee.textColor = LINK_COLOUR;
+        }
+    } else {
+        self.nominee.text = @"";
+        self.nomineeHeight.constant = 0.0;
+    }
+}
+
 - (void)setDoneImage {
     if ([self.good.done boolValue]) {
         self.done.hidden = YES;
@@ -217,7 +225,7 @@
 
     NSString *urlString = [NSString stringWithFormat:@"dogood://users/%@", self.good.user.userID];
     NSURL *url = [NSURL URLWithString:urlString];
-    NSRange stringRange = NSMakeRange(3, [self.good.user.full_name length]);
+    NSRange stringRange = NSMakeRange([[self.good postedByType] length], [self.good.user.full_name length]);
     [self.postedBy addLinkToURL:url withRange:stringRange];
 }
 

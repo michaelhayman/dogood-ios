@@ -21,7 +21,15 @@
 }
 
 - (NSString *)postedByLine {
-    return [NSString stringWithFormat:@"By %@ %@", self.user.full_name, [self  createdAgoInWords]];
+    return [NSString stringWithFormat:@"%@%@ %@", [self postedByType], self.user.full_name, [self createdAgoInWords]];
+}
+
+- (NSString *)postedByType {
+    if ([self.done boolValue]) {
+        return @"Nominated by ";
+    } else {
+        return @"Call for help by ";
+    }
 }
 
 - (NSURL *)evidenceURL {

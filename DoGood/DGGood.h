@@ -47,5 +47,6 @@
 - (NSString *)createdAgoInWords;
 - (NSString *)postedByLine;
 - (NSURL *)evidenceURL;
+- (NSString *)postedByType;
 
 @end

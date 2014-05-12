@@ -45,7 +45,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *avatarHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *avatarHeightSpacing;
 
-@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *nominee;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *nomineeHeight;
+
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *postedBy;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *description;
 @property (weak, nonatomic) IBOutlet UIButton *like;
