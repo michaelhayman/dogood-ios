@@ -453,7 +453,7 @@
 
             if (self.good.shareTwitter) {
                 DebugLog(@"post to twitter");
-                [twitterManager postToTwitter:[NSString stringWithFormat:@"I did some good! %@", self.good.caption] andImage:self.good.image withSuccess:^(BOOL success, NSString *msg, ACAccount *account) {
+                [twitterManager postToTwitter:[NSString stringWithFormat:@"I posted something good! %@", self.good.caption] andImage:self.good.image withSuccess:^(BOOL success, NSString *msg, ACAccount *account) {
                     [[DGUser currentUser] saveSocialID:[twitterManager getTwitterIDFromAccount:account] withType:@"twitter"];
                 } failure:^(NSError *error) {
                     DebugLog(@"error %@ %@", [error localizedRecoverySuggestion], [error localizedDescription]);
@@ -466,9 +466,9 @@
                 DebugLog(@"sharing to fb");
 
                 NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                params[@"message"] = @"I did some good!";
+                params[@"message"] = @"I posted something good!";
                 params[@"link"] = @"http://www.dogood.mobi/";
-                params[@"name"] = @"Compete with me on Do Good! Get a high score and earn rewards.";
+                params[@"name"] = @"Join Do Good, find good things to do and nominate people for charitable acts.";
                 params[@"caption"] = self.good.caption;
                 params[@"picture"] = NSNullIfNil(postedGood.evidence);
                 [facebookManager postToFacebook:params andImage:self.good.image withSuccess:^(BOOL success, NSString *msg, ACAccount *account) {
