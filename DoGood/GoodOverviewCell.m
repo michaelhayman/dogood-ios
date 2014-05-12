@@ -24,9 +24,9 @@
 
 - (void)setDoneMode:(BOOL)done {
     if (done) {
-        self.placeholder.text = @"Write a story about a good thing someone did";
+        self.placeholder.text = @"Write about a good thing someone did";
     } else {
-        self.placeholder.text = @"Persuade people to help";
+        self.placeholder.text = @"Persuade people to help do some good";
     }
     self.placeholder.textColor = [UIColor grayColor];
 }
