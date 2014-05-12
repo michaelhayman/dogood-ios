@@ -15,11 +15,11 @@
 }
 
 - (void)initEntityHandler {
-    _entityHandler = [[DGEntityHandler alloc] initWithTextView:self.description andEntities:self.entities inController:self.parent withType:@"Good" reverseScroll:NO tableOffset:100 secondTableOffset:64];
+    self.entityHandler = [[DGEntityHandler alloc] initWithTextView:self.description andEntities:self.entities inController:self.parent withType:@"Good" reverseScroll:NO tableOffset:100 secondTableOffset:64 characterLimit:characterLimit];
 }
 
 - (void)prepareForReuse {
-    _entityHandler = nil;
+    self.entityHandler = nil;
 }
 
 - (void)setDoneMode:(BOOL)done {
@@ -32,7 +32,7 @@
 }
 
 - (void)dealloc {
-    _entityHandler = nil;
+    self.entityHandler = nil;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
