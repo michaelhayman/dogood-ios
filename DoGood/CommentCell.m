@@ -5,6 +5,7 @@
 #import <TTTAttributedLabel.h>
 #import "URLHandler.h"
 #import "TTTAttributedLabel+Tag.h"
+#import "NSString+RangeChecker.h"
 
 @implementation CommentCell
 
@@ -84,11 +85,18 @@
     }];
 
     NSRange r = [text rangeOfString:comment.user.full_name];
-    [label addLinkToURL:[NSURL URLWithString:[NSString stringWithFormat:@"dogood://users/%@", comment.user.userID]] withRange:r];
+
+    if ([comment.comment containsRange:r]) {
+        [label addLinkToURL:[NSURL URLWithString:[NSString stringWithFormat:@"dogood://users/%@", comment.user.userID]] withRange:r];
+    }
 
     for (DGEntity *entity in comment.entities) {
-        NSURL *url = [NSURL URLWithString:entity.link];
-        [label addLinkToURL:url withRange:[entity rangeFromArrayWithOffset:[comment.user.full_name length] + 1]];
+        NSRange commentRange = [entity rangeFromArrayWithOffset:[comment.user.full_name length] + 1];
+
+        if ([comment.comment containsRange:commentRange]) {
+            NSURL *url = [NSURL URLWithString:entity.link];
+            [label addLinkToURL:url withRange:commentRange];
+        }
     }
 }
 

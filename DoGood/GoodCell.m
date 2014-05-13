@@ -16,6 +16,7 @@
 #import "DGNominee.h"
 #import "TTTAttributedLabel+Tag.h"
 #import "NSString+Inflections.h"
+#import "NSString+RangeChecker.h"
 
 @implementation GoodCell
 
@@ -226,7 +227,10 @@
     NSString *urlString = [NSString stringWithFormat:@"dogood://users/%@", self.good.user.userID];
     NSURL *url = [NSURL URLWithString:urlString];
     NSRange stringRange = NSMakeRange([[self.good postedByType] length], [self.good.user.full_name length]);
-    [self.postedBy addLinkToURL:url withRange:stringRange];
+
+    if ([text containsRange:stringRange]) {
+        [self.postedBy addLinkToURL:url withRange:stringRange];
+    }
 }
 
 #pragma mark - Regoods
@@ -442,6 +446,14 @@
     captionHeight.constant = [DGAppearance calculateHeightForText:attrString andWidth:kGoodRightColumnWidth];
     self.description.linkAttributes = [DGAppearance linkAttributes];
     self.description.activeLinkAttributes = [DGAppearance activeLinkAttributes];
+
+    for (DGEntity *entity in self.good.entities) {
+        NSURL *url = [NSURL URLWithString:entity.link];
+        NSRange entityRange = [entity rangeFromArrayWithOffset:0];
+        if ([self.good.caption containsRange:entityRange]) {
+            [self.description addLinkToURL:url withRange:entityRange];
+        }
+    }
 
     [self.description hashIfy:self.description.attributedText inLabel:self.description];
 
