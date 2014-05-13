@@ -11,7 +11,8 @@
 #define REWARDS_ENABLED 0
 
 #define DEVELOPMENT_LOGS 0
-#define DEVELOPMENT 1
+#define DEVELOPMENT 0
+
 #if DEVELOPMENT
     #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3002/"
 #else
