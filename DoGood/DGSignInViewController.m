@@ -13,6 +13,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.emailField becomeFirstResponder];
+    if (DEVELOPMENT) {
+        self.emailField.text = @"michael@springbox.ca";
+        self.passwordField.text = @"heyheyhey";
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
