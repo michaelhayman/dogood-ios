@@ -85,7 +85,7 @@
 - (void)getComments {
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:page], @"page", self.good.goodID, @"good_id", nil];
 
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"/comments.json" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+    [[RKObjectManager sharedManager] getObjectsAtPath:@"/comments" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [comments addObjectsFromArray:mappingResult.array];
         loadingStatus = @"No comments posted yet";
 
