@@ -93,7 +93,7 @@
     for (DGEntity *entity in comment.entities) {
         NSRange commentRange = [entity rangeFromArrayWithOffset:[comment.user.full_name length] + 1];
 
-        if ([comment.comment containsRange:commentRange]) {
+        if ([text containsRange:commentRange]) {
             NSURL *url = [NSURL URLWithString:entity.link];
             [label addLinkToURL:url withRange:commentRange];
         }
