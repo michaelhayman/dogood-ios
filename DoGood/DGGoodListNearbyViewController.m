@@ -1,5 +1,4 @@
 #import "DGGoodListNearbyViewController.h"
-
 #import "GoodTableView.h"
 #import <ProgressHUD/ProgressHUD.h>
 #import "DGLocator.h"
@@ -38,6 +37,7 @@
 
 - (void)kickOffLocation {
     [goodTableView resetGood];
+    foundLocation = NO;
 
     [ProgressHUD show:@"Locating..."];
     [DGLocator checkLocationAccessWithSuccess:^(BOOL success, NSString *msg) {
@@ -77,7 +77,10 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)foundLocations {
     userLocation = [foundLocations lastObject];
     [locationManager stopUpdatingLocation];
-    [self findGoodAtLocation:[foundLocations lastObject] matchingQuery:nil];
+    if (!foundLocation) {
+        [self findGoodAtLocation:[foundLocations lastObject] matchingQuery:nil];
+        foundLocation = YES;
+    }
 }
 
 - (void)dealloc {
@@ -85,7 +88,7 @@
 
 #pragma mark - Good Listings
 - (void)findGoodAtLocation:(CLLocation *)location matchingQuery:(NSString *)query {
-    NSString *path = [NSString stringWithFormat:@"/goods/nearby?lat=%f&lng=%f", location.coordinate.latitude, location.coordinate.longitude];
+    NSString *path = [NSString stringWithFormat:@"/goods/nearby?lat=43.718428&lng=-79.377706"];
 
     [goodTableView resetGood];
     [goodTableView loadGoodsAtPath:path];

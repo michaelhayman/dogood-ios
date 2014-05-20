@@ -1,5 +1,6 @@
+@import CoreLocation;
+
 @class GoodTableView;
-#import <CoreLocation/CoreLocation.h>
 
 @interface DGGoodListNearbyViewController : DGViewController <CLLocationManagerDelegate> {
     CLLocationManager *locationManager;
@@ -7,6 +8,7 @@
     UIRefreshControl *refreshControl;
     __weak IBOutlet GoodTableView *goodTableView;
     BOOL initialized;
+    BOOL foundLocation;
 }
 
 @end
