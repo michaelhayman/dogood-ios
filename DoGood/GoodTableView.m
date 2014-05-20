@@ -70,6 +70,8 @@
     self.tableHeaderView = tableHeaderView;
 
     [self chooseDone];
+
+    loadingView.frame = CGRectMake(loadingView.frame.origin.x, loadingView.frame.origin.y + self.tableHeaderView.frame.size.height, loadingView.frame.size.width, loadingView.frame.size.height);
 }
 
 - (IBAction)chooseTab:(id)sender {
