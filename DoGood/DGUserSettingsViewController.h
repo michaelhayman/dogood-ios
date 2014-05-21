@@ -37,8 +37,8 @@ typedef enum {
     findFriends,
     socialNetworks,
     session,
-    settingsNumRows
-} UserSettingsRowType;
+    settingsNumSections
+} UserSettingsSectionType;
 
 typedef enum {
     fullName,
