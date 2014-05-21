@@ -368,7 +368,25 @@
                         <view key="tableFooterView" contentMode="scaleToFill" id="eo4-iu-MvO">
                             <rect key="frame" x="0.0" y="964" width="320" height="43"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vwl-bD-l5c">
+                                    <rect key="frame" x="90" y="11" width="140" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="140" id="gWa-HZ-f7V"/>
+                                        <constraint firstAttribute="height" constant="21" id="qp9-k6-WPD"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="centerX" secondItem="Vwl-bD-l5c" secondAttribute="centerX" id="Ohh-1Y-lem"/>
+                                <constraint firstItem="Vwl-bD-l5c" firstAttribute="top" secondItem="eo4-iu-MvO" secondAttribute="top" constant="11" id="hHh-5K-WCR"/>
+                                <constraint firstAttribute="bottom" secondItem="Vwl-bD-l5c" secondAttribute="bottom" constant="11" id="kAN-Wh-llU"/>
+                            </constraints>
                         </view>
                         <sections>
                             <tableViewSection id="bf9-4t-Y41">
@@ -524,6 +542,7 @@
                     <connections>
                         <outlet property="avatar" destination="rp7-fA-C1T" id="9bo-e9-9aD"/>
                         <outlet property="avatarOverlay" destination="eZd-5F-EqH" id="gxd-kF-O5m"/>
+                        <outlet property="versionNumber" destination="Vwl-bD-l5c" id="5hx-x9-Vb3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9K-1Y-9Le" userLabel="First Responder" sceneMemberID="firstResponder"/>

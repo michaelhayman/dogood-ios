@@ -23,6 +23,8 @@
 
     DGTwitterManager *twitterManager;
     DGFacebookManager *facebookManager;
+
+    __weak IBOutlet UILabel *versionNumber;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *name;

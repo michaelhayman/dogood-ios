@@ -61,6 +61,7 @@
     [avatar setUserInteractionEnabled:YES];
     [avatar addGestureRecognizer:avatarGesture];
     [self setupHeader];
+    [self setupFooter];
 
     // social connection status
     twitterManager = [[DGTwitterManager alloc] initWithAppName:APP_NAME];
@@ -98,6 +99,12 @@
             DebugLog(@"failed to set avatar");
         }];
     }
+}
+
+- (void)setupFooter {
+    NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    NSString *build = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"];
+    versionNumber.text = [NSString stringWithFormat:@"%@ (%@)", version, build];
 }
 
 #pragma mark - Avatar
