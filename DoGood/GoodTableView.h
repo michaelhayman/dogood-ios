@@ -9,7 +9,6 @@
     SAMLoadingView *loadingView;
 
     UISegmentedControl *tabControl;
-    BOOL doneGoods;
     BOOL tabsShowing;
     UIColor *tabColor;
 
@@ -19,6 +18,7 @@
 
 @property (nonatomic, weak) UINavigationController *navigationController;
 @property (nonatomic, weak) UIViewController *parent;
+@property BOOL doneGoods;
 
 - (void)showTabsWithColor:(UIColor *)color;
 - (void)showTabs;

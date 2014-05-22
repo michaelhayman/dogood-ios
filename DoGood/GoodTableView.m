@@ -78,13 +78,13 @@
     UIButton *button = (UIButton *)sender;
 
     if (button.tag == 0) {
-        if (!doneGoods) {
+        if (!self.doneGoods) {
             [self chooseDone];
             [self resetGood];
             [self loadGoodsAtPath:goodsPath];
         }
     } else {
-        if (doneGoods) {
+        if (self.doneGoods) {
             [self chooseTodo];
             [self resetGood];
             [self loadGoodsAtPath:goodsPath];
@@ -94,7 +94,7 @@
 }
 
 - (void)chooseDone {
-    doneGoods = YES;
+    self.doneGoods = YES;
     todo.selected = NO;
     done.selected = YES;
     todo.backgroundColor = tabColor;
@@ -102,7 +102,7 @@
 }
 
 - (void)chooseTodo {
-    doneGoods = NO;
+    self.doneGoods = NO;
     done.selected = NO;
     todo.selected = YES;
     done.backgroundColor = tabColor;
@@ -128,7 +128,7 @@
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:page], @"page", nil];
 
     if (tabsShowing) {
-        [params setObject:[NSNumber numberWithBool:doneGoods] forKey:@"done"];
+        [params setObject:[NSNumber numberWithBool:self.doneGoods] forKey:@"done"];
     }
 
     [self addSubview:loadingView];

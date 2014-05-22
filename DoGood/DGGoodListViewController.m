@@ -58,6 +58,7 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
         DGPostGoodViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"PostGood"];
         controller.category = self.category;
+        controller.doneGoods = goodTableView.doneGoods;
         [self.navigationController pushViewController:controller animated:YES];
     }
 }

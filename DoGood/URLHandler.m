@@ -26,6 +26,7 @@
                 if (access) {
                     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
                     DGPostGoodViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"PostGood"];
+                    controller.doneGoods = YES;
                     [nav pushViewController:controller animated:YES];
                 }
             } else {

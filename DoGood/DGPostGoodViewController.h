@@ -25,6 +25,7 @@
 
 @property (nonatomic, retain) DGGood *good;
 @property (nonatomic, retain) DGCategory *category;
+@property BOOL doneGoods;
 
 - (IBAction)post:(id)sender;
 

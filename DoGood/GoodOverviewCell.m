@@ -5,13 +5,11 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-       // entities
     characterLimit = 500;
     self.entities = [[NSMutableArray alloc] init];
     self.description.allowsEditingTextAttributes = NO;
     self.description.delegate = self;
     self.placeholder.hidden = NO;
-    [self setDoneMode:YES];
 }
 
 - (void)initEntityHandler {

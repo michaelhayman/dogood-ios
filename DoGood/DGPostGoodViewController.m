@@ -62,6 +62,9 @@
         self.navigationController.navigationBar.barTintColor = [self.category rgbColour];
         self.good.category = self.category;
     }
+
+    self.good.done = [NSNumber numberWithBool:self.doneGoods];
+
     [self setupNavigationBar];
 }
 
@@ -85,13 +88,15 @@
 - (void)setupNavigationBar {
     tabControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Nominate", @"Ask for help", nil]];
 
-    [tabControl setSelectedSegmentIndex:0];
+    if ([self.good.done boolValue]) {
+        [tabControl setSelectedSegmentIndex:0];
+    } else {
+        [tabControl setSelectedSegmentIndex:1];
+    }
 
     [tabControl sizeToFit];
 
     [tabControl addTarget:self action:@selector(chooseTab:) forControlEvents:UIControlEventValueChanged];
-
-    [self setTableMode];
 
     self.navigationItem.titleView = tabControl;
 }
@@ -204,6 +209,7 @@
         [cell.image setUserInteractionEnabled:YES];
         [cell.image addGestureRecognizer:imageGesture];
         cell.tag = good_overview_cell_tag;
+        [cell setDoneMode:[self.good.done boolValue]];
         return cell;
     } else if (indexPath.section == category) {
         static NSString *CellIdentifier = @"category";
