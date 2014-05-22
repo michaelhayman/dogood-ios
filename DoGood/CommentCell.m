@@ -28,6 +28,8 @@
 - (void)setValues {
     if ([self.comment.user avatarURL]) {;
         [self.avatar setImageWithURL:[self.comment.user avatarURL]];
+    } else {
+        self.avatar.image = nil;
     }
 
     self.timePosted.text = [[self.comment createdAgoInWords] uppercaseString];

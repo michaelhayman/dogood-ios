@@ -52,6 +52,8 @@
 
     if ([self.user avatarURL]) {
         [self.avatar setImageWithURL:[self.user avatarURL]];
+    } else {
+        self.avatar.image = nil;
     }
 
     // follows
