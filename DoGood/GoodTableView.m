@@ -54,13 +54,13 @@
     tabColor = color;
 
     done = [self tabButtonWithOffset:0];
-    [done setTitle:@"Done" forState:UIControlStateNormal];
+    [done setTitle:@"Nominations" forState:UIControlStateNormal];
     done.tag = 0;
     done.selected = YES;
 
     todo = [self tabButtonWithOffset:160];
     todo.tag = 1;
-    [todo setTitle:@"To Do" forState:UIControlStateNormal];
+    [todo setTitle:@"Help Wanted" forState:UIControlStateNormal];
 
     tabsShowing = YES;
 
