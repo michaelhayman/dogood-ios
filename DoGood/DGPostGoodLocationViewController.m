@@ -164,12 +164,11 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    NSMutableArray *tempLocations = locations;
     if ([searchText length] > 1) {
         // wait a few seconds before doing this
         [self findVenuesAtLocation:userLocation matchingQuery:searchText];
     } else if (searchText.length == 0) {
-        locations = tempLocations;
+        [self findVenuesAtLocation:userLocation matchingQuery:searchText];
         [tableView reloadData];
     } else {
         [locations removeAllObjects];
