@@ -20,6 +20,10 @@
         [collectionView registerNib:nib forCellWithReuseIdentifier:cellName];
 
         collectionView.backgroundColor = [UIColor clearColor];
+
+        if (REWARDS_ENABLED) {
+            collectionView.frame = CGRectMake(10, 11, 290, 84);
+        }
     }
     return self;
 }
@@ -30,7 +34,11 @@
 
 #pragma mark - UICollectionView methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 2;
+    if (REWARDS_ENABLED) {
+        return 3;
+    } else {
+        return 2;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)aCollectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
