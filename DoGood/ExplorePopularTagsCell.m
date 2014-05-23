@@ -7,7 +7,7 @@
 @implementation ExplorePopularTagsCell
 
 - (id)initWithController:(UINavigationController *)controller {
-    CGRect frame = CGRectMake(0, 0, 320, 150);
+    CGRect frame = CGRectMake(0, 0, 320, 218);
     self = [super initWithFrame:frame];
 
     if (self) {
