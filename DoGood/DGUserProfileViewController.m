@@ -1,17 +1,13 @@
 #import "DGUserProfileViewController.h"
-#import "DGWelcomeViewController.h"
 #import "DGUserSettingsViewController.h"
 #import "DGUserGoodsTableView.h"
 #import "DGUserListViewController.h"
 #import "DGUserFindFriendsViewController.h"
-#import "GoodCell.h"
-#import "DGGood.h"
 #import "DGFollow.h"
 #import "DGReport.h"
 #import "DGUserInvitesViewController.h"
-#import "GoodTableView.h"
-#import <SAMLoadingView/SAMLoadingView.h>
 #import "AuthenticateView.h"
+#import <SAMLoadingView/SAMLoadingView.h>
 #import <ProgressHUD/ProgressHUD.h>
 
 @interface DGUserProfileViewController ()
