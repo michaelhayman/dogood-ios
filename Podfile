@@ -3,6 +3,7 @@ inhibit_all_warnings!
 
 # testing - disable for production
 pod 'HockeySDK', '~> 3.5.0'
+pod 'RHObjectiveBeagle', '~> 1.0.0'
 
 # networking
 pod 'AFNetworking', '~> 1.3.1'
