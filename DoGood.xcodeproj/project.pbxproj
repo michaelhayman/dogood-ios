@@ -46,7 +46,6 @@
 		633DBF7417ADD5360038BC2D /* GoodShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633DBF7317ADD5360038BC2D /* GoodShareCell.xib */; };
 		633DBF7717ADD57E0038BC2D /* GoodShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF7617ADD57E0038BC2D /* GoodShareCell.m */; };
 		633DBF7917AE02580038BC2D /* UserOverview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633DBF7817AE02570038BC2D /* UserOverview.xib */; };
-		633DBF7B17AE1E530038BC2D /* DoGood.nss in Resources */ = {isa = PBXBuildFile; fileRef = 633DBF7A17AE1E530038BC2D /* DoGood.nss */; };
 		633DBF7E17AE25CF0038BC2D /* DGUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF7D17AE25CF0038BC2D /* DGUserProfileViewController.m */; };
 		633DBF8417AE92E00038BC2D /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF8117AE92E00038BC2D /* NavigationViewController.m */; };
 		63451D521840E72300B713F0 /* DGNominee.m in Sources */ = {isa = PBXBuildFile; fileRef = 63451D511840E72300B713F0 /* DGNominee.m */; };
@@ -222,7 +221,6 @@
 		633DBF7517ADD57D0038BC2D /* GoodShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodShareCell.h; sourceTree = "<group>"; };
 		633DBF7617ADD57E0038BC2D /* GoodShareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodShareCell.m; sourceTree = "<group>"; };
 		633DBF7817AE02570038BC2D /* UserOverview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserOverview.xib; sourceTree = "<group>"; };
-		633DBF7A17AE1E530038BC2D /* DoGood.nss */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DoGood.nss; sourceTree = "<group>"; };
 		633DBF7C17AE25CF0038BC2D /* DGUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserProfileViewController.h; sourceTree = "<group>"; };
 		633DBF7D17AE25CF0038BC2D /* DGUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGUserProfileViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		633DBF8017AE92E00038BC2D /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -744,13 +742,6 @@
 			children = (
 				636AEA6C17AD4B8A002A3494 /* Assets */,
 				6319D39017BDF05C0071DA71 /* Components */,
-				6355EC2517B674E900EE91C0 /* constants.h */,
-				6355EC3217B75EB300EE91C0 /* constants.m */,
-				638647F017AC087A00167F15 /* DGAppDelegate.h */,
-				638647F117AC087A00167F15 /* DGAppDelegate.m */,
-				6308161D17C41E0D004DE5D7 /* DGAppearance.h */,
-				6308161E17C41E0D004DE5D7 /* DGAppearance.m */,
-				633DBF7A17AE1E530038BC2D /* DoGood.nss */,
 				636AEA6917AD4776002A3494 /* Posts */,
 				636AEA6B17AD477F002A3494 /* Explore */,
 				633DBF7F17AE92D20038BC2D /* Menu */,
@@ -770,6 +761,12 @@
 				638647EA17AC087A00167F15 /* InfoPlist.strings */,
 				638647ED17AC087A00167F15 /* main.m */,
 				638647EF17AC087A00167F15 /* DoGood-Prefix.pch */,
+				6355EC2517B674E900EE91C0 /* constants.h */,
+				6355EC3217B75EB300EE91C0 /* constants.m */,
+				638647F017AC087A00167F15 /* DGAppDelegate.h */,
+				638647F117AC087A00167F15 /* DGAppDelegate.m */,
+				6308161D17C41E0D004DE5D7 /* DGAppearance.h */,
+				6308161E17C41E0D004DE5D7 /* DGAppearance.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -890,7 +887,6 @@
 				6303A33617FE322100E2EACD /* Media.xcassets in Resources */,
 				633DBF7417ADD5360038BC2D /* GoodShareCell.xib in Resources */,
 				633DBF7917AE02580038BC2D /* UserOverview.xib in Resources */,
-				633DBF7B17AE1E530038BC2D /* DoGood.nss in Resources */,
 				6355EC0D17B0D4C300EE91C0 /* CommentCell.xib in Resources */,
 				63FBF608180B0C06005686A6 /* RewardMiniCell.xib in Resources */,
 				6355EC1417B0EE1E00EE91C0 /* RewardCell.xib in Resources */,
