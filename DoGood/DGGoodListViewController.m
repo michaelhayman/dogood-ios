@@ -40,7 +40,7 @@
     } else if (self.color) {
         [self customizeNavColor:self.color];
         [goodTableView showTabsWithColor:self.color];
-    } else {
+    } else if (!self.hideTabs) {
         [goodTableView showTabs];
     }
 
@@ -128,7 +128,7 @@
     } else if (_tag) {
         path = [NSString stringWithFormat:@"/goods/tagged?id=%@&name=%@", _tag.tagID, _tag.name];
     } else if (self.user) {
-        path = [NSString stringWithFormat:@"/goods/posted_or_followed_by?user_id=%@", self.user.userID];
+        path = [NSString stringWithFormat:@"/goods/followed_by?user_id=%@", self.user.userID];
     } else {
         path = @"/goods";
     }

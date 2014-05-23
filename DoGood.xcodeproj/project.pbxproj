@@ -83,6 +83,9 @@
 		636AEAA917AD79B1002A3494 /* GoodOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636AEAA817AD79B1002A3494 /* GoodOverviewCell.xib */; };
 		636FF5EF184AA19E003774AE /* DGPostGoodNomineeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636FF5EE184AA19E003774AE /* DGPostGoodNomineeAddViewController.m */; };
 		6378AE1E1818BA50001DB9BF /* DGRKObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6378AE1D1818BA50001DB9BF /* DGRKObjectRequestOperation.m */; };
+		6379B821192E388000439ED7 /* DGUserGoodsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379B820192E388000439ED7 /* DGUserGoodsTableView.m */; };
+		6379B86F192E407800439ED7 /* UserGoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379B86D192E407800439ED7 /* UserGoodCell.m */; };
+		6379B870192E407800439ED7 /* UserGoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6379B86E192E407800439ED7 /* UserGoodCell.xib */; };
 		637ABAD317C7C6F4004AA4C9 /* SearchUserNetworks.xib in Resources */ = {isa = PBXBuildFile; fileRef = 637ABAD217C7C6F4004AA4C9 /* SearchUserNetworks.xib */; };
 		63834D0417DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63834D0317DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.m */; };
 		638647EC17AC087A00167F15 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 638647EA17AC087A00167F15 /* InfoPlist.strings */; };
@@ -284,6 +287,11 @@
 		636FF5EE184AA19E003774AE /* DGPostGoodNomineeAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPostGoodNomineeAddViewController.m; sourceTree = "<group>"; };
 		6378AE1C1818BA50001DB9BF /* DGRKObjectRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGRKObjectRequestOperation.h; sourceTree = "<group>"; };
 		6378AE1D1818BA50001DB9BF /* DGRKObjectRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRKObjectRequestOperation.m; sourceTree = "<group>"; };
+		6379B81F192E388000439ED7 /* DGUserGoodsTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserGoodsTableView.h; sourceTree = "<group>"; };
+		6379B820192E388000439ED7 /* DGUserGoodsTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserGoodsTableView.m; sourceTree = "<group>"; };
+		6379B86C192E407800439ED7 /* UserGoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserGoodCell.h; sourceTree = "<group>"; };
+		6379B86D192E407800439ED7 /* UserGoodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserGoodCell.m; sourceTree = "<group>"; };
+		6379B86E192E407800439ED7 /* UserGoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserGoodCell.xib; sourceTree = "<group>"; };
 		637ABAD217C7C6F4004AA4C9 /* SearchUserNetworks.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchUserNetworks.xib; sourceTree = "<group>"; };
 		63834D0217DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTextFieldSearchPeopleTableViewController.h; sourceTree = "<group>"; };
 		63834D0317DE9FF100EE67DB /* DGTextFieldSearchPeopleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGTextFieldSearchPeopleTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -553,6 +561,11 @@
 				6355EC3917B8680300EE91C0 /* SignUpOverviewCell.xib */,
 				6355EC3B17B86B7800EE91C0 /* SignUpOverviewCell.h */,
 				6355EC3C17B86B7B00EE91C0 /* SignUpOverviewCell.m */,
+				6379B81F192E388000439ED7 /* DGUserGoodsTableView.h */,
+				6379B820192E388000439ED7 /* DGUserGoodsTableView.m */,
+				6379B86C192E407800439ED7 /* UserGoodCell.h */,
+				6379B86D192E407800439ED7 /* UserGoodCell.m */,
+				6379B86E192E407800439ED7 /* UserGoodCell.xib */,
 				639B1233187D0CB2005C9BD9 /* AuthenticateView.h */,
 				639B1234187D0CB2005C9BD9 /* AuthenticateView.m */,
 				639B1235187D0CB2005C9BD9 /* AuthenticateView.xib */,
@@ -872,6 +885,7 @@
 				636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */,
 				636AEA9B17AD63EC002A3494 /* GoodCell.xib in Resources */,
 				636AEAA917AD79B1002A3494 /* GoodOverviewCell.xib in Resources */,
+				6379B870192E407800439ED7 /* UserGoodCell.xib in Resources */,
 				63FDAC44181C603B00668B15 /* ExplorePopularTagsCell.xib in Resources */,
 				6303A33617FE322100E2EACD /* Media.xcassets in Resources */,
 				633DBF7417ADD5360038BC2D /* GoodShareCell.xib in Resources */,
@@ -1040,6 +1054,7 @@
 				639B88E417B9A25B005E2B62 /* DGVote.m in Sources */,
 				630046D01810E619001529E5 /* URLHandler.m in Sources */,
 				639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */,
+				6379B86F192E407800439ED7 /* UserGoodCell.m in Sources */,
 				63E4424D17BC3010000224E8 /* DGSignUpDetailsViewController.m in Sources */,
 				63E0798B17BC5A6F006FC42E /* UITextFieldCell.m in Sources */,
 				63FBF603180830C4005686A6 /* DGReport.m in Sources */,
@@ -1055,6 +1070,7 @@
 				63FDAC48181C61BA00668B15 /* TagCollectionCell.m in Sources */,
 				63D9F1FE18107E1000B9207F /* DGEntity.m in Sources */,
 				6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */,
+				6379B821192E388000439ED7 /* DGUserGoodsTableView.m in Sources */,
 				63FBF606180AECFF005686A6 /* UIImage+Grayscale.m in Sources */,
 				63FBF60A180CD5F3005686A6 /* RestKit.m in Sources */,
 				6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */,

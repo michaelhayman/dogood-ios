@@ -15,7 +15,10 @@
 @property (nonatomic, copy) NSNumber* following_count;
 @property (nonatomic, copy) NSNumber* current_user_following;
 @property (nonatomic, copy) NSNumber* liked_goods_count;
-@property (nonatomic, copy) NSNumber* posted_or_followed_goods_count;
+@property (nonatomic, copy) NSNumber* followed_goods_count;
+@property (nonatomic, copy) NSNumber* nominations_by_user_goods_count;
+@property (nonatomic, copy) NSNumber* nominations_for_user_goods_count;
+@property (nonatomic, copy) NSNumber* help_wanted_by_user_goods_count;
 @property (nonatomic, copy) NSString* message;
 @property (nonatomic, copy) NSString* avatar_url;
 @property (nonatomic, copy) UIImage* image;

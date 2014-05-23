@@ -1,7 +1,7 @@
 #import "DGUserProfileViewController.h"
 #import "DGWelcomeViewController.h"
 #import "DGUserSettingsViewController.h"
-#import "GoodTableView.h"
+#import "DGUserGoodsTableView.h"
 #import "DGUserListViewController.h"
 #import "DGUserFindFriendsViewController.h"
 #import "GoodCell.h"
@@ -46,11 +46,8 @@
 
     avatar.contentMode = UIViewContentModeScaleAspectFit;
 
-    // get good list
-    goodTableView.navigationController = self.navigationController;
-    goodTableView.parent = self;
-    [goodTableView setupRefresh];
-    [goodTableView setupInfiniteScroll];
+    userGoodsTableView.navigationController = self.navigationController;
+    userGoodsTableView.userID = self.userID;
 
     invites = [[DGUserInvitesViewController alloc] init];
     invites.parent = (UIViewController *)self;
@@ -81,7 +78,6 @@
 }
 
 - (void)setupProfile {
-
     [self setupProfileButtons];
 
     if (!profileLoaded) {
@@ -110,8 +106,6 @@
             [self setupProfile];
         }
     }
-
-    [self getUserGood];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -146,18 +140,6 @@
     [self deregisterNotifications];
 }
 
-#pragma mark - Tabs
-- (void)setupTabs {
-    NSString *nominationsPlural = [DGAppearance pluralForCount:user.posted_or_followed_goods_count];
-    NSString *nominationsTitle = [NSString stringWithFormat:@"%@ Nomination%@", user.posted_or_followed_goods_count, nominationsPlural];
-    [goodsButton addTarget:self action:@selector(getUserGood) forControlEvents:UIControlEventTouchUpInside];
-    [goodsButton setTitle:nominationsTitle forState:UIControlStateNormal];
-    [goodsButton setTitle:nominationsTitle forState:UIControlStateSelected];
-    [likesButton addTarget:self action:@selector(getUserLikes) forControlEvents:UIControlEventTouchUpInside];
-    NSString *votesPlural = [DGAppearance pluralForCount:user.liked_goods_count];
-    [likesButton setTitle:[NSString stringWithFormat:@"%@ Vote%@", user.liked_goods_count, votesPlural] forState:UIControlStateNormal];
-}
-
 - (void)resetProfile {
     self.userID = nil;
 }
@@ -178,14 +160,14 @@
 
         name.text = user.full_name;
 
+        [userGoodsTableView initializeTableWithUser:user];
+
         if ([user.current_user_following boolValue] == YES) {
             centralButton.selected = YES;
             [centralButton setTitle:@"Following" forState:UIControlStateNormal];
         } else {
             DebugLog(@"not following");
         }
-
-        [self setupTabs];
 
         if ([self isOwnProfile]) {
            avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
@@ -366,7 +348,6 @@
     }
 }
 
-
 #pragma mark - User listing links
 - (void)showFollowers {
     [self userListWithType:@"User" typeID:user.userID andQuery:@"followers"];
@@ -384,35 +365,5 @@
     controller.query = query;
     [self.navigationController pushViewController:controller animated:YES];
 }
-
-#pragma mark - Good Listings
-- (void)getUserGood {
-    if (goodsButton.selected == NO) {
-        [self reselect:goodsButton];
-        [self deselect:likesButton];
-        NSString *path = [NSString stringWithFormat:@"/goods/nominations?user_id=%@", self.userID];
-        [goodTableView resetGood];
-        [goodTableView loadGoodsAtPath:path];
-    }
-}
-
-- (void)getUserLikes {
-    if (likesButton.selected == NO) {
-        [self deselect:goodsButton];
-        [self reselect:likesButton];
-        NSString *path = [NSString stringWithFormat:@"/goods/liked_by?user_id=%@", self.userID];
-        [goodTableView resetGood];
-        [goodTableView loadGoodsAtPath:path];
-    }
-}
-
-- (void)deselect:(UIButton *)button {
-    [DGAppearance tabButton:button on:NO withBackgroundColor:BARK andTextColor:BRILLIANCE];
-}
-
-- (void)reselect:(UIButton *)button {
-    [DGAppearance tabButton:button on:YES withBackgroundColor:BRILLIANCE andTextColor:MUD];
-}
-
 
 @end

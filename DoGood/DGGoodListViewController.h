@@ -16,6 +16,7 @@
 @property (nonatomic, strong) DGUser *user;
 @property (nonatomic, strong) NSNumber *goodID;
 @property (nonatomic, strong) UIColor *color;
+@property BOOL hideTabs;
 
 - (void)getGood;
 

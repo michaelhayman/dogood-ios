@@ -3,7 +3,7 @@
 @class DGUserInvitesViewController;
 @class DGGoodListViewController;
 @class SAMLoadingView;
-@class GoodTableView;
+@class DGUserGoodsTableView;
 
 @interface DGUserProfileViewController : DGViewController <UIActionSheetDelegate, UIAlertViewDelegate> {
     __weak IBOutlet UIButton *centralButton;
@@ -25,7 +25,7 @@
     __weak IBOutlet UIButton *likesButton;
 
     DGUserInvitesViewController *invites;
-    __weak IBOutlet GoodTableView *goodTableView;
+    __weak IBOutlet DGUserGoodsTableView *userGoodsTableView;
 
     UIActionSheet *moreOptionsSheet;
     UIActionSheet *shareOptionsSheet;
