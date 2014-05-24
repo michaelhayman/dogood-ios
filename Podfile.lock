@@ -38,6 +38,7 @@ PODS:
   - RestKit/Support (0.21.0):
     - TransitionKit (= 1.1.1)
   - RFKeychain (0.1)
+  - RHObjectiveBeagle (1.0.0)
   - RKValueTransformers (1.0.1)
   - SAMLoadingView (0.1.0)
   - SHEmailValidator (1.0.2)
@@ -65,6 +66,7 @@ DEPENDENCIES:
   - ProgressHUD (from `git@github.com:relatedcode/ProgressHUD.git`)
   - RestKit (~> 0.21.0)
   - RFKeychain (~> 0.1)
+  - RHObjectiveBeagle (from `git@github.com:heardrwt/RHObjectiveBeagle.git`)
   - SAMLoadingView (~> 0.1.0)
   - SHEmailValidator
   - SocialAuth (from `git@github.com:michaelhayman/SocialAuth.git`)
@@ -81,37 +83,40 @@ EXTERNAL SOURCES:
     :git: git@github.com:doPanic/MJPopupViewController.git
   ProgressHUD:
     :git: git@github.com:relatedcode/ProgressHUD.git
+  RHObjectiveBeagle:
+    :git: git@github.com:heardrwt/RHObjectiveBeagle.git
   SocialAuth:
     :git: git@github.com:michaelhayman/SocialAuth.git
 
 SPEC CHECKSUMS:
-  AFNetworking: 9ec8aafb9269236a7630bd8d9838ce2ba30fa2a0
-  CRNavigationController: a28d3a46893da80b3072fa7775b9fee1fb0e2c03
-  HexColors: 99211502e17904af7891fc8f687d0e4958a6d66e
-  HockeySDK: 685e6ca0b78668ef8b595fba17fe087ea6074b05
-  Inflections: 59aaf387b9ce22342b504534ee785fbdd793edd0
-  ISO8601DateFormatterValueTransformer: d0af1f50a9df42db72d7418db31938b8473e0af8
-  Kiwi: 03539aeb004ccd42bdbc31253617b26364315df4
+  AFNetworking: 5db28423ed062e2b15b97c731f06cfb6668e607a
+  CRNavigationController: 1c04756e2a7595aaf1b71be9e9306861884252ec
+  HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
+  HockeySDK: 85c058a5300638a2e4fc98658f90b76df96c9f46
+  Inflections: 38689e8c1b1d0064566a865e8a8229f80a4bee87
+  ISO8601DateFormatterValueTransformer: a7e1ecf4380d0b561306ced1a3f01bd5f65d2213
+  Kiwi: 513ec6b10d7545b0cbeeb89f4f3adffe8e5520be
   MJPopupViewController: 89f932b2a44b8348355300c99e8d3d6d5e3ee59a
-  NSData+Base64: bd5dacbc799c0339bd6a961a9ea80dd6eba11b33
-  NSDate+TimeAgo: fe93d3042e83093ae3630bc47ae7d57f782733f6
-  OAuthCore: 946cd0ac34bbb32d79b69e65417568e4b7ee8e9e
+  NSData+Base64: aae92a2e3f0bd88b29fe6093551ded3f5c062548
+  NSDate+TimeAgo: c01d6ac0b81add41f77f264fa4276d355723fcde
+  OAuthCore: 09d3c56dd3f64a61d1ffcbf103f28118ff8ca2e9
   ProgressHUD: 9d9e2fd571d18e0de5ab4b1a69336f8c890a700b
-  RegexKitLite: b16f029b518614394438e17b7d1df8bfa1e5a81e
-  RestKit: c11a30e7bc73513d9d2c2695672aba7697d24181
-  RFKeychain: 6f70ff418c01b5d76b84796941f3d63672c9e316
-  RKValueTransformers: 1562d458b9c9d59ce777bfc5982f2e1aef2e9182
-  SAMLoadingView: aaab718284bfe0e28c2303ba765329f068d173e9
-  SHEmailValidator: 485a8ed44c3eda3bf25072f248818f81f8aecd3b
+  RegexKitLite: 761b4944f23cb8fe20697b2e47be0689fd832c09
+  RestKit: 02cb6d613048fdb123b51a7fc31542b6414cc08f
+  RFKeychain: b86238477be053f540916c5e69da625a4adf6951
+  RHObjectiveBeagle: b834675014f5db213acdd016608057e1f0231da5
+  RKValueTransformers: 994503e34bffdbe0159ff6b497290dd1f8d5657f
+  SAMLoadingView: 11b746311268140f6a2380723215fe96a6d15dee
+  SHEmailValidator: 04e1a7590a536dcf6bd6ac6ecf54cfc25794fbac
   SocialAuth: 53f5e770e4d01084f809ff231533196826f767d6
-  SOCKit: 8871d058926a6c6cc144f0c5eee82c5d0ec274a3
-  SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
-  TPKeyboardAvoiding: 0536c563e6c8b8e95a7c4bf87fca9c0991f5e826
-  TransitionKit: d0e3344aac92991395d4c2e72d9c5a8ceeb12910
-  TSMessages: 5ab92604b02e49a755d2cc2baf114d2248a90977
-  TTTAttributedLabel: e504133915a9b11de63cb470ffa2790383a3eb23
-  UIAlertView+Blocks: bac565670861210aff25f574638f0c552648a0a8
-  UIImage-Categories: 15e4859f6025bd785a241b113b89165fa030ca1a
-  UINavigationBar+Addition: 61609ae85b650093dd39331686f15a1d83d21823
+  SOCKit: d8d0dd3688ae1026c12367570da8fa8e1a6980fb
+  SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
+  TPKeyboardAvoiding: 0099b02d8ec402ce5976bfe9c9293f3bf3e0f707
+  TransitionKit: b573f93c422f6aedf7d40e93e7c2f202d1295063
+  TSMessages: 6e85d86caa001e4965db8ae24c5ad19a5887667c
+  TTTAttributedLabel: 23bdd377bd70c78e67a3bd790d7237306e594acc
+  UIAlertView+Blocks: 0b749f1f7bd5131ff2233b30a406c1585a7171b2
+  UIImage-Categories: 99245612a4725173db4f0a9ed8ba9dbe2a1e0b4f
+  UINavigationBar+Addition: 75b1b709f000aa7de774df19d4fd9098ba939a51
 
-COCOAPODS: 0.32.1
+COCOAPODS: 0.33.1
