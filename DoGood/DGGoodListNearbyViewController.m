@@ -2,6 +2,7 @@
 #import "GoodTableView.h"
 #import <ProgressHUD/ProgressHUD.h>
 #import "DGLocator.h"
+#import "DGPostGoodViewController.h"
 
 @interface DGGoodListNearbyViewController ()
 
@@ -15,6 +16,16 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     [self setupMenuTitle:@"Nearby"];
+    self.navigationItem.rightBarButtonItem = [DGAppearance postBarButtonItemFor:self];
+}
+
+- (IBAction)postGood:(id)sender {
+    if ([[DGUser currentUser] authorizeAccess:self.navigationController.visibleViewController]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+        DGPostGoodViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"PostGood"];
+        controller.doneGoods = goodTableView.doneGoods;
+        [self.navigationController pushViewController:controller animated:YES];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {

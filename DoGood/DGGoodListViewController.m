@@ -51,6 +51,8 @@
     [self getGood];
 
     [self setupUserPoints];
+
+    self.navigationItem.rightBarButtonItem = [DGAppearance postBarButtonItemFor:self];
 }
 
 - (IBAction)postGood:(id)sender {
