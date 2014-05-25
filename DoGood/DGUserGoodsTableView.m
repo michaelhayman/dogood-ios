@@ -2,6 +2,7 @@
 #import "UserGoodCell.h"
 #import "DGGoodListViewController.h"
 #import "DGUser.h"
+#import "NSString+Inflections.h"
 
 @implementation DGUserGoodsTableView
 
@@ -26,55 +27,68 @@
     [self reloadData];
 }
 
+- (NSString *)pluralizeString:(NSString *)string basedOnNumber:(NSNumber *)number {
+    if ([number intValue] != 1) {
+        return [string pluralize];
+    } else {
+        return string;
+    }
+}
+
 #pragma mark - UITableView delegate methods
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * reuseIdentifier = kUserGoodCell;
     UserGoodCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-
     if (indexPath.section == follows) {
-        cell.sectionName.text = [NSString stringWithFormat:@"Followed %@ good deeds", self.user.followed_goods_count];
+        cell.sectionName.text = [NSString stringWithFormat:@"Followed %@ good %@", self.user.followed_goods_count, [self pluralizeString:@"deed" basedOnNumber:self.user.followed_goods_count]];
         cell.icon.image = [UIImage imageNamed:@"profile_followed"];
+        if (![self.user hasFollowedGoods]) {
+            [cell disable];
+        } else {
+            [cell enable];
+        }
     }
     if (indexPath.section == nominationsFor) {
-        cell.sectionName.text = [NSString stringWithFormat:@"Added %@ good deeds", self.user.nominations_for_user_goods_count];
+        cell.sectionName.text = [NSString stringWithFormat:@"Nominated for %@ good %@", self.user.nominations_for_user_goods_count, [self pluralizeString:@"deed" basedOnNumber:self.user.nominations_for_user_goods_count]];
         cell.icon.image = [UIImage imageNamed:@"profile_nominated"];
+        if (![self.user hasPostedNominations]) {
+            [cell disable];
+        } else {
+            [cell enable];
+        }
     }
     if (indexPath.section == votes) {
-        cell.sectionName.text = [NSString stringWithFormat:@"Voted for %@ good deeds", self.user.liked_goods_count];
+        cell.sectionName.text = [NSString stringWithFormat:@"Voted for %@ good %@", self.user.liked_goods_count, [self pluralizeString:@"deed" basedOnNumber:self.user.liked_goods_count]];
         cell.icon.image = [UIImage imageNamed:@"profile_voted"];
+        if (![self.user hasVotes]) {
+            [cell disable];
+        } else {
+            [cell enable];
+        }
     }
     if (indexPath.section == nominationsBy) {
-        cell.sectionName.text = [NSString stringWithFormat:@"Nominated %@ good deeds", self.user.nominations_by_user_goods_count];
+        cell.sectionName.text = [NSString stringWithFormat:@"Posted %@ %@", self.user.nominations_by_user_goods_count, [self pluralizeString:@"nomination" basedOnNumber:self.user.nominations_by_user_goods_count]];
         cell.icon.image = [UIImage imageNamed:@"profile_nominations_posted"];
+        if (![self.user hasBeenNominated]) {
+            [cell disable];
+        } else {
+            [cell enable];
+        }
     }
     if (indexPath.section == helpWanted) {
-        cell.sectionName.text = [NSString stringWithFormat:@"Asked for help %@ times", self.user.help_wanted_by_user_goods_count];
+        cell.sectionName.text = [NSString stringWithFormat:@"Asked for help %@ %@", self.user.help_wanted_by_user_goods_count, [self pluralizeString:@"time" basedOnNumber:self.user.help_wanted_by_user_goods_count]];
         cell.icon.image = [UIImage imageNamed:@"profile_help_wanted"];
+        if (![self.user hasPostedHelpWantedGoods]) {
+            [cell disable];
+        } else {
+            [cell enable];
+        }
     }
     return cell;
 }
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
-	switch (section) {
-		case follows:
-			return [self.user.followed_goods_count intValue] > 0;
-			break;
-		case nominationsFor:
-			return [self.user.nominations_for_user_goods_count intValue] > 0;
-			break;
-		case votes:
-			return [self.user.liked_goods_count intValue] > 0;
-			break;
-		case nominationsBy:
-			return [self.user.nominations_by_user_goods_count intValue] > 0;
-			break;
-		case helpWanted:
-			return [self.user.help_wanted_by_user_goods_count intValue] > 0;
-			break;
-		default:
-            return 0;
-			break;
-	}
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
