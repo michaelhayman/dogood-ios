@@ -240,6 +240,7 @@
             [self increaseRegood];
 
             [DGFollow followType:@"Good" withID:self.good.goodID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeFollowOnGood object:nil];
                 DebugLog(@"%@", msg);
             } failure:^(NSError *error) {
                 [self decreaseRegood];
@@ -249,6 +250,7 @@
             [self decreaseRegood];
 
             [DGFollow unfollowType:@"Good" withID:self.good.goodID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeFollowOnGood object:nil];
                 DebugLog(@"%@", msg);
             } failure:^(NSError *error) {
                 [self increaseRegood];
@@ -302,7 +304,9 @@
 
         if (self.like.isSelected == NO) {
             [self increaseLike];
-            [[RKObjectManager sharedManager] postObject:nil path:@"/votes" parameters:params success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [[RKObjectManager sharedManager] postObject:nil path:@"/votes" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeVoteOnGood object:nil];
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 DebugLog(@"failed to add");
                 [self decreaseLike];
                 DebugLog(@"%@", [error userInfo]);
@@ -313,7 +317,9 @@
             }];
         } else {
             [self decreaseLike];
-            [[RKObjectManager sharedManager] deleteObject:nil path:[NSString stringWithFormat:@"/votes/%@", self.good.goodID] parameters:params success:nil failure:^(RKObjectRequestOperation *operation, NSError *error) {
+            [[RKObjectManager sharedManager] deleteObject:nil path:[NSString stringWithFormat:@"/votes/%@", self.good.goodID] parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeVoteOnGood object:nil];
+            } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 [self increaseLike];
                 DebugLog(@"%@", [error userInfo]);
 

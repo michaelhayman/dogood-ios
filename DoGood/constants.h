@@ -113,7 +113,7 @@ extern NSString* const DGUserDidUpdatePasswordNotification;
 extern NSString* const DGUserDidFailUpdatePasswordNotification;
 extern NSString* const DGUserDidSendPasswordNotification;
 extern NSString* const DGUserDidFailSendPasswordNotification;
-extern NSString* const DGUserDidUpdateFollowingsNotification;
+extern NSString* const DGUserDidChangeFollowOnUser;
 extern NSString* const DGUserInfoDidLoad;
 
 extern NSString* const DGUserDidSelectRewards;
@@ -122,8 +122,7 @@ extern NSString* const DGUserDidUpdatePointsNotification;
 extern NSString* const DGUserClaimRewardNotification;
 extern NSString* const DGUserDidClaimRewardNotification;
 
-extern NSString* const DGUserDidAddPhotoNotification;
-extern NSString* const DGUserDidRemovePhotoNotification;
+extern NSString* const DGUserDidChangePhoto;
 
 extern NSString* const DGUserDidConnectToTwitter;
 extern NSString* const DGUserDidDisconnectFromTwitter;
@@ -153,6 +152,8 @@ extern NSString* const DGUserDidStartBrowsingSearchTable;
 extern NSString* const DGNomineeWasChosen;
 extern NSString* const ExternalNomineeWasChosen;
 extern NSString* const DGUserDidPostGood;
+extern NSString* const DGUserDidChangeFollowOnGood;
+extern NSString* const DGUserDidChangeVoteOnGood;
 
 extern NSString* const DGTourWasRequested;
 

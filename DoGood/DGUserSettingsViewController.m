@@ -115,6 +115,9 @@
 - (void)childViewController:(DGPhotoPickerViewController *)viewController didChoosePhoto:(NSDictionary *)dictionary {
     imageToUpload = [dictionary objectForKey:UIImagePickerControllerEditedImage];
 
+    UIImage *currentImage = avatar.image;
+    avatar.image = imageToUpload;
+
     [ProgressHUD showSuccess:@"Changing avatar..."];
     NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:nil method:RKRequestMethodPUT path:user_update_path parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
 
@@ -128,15 +131,13 @@
 
         [ProgressHUD showSuccess:@"Completed"];
 
-        avatar.image = imageToUpload;
         DGUser *user = (mappingResult.array)[0];
         [DGUser currentUser].avatar_url = user.avatar_url;
         [DGUser assignDefaults];
         avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
-        // [avatar bringSubviewToFront:avatarOverlay];
-        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateAccountNotification object:nil];
-
+        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangePhoto object:nil];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        avatar.image = currentImage;
         [TSMessage showNotificationInViewController:self.navigationController title:nil subtitle:NSLocalizedString(@"Avatar upload failed", nil) type:TSMessageNotificationTypeError];
         [ProgressHUD showError:[error localizedDescription]];
     }];
@@ -154,7 +155,7 @@
                               title:NSLocalizedString(@"Profile photo updated", nil)
                             subtitle:nil
                                type:TSMessageNotificationTypeSuccess];
-        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateAccountNotification object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangePhoto object:nil];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [TSMessage showNotificationInViewController:self.navigationController
                               title:NSLocalizedString(@"Oops", nil)

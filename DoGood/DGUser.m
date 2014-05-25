@@ -263,4 +263,24 @@ static DGUser* currentUser = nil;
                                                object:nil];
 }
 
+- (BOOL)hasBeenNominated {
+	return [self.nominations_by_user_goods_count intValue] > 0;
+}
+
+- (BOOL)hasFollowedGoods {
+    return [self.followed_goods_count intValue] > 0;
+}
+
+- (BOOL)hasVotes {
+    return [self.liked_goods_count intValue] > 0;
+}
+
+- (BOOL)hasPostedNominations {
+    return [self.nominations_for_user_goods_count intValue] > 0;
+}
+
+- (BOOL)hasPostedHelpWantedGoods {
+    return [self.help_wanted_by_user_goods_count intValue] > 0;
+}
+
 @end

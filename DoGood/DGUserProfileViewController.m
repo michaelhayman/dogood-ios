@@ -68,7 +68,6 @@
     DebugLog(@"menu doesn't really help; because we have to checknot from menu");
 
     [self setupOwnProfileButtons];
-    // name.text = [DGUser currentUser].full_name;
 
     [self getProfile];
 }
@@ -76,9 +75,7 @@
 - (void)setupProfile {
     [self setupProfileButtons];
 
-    if (!profileLoaded) {
-        [self getProfile];
-    }
+    [self getProfile];
 }
 
 - (void)setupAuth {
@@ -88,13 +85,9 @@
 }
 
 - (void)initialize {
-    if (self.fromMenu) {
-        if ([[DGUser currentUser] isSignedIn]) {
-            [self setupOwnProfile];
-        } else {
-            [self setupAuth];
-            return;
-        }
+    if (self.fromMenu && ![[DGUser currentUser] isSignedIn]) {
+        [self setupAuth];
+        return;
     } else {
         if ([self isOwnProfile]) {
             [self setupOwnProfile];
@@ -106,6 +99,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    if (reloadProfileOnView || reloadPhotoOnView) {
+        [self initialize];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -120,15 +116,31 @@
 - (void)registerNotifications {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initialize) name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initialize) name:DGUserDidSignOutNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initialize) name:DGUserDidUpdateAccountNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initialize) name:DGUserDidUpdateFollowingsNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadProfileOnNextView) name:DGUserDidUpdateAccountNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadProfileOnNextView) name:DGUserDidChangeFollowOnUser object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadProfileOnNextView) name:DGUserDidPostGood object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadProfileOnNextView) name:DGUserDidChangeVoteOnGood object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadProfileOnNextView) name:DGUserDidChangeFollowOnGood object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPhotoOnNextView) name:DGUserDidChangePhoto object:nil];
 }
 
 - (void)deregisterNotifications {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidUpdateAccountNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidUpdateFollowingsNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidChangeFollowOnUser object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidPostGood object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidChangeVoteOnGood object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidChangeFollowOnGood object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidChangePhoto object:nil];
+}
+
+- (void)reloadProfileOnNextView {
+    reloadProfileOnView = YES;
+}
+
+- (void)reloadPhotoOnNextView {
+    reloadPhotoOnView = YES;
 }
 
 - (void)dealloc {
@@ -136,16 +148,12 @@
     [self deregisterNotifications];
 }
 
-- (void)resetProfile {
-    self.userID = nil;
-}
-
 #pragma mark - User retrieval
 - (void)getProfile {
     DebugLog(@"profile called");
 
-    dispatch_async(dispatch_get_main_queue(), ^{
     [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/users/%@", self.userID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        reloadProfileOnView = NO;
         user = [[DGUser alloc] init];
         user = mappingResult.array[0];
 
@@ -172,24 +180,31 @@
         }
         [avatar bringSubviewToFront:avatarOverlay];
 
-        if (!avatar.image) {
-            if ([user avatarURL]) {
-                NSURLRequest *request = [NSURLRequest requestWithURL:[user avatarURL] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
-                [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                    avatar.image = image;
-                } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-                    DebugLog(@"Failed to retrieve avatar.");
-                }];
-            }
+        if (!avatar.image || reloadPhotoOnView) {
+            [self updatePhoto];
         }
         [loadingView removeFromSuperview];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
         [loadingView removeFromSuperview];
-        // [ProgressHUD showError:[error localizedDescription]];
     }];
+}
 
-    });
+- (void)updatePhoto {
+    if ([user avatarURL]) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:[user avatarURL] cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:30.0];
+        [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                avatar.image = image;
+                reloadPhotoOnView = NO;
+            });
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+            DebugLog(@"Failed to retrieve avatar.");
+        }];
+    } else {
+        avatar.image = nil;
+        reloadPhotoOnView = NO;
+    }
 }
 
 - (void)toggleFollow {
@@ -198,6 +213,7 @@
 
         [DGFollow followType:@"User" withID:user.userID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
             DebugLog(@"%@", msg);
+            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeFollowOnUser object:nil];
         } failure:^(NSError *error) {
             [self decreaseFollow];
             DebugLog(@"failed to remove follow");
@@ -206,6 +222,7 @@
         [self decreaseFollow];
 
         [DGFollow unfollowType:@"User" withID:user.userID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeFollowOnUser object:nil];
             DebugLog(@"%@", msg);
         } failure:^(NSError *error) {
             [self increaseFollow];

@@ -73,6 +73,7 @@
         if (self.follow.isSelected == NO) {
             [self increaseFollow];
             [DGFollow followType:@"User" withID:self.user.userID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeFollowOnUser object:nil];
                 DebugLog(@"%@", msg);
             } failure:^(NSError *error) {
                 [self decreaseFollow];
@@ -81,6 +82,7 @@
         } else {
             [self decreaseFollow];
             [DGFollow unfollowType:@"User" withID:self.user.userID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeFollowOnUser object:nil];
                 DebugLog(@"%@", msg);
             } failure:^(NSError *error) {
                 [self increaseFollow];

@@ -73,4 +73,10 @@ typedef void (^ErrorBlock)(NSError *error);
 #pragma mark - Formatters
 - (NSString *)pointsText;
 
+- (BOOL)hasBeenNominated;
+- (BOOL)hasFollowedGoods;
+- (BOOL)hasVotes;
+- (BOOL)hasPostedNominations;
+- (BOOL)hasPostedHelpWantedGoods;
+
 @end

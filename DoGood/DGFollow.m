@@ -6,7 +6,6 @@
     NSDictionary *params = [self buildParamsForType:followableType withID:followableID];
 
     [[RKObjectManager sharedManager] postObject:nil path:@"/follows" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateFollowingsNotification object:nil];
         success(YES, @"User followed.");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
@@ -22,7 +21,6 @@
     NSDictionary *params = [self buildParamsForType:followableType withID:followableID];
 
     [[RKObjectManager sharedManager] deleteObject:nil path:[NSString stringWithFormat:@"/follows/%@", followableID] parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateFollowingsNotification object:nil];
         success(YES, @"User unfollowed.");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);

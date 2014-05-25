@@ -22,7 +22,7 @@
 
     /*
     if ([self.query isEqualToString:@"following"]) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getUsers) name:DGUserDidUpdateFollowingsNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getUsers) name:DGUserDidChangeFollowOnUser object:nil];
     }
     */
 }

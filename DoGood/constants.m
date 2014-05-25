@@ -41,7 +41,7 @@ NSString* const DGUserDidUpdatePasswordNotification = @"DGUserDidUpdatePasswordN
 NSString* const DGUserDidFailUpdatePasswordNotification = @"DGUserDidFailUpdatePasswordNotification";
 NSString* const DGUserDidSendPasswordNotification = @"DGUserDidSendPasswordNotification";
 NSString* const DGUserDidFailSendPasswordNotification = @"DGUserDidFailSendPasswordNotification";
-NSString* const DGUserDidUpdateFollowingsNotification = @"DGUserDidUpdateFollowingsNotification";
+NSString* const DGUserDidChangeFollowOnUser = @"DGUserDidChangeFollowOnUser";
 NSString* const DGUserInfoDidLoad = @"DGUserInfoDidLoad";
 
 NSString* const DGUserDidSelectRewards = @"DGUserDidSelectRewards";
@@ -50,8 +50,7 @@ NSString* const DGUserDidUpdatePointsNotification = @"DGUserDidUpdatePointsNotif
 NSString* const DGUserClaimRewardNotification = @"DGUserClaimRewardNotification";
 NSString* const DGUserDidClaimRewardNotification = @"DGUserDidClaimRewardNotification";
 
-NSString* const DGUserDidAddPhotoNotification = @"DGUserDidAddPhotoNotification";
-NSString* const DGUserDidRemovePhotoNotification = @"DGUserDidRemovePhotoNotification";
+NSString* const DGUserDidChangePhoto = @"DGUserDidChangePhoto";
 
 NSString* const DGUserDidConnectToTwitter = @"DGUserDidConnectToTwitter";
 NSString* const DGUserDidDisconnectFromTwitter = @"DGUserDidDisconnectFromTwitter";
@@ -82,5 +81,7 @@ NSString* const DGUserDidStartBrowsingSearchTable = @"DGUserDidStartBrowsingSear
 NSString* const DGNomineeWasChosen = @"DGNomineeWasChosen";
 NSString* const ExternalNomineeWasChosen = @"ExternalNomineeWasChosen";
 NSString* const DGUserDidPostGood = @"DGUserDidPostGood";
+NSString* const DGUserDidChangeFollowOnGood = @"DGUserDidChangeFollowOnGood";
+NSString* const DGUserDidChangeVoteOnGood = @"DGUserDidChangeVoteOnGood";
 
 NSString* const DGTourWasRequested = @"DGTourWasRequested";

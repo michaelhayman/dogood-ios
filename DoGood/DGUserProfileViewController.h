@@ -11,7 +11,8 @@
     __weak IBOutlet UIImageView *avatar;
     __weak IBOutlet UILabel *name;
     DGUser *user;
-    BOOL profileLoaded;
+    BOOL reloadProfileOnView;
+    BOOL reloadPhotoOnView;
 
     __weak IBOutlet UILabel *followers;
     __weak IBOutlet UILabel *following;
