@@ -198,7 +198,7 @@
 		632A36BA17BCAEE8004EED26 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
 		632A36BB17BCAEE8004EED26 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		632A36BE17BCAF00004EED26 /* DGUserListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserListViewController.h; sourceTree = "<group>"; };
-		632A36BF17BCAF00004EED26 /* DGUserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserListViewController.m; sourceTree = "<group>"; };
+		632A36BF17BCAF00004EED26 /* DGUserListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGUserListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6330B69C1812D891005DC78B /* DGEditableTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGEditableTextView.h; sourceTree = "<group>"; };
 		6330B69D1812D891005DC78B /* DGEditableTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEditableTextView.m; sourceTree = "<group>"; };
 		6330B69F1812FC28005DC78B /* DGEntityHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGEntityHandler.h; sourceTree = "<group>"; };
@@ -253,7 +253,7 @@
 		6355EC2D17B69F1D00EE91C0 /* DGSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGSignInViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6355EC2F17B69F2700EE91C0 /* DGSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGSignUpViewController.h; sourceTree = "<group>"; };
 		6355EC3017B69F2700EE91C0 /* DGSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGSignUpViewController.m; sourceTree = "<group>"; };
-		6355EC3217B75EB300EE91C0 /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = constants.m; sourceTree = "<group>"; };
+		6355EC3217B75EB300EE91C0 /* constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = constants.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6355EC3617B8505800EE91C0 /* DGUserSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSettingsViewController.h; sourceTree = "<group>"; };
 		6355EC3717B8505900EE91C0 /* DGUserSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSettingsViewController.m; sourceTree = "<group>"; };
 		6355EC3917B8680300EE91C0 /* SignUpOverviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignUpOverviewCell.xib; sourceTree = "<group>"; };
