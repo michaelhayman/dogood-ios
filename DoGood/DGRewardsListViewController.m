@@ -57,8 +57,7 @@
 }
 
 - (void)updatePointsText {
-    points.text = [NSString stringWithFormat:@"%@ good",  [[DGUser currentUser] pointsText]];
-    // points.text = [NSString stringWithFormat:@"%@ points", [DGUser currentUser].points];
+    points.text = [NSString stringWithFormat:@"%@ points",  [[DGUser currentUser] pointsText]];
 }
 
 #pragma mark - Tabs
