@@ -17,6 +17,7 @@
     [collectionView registerNib:nib forCellWithReuseIdentifier:@"RewardCell"];
 
     [self setupTabs];
+    [self showRewards];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
