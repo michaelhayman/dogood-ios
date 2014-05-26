@@ -41,47 +41,52 @@
     UserGoodCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     if (indexPath.section == follows) {
         cell.sectionName.text = [NSString stringWithFormat:@"Followed %@ good %@", self.user.followed_goods_count, [self pluralizeString:@"deed" basedOnNumber:self.user.followed_goods_count]];
-        cell.icon.image = [UIImage imageNamed:@"profile_followed"];
-        if (![self.user hasFollowedGoods]) {
-            [cell disable];
-        } else {
+        if ([self.user hasFollowedGoods]) {
+            cell.icon.image = [UIImage imageNamed:@"ProfileFollowed"];
             [cell enable];
+        } else {
+            cell.icon.image = [UIImage imageNamed:@"ProfileFollowedOff"];
+            [cell disable];
         }
     }
     if (indexPath.section == nominationsFor) {
         cell.sectionName.text = [NSString stringWithFormat:@"Nominated for %@ good %@", self.user.nominations_for_user_goods_count, [self pluralizeString:@"deed" basedOnNumber:self.user.nominations_for_user_goods_count]];
-        cell.icon.image = [UIImage imageNamed:@"profile_nominated"];
-        if (![self.user hasPostedNominations]) {
-            [cell disable];
-        } else {
+        if ([self.user hasPostedNominations]) {
+            cell.icon.image = [UIImage imageNamed:@"ProfileNominated"];
             [cell enable];
+        } else {
+            [cell disable];
+            cell.icon.image = [UIImage imageNamed:@"ProfileNominatedOff"];
         }
     }
     if (indexPath.section == votes) {
         cell.sectionName.text = [NSString stringWithFormat:@"Voted for %@ good %@", self.user.liked_goods_count, [self pluralizeString:@"deed" basedOnNumber:self.user.liked_goods_count]];
-        cell.icon.image = [UIImage imageNamed:@"profile_voted"];
-        if (![self.user hasVotes]) {
-            [cell disable];
-        } else {
+        if ([self.user hasVotes]) {
+            cell.icon.image = [UIImage imageNamed:@"ProfileVoted"];
             [cell enable];
+        } else {
+            cell.icon.image = [UIImage imageNamed:@"ProfileVotedOff"];
+            [cell disable];
         }
     }
     if (indexPath.section == nominationsBy) {
         cell.sectionName.text = [NSString stringWithFormat:@"Posted %@ %@", self.user.nominations_by_user_goods_count, [self pluralizeString:@"nomination" basedOnNumber:self.user.nominations_by_user_goods_count]];
-        cell.icon.image = [UIImage imageNamed:@"profile_nominations_posted"];
-        if (![self.user hasBeenNominated]) {
-            [cell disable];
-        } else {
+        if ([self.user hasBeenNominated]) {
+            cell.icon.image = [UIImage imageNamed:@"ProfileNominationsPosted"];
             [cell enable];
+        } else {
+            cell.icon.image = [UIImage imageNamed:@"ProfileNominationsPostedOff"];
+            [cell disable];
         }
     }
     if (indexPath.section == helpWanted) {
         cell.sectionName.text = [NSString stringWithFormat:@"Asked for help %@ %@", self.user.help_wanted_by_user_goods_count, [self pluralizeString:@"time" basedOnNumber:self.user.help_wanted_by_user_goods_count]];
-        cell.icon.image = [UIImage imageNamed:@"profile_help_wanted"];
-        if (![self.user hasPostedHelpWantedGoods]) {
-            [cell disable];
-        } else {
+        if ([self.user hasPostedHelpWantedGoods]) {
+            cell.icon.image = [UIImage imageNamed:@"ProfileHelpWanted"];
             [cell enable];
+        } else {
+            cell.icon.image = [UIImage imageNamed:@"ProfileHelpWantedOff"];
+            [cell disable];
         }
     }
     return cell;
