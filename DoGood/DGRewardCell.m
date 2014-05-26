@@ -96,6 +96,7 @@
     storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
     DGRewardPopupViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"rewardInstructionsPopup"];
     controller.reward = self.reward;
+    controller.claimed = YES;
     [self.navigationController presentPopupViewController:controller animationType:MJPopupViewAnimationSlideBottomBottom contentInteraction:MJPopupViewContentInteractionDismissBackgroundOnly];
 }
 

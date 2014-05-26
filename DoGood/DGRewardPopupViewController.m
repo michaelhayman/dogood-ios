@@ -34,7 +34,7 @@
     self.subheading.text = self.reward.subtitle;
     self.cost.text = [self.reward costText];
 
-    if (![self hasSufficientPoints]) {
+    if (![self hasSufficientPoints] && !self.claimed) {
         self.instructions.text = @"You don't have enough points to buy this item!";
         self.teaser.image = [self.teaser.image convertToGrayscale];
     } else {

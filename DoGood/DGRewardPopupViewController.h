@@ -4,5 +4,6 @@
 }
 
 @property (weak, nonatomic) DGReward *reward;
+@property BOOL claimed;
 
 @end
