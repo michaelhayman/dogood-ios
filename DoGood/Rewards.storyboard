@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kLR-5A-8xi">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="kLR-5A-8xi">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Rewards List View Controller-->
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gpO-bh-KNi">
-                                <rect key="frame" x="0.0" y="176" width="320" height="392"/>
+                                <rect key="frame" x="0.0" y="139" width="320" height="429"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZUL-RY-Ge3">
@@ -33,11 +33,11 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DH4-uL-Mw2">
-                                <rect key="frame" x="0.0" y="64" width="320" height="112"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfM-bl-Xx5">
-                                        <rect key="frame" x="37" y="31" width="247" height="21"/>
+                                        <rect key="frame" x="37" y="15" width="247" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="247" id="cR1-aZ-imp"/>
@@ -48,15 +48,15 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.25490196079999999" green="0.20784313730000001" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="112" id="FOW-C8-Vam"/>
-                                    <constraint firstItem="KfM-bl-Xx5" firstAttribute="top" secondItem="DH4-uL-Mw2" secondAttribute="top" constant="31" id="TDP-9W-1uo"/>
+                                    <constraint firstAttribute="height" constant="75" id="FOW-C8-Vam"/>
+                                    <constraint firstItem="KfM-bl-Xx5" firstAttribute="top" secondItem="DH4-uL-Mw2" secondAttribute="top" constant="15" id="TDP-9W-1uo"/>
                                     <constraint firstAttribute="centerX" secondItem="KfM-bl-Xx5" secondAttribute="centerX" id="zgw-jt-tZJ"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyc-X1-HxD">
-                                <rect key="frame" x="0.0" y="146" width="155" height="30"/>
+                                <rect key="frame" x="0.0" y="109" width="155" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="155" id="3ab-3w-fI9"/>
@@ -64,15 +64,16 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Available" backgroundImage="ProfileTabLeftOff">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Available Rewards">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" backgroundImage="ProfileTabLeftOn.png"/>
-                                <state key="highlighted" backgroundImage="ProfileTabLeftOff.png"/>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.25490196079999999" green="0.20784313730000001" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RRx-6P-NJR">
-                                <rect key="frame" x="165" y="146" width="155" height="30"/>
+                                <rect key="frame" x="165" y="109" width="155" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="155" id="MK9-Od-TGL"/>
@@ -80,12 +81,13 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Claimed" backgroundImage="ProfileTabRightOff">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Claimed Rewards">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="selected" backgroundImage="ProfileTabRightOn.png"/>
-                                <state key="highlighted" backgroundImage="ProfileTabRightOff.png"/>
+                                <state key="selected">
+                                    <color key="titleColor" red="0.25490196079999999" green="0.20784313730000001" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -182,6 +184,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="266" height="322"/>
                     <connections>
                         <outlet property="cost" destination="cRM-36-yuI" id="1YN-GA-dFh"/>
                         <outlet property="heading" destination="Yak-Tg-k7V" id="xSU-i8-uf2"/>
@@ -253,6 +256,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="266" height="322"/>
                     <connections>
                         <outlet property="cost" destination="Tic-I9-9gt" id="RrC-SS-s6g"/>
                         <outlet property="heading" destination="aCd-mT-20v" id="lWs-WD-FYp"/>
@@ -337,6 +341,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="266" height="322"/>
                     <connections>
                         <outlet property="cost" destination="a8d-T6-g7R" id="Wkg-4r-F7R"/>
                         <outlet property="heading" destination="LvR-6i-sEJ" id="O3b-7G-h4f"/>
@@ -350,14 +355,6 @@
             <point key="canvasLocation" x="453" y="638"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="ProfileTabLeftOff" width="155" height="30"/>
-        <image name="ProfileTabLeftOff.png" width="61" height="30"/>
-        <image name="ProfileTabLeftOn.png" width="61" height="30"/>
-        <image name="ProfileTabRightOff" width="155" height="30"/>
-        <image name="ProfileTabRightOff.png" width="61" height="30"/>
-        <image name="ProfileTabRightOn.png" width="61" height="30"/>
-    </resources>
     <color key="tintColor" red="0.0" green="0.70196078429999997" blue="0.52549019610000003" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

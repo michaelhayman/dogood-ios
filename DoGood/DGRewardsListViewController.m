@@ -69,17 +69,25 @@
 #pragma mark - Retrieve rewards
 - (void)showRewards {
     if (rewardsButton.selected == NO) {
-        [rewardsButton setSelected:YES];
-        [claimedButton setSelected:NO];
+        [self deselect:claimedButton];
+        [self reselect:rewardsButton];
         NSString *path = [NSString stringWithFormat:@"/rewards"];
         [self getRewardsAtPath:path];
     }
 }
 
+- (void)deselect:(UIButton *)button {
+    [DGAppearance tabButton:button on:NO withBackgroundColor:BARK andTextColor:BRILLIANCE];
+}
+
+- (void)reselect:(UIButton *)button {
+    [DGAppearance tabButton:button on:YES withBackgroundColor:BRILLIANCE andTextColor:MUD];
+}
+
 - (void)showClaimed {
     if (claimedButton.selected == NO) {
-        [rewardsButton setSelected:NO];
-        [claimedButton setSelected:YES];
+        [self deselect:rewardsButton];
+        [self reselect:claimedButton];
         NSString *path = [NSString stringWithFormat:@"/rewards/claimed"];
         [self getRewardsAtPath:path];
     }
