@@ -18,7 +18,7 @@
 - (void)setName:(NSString *)string backgroundColor:(UIColor *)color andIcon:(UIImage *)image {
     [self setName:string];
     self.backgroundColor = color;
-    tagName.textColor = [DGAppearance makeContrastingColorFromColor:color];
+    tagName.textColor = MUD;
     icon.image = image;
 }
 
