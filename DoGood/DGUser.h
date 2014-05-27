@@ -8,6 +8,7 @@
 @property (nonatomic, copy) NSString* phone;
 @property (nonatomic, copy) NSString* biography;
 @property (nonatomic, copy) NSString* location;
+@property (nonatomic, copy) NSString* rank;
 
 @property (nonatomic, copy) NSNumber* points;
 @property (nonatomic, copy) NSNumber* contactable;

@@ -83,6 +83,7 @@ extern NSString* const UITextFieldCellIdentifier;
 extern NSString *const kDGUserCurrentUserIDDefaultsKey;
 extern NSString* const kDGUserCurrentUserEmail;
 extern NSString* const kDGUserCurrentUserPoints;
+extern NSString* const kDGUserCurrentUserRank;
 extern NSString* const kDGUserCurrentUserFullName;
 extern NSString* const kDGUserCurrentUserLocation;
 extern NSString* const kDGUserCurrentUserBiography;

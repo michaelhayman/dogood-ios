@@ -41,6 +41,7 @@
     }];
     [userMapping addAttributeMappingsFromArray:@[
      @"points",
+     @"rank",
      @"full_name",
      @"phone",
      @"location",

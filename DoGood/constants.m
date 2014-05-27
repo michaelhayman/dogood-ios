@@ -9,6 +9,7 @@ NSString *const DGErrorDomain = @"DGErrorDomain";
 NSString* const kDGUserCurrentUserIDDefaultsKey = @"kDGUserCurrentUserIDDefaultsKey";
 NSString* const kDGUserCurrentUserEmail = @"kDGUserCurrentUserEmail";
 NSString* const kDGUserCurrentUserPoints = @"kDGUserCurrentUserPoints";
+NSString* const kDGUserCurrentUserRank = @"kDGUserCurrentUserRank";
 NSString* const kDGUserCurrentUserFullName = @"kDGUserCurrentUserFullName";
 NSString* const kDGUserCurrentUserLocation = @"kDGUserCurrentUserLocation";
 NSString* const kDGUserCurrentUserBiography = @"kDGUserCurrentUserBiography";
