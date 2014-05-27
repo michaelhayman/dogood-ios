@@ -121,14 +121,14 @@
 - (void)getGood {
     NSString *path;
     DebugLog(@"path ...? %@", _path);
-    if (_path) {
-        path = _path;
-    } else if (_category) {
+    if (self.path) {
+        path = self.path;
+    } else if (self.category) {
         path = [NSString stringWithFormat:@"/goods?category_id=%@", _category.categoryID];
-    } else if (_goodID) {
+    } else if (self.goodID) {
         path = [NSString stringWithFormat:@"/goods/%@", _goodID];
-    } else if (_tag) {
-        path = [NSString stringWithFormat:@"/goods/tagged?id=%@&name=%@", _tag.tagID, _tag.name];
+    } else if (self.tag) {
+        path = [NSString stringWithFormat:@"/goods/tagged?id=%@&name=%@", _tag.tagID, self.tag.name];
     } else if (self.user) {
         path = [NSString stringWithFormat:@"/goods/followed_by?user_id=%@", self.user.userID];
     } else {
