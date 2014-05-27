@@ -2,6 +2,7 @@
 #import "HighlightCollectionCell.h"
 #import "DGGoodListViewController.h"
 #import "DGGoodListNearbyViewController.h"
+#import "DGRewardsListViewController.h"
 
 #define cellName @"HighlightCollectionCell"
 
@@ -35,7 +36,7 @@
 #pragma mark - UICollectionView methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if (REWARDS_ENABLED) {
-        return 3;
+        return exploreHighlightRows;
     } else {
         return 2;
     }
@@ -49,9 +50,12 @@
     if (indexPath.row == popular) {
         name = @"Popular";
         color = PINEAPPLE;
-    } else {
+    } else if (indexPath.row == nearby) {
         name = @"Nearby";
         color = SKY;
+    } else {
+        name = @"Rewards";
+        color = ERRONEOUS;
     }
     [cell setName:name backgroundColor:color andIcon:[UIImage imageNamed:name]];
     return cell;
@@ -65,8 +69,12 @@
         controller.titleForPath = @"Popular";
         controller.color = PINEAPPLE;
         [self.navigationController pushViewController:controller animated:YES];
-    } else {
+    } else if (indexPath.row == nearby) {
         DGGoodListNearbyViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodListNearby"];
+        [self.navigationController pushViewController:controller animated:YES];
+    } else {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
+        DGRewardsListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"rewardList"];
         [self.navigationController pushViewController:controller animated:YES];
     }
 }

@@ -2,7 +2,7 @@
 
 #pragma mark - Optional Functionality -----
 
-#define REWARDS_ENABLED 0
+#define REWARDS_ENABLED 1
 
 #pragma mark - Paths -----
 

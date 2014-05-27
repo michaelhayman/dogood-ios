@@ -10,7 +10,8 @@
 
 typedef enum {
     popular,
-    inDemand,
+    nearby,
+    rewards,
     exploreHighlightRows
 } ExploreDoGoodHighlightsRowType;
 
