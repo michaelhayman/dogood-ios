@@ -135,7 +135,7 @@
 #pragma mark - Change data responses
 - (void)didClaimReward:(NSNotification *)notification {
     DGReward *reward = [[notification userInfo] valueForKey:@"reward"];
-    [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Reward claimed!", nil) subtitle:[NSString stringWithFormat:@"%@ is yours", reward.title] type:TSMessageNotificationTypeSuccess];
+    [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Reward claimed!", nil) subtitle:[NSString stringWithFormat:@"%@ is yours - check the 'claimed' tab!", reward.title] type:TSMessageNotificationTypeSuccess];
 }
 
 @end
