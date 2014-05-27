@@ -494,6 +494,8 @@
             DGGoodListViewController *list = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
             list.goodID = postedGood.goodID;
             list.category = postedGood.category;
+            list.showDoneGoods = [postedGood.done boolValue];
+            list.goToSpecificTab = YES;
 
             [self.navigationController pushViewController:list animated:YES];
             // now remove VC2 from the view controllers array so we will jump straight back to VC1

@@ -135,6 +135,10 @@
         path = @"/goods";
     }
 
+    if (self.goToSpecificTab) {
+        goodTableView.doneGoods = self.showDoneGoods;
+    }
+
     [goodTableView resetGood];
     [goodTableView loadGoodsAtPath:path];
 }

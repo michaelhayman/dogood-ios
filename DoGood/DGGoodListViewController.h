@@ -17,6 +17,8 @@
 @property (nonatomic, strong) NSNumber *goodID;
 @property (nonatomic, strong) UIColor *color;
 @property BOOL hideTabs;
+@property BOOL goToSpecificTab;
+@property BOOL showDoneGoods;
 
 - (void)getGood;
 
