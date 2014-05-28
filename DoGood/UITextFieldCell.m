@@ -10,6 +10,14 @@
     return self;
 }
 
+- (void)prepareForReuse {
+    [super prepareForReuse];
+    self.heading.text = @"";
+    self.heading.textColor = [UIColor blackColor];
+    self.textField.text = @"";
+    self.accessoryType = UITableViewCellAccessoryNone;
+}
+
 - (void)awakeFromNib {
     // self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
