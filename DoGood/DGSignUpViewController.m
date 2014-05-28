@@ -47,6 +47,7 @@
     submitUser.full_name = name.text;
 
     [ProgressHUD show:@"Checking name..."];
+    [name resignFirstResponder];
     [[RKObjectManager sharedManager] postObject:submitUser path:@"/users/validate_name" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [name resignFirstResponder];
         if (user.image == nil) {
@@ -59,7 +60,9 @@
         }
         [ProgressHUD dismiss];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [ProgressHUD showError:[error localizedDescription]];
+        [TSMessage showNotificationInViewController:self.navigationController title:@"Error" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
+        [ProgressHUD dismiss];
+        [name becomeFirstResponder];
     }];
 }
 
