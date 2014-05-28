@@ -1,4 +1,4 @@
-@interface DGSignUpDetailsViewController : UIViewController <UITextFieldDelegate> {
+@interface DGSignUpDetailsViewController : DGViewController <UITextFieldDelegate> {
     UITextField *activeField;
     __weak IBOutlet UIImageView *avatar;
     __weak IBOutlet UIImageView *avatarOverlay;

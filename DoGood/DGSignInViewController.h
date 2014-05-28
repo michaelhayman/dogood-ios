@@ -1,3 +1,3 @@
-@interface DGSignInViewController : UIViewController
+@interface DGSignInViewController : DGViewController
 
 @end
