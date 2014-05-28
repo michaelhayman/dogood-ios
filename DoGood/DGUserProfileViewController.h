@@ -18,6 +18,8 @@
     __weak IBOutlet UILabel *following;
     NSArray *goods;
     __weak IBOutlet UIView *headerView;
+
+    __weak IBOutlet UIButton *ranking;
     
     __weak IBOutlet UITableView *tableView;
     

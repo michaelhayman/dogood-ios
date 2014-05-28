@@ -1,0 +1,4 @@
+@interface DGShareRankPopupViewController : UIViewController {
+}
+
+@end

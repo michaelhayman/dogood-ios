@@ -30,6 +30,7 @@
 		6311488D180F3CA5008278E5 /* DGFacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6311488C180F3CA5008278E5 /* DGFacebookManager.m */; };
 		6319D38F17BDED080071DA71 /* DGReward.m in Sources */ = {isa = PBXBuildFile; fileRef = 6319D38E17BDED080071DA71 /* DGReward.m */; };
 		6319D39517BE5A230071DA71 /* DGUserSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6319D39417BE5A220071DA71 /* DGUserSearchViewController.m */; };
+		6321C8611934B265001AAD64 /* DGShareRankPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6321C8601934B265001AAD64 /* DGShareRankPopupViewController.m */; };
 		632A36BC17BCAEE8004EED26 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A36BA17BCAEE8004EED26 /* UserCell.m */; };
 		632A36BD17BCAEE8004EED26 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632A36BB17BCAEE8004EED26 /* UserCell.xib */; };
 		632A36C017BCAF00004EED26 /* DGUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A36BF17BCAF00004EED26 /* DGUserListViewController.m */; };
@@ -194,6 +195,8 @@
 		6319D38E17BDED080071DA71 /* DGReward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGReward.m; sourceTree = "<group>"; };
 		6319D39317BE5A220071DA71 /* DGUserSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchViewController.h; sourceTree = "<group>"; };
 		6319D39417BE5A220071DA71 /* DGUserSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchViewController.m; sourceTree = "<group>"; };
+		6321C85F1934B265001AAD64 /* DGShareRankPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGShareRankPopupViewController.h; sourceTree = "<group>"; };
+		6321C8601934B265001AAD64 /* DGShareRankPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGShareRankPopupViewController.m; sourceTree = "<group>"; };
 		632A36B917BCAEE8004EED26 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
 		632A36BA17BCAEE8004EED26 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
 		632A36BB17BCAEE8004EED26 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
@@ -553,6 +556,8 @@
 		636AEA6817AD4764002A3494 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				6321C85F1934B265001AAD64 /* DGShareRankPopupViewController.h */,
+				6321C8601934B265001AAD64 /* DGShareRankPopupViewController.m */,
 				6319D39317BE5A220071DA71 /* DGUserSearchViewController.h */,
 				6319D39417BE5A220071DA71 /* DGUserSearchViewController.m */,
 				637ABAD217C7C6F4004AA4C9 /* SearchUserNetworks.xib */,
@@ -1020,6 +1025,7 @@
 				633DBF6417ADA61D0038BC2D /* DGGood.m in Sources */,
 				633DBF6717ADACEE0038BC2D /* DGPostGoodCategoryViewController.m in Sources */,
 				63FDAC42181C601000668B15 /* ExplorePopularTagsCell.m in Sources */,
+				6321C8611934B265001AAD64 /* DGShareRankPopupViewController.m in Sources */,
 				633DBF6C17ADBF9F0038BC2D /* DGPostGoodLocationViewController.m in Sources */,
 				633DBF6F17ADC0AF0038BC2D /* FSLocation.m in Sources */,
 				633DBF7217ADC4E60038BC2D /* DGPostGoodNomineeSearchViewController.m in Sources */,

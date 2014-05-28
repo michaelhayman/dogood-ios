@@ -7,8 +7,10 @@
 #import "DGReport.h"
 #import "DGUserInvitesViewController.h"
 #import "AuthenticateView.h"
+#import "UIViewController+MJPopupViewController.h"
 #import <SAMLoadingView/SAMLoadingView.h>
 #import <ProgressHUD/ProgressHUD.h>
+#import "DGShareRankPopupViewController.h"
 
 @interface DGUserProfileViewController ()
 
@@ -49,6 +51,8 @@
     invites.parent = (UIViewController *)self;
 
     [self initialize];
+
+    ranking.transform = CGAffineTransformMakeRotation( - M_PI/5.5 );
 }
 
 - (BOOL)isOwnProfile {
@@ -163,6 +167,7 @@
         //[following sizeToFit];
 
         name.text = user.full_name;
+        [ranking setTitle:user.rank forState:UIControlStateNormal];
 
         [userGoodsTableView initializeTableWithUser:user];
 
@@ -378,5 +383,12 @@
     controller.query = query;
     [self.navigationController pushViewController:controller animated:YES];
 }
+
+#pragma mark - Ranking
+- (IBAction)openRanking:(id)sender {
+    DGShareRankPopupViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"shareRanking"];
+    [self.navigationController presentPopupViewController:controller contentInteraction:MJPopupViewContentInteractionDismissBackgroundOnly];
+}
+
 
 @end
