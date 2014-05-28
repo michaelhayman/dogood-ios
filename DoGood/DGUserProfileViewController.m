@@ -118,8 +118,8 @@
 }
 
 - (void)registerNotifications {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initialize) name:DGUserDidSignInNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initialize) name:DGUserDidSignOutNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadProfileOnNextView) name:DGUserDidSignInNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadProfileOnNextView) name:DGUserDidSignOutNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadProfileOnNextView) name:DGUserDidUpdateAccountNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadProfileOnNextView) name:DGUserDidChangeFollowOnUser object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadProfileOnNextView) name:DGUserDidPostGood object:nil];
