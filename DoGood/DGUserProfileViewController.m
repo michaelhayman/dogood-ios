@@ -281,7 +281,11 @@
     [centralButton setTitle:@"Following" forState:UIControlStateSelected];
     [centralButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
 
-    UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithTitle:@"..." style: UIBarButtonItemStylePlain target:self action:@selector(openActionMenu:)];
+    UIButton *a1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [a1 addTarget:self action:@selector(openActionMenu:) forControlEvents:UIControlEventTouchUpInside];
+    [a1 setImage:[UIImage imageNamed:@"MoreProfileOptions"] forState:UIControlStateNormal];
+    [a1 sizeToFit];
+    UIBarButtonItem *connectButton = [[UIBarButtonItem alloc] initWithCustomView:a1];
     self.navigationItem.rightBarButtonItem = connectButton;
 
     moreOptionsSheet = [[UIActionSheet alloc] initWithTitle:nil
