@@ -185,6 +185,7 @@
 
 #pragma mark - Comment posting
 - (IBAction)postComment:(id)sender {
+    sendButton.enabled = NO;
     DGComment *newComment = [DGComment new];
     newComment.comment = commentInputField.text;
     newComment.commentable_id = self.good.goodID;
@@ -202,6 +203,7 @@
     newComment.entities = userEntities;
     if (![commentInputField.text isEqualToString:@""]) {
         [[RKObjectManager sharedManager] postObject:newComment path:@"/comments" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+            sendButton.enabled = YES;
 
             [commentInputView becomeFirstResponder];
             commentInputField.text = @"";
@@ -222,6 +224,7 @@
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Couldn't save the comment", nil) subtitle:NSLocalizedString([error localizedDescription], nil) type:TSMessageNotificationTypeError];
 
+            sendButton.enabled = YES;
             DebugLog(@"error %@", [error description]);
         }];
     }
