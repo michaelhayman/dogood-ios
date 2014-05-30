@@ -18,6 +18,15 @@
 
     [self setupTabs];
     [self showRewards];
+
+    // points gesture
+    UITapGestureRecognizer* openPointsGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(authorizeUser)];
+    [points setUserInteractionEnabled:YES];
+    [points addGestureRecognizer:openPointsGesture];
+}
+
+- (void)authorizeUser {
+    [[DGUser currentUser] authorizeAccess:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -53,11 +62,19 @@
 
 #pragma mark - Update user points
 - (void)updatePoints {
-    [[DGUser currentUser] updatePoints];
+    if ([[DGUser currentUser] isSignedIn]) {
+        [[DGUser currentUser] updatePoints];
+    } else {
+        // [self updatePointsText];
+    }
 }
 
 - (void)updatePointsText {
-    points.text = [NSString stringWithFormat:@"%@ points",  [[DGUser currentUser] pointsText]];
+    if ([[DGUser currentUser] isSignedIn]) {
+        points.text = [NSString stringWithFormat:@"%@ points",  [[DGUser currentUser] pointsText]];
+    } else {
+        points.text = @"Join and earn points!";
+    }
 }
 
 #pragma mark - Tabs
@@ -85,11 +102,13 @@
 }
 
 - (void)showClaimed {
-    if (claimedButton.selected == NO) {
-        [self deselect:rewardsButton];
-        [self reselect:claimedButton];
-        NSString *path = [NSString stringWithFormat:@"/rewards/claimed"];
-        [self getRewardsAtPath:path];
+    if ([[DGUser currentUser] authorizeAccess:self]) {
+        if (claimedButton.selected == NO) {
+            [self deselect:rewardsButton];
+            [self reselect:claimedButton];
+            NSString *path = [NSString stringWithFormat:@"/rewards/claimed"];
+            [self getRewardsAtPath:path];
+        }
     }
 }
 

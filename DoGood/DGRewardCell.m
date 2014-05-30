@@ -33,14 +33,14 @@
 - (void)setValues {
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.reward.teaser] cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:15.0];
     [self.teaser setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        if (![self hasSufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
+        if (![self.reward userHasSufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
             self.teaser.image = [image convertToGrayscale];
         } else {
             self.teaser.image = image;
         }
     } failure:nil];
 
-    if (![self hasSufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
+    if (![self.reward userHasSufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
         self.heading.textColor = GRAYED_OUT;
         self.subheading.textColor = GRAYED_OUT;
         self.cost.textColor = GRAYED_OUT;
@@ -55,18 +55,10 @@
     self.cost.text = [self.reward costText];
 }
 
-- (bool)hasSufficientPoints {
-    return [[DGUser currentUser].points intValue] >= [self.reward.cost intValue];
-}
-
 #pragma mark - Options
 - (void)options {
     if ([self.type isEqualToString:@"Rewards"]) {
-        if (![self hasSufficientPoints]) {
-            [self displayInsufficientPoints];
-        } else {
-            [self claim];
-        }
+        [self claim];
     } else if ([self.type isEqualToString:@"See all"]) {
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSelectRewards object:nil];
     } else {
@@ -74,18 +66,18 @@
     }
 }
 
+/*
 - (void)displayInsufficientPoints {
-    UIStoryboard *storyboard;
-    storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
     DGRewardPopupViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"rewardInsufficientPointsPopup"];
     controller.reward = self.reward;
     [self.navigationController presentPopupViewController:controller contentInteraction:MJPopupViewContentInteractionDismissBackgroundOnly];
 }
+*/
 
 #pragma mark - Instructions dialog
 - (void)claim {
-    UIStoryboard *storyboard;
-    storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
     DGRewardPopupViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"rewardClaimPopup"];
     controller.reward = self.reward;
     [self.navigationController presentPopupViewController:controller animationType:MJPopupViewAnimationSlideBottomBottom contentInteraction:MJPopupViewContentInteractionDismissBackgroundOnly];

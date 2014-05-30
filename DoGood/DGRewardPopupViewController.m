@@ -9,6 +9,7 @@
     @property (weak, nonatomic) IBOutlet UILabel *subheading;
     @property (weak, nonatomic) IBOutlet UILabel *cost;
     @property (weak, nonatomic) IBOutlet UITextView *instructions;
+    @property (weak, nonatomic) IBOutlet UIButton *actionButton;
 @end
 
 @implementation DGRewardPopupViewController
@@ -34,21 +35,26 @@
     self.subheading.text = self.reward.subtitle;
     self.cost.text = [self.reward costText];
 
-    if (![self hasSufficientPoints] && !self.claimed) {
-        self.instructions.text = @"You don't have enough points to buy this item!";
-        self.teaser.image = [self.teaser.image convertToGrayscale];
+    if (!self.claimed) {
+        if ([self.reward userHasSufficientPoints]) {
+            self.instructions.hidden = YES;
+        } else {
+            self.instructions.text = @"You don't have enough points to buy this item yet!";
+            self.teaser.image = [self.teaser.image convertToGrayscale];
+            [self.actionButton setTitle:@"Okay, I'll go do more good!" forState:UIControlStateNormal];
+        }
     } else {
         self.instructions.text = self.reward.instructions;
     }
 }
 
-- (bool)hasSufficientPoints {
-    return [[DGUser currentUser].points intValue] >= [self.reward.cost intValue];
-}
-
 - (IBAction)claim:(id)sender {
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You want this?" message:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Claim Reward", nil];
-    [alert show];
+    if ([self.reward userHasSufficientPoints]) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You want this?" message:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Claim Reward", nil];
+        [alert show];
+    } else {
+        [self close:nil];
+    }
 }
 
 #pragma mark - UIAlertViewDelegate methods

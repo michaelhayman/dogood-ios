@@ -14,5 +14,6 @@
 @property (retain) DGUser *user;
 
 - (NSString *)costText;
+- (BOOL)userHasSufficientPoints;
 
 @end
