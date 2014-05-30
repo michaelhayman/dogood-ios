@@ -338,6 +338,18 @@
     commentInputFieldHeight.constant = 30.0;
 }
 
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(closeComments)];
+}
+
+- (void)closeComments {
+    [commentInputField resignFirstResponder];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    self.navigationItem.rightBarButtonItem = nil;
+}
+
 - (void)textViewDidChange:(UITextView *)textField {
     [entityHandler watchForEntities:textField];
     [entityHandler setLimitText];
