@@ -2,7 +2,6 @@
 #import "UserGoodCell.h"
 #import "DGGoodListViewController.h"
 #import "DGUser.h"
-#import "NSString+Inflections.h"
 
 @implementation DGUserGoodsTableView
 
@@ -27,20 +26,12 @@
     [self reloadData];
 }
 
-- (NSString *)pluralizeString:(NSString *)string basedOnNumber:(NSNumber *)number {
-    if ([number intValue] != 1) {
-        return [string pluralize];
-    } else {
-        return string;
-    }
-}
-
 #pragma mark - UITableView delegate methods
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * reuseIdentifier = kUserGoodCell;
     UserGoodCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
     if (indexPath.section == follows) {
-        cell.sectionName.text = [NSString stringWithFormat:@"Followed %@ good %@", self.user.followed_goods_count, [self pluralizeString:@"deed" basedOnNumber:self.user.followed_goods_count]];
+        cell.sectionName.text = [NSString stringWithFormat:@"Followed %@ good %@", self.user.followed_goods_count, [DGAppearance pluralizeString:@"deed" basedOnNumber:self.user.followed_goods_count]];
         if ([self.user hasFollowedGoods]) {
             cell.icon.image = [UIImage imageNamed:@"ProfileFollowed"];
             [cell enable];
@@ -50,7 +41,7 @@
         }
     }
     if (indexPath.section == nominationsFor) {
-        cell.sectionName.text = [NSString stringWithFormat:@"Nominated for %@ good %@", self.user.nominations_for_user_goods_count, [self pluralizeString:@"deed" basedOnNumber:self.user.nominations_for_user_goods_count]];
+        cell.sectionName.text = [NSString stringWithFormat:@"Nominated for %@ good %@", self.user.nominations_for_user_goods_count, [DGAppearance pluralizeString:@"deed" basedOnNumber:self.user.nominations_for_user_goods_count]];
         if ([self.user hasPostedNominations]) {
             cell.icon.image = [UIImage imageNamed:@"ProfileNominated"];
             [cell enable];
@@ -60,7 +51,7 @@
         }
     }
     if (indexPath.section == votes) {
-        cell.sectionName.text = [NSString stringWithFormat:@"Voted for %@ good %@", self.user.voted_goods_count, [self pluralizeString:@"deed" basedOnNumber:self.user.voted_goods_count]];
+        cell.sectionName.text = [NSString stringWithFormat:@"Voted for %@ good %@", self.user.voted_goods_count, [DGAppearance pluralizeString:@"deed" basedOnNumber:self.user.voted_goods_count]];
         if ([self.user hasVotes]) {
             cell.icon.image = [UIImage imageNamed:@"ProfileVoted"];
             [cell enable];
@@ -70,7 +61,7 @@
         }
     }
     if (indexPath.section == nominationsBy) {
-        cell.sectionName.text = [NSString stringWithFormat:@"Posted %@ %@", self.user.nominations_by_user_goods_count, [self pluralizeString:@"nomination" basedOnNumber:self.user.nominations_by_user_goods_count]];
+        cell.sectionName.text = [NSString stringWithFormat:@"Posted %@ %@", self.user.nominations_by_user_goods_count, [DGAppearance pluralizeString:@"nomination" basedOnNumber:self.user.nominations_by_user_goods_count]];
         if ([self.user hasBeenNominated]) {
             cell.icon.image = [UIImage imageNamed:@"ProfileNominationsPosted"];
             [cell enable];
@@ -80,7 +71,7 @@
         }
     }
     if (indexPath.section == helpWanted) {
-        cell.sectionName.text = [NSString stringWithFormat:@"Asked for help %@ %@", self.user.help_wanted_by_user_goods_count, [self pluralizeString:@"time" basedOnNumber:self.user.help_wanted_by_user_goods_count]];
+        cell.sectionName.text = [NSString stringWithFormat:@"Asked for help %@ %@", self.user.help_wanted_by_user_goods_count, [DGAppearance pluralizeString:@"time" basedOnNumber:self.user.help_wanted_by_user_goods_count]];
         if ([self.user hasPostedHelpWantedGoods]) {
             cell.icon.image = [UIImage imageNamed:@"ProfileHelpWanted"];
             [cell enable];

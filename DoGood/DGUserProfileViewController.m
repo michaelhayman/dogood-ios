@@ -161,10 +161,9 @@
         user = [[DGUser alloc] init];
         user = mappingResult.array[0];
 
-        followers.text = [NSString stringWithFormat:@"%@ follower%@", user.followers_count, [DGAppearance pluralForCount:user.followers_count]];
-        //[followers sizeToFit];
+        NSString *followersText = @"follower";
+        followers.text = [NSString stringWithFormat:@"%@ %@", user.followers_count, [DGAppearance pluralizeString:followersText basedOnNumber:user.followers_count]];
         following.text = [NSString stringWithFormat:@"%@ following", user.following_count];
-        //[following sizeToFit];
 
         name.text = user.full_name;
         [ranking setTitle:user.rank forState:UIControlStateNormal];

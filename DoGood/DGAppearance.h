@@ -7,7 +7,7 @@
 + (CGFloat)calculateHeightForString:(NSString *)string WithFont:(UIFont *)font andWidth:(CGFloat)width;
 + (UIView *)createLoadingViewCenteredOn:(UIView *)view;
 + (UIColor *)getColorFromHexValue:(NSString *)hex;
-+ (NSString *)pluralForCount:(NSNumber *)count;
++ (NSString *)pluralizeString:(NSString *)string basedOnNumber:(NSNumber *)number;
 + (UIColor *)makeContrastingColorFromColor:(UIColor *)newColor;
 + (void)tabButton:(UIButton *)button on:(BOOL)on  withBackgroundColor:(UIColor *)color andTextColor:(UIColor *)textColor;
 

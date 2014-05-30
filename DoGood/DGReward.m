@@ -5,7 +5,8 @@
 - (NSString *)costText {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setGroupingSeparator: [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator]];
-    return [NSString stringWithFormat:@"%@ points", [formatter stringFromNumber:self.cost]];
+    NSString *points = @"point";
+    return [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:self.cost], [DGAppearance pluralizeString:points basedOnNumber:self.cost]];
 }
 
 - (BOOL)userHasSufficientPoints {

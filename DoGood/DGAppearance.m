@@ -1,5 +1,6 @@
 
 #import <TTTAttributedLabel.h>
+#import <NSString+Inflections.h>
 
 @implementation DGAppearance
 
@@ -88,14 +89,12 @@
     return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
 }
 
-+ (NSString *)pluralForCount:(NSNumber *)count {
-    NSString *plural;
-    if ([count isEqualToNumber:[NSNumber numberWithInt:1]]) {
-        plural = @"";
++ (NSString *)pluralizeString:(NSString *)string basedOnNumber:(NSNumber *)number {
+    if ([number intValue] != 1) {
+        return [string pluralize];
     } else {
-        plural = @"s";
+        return string;
     }
-    return plural;
 }
 
 + (void)styleActionButton:(UIButton *)button {
