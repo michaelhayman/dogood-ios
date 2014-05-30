@@ -225,10 +225,10 @@
             height += commentHeight;
         }
     }
-    if ([good.likes_count intValue] > 0) {
+    if ([good.votes_count intValue] > 0) {
         height += 30;
     }
-    if ([good.regoods_count intValue] > 0) {
+    if ([good.followers_count intValue] > 0) {
         height += 30;
     }
     return [NSNumber numberWithFloat:height];

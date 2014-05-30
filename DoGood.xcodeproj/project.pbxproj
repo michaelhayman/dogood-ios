@@ -277,7 +277,7 @@
 		635A232117CABEB30045C256 /* Categories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Categories.plist; sourceTree = "<group>"; };
 		636AEA5C17AD43CC002A3494 /* Good.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Good.storyboard; sourceTree = "<group>"; };
 		636AEA9A17AD63EC002A3494 /* GoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodCell.xib; sourceTree = "<group>"; };
-		636AEA9D17AD66C8002A3494 /* GoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodCell.h; sourceTree = "<group>"; };
+		636AEA9D17AD66C8002A3494 /* GoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GoodCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		636AEA9E17AD66C8002A3494 /* GoodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GoodCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		636AEAA117AD77F0002A3494 /* DGPostGoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPostGoodViewController.h; sourceTree = "<group>"; };
 		636AEAA217AD77F0002A3494 /* DGPostGoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGPostGoodViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };

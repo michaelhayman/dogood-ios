@@ -13,8 +13,8 @@
     __weak IBOutlet NSLayoutConstraint *captionWidth;
     __weak IBOutlet NSLayoutConstraint *commentBoxHeight;
     __weak IBOutlet NSLayoutConstraint *commentsHeight;
-    __weak IBOutlet NSLayoutConstraint *regoodsHeight;
-    __weak IBOutlet NSLayoutConstraint *likesHeight;
+    __weak IBOutlet NSLayoutConstraint *followersHeight;
+    __weak IBOutlet NSLayoutConstraint *votesHeight;
     __weak IBOutlet NSLayoutConstraint *postedByHeight;
     __weak IBOutlet UIView *comments;
 
@@ -35,10 +35,10 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *overviewImage;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeight;
-@property (weak, nonatomic) IBOutlet UILabel *regoods;
+@property (weak, nonatomic) IBOutlet UILabel *followersCount;
 @property (weak, nonatomic) IBOutlet UILabel *commentsCount;
 
-@property (weak, nonatomic) IBOutlet UILabel *likes;
+@property (weak, nonatomic) IBOutlet UILabel *votesCount;
 
 // avatar
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
@@ -50,9 +50,9 @@
 
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *postedBy;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *description;
-@property (weak, nonatomic) IBOutlet UIButton *like;
+@property (weak, nonatomic) IBOutlet UIButton *vote;
 @property (weak, nonatomic) IBOutlet UIButton *comment;
-@property (weak, nonatomic) IBOutlet UIButton *regood;
+@property (weak, nonatomic) IBOutlet UIButton *follow;
 @property (weak, nonatomic) IBOutlet UIButton *moreOptions;
 @property (weak, nonatomic) DGGood *good;
 @property (weak, nonatomic) UIViewController *parent;

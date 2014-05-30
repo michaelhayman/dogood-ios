@@ -15,7 +15,7 @@
 @property (nonatomic, copy) NSNumber* followers_count;
 @property (nonatomic, copy) NSNumber* following_count;
 @property (nonatomic, copy) NSNumber* current_user_following;
-@property (nonatomic, copy) NSNumber* liked_goods_count;
+@property (nonatomic, copy) NSNumber* voted_goods_count;
 @property (nonatomic, copy) NSNumber* followed_goods_count;
 @property (nonatomic, copy) NSNumber* nominations_by_user_goods_count;
 @property (nonatomic, copy) NSNumber* nominations_for_user_goods_count;

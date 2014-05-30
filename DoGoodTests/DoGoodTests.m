@@ -124,24 +124,24 @@
 
 - (void)testCurrentUserStatusOnGood {
     good.current_user_commented = [NSNumber numberWithBool:YES];
-    good.current_user_liked = [NSNumber numberWithBool:YES];
-    good.current_user_regooded = [NSNumber numberWithBool:YES];
+    good.current_user_voted = [NSNumber numberWithBool:YES];
+    good.current_user_followed = [NSNumber numberWithBool:YES];
 
     XCTAssertEqual(good.current_user_commented, [NSNumber numberWithBool:YES], @"user commented on good");
-    XCTAssertEqual(good.current_user_liked, [NSNumber numberWithBool:YES], @"user liked good");
-    XCTAssertEqual(good.current_user_regooded, [NSNumber numberWithBool:YES], @"user regooded good");
+    XCTAssertEqual(good.current_user_voted, [NSNumber numberWithBool:YES], @"user liked good");
+    XCTAssertEqual(good.current_user_followed, [NSNumber numberWithBool:YES], @"user regooded good");
 }
 
 - (void)testGoodHasStatus {
-    NSNumber *regoods = [NSNumber numberWithInt:56];
-    NSNumber *likes = [NSNumber numberWithInt:57];
+    NSNumber *follows = [NSNumber numberWithInt:56];
+    NSNumber *votes = [NSNumber numberWithInt:57];
     NSNumber *comments = [NSNumber numberWithInt:50000];
-    good.regoods_count = regoods;
-    good.likes_count = likes;
+    good.followers_count = follows;
+    good.votes_count = votes;
     good.comments_count = comments;
 
-    XCTAssertEqual(good.regoods_count, regoods, @"user regooded good");
-    XCTAssertEqual(good.likes_count, likes, @"user liked good");
+    XCTAssertEqual(good.followers_count, follows, @"user followed good");
+    XCTAssertEqual(good.votes_count, votes, @"user voted on good");
     XCTAssertEqual(good.comments_count, comments, @"user commented on good");
 }
 

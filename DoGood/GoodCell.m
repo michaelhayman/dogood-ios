@@ -36,11 +36,11 @@
     // UIViewContentModeScaleAspectFit;
     [self.overviewImage setClipsToBounds:YES];
 
-    // likes
-    [self.like addTarget:self action:@selector(addUserLike) forControlEvents:UIControlEventTouchUpInside];
-    UITapGestureRecognizer* likesGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showLikers)];
-    [self.likes setUserInteractionEnabled:YES];
-    [self.likes addGestureRecognizer:likesGesture];
+    // votes
+    [self.vote addTarget:self action:@selector(addUserVote) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer* votesGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showVoters)];
+    [self.votesCount setUserInteractionEnabled:YES];
+    [self.votesCount addGestureRecognizer:votesGesture];
 
     // categories
     UITapGestureRecognizer* openCategoryGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCategory)];
@@ -59,10 +59,10 @@
     commentBoxHeight.constant = 0;
 
     // re-goods
-    [self.regood addTarget:self action:@selector(addUserRegood) forControlEvents:UIControlEventTouchUpInside];
-    UITapGestureRecognizer* regoodsGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showRegooders)];
-    [self.regoods setUserInteractionEnabled:YES];
-    [self.regoods addGestureRecognizer:regoodsGesture];
+    [self.follow addTarget:self action:@selector(followGood) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer* followersGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFollowers)];
+    [self.followersCount setUserInteractionEnabled:YES];
+    [self.followersCount addGestureRecognizer:followersGesture];
 
     // more options
     [self.moreOptions addTarget:self action:@selector(openMoreOptions) forControlEvents:UIControlEventTouchUpInside];
@@ -138,13 +138,13 @@
         self.overviewImage.hidden = NO;
     }
 
-    // likes
-    if ([self.good.current_user_liked boolValue]) {
-        [self.like setSelected:YES];
+    // votes
+    if ([self.good.current_user_voted boolValue]) {
+        [self.vote setSelected:YES];
     } else {
-        [self.like setSelected:NO];
+        [self.vote setSelected:NO];
     }
-    [self setLikesText];
+    [self setVotesText];
 
     // comments
     if ([self.good.current_user_commented boolValue]) {
@@ -157,12 +157,12 @@
     // comments list
     [self setupCommentsList];
     // regoods
-    if ([self.good.current_user_regooded boolValue]) {
-        [self.regood setSelected:YES];
+    if ([self.good.current_user_followed boolValue]) {
+        [self.follow setSelected:YES];
     } else {
-        [self.regood setSelected:NO];
+        [self.follow setSelected:NO];
     }
-    [self setRegoodsText];
+    [self setFollowsText];
 
     [self setDoneImage];
 
@@ -198,6 +198,9 @@
             [self.nominee addGestureRecognizer:userGesture];
 
             self.nominee.textColor = LINK_COLOUR;
+        } else {
+            self.nominee.textColor = [UIColor blackColor];
+            [self.nominee setUserInteractionEnabled:NO];
         }
     } else {
         self.nominee.text = @"";
@@ -233,82 +236,82 @@
     }
 }
 
-#pragma mark - Regoods
-- (void)addUserRegood {
+#pragma mark - Follows
+- (void)followGood {
     if ([[DGUser currentUser] authorizeAccess:self.navigationController.visibleViewController]) {
-        if (self.regood.isSelected == NO) {
-            [self increaseRegood];
+        if (self.follow.isSelected == NO) {
+            [self increaseFollows];
 
             [DGFollow followType:@"Good" withID:self.good.goodID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeFollowOnGood object:nil];
                 DebugLog(@"%@", msg);
             } failure:^(NSError *error) {
-                [self decreaseRegood];
+                [self decreaseFollows];
                 DebugLog(@"failed to remove follow");
             }];
         } else {
-            [self decreaseRegood];
+            [self decreaseFollows];
 
             [DGFollow unfollowType:@"Good" withID:self.good.goodID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeFollowOnGood object:nil];
                 DebugLog(@"%@", msg);
             } failure:^(NSError *error) {
-                [self increaseRegood];
+                [self increaseFollows];
                 DebugLog(@"failed to remove follow");
             }];
         }
     }
 }
 
-- (void)increaseRegood {
-    [self.regood setSelected:YES];
-    self.good.regoods_count = @(self.good.regoods_count.intValue + 1);
-    self.good.current_user_regooded = [NSNumber numberWithBool:YES];
-    [self setRegoodsText];
+- (void)increaseFollows {
+    [self.follow setSelected:YES];
+    self.good.followers_count = @(self.good.followers_count.intValue + 1);
+    self.good.current_user_followed = [NSNumber numberWithBool:YES];
+    [self setFollowsText];
     [self reloadCell];
 }
 
-- (void)decreaseRegood {
-    [self.regood setSelected:NO];
-    self.good.regoods_count = @(self.good.regoods_count.intValue - 1);
-    self.good.current_user_regooded = [NSNumber numberWithBool:NO];
-    [self setRegoodsText];
+- (void)decreaseFollows {
+    [self.follow setSelected:NO];
+    self.good.followers_count = @(self.good.followers_count.intValue - 1);
+    self.good.current_user_followed = [NSNumber numberWithBool:NO];
+    [self setFollowsText];
     [self reloadCell];
 }
 
-- (void)setRegoodsText {
-    if ([self.good.regoods_count intValue] > 0) {
-        regoodsHeight.constant = 21.0;
+- (void)setFollowsText {
+    if ([self.good.followers_count intValue] > 0) {
+        followersHeight.constant = 21.0;
 
         NSString *follower = @"follower";
 
-        if ([self.good.regoods_count intValue] != 1) {
+        if ([self.good.followers_count intValue] != 1) {
             follower = [follower pluralize];
         }
-        self.regoods.text = [NSString stringWithFormat:@"%@ %@", self.good.regoods_count, follower];
+        self.followersCount.text = [NSString stringWithFormat:@"%@ %@", self.good.followers_count, follower];
     } else {
-        regoodsHeight.constant = 0.0;
+        followersHeight.constant = 0.0;
     }
 }
 
-- (void)showRegooders {
+- (void)showFollowers {
     [self userListWithType:@"Good" typeID:self.good.goodID andQuery:@"followers"];
 }
 
-#pragma mark - Likes
-- (void)addUserLike {
+#pragma mark - Votes
+- (void)addUserVote {
     if ([[DGUser currentUser] authorizeAccess:self.navigationController.visibleViewController]) {
         NSString *type = @"Good";
         NSDictionary *voteDict = [NSDictionary dictionaryWithObjectsAndKeys:self.good.goodID, @"votable_id", type, @"votable_type", nil];
         NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:voteDict, @"vote", nil];
 
-        if (self.like.isSelected == NO) {
-            [self increaseLike];
+        if (self.vote.isSelected == NO) {
+            [self increaseVote];
             [[RKObjectManager sharedManager] postObject:nil path:@"/votes" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeVoteOnGood object:nil];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 DebugLog(@"failed to add");
-                [self decreaseLike];
+                [self decreaseVote];
                 DebugLog(@"%@", [error userInfo]);
                 [TSMessage showNotificationInViewController:self.navigationController
                                           title:nil
@@ -316,11 +319,11 @@
                                            type:TSMessageNotificationTypeError];
             }];
         } else {
-            [self decreaseLike];
+            [self decreaseVote];
             [[RKObjectManager sharedManager] deleteObject:nil path:[NSString stringWithFormat:@"/votes/%@", self.good.goodID] parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeVoteOnGood object:nil];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                [self increaseLike];
+                [self increaseVote];
                 DebugLog(@"%@", [error userInfo]);
 
                 [TSMessage showNotificationInViewController:self.navigationController
@@ -332,38 +335,38 @@
     }
 }
 
-- (void)increaseLike {
-    [self.like setSelected:YES];
-    self.good.likes_count = @(self.good.likes_count.intValue + 1);
-    self.good.current_user_liked = [NSNumber numberWithBool:YES];
-    [self setLikesText];
+- (void)increaseVote {
+    [self.vote setSelected:YES];
+    self.good.votes_count = @(self.good.votes_count.intValue + 1);
+    self.good.current_user_voted = [NSNumber numberWithBool:YES];
+    [self setVotesText];
     [self reloadCell];
 }
 
-- (void)decreaseLike {
-    [self.like setSelected:NO];
-    self.good.likes_count = @(self.good.likes_count.intValue - 1);
-    self.good.current_user_liked = [NSNumber numberWithBool:NO];
-    [self setLikesText];
+- (void)decreaseVote {
+    [self.vote setSelected:NO];
+    self.good.votes_count = @(self.good.votes_count.intValue - 1);
+    self.good.current_user_voted = [NSNumber numberWithBool:NO];
+    [self setVotesText];
     [self reloadCell];
 }
 
-- (void)setLikesText {
-    if ([self.good.likes_count intValue] > 0) {
-        likesHeight.constant = 21.0;
+- (void)setVotesText {
+    if ([self.good.votes_count intValue] > 0) {
+        votesHeight.constant = 21.0;
 
         NSString *vote = @"vote";
-        if ([self.good.likes_count intValue] != 1) {
+        if ([self.good.votes_count intValue] != 1) {
             vote = [vote pluralize];
         }
-        self.likes.text = [NSString stringWithFormat:@"%@ %@", self.good.likes_count, vote];
+        self.votesCount.text = [NSString stringWithFormat:@"%@ %@", self.good.votes_count, vote];
     } else {
-        likesHeight.constant = 0.0;
+        votesHeight.constant = 0.0;
     }
 }
 
-- (void)showLikers {
-    [self userListWithType:@"Good" typeID:self.good.goodID andQuery:@"likers"];
+- (void)showVoters {
+    [self userListWithType:@"Good" typeID:self.good.goodID andQuery:@"voters"];
 }
 
 #pragma mark - Comments

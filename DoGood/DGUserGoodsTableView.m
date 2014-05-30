@@ -60,7 +60,7 @@
         }
     }
     if (indexPath.section == votes) {
-        cell.sectionName.text = [NSString stringWithFormat:@"Voted for %@ good %@", self.user.liked_goods_count, [self pluralizeString:@"deed" basedOnNumber:self.user.liked_goods_count]];
+        cell.sectionName.text = [NSString stringWithFormat:@"Voted for %@ good %@", self.user.voted_goods_count, [self pluralizeString:@"deed" basedOnNumber:self.user.voted_goods_count]];
         if ([self.user hasVotes]) {
             cell.icon.image = [UIImage imageNamed:@"ProfileVoted"];
             [cell enable];
@@ -130,7 +130,7 @@
     }
 
     if (indexPath.section == votes) {
-        goodListController.path = [NSString stringWithFormat:@"/goods/liked_by?user_id=%@", self.userID];
+        goodListController.path = [NSString stringWithFormat:@"/goods/voted_by?user_id=%@", self.userID];
         goodListController.titleForPath = @"Votes";
     }
 

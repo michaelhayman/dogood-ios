@@ -158,7 +158,7 @@ static DGUser* currentUser = nil;
     self.nominations_by_user_goods_count = nil;
     self.help_wanted_by_user_goods_count = nil;
     self.followed_goods_count = nil;
-    self.liked_goods_count = nil;
+    self.voted_goods_count = nil;
 
     [RFKeychain deletePasswordForAccount:kDoGoodAccount service:kDoGoodService];
     [DGUser setAuthorizationHeader];
@@ -282,7 +282,7 @@ static DGUser* currentUser = nil;
 }
 
 - (BOOL)hasVotes {
-    return [self.liked_goods_count intValue] > 0;
+    return [self.voted_goods_count intValue] > 0;
 }
 
 - (BOOL)hasPostedNominations {

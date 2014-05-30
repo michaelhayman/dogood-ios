@@ -52,7 +52,7 @@
                         </attributedString>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Likes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Votes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58">
                         <rect key="frame" x="74" y="450" width="150" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -88,7 +88,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Regoods" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73">
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Followers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73">
                         <rect key="frame" x="74" y="475" width="150" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -322,9 +322,9 @@
                 <outlet property="commentsHeight" destination="273" id="365"/>
                 <outlet property="description" destination="WCI-2A-oec" id="3MF-Ig-Isw"/>
                 <outlet property="done" destination="EJn-jJ-p9f" id="jXo-Wi-6em"/>
-                <outlet property="like" destination="335" id="348"/>
-                <outlet property="likes" destination="58" id="260"/>
-                <outlet property="likesHeight" destination="275" id="359"/>
+                <outlet property="follow" destination="178" id="vF8-1r-cnP"/>
+                <outlet property="followersCount" destination="73" id="HeN-Tg-B0n"/>
+                <outlet property="followersHeight" destination="142" id="jid-1C-ORq"/>
                 <outlet property="locationImage" destination="58K-AX-OCA" id="XSx-VW-OG3"/>
                 <outlet property="locationImageHeight" destination="bd9-Ej-Qqh" id="HMI-0U-d7x"/>
                 <outlet property="locationTitle" destination="WnP-ZZ-Lfp" id="Lx8-lu-r2P"/>
@@ -335,9 +335,9 @@
                 <outlet property="overviewImageHeight" destination="327" id="h35-W3-Oal"/>
                 <outlet property="postedBy" destination="47n-5v-B1M" id="ycT-vA-cWQ"/>
                 <outlet property="postedByHeight" destination="RIG-be-djh" id="hMD-DU-OA0"/>
-                <outlet property="regood" destination="178" id="256"/>
-                <outlet property="regoods" destination="73" id="250"/>
-                <outlet property="regoodsHeight" destination="142" id="360"/>
+                <outlet property="vote" destination="335" id="P2K-lK-JU9"/>
+                <outlet property="votesCount" destination="58" id="Y3X-tS-hgd"/>
+                <outlet property="votesHeight" destination="275" id="E1N-lU-XfM"/>
             </connections>
         </tableViewCell>
     </objects>

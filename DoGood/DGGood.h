@@ -17,16 +17,16 @@
 @property (retain) DGUser *user;
 // nominee
 @property (retain) DGNominee *nominee;
-// likes
-@property (retain) NSNumber *current_user_liked;
-@property (retain) NSNumber *likes_count;
-@property (retain) NSNumber *regoods_count;
+// votes
+@property (retain) NSNumber *current_user_voted;
+@property (retain) NSNumber *votes_count;
+@property (retain) NSNumber *followers_count;
 // comments
 @property (retain) NSNumber *current_user_commented;
 @property (retain) NSNumber *comments_count;
 @property (retain) NSArray *comments;
-// regoods
-@property (retain) NSNumber *current_user_regooded;
+// follows
+@property (retain) NSNumber *current_user_followed;
 // location
 @property (retain) NSNumber *lat;
 @property (retain) NSNumber *lng;
