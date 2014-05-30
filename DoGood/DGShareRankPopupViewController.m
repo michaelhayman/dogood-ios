@@ -20,8 +20,15 @@
 - (void)setStyle {
     if (![[DGUser currentUser] isSignedIn]) {
         self.heading.text = @"Sign Up & Get a Badge!";
-        self.instructions.text = @"Get a badge of honors to encourage others when you start doing good.";
+        self.instructions.text = @"Get your badge of honor by nominating others and posting good things to do.";
         [self.actionButton setTitle:@"Join or Sign In" forState:UIControlStateNormal];
+    } else if ([self.user isCurrentUser]) {
+        self.actionButton.hidden = YES;
+    } else {
+        self.heading.text = @"Work Hard & Do Good";
+        self.instructions.text = [NSString stringWithFormat:@"%@ is working hard to increase their ranking.  Why not give them some encouragement or post something good of your own?", self.user.full_name];
+        self.actionButton.hidden = YES;
+
     }
 }
 
@@ -41,8 +48,8 @@
 
 - (IBAction)sendRanking:(id)sender {
     if (![[DGUser currentUser] isSignedIn]) {
-        [[DGUser currentUser] authorizeAccess:self.parentViewController];
-        // [self dismissPopupViewController:self animationType:MJPopupViewAnimationSlideBottomBottom];
+        [[DGUser currentUser] authorizeAccess:self.parent];
+        [self dismissPopupViewController:self animationType:MJPopupViewAnimationSlideBottomBottom];
     } else {
         DebugLog(@"send email");
         [ProgressHUD showSuccess:@"Badge sent!"];

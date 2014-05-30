@@ -293,4 +293,8 @@ static DGUser* currentUser = nil;
     return [self.help_wanted_by_user_goods_count intValue] > 0;
 }
 
+- (BOOL)isCurrentUser {
+    return [[DGUser currentUser].userID isEqualToNumber:self.userID];
+}
+
 @end

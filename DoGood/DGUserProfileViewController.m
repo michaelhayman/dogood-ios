@@ -390,9 +390,10 @@
 
 #pragma mark - Ranking
 - (IBAction)openRanking:(id)sender {
-    DGShareRankPopupViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"shareRanking"];
-    [self.navigationController presentPopupViewController:controller contentInteraction:MJPopupViewContentInteractionDismissBackgroundOnly];
+    DGShareRankPopupViewController *rankingPopupController = [self.storyboard instantiateViewControllerWithIdentifier:@"shareRanking"];
+    rankingPopupController.parent = self;
+    rankingPopupController.user = user;
+    [self.navigationController presentPopupViewController:rankingPopupController contentInteraction:MJPopupViewContentInteractionDismissBackgroundOnly];
 }
-
 
 @end

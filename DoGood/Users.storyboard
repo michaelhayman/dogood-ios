@@ -1173,7 +1173,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="266" height="322"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Encourage Others" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="249" translatesAutoresizingMaskIntoConstraints="NO" id="Nkl-tL-6cM">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="This Is Your Ranking!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="249" translatesAutoresizingMaskIntoConstraints="NO" id="Nkl-tL-6cM">
                                 <rect key="frame" x="10" y="125" width="249" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.20784313730000001" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1191,7 +1191,7 @@
                                 <color key="backgroundColor" red="0.16862745098039217" green="0.78431372549019607" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Email me my badge!">
+                                <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -1209,11 +1209,10 @@
                                     <action selector="close:" destination="SUm-pc-9w7" eventType="touchUpInside" id="slB-4j-dtk"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="14u-zR-h95">
-                                <rect key="frame" x="10" y="155" width="249" height="106"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Nominate, post good things to do and vote on other people's contributions to move up the ranks!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="14u-zR-h95">
+                                <rect key="frame" x="10" y="155" width="245" height="108"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.20784313730000001" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <string key="text">Display your badge and ranking proudly on your Web site or favorite social network to spread the word to others who want to Do Good!</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
