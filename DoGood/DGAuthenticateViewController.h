@@ -1,6 +1,6 @@
 @class AuthenticateView;
 
-@interface DGAuthenticateViewController : UIViewController {
+@interface DGAuthenticateViewController : DGViewController {
     __weak IBOutlet AuthenticateView *authenticateView;
 }
 
