@@ -34,6 +34,21 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self setupRefresh];
+}
+
+- (void)setupRefresh {
+    refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl setTintColor:VIVID];
+    [refreshControl addTarget:self action:@selector(refreshTable)
+             forControlEvents:UIControlEventValueChanged];
+    [tableView addSubview:refreshControl];
+}
+
+- (void)refreshTable {
+    [self getCategories];
+    [explorePopularTags getTags];
+    [refreshControl endRefreshing];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -11,6 +11,7 @@
 
     ExploreHighlightsCell *exploreHighlights;
     ExplorePopularTagsCell *explorePopularTags;
+    UIRefreshControl * refreshControl;
 }
 
 @end

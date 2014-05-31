@@ -7,5 +7,6 @@
 @property (nonatomic, weak) UINavigationController *navigationController;
 
 - (id)initWithController:(UINavigationController *)controller;
+- (void)getTags;
 
 @end
