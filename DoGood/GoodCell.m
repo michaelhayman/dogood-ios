@@ -17,6 +17,7 @@
 #import "TTTAttributedLabel+Tag.h"
 #import "NSString+Inflections.h"
 #import "NSString+RangeChecker.h"
+#import <ProgressHUD/ProgressHUD.h>
 
 @implementation GoodCell
 
@@ -66,7 +67,6 @@
 
     // more options
     [self.moreOptions addTarget:self action:@selector(openMoreOptions) forControlEvents:UIControlEventTouchUpInside];
-    [self setupMoreOptions];
 
     locationImage.image = [UIImage imageNamed:@"icon_content_pin"];
 }
@@ -471,10 +471,16 @@
 
 #pragma mark - More options
 - (void)setupMoreOptions {
+    NSString *destructiveTitle;
+    if ([self.good isOwnGood]) {
+        destructiveTitle = @"Delete post";
+    } else {
+        destructiveTitle = @"Report post";
+    }
     moreOptionsSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                 delegate:self
                                        cancelButtonTitle:@"Cancel"
-                                  destructiveButtonTitle:@"Report post"
+                                  destructiveButtonTitle:destructiveTitle
                                        otherButtonTitles:@"Share", nil];
     [moreOptionsSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
     moreOptionsSheet.delegate = self;
@@ -482,6 +488,7 @@
 }
 
 - (void)openMoreOptions {
+    [self setupMoreOptions];
     [moreOptionsSheet showInView:self.navigationController.view];
 }
 
@@ -505,7 +512,7 @@
     if (buttonIndex != actionSheet.cancelButtonIndex) {
         if (actionSheet == moreOptionsSheet) {
             if (buttonIndex == actionSheet.destructiveButtonIndex) {
-                [self reportGood];
+                [self deleteOrReportGood];
             } else if (buttonIndex == share_button) {
                 [self openShareOptions];
             }
@@ -527,17 +534,35 @@
 }
 
 #pragma mark - Report good
-- (void)reportGood {
-    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"You want to report this post?"
-                                                    message:@"Are you sure?"
-                                                   delegate:self
-                                          cancelButtonTitle:@"No..."
-                                          otherButtonTitles:@"Yes!", nil];
-    [alert show];
+- (void)deleteOrReportGood {
+    if ([[DGUser currentUser] authorizeAccess:self.parent]) {
+        NSString *destructiveTitle;
+        if ([self.good isOwnGood]) {
+            destructiveTitle = @"You want to delete this post?";
+        } else {
+            destructiveTitle = @"You want to report this post?";
+        }
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:destructiveTitle message:@"Are you sure?" delegate:self cancelButtonTitle:@"No..." otherButtonTitles:@"Yes!", nil];
+        [alert show];
+    }
 }
 
 - (void)confirmReportGood {
-    [DGReport fileReportFor:self.good.goodID ofType:@"good" inController:self.navigationController];
+    if ([self.good isOwnGood]) {
+        [self.good destroyGoodWithCompletion:^(BOOL success, NSError *error) {
+            if (success) {
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                [ProgressHUD showSuccess:NSLocalizedString(@"Good deleted", nil)];
+            } else {
+                [TSMessage showNotificationInViewController:self.parent
+                                          title:NSLocalizedString(@"Good not deleted.", nil)
+                                       subtitle:[error localizedDescription]
+                                           type:TSMessageNotificationTypeError];
+            }
+        }];
+    } else {
+        [DGReport fileReportFor:self.good.goodID ofType:@"good" inController:self.navigationController];
+    }
 }
 
 #pragma mark - UIAlertViewDelegate methods

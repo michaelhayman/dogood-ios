@@ -36,4 +36,21 @@
     return [NSURL URLWithString:self.evidence];
 }
 
+- (BOOL)isOwnGood {
+    if ([[DGUser currentUser].userID isEqualToNumber:self.user.userID]) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (void)destroyGoodWithCompletion:(DestroyCompletionBlock)complete {
+    [[RKObjectManager sharedManager] deleteObject:self path:[NSString stringWithFormat:@"/goods/%@", self.goodID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        complete(YES, nil);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        complete(NO, error);
+        DebugLog(@"Operation failed with error: %@", error);
+    }];
+}
+
 @end

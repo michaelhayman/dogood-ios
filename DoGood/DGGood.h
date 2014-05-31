@@ -42,11 +42,15 @@
 @property (retain) NSNumber *done;
 @property (retain) NSDate *created_at;
 
+typedef void (^DestroyCompletionBlock)(BOOL success, NSError *error);
+
 - (void)setValuesForLocation:(FSLocation *)location;
 - (void)setValuesForCategory:(DGCategory *)category;
 - (NSString *)createdAgoInWords;
 - (NSString *)postedByLine;
 - (NSURL *)evidenceURL;
 - (NSString *)postedByType;
+- (BOOL)isOwnGood;
+- (void)destroyGoodWithCompletion:(DestroyCompletionBlock)complete;
 
 @end
