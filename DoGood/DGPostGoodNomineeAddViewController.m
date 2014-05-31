@@ -68,6 +68,28 @@
     [super didReceiveMemoryWarning];
 }
 
+#define nominee_name_field_tag 691
+#define nominee_email_field_tag 692
+#define nominee_phone_field_tag 693
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    switch (textField.tag) {
+        case nominee_name_field_tag:
+            [[self textFieldForTag:nominee_email_field_tag] becomeFirstResponder];
+            break;
+        case nominee_email_field_tag:
+            [[self textFieldForTag:nominee_phone_field_tag] becomeFirstResponder];
+            break;
+        default:
+            [textField resignFirstResponder];
+            break;
+    }
+    return YES;
+}
+
+- (UITextField *)textFieldForTag:(int)tag {
+    return (UITextField *)[self.view viewWithTag:tag];
+}
+
 - (void)fillInFieldsFromNominee:(DGNominee *)theNominee {
     nominee = theNominee;
     nameField.text = nominee.full_name;
