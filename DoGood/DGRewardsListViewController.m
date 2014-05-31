@@ -91,6 +91,7 @@
 - (void)setupRefresh {
     collectionView.alwaysBounceVertical = YES;
     refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = VIVID;
     [refreshControl addTarget:self action:@selector(refreshVisibleRewards)
              forControlEvents:UIControlEventValueChanged];
     [collectionView addSubview:refreshControl];

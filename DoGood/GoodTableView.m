@@ -110,10 +110,10 @@
 }
 
 - (void)setupRefresh {
-    UIRefreshControl *refreshControl = [UIRefreshControl new];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    refreshControl.tintColor = VIVID;
 
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
-    refreshControl.tintColor = COLOUR_GREEN;
     [self addSubview:refreshControl];
 }
 

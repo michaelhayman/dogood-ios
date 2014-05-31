@@ -16,6 +16,7 @@
     [tableView registerNib:nib forCellReuseIdentifier:@"UserCell"];
 
     UIRefreshControl *refreshControl = [UIRefreshControl new];
+    refreshControl.tintColor = VIVID;
 
     [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
     [tableView addSubview:refreshControl];
