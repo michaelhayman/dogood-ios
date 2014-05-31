@@ -74,7 +74,6 @@
 		6358341917C88F3C00F997F6 /* DGUserSearchOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358341817C88F3C00F997F6 /* DGUserSearchOtherViewController.m */; };
 		6358342E17C8A09700F997F6 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358342D17C8A09700F997F6 /* Arrow.m */; };
 		635A232017CAB5150045C256 /* DGCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 635A231F17CAB5150045C256 /* DGCategories.m */; };
-		635A232217CABEB30045C256 /* Categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 635A232117CABEB30045C256 /* Categories.plist */; };
 		636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA5C17AD43CC002A3494 /* Good.storyboard */; };
 		636AEA9B17AD63EC002A3494 /* GoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA9A17AD63EC002A3494 /* GoodCell.xib */; };
 		636AEA9F17AD66C8002A3494 /* GoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636AEA9E17AD66C8002A3494 /* GoodCell.m */; };
@@ -274,7 +273,6 @@
 		6358342D17C8A09700F997F6 /* Arrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arrow.m; sourceTree = "<group>"; };
 		635A231E17CAB5150045C256 /* DGCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCategories.h; sourceTree = "<group>"; };
 		635A231F17CAB5150045C256 /* DGCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCategories.m; sourceTree = "<group>"; };
-		635A232117CABEB30045C256 /* Categories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Categories.plist; sourceTree = "<group>"; };
 		636AEA5C17AD43CC002A3494 /* Good.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Good.storyboard; sourceTree = "<group>"; };
 		636AEA9A17AD63EC002A3494 /* GoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodCell.xib; sourceTree = "<group>"; };
 		636AEA9D17AD66C8002A3494 /* GoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GoodCell.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -491,7 +489,6 @@
 				6356BDB1182891F4006AF033 /* UIViewController+DGViewController.m */,
 				63E0798917BC5A6F006FC42E /* UITextFieldCell.h */,
 				63E0798A17BC5A6F006FC42E /* UITextFieldCell.m */,
-				635A232117CABEB30045C256 /* Categories.plist */,
 			);
 			name = Components;
 			sourceTree = "<group>";
@@ -903,7 +900,6 @@
 				63FDAC53181C651400668B15 /* HighlightCollectionCell.xib in Resources */,
 				632A36BD17BCAEE8004EED26 /* UserCell.xib in Resources */,
 				637ABAD317C7C6F4004AA4C9 /* SearchUserNetworks.xib in Resources */,
-				635A232217CABEB30045C256 /* Categories.plist in Resources */,
 				63DA645017DC0F6D003DFF03 /* Explore.storyboard in Resources */,
 				63DA645E17DC1715003DFF03 /* TagCell.xib in Resources */,
 				63DA646317DC189C003DFF03 /* CategoryCell.xib in Resources */,
