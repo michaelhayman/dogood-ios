@@ -96,7 +96,8 @@
       @"email",
       @"avatar_url",
       @"phone",
-      @"user_id"
+      @"user_id",
+      @"invite"
     ];
     [nomineeMapping addAttributeMappingsFromArray:nomineeArray];
 

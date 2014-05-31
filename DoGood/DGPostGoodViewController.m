@@ -385,7 +385,7 @@
 - (void)childViewController:(DGPostGoodNomineeSearchViewController *)viewController didChooseNominee:(DGNominee *)nominee {
     self.good.nominee = nominee;
     [self.tableView reloadData];
-    if (!nominee.invite) {
+    if (![nominee.invite boolValue]) {
         NomineeCell *cell = [self nomineeCell];
         cell.nominee = nominee;
     }

@@ -46,7 +46,7 @@
     inviteButton.frame = frame;
     [inviteButton setBackgroundImage:off forState:UIControlStateNormal];
     [inviteButton setBackgroundImage:on forState:UIControlStateSelected];
-    inviteButton.selected = self.nominee.invite;
+    inviteButton.selected = [self.nominee.invite boolValue];
 
     [inviteButton addTarget:self action:@selector(changeInvite:)  forControlEvents:UIControlEventTouchUpInside];
     inviteButton.backgroundColor = [UIColor whiteColor];
@@ -97,7 +97,8 @@
     if (![self.nominee isContactable]) {
         [UIAlertView showWithTitle:@"Enter Contact Details" message:@"Enter an email address or phone number to invite a nominee." cancelButtonTitle:@"OK" otherButtonTitles:@[] tapBlock:nil];
     } else {
-        self.nominee.invite = inviteButton.selected; NSLog(@"Invite");
+        self.nominee.invite = [NSNumber numberWithBool:inviteButton.selected];
+        DebugLog(@"Invite");
         inviteButton.selected = !inviteButton.selected;
     }
 }
