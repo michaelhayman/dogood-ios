@@ -25,6 +25,8 @@
     UITapGestureRecognizer* openPointsGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(authorizeUser)];
     [points setUserInteractionEnabled:YES];
     [points addGestureRecognizer:openPointsGesture];
+
+    [self setupRefresh];
 }
 
 - (void)authorizeUser {
@@ -87,6 +89,14 @@
 }
 
 #pragma mark - Retrieve rewards
+- (void)setupRefresh {
+    collectionView.alwaysBounceVertical = YES;
+    refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refreshVisibleRewards)
+             forControlEvents:UIControlEventValueChanged];
+    [collectionView addSubview:refreshControl];
+}
+
 - (void)showRewards {
     if (rewardsButton.selected == NO) {
         [self loadRewards];
@@ -132,6 +142,7 @@
 }
 
 - (void)getRewardsAtPath:(NSString *)path {
+    [refreshControl endRefreshing];
     [collectionView addSubview:loadingView];
     [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         rewards = [[NSArray alloc] initWithArray:mappingResult.array];
