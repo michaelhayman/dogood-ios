@@ -2,6 +2,7 @@
 #import "DGRewardPopupViewController.h"
 #import "UIViewController+MJPopupViewController.h"
 #import "UIImage+Grayscale.h"
+#import <ProgressHUD/ProgressHUD.h>
 
 @interface DGRewardPopupViewController ()
     @property (weak, nonatomic) IBOutlet UIImageView *teaser;
@@ -71,12 +72,15 @@
 }
 
 - (void)claimReward {
+    [ProgressHUD show:@"Claiming reward..." Interaction:NO];
     [[RKObjectManager sharedManager] postObject:self.reward path:@"/rewards/claim" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:self.reward, @"reward", nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserUpdatePointsNotification object:nil];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidClaimRewardNotification object:nil userInfo:userInfo];
+        [ProgressHUD dismiss];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
+        [ProgressHUD dismiss];
         [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Reward not claimed.", nil) subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
     }];
 }
