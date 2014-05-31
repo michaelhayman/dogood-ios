@@ -22,8 +22,8 @@
 #pragma mark - Fonts -----
 
 #define kSummaryCommentFont [UIFont systemFontOfSize:10]
-#define kGoodCaptionFont [UIFont systemFontOfSize:14.]
-#define BODY_FONT [UIFont systemFontOfSize:15.]
+#define kGoodCaptionFont [UIFont systemFontOfSize:14]
+#define BODY_FONT [UIFont systemFontOfSize:15]
 #define MENU_FONT [UIFont fontWithName:@"Markus Ink" size:56]
 #define CATEGORY_FONT [UIFont fontWithName:@"Markus Ink" size:48]
 #define PROFILE_FONT [UIFont fontWithName:@"Markus Ink" size:32]
