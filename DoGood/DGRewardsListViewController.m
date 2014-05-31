@@ -3,6 +3,7 @@
 #import "DGReward.h"
 #import "UIViewController+MJPopupViewController.h"
 #import <SAMLoadingView/SAMLoadingView.h>
+#import "DGRewardPopupViewController.h"
 
 @interface DGRewardsListViewController ()
 
@@ -177,7 +178,11 @@
 #pragma mark - Change data responses
 - (void)didClaimReward:(NSNotification *)notification {
     DGReward *reward = [[notification userInfo] valueForKey:@"reward"];
-    [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Reward claimed!", nil) subtitle:[NSString stringWithFormat:@"%@ is yours - check the 'claimed rewards' tab!", reward.title] type:TSMessageNotificationTypeSuccess];
+
+    DGRewardPopupViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"rewardInstructionsPopup"];
+    controller.reward = reward;
+    controller.claimed = YES;
+    [self.navigationController presentPopupViewController:controller animationType:MJPopupViewAnimationSlideBottomBottom contentInteraction:MJPopupViewContentInteractionDismissBackgroundOnly];
 }
 
 @end
