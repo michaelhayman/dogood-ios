@@ -46,7 +46,7 @@
 		633DBF7217ADC4E60038BC2D /* DGPostGoodNomineeSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF7117ADC4E50038BC2D /* DGPostGoodNomineeSearchViewController.m */; };
 		633DBF7417ADD5360038BC2D /* GoodShareCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633DBF7317ADD5360038BC2D /* GoodShareCell.xib */; };
 		633DBF7717ADD57E0038BC2D /* GoodShareCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF7617ADD57E0038BC2D /* GoodShareCell.m */; };
-		633DBF7917AE02580038BC2D /* UserOverview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633DBF7817AE02570038BC2D /* UserOverview.xib */; };
+		633DBF7917AE02580038BC2D /* RewardsTeaserView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 633DBF7817AE02570038BC2D /* RewardsTeaserView.xib */; };
 		633DBF7E17AE25CF0038BC2D /* DGUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF7D17AE25CF0038BC2D /* DGUserProfileViewController.m */; };
 		633DBF8417AE92E00038BC2D /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF8117AE92E00038BC2D /* NavigationViewController.m */; };
 		63451D521840E72300B713F0 /* DGNominee.m in Sources */ = {isa = PBXBuildFile; fileRef = 63451D511840E72300B713F0 /* DGNominee.m */; };
@@ -109,7 +109,7 @@
 		63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */; };
 		63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */; };
 		63C1548A181F555A00DA81B9 /* TTTAttributedLabel+Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C15489181F555A00DA81B9 /* TTTAttributedLabel+Tag.m */; };
-		63C1BA501806026300CB95CF /* UserOverview.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C1BA4F1806026300CB95CF /* UserOverview.m */; };
+		63C1BA501806026300CB95CF /* RewardsTeaserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C1BA4F1806026300CB95CF /* RewardsTeaserView.m */; };
 		63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */; };
 		63D4BD251802484800ACF1B9 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D4BD241802484800ACF1B9 /* Rewards.storyboard */; };
 		63D4BD2818024E0700ACF1B9 /* DGRewardPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BD2718024E0700ACF1B9 /* DGRewardPopupViewController.m */; };
@@ -223,7 +223,7 @@
 		633DBF7317ADD5360038BC2D /* GoodShareCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodShareCell.xib; sourceTree = "<group>"; };
 		633DBF7517ADD57D0038BC2D /* GoodShareCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodShareCell.h; sourceTree = "<group>"; };
 		633DBF7617ADD57E0038BC2D /* GoodShareCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodShareCell.m; sourceTree = "<group>"; };
-		633DBF7817AE02570038BC2D /* UserOverview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserOverview.xib; sourceTree = "<group>"; };
+		633DBF7817AE02570038BC2D /* RewardsTeaserView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RewardsTeaserView.xib; sourceTree = "<group>"; };
 		633DBF7C17AE25CF0038BC2D /* DGUserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserProfileViewController.h; sourceTree = "<group>"; };
 		633DBF7D17AE25CF0038BC2D /* DGUserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGUserProfileViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		633DBF8017AE92E00038BC2D /* NavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationViewController.h; sourceTree = "<group>"; };
@@ -338,8 +338,8 @@
 		63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchNetworksViewController.m; sourceTree = "<group>"; };
 		63C15488181F555A00DA81B9 /* TTTAttributedLabel+Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TTTAttributedLabel+Tag.h"; sourceTree = "<group>"; };
 		63C15489181F555A00DA81B9 /* TTTAttributedLabel+Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TTTAttributedLabel+Tag.m"; sourceTree = "<group>"; };
-		63C1BA4E1806026300CB95CF /* UserOverview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOverview.h; sourceTree = "<group>"; };
-		63C1BA4F1806026300CB95CF /* UserOverview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOverview.m; sourceTree = "<group>"; };
+		63C1BA4E1806026300CB95CF /* RewardsTeaserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardsTeaserView.h; sourceTree = "<group>"; };
+		63C1BA4F1806026300CB95CF /* RewardsTeaserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardsTeaserView.m; sourceTree = "<group>"; };
 		63D4BCDD17FFDF7000ACF1B9 /* DGGoodCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGoodCommentsViewController.h; sourceTree = "<group>"; };
 		63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGGoodCommentsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		63D4BD241802484800ACF1B9 /* Rewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rewards.storyboard; sourceTree = "<group>"; };
@@ -646,9 +646,9 @@
 				633DBF7317ADD5360038BC2D /* GoodShareCell.xib */,
 				633DBF7517ADD57D0038BC2D /* GoodShareCell.h */,
 				633DBF7617ADD57E0038BC2D /* GoodShareCell.m */,
-				633DBF7817AE02570038BC2D /* UserOverview.xib */,
-				63C1BA4E1806026300CB95CF /* UserOverview.h */,
-				63C1BA4F1806026300CB95CF /* UserOverview.m */,
+				633DBF7817AE02570038BC2D /* RewardsTeaserView.xib */,
+				63C1BA4E1806026300CB95CF /* RewardsTeaserView.h */,
+				63C1BA4F1806026300CB95CF /* RewardsTeaserView.m */,
 				636AEAA817AD79B1002A3494 /* GoodOverviewCell.xib */,
 				636AEAA517AD79AA002A3494 /* GoodOverviewCell.h */,
 				636AEAA617AD79AA002A3494 /* GoodOverviewCell.m */,
@@ -891,7 +891,7 @@
 				63FDAC44181C603B00668B15 /* ExplorePopularTagsCell.xib in Resources */,
 				6303A33617FE322100E2EACD /* Media.xcassets in Resources */,
 				633DBF7417ADD5360038BC2D /* GoodShareCell.xib in Resources */,
-				633DBF7917AE02580038BC2D /* UserOverview.xib in Resources */,
+				633DBF7917AE02580038BC2D /* RewardsTeaserView.xib in Resources */,
 				6355EC0D17B0D4C300EE91C0 /* CommentCell.xib in Resources */,
 				63FBF608180B0C06005686A6 /* RewardMiniCell.xib in Resources */,
 				6355EC1417B0EE1E00EE91C0 /* RewardCell.xib in Resources */,
@@ -1032,7 +1032,7 @@
 				633DBF7717ADD57E0038BC2D /* GoodShareCell.m in Sources */,
 				633DBF7E17AE25CF0038BC2D /* DGUserProfileViewController.m in Sources */,
 				6311488D180F3CA5008278E5 /* DGFacebookManager.m in Sources */,
-				63C1BA501806026300CB95CF /* UserOverview.m in Sources */,
+				63C1BA501806026300CB95CF /* RewardsTeaserView.m in Sources */,
 				633DBF8417AE92E00038BC2D /* NavigationViewController.m in Sources */,
 				6355EC0717B0C83100EE91C0 /* DGComment.m in Sources */,
 				63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */,

@@ -1,4 +1,4 @@
-@interface UserOverview : UIView {
+@interface RewardsTeaserView : UIView {
     NSArray * rewards;
     __weak IBOutlet UICollectionView *rewardCollectionView;
 }

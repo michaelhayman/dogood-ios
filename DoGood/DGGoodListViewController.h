@@ -1,11 +1,9 @@
 @class DGCategory;
-@class UserOverview;
 @class DGTag;
 @class DGGood;
 @class GoodTableView;
 
 @interface DGGoodListViewController : DGViewController {
-    UserOverview *userView;
     __weak IBOutlet GoodTableView *goodTableView;
 }
 

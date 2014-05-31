@@ -5,7 +5,6 @@
 #import "DGTag.h"
 #import "DGCategory.h"
 #import "FSLocation.h"
-#import "UserOverview.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
 #import "DGComment.h"
 #import "GoodTableView.h"
@@ -50,8 +49,6 @@
     [goodTableView setupInfiniteScroll];
     [self getGood];
 
-    [self setupUserPoints];
-
     self.navigationItem.rightBarButtonItem = [DGAppearance postBarButtonItemFor:self];
 }
 
@@ -76,7 +73,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:userView selector:@selector(setContent) name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayPostSuccessMessage) name:DGUserDidPostGood object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getGood) name:DGUserDidPostGood object:nil];
 }
@@ -84,7 +80,6 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
 
-    [[NSNotificationCenter defaultCenter] removeObserver:userView name:DGUserDidSignInNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidPostGood object:nil];
 }
 
@@ -106,15 +101,6 @@
 
 - (void)displayPostSuccessMessage {
     [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Saved!", nil) subtitle:NSLocalizedString(@"You made some points!", nil) type:TSMessageNotificationTypeSuccess];
-}
-
-- (void)setupUserPoints {
-    /*
-    if (_category == nil && _tag == nil && _path == nil && REWARDS_ENABLED) {
-        userView = [[UserOverview alloc] initWithController:self.navigationController];
-        [_tableView setTableHeaderView:userView];
-    }
-    */
 }
 
 #pragma mark - Retrieval methods

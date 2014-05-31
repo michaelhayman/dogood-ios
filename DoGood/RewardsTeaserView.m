@@ -1,4 +1,4 @@
-#import "UserOverview.h"
+#import "RewardsTeaserView.h"
 #import "constants.h"
 #import "DGReward.h"
 // #import "DGRewardMiniCell.h"
@@ -6,14 +6,14 @@
 #import "UIViewController+MJPopupViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@implementation UserOverview
+@implementation RewardsTeaserView
 
 #pragma mark - Initialization & reuse
 - (id)initWithController:(UINavigationController *)controller {
     CGRect frame = CGRectMake(0, 0, 320, 90);
     self = [super initWithFrame:frame];
     if (self) {
-        [[NSBundle mainBundle] loadNibNamed:@"UserOverview" owner:self options:nil];
+        [[NSBundle mainBundle] loadNibNamed:@"RewardsTeaserView" owner:self options:nil];
         [self addSubview:self.view];
         self.navigationController = controller;
 
