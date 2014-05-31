@@ -8,8 +8,8 @@
 @property (retain) NSString *twitter_id;
 @property (retain) NSString *facebook_id;
 @property (retain) UIImage *avatarImage;
-@property (retain) NSString *avatar;
 @property BOOL invite;
+@property (retain) NSString *avatar_url;
 
 - (void)configureForUser:(DGUser *)user;
 - (NSURL *)avatarURL;

@@ -94,6 +94,7 @@
       @"twitter_id",
       @"facebook_id",
       @"email",
+      @"avatar_url",
       @"phone",
       @"user_id"
     ];

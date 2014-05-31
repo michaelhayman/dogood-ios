@@ -9,6 +9,7 @@
     self.user_id = user.userID;
     self.twitter_id = user.twitter_id;
     self.facebook_id = user.facebook_id;
+    self.avatar_url = user.avatar_url;
 }
 
 - (BOOL)isDGUser {
@@ -51,7 +52,7 @@
 }
 
 - (NSURL *)avatarURL {
-    return [NSURL URLWithString:self.avatar];
+    return [NSURL URLWithString:self.avatar_url];
 }
 
 - (BOOL)isPopulated {

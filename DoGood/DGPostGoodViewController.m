@@ -450,6 +450,14 @@
                                         fileName:@"evidence.png"
                                         mimeType:@"image/png"];
             }
+            if (self.good.nominee.avatarImage) {
+                UIImage *resizedAvatarImage = [self.good.nominee.avatarImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 480) interpolationQuality:kCGInterpolationHigh];
+
+                [formData appendPartWithFileData:UIImagePNGRepresentation(resizedAvatarImage)
+                                            name:@"good[nominee_attributes][avatar]"
+                                        fileName:@"avatar.png"
+                                        mimeType:@"image/png"];
+            }
         }];
 
         RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
