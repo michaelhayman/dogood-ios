@@ -339,7 +339,12 @@
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(closeComments)];
+    UIButton *a1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    [a1 addTarget:self action:@selector(closeComments) forControlEvents:UIControlEventTouchUpInside];
+    [a1 setImage:[UIImage imageNamed:@"KeyboardDown"] forState:UIControlStateNormal];
+    [a1 sizeToFit];
+    UIBarButtonItem *hideButton = [[UIBarButtonItem alloc] initWithCustomView:a1];
+    self.navigationItem.rightBarButtonItem = hideButton;
 }
 
 - (void)closeComments {
