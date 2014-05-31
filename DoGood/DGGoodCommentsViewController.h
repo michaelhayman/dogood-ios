@@ -5,7 +5,7 @@
 @class DGEntityHandler;
 @class SAMLoadingView;
 
-@interface DGGoodCommentsViewController : UIViewController <UITextViewDelegate> {
+@interface DGGoodCommentsViewController : DGViewController <UITextViewDelegate> {
     __weak IBOutlet NSLayoutConstraint *commentFieldBottom;
     __weak IBOutlet UIView *commentInputView;
     __weak IBOutlet UITextView *commentInputField;

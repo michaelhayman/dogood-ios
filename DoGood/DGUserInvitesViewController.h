@@ -1,4 +1,4 @@
-@interface DGUserInvitesViewController : UIViewController {
+@interface DGUserInvitesViewController : DGViewController {
     NSString *bodyText;
     NSString *subjectText;
 }

@@ -1,4 +1,4 @@
-@interface DGUpdatePasswordViewController : UIViewController <UITextFieldDelegate>
+@interface DGUpdatePasswordViewController : DGViewController <UITextFieldDelegate>
 
 - (void)popController;
 
