@@ -34,7 +34,11 @@
 
 - (void)dealloc {
     DebugLog(@"entity dealloced");
+    searchTable.hidden = YES;
+    searchTagsTable.hidden = YES;
+    searchTable = nil;
     searchPeopleTableController = nil;
+    searchTagsTable = nil;
     searchTagsTableController = nil;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidNotFindPeopleForTextField object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidSelectPersonForTextField object:nil];
