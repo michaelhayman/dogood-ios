@@ -2,6 +2,7 @@
 #import "DGRewardCell.h"
 #import "DGReward.h"
 #import "UIViewController+MJPopupViewController.h"
+#import <SAMLoadingView/SAMLoadingView.h>
 
 @interface DGRewardsListViewController ()
 
@@ -16,10 +17,11 @@
     UINib *nib = [UINib nibWithNibName:@"RewardCell" bundle:nil];
     [collectionView registerNib:nib forCellWithReuseIdentifier:@"RewardCell"];
 
-    [self setupTabs];
-    [self showRewards];
+    loadingView = [[SAMLoadingView alloc] initWithFrame:collectionView.bounds];
+    loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
-    // points gesture
+    [self setupTabs];
+
     UITapGestureRecognizer* openPointsGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(authorizeUser)];
     [points setUserInteractionEnabled:YES];
     [points addGestureRecognizer:openPointsGesture];
@@ -30,6 +32,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     if (!rewardsButton.selected && !claimedButton.selected) {
         rewardsButton.selected = YES;
     }
@@ -86,11 +89,15 @@
 #pragma mark - Retrieve rewards
 - (void)showRewards {
     if (rewardsButton.selected == NO) {
-        [self deselect:claimedButton];
-        [self reselect:rewardsButton];
-        NSString *path = [NSString stringWithFormat:@"/rewards"];
-        [self getRewardsAtPath:path];
+        [self loadRewards];
     }
+}
+
+- (void)loadRewards {
+    [self deselect:claimedButton];
+    [self reselect:rewardsButton];
+    NSString *path = [NSString stringWithFormat:@"/rewards"];
+    [self getRewardsAtPath:path];
 }
 
 - (void)deselect:(UIButton *)button {
@@ -104,30 +111,35 @@
 - (void)showClaimed {
     if ([[DGUser currentUser] authorizeAccess:self]) {
         if (claimedButton.selected == NO) {
-            [self deselect:rewardsButton];
-            [self reselect:claimedButton];
-            NSString *path = [NSString stringWithFormat:@"/rewards/claimed"];
-            [self getRewardsAtPath:path];
+            [self loadClaimed];
         }
     }
 }
 
-- (void)refreshVisibleRewards {
-    NSString *path;
-    if (rewardsButton.selected) {
-        path = [NSString stringWithFormat:@"/rewards"];
-    } else {
-        path = [NSString stringWithFormat:@"/rewards/claimed"];
-    }
+- (void)loadClaimed {
+    [self deselect:rewardsButton];
+    [self reselect:claimedButton];
+    NSString *path = [NSString stringWithFormat:@"/rewards/claimed"];
     [self getRewardsAtPath:path];
 }
 
+- (void)refreshVisibleRewards {
+    if (rewardsButton.selected) {
+        [self loadRewards];
+    } else {
+        [self loadClaimed];
+    }
+}
+
 - (void)getRewardsAtPath:(NSString *)path {
+    [collectionView addSubview:loadingView];
     [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         rewards = [[NSArray alloc] initWithArray:mappingResult.array];
         [collectionView reloadData];
+        [loadingView removeFromSuperview];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
+        [loadingView removeFromSuperview];
     }];
 }
 
