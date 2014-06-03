@@ -36,7 +36,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self resetToDefaultNavColor];
     [ProgressHUD dismiss];
     [locationManager stopUpdatingLocation];
 }

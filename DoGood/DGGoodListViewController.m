@@ -96,7 +96,6 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self resetToDefaultNavColor];
 }
 
 - (void)displayPostSuccessMessage {
