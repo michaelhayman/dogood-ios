@@ -1,6 +1,7 @@
 #import "URLHandler.h"
 #import "DGGoodListViewController.h"
 #import "DGPostGoodViewController.h"
+#import "DGSignInViewController.h"
 #import "DGTag.h"
 
 @implementation URLHandler
@@ -12,11 +13,17 @@
         DebugLog(@"handle dogood");
 
         if ([[url host] hasPrefix:@"users"]) {
-            NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
-            [f setNumberStyle:NSNumberFormatterDecimalStyle];
-            NSNumber * userID = [f numberFromString:urlComponents[1]];
-            DebugLog(@"open profile page for %@", userID);
-            [DGUser openProfilePage:userID inController:nav];
+            if ([urlComponents[1] isEqualToString:@"signIn"]) {
+                UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
+                DGSignInViewController*controller = [storyboard instantiateViewControllerWithIdentifier:@"SignIn"];
+                [nav pushViewController:controller animated:YES];
+            } else {
+                NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+                [f setNumberStyle:NSNumberFormatterDecimalStyle];
+                NSNumber * userID = [f numberFromString:urlComponents[1]];
+                DebugLog(@"open profile page for %@", userID);
+                [DGUser openProfilePage:userID inController:nav];
+            }
         }
 
         if ([[url host] hasPrefix:@"goods"]) {
