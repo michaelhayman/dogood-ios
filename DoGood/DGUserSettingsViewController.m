@@ -69,6 +69,11 @@
     [self setSocialConnectionsStatus];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationItem.backBarButtonItem = [DGAppearance barButtonItemWithNoText];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
