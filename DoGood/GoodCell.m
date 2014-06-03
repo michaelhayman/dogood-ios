@@ -203,7 +203,7 @@
             [self.nominee setUserInteractionEnabled:NO];
         }
     } else {
-        self.nominee.text = @"";
+        self.nominee.text = @"Wanted:";
         self.nomineeHeight.constant = 0.0;
     }
 }
