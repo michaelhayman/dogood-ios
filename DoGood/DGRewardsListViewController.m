@@ -70,6 +70,8 @@
 - (void)updatePoints {
     if ([[DGUser currentUser] isSignedIn]) {
         [[DGUser currentUser] updatePoints];
+    } else {
+        [self loadRewards];
     }
 }
 
