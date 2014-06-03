@@ -62,7 +62,6 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidUpdatePointsNotification object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidUpdatePointsNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserUpdatePointsNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidClaimRewardNotification object:nil];
 }
