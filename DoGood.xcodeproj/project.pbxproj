@@ -477,13 +477,13 @@
 				63FBF605180AECFF005686A6 /* UIImage+Grayscale.m */,
 				6358342C17C8A09700F997F6 /* Arrow.h */,
 				6358342D17C8A09700F997F6 /* Arrow.m */,
-				63E0798717BC59C7006FC42E /* UITextFieldCell.xib */,
 				6308161317C3C19F004DE5D7 /* DGPhotoPickerViewController.h */,
 				6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */,
 				6356BDB0182891F4006AF033 /* UIViewController+DGViewController.h */,
 				6356BDB1182891F4006AF033 /* UIViewController+DGViewController.m */,
 				63E0798917BC5A6F006FC42E /* UITextFieldCell.h */,
 				63E0798A17BC5A6F006FC42E /* UITextFieldCell.m */,
+				63E0798717BC59C7006FC42E /* UITextFieldCell.xib */,
 			);
 			name = Components;
 			sourceTree = "<group>";
