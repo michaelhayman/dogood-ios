@@ -3,7 +3,7 @@
 @implementation DGTag
 
 - (NSString *)hashifiedName {
-    return [NSString stringWithFormat:@"#%@", self.name];
+    return [NSString stringWithFormat:@"%@", self.name];
 }
 
 @end

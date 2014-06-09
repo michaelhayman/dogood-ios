@@ -107,7 +107,6 @@
 		63B546A61859D17E00673B6C /* DGAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B546A51859D17E00673B6C /* DGAuthenticateViewController.m */; };
 		63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */; };
 		63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */; };
-		63C1548A181F555A00DA81B9 /* TTTAttributedLabel+Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C15489181F555A00DA81B9 /* TTTAttributedLabel+Tag.m */; };
 		63C1BA501806026300CB95CF /* RewardsTeaserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C1BA4F1806026300CB95CF /* RewardsTeaserView.m */; };
 		63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */; };
 		63D4BD251802484800ACF1B9 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D4BD241802484800ACF1B9 /* Rewards.storyboard */; };
@@ -334,8 +333,6 @@
 		63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchAddressBookViewController.m; sourceTree = "<group>"; };
 		63BFB1EA17C81E11004D990F /* DGUserSearchNetworksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchNetworksViewController.h; sourceTree = "<group>"; };
 		63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchNetworksViewController.m; sourceTree = "<group>"; };
-		63C15488181F555A00DA81B9 /* TTTAttributedLabel+Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TTTAttributedLabel+Tag.h"; sourceTree = "<group>"; };
-		63C15489181F555A00DA81B9 /* TTTAttributedLabel+Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TTTAttributedLabel+Tag.m"; sourceTree = "<group>"; };
 		63C1BA4E1806026300CB95CF /* RewardsTeaserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardsTeaserView.h; sourceTree = "<group>"; };
 		63C1BA4F1806026300CB95CF /* RewardsTeaserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardsTeaserView.m; sourceTree = "<group>"; };
 		63D4BCDD17FFDF7000ACF1B9 /* DGGoodCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGoodCommentsViewController.h; sourceTree = "<group>"; };
@@ -466,8 +463,6 @@
 				630C09CC18F22C2D006B16E3 /* DGLocator.m */,
 				6393062B18DF3DBF0058A515 /* DGViewController.h */,
 				6393062C18DF3DBF0058A515 /* DGViewController.m */,
-				63C15488181F555A00DA81B9 /* TTTAttributedLabel+Tag.h */,
-				63C15489181F555A00DA81B9 /* TTTAttributedLabel+Tag.m */,
 				630046CE1810E619001529E5 /* URLHandler.h */,
 				630046CF1810E619001529E5 /* URLHandler.m */,
 				6330B69F1812FC28005DC78B /* DGEntityHandler.h */,
@@ -1063,7 +1058,6 @@
 				6319D38F17BDED080071DA71 /* DGReward.m in Sources */,
 				6319D39517BE5A230071DA71 /* DGUserSearchViewController.m in Sources */,
 				6397318E17C1733D001B96BF /* DGUserTwitterViewController.m in Sources */,
-				63C1548A181F555A00DA81B9 /* TTTAttributedLabel+Tag.m in Sources */,
 				63357AFE17C279F2007B5FD7 /* DGUserFindFriendsViewController.m in Sources */,
 				63FDAC48181C61BA00668B15 /* TagCollectionCell.m in Sources */,
 				63D9F1FE18107E1000B9207F /* DGEntity.m in Sources */,

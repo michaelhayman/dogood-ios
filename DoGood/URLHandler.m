@@ -41,7 +41,9 @@
                 DGGoodListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
                 if ([urlComponents[1] isEqualToString:@"tagged"]) {
                     DGTag *tag = [DGTag new];
-                    tag.name = [url pathComponents][2];
+                    NSString * tagName = [NSString stringWithFormat:@"#%@", [url fragment]];
+                    tag.name = [tagName stringByAddingPercentEscapesUsingEncoding:
+                     NSUTF8StringEncoding];
                     controller.tag = tag;
                 } else {
                     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];

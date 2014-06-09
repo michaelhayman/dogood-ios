@@ -13,7 +13,7 @@
 }
 
 - (void)initEntityHandler {
-    self.entityHandler = [[DGEntityHandler alloc] initWithTextView:self.description andEntities:self.entities inController:self.parent withType:@"Good" reverseScroll:NO tableOffset:100 secondTableOffset:64 characterLimit:characterLimit];
+    self.entityHandler = [[DGEntityHandler alloc] initWithTextView:self.description andEntities:self.entities inController:self.parent andLinkID:[NSNumber numberWithInt:9] reverseScroll:NO tableOffset:100 secondTableOffset:64 characterLimit:characterLimit];
 }
 
 - (void)prepareForReuse {
@@ -56,23 +56,13 @@
         return NO;
     }
 
-    // int length = textField.text.length - range.length + string.length;
-    /*
-    if (length > 0) {
-        sendButton.enabled = YES;
-    } else {
-        sendButton.enabled = NO;
-    }
-    */
+    [self.entityHandler setLimitText];
 
-    // [self setTextViewHeight];
-    [_entityHandler setLimitText];
-
-    BOOL sup = [_entityHandler check:textField range:(NSRange)range forEntities:self.entities completion:^BOOL(BOOL end, NSMutableArray *newEntities) {
+    BOOL sup = [self.entityHandler check:textField range:(NSRange)range forEntities:self.entities completion:^BOOL(BOOL end, NSMutableArray *newEntities) {
         self.entities = newEntities;
         return end;
     }];
-    [_entityHandler resetTypingAttributes:textField];
+    [self.entityHandler resetTypingAttributes:textField];
     return sup;
 }
 
@@ -86,6 +76,11 @@
     } else {
         self.placeholder.hidden = YES;
     }
+    /* this crashes the app... and Xcode
+    if (self.entityHandler != nil) {
+        [self.entityHandler hideEverything];
+    }
+    */
     [textView resignFirstResponder];
 }
 
@@ -97,8 +92,8 @@
         self.placeholder.hidden = YES;
     }
 
-    [_entityHandler watchForEntities:textField];
-    [_entityHandler setLimitText];
+    [self.entityHandler watchForEntities:textField];
+    [self.entityHandler setLimitText];
 
     if ([textField.text length] >= characterLimit) {
         // sendButton.enabled = NO;

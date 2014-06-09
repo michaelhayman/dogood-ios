@@ -3,6 +3,7 @@
 #import "DGTag.h"
 #import "DGTextFieldSearchPeopleTableViewController.h"
 #import "DGTextFieldSearchTagsTableViewController.h"
+#import "NSString+RangeChecker.h"
 
 @interface DGEntityHandler ()
 
@@ -13,13 +14,13 @@
 
 @implementation DGEntityHandler
 
-- (id)initWithTextView:(UITextView *)textView andEntities:(NSMutableArray *)inputEntities inController:(UIViewController *)controller withType:(NSString *)type reverseScroll:(BOOL)reverse tableOffset:(int)firstOffset secondTableOffset:(int)secondOffset characterLimit:(int)inputCharacterLimit
+- (id)initWithTextView:(UITextView *)textView andEntities:(NSMutableArray *)inputEntities inController:(UIViewController *)controller andLinkID:(NSNumber *)linkerID reverseScroll:(BOOL)reverse tableOffset:(int)firstOffset secondTableOffset:(int)secondOffset characterLimit:(int)inputCharacterLimit
 {
     self = [super init];
     if (self) {
         entityTextView = textView;
         entities = inputEntities;
-        entityType = type;
+        linkID = linkerID;
         parent = controller;
         characterLimit = inputCharacterLimit;
         tableOffset = firstOffset;
@@ -105,11 +106,17 @@
     if (searchTags) {
         if ([textField.text length] >= startOfRange) {
             searchTerm = [textField.text substringFromIndex:startOfRange];
+            [UITextChecker learnWord:searchTerm];
+            DebugLog(@"search term %@", searchTerm);
+            if ([searchTerm containsString:@" "]) {
+                [self stopSearchingTags];
+                return;
+            }
+
             [self searchTags:searchTerm];
             return;
         } else {
             [self stopSearchingTags];
-            accessoryButtonTag.selected = NO;
         }
 
     }
@@ -159,7 +166,7 @@
 }
 
 - (void)setLimitText {
-    characterLimitLabel.text = [NSString stringWithFormat:@"%d", characterLimit - [entityTextView.text length]];
+    characterLimitLabel.text = [NSString stringWithFormat:@"%lu", characterLimit - [entityTextView.text length]];
     if ([entityTextView.text length] >= characterLimit) {
         characterLimitLabel.textColor = [UIColor redColor];
     } else {
@@ -259,23 +266,19 @@
 // strip out the @ symbol from the textfield on insertion
 - (void)selectedPerson:(NSNotification *)notification {
     DGUser *user = [[notification userInfo] valueForKey:@"user"];
-    int startOfPersonPosition = MAX(0, startOfRange - 1);
-    int personLength = [user.full_name length];
-    int endOfPersonPosition = startOfPersonPosition + personLength;
+    NSInteger startOfPersonPosition = MAX(0, startOfRange - 1);
+    NSInteger personLength = [user.full_name length];
 
-    DebugLog(@"Debugging: %@ %@ %@ %d %d %d", user.full_name, entityTextView.attributedText, entityTextView.text, startOfPersonPosition, personLength, endOfPersonPosition);
+    DebugLog(@"Debugging: %@ %@ %@ %lu %lu", user.full_name, entityTextView.attributedText, entityTextView.text, startOfPersonPosition, personLength);
     NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[entityTextView.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfPersonPosition)];
     entityTextView.attributedText = [self insert:[user.full_name stringByAppendingString:@" "] atEndOf:originalComment];
     [self setLimitText];
 
-    NSRange range = NSMakeRange(startOfPersonPosition, endOfPersonPosition - startOfPersonPosition);
+    NSRange range = NSMakeRange(startOfPersonPosition, personLength);
 
     DGEntity *entity = [DGEntity new];
     [entity setArrayFromRange:range];
-    entity.entityable_type = entityType;
-    entity.entityable_id = user.userID;
     entity.title = user.full_name;
-    entity.link = [NSString stringWithFormat:@"dogood://users/%@", user.userID];
     entity.link_id = user.userID;
     entity.link_type = @"user";
     [entities addObject:entity];
@@ -313,30 +316,27 @@
 - (void)selectedTag:(NSNotification *)notification {
     DGTag *tag = [[notification userInfo] valueForKey:@"tag"];
 
-    int startOfTagPosition = MAX(-1, startOfRange);
-    int tagLength = [tag.name length];
-    int endOfTagPosition = startOfTagPosition + tagLength;
+    NSInteger startOfTagPosition = MAX(0, startOfRange - 1);
+    NSInteger tagLength = [tag.name length];
 
     NSString *entityName = tag.name;
-    DebugLog(@"Debugging: %@ %@ %@ %d %d %d", entityName, entityTextView.attributedText, entityTextView.text, startOfTagPosition, tagLength, endOfTagPosition);
+    DebugLog(@"Debugging: %@ %@ %@ %lu %lu", entityName, entityTextView.attributedText, entityTextView.text, startOfTagPosition, tagLength);
     NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[entityTextView.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfTagPosition)];
 
-    NSDictionary *attributes = [NSDictionary dictionaryWithObject:LINK_COLOUR forKey:NSForegroundColorAttributeName];
+    // NSDictionary *attributes = [NSDictionary dictionaryWithObject:LINK_COLOUR forKey:NSForegroundColorAttributeName];
     originalComment = [self insert:[entityName stringByAppendingString:@" "] atEndOf:originalComment];
-    [originalComment addAttributes:attributes range:NSMakeRange(startOfTagPosition, 1)];
+    // [originalComment addAttributes:attributes range:NSMakeRange(startOfTagPosition, 1)];
 
     entityTextView.attributedText = originalComment;
     [self setLimitText];
 
-    NSRange range = NSMakeRange(startOfTagPosition, endOfTagPosition - startOfTagPosition);
+    NSRange range = NSMakeRange(startOfTagPosition, tagLength);
 
+    // DGEntity *entity = [[DGEntity alloc] init];
     DGEntity *entity = [DGEntity new];
     [entity setArrayFromRange:range];
-    entity.entityable_type = entityType;
-    entity.entityable_id = tag.tagID;
     entity.title = tag.name;
-    entity.link = [NSString stringWithFormat:@"dogood://goods/tagged/%@", tag.tagID];
-    entity.link_id = tag.tagID;
+    entity.link_id = linkID;
     entity.link_type = @"tag";
     [entities addObject:entity];
 
@@ -346,6 +346,11 @@
 - (void)resetTypingAttributes:(UITextView *)textField {
     NSDictionary *attributes = [NSDictionary dictionaryWithObject:[UIColor blackColor] forKey:NSForegroundColorAttributeName];
     textField.typingAttributes = attributes;
+}
+
+- (void)hideEverything {
+    [self stopSearchingPeople];
+    [self stopSearchingTags];
 }
 
 @end

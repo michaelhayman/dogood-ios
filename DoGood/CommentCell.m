@@ -3,7 +3,6 @@
 #import "DGEntity.h"
 #import <TTTAttributedLabel.h>
 #import "URLHandler.h"
-#import "TTTAttributedLabel+Tag.h"
 #import "NSString+RangeChecker.h"
 
 @implementation CommentCell
@@ -40,8 +39,6 @@
 
     UIFont *font = [UIFont boldSystemFontOfSize:13];
     [CommentCell addUsernameAndLinksToComment:self.comment withText:text andFont:font inLabel:self.commentBody];
-
-    [self.commentBody hashIfy:attrString inLabel:self.commentBody];
 
     CGFloat height = [DGAppearance calculateHeightForString:self.commentBody.text WithFont:self.commentBody.font andWidth:kCommentRightColumnWidth];
 

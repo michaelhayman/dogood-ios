@@ -1,8 +1,6 @@
 @interface DGEntity : NSObject
 
 @property (retain) NSNumber *entityID;
-@property (retain) NSNumber *entityable_id;
-@property (retain) NSString *entityable_type;
 @property (retain) NSString *link;
 @property (retain) NSString *link_type;
 @property (retain) NSNumber *link_id;
@@ -11,6 +9,9 @@
 
 - (NSRange)rangeFromArray;
 - (void)setArrayFromRange:(NSRange)range;
-- (NSRange)rangeFromArrayWithOffset:(int)offset;
+- (NSRange)rangeFromArrayWithOffset:(NSInteger)offset;
+
+typedef void (^HashSearchCompletionBlock)(NSArray *entities, NSError *error);
++ (void)findTagEntitiesIn:(NSString *)string forLinkID:(NSNumber *)linkID completion:(HashSearchCompletionBlock)completion;
 
 @end

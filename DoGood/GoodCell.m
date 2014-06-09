@@ -6,7 +6,6 @@
 #import "DGTag.h"
 #import "DGEntity.h"
 #import "DGGoodCommentsViewController.h"
-#import <TTTAttributedLabel.h>
 #import "DGUserProfileViewController.h"
 #import "DGUserListViewController.h"
 #import "DGUserInvitesViewController.h"
@@ -14,7 +13,6 @@
 #import "URLHandler.h"
 #import "CommentCell.h"
 #import "DGNominee.h"
-#import "TTTAttributedLabel+Tag.h"
 #import "NSString+Inflections.h"
 #import "NSString+RangeChecker.h"
 #import <ProgressHUD/ProgressHUD.h>
@@ -439,7 +437,6 @@
         label.frame = CGRectMake(0, lastHeight, width, height);
         lastHeight = lastHeight + size.height;
 
-        [label hashIfy:label.attributedText inLabel:label];
         label.delegate = self;
         [comments addSubview:label];
     }
@@ -463,8 +460,6 @@
             [self.description addLinkToURL:url withRange:entityRange];
         }
     }
-
-    [self.description hashIfy:self.description.attributedText inLabel:self.description];
 
     self.description.delegate = self;
 }

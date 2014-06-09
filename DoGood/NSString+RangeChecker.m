@@ -12,4 +12,14 @@
     }
 }
 
+- (BOOL)containsString:(NSString *)string {
+    NSCharacterSet *cset = [NSCharacterSet characterSetWithCharactersInString:string];
+    NSRange range = [self rangeOfCharacterFromSet:cset];
+    if (range.location == NSNotFound) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 @end

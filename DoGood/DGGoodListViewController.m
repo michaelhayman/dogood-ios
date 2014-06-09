@@ -24,7 +24,7 @@
         [self setupMenuTitle:self.category.name];
         [self updateTitleColor:[self.category rgbColour]];
     } else if (self.tag) {
-        [self setupMenuTitle:[self.tag hashifiedName]];
+        [self setupMenuTitle:[self.tag.name stringByRemovingPercentEncoding]];
     } else if (self.user) {
         [self setupMenuTitle:[self.user full_name]];
     } else if (self.path) {

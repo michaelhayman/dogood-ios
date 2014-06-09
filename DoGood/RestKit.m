@@ -114,25 +114,7 @@
     // entity
     // --------------------------------
     RKObjectMapping *entityMapping = [RKObjectMapping mappingForClass:[DGEntity class]];
-    /*
-    [entityMapping addAttributeMappingsFromDictionary:@{
-        @"id" : @"entityID",
-    }];
-    */
-    /*
-    NSDictionary *entityDict = @{
-        @"id" : @"entityID",
-        @"entityable_type" : @"type",
-        @"entityable_id" : @"entityable_id",
-        @"link" : @"link",
-        @"range" : @"range",
-    };
-    [entityMapping addAttributeMappingsFromDictionary:entityDict];
-    */
-
     NSArray *entityArray = @[
-        @"entityable_type",
-        @"entityable_id",
         @"title",
         @"link",
         @"link_id",

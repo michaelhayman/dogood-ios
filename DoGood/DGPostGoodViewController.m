@@ -15,6 +15,7 @@
 #import <UIImage+Resize.h>
 #import "DGPhotoPickerViewController.h"
 #import "DGGoodListViewController.h"
+#import "DGEntity.h"
 
 #define kNomineeCell @"nominee"
 #define nomineeCellTag 59
@@ -425,9 +426,23 @@
     self.good.shareTwitter = twitter.on;
     UISwitch *facebook = (UISwitch *)[self.tableView viewWithTag:share_facebook_cell_tag];
     self.good.shareFacebook = facebook.on;
-    self.good.entities = cell.entities;
 
-    bool errors = YES;
+    // filter out non-user entities
+    NSMutableArray *parsedEntities = [[NSMutableArray alloc] init];
+    for (DGEntity *entity in cell.entities) {
+        if ([entity.link_type isEqualToString:@"user"]) {
+            [parsedEntities addObject:entity];
+        }
+    }
+
+    // re-add tag entities
+    [DGEntity findTagEntitiesIn:self.good.caption forLinkID:self.good.goodID completion:^(NSArray *tagEntities, NSError *error) {
+        [parsedEntities addObjectsFromArray:tagEntities];
+    }];
+
+    self.good.entities = parsedEntities;
+
+    BOOL errors = YES;
     NSString *message;
 
     if ([self.good.caption isEqualToString:@""]) {

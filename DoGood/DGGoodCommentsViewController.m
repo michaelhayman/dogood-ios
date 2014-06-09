@@ -42,7 +42,7 @@
     characterLimit = 120;
     entities = [[NSMutableArray alloc] init];
     commentInputField.allowsEditingTextAttributes = NO;
-    entityHandler = [[DGEntityHandler alloc] initWithTextView:commentInputField andEntities:entities inController:self withType:@"Comment" reverseScroll:YES tableOffset:64 secondTableOffset:44 characterLimit:characterLimit];
+    entityHandler = [[DGEntityHandler alloc] initWithTextView:commentInputField andEntities:entities inController:self andLinkID:self.good.goodID reverseScroll:YES tableOffset:64 secondTableOffset:44 characterLimit:characterLimit];
 
     tableView.transform = CGAffineTransformMakeRotation(-M_PI);
     // [self setupKeyboardBehaviour];
@@ -193,14 +193,20 @@
     newComment.user_id = [DGUser currentUser].userID;
 
     // filter out non-user entities
-    NSMutableArray *userEntities = [[NSMutableArray alloc] init];
+    NSMutableArray *parsedEntities = [[NSMutableArray alloc] init];
     for (DGEntity *entity in entities) {
         if ([entity.link_type isEqualToString:@"user"]) {
-            [userEntities addObject:entity];
+            [parsedEntities addObject:entity];
         }
     }
 
-    newComment.entities = userEntities;
+    // re-add tag entities
+    [DGEntity findTagEntitiesIn:newComment.comment forLinkID:self.good.goodID completion:^(NSArray *tagEntities, NSError *error) {
+        [parsedEntities addObjectsFromArray:tagEntities];
+    }];
+
+    newComment.entities = parsedEntities;
+
     if (![commentInputField.text isEqualToString:@""]) {
         [[RKObjectManager sharedManager] postObject:newComment path:@"/comments" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
             sendButton.enabled = YES;
