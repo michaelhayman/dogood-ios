@@ -37,5 +37,11 @@ typedef enum {
     category,
     location,
     share,
-    numAgentListRows
+    numPostGoodRows
 } PostGoodRowType;
+
+typedef enum {
+    // facebook,
+    twitter,
+    numShareRows
+} PostGoodShareType;

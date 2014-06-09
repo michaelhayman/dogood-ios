@@ -158,13 +158,12 @@
 
 #pragma mark - UITableView data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
+    return numPostGoodRows;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == share) {
-        // return 3;
-        return 2;
+        return numShareRows;
     } else if (section == nominee) {
         if ([self.good.done boolValue]) {
             return 1;
@@ -240,14 +239,14 @@
         return cell;
     } else {
         GoodShareCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodShareCell"];
-        if (indexPath.row == 0) {
-            cell.share.tag = share_facebook_cell_tag;
-            [cell facebook];
-            cell.facebookManager = facebookManager;
-        } else {
+        if (indexPath.row == twitter) {
             cell.share.tag = share_twitter_cell_tag;
             [cell twitter];
             cell.twitterManager = twitterManager;
+        } else {
+            cell.share.tag = share_facebook_cell_tag;
+            [cell facebook];
+            cell.facebookManager = facebookManager;
         }
         return cell;
     }
