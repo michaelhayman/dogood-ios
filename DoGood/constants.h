@@ -9,9 +9,9 @@
 #define DEVELOPMENT_LOGS 0
 #define DEVELOPMENT 0
 #if DEVELOPMENT
-    #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3002/"
+    #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:5000/"
 #else
-    #define JSON_API_HOST_ADDRESS @"http://api.dogood.mobi/"
+    #define JSON_API_HOST_ADDRESS @"http://api-heroku.dogood.mobi/"
 #endif
 
 #pragma mark - Convenience Methods -----
