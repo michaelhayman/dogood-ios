@@ -50,6 +50,7 @@ static DGUser* currentUser = nil;
 
 + (void)welcomeMessageShown {
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"welcomeShown"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 #pragma mark - HTTP Headers
