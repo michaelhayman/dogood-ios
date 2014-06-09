@@ -1,7 +1,6 @@
 #import "CommentCell.h"
 #import "DGComment.h"
 #import "DGEntity.h"
-#import "DGTag.h"
 #import <TTTAttributedLabel.h>
 #import "URLHandler.h"
 #import "TTTAttributedLabel+Tag.h"
