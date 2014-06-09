@@ -48,7 +48,7 @@
     [self loadVisiblePages];
 }
 
-- (void)setPageNumber:(int)number {
+- (void)setPageNumber:(NSInteger)number {
     if ([tourImages count] > 0) {
         galleryControl.currentPage = number;
     } else {

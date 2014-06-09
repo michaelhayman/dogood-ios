@@ -56,7 +56,7 @@
 }
 
 - (NSError *)responseErrorWithResponseCode:(NSInteger)code {
-    NSString *statusCodeMsg = [NSString stringWithFormat:@"The response status code is %d", code];
+    NSString *statusCodeMsg = [NSString stringWithFormat:@"The response status code is %ld", code];
     NSDictionary *errorInfo = @{
         NSLocalizedDescriptionKey: NSLocalizedString(@"Response error", nil),
         NSLocalizedFailureReasonErrorKey: NSLocalizedString(@"Access denied.", nil),

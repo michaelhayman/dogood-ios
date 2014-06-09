@@ -269,7 +269,7 @@
     if (operation) {
 
         NSInteger statusCode = operation.HTTPRequestOperation.response.statusCode;
-        DebugLog(@"failed! %i", statusCode);
+        DebugLog(@"failed! %li", (long)statusCode);
 
         switch (statusCode) {
             case 0: // no internet connection

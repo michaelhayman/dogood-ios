@@ -316,7 +316,7 @@
         return NO;
     }
 
-    int length = commentInputField.text.length - range.length + string.length;
+    NSInteger length = commentInputField.text.length - range.length + string.length;
 
     [self setTextViewHeight];
     [entityHandler setLimitText];
