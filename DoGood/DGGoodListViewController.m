@@ -31,7 +31,7 @@
         [self setupMenuTitle:self.titleForPath];
         [self customizeNavColor:self.color];
     } else {
-        [self setupMenuTitle:@"Good Done"];
+        [self setupMenuTitle:@"Good"];
     }
 
     if (self.category) {
