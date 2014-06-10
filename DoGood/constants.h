@@ -11,7 +11,8 @@
 #if DEVELOPMENT
     #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:5000/"
 #else
-    #define JSON_API_HOST_ADDRESS @"http://api-heroku.dogood.mobi/"
+    #define JSON_API_HOST_ADDRESS @"https://api.dogood.mobi/"
+    // #define JSON_API_HOST_ADDRESS @"http://api-heroku.dogood.mobi/"
 #endif
 
 #pragma mark - Convenience Methods -----
