@@ -599,7 +599,7 @@
 }
 
 - (void)checkFacebook:(BOOL)prompt {
-    [facebookManager checkFacebookPostAccessWithSuccess:^(BOOL success, ACAccount *account, NSString *msg) {
+    [facebookManager findFacebookFriendsWithSuccess:^(BOOL success, NSArray *msg, ACAccount *account) {
         [facebookManager findFacebookIDForAccount:account withSuccess:^(BOOL success, NSString *facebookID) {
             [[DGUser currentUser] saveSocialID:facebookID withType:@"facebook" success:^(BOOL success) {
                 facebookConnectedStatus = connectedText;
