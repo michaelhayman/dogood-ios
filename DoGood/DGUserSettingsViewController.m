@@ -403,12 +403,12 @@
 - (void)setSocialConnectionsStatus {
     connectedText = @"Connected";
     disconnectedText = @"Not connected";
-    if ([[DGUser currentUser].twitter_id isEqualToString:@""]) {
+    if ([[DGUser currentUser].twitter_id isEqualToString:@""] || [DGUser currentUser].twitter_id == nil) {
         twitterConnectedStatus = disconnectedText;
     } else {
         twitterConnectedStatus = connectedText;
     }
-    if ([[DGUser currentUser].facebook_id isEqualToString:@""]) {
+    if ([[DGUser currentUser].facebook_id isEqualToString:@""] || [DGUser currentUser].facebook_id == nil) {
         facebookConnectedStatus = disconnectedText;
     } else {
         facebookConnectedStatus = connectedText;
