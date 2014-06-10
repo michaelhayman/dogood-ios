@@ -19,6 +19,7 @@
         UINib *nib = [UINib nibWithNibName:cellName bundle:nil];
         [collectionView registerNib:nib forCellWithReuseIdentifier:cellName];
 
+        popularTagsHeading.hidden = YES;
         [self getTags];
     }
     return self;
@@ -29,6 +30,9 @@
 
     [[RKObjectManager sharedManager] getObjectsAtPath:resourcePath parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         tags = mappingResult.array;
+        if ([tags count] > 0) {
+            popularTagsHeading.hidden = NO;
+        }
         [collectionView reloadData];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Hit error: %@", error);

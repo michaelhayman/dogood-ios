@@ -1,5 +1,6 @@
 @interface ExplorePopularTagsCell : UIView <UICollectionViewDelegate, UICollectionViewDataSource> {
     __weak IBOutlet UICollectionView *collectionView;
+    __weak IBOutlet UILabel *popularTagsHeading;
     NSArray *tags;
 }
 
