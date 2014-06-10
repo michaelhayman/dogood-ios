@@ -9,7 +9,7 @@
 @implementation ExploreHighlightsCell
 
 - (id)initWithController:(UINavigationController *)controller {
-    CGRect frame = CGRectMake(0, 0, 320, 100);
+    CGRect frame = CGRectMake(0, 0, 320, 95);
     self = [super initWithFrame:frame];
 
     if (self) {
@@ -23,7 +23,7 @@
         collectionView.backgroundColor = [UIColor clearColor];
 
         if (REWARDS_ENABLED) {
-            collectionView.frame = CGRectMake(10, 11, 290, 84);
+            collectionView.frame = CGRectMake(10, 11, 290, 95);
         }
     }
     return self;
@@ -55,7 +55,7 @@
         color = SKY;
     } else {
         name = @"Rewards";
-        color = ERRONEOUS;
+        color = CRIMSON;
     }
     [cell setName:name backgroundColor:color andIcon:[UIImage imageNamed:name]];
     return cell;

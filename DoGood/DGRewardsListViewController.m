@@ -13,7 +13,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setupMenuTitle:@"Rewards"];
+    [self setupMenuTitle:@"Rewards" withColor:[UIColor whiteColor]];
 
     [collectionView registerClass:[DGRewardCell class] forCellWithReuseIdentifier:@"RewardCell"];
     UINib *nib = [UINib nibWithNibName:@"RewardCell" bundle:nil];
@@ -37,6 +37,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self customizeNavColor:CRIMSON];
     if (!rewardsButton.selected && !claimedButton.selected) {
         rewardsButton.selected = YES;
     }

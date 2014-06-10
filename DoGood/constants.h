@@ -48,6 +48,7 @@
 #define EASING [UIColor colorWithRed:229/255.0 green:229.0/255.0 blue:229.0/255.0 alpha:1.0]
 #define MUD_TRANSPARENT [UIColor colorWithRed:65/255.0 green:53.0/255.0 blue:41.0/255.0 alpha:0.5]
 #define ERRONEOUS [UIColor colorWithRed:224.0/255.0 green:65.0/255.0 blue:49.0/255.0 alpha:1.0]
+#define CRIMSON [UIColor colorWithRed:224.0/255.0 green:65.0/255.0 blue:49.0/255.0 alpha:1.0]
 #define SKY [UIColor colorWithRed:87.0/255.0 green:214.0/255.0 blue:252.0/255.0 alpha:1.0]
 #define CAMO [UIColor colorWithRed:82.0/255.0 green:159.0/255.0 blue:36.0/255.0 alpha:1.0]
 #define PINEAPPLE [UIColor colorWithRed:249.0/255.0 green:200.0/255.0 blue:0.0/255.0 alpha:1.0]

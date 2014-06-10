@@ -52,7 +52,6 @@
     if (color) {
         self.navigationController.navigationBar.barTintColor = color;
         self.navigationController.navigationBar.tintColor = [DGAppearance makeContrastingColorFromColor:color];
-        self.view.backgroundColor = color;
     }
 }
 
