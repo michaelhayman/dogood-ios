@@ -42,8 +42,7 @@
                 if ([urlComponents[1] isEqualToString:@"tagged"]) {
                     DGTag *tag = [DGTag new];
                     NSString * tagName = [NSString stringWithFormat:@"#%@", [url fragment]];
-                    tag.name = [tagName stringByAddingPercentEscapesUsingEncoding:
-                     NSUTF8StringEncoding];
+                    tag.name = tagName;
                     controller.tag = tag;
                 } else {
                     NSNumberFormatter * f = [[NSNumberFormatter alloc] init];

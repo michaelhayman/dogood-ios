@@ -113,7 +113,7 @@
     } else if (self.goodID) {
         path = [NSString stringWithFormat:@"/goods/%@", _goodID];
     } else if (self.tag) {
-        path = [NSString stringWithFormat:@"/goods/tagged?id=%@&name=%@", _tag.tagID, self.tag.name];
+        path = [NSString stringWithFormat:@"/goods/tagged?name=%@", [self.tag.name stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
     } else if (self.user) {
         path = [NSString stringWithFormat:@"/goods/followed_by?user_id=%@", self.user.userID];
     } else {
