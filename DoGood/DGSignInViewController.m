@@ -1,5 +1,4 @@
 #import "DGSignInViewController.h"
-#import "DGForgotPasswordViewController.h"
 #import <ProgressHUD/ProgressHUD.h>
 
 @interface DGSignInViewController ()
@@ -32,9 +31,14 @@
     [self signInWithEmail:self.emailField.text orUsername:self.emailField.text andPassword:self.passwordField.text showMessage:YES];
 }
 
+- (void)childViewController:(DGForgotPasswordViewController* )viewController didReceiveEmail:(NSString *)email {
+    self.emailField.text = email;
+}
+
 - (IBAction)forgotPassword:(id)sender {
     DGForgotPasswordViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ForgotPassword"];
     controller.signInEmail = self.emailField.text;
+    controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

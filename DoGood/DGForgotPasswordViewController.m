@@ -39,6 +39,9 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    if ([self.delegate respondsToSelector:@selector(childViewController:didReceiveEmail:)]) {
+        [self.delegate childViewController:self didReceiveEmail:self.emailField.text];
+    }
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
