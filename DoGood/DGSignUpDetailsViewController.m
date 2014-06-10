@@ -172,6 +172,7 @@
         cell.textField.autocorrectionType = UITextAutocorrectionTypeNo;
         cell.textField.returnKeyType = UIReturnKeyNext;
         cell.textField.tag = sign_up_password_tag;
+        cell.textField.secureTextEntry = YES;
         cell.tag = sign_up_password_cell_tag;
     } else {
         cell.heading.text = @"Phone";
