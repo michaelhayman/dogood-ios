@@ -53,7 +53,6 @@
 #define CAMO [UIColor colorWithRed:82.0/255.0 green:159.0/255.0 blue:36.0/255.0 alpha:1.0]
 #define PINEAPPLE [UIColor colorWithRed:249.0/255.0 green:200.0/255.0 blue:0.0/255.0 alpha:1.0]
 #define COLOUR_OFF_WHITE [UIColor colorWithRed:248.0/255.0 green:248.0/255.0 blue:248.0/255.0 alpha:1.0]
-#define COLOUR_GREEN [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0]
 #define LINK_COLOUR VIVID
 #define NEUTRAL_BACKGROUND_COLOUR [UIColor colorWithRed:237.0/255.0 green:234.0/255.0 blue:227.0/255.0 alpha:1.0]
 #define BUTTON_COLOR VIVID

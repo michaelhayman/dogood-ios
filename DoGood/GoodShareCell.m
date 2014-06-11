@@ -7,7 +7,6 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.share.on = NO;
-    self.share.onTintColor = COLOUR_GREEN;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
