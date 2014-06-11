@@ -1,5 +1,5 @@
 #import "DGUserInvitesViewController.h"
-#import <MessageUI/MessageUI.h>
+@import MessageUI;
 
 @interface DGUserInvitesViewController () <
     MFMailComposeViewControllerDelegate,
@@ -16,13 +16,18 @@
 // setInviteText or setCustomText
 // then change names to sendViaText & sendViaEmail
 - (void)setInviteText {
-    bodyText = [NSString stringWithFormat:@"Get rewarded for doing good - follow me on Do Good! dogood://users/%@\n\n---\nDon't have Do Good? Get it from the App Store: http://dogood.springbox.ca", [DGUser currentUser].userID];
+    bodyText = [NSString stringWithFormat:@"Get rewarded for doing good - follow me on Do Good! dogood://users/%@\n\n---\nDon't have Do Good? Get it from the App Store: http://www.dogood.mobi/", [DGUser currentUser].userID];
     subjectText = @"Do Good with me";
 }
 
 - (void)setCustomText:(NSString *)body withSubject:(NSString *)subject {
     bodyText = body;
     subjectText = subject;
+}
+
+- (void)setCustomText:(NSString *)body withSubject:(NSString *)subject toRecipient:(NSString *)to {
+    recipient = to;
+    [self setCustomText:body withSubject:subject];
 }
 
 - (IBAction)sendViaText:(id)sender {
@@ -47,21 +52,30 @@
 - (void)displayMailComposerSheet {
 	MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
 	picker.mailComposeDelegate = self;
+    [picker.navigationBar setTintColor:[UIColor whiteColor]];
 	
 	[picker setSubject:subjectText];
+    if (recipient) {
+        [picker setToRecipients:@[ recipient ]];
+    }
 	
 	// Fill out the email body text
 	NSString *emailBody = bodyText;
-	[picker setMessageBody:emailBody isHTML:NO];
-	
-	[_parent presentViewController:picker animated:YES completion:NULL];
+	[picker setMessageBody:emailBody isHTML:self.isHTML];
+
+    [_parent presentViewController:picker animated:YES completion:NULL];
 }
 
 - (void)displaySMSComposerSheet {
 	MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
 	picker.messageComposeDelegate = self;
+    [picker.navigationBar setTintColor:[UIColor whiteColor]];
 	
     picker.body = bodyText;
+
+    if (recipient) {
+        [picker setRecipients:@[ recipient ]];
+    }
     
 	[_parent presentViewController:picker animated:YES completion:NULL];
 }

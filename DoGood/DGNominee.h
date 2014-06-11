@@ -1,3 +1,4 @@
+@class DGGood;
 @interface DGNominee : NSObject
 
 @property (retain) NSNumber *nomineeID;
@@ -16,5 +17,7 @@
 - (BOOL)isPopulated;
 - (BOOL)isDGUser;
 - (BOOL)isContactable;
+- (BOOL)hasValidEmail;
+- (NSString *)inviteTextForPost:(DGGood *)good;
 
 @end

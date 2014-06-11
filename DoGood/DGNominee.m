@@ -1,4 +1,5 @@
 #import "DGNominee.h"
+#import "DGGood.h"
 #import <SHEmailValidator/SHEmailValidator.h>
 
 @implementation DGNominee
@@ -61,6 +62,60 @@
     } else {
         return false;
     }
+}
+
+- (NSString *)inviteTextForPost:(DGGood *)good {
+    NSString *body = [NSString stringWithFormat:@"<table align=center width=250 cellpadding=5px>\n"
+      "<tr>\n"
+      "<td bgcolor=\"#2BC823\" style=\"border-collapse: collapse\">\n"
+      "    <img src=\"http://www.dogood.mobi/images/app_icons/app_icon_300x300.png\" alt=\"Do Good\" width=\"250\" height=\"250\">\n"
+      "  </td>\n"
+      "</tr>\n"
+      "<tr>\n"
+      "  <td style=\"border-collapse: collapse; text-align: center\">\n"
+      "    <h2 style=\"font-family: 'Helvetica Neue', Arial; color: gray\">You've been nominated!</h2>\n"
+      "  </td>\n"
+      "</tr>\n"
+      "<tr>\n"
+      "  <td style=\"border-collapse: collapse\">\n"
+      "    <span style=\"font-family: 'Helvetica Neue', Arial; color: gray;\">\n"
+      "      %@ has nominated you for doing a good deed!"
+      "      <p>Here's what they had to say about you, %@:</p>\n"
+      "      <p><blockquote>%@</blockquote></p>\n"
+      "      Download the app and see for yourself, plus:\n"
+      "      <br>\n"
+      "      <ul>\n"
+      "        <li>Nominate and reward good deeds</li>\n"
+      "        <li>Find good things to do near you</li>\n"
+      "        <li>Get help for good projects</li>\n"
+      "      </ul>\n"
+      "      <p>\n"
+      "        <center><a href=\"http://www.dogood.mobi\"><img src=\"http://www.dogood.mobi/images/app_stores/ios_app_store.png\" alt=\"Get for iOS\" id=\"appstore\" width=\"250\"></a></center>\n"
+      "      </p>"
+      "      <p>&nbsp;</p>"
+      "      <p>&nbsp;</p>"
+      "      <p>\n"
+      "        <center>\n"
+      "          <a href=\"http://www.dogood.mobi/\"><img src=\"http://www.dogood.mobi/images/logos/dg_logo_tiny_green.png\"></a>\n"
+      "        </center>\n"
+      "      </p>\n"
+      "    </span>\n"
+      "  </td>\n"
+      "</tr>\n"
+      "<tr>\n"
+      "  <td style=\"border-collapse: collapse\">"
+      "    <p>&nbsp;</p>"
+      "    <font face=sans-serif size=2>"
+      "      <center>"
+      "        You have not been added to any email lists."
+      "      </center>"
+      "    </font>"
+      "  </td>"
+      "</tr>"
+      "</table>",
+      good.user.full_name, good.nominee.full_name, good.caption];
+    return body;
+
 }
 
 @end

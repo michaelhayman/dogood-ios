@@ -519,6 +519,11 @@
             list.showDoneGoods = [postedGood.done boolValue];
             list.goToSpecificTab = YES;
 
+            if ([self.good.nominee.invite boolValue] && [postedGood.done boolValue]) {
+                list.nominee = self.good.nominee;
+                list.goodForInvite = postedGood;
+            }
+
             [self.navigationController pushViewController:list animated:YES];
             // now remove VC2 from the view controllers array so we will jump straight back to VC1
             NSMutableArray *viewHierarchy =[[NSMutableArray alloc] initWithArray:[self.navigationController viewControllers]];

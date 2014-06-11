@@ -9,6 +9,8 @@
 #import "DGComment.h"
 #import "GoodTableView.h"
 #import "URLHandler.h"
+#import "DGNominee.h"
+#import "DGUserInvitesViewController.h"
 
 @interface DGGoodListViewController ()
 
@@ -31,7 +33,27 @@
         [self setupMenuTitle:self.titleForPath];
         [self customizeNavColor:self.color];
     } else {
+        // single good
         [self setupMenuTitle:@"Good"];
+        self.hideTabs = YES;
+        if ([self.nominee.invite boolValue]) {
+            DebugLog(@"nominated via text");
+            invites = [[DGUserInvitesViewController alloc] init];
+            invites.parent = (UIViewController *)self;
+            NSString *body;
+            if ([self.nominee hasValidEmail]) {
+                body = [self.nominee inviteTextForPost:self.goodForInvite];
+                invites.isHTML = YES;
+                [invites setCustomText:body withSubject:@"You've been nominated!" toRecipient:self.nominee.email];
+                [invites sendViaEmail:nil];
+            } else {
+                body = @"I've nominated you on Do Good via text!";
+                [invites setCustomText:body withSubject:@"You've been nominated!" toRecipient:self.nominee.phone];
+                [invites sendViaText:nil];
+            }
+        } else {
+            DebugLog(@"not nominated");
+        }
     }
 
     if (self.category) {
