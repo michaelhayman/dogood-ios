@@ -5,6 +5,7 @@
 #import "UIScrollView+SVInfiniteScrolling.h"
 #import "DGComment.h"
 #import <SAMLoadingView/SAMLoadingView.h>
+#import <ProgressHUD/ProgressHUD.h>
 
 @implementation GoodTableView
 
@@ -146,6 +147,7 @@
         [loadingView removeFromSuperview];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [self.infiniteScrollingView stopAnimating];
+        [ProgressHUD showError:[error localizedDescription]];
         DebugLog(@"Operation failed with error: %@", error);
         [loadingView removeFromSuperview];
     }];
