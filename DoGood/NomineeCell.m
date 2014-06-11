@@ -14,6 +14,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.imageView.image = [UIImage imageNamed:@"PostNomineeOff"];
 }
 
 - (void)prepareForReuse {
@@ -23,8 +24,10 @@
 - (void)setValues {
     if (self.nominee) {
         self.textLabel.text = self.nominee.full_name;
+        self.imageView.image = [UIImage imageNamed:@"PostNomineeOn"];
     } else {
         self.textLabel.text = @"Who did good?";
+        self.imageView.image = [UIImage imageNamed:@"PostNomineeOff"];
     }
 }
 
