@@ -11,6 +11,7 @@
 #import "URLHandler.h"
 #import "DGNominee.h"
 #import "DGUserInvitesViewController.h"
+#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
 
 @interface DGGoodListViewController ()
 
@@ -36,23 +37,15 @@
         // single good
         [self setupMenuTitle:@"Good"];
         self.hideTabs = YES;
-        if ([self.nominee.invite boolValue]) {
-            DebugLog(@"nominated via text");
-            invites = [[DGUserInvitesViewController alloc] init];
-            invites.parent = (UIViewController *)self;
-            NSString *body;
-            if ([self.nominee hasValidEmail]) {
-                body = [self.nominee inviteTextForPost:self.goodForInvite];
-                invites.isHTML = YES;
-                [invites setCustomText:body withSubject:@"You've been nominated!" toRecipient:self.nominee.email];
-                [invites sendViaEmail:nil];
-            } else {
-                body = @"I've nominated you on Do Good via text!";
-                [invites setCustomText:body withSubject:@"You've been nominated!" toRecipient:self.nominee.phone];
-                [invites sendViaText:nil];
-            }
-        } else {
-            DebugLog(@"not nominated");
+        if (![self.nominee isDGUser] && [self.goodForInvite.done boolValue]) {
+            NSString *actionTitle = @"Invite";
+            [UIAlertView showWithTitle:[NSString stringWithFormat:@"Invite %@", self.nominee.full_name] message:@"Invite your nominee to join Do Good?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[actionTitle] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                 if (buttonIndex == [alertView cancelButtonIndex]) {
+                     DebugLog(@"Cancelled");
+                 } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:actionTitle]) {
+                     [self inviteNominee];
+                 }
+            }];
         }
     }
 
@@ -72,6 +65,27 @@
     [self getGood];
 
     self.navigationItem.rightBarButtonItem = [DGAppearance postBarButtonItemFor:self];
+}
+
+- (void)inviteNominee {
+    if ([self.goodForInvite.done boolValue] && !self.nominee.user_id) {
+        DebugLog(@"nominated");
+        invites = [[DGUserInvitesViewController alloc] init];
+        invites.parent = (UIViewController *)self;
+        NSString *body;
+        if ([self.nominee hasValidEmail]) {
+            body = [self.nominee inviteTextForPost:self.goodForInvite];
+            invites.isHTML = YES;
+            [invites setCustomText:body withSubject:@"You've been nominated for a good deed" toRecipient:self.nominee.email];
+            [invites sendViaEmail:nil];
+        } else {
+            body = @"I've nominated you on Do Good.  Download the app at http://www.dogood.mobi/ and earn rewards for doing good!";
+            [invites setCustomText:body withSubject:@"You've been nominated for a good deed" toRecipient:self.nominee.phone];
+            [invites sendViaText:nil];
+        }
+    } else {
+        DebugLog(@"not nominated");
+    }
 }
 
 - (IBAction)postGood:(id)sender {

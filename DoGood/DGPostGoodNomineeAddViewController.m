@@ -21,6 +21,8 @@
     [DGAppearance styleActionButton:nominateButton];
     [nominateButton addTarget:self action:@selector(nominateButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [inviteField addTarget:self action:@selector(checkInvite) forControlEvents:UIControlEventValueChanged];
+
+    [nameField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
 - (void)checkInvite {
@@ -85,6 +87,18 @@
     }
     return YES;
 }
+
+- (void)textFieldDidChange:(id)sender {
+    NSString *teaserName;
+    if ([nameField.text isEqualToString:@""]) {
+        teaserName = @"them";
+    } else {
+        teaserName = nameField.text;
+    }
+    rewardTeaserText.text = [NSString stringWithFormat:@"Reward %@ by adding more information:", teaserName];
+    rewardTeaserHeight.constant = [DGAppearance calculateHeightForString:rewardTeaserText.text WithFont:kGoodCaptionFont andWidth:nameField.frame.size.width + 30];
+}
+
 
 - (UITextField *)textFieldForTag:(int)tag {
     return (UITextField *)[self.view viewWithTag:tag];

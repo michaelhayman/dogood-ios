@@ -1,13 +1,10 @@
 @class DGNominee;
 @class DGGood;
 
-@interface NomineeCell : UITableViewCell <UIAlertViewDelegate> {
-    UIButton *inviteButton;
-}
+@interface NomineeCell : UITableViewCell <UIAlertViewDelegate>
 
 @property (nonatomic, weak) DGNominee *nominee;
 
 - (void)setValues;
-- (void)invite;
 
 @end

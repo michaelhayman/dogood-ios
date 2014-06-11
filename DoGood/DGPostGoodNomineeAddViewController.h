@@ -11,6 +11,9 @@
     __weak IBOutlet UILabel *inviteText;
     __weak IBOutlet UIButton *nominateButton;
     DGNominee *nominee;
+    __weak IBOutlet UILabel *rewardTeaserText;
+    __weak IBOutlet NSLayoutConstraint *rewardTeaserHeight;
+
     DGPhotoPickerViewController *photos;
     __weak IBOutlet UIImageView *avatarImage;
 }

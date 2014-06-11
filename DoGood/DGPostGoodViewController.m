@@ -519,7 +519,7 @@
             list.showDoneGoods = [postedGood.done boolValue];
             list.goToSpecificTab = YES;
 
-            if ([self.good.nominee.invite boolValue] && [postedGood.done boolValue]) {
+            if ([postedGood.done boolValue]) {
                 list.nominee = self.good.nominee;
                 list.goodForInvite = postedGood;
             }
