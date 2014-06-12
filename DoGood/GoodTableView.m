@@ -30,8 +30,6 @@
     goods = [[NSMutableArray alloc] init];
     cellHeights = [[NSMutableArray alloc] init];
 
-    [self chooseDone];
-
     loadingView = [[SAMLoadingView alloc] initWithFrame:self.bounds];
     loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
@@ -40,8 +38,8 @@
     [self showTabsWithColor:VIVID];
 }
 
-- (UIButton *)tabButtonWithOffset:(CGFloat)offset {
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(offset, 0, 160, 30)];
+- (UIButton *)tabButtonWithWidth:(CGFloat)width andOffset:(CGFloat)offset {
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(offset, 0, width, 30)];
     button.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
     [button addTarget:self action:@selector(chooseTab:) forControlEvents:UIControlEventTouchUpInside];
     button.userInteractionEnabled = YES;
@@ -54,23 +52,27 @@
 - (void)showTabsWithColor:(UIColor *)color {
     tabColor = color;
 
-    done = [self tabButtonWithOffset:0];
-    [done setTitle:@"Nominations" forState:UIControlStateNormal];
-    done.tag = 0;
-    done.selected = YES;
+    all = [self tabButtonWithWidth:60 andOffset:0];
+    [all setTitle:@"All" forState:UIControlStateNormal];
+    all.tag = 101;
 
-    todo = [self tabButtonWithOffset:160];
-    todo.tag = 1;
+    done = [self tabButtonWithWidth:130 andOffset:60];
+    [done setTitle:@"Nominations" forState:UIControlStateNormal];
+    done.tag = 102;
+
+    todo = [self tabButtonWithWidth:130 andOffset:190];
     [todo setTitle:@"Help Wanted" forState:UIControlStateNormal];
+    todo.tag = 103;
 
     tabsShowing = YES;
 
     UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    [tableHeaderView addSubview:all];
     [tableHeaderView addSubview:done];
     [tableHeaderView addSubview:todo];
     self.tableHeaderView = tableHeaderView;
 
-    [self chooseDone];
+    [self chooseAll];
 
     loadingView.frame = CGRectMake(loadingView.frame.origin.x, loadingView.frame.origin.y + self.tableHeaderView.frame.size.height, loadingView.frame.size.width, loadingView.frame.size.height);
 }
@@ -78,35 +80,53 @@
 - (IBAction)chooseTab:(id)sender {
     UIButton *button = (UIButton *)sender;
 
-    if (button.tag == 0) {
+    if (button.tag == 102) {
         if (!self.doneGoods) {
             [self chooseDone];
             [self resetGood];
             [self loadGoodsAtPath:goodsPath];
         }
-    } else {
+    } else if (button.tag == 103) {
         if (self.doneGoods) {
             [self chooseTodo];
             [self resetGood];
             [self loadGoodsAtPath:goodsPath];
         }
+    } else {
+        if (![all isSelected]) {
+            [self chooseAll];
+            [self resetGood];
+            [self loadGoodsAtPath:goodsPath];
+        }
     }
+}
 
+- (void)resetButtons {
+    all.selected = NO;
+    done.selected = NO;
+    todo.selected = NO;
+    all.backgroundColor = tabColor;
+    done.backgroundColor = tabColor;
+    todo.backgroundColor = tabColor;
+}
+
+- (void)chooseAll {
+    [self resetButtons];
+    all.selected = YES;
+    all.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)chooseDone {
+    [self resetButtons];
     self.doneGoods = YES;
-    todo.selected = NO;
     done.selected = YES;
-    todo.backgroundColor = tabColor;
     done.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)chooseTodo {
+    [self resetButtons];
     self.doneGoods = NO;
-    done.selected = NO;
     todo.selected = YES;
-    done.backgroundColor = tabColor;
     todo.backgroundColor = [UIColor whiteColor];
 }
 
@@ -128,7 +148,7 @@
 
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:page], @"page", nil];
 
-    if (tabsShowing) {
+    if (tabsShowing && !all.isSelected) {
         [params setObject:[NSNumber numberWithBool:self.doneGoods] forKey:@"done"];
     }
 

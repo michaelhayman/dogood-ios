@@ -8,10 +8,10 @@
     NSString *goodsPath;
     SAMLoadingView *loadingView;
 
-    UISegmentedControl *tabControl;
     BOOL tabsShowing;
     UIColor *tabColor;
 
+    UIButton *all;
     UIButton *done;
     UIButton *todo;
 }
