@@ -24,10 +24,11 @@ pod 'SAMLoadingView', '~> 0.1.0'
 pod 'UIImage-Categories', '~> 0.0.1'
 pod 'NSDate+TimeAgo', '~> 1.0.2'
 pod 'TPKeyboardAvoiding', '~> 1.2.1'
-pod 'TTTAttributedLabel', '~> 1.7.1'
+pod 'TTTAttributedLabel', '~> 1.10'
 pod 'MJPopupViewController', :git => "git@github.com:doPanic/MJPopupViewController.git"
 pod 'SVPullToRefresh', '~> 0.4.1'
 pod 'CRNavigationController', '~> 0.0.1'
+pod 'SVWebViewController'
 
 # social
 pod 'SocialAuth', :git => "git@github.com:michaelhayman/SocialAuth.git"

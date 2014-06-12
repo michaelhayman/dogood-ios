@@ -46,11 +46,12 @@ PODS:
     - OAuthCore
   - SOCKit (1.1)
   - SVPullToRefresh (0.4.1)
+  - SVWebViewController (1.0)
   - TPKeyboardAvoiding (1.2.1)
   - TransitionKit (1.1.1)
   - TSMessages (0.9.4):
     - HexColors
-  - TTTAttributedLabel (1.7.1)
+  - TTTAttributedLabel (1.10.1)
   - UIAlertView+Blocks (0.8.1)
   - UIImage-Categories (0.0.1)
   - UINavigationBar+Addition (1.0.0)
@@ -71,9 +72,10 @@ DEPENDENCIES:
   - SHEmailValidator
   - SocialAuth (from `git@github.com:michaelhayman/SocialAuth.git`)
   - SVPullToRefresh (~> 0.4.1)
+  - SVWebViewController
   - TPKeyboardAvoiding (~> 1.2.1)
   - TSMessages (~> 0.9.4)
-  - TTTAttributedLabel (~> 1.7.1)
+  - TTTAttributedLabel (~> 1.10)
   - UIAlertView+Blocks (~> 0.8.1)
   - UIImage-Categories (~> 0.0.1)
   - UINavigationBar+Addition (~> 1.0.0)
@@ -111,10 +113,11 @@ SPEC CHECKSUMS:
   SocialAuth: 53f5e770e4d01084f809ff231533196826f767d6
   SOCKit: d8d0dd3688ae1026c12367570da8fa8e1a6980fb
   SVPullToRefresh: d5161ebc833a38b465364412e5e307ca80bbb190
+  SVWebViewController: fbf917baa92744c54cfb89a52a4c056e409973a4
   TPKeyboardAvoiding: 0099b02d8ec402ce5976bfe9c9293f3bf3e0f707
   TransitionKit: b573f93c422f6aedf7d40e93e7c2f202d1295063
   TSMessages: 6e85d86caa001e4965db8ae24c5ad19a5887667c
-  TTTAttributedLabel: 23bdd377bd70c78e67a3bd790d7237306e594acc
+  TTTAttributedLabel: 94bb04f1e005616002dd2cee0262a0082e533627
   UIAlertView+Blocks: 0b749f1f7bd5131ff2233b30a406c1585a7171b2
   UIImage-Categories: 99245612a4725173db4f0a9ed8ba9dbe2a1e0b4f
   UINavigationBar+Addition: 75b1b709f000aa7de774df19d4fd9098ba939a51

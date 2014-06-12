@@ -7,6 +7,7 @@
 + (void)setupAppearance {
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setBarTintColor:VIVID];
+    [[UIToolbar appearance] setBarTintColor:VIVID];
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 

@@ -446,6 +446,9 @@
 
 #pragma mark - Description
 - (void)setCaptionText {
+    self.description.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+    self.description.text = self.good.caption;
+
     NSDictionary *attributes = @{NSFontAttributeName : self.description.font};
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.good.caption attributes:attributes];
     self.description.attributedText = attrString;

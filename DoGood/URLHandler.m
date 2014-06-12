@@ -3,13 +3,14 @@
 #import "DGPostGoodViewController.h"
 #import "DGSignInViewController.h"
 #import "DGTag.h"
+#import <SVWebViewController/SVWebViewController.h>
 
 @implementation URLHandler
 
 - (void)openURL:(NSURL *)url andReturn:(openURLBlock)match {
-   if ([[url scheme] isEqualToString:@"dogood"]) {
+    UINavigationController *nav = (UINavigationController *)[[UIApplication sharedApplication] keyWindow].rootViewController;
+    if ([[url scheme] isEqualToString:@"dogood"]) {
         NSArray *urlComponents = [url pathComponents];
-        UINavigationController *nav = (UINavigationController *)[[UIApplication sharedApplication] keyWindow].rootViewController;
         DebugLog(@"handle dogood");
 
         if ([[url host] hasPrefix:@"users"]) {
@@ -55,6 +56,11 @@
             }
         }
         match(YES);
+    } else if ([[url scheme] isEqualToString:@"http"] || [[url scheme] isEqualToString:@"http"]) {
+        DebugLog(@"open url %@", url);
+        SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:[url absoluteString]];
+        webViewController.barsTintColor = [UIColor whiteColor];
+        [nav.visibleViewController presentViewController:webViewController animated:YES completion:NULL];
     } else {
         match(NO);
     }
