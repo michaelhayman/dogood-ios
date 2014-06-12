@@ -38,14 +38,7 @@
         [self setupMenuTitle:@"Good"];
         self.hideTabs = YES;
         if (![self.nominee isDGUser] && [self.goodForInvite.done boolValue]) {
-            NSString *actionTitle = @"Invite";
-            [UIAlertView showWithTitle:[NSString stringWithFormat:@"Invite %@", self.nominee.full_name] message:@"Invite your nominee to join Do Good?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[actionTitle] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                 if (buttonIndex == [alertView cancelButtonIndex]) {
-                     DebugLog(@"Cancelled");
-                 } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:actionTitle]) {
-                     [self inviteNominee];
-                 }
-            }];
+            [self promptToInviteNominee];
         }
     }
 
@@ -65,6 +58,17 @@
     [self getGood];
 
     self.navigationItem.rightBarButtonItem = [DGAppearance postBarButtonItemFor:self];
+}
+
+- (void)promptToInviteNominee {
+    NSString *actionTitle = @"Invite";
+    [UIAlertView showWithTitle:[NSString stringWithFormat:@"Invite %@", self.nominee.full_name] message:@"Invite your nominee to join Do Good?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[actionTitle] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+         if (buttonIndex == [alertView cancelButtonIndex]) {
+             DebugLog(@"Cancelled");
+         } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:actionTitle]) {
+             [self inviteNominee];
+         }
+    }];
 }
 
 - (void)inviteNominee {
