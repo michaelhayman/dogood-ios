@@ -52,5 +52,6 @@ typedef void (^DestroyCompletionBlock)(BOOL success, NSError *error);
 - (NSString *)postedByType;
 - (BOOL)isOwnGood;
 - (void)destroyGoodWithCompletion:(DestroyCompletionBlock)complete;
+- (NSURL *)showURL;
 
 @end

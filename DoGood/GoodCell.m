@@ -16,6 +16,7 @@
 #import "NSString+Inflections.h"
 #import "NSString+RangeChecker.h"
 #import <ProgressHUD/ProgressHUD.h>
+#import "DGEventSaver.h"
 
 @implementation GoodCell
 
@@ -446,7 +447,7 @@
 
 #pragma mark - Description
 - (void)setCaptionText {
-    self.description.enabledTextCheckingTypes = NSTextCheckingTypeLink;
+    self.description.enabledTextCheckingTypes = NSTextCheckingTypeLink | NSTextCheckingTypeDate | NSTextCheckingTypeAddress | NSTextCheckingTypePhoneNumber;
     self.description.text = self.good.caption;
 
     NSDictionary *attributes = @{NSFontAttributeName : self.description.font};
@@ -515,7 +516,7 @@
                 [self openShareOptions];
             }
         } else if (actionSheet == shareOptionsSheet) {
-            NSString *text = [NSString stringWithFormat:@"Check out this good story! dogood://goods/%@", self.good.goodID];
+            NSString *text = [NSString stringWithFormat:@"Check out this good story! %@", [[self.good showURL] absoluteString]];
             if (buttonIndex == text_message_button) {
                 [invites setCustomText:text withSubject:nil];
                 [invites sendViaText:nil];
@@ -595,6 +596,30 @@
         }
         return matched;
     }];
+}
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithDate:(NSDate *)date {
+    DebugLog(@"selected a date");
+    NSString *title = [NSString stringWithFormat:@"Do Good with %@", self.good.user.full_name];
+    DGEventSaver *eventSaver = [[DGEventSaver alloc] init];
+    [eventSaver createEventWithTitle:title notes:self.good.caption url:[self.good showURL] startDate:date duration:0 completion:^(NSString *eventIdentifier, NSError *error) {
+        DebugLog(@"complete");
+        if (error) {
+            DebugLog(@"error %@", [error localizedDescription]);
+            return;
+        } else {
+            DebugLog(@"success");
+        }
+    }];
+}
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber {
+    DebugLog(@"selected a phone number");
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", phoneNumber]]];
+}
+
+- (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithAddress:(NSDictionary *)addressComponents {
+    DebugLog(@"selected an address");
 }
 
 - (void)openTag:(DGTag *)tag {

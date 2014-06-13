@@ -53,4 +53,8 @@
     }];
 }
 
+- (NSURL *)showURL {
+    return [NSURL URLWithString:[NSString stringWithFormat:@"dogood://goods/%@", self.goodID]];
+}
+
 @end
