@@ -109,6 +109,8 @@
 		63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */; };
 		63C1BA501806026300CB95CF /* RewardsTeaserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C1BA4F1806026300CB95CF /* RewardsTeaserView.m */; };
 		63C2DAC9194BA76300FA3780 /* DGEventSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DAC8194BA76300FA3780 /* DGEventSaver.m */; };
+		63C2DACC194BB1BC00FA3780 /* DGMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DACB194BB1BC00FA3780 /* DGMapViewController.m */; };
+		63C2DACE194BB68F00FA3780 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C2DACD194BB68F00FA3780 /* MapKit.framework */; };
 		63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */; };
 		63D4BD251802484800ACF1B9 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D4BD241802484800ACF1B9 /* Rewards.storyboard */; };
 		63D4BD2818024E0700ACF1B9 /* DGRewardPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BD2718024E0700ACF1B9 /* DGRewardPopupViewController.m */; };
@@ -338,6 +340,9 @@
 		63C1BA4F1806026300CB95CF /* RewardsTeaserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardsTeaserView.m; sourceTree = "<group>"; };
 		63C2DAC7194BA76300FA3780 /* DGEventSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGEventSaver.h; sourceTree = "<group>"; };
 		63C2DAC8194BA76300FA3780 /* DGEventSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEventSaver.m; sourceTree = "<group>"; };
+		63C2DACA194BB1BC00FA3780 /* DGMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGMapViewController.h; sourceTree = "<group>"; };
+		63C2DACB194BB1BC00FA3780 /* DGMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGMapViewController.m; sourceTree = "<group>"; };
+		63C2DACD194BB68F00FA3780 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		63D4BCDD17FFDF7000ACF1B9 /* DGGoodCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGoodCommentsViewController.h; sourceTree = "<group>"; };
 		63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGGoodCommentsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		63D4BD241802484800ACF1B9 /* Rewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rewards.storyboard; sourceTree = "<group>"; };
@@ -407,6 +412,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C2DACE194BB68F00FA3780 /* MapKit.framework in Frameworks */,
 				EBCC96E10520469A951D5018 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +464,8 @@
 		6319D39017BDF05C0071DA71 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				63C2DACA194BB1BC00FA3780 /* DGMapViewController.h */,
+				63C2DACB194BB1BC00FA3780 /* DGMapViewController.m */,
 				63C2DAC7194BA76300FA3780 /* DGEventSaver.h */,
 				63C2DAC8194BA76300FA3780 /* DGEventSaver.m */,
 				63A28B661922C6CA008E6AA1 /* NSString+RangeChecker.h */,
@@ -723,6 +731,7 @@
 		638647D517AC087A00167F15 = {
 			isa = PBXGroup;
 			children = (
+				63C2DACD194BB68F00FA3780 /* MapKit.framework */,
 				638647E717AC087A00167F15 /* DoGood */,
 				6304B64A18E0DC2600CA0E36 /* DoGoodTests */,
 				638647DF17AC087A00167F15 /* Products */,
@@ -842,6 +851,11 @@
 					};
 					638647DD17AC087A00167F15 = {
 						DevelopmentTeam = JMN5M8T56S;
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1038,6 +1052,7 @@
 				63D4BD2818024E0700ACF1B9 /* DGRewardPopupViewController.m in Sources */,
 				6355EC1717B0EF2700EE91C0 /* DGRewardCell.m in Sources */,
 				63902CEE1821C6D0003B84A1 /* DGGoodListNearbyViewController.m in Sources */,
+				63C2DACC194BB1BC00FA3780 /* DGMapViewController.m in Sources */,
 				63A819D318F4E8E4006900F3 /* DGActionButton.m in Sources */,
 				6355EC1C17B5BA4600EE91C0 /* DGUser.m in Sources */,
 				6355EC1F17B601BF00EE91C0 /* DGError.m in Sources */,

@@ -17,6 +17,7 @@
 #import "NSString+RangeChecker.h"
 #import <ProgressHUD/ProgressHUD.h>
 #import "DGEventSaver.h"
+#import "DGMapViewController.h"
 
 @implementation GoodCell
 
@@ -620,6 +621,11 @@
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithAddress:(NSDictionary *)addressComponents {
     DebugLog(@"selected an address");
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
+    DGMapViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"mapView"];
+    [controller addSinglePinForAddress:addressComponents];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
+    [self.parent presentViewController:nav animated:YES completion:nil];
 }
 
 - (void)openTag:(DGTag *)tag {

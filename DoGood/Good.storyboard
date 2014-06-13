@@ -177,6 +177,60 @@
             </objects>
             <point key="canvasLocation" x="1409" y="-127"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="1bj-MM-OZ9">
+            <objects>
+                <viewController storyboardIdentifier="mapView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zzC-q6-GKj" customClass="DGMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aZU-P2-2Qs"/>
+                        <viewControllerLayoutGuide type="bottom" id="5xS-Xg-KQu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pez-0Q-qmM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rzX-C4-DNC">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="zzC-q6-GKj" id="0Xn-dH-im9"/>
+                                </connections>
+                            </mapView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMA-g5-eUe">
+                                <rect key="frame" x="282" y="22" width="38" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Kkk-JL-j7X"/>
+                                    <constraint firstAttribute="width" constant="38" id="c1l-DY-MbN"/>
+                                </constraints>
+                                <state key="normal" image="SearchCancel">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="SearchCancelTap"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="zzC-q6-GKj" eventType="touchUpInside" id="2xo-ls-bKK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rzX-C4-DNC" firstAttribute="leading" secondItem="pez-0Q-qmM" secondAttribute="leading" id="5vB-OQ-gN7"/>
+                            <constraint firstItem="5xS-Xg-KQu" firstAttribute="top" secondItem="rzX-C4-DNC" secondAttribute="bottom" id="9U1-Nz-vCo"/>
+                            <constraint firstItem="SMA-g5-eUe" firstAttribute="top" secondItem="pez-0Q-qmM" secondAttribute="top" constant="22" id="PCU-lY-qgm"/>
+                            <constraint firstAttribute="trailing" secondItem="rzX-C4-DNC" secondAttribute="trailing" id="fda-ur-m49"/>
+                            <constraint firstAttribute="trailing" secondItem="SMA-g5-eUe" secondAttribute="trailing" id="hzG-pD-ZWG"/>
+                            <constraint firstItem="rzX-C4-DNC" firstAttribute="top" secondItem="pez-0Q-qmM" secondAttribute="top" id="mRD-IL-alk"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="rzX-C4-DNC" id="F54-5J-Pde"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hF1-YD-ymG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1775" y="-126"/>
+        </scene>
         <!--Post Good View Controller-->
         <scene sceneID="usq-DP-YSy">
             <objects>
@@ -731,6 +785,8 @@
         <image name="EditProfilePhotoFrame" width="75" height="75"/>
         <image name="FacebookTabOff" width="17" height="30"/>
         <image name="FacebookTabOn" width="17" height="30"/>
+        <image name="SearchCancel" width="17" height="21"/>
+        <image name="SearchCancelTap" width="17" height="21"/>
         <image name="SearchTabOff" width="28" height="31"/>
         <image name="SearchTabOn" width="28" height="31"/>
         <image name="TwitterTabOff" width="32" height="30"/>
