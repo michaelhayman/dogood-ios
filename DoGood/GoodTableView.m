@@ -81,19 +81,19 @@
     UIButton *button = (UIButton *)sender;
 
     if (button.tag == 102) {
-        if (!self.doneGoods) {
+        if (![button isSelected]) {
             [self chooseDone];
             [self resetGood];
             [self loadGoodsAtPath:goodsPath];
         }
     } else if (button.tag == 103) {
-        if (self.doneGoods) {
+        if (![button isSelected]) {
             [self chooseTodo];
             [self resetGood];
             [self loadGoodsAtPath:goodsPath];
         }
     } else {
-        if (![all isSelected]) {
+        if (![button isSelected]) {
             [self chooseAll];
             [self resetGood];
             [self loadGoodsAtPath:goodsPath];
