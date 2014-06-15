@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="Ype-Me-aoA">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
@@ -98,7 +97,6 @@
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSi-6k-2pC" customClass="DGEditableTextView">
                                         <rect key="frame" x="10" y="7" width="256" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.1058823529" green="0.79215686269999996" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -191,14 +189,12 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rzX-C4-DNC">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="zzC-q6-GKj" id="0Xn-dH-im9"/>
                                 </connections>
                             </mapView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMA-g5-eUe">
                                 <rect key="frame" x="282" y="22" width="38" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="Kkk-JL-j7X"/>
                                     <constraint firstAttribute="width" constant="38" id="c1l-DY-MbN"/>
@@ -586,8 +582,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srW-k1-jhO">
                                 <rect key="frame" x="0.0" y="20" width="320" height="70"/>
                                 <subviews>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYq-D9-4be">
-                                        <rect key="frame" x="64" y="0.0" width="64" height="70"/>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYq-D9-4be" userLabel="Search">
+                                        <rect key="frame" x="0.0" y="0.0" width="64" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="3ko-5h-FtL"/>
                                         </constraints>
@@ -604,8 +600,8 @@
                                             <action selector="changeTab:" destination="WSz-mJ-fRW" eventType="touchDown" id="Ayc-Cd-W0K"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1l-mg-x5E">
-                                        <rect key="frame" x="0.0" y="0.0" width="64" height="70"/>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I1l-mg-x5E" userLabel="Add">
+                                        <rect key="frame" x="64" y="0.0" width="64" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="e0a-pr-D6d"/>
                                         </constraints>
@@ -622,7 +618,7 @@
                                             <action selector="changeTab:" destination="WSz-mJ-fRW" eventType="touchDown" id="wVs-Os-ha2"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HT5-he-bQi">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HT5-he-bQi" userLabel="Address">
                                         <rect key="frame" x="128" y="0.0" width="64" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="JP4-ye-unX"/>
@@ -640,7 +636,7 @@
                                             <action selector="changeTab:" destination="WSz-mJ-fRW" eventType="touchDown" id="W2h-iZ-2Qf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUN-8x-QT1">
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PUN-8x-QT1" userLabel="Twitter">
                                         <rect key="frame" x="192" y="0.0" width="64" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="PRI-Q8-QDu"/>
@@ -658,7 +654,7 @@
                                             <action selector="changeTab:" destination="WSz-mJ-fRW" eventType="touchDown" id="74g-HU-o3L"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbh-By-he3">
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbh-By-he3" userLabel="Facebook">
                                         <rect key="frame" x="256" y="0.0" width="64" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="64" id="HVZ-ZB-wbh"/>
@@ -679,23 +675,22 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.25490196079999999" green="0.20784313730000001" blue="0.16078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="I1l-mg-x5E" firstAttribute="leading" secondItem="aYq-D9-4be" secondAttribute="trailing" id="1L0-wT-W7C"/>
                                     <constraint firstItem="pbh-By-he3" firstAttribute="leading" secondItem="PUN-8x-QT1" secondAttribute="trailing" id="1kY-9i-klX"/>
                                     <constraint firstItem="pbh-By-he3" firstAttribute="top" secondItem="srW-k1-jhO" secondAttribute="top" id="C3K-bc-Deg"/>
                                     <constraint firstAttribute="height" constant="70" id="Drn-ER-vG4"/>
-                                    <constraint firstItem="I1l-mg-x5E" firstAttribute="leading" secondItem="srW-k1-jhO" secondAttribute="leading" id="F4q-u0-AxA"/>
                                     <constraint firstItem="pbh-By-he3" firstAttribute="trailing" secondItem="srW-k1-jhO" secondAttribute="trailing" id="I5z-6v-DaK"/>
                                     <constraint firstItem="aYq-D9-4be" firstAttribute="bottom" secondItem="srW-k1-jhO" secondAttribute="bottom" id="Io3-Cn-i8T"/>
                                     <constraint firstAttribute="bottom" secondItem="HT5-he-bQi" secondAttribute="bottom" id="VwX-36-wjW"/>
                                     <constraint firstItem="aYq-D9-4be" firstAttribute="top" secondItem="srW-k1-jhO" secondAttribute="top" id="XBr-jx-Ut7"/>
+                                    <constraint firstItem="aYq-D9-4be" firstAttribute="leading" secondItem="srW-k1-jhO" secondAttribute="leading" id="Ya5-bW-e8p"/>
                                     <constraint firstItem="PUN-8x-QT1" firstAttribute="bottom" secondItem="srW-k1-jhO" secondAttribute="bottom" id="c7N-j9-6oN"/>
-                                    <constraint firstItem="aYq-D9-4be" firstAttribute="leading" secondItem="I1l-mg-x5E" secondAttribute="trailing" id="dDD-jp-04V"/>
                                     <constraint firstAttribute="bottom" secondItem="I1l-mg-x5E" secondAttribute="bottom" id="eFs-1u-QhD"/>
                                     <constraint firstItem="I1l-mg-x5E" firstAttribute="top" secondItem="srW-k1-jhO" secondAttribute="top" id="f0r-IO-1jd"/>
                                     <constraint firstItem="PUN-8x-QT1" firstAttribute="top" secondItem="srW-k1-jhO" secondAttribute="top" id="iu0-nq-6Cn"/>
                                     <constraint firstItem="PUN-8x-QT1" firstAttribute="leading" secondItem="HT5-he-bQi" secondAttribute="trailing" id="n06-pA-L1o"/>
                                     <constraint firstItem="pbh-By-he3" firstAttribute="bottom" secondItem="srW-k1-jhO" secondAttribute="bottom" id="oYQ-t7-d7T"/>
                                     <constraint firstItem="HT5-he-bQi" firstAttribute="top" secondItem="srW-k1-jhO" secondAttribute="top" id="syS-kq-MEk"/>
-                                    <constraint firstItem="HT5-he-bQi" firstAttribute="leading" secondItem="aYq-D9-4be" secondAttribute="trailing" id="wtD-vD-ZHd"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -744,7 +739,7 @@
                                     <outlet property="delegate" destination="7jl-eh-Dhy" id="nx1-3F-bVi"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" placeholder="Search for friends" translatesAutoresizingMaskIntoConstraints="NO" id="ZAt-8P-WjN">
+                            <searchBar contentMode="redraw" text="" placeholder="Search for Do Good users" translatesAutoresizingMaskIntoConstraints="NO" id="ZAt-8P-WjN">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="jRx-V5-kPj"/>
