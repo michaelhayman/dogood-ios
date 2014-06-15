@@ -153,6 +153,12 @@
     [self deregisterNotifications];
 }
 
+- (void)updateFollowerStats {
+    NSString *followersText = @"follower";
+    followers.text = [NSString stringWithFormat:@"%@ %@", user.followers_count, [DGAppearance pluralizeString:followersText basedOnNumber:user.followers_count]];
+    following.text = [NSString stringWithFormat:@"%@ following", user.following_count];
+}
+
 #pragma mark - User retrieval
 - (void)getProfile {
     DebugLog(@"profile called");
@@ -162,20 +168,17 @@
         user = [[DGUser alloc] init];
         user = mappingResult.array[0];
 
-        NSString *followersText = @"follower";
-        followers.text = [NSString stringWithFormat:@"%@ %@", user.followers_count, [DGAppearance pluralizeString:followersText basedOnNumber:user.followers_count]];
-        following.text = [NSString stringWithFormat:@"%@ following", user.following_count];
 
         name.text = user.full_name;
         [ranking setTitle:user.rank forState:UIControlStateNormal];
 
         [userGoodsTableView initializeTableWithUser:user];
 
+        [self updateFollowerStats];
         if ([user.current_user_following boolValue] == YES) {
             centralButton.selected = YES;
-            [centralButton setTitle:@"Following" forState:UIControlStateNormal];
         } else {
-            DebugLog(@"not following");
+            centralButton.selected = NO;
         }
 
         if ([self isOwnProfile]) {
@@ -238,10 +241,14 @@
 
 - (void)increaseFollow {
     [centralButton setSelected:YES];
+    user.followers_count = [NSNumber numberWithInt:[user.followers_count intValue] + 1];
+    [self updateFollowerStats];
 }
 
 - (void)decreaseFollow {
     [centralButton setSelected:NO];
+    user.followers_count = [NSNumber numberWithInt:[user.followers_count intValue] - 1];
+    [self updateFollowerStats];
 }
 
 - (void)openSettings {
