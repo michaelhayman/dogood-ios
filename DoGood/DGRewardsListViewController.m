@@ -83,7 +83,7 @@
 
 - (void)updatePointsText {
     if ([[DGUser currentUser] isSignedIn]) {
-        points.text = [NSString stringWithFormat:@"%@ points",  [[DGUser currentUser] pointsText]];
+        points.text = [NSString stringWithFormat:@"%@ %@",  [[DGUser currentUser] pointsText], [DGAppearance pluralizeString:@"point" basedOnNumber:[DGUser currentUser].points]];
     } else {
         points.text = @"Join and earn points!";
     }
