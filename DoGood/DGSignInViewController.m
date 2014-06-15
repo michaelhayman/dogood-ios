@@ -23,6 +23,11 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[DGTracker sharedTracker] trackScreen:@"Sign In"];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
 }

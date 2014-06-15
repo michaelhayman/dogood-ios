@@ -51,6 +51,11 @@
     [self updatePoints];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[DGTracker sharedTracker] trackScreen:@"Reward List"];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     DebugLog(@"sup?");

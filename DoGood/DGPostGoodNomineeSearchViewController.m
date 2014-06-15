@@ -60,19 +60,17 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nomineeChosen:) name:ExternalNomineeWasChosen object:nil];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [tabControl setSelectedSegmentIndex:1];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+}
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[DGTracker sharedTracker] trackScreen:@"Post Good - Select Nominee"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-
 }
 
 - (void)dismiss {

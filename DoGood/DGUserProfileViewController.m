@@ -55,6 +55,11 @@
     ranking.transform = CGAffineTransformMakeRotation( - M_PI/5.5 );
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[DGTracker sharedTracker] trackScreen:@"User Profile"];
+}
+
 - (BOOL)isOwnProfile {
     return [[DGUser currentUser] isSignedIn] && [self.userID isEqualToNumber:[DGUser currentUser].userID];
 }
@@ -111,10 +116,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     DebugLog(@"sup?");
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
 }
 
 - (void)registerNotifications {

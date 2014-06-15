@@ -115,6 +115,7 @@
     [super viewDidAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayPostSuccessMessage) name:DGUserDidPostGood object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getGood) name:DGUserDidPostGood object:nil];
+    [[DGTracker sharedTracker] trackScreen:@"Good List"];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

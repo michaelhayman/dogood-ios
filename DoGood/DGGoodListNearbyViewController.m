@@ -34,6 +34,11 @@
     [self customizeNavColor:SKY];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[DGTracker sharedTracker] trackScreen:@"Nearby Good Posts"];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [ProgressHUD dismiss];

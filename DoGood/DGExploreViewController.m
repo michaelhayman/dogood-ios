@@ -70,6 +70,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    [[DGTracker sharedTracker] trackScreen:@"Home"];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(welcomeScreen) name:DGTourWasRequested object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authenticate) name:DGUserDidFailSilentAuthenticationNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showWelcome) name:DGUserDidSignOutNotification object:nil];

@@ -33,6 +33,11 @@
     [self kickOffLocation];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[DGTracker sharedTracker] trackScreen:@"Post Good - Choose Location"];
+}
+
 - (void)kickOffLocation {
     [ProgressHUD show:@"Locating..."];
     [DGLocator checkLocationAccessWithSuccess:^(BOOL success, NSString *msg) {

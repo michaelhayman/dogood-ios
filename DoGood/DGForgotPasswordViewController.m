@@ -18,6 +18,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(popController) name:DGUserDidSendPasswordNotification object:nil];
+    [[DGTracker sharedTracker] trackScreen:@"Forgot Password"];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

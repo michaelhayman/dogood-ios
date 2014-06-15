@@ -81,6 +81,11 @@
     [self setupKeyboardBehaviour];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[DGTracker sharedTracker] trackScreen:@"Comment List"];
+}
+
 #pragma mark - Comment retrieval ----------
 - (void)getComments {
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:page], @"page", self.good.goodID, @"good_id", nil];

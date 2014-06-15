@@ -111,6 +111,7 @@
 		63C2DAC9194BA76300FA3780 /* DGEventSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DAC8194BA76300FA3780 /* DGEventSaver.m */; };
 		63C2DACC194BB1BC00FA3780 /* DGMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DACB194BB1BC00FA3780 /* DGMapViewController.m */; };
 		63C2DACE194BB68F00FA3780 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C2DACD194BB68F00FA3780 /* MapKit.framework */; };
+		63D358DA194BCAED001E7BE2 /* DGTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D358D9194BCAED001E7BE2 /* DGTracker.m */; };
 		63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */; };
 		63D4BD251802484800ACF1B9 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D4BD241802484800ACF1B9 /* Rewards.storyboard */; };
 		63D4BD2818024E0700ACF1B9 /* DGRewardPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BD2718024E0700ACF1B9 /* DGRewardPopupViewController.m */; };
@@ -343,6 +344,8 @@
 		63C2DACA194BB1BC00FA3780 /* DGMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGMapViewController.h; sourceTree = "<group>"; };
 		63C2DACB194BB1BC00FA3780 /* DGMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGMapViewController.m; sourceTree = "<group>"; };
 		63C2DACD194BB68F00FA3780 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		63D358D8194BCAED001E7BE2 /* DGTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTracker.h; sourceTree = "<group>"; };
+		63D358D9194BCAED001E7BE2 /* DGTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTracker.m; sourceTree = "<group>"; };
 		63D4BCDD17FFDF7000ACF1B9 /* DGGoodCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGoodCommentsViewController.h; sourceTree = "<group>"; };
 		63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGGoodCommentsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		63D4BD241802484800ACF1B9 /* Rewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rewards.storyboard; sourceTree = "<group>"; };
@@ -466,6 +469,8 @@
 			children = (
 				63C2DACA194BB1BC00FA3780 /* DGMapViewController.h */,
 				63C2DACB194BB1BC00FA3780 /* DGMapViewController.m */,
+				63D358D8194BCAED001E7BE2 /* DGTracker.h */,
+				63D358D9194BCAED001E7BE2 /* DGTracker.m */,
 				63C2DAC7194BA76300FA3780 /* DGEventSaver.h */,
 				63C2DAC8194BA76300FA3780 /* DGEventSaver.m */,
 				63A28B661922C6CA008E6AA1 /* NSString+RangeChecker.h */,
@@ -1024,6 +1029,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63D358DA194BCAED001E7BE2 /* DGTracker.m in Sources */,
 				6386481F17ACEFAE00167F15 /* DGGoodListViewController.m in Sources */,
 				6386481D17ACEF2100167F15 /* DGWelcomeViewController.m in Sources */,
 				638647EE17AC087A00167F15 /* main.m in Sources */,

@@ -139,6 +139,7 @@
     // keyboard
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [[DGTracker sharedTracker] trackScreen:@"Post Good"];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
