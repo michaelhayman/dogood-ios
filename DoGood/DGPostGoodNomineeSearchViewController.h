@@ -13,14 +13,14 @@
     __weak IBOutlet UIButton *facebook;
     __weak IBOutlet UIButton *twitter;
     __weak IBOutlet UIButton *addressBook;
-
-    UISegmentedControl *tabControl;
 }
 
 @property (nonatomic, strong) UIViewController *currentViewController;
 @property (nonatomic, weak) IBOutlet UIView *contentView;
 @property (nonatomic, weak) id <DGNomineeSearchViewControllerDelegate> delegate;
 @property (nonatomic, weak) id <DGPostGoodNomineeViewControllerDelegate> postGoodDelegate;
+
+- (void)chooseAdd;
 
 @end
 

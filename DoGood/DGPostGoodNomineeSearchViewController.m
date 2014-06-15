@@ -24,11 +24,13 @@
 
     [self setupMenuTitle:@"Nominate" withColor:[UIColor whiteColor]];
 
-    if (self.addView == nil) {
-        self.addView = [self.storyboard instantiateViewControllerWithIdentifier:@"nomineeAdd"];
-    }
     if (self.userOther == nil) {
         self.userOther = [self.storyboard instantiateViewControllerWithIdentifier:@"SearchDoGood"];
+        self.userOther.parent = self;
+        self.userOther.searchType = @"nominate";
+    }
+    if (self.addView == nil) {
+        self.addView = [self.storyboard instantiateViewControllerWithIdentifier:@"nomineeAdd"];
     }
     if (self.userAddressBook == nil) {
         self.userAddressBook = [[DGUserSearchAddressBookViewController alloc] initWithNibName:@"SearchUserNetworks" bundle:nil];
@@ -43,7 +45,7 @@
     }
 
     segmentIndex = 1;
-    add.selected = YES;
+    dogood.selected = YES;
 
     UIViewController *vc = [self viewControllerForSegmentIndex:segmentIndex];
     self.currentViewController = vc;
@@ -153,10 +155,10 @@
     UIViewController *vc;
     switch (index) {
         case 1:
-            vc = self.addView;
+            vc = self.userOther;
             break;
         case 2:
-            vc = self.userOther;
+            vc = self.addView;
             break;
         case 3:
             vc = self.userAddressBook;
@@ -183,6 +185,10 @@
         [self.postGoodDelegate childViewController:self didChooseNominee:nominee];
     }
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)chooseAdd {
+    [self changeTab:add];
 }
 
 @end

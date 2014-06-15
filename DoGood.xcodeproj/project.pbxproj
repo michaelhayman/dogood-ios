@@ -112,6 +112,8 @@
 		63C2DACC194BB1BC00FA3780 /* DGMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DACB194BB1BC00FA3780 /* DGMapViewController.m */; };
 		63C2DACE194BB68F00FA3780 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C2DACD194BB68F00FA3780 /* MapKit.framework */; };
 		63D358DA194BCAED001E7BE2 /* DGTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D358D9194BCAED001E7BE2 /* DGTracker.m */; };
+		63D358DE194E0752001E7BE2 /* NominateExplanationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D358DC194E0752001E7BE2 /* NominateExplanationCell.m */; };
+		63D358DF194E0752001E7BE2 /* NominateExplanationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D358DD194E0752001E7BE2 /* NominateExplanationCell.xib */; };
 		63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */; };
 		63D4BD251802484800ACF1B9 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63D4BD241802484800ACF1B9 /* Rewards.storyboard */; };
 		63D4BD2818024E0700ACF1B9 /* DGRewardPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63D4BD2718024E0700ACF1B9 /* DGRewardPopupViewController.m */; };
@@ -346,6 +348,9 @@
 		63C2DACD194BB68F00FA3780 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		63D358D8194BCAED001E7BE2 /* DGTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTracker.h; sourceTree = "<group>"; };
 		63D358D9194BCAED001E7BE2 /* DGTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTracker.m; sourceTree = "<group>"; };
+		63D358DB194E0752001E7BE2 /* NominateExplanationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NominateExplanationCell.h; sourceTree = "<group>"; };
+		63D358DC194E0752001E7BE2 /* NominateExplanationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NominateExplanationCell.m; sourceTree = "<group>"; };
+		63D358DD194E0752001E7BE2 /* NominateExplanationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NominateExplanationCell.xib; sourceTree = "<group>"; };
 		63D4BCDD17FFDF7000ACF1B9 /* DGGoodCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGGoodCommentsViewController.h; sourceTree = "<group>"; };
 		63D4BCDE17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGGoodCommentsViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		63D4BD241802484800ACF1B9 /* Rewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rewards.storyboard; sourceTree = "<group>"; };
@@ -632,6 +637,9 @@
 			children = (
 				638E5B7B19061FFC0096CB59 /* NomineeCell.h */,
 				638E5B7C19061FFC0096CB59 /* NomineeCell.m */,
+				63D358DB194E0752001E7BE2 /* NominateExplanationCell.h */,
+				63D358DC194E0752001E7BE2 /* NominateExplanationCell.m */,
+				63D358DD194E0752001E7BE2 /* NominateExplanationCell.xib */,
 				639B1230187C0FA3005C9BD9 /* GoodTableView.h */,
 				639B1231187C0FA3005C9BD9 /* GoodTableView.m */,
 				633DBF7017ADC4E50038BC2D /* DGPostGoodNomineeSearchViewController.h */,
@@ -899,6 +907,7 @@
 				638647EC17AC087A00167F15 /* InfoPlist.strings in Resources */,
 				63FDAC4E181C630B00668B15 /* ExploreHighlightsCell.xib in Resources */,
 				634EA1F81874F67000F9F00D /* MarkusInk.ttf in Resources */,
+				63D358DF194E0752001E7BE2 /* NominateExplanationCell.xib in Resources */,
 				63D4BD251802484800ACF1B9 /* Rewards.storyboard in Resources */,
 				636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */,
 				636AEA9B17AD63EC002A3494 /* GoodCell.xib in Resources */,
@@ -1111,6 +1120,7 @@
 				6330B69E1812D891005DC78B /* DGEditableTextView.m in Sources */,
 				6330B6A11812FC28005DC78B /* DGEntityHandler.m in Sources */,
 				63DA644B17DC0F28003DFF03 /* DGExploreCategoriesViewController.m in Sources */,
+				63D358DE194E0752001E7BE2 /* NominateExplanationCell.m in Sources */,
 				63FDAC4D181C630B00668B15 /* ExploreHighlightsCell.m in Sources */,
 				63DA644E17DC0F55003DFF03 /* DGExploreSearchViewController.m in Sources */,
 				6378AE1E1818BA50001DB9BF /* DGRKObjectRequestOperation.m in Sources */,
