@@ -39,7 +39,6 @@ PODS:
   - RestKit/Support (0.21.0):
     - TransitionKit (= 1.1.1)
   - RFKeychain (0.1)
-  - RHObjectiveBeagle (1.0.0)
   - RKValueTransformers (1.0.1)
   - SAMLoadingView (0.1.0)
   - SHEmailValidator (1.0.2)
@@ -69,7 +68,6 @@ DEPENDENCIES:
   - ProgressHUD (from `git@github.com:relatedcode/ProgressHUD.git`)
   - RestKit (~> 0.21.0)
   - RFKeychain (~> 0.1)
-  - RHObjectiveBeagle (from `git@github.com:heardrwt/RHObjectiveBeagle.git`)
   - SAMLoadingView (~> 0.1.0)
   - SHEmailValidator
   - SocialAuth (from `git@github.com:michaelhayman/SocialAuth.git`)
@@ -107,7 +105,6 @@ SPEC CHECKSUMS:
   RegexKitLite: 761b4944f23cb8fe20697b2e47be0689fd832c09
   RestKit: 02cb6d613048fdb123b51a7fc31542b6414cc08f
   RFKeychain: b86238477be053f540916c5e69da625a4adf6951
-  RHObjectiveBeagle: b834675014f5db213acdd016608057e1f0231da5
   RKValueTransformers: 994503e34bffdbe0159ff6b497290dd1f8d5657f
   SAMLoadingView: 11b746311268140f6a2380723215fe96a6d15dee
   SHEmailValidator: 04e1a7590a536dcf6bd6ac6ecf54cfc25794fbac
