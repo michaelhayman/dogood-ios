@@ -166,7 +166,7 @@
 }
 
 - (void)setLimitText {
-    characterLimitLabel.text = [NSString stringWithFormat:@"%lu", characterLimit - [entityTextView.text length]];
+    characterLimitLabel.text = [NSString stringWithFormat:@"%lu", (long)characterLimit - [entityTextView.text length]];
     if ([entityTextView.text length] >= characterLimit) {
         characterLimitLabel.textColor = [UIColor redColor];
     } else {
@@ -269,7 +269,6 @@
     NSInteger startOfPersonPosition = MAX(0, startOfRange - 1);
     NSInteger personLength = [user.full_name length];
 
-    DebugLog(@"Debugging: %@ %@ %@ %lu %lu", user.full_name, entityTextView.attributedText, entityTextView.text, startOfPersonPosition, personLength);
     NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[entityTextView.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfPersonPosition)];
     entityTextView.attributedText = [self insert:[user.full_name stringByAppendingString:@" "] atEndOf:originalComment];
     [self setLimitText];
@@ -320,7 +319,6 @@
     NSInteger tagLength = [tag.name length];
 
     NSString *entityName = tag.name;
-    DebugLog(@"Debugging: %@ %@ %@ %lu %lu", entityName, entityTextView.attributedText, entityTextView.text, startOfTagPosition, tagLength);
     NSMutableAttributedString *originalComment = (NSMutableAttributedString *)[entityTextView.attributedText attributedSubstringFromRange:NSMakeRange(0, startOfTagPosition)];
 
     // NSDictionary *attributes = [NSDictionary dictionaryWithObject:LINK_COLOUR forKey:NSForegroundColorAttributeName];
