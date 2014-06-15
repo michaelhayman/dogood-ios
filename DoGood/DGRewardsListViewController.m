@@ -40,6 +40,8 @@
     [self customizeNavColor:CRIMSON];
     if (!rewardsButton.selected && !claimedButton.selected) {
         rewardsButton.selected = YES;
+        [self deselect:claimedButton];
+        [self reselect:rewardsButton];
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshVisibleRewards) name:DGUserDidUpdatePointsNotification object:nil];
