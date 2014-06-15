@@ -103,7 +103,7 @@
 }
 
 - (IBAction)chooseTab:(id)sender {
-    DebugLog(@"sup %ld", tabControl.selectedSegmentIndex);
+    DebugLog(@"sup %ld", (long)tabControl.selectedSegmentIndex);
     [self setTableMode];
     [self.tableView reloadData];
 }
