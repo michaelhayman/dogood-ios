@@ -107,6 +107,7 @@
 		63B546A61859D17E00673B6C /* DGAuthenticateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63B546A51859D17E00673B6C /* DGAuthenticateViewController.m */; };
 		63BFB1E717C818DE004D990F /* DGUserSearchAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */; };
 		63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */; };
+		63C00BAD194FA9170093C261 /* UIImageView+Dimension.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C00BAC194FA9170093C261 /* UIImageView+Dimension.m */; };
 		63C1BA501806026300CB95CF /* RewardsTeaserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C1BA4F1806026300CB95CF /* RewardsTeaserView.m */; };
 		63C2DAC9194BA76300FA3780 /* DGEventSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DAC8194BA76300FA3780 /* DGEventSaver.m */; };
 		63C2DACC194BB1BC00FA3780 /* DGMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DACB194BB1BC00FA3780 /* DGMapViewController.m */; };
@@ -339,6 +340,8 @@
 		63BFB1E617C818DE004D990F /* DGUserSearchAddressBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchAddressBookViewController.m; sourceTree = "<group>"; };
 		63BFB1EA17C81E11004D990F /* DGUserSearchNetworksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserSearchNetworksViewController.h; sourceTree = "<group>"; };
 		63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchNetworksViewController.m; sourceTree = "<group>"; };
+		63C00BAB194FA9170093C261 /* UIImageView+Dimension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Dimension.h"; sourceTree = "<group>"; };
+		63C00BAC194FA9170093C261 /* UIImageView+Dimension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Dimension.m"; sourceTree = "<group>"; };
 		63C1BA4E1806026300CB95CF /* RewardsTeaserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardsTeaserView.h; sourceTree = "<group>"; };
 		63C1BA4F1806026300CB95CF /* RewardsTeaserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardsTeaserView.m; sourceTree = "<group>"; };
 		63C2DAC7194BA76300FA3780 /* DGEventSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGEventSaver.h; sourceTree = "<group>"; };
@@ -472,6 +475,8 @@
 		6319D39017BDF05C0071DA71 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				63C00BAB194FA9170093C261 /* UIImageView+Dimension.h */,
+				63C00BAC194FA9170093C261 /* UIImageView+Dimension.m */,
 				63C2DACA194BB1BC00FA3780 /* DGMapViewController.h */,
 				63C2DACB194BB1BC00FA3780 /* DGMapViewController.m */,
 				63D358D8194BCAED001E7BE2 /* DGTracker.h */,
@@ -1058,6 +1063,7 @@
 				633DBF7E17AE25CF0038BC2D /* DGUserProfileViewController.m in Sources */,
 				6311488D180F3CA5008278E5 /* DGFacebookManager.m in Sources */,
 				63C1BA501806026300CB95CF /* RewardsTeaserView.m in Sources */,
+				63C00BAD194FA9170093C261 /* UIImageView+Dimension.m in Sources */,
 				633DBF8417AE92E00038BC2D /* NavigationViewController.m in Sources */,
 				6355EC0717B0C83100EE91C0 /* DGComment.m in Sources */,
 				63D4BCDF17FFDF7000ACF1B9 /* DGGoodCommentsViewController.m in Sources */,
