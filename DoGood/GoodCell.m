@@ -16,6 +16,7 @@
 #import "NSString+Inflections.h"
 #import "NSString+RangeChecker.h"
 #import <ProgressHUD/ProgressHUD.h>
+#import "UIImageView+Dimension.h"
 #import "DGEventSaver.h"
 #import "DGMapViewController.h"
 
@@ -33,8 +34,7 @@
     [self.avatar addGestureRecognizer:userAvatarGesture];
 
     // image
-    self.overviewImage.contentMode = UIViewContentModeScaleAspectFill;
-    // UIViewContentModeScaleAspectFit;
+    self.overviewImage.contentMode = UIViewContentModeScaleAspectFit;
     [self.overviewImage setClipsToBounds:YES];
 
     // votes
@@ -129,13 +129,17 @@
 
     [self setPostedByText];
 
-    self.overviewImageHeight.constant = 0;
-    self.overviewImage.hidden = YES;
-
     if ([self.good evidenceURL]) {
-        [self.overviewImage setImageWithURL:[self.good evidenceURL]];
-        self.overviewImageHeight.constant = 302;
-        self.overviewImage.hidden = NO;
+        [self.overviewImage setImageWithURLRequest:[NSURLRequest requestWithURL:[self.good evidenceURL]] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+            self.overviewImage.image = image;
+            self.overviewImage.hidden = NO;
+            self.overviewImageHeight.constant = [self.overviewImage imageSizeAfterAspectFit].height;
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+            self.overviewImageHeight.constant = 0;
+        }];
+    } else {
+        self.overviewImageHeight.constant = 0;
+        self.overviewImage.hidden = YES;
     }
 
     // votes
