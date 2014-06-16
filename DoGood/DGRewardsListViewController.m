@@ -9,15 +9,17 @@
 
 @end
 
+#define kRewardCell @"RewardCell"
+
 @implementation DGRewardsListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupMenuTitle:@"Rewards" withColor:[UIColor whiteColor]];
 
-    [collectionView registerClass:[DGRewardCell class] forCellWithReuseIdentifier:@"RewardCell"];
-    UINib *nib = [UINib nibWithNibName:@"RewardCell" bundle:nil];
-    [collectionView registerNib:nib forCellWithReuseIdentifier:@"RewardCell"];
+    [collectionView registerClass:[DGRewardCell class] forCellWithReuseIdentifier:kRewardCell];
+    UINib *nib = [UINib nibWithNibName:kRewardCell bundle:nil];
+    [collectionView registerNib:nib forCellWithReuseIdentifier:kRewardCell];
 
     loadingView = [[SAMLoadingView alloc] initWithFrame:collectionView.bounds];
     loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -166,22 +168,35 @@
 
 #pragma mark - UICollectionView methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [rewards count];
+    if ([rewards count] > 0) {
+        return [rewards count];
+    } else {
+        return 1;
+    }
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)aCollectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *reuseIdentifier = @"RewardCell";
-    DGRewardCell *cell = [aCollectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
-    DGReward *reward = rewards[indexPath.row];
-    cell.reward = reward;
-    if (rewardsButton.selected) {
-        cell.type = @"Rewards";
+    if ([rewards count] > 0) {
+        static NSString *reuseIdentifier = kRewardCell;
+        DGRewardCell *cell = [aCollectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+        DGReward *reward = rewards[indexPath.row];
+        cell.reward = reward;
+        if (rewardsButton.selected) {
+            cell.type = @"Rewards";
+        } else {
+            cell.type = @"Claimed";
+        }
+        [cell setValues];
+        cell.navigationController = self.navigationController;
+        return cell;
     } else {
-        cell.type = @"Claimed";
+        static NSString *reuseIdentifier = kRewardCell;
+        DGRewardCell *cell = [aCollectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
+        DGReward *reward = [[DGReward alloc] initWithEmptyReward];
+        cell.reward = reward;
+        [cell setValues];
+        return cell;
     }
-    [cell setValues];
-    cell.navigationController = self.navigationController;
-    return cell;
 }
 
 #pragma mark - Change data responses

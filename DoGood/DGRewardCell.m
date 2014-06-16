@@ -31,14 +31,18 @@
 }
 
 - (void)setValues {
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.reward.teaser] cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:15.0];
-    [self.teaser setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        if (![self.reward userHasSufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
-            self.teaser.image = [image convertToGrayscale];
-        } else {
-            self.teaser.image = image;
-        }
-    } failure:nil];
+    if (self.reward.teaser) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.reward.teaser] cachePolicy:NSURLRequestUseProtocolCachePolicy                                  timeoutInterval:15.0];
+        [self.teaser setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+            if (![self.reward userHasSufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
+                self.teaser.image = [image convertToGrayscale];
+            } else {
+                self.teaser.image = image;
+            }
+        } failure:nil];
+    } else {
+        self.teaser.image = self.reward.teaserImage;
+    }
 
     if (![self.reward userHasSufficientPoints] && [self.type isEqualToString:@"Rewards"]) {
         self.heading.textColor = GRAYED_OUT;

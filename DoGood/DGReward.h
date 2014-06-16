@@ -5,6 +5,7 @@
 @property (retain) NSString *title;
 @property (retain) NSString *subtitle;
 @property (retain) NSString *teaser;
+@property (retain) UIImage *teaserImage;
 @property (retain) NSString *full_description;
 @property (retain) NSNumber *cost;
 @property (retain) NSNumber *quantity;
@@ -15,5 +16,6 @@
 
 - (NSString *)costText;
 - (BOOL)userHasSufficientPoints;
+- (id)initWithEmptyReward;
 
 @end
