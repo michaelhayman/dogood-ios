@@ -124,8 +124,6 @@ extern NSString* const DGUserDidUpdatePointsNotification;
 extern NSString* const DGUserClaimRewardNotification;
 extern NSString* const DGUserDidClaimRewardNotification;
 
-extern NSString* const DGUserDidChangePhoto;
-
 extern NSString* const DGUserDidConnectToTwitter;
 extern NSString* const DGUserDidDisconnectFromTwitter;
 extern NSString* const DGUserIsConnectedToTwitter;

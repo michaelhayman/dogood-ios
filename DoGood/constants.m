@@ -51,8 +51,6 @@ NSString* const DGUserDidUpdatePointsNotification = @"DGUserDidUpdatePointsNotif
 NSString* const DGUserClaimRewardNotification = @"DGUserClaimRewardNotification";
 NSString* const DGUserDidClaimRewardNotification = @"DGUserDidClaimRewardNotification";
 
-NSString* const DGUserDidChangePhoto = @"DGUserDidChangePhoto";
-
 NSString* const DGUserDidConnectToTwitter = @"DGUserDidConnectToTwitter";
 NSString* const DGUserDidDisconnectFromTwitter = @"DGUserDidDisconnectFromTwitter";
 NSString* const DGUserIsConnectedToTwitter = @"DGUserIsConnectedToTwitter";

@@ -1,5 +1,4 @@
 #import "DGUserProfileViewController.h"
-#import "DGUserSettingsViewController.h"
 #import "DGUserGoodsTableView.h"
 #import "DGUserListViewController.h"
 #import "DGUserFindFriendsViewController.h"
@@ -108,7 +107,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (reloadProfileOnView || reloadPhotoOnView) {
+    if (reloadProfileOnView) {
         [self initialize];
     }
 }
@@ -126,7 +125,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadProfileOnNextView) name:DGUserDidPostGood object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadProfileOnNextView) name:DGUserDidChangeVoteOnGood object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadProfileOnNextView) name:DGUserDidChangeFollowOnGood object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadPhotoOnNextView) name:DGUserDidChangePhoto object:nil];
 }
 
 - (void)deregisterNotifications {
@@ -137,15 +135,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidPostGood object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidChangeVoteOnGood object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidChangeFollowOnGood object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidChangePhoto object:nil];
 }
 
 - (void)reloadProfileOnNextView {
     reloadProfileOnView = YES;
-}
-
-- (void)reloadPhotoOnNextView {
-    reloadPhotoOnView = YES;
 }
 
 - (void)dealloc {
@@ -165,9 +158,11 @@
 
     [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/users/%@", self.userID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         reloadProfileOnView = NO;
+
+        UIImage *currentAvatar = user.avatar;
         user = [[DGUser alloc] init];
         user = mappingResult.array[0];
-
+        user.avatar = currentAvatar;
 
         name.text = user.full_name;
         [ranking setTitle:user.rank forState:UIControlStateNormal];
@@ -188,8 +183,10 @@
         }
         [avatar bringSubviewToFront:avatarOverlay];
 
-        if (!avatar.image || reloadPhotoOnView) {
+        if (user.avatar == nil) {
             [self updatePhoto];
+        } else {
+            avatar.image = user.avatar;
         }
         [loadingView removeFromSuperview];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
@@ -204,15 +201,18 @@
         [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 avatar.image = image;
-                reloadPhotoOnView = NO;
+                user.avatar = image;
             });
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
             DebugLog(@"Failed to retrieve avatar.");
         }];
     } else {
         avatar.image = nil;
-        reloadPhotoOnView = NO;
     }
+}
+
+- (void)childViewControllerDidUpdatePhoto:(UIImage *)image {
+    avatar.image = image;
 }
 
 - (void)toggleFollow {
@@ -254,6 +254,7 @@
 - (void)openSettings {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
     DGUserSettingsViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"Settings"];
+    controller.delegate = self;
     [self.navigationController pushViewController:controller animated:YES];
 }
 

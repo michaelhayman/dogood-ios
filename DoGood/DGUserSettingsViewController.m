@@ -96,7 +96,9 @@
 }
 
 - (void)setupHeader {
-    if ([[DGUser currentUser] avatarURL]) {
+    if ([DGUser currentUser].avatar) {
+        avatar.image = [DGUser currentUser].avatar;
+    } else if ([[DGUser currentUser] avatarURL]) {
         NSURLRequest *request = [NSURLRequest requestWithURL:[[DGUser currentUser] avatarURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
         [avatar setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
             avatar.image = image;
@@ -137,10 +139,13 @@
         [ProgressHUD showSuccess:@"Completed"];
 
         DGUser *user = (mappingResult.array)[0];
+        [DGUser currentUser].avatar = imageToUpload;
         [DGUser currentUser].avatar_url = user.avatar_url;
         [DGUser assignDefaults];
         avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
-        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangePhoto object:nil];
+        if ([self.delegate respondsToSelector:@selector(childViewControllerDidUpdatePhoto:)]) {
+            [self.delegate childViewControllerDidUpdatePhoto:imageToUpload];
+        }
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         avatar.image = currentImage;
         [TSMessage showNotificationInViewController:self.navigationController title:nil subtitle:NSLocalizedString(@"Avatar upload failed", nil) type:TSMessageNotificationTypeError];
@@ -154,13 +159,15 @@
     [[RKObjectManager sharedManager] deleteObject:nil path:user_remove_avatar_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         avatar.image = nil;
         [DGUser currentUser].avatar_url = nil;
-        [DGUser currentUser].image = nil;
+        [DGUser currentUser].avatar = nil;
         [DGUser assignDefaults];
         [TSMessage showNotificationInViewController:self.navigationController
                               title:NSLocalizedString(@"Profile photo updated", nil)
                             subtitle:nil
                                type:TSMessageNotificationTypeSuccess];
-        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangePhoto object:nil];
+        if ([self.delegate respondsToSelector:@selector(childViewControllerDidUpdatePhoto:)]) {
+            [self.delegate childViewControllerDidUpdatePhoto:nil];
+        }
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         [TSMessage showNotificationInViewController:self.navigationController
                               title:NSLocalizedString(@"Oops", nil)

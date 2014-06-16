@@ -3,6 +3,7 @@
 
 @class DGTwitterManager;
 @class DGFacebookManager;
+@protocol DGUserSettingsViewControllerDelegate;
 #import "DGPhotoPickerViewController.h"
 
 @interface DGUserSettingsViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIActionSheetDelegate, UIAlertViewDelegate, DGPhotoPickerViewControllerDelegate> {
@@ -28,6 +29,13 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
+@property (nonatomic, weak) id<DGUserSettingsViewControllerDelegate> delegate;
+
+@end
+
+@protocol DGUserSettingsViewControllerDelegate <NSObject>
+
+- (void)childViewControllerDidUpdatePhoto:(UIImage *)image;
 
 @end
 

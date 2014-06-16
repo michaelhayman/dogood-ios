@@ -1,18 +1,18 @@
 #import "AuthenticateView.h"
+#import "DGUserSettingsViewController.h"
 
 @class DGUserInvitesViewController;
 @class DGGoodListViewController;
 @class SAMLoadingView;
 @class DGUserGoodsTableView;
 
-@interface DGUserProfileViewController : DGViewController <UIActionSheetDelegate, UIAlertViewDelegate> {
+@interface DGUserProfileViewController : DGViewController <UIActionSheetDelegate, UIAlertViewDelegate, DGUserSettingsViewControllerDelegate> {
     __weak IBOutlet UIButton *centralButton;
     __weak IBOutlet UIImageView *avatarOverlay;
     __weak IBOutlet UIImageView *avatar;
     __weak IBOutlet UILabel *name;
     DGUser *user;
     BOOL reloadProfileOnView;
-    BOOL reloadPhotoOnView;
 
     __weak IBOutlet UILabel *followers;
     __weak IBOutlet UILabel *following;

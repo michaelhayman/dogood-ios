@@ -55,7 +55,7 @@
     [name resignFirstResponder];
     [[RKObjectManager sharedManager] postObject:submitUser path:@"/users/validate_name" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [name resignFirstResponder];
-        if (user.image == nil) {
+        if (user.avatar == nil) {
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"No photo?" message:@"C'mon, upload an image!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"Yes", @"No", nil];
             alert.cancelButtonIndex = 1;
             alert.tag = 59;
@@ -86,7 +86,7 @@
 - (void)showNextStep {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
     DGSignUpDetailsViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"SignUpDetails"];
-    user.image = avatar.image;
+    user.avatar = avatar.image;
     user.full_name = name.text;
     controller.user = user;
     [self.navigationController pushViewController:controller animated:YES];
@@ -99,15 +99,15 @@
 
 - (void)childViewController:(DGPhotoPickerViewController *)viewController didChoosePhoto:(NSDictionary *)dictionary {
     imageToUpload = [dictionary objectForKey:UIImagePickerControllerEditedImage];
-    user.image = imageToUpload;
-    avatar.image = user.image;
+    user.avatar = imageToUpload;
+    avatar.image = user.avatar;
     avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
     [avatar bringSubviewToFront:avatarOverlay];
 }
 
 - (void)removePhoto {
     avatar.image = nil;
-    user.image = nil;
+    user.avatar = nil;
     avatarOverlay.image = [UIImage imageNamed:@"EditProfilePhotoFrame"];
 }
 

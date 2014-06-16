@@ -22,7 +22,7 @@
 @property (nonatomic, copy) NSNumber* help_wanted_by_user_goods_count;
 @property (nonatomic, copy) NSString* message;
 @property (nonatomic, copy) NSString* avatar_url;
-@property (nonatomic, copy) UIImage* image;
+@property (nonatomic, copy) UIImage* avatar;
 #pragma mark - Social
 @property (nonatomic, copy) NSString* twitter_id;
 @property (nonatomic, copy) NSString* facebook_id;
