@@ -609,6 +609,10 @@
             DebugLog(@"error %@", [error localizedDescription]);
             return;
         } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Event added!" message:@"The event was added to your calendar." delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil, nil];
+                [alertView show];
+            });
             DebugLog(@"success");
         }
     }];
