@@ -151,6 +151,7 @@ static DGUser* currentUser = nil;
     self.phone = nil;
     self.contactable = nil;
     self.avatar_url = nil;
+    self.avatar = nil;
     self.twitter_id = nil;
     self.facebook_id = nil;
     self.points = nil;
