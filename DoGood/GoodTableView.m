@@ -169,6 +169,7 @@
         [self.infiniteScrollingView stopAnimating];
         [ProgressHUD showError:[error localizedDescription]];
         DebugLog(@"Operation failed with error: %@", error);
+        [self reloadData];
         [loadingView removeFromSuperview];
     }];
 }
@@ -186,7 +187,6 @@
     page = 1;
     [goods removeAllObjects];
     [cellHeights removeAllObjects];
-    [self reloadData];
 }
 
 - (void)reloadGood {
