@@ -179,11 +179,10 @@ static DGUser* currentUser = nil;
         DGUser *user = mappingResult.array[0];
         self.points = user.points;
         [DGUser assignDefaults];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdatePointsNotification object:self];
-        });
-    } failure:nil
-    ];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdatePointsNotification object:self];
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdatePointsNotification object:self];
+    }];
 }
 
 #pragma mark - Social
