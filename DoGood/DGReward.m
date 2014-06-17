@@ -14,7 +14,7 @@
 }
 
 - (BOOL)userHasSufficientPoints {
-    return [[DGUser currentUser].points intValue] >= [self.cost intValue];
+    return [self.within_budget boolValue];
 }
 
 - (id)initWithEmptyReward {

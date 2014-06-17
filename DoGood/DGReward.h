@@ -11,6 +11,7 @@
 @property (retain) NSNumber *quantity;
 @property (retain) NSNumber *quantity_remaining;
 @property (retain) NSNumber *user_id;
+@property (retain) NSNumber *within_budget;
 @property (retain) NSString *instructions;
 @property (retain) DGUser *user;
 
