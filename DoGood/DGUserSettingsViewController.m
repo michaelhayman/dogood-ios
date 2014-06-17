@@ -9,6 +9,7 @@
 #import "DGTwitterManager.h"
 #import "DGFacebookManager.h"
 #import "DGGoodListViewController.h"
+#import <SVWebViewController/SVWebViewController.h>
 
 #define full_name_tag 101
 #define biography_tag 102
@@ -371,6 +372,20 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
+    if (indexPath.row == terms) {
+        cell.heading.text = @"Terms of use";
+        cell.textField.userInteractionEnabled = NO;
+        cell.userInteractionEnabled = YES;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    }
+    if (indexPath.row == help) {
+        cell.heading.text = @"Need help?";
+        cell.textField.userInteractionEnabled = NO;
+        cell.userInteractionEnabled = YES;
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    }
     cell.userInteractionEnabled = YES;
     return cell;
 }
@@ -512,6 +527,19 @@
     [self.navigationController pushViewController:controller animated:YES];
 }
 
+- (void)loadTerms {
+    NSString *url = @"http://www.dogood.mobi/terms.html";
+    SVModalWebViewController *webViewController = [[SVModalWebViewController alloc] initWithAddress:url];
+    webViewController.barsTintColor = [UIColor whiteColor];
+    [self presentViewController:webViewController animated:YES completion:NULL];
+}
+
+- (void)loadHelp {
+    NSString *body =[NSString stringWithFormat:@"\n\n\nFrom %@ (%@)", [DGUser currentUser].full_name, [DGUser currentUser].userID];
+    [invites setCustomText:body withSubject:@"I need some help!" toRecipient:@"support@dogood.mobi"];
+    [invites sendViaEmail:nil];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == accountDetails) {
         if (indexPath.row == resetPassword) {
@@ -519,6 +547,12 @@
         }
         if (indexPath.row == yourContent) {
             [self loadYourContent];
+        }
+        if (indexPath.row == terms) {
+            [self loadTerms];
+        }
+        if (indexPath.row == help) {
+            [self loadHelp];
         }
     }
     if (indexPath.section == findFriends) {

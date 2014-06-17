@@ -60,6 +60,8 @@ typedef enum {
     phone,
     resetPassword,
     yourContent,
+    help,
+    terms,
     accountDetailsNumRows
 } AccountDetailsRowType;
 
