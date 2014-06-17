@@ -152,8 +152,6 @@
         [params setObject:[NSNumber numberWithBool:self.doneGoods] forKey:@"done"];
     }
 
-    [self addSubview:loadingView];
-
     [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         [goods addObjectsFromArray:mappingResult.array];
         if ([goods count] == 0)  {
@@ -174,25 +172,21 @@
     }];
 }
 
-- (void)getGood {
-    [self loadGoodsAtPath:goodsPath];
-}
-
 - (void)loadMoreGood {
     page++;
-    [self getGood];
+    [self loadGoodsAtPath:goodsPath];
 }
 
 - (void)resetGood {
     page = 1;
+    [self addSubview:loadingView];
     [goods removeAllObjects];
     [cellHeights removeAllObjects];
 }
 
 - (void)reloadGood {
-    // [_loadingView startLoading];
     [self resetGood];
-    [self getGood];
+    [self loadGoodsAtPath:goodsPath];
 }
 
 - (void)setupInfiniteScroll {
