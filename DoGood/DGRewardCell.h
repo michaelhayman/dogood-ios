@@ -11,6 +11,7 @@
 
 @property (weak, nonatomic) NSString *type;
 @property (weak, nonatomic) UINavigationController *navigationController;
+@property BOOL interactionEnabled;
 
 - (void)setValues;
 - (void)options;

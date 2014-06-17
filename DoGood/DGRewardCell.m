@@ -61,23 +61,14 @@
 
 #pragma mark - Options
 - (void)options {
-    if ([self.type isEqualToString:@"Rewards"]) {
-        [self claim];
-    } else if ([self.type isEqualToString:@"See all"]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSelectRewards object:nil];
-    } else {
-        [self instructions];
+    if (self.interactionEnabled) {
+        if ([self.type isEqualToString:@"Rewards"]) {
+            [self claim];
+        } else {
+            [self instructions];
+        }
     }
 }
-
-/*
-- (void)displayInsufficientPoints {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
-    DGRewardPopupViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"rewardInsufficientPointsPopup"];
-    controller.reward = self.reward;
-    [self.navigationController presentPopupViewController:controller contentInteraction:MJPopupViewContentInteractionDismissBackgroundOnly];
-}
-*/
 
 #pragma mark - Instructions dialog
 - (void)claim {

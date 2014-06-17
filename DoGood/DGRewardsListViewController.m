@@ -188,6 +188,7 @@
         }
         [cell setValues];
         cell.navigationController = self.navigationController;
+        cell.interactionEnabled = YES;
         return cell;
     } else {
         static NSString *reuseIdentifier = kRewardCell;
@@ -195,6 +196,7 @@
         DGReward *reward = [[DGReward alloc] initWithEmptyReward];
         cell.reward = reward;
         [cell setValues];
+        cell.interactionEnabled = NO;
         return cell;
     }
 }
