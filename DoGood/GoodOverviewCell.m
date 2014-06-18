@@ -37,12 +37,16 @@
     [super setSelected:selected animated:animated];
 }
 
+- (void)restoreDefaultImage {
+    self.image.image = [self defaultImage];
+}
+
 - (UIImage *)defaultImage {
-    return [UIImage imageNamed:@"upload-image"];
+    return [UIImage imageNamed:@"UploadImage"];
 }
 
 - (UIImage *)defaultHighlightedImage {
-    return [UIImage imageNamed:@"upload-image-active"];
+    return [UIImage imageNamed:@"UploadImageTap"];
 }
 
 #pragma mark - UITextViewDelegate methods

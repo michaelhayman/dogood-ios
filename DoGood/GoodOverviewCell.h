@@ -16,6 +16,7 @@
 @property (weak, nonatomic) UIViewController *parent;
 
 - (UIImage *)defaultImage;
+- (void)restoreDefaultImage;
 - (void)initEntityHandler;
 - (void)setDoneMode:(BOOL)done;
 

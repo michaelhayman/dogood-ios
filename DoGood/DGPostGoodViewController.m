@@ -413,7 +413,7 @@
 - (void)removePhoto {
     imageToUpload = nil;
     GoodOverviewCell *cell = [self overviewCell];
-    cell.image.image = nil;
+    [cell restoreDefaultImage];
     self.good.image = nil;
     [self.tableView reloadData];
 }
