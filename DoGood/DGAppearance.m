@@ -1,13 +1,14 @@
 
 #import <TTTAttributedLabel.h>
 #import <NSString+Inflections.h>
+#import <SVWebViewController/SVWebViewController.h>
 
 @implementation DGAppearance
 
 + (void)setupAppearance {
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setBarTintColor:VIVID];
-    [[UIToolbar appearance] setBarTintColor:VIVID];
+    [[UIToolbar appearanceWhenContainedIn:[SVModalWebViewController class], nil] setBarTintColor:VIVID];
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 
