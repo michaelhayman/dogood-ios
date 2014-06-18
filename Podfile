@@ -28,6 +28,7 @@ pod 'SVPullToRefresh', '~> 0.4.1'
 pod 'CRNavigationController', '~> 0.0.1'
 pod 'SVWebViewController'
 pod 'GoogleAnalytics-iOS-SDK', '~> 3.0'
+pod 'ios-image-editor', '~> 1.1'
 
 # social
 pod 'SocialAuth', :git => "git@github.com:michaelhayman/SocialAuth.git"

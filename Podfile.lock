@@ -6,6 +6,7 @@ PODS:
   - HockeySDK (3.5.0)
   - Inflections (1.0.0):
     - RegexKitLite
+  - ios-image-editor (1.1.4)
   - ISO8601DateFormatterValueTransformer (0.5.0):
     - RKValueTransformers (~> 1.0.0)
   - Kiwi/ARC (2.2.2)
@@ -62,6 +63,7 @@ DEPENDENCIES:
   - GoogleAnalytics-iOS-SDK (~> 3.0)
   - HockeySDK (~> 3.5.0)
   - Inflections (~> 1.0.0)
+  - ios-image-editor (~> 1.1)
   - Kiwi/XCTest (~> 2.2.2)
   - MJPopupViewController (from `git@github.com:doPanic/MJPopupViewController.git`)
   - NSDate+TimeAgo (~> 1.0.2)
@@ -95,6 +97,7 @@ SPEC CHECKSUMS:
   HexColors: 01384d2bbe8dc4ffa43c3b4135db6e976952d153
   HockeySDK: 85c058a5300638a2e4fc98658f90b76df96c9f46
   Inflections: 38689e8c1b1d0064566a865e8a8229f80a4bee87
+  ios-image-editor: eb2c5d23814956522aaa2bebbfe09d3e6087f828
   ISO8601DateFormatterValueTransformer: a7e1ecf4380d0b561306ced1a3f01bd5f65d2213
   Kiwi: 513ec6b10d7545b0cbeeb89f4f3adffe8e5520be
   MJPopupViewController: 89f932b2a44b8348355300c99e8d3d6d5e3ee59a

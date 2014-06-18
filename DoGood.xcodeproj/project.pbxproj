@@ -96,6 +96,8 @@
 		63902CEE1821C6D0003B84A1 /* DGGoodListNearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63902CED1821C6D0003B84A1 /* DGGoodListNearbyViewController.m */; };
 		6393062D18DF3DBF0058A515 /* DGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393062C18DF3DBF0058A515 /* DGViewController.m */; };
 		6397318E17C1733D001B96BF /* DGUserTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */; };
+		639B09151951240D00C7233F /* DGImageEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639B09121951240D00C7233F /* DGImageEditor.xib */; };
+		639B09161951240D00C7233F /* DGImageEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B09141951240D00C7233F /* DGImageEditor.m */; };
 		639B1232187C0FA3005C9BD9 /* GoodTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B1231187C0FA3005C9BD9 /* GoodTableView.m */; };
 		639B1236187D0CB2005C9BD9 /* AuthenticateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B1234187D0CB2005C9BD9 /* AuthenticateView.m */; };
 		639B1237187D0CB2005C9BD9 /* AuthenticateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639B1235187D0CB2005C9BD9 /* AuthenticateView.xib */; };
@@ -319,6 +321,9 @@
 		6393062C18DF3DBF0058A515 /* DGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGViewController.m; sourceTree = "<group>"; };
 		6397318C17C1733D001B96BF /* DGUserTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserTwitterViewController.h; sourceTree = "<group>"; };
 		6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserTwitterViewController.m; sourceTree = "<group>"; };
+		639B09121951240D00C7233F /* DGImageEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DGImageEditor.xib; sourceTree = "<group>"; };
+		639B09131951240D00C7233F /* DGImageEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGImageEditor.h; sourceTree = "<group>"; };
+		639B09141951240D00C7233F /* DGImageEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGImageEditor.m; sourceTree = "<group>"; };
 		639B1230187C0FA3005C9BD9 /* GoodTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodTableView.h; sourceTree = "<group>"; };
 		639B1231187C0FA3005C9BD9 /* GoodTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GoodTableView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		639B1233187D0CB2005C9BD9 /* AuthenticateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticateView.h; sourceTree = "<group>"; };
@@ -479,6 +484,9 @@
 				63C00BAC194FA9170093C261 /* UIImageView+Dimension.m */,
 				63C2DACA194BB1BC00FA3780 /* DGMapViewController.h */,
 				63C2DACB194BB1BC00FA3780 /* DGMapViewController.m */,
+				639B09121951240D00C7233F /* DGImageEditor.xib */,
+				639B09131951240D00C7233F /* DGImageEditor.h */,
+				639B09141951240D00C7233F /* DGImageEditor.m */,
 				63D358D8194BCAED001E7BE2 /* DGTracker.h */,
 				63D358D9194BCAED001E7BE2 /* DGTracker.m */,
 				63C2DAC7194BA76300FA3780 /* DGEventSaver.h */,
@@ -936,6 +944,7 @@
 				63DA645017DC0F6D003DFF03 /* Explore.storyboard in Resources */,
 				63DA645E17DC1715003DFF03 /* TagCell.xib in Resources */,
 				63DA646317DC189C003DFF03 /* CategoryCell.xib in Resources */,
+				639B09151951240D00C7233F /* DGImageEditor.xib in Resources */,
 				639B1237187D0CB2005C9BD9 /* AuthenticateView.xib in Resources */,
 				63DBEE9017DD599600230D81 /* NoResultsCell.xib in Resources */,
 			);
@@ -1094,6 +1103,7 @@
 				63FBF603180830C4005686A6 /* DGReport.m in Sources */,
 				638E5B7D19061FFC0096CB59 /* NomineeCell.m in Sources */,
 				632A36BC17BCAEE8004EED26 /* UserCell.m in Sources */,
+				639B09161951240D00C7233F /* DGImageEditor.m in Sources */,
 				632A36C017BCAF00004EED26 /* DGUserListViewController.m in Sources */,
 				632A36D217BD1157004EED26 /* DGUserSettingsViewController.m in Sources */,
 				6319D38F17BDED080071DA71 /* DGReward.m in Sources */,
