@@ -593,7 +593,9 @@
 
 #pragma mark - User profile helper
 - (void)showGoodUserProfile {
-    [DGUser openProfilePage:self.good.nominee.user_id inController:self.navigationController];
+    if (self.good.nominee.user_id) {
+        [DGUser openProfilePage:self.good.nominee.user_id inController:self.navigationController];
+    }
 }
 
 #pragma mark - User list helper
