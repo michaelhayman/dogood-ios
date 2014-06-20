@@ -162,7 +162,12 @@
         UIImage *currentAvatar = user.avatar;
         user = [[DGUser alloc] init];
         user = mappingResult.array[0];
-        user.avatar = currentAvatar;
+
+        if ([self isOwnProfile]) {
+            user.avatar = [DGUser currentUser].avatar;
+        } else {
+            user.avatar = currentAvatar;
+        }
 
         name.text = user.full_name;
         [ranking setTitle:user.rank forState:UIControlStateNormal];
