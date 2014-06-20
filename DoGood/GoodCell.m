@@ -36,6 +36,7 @@
     // image
     self.overviewImage.contentMode = UIViewContentModeScaleAspectFit;
     [self.overviewImage setClipsToBounds:YES];
+    self.overviewImage.backgroundColor = [UIColor whiteColor];
 
     // votes
     [self.vote addTarget:self action:@selector(addUserVote) forControlEvents:UIControlEventTouchUpInside];
