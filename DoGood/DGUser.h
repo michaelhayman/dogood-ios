@@ -80,5 +80,6 @@ typedef void (^ErrorBlock)(NSError *error);
 - (BOOL)hasPostedNominations;
 - (BOOL)hasPostedHelpWantedGoods;
 - (BOOL)isCurrentUser;
+- (BOOL)hasAvatar;
 
 @end

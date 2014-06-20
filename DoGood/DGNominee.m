@@ -56,6 +56,10 @@
     return [NSURL URLWithString:self.avatar_url];
 }
 
+- (BOOL)hasAvatar {
+    return self.avatar_url != nil && ![self.avatar_url isEqualToString:@""];
+}
+
 - (BOOL)isPopulated {
     if (![self.full_name isEqualToString:@""]) {
         return true;

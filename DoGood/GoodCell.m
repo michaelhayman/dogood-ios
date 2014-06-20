@@ -113,11 +113,24 @@
     self.avatarHeight.constant = 0;
     self.avatarHeightSpacing.constant = 0;
 
-    if ([self.good.nominee avatarURL]) {
-        [self.avatar setImageWithURL:[self.good.nominee avatarURL]];
-        self.avatar.hidden = NO;
-        self.avatarHeight.constant = 57;
-        self.avatarHeightSpacing.constant = 8;
+    if ([self.good.done boolValue] == YES) {
+        if ([self.good.nominee hasAvatar]) {
+            [self.avatar setImageWithURL:[self.good.nominee avatarURL]];
+            self.avatar.hidden = NO;
+            self.avatarHeight.constant = 57;
+            self.avatarHeightSpacing.constant = 8;
+        } else {
+            DebugLog(@"no nominee avatar");
+        }
+    } else {
+        if ([self.good.user hasAvatar]) {
+            [self.avatar setImageWithURL:[self.good.user avatarURL]];
+            self.avatar.hidden = NO;
+            self.avatarHeight.constant = 57;
+            self.avatarHeightSpacing.constant = 8;
+        } else {
+            DebugLog(@"no avatar");
+        }
     }
 }
 

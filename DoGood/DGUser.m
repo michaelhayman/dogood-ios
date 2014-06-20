@@ -298,4 +298,8 @@ static DGUser* currentUser = nil;
     return [[DGUser currentUser].userID isEqualToNumber:self.userID];
 }
 
+- (BOOL)hasAvatar {
+    return self.avatar_url != nil && ![self.avatar_url isEqualToString:@""];
+}
+
 @end
