@@ -112,20 +112,21 @@
 
 - (void)chooseAll {
     [self resetButtons];
+    self.doneGoods = allTab;
     all.selected = YES;
     all.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)chooseDone {
     [self resetButtons];
-    self.doneGoods = YES;
+    self.doneGoods = doneTab;
     done.selected = YES;
     done.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)chooseTodo {
     [self resetButtons];
-    self.doneGoods = NO;
+    self.doneGoods = helpWantedTab;
     todo.selected = YES;
     todo.backgroundColor = [UIColor whiteColor];
 }
@@ -148,8 +149,12 @@
 
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:page], @"page", nil];
 
-    if (tabsShowing && !all.isSelected) {
-        [params setObject:[NSNumber numberWithBool:self.doneGoods] forKey:@"done"];
+    if (tabsShowing) {
+        if ([done isSelected]) {
+            [params setObject:[NSNumber numberWithBool:YES] forKey:@"done"];
+        } else if ([todo isSelected]) {
+            [params setObject:[NSNumber numberWithBool:NO] forKey:@"done"];
+        }
     }
 
     [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {

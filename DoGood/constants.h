@@ -166,3 +166,10 @@ extern NSString* const DGTourWasRequested;
 #define TWITTER_CONSUMER_KEY @"yT577ApRtZw51q4NPMPPOQ"
 #define TWITTER_CONSUMER_SECRET @"3neq3XqN5fO3obqwZoajavGFCUrC42ZfbrLXy5sCv8"
 #define FACEBOOK_APP_ID @"151726295032833"
+
+typedef enum {
+    allTab,
+    doneTab,
+    helpWantedTab,
+    GoodListTabNumber
+} GoodListTabType;

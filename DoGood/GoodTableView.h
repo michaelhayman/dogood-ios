@@ -18,7 +18,7 @@
 
 @property (nonatomic, weak) UINavigationController *navigationController;
 @property (nonatomic, weak) UIViewController *parent;
-@property BOOL doneGoods;
+@property int doneGoods;
 
 - (void)showTabsWithColor:(UIColor *)color;
 - (void)showTabs;

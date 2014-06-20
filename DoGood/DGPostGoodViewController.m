@@ -64,7 +64,11 @@
         self.good.category = self.category;
     }
 
-    self.good.done = [NSNumber numberWithBool:self.doneGoods];
+    if (self.doneGoods == allTab || self.doneGoods == doneTab) {
+        self.good.done = [NSNumber numberWithBool:YES];
+    } else {
+        self.good.done = [NSNumber numberWithBool:NO];
+    }
 
     [self setupNavigationBar];
 }
