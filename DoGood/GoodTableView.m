@@ -229,7 +229,7 @@
     height += postedByHeight;
 
     if (good.evidence) {
-        height+= 300;
+        height+= 320;
     }
     if (good.location_name) {
         height += 20;
