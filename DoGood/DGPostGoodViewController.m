@@ -521,8 +521,6 @@
             DGGoodListViewController *list = [storyboard instantiateViewControllerWithIdentifier:@"GoodList"];
             list.goodID = postedGood.goodID;
             list.category = postedGood.category;
-            list.showDoneGoods = [postedGood.done boolValue];
-            list.goToSpecificTab = YES;
 
             if ([postedGood.done boolValue]) {
                 list.nominee = self.good.nominee;
