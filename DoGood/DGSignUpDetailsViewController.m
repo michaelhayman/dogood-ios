@@ -115,7 +115,7 @@
 
         NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:self.user method:RKRequestMethodPOST path:user_registration_path parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             if (self.user.avatar) {
-                UIImage *resizedImage = [self.user.avatar resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 480) interpolationQuality:kCGInterpolationHigh];
+                UIImage *resizedImage = [self.user.avatar resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 640) interpolationQuality:kCGInterpolationHigh];
 
                 DebugLog(@"uiimage size %@", NSStringFromCGSize(resizedImage.size));
                 [formData appendPartWithFileData:UIImagePNGRepresentation(resizedImage)

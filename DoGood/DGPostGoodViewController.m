@@ -462,7 +462,7 @@
 
         NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:self.good method:RKRequestMethodPOST path:@"/goods.json" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             if (self.good.image) {
-                UIImage *resizedImage = [self.good.image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 480) interpolationQuality:kCGInterpolationHigh];
+                UIImage *resizedImage = [self.good.image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 640) interpolationQuality:kCGInterpolationHigh];
 
                 [formData appendPartWithFileData:UIImagePNGRepresentation(resizedImage)
                                             name:@"good[evidence]"
@@ -470,7 +470,7 @@
                                         mimeType:@"image/png"];
             }
             if (self.good.nominee.avatarImage) {
-                UIImage *resizedAvatarImage = [self.good.nominee.avatarImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 480) interpolationQuality:kCGInterpolationHigh];
+                UIImage *resizedAvatarImage = [self.good.nominee.avatarImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 640) interpolationQuality:kCGInterpolationHigh];
 
                 [formData appendPartWithFileData:UIImagePNGRepresentation(resizedAvatarImage)
                                             name:@"good[nominee_attributes][avatar]"
