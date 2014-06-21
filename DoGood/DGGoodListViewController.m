@@ -36,19 +36,25 @@
     } else {
         // single good
         [self setupMenuTitle:@"Good"];
+    }
+
+    if (self.goodID) {
         self.hideTabs = YES;
         if (![self.nominee isDGUser] && [self.goodForInvite.done boolValue]) {
             [self promptToInviteNominee];
         }
     }
 
-    if (self.category) {
-        [goodTableView showTabsWithColor:[self.category rgbColour]];
-    } else if (self.color) {
-        [self customizeNavColor:self.color];
-        [goodTableView showTabsWithColor:self.color];
-    } else if (!self.hideTabs) {
-        [goodTableView showTabs];
+    if (!self.hideTabs) {
+        if (self.category) {
+            [goodTableView showTabsWithColor:[self.category rgbColour]];
+        } else if (self.color) {
+            [self customizeNavColor:self.color];
+            [goodTableView showTabsWithColor:self.color];
+        }
+        else {
+            [goodTableView showTabs];
+        }
     }
 
     goodTableView.navigationController = self.navigationController;
@@ -149,10 +155,10 @@
     DebugLog(@"path ...? %@", _path);
     if (self.path) {
         path = self.path;
-    } else if (self.category) {
-        path = [NSString stringWithFormat:@"/goods?category_id=%@", _category.categoryID];
     } else if (self.goodID) {
         path = [NSString stringWithFormat:@"/goods/%@", _goodID];
+    } else if (self.category) {
+        path = [NSString stringWithFormat:@"/goods?category_id=%@", _category.categoryID];
     } else if (self.tag) {
         path = [NSString stringWithFormat:@"/goods/tagged?name=%@", [self.tag.name stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding]];
     } else if (self.user) {
