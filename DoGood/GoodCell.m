@@ -34,7 +34,7 @@
     [self.avatar addGestureRecognizer:userAvatarGesture];
 
     // image
-    self.overviewImage.contentMode = UIViewContentModeScaleAspectFit;
+    self.overviewImage.contentMode = UIViewContentModeScaleAspectFill;
     [self.overviewImage setClipsToBounds:YES];
     self.overviewImage.backgroundColor = [UIColor whiteColor];
 
@@ -147,7 +147,7 @@
         [self.overviewImage setImageWithURLRequest:[NSURLRequest requestWithURL:[self.good evidenceURL]] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
             self.overviewImage.image = image;
             self.overviewImage.hidden = NO;
-            self.overviewImageHeight.constant = [self.overviewImage imageSizeAfterAspectFit].height;
+            self.overviewImageHeight.constant = 320;
         } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
             self.overviewImageHeight.constant = 0;
         }];
