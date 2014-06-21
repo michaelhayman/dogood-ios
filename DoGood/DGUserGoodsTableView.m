@@ -92,7 +92,11 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return numUserGoodsSections;
+    if (self.user) {
+        return numUserGoodsSections;
+    } else {
+        return 0;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -101,27 +105,27 @@
     goodListController.hideTabs = YES;
 
     if (indexPath.section == follows) {
-        goodListController.path = [NSString stringWithFormat:@"/goods/followed_by?user_id=%@", self.userID];
+        goodListController.path = [NSString stringWithFormat:@"/goods/followed_by?user_id=%@", self.user.userID];
         goodListController.titleForPath = @"Follows";
     }
 
     if (indexPath.section == nominationsFor) {
-        goodListController.path = [NSString stringWithFormat:@"/goods/nominations_for?user_id=%@", self.userID];
+        goodListController.path = [NSString stringWithFormat:@"/goods/nominations_for?user_id=%@", self.user.userID];
         goodListController.titleForPath = @"Nominated For";
     }
 
     if (indexPath.section == nominationsBy) {
-        goodListController.path = [NSString stringWithFormat:@"/goods/nominations_by?user_id=%@", self.userID];
+        goodListController.path = [NSString stringWithFormat:@"/goods/nominations_by?user_id=%@", self.user.userID];
         goodListController.titleForPath = @"Nominated";
     }
 
     if (indexPath.section == helpWanted) {
-        goodListController.path = [NSString stringWithFormat:@"/goods/help_wanted_by?user_id=%@", self.userID];
+        goodListController.path = [NSString stringWithFormat:@"/goods/help_wanted_by?user_id=%@", self.user.userID];
         goodListController.titleForPath = @"Help Wanted";
     }
 
     if (indexPath.section == votes) {
-        goodListController.path = [NSString stringWithFormat:@"/goods/voted_by?user_id=%@", self.userID];
+        goodListController.path = [NSString stringWithFormat:@"/goods/voted_by?user_id=%@", self.user.userID];
         goodListController.titleForPath = @"Votes";
     }
 

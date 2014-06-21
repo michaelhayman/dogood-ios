@@ -44,7 +44,6 @@
     avatar.contentMode = UIViewContentModeScaleAspectFit;
 
     userGoodsTableView.navigationController = self.navigationController;
-    userGoodsTableView.userID = self.userID;
 
     invites = [[DGUserInvitesViewController alloc] init];
     invites.parent = (UIViewController *)self;

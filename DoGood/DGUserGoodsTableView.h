@@ -6,8 +6,7 @@
 - (void)initializeTableWithUser:(DGUser *)user;
 
 @property (nonatomic, weak) UINavigationController *navigationController;
-@property (nonatomic, weak) NSNumber *userID;
-@property (nonatomic, weak) DGUser *user;
+@property (nonatomic, strong) DGUser *user;
 
 @end
 
