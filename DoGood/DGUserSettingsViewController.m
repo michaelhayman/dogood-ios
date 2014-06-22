@@ -153,7 +153,6 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         avatar.image = currentImage;
         [TSMessage showNotificationInViewController:self.navigationController title:nil subtitle:NSLocalizedString(@"Avatar upload failed", nil) type:TSMessageNotificationTypeError];
-        [ProgressHUD showError:[error localizedDescription]];
     }];
 
     [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
