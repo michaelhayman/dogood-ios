@@ -126,7 +126,7 @@
     UIImage *currentImage = avatar.image;
     avatar.image = imageToUpload;
 
-    [ProgressHUD showSuccess:@"Changing avatar..."];
+    [ProgressHUD show:@"Changing avatar..."];
     NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:nil method:RKRequestMethodPUT path:user_update_path parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         UIImage *resizedImage = [imageToUpload resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 640) interpolationQuality:kCGInterpolationHigh];
 
@@ -140,7 +140,7 @@
 
     RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
 
-        [ProgressHUD showSuccess:@"Completed"];
+        [ProgressHUD showSuccess:@"Avatar changed!"];
 
         DGUser *user = (mappingResult.array)[0];
         [DGUser currentUser].avatar = imageToUpload;
