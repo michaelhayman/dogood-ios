@@ -27,7 +27,7 @@
 
     showNoResultsMessage = NO;
 
-    loadingView = [[SAMLoadingView alloc] initWithFrame:tableView.bounds];
+    loadingView = [[SAMLoadingView alloc] initWithFrame:self.view.bounds];
     loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 
     /*
@@ -111,7 +111,7 @@
 
 #pragma mark - Retrieval methods
 - (void)getUsers {
-    [tableView addSubview:loadingView];
+    [self.view addSubview:loadingView];
 
     [[RKObjectManager sharedManager] getObjectsAtPath:[NSString stringWithFormat:@"/users/%@?type=%@&id=%@", self.query, self.type, self.typeID] parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         users = [[NSArray alloc] initWithArray:mappingResult.array];
