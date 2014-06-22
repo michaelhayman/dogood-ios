@@ -175,9 +175,12 @@
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
     if ([comments count] == 0) {
+        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         return 1; // a single cell to report no data
+    } else {
+        tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        return [comments count];
     }
-    return [comments count];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
