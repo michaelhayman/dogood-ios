@@ -593,8 +593,12 @@
 
 #pragma mark - User profile helper
 - (void)showGoodUserProfile {
-    if (self.good.nominee.user_id) {
-        [DGUser openProfilePage:self.good.nominee.user_id inController:self.navigationController];
+    if ([self.good.done boolValue] == YES) {
+        if (self.good.nominee.user_id) {
+            [DGUser openProfilePage:self.good.nominee.user_id inController:self.navigationController];
+        }
+    } else {
+        [DGUser openProfilePage:self.good.user.userID inController:self.navigationController];
     }
 }
 
