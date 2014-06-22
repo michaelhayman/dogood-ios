@@ -19,6 +19,7 @@
 #import "UIImageView+Dimension.h"
 #import "DGEventSaver.h"
 #import "DGMapViewController.h"
+#import <UIAlertView+Blocks/UIAlertView+Blocks.h>
 
 @implementation GoodCell
 
@@ -644,7 +645,14 @@
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber {
     DebugLog(@"selected a phone number");
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", phoneNumber]]];
+    NSString *actionTitle = @"Call";
+    [UIAlertView showWithTitle:[NSString stringWithFormat:@"Make phonecall?"] message:@"Would you like to call this number?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[actionTitle] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+         if (buttonIndex == [alertView cancelButtonIndex]) {
+             DebugLog(@"Cancelled");
+         } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:actionTitle]) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@", phoneNumber]]];
+         }
+    }];
 }
 
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithAddress:(NSDictionary *)addressComponents {
