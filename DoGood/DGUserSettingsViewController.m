@@ -128,11 +128,14 @@
 
     [ProgressHUD showSuccess:@"Changing avatar..."];
     NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:nil method:RKRequestMethodPUT path:user_update_path parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        UIImage *resizedImage = [imageToUpload resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 640) interpolationQuality:kCGInterpolationHigh];
 
-            [formData appendPartWithFileData:UIImagePNGRepresentation(imageToUpload)
-                                        name:@"user[avatar]"
-                                    fileName:@"avatar.png"
-                                    mimeType:@"image/png"];
+        NSData *data = UIImageJPEGRepresentation(resizedImage, 0.7);
+
+        [formData appendPartWithFileData:data
+                                    name:@"user[avatar]"
+                                fileName:@"avatar.jpg"
+                                mimeType:@"image/jpeg"];
     }];
 
     RKObjectRequestOperation *operation = [[RKObjectManager sharedManager] objectRequestOperationWithRequest:request success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {

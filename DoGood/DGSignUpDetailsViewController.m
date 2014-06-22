@@ -117,11 +117,10 @@
             if (self.user.avatar) {
                 UIImage *resizedImage = [self.user.avatar resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 640) interpolationQuality:kCGInterpolationHigh];
 
-                DebugLog(@"uiimage size %@", NSStringFromCGSize(resizedImage.size));
-                [formData appendPartWithFileData:UIImagePNGRepresentation(resizedImage)
+                [formData appendPartWithFileData:UIImageJPEGRepresentation(resizedImage, 0.7)
                                             name:@"user[avatar]"
-                                        fileName:@"avatar.png"
-                                        mimeType:@"image/png"];
+                                        fileName:@"avatar.jpg"
+                                        mimeType:@"image/jpeg"];
             }
         }];
 

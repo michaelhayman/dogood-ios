@@ -464,18 +464,18 @@
             if (self.good.image) {
                 UIImage *resizedImage = [self.good.image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 640) interpolationQuality:kCGInterpolationHigh];
 
-                [formData appendPartWithFileData:UIImagePNGRepresentation(resizedImage)
+                [formData appendPartWithFileData:UIImageJPEGRepresentation(resizedImage, 0.7)
                                             name:@"good[evidence]"
-                                        fileName:@"evidence.png"
-                                        mimeType:@"image/png"];
+                                        fileName:@"evidence.jpg"
+                                        mimeType:@"image/jpeg"];
             }
             if (self.good.nominee.avatarImage) {
                 UIImage *resizedAvatarImage = [self.good.nominee.avatarImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(640, 640) interpolationQuality:kCGInterpolationHigh];
 
-                [formData appendPartWithFileData:UIImagePNGRepresentation(resizedAvatarImage)
+                [formData appendPartWithFileData:UIImageJPEGRepresentation(resizedAvatarImage, 0.7)
                                             name:@"good[nominee_attributes][avatar]"
-                                        fileName:@"avatar.png"
-                                        mimeType:@"image/png"];
+                                        fileName:@"avatar.jpg"
+                                        mimeType:@"image/jpeg"];
             }
         }];
 
