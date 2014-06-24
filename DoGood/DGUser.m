@@ -261,6 +261,7 @@ static DGUser* currentUser = nil;
 - (NSString *)pointsText {
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setGroupingSeparator: [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator]];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     return [formatter stringFromNumber:self.points];
 }
 

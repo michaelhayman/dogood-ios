@@ -9,6 +9,7 @@
 
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     [formatter setGroupingSeparator: [[NSLocale currentLocale] objectForKey:NSLocaleGroupingSeparator]];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
     NSString *points = @"point";
     return [NSString stringWithFormat:@"%@ %@", [formatter stringFromNumber:self.cost], [DGAppearance pluralizeString:points basedOnNumber:self.cost]];
 }
