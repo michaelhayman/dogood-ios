@@ -646,7 +646,7 @@
 - (void)attributedLabel:(TTTAttributedLabel *)label didSelectLinkWithPhoneNumber:(NSString *)phoneNumber {
     DebugLog(@"selected a phone number");
     NSString *actionTitle = @"Call";
-    [UIAlertView showWithTitle:[NSString stringWithFormat:@"Make phonecall?"] message:@"Would you like to call this number?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[actionTitle] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+    [UIAlertView showWithTitle:[NSString stringWithFormat:@"Make phone call?"] message:@"Would you like to call this number?" cancelButtonTitle:@"Cancel" otherButtonTitles:@[actionTitle] tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
          if (buttonIndex == [alertView cancelButtonIndex]) {
              DebugLog(@"Cancelled");
          } else if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:actionTitle]) {
