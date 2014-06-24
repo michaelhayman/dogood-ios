@@ -106,7 +106,7 @@
 
     if (indexPath.section == follows) {
         goodListController.path = [NSString stringWithFormat:@"/goods/followed_by?user_id=%@", self.user.userID];
-        goodListController.titleForPath = @"Follows";
+        goodListController.titleForPath = @"Followed Posts";
     }
 
     if (indexPath.section == nominationsFor) {
@@ -116,7 +116,7 @@
 
     if (indexPath.section == nominationsBy) {
         goodListController.path = [NSString stringWithFormat:@"/goods/nominations_by?user_id=%@", self.user.userID];
-        goodListController.titleForPath = @"Nominated";
+        goodListController.titleForPath = @"Posted Nominations";
     }
 
     if (indexPath.section == helpWanted) {
