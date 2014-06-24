@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -21,23 +21,24 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3">
                                 <rect key="frame" x="10" y="0.0" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.16862745100000001" green="0.7843137255" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="249"/>
                                     <constraint firstAttribute="width" constant="80" id="257"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="55">
-                                <rect key="frame" x="0.0" y="134" width="100" height="26"/>
+                                <rect key="frame" x="0.0" y="126" width="100" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="26" id="183"/>
+                                    <constraint firstAttribute="height" constant="34" id="183"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="230">
-                                <rect key="frame" x="0.0" y="154" width="100" height="26"/>
+                                <rect key="frame" x="0.0" y="160" width="100" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="231"/>
@@ -46,12 +47,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="94" translatesAutoresizingMaskIntoConstraints="NO" id="58">
-                                <rect key="frame" x="3" y="88" width="94" height="38"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="58">
+                                <rect key="frame" x="0.0" y="88" width="100" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="182"/>
-                                    <constraint firstAttribute="width" constant="94" id="229"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -64,12 +64,14 @@
                             <constraint firstItem="55" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="220"/>
                             <constraint firstItem="230" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="236"/>
                             <constraint firstItem="230" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" id="237"/>
-                            <constraint firstItem="55" firstAttribute="top" secondItem="58" secondAttribute="bottom" constant="8" id="244"/>
-                            <constraint firstItem="230" firstAttribute="top" secondItem="55" secondAttribute="bottom" constant="-6" id="252"/>
+                            <constraint firstItem="55" firstAttribute="top" secondItem="58" secondAttribute="bottom" id="244"/>
+                            <constraint firstItem="230" firstAttribute="top" secondItem="55" secondAttribute="bottom" id="252"/>
                             <constraint firstItem="3" firstAttribute="top" secondItem="1" secondAttribute="top" id="254"/>
                             <constraint firstItem="58" firstAttribute="top" secondItem="3" secondAttribute="bottom" constant="8" symbolic="YES" id="256"/>
                             <constraint firstItem="3" firstAttribute="centerX" secondItem="58" secondAttribute="centerX" id="259"/>
                             <constraint firstAttribute="centerX" secondItem="3" secondAttribute="centerX" id="260"/>
+                            <constraint firstAttribute="trailing" secondItem="58" secondAttribute="trailing" id="Fxj-xs-TTL"/>
+                            <constraint firstItem="58" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="oUu-aa-olo"/>
                         </constraints>
                         <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                         <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
