@@ -38,7 +38,7 @@
 
     if (!self.claimed) {
         if ([self.reward userHasSufficientPoints]) {
-            self.instructions.hidden = YES;
+            self.instructions.text = self.reward.full_description;
         } else {
             self.instructions.text = @"You don't have enough points to buy this item yet!";
             self.teaser.image = [self.teaser.image convertToGrayscale];
