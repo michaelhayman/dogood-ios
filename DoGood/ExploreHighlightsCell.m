@@ -22,9 +22,7 @@
 
         collectionView.backgroundColor = [UIColor clearColor];
 
-        if (REWARDS_ENABLED) {
-            collectionView.frame = CGRectMake(10, 11, 290, 95);
-        }
+        collectionView.frame = CGRectMake(10, 11, 290, 95);
     }
     return self;
 }
@@ -35,11 +33,7 @@
 
 #pragma mark - UICollectionView methods
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if (REWARDS_ENABLED) {
-        return exploreHighlightRows;
-    } else {
-        return 2;
-    }
+    return exploreHighlightRows;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)aCollectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{

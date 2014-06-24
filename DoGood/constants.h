@@ -2,8 +2,6 @@
 
 #pragma mark - Optional Functionality -----
 
-#define REWARDS_ENABLED 1
-
 #pragma mark - Paths -----
 
 #define DEVELOPMENT_LOGS 0
