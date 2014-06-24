@@ -8,6 +8,7 @@
 @property BOOL isHTML;
 
 - (void)setInviteText;
+- (void)setInviteHTML;
 - (void)setCustomText:(NSString *)body withSubject:(NSString *)subject;
 - (void)setCustomText:(NSString *)body withSubject:(NSString *)subject toRecipient:(NSString *)to;
 

@@ -31,7 +31,7 @@
 }
 
 - (IBAction)inviteViaEmail:(id)sender {
-    [invites setInviteText];
+    [invites setInviteHTML];
     [invites sendViaEmail:nil];
 }
 @end

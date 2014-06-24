@@ -566,7 +566,7 @@
             [invites sendViaText:nil];
         }
         if (indexPath.row == byEmail) {
-            [invites setInviteText];
+            [invites setInviteHTML];
             [invites sendViaEmail:nil];
         }
     }

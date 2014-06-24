@@ -16,8 +16,41 @@
 // setInviteText or setCustomText
 // then change names to sendViaText & sendViaEmail
 - (void)setInviteText {
-    bodyText = [NSString stringWithFormat:@"Get rewarded for doing good - follow me on Do Good! dogood://users/%@\n\n---\nDon't have Do Good? Get it from the App Store: http://www.dogood.mobi/", [DGUser currentUser].userID];
-    subjectText = @"Do Good with me";
+    self.isHTML = NO;
+    bodyText = [NSString stringWithFormat:@
+        "Check out what I'm doing on Do Good! dogood://users/%@\n\n"
+        "Use the app to find good things to do and help reward others for their good deeds.\n\n"
+        "---\n"
+        "Don't have Do Good? Get it from the App Store: http://www.dogood.mobi/",
+        [DGUser currentUser].userID];
+    subjectText = @"Do Good with me!";
+}
+
+- (void)setInviteHTML {
+    self.isHTML = YES;
+    bodyText = [NSString stringWithFormat:@
+        "<p>"
+        "Check out what I've been doing on Do Good!<br>"
+        "dogood://users/%@"
+        "</p>\n"
+        "<p>"
+        "Use the app to find good things to do and help reward others for their good deeds. "
+        "</p>"
+        "<p>"
+        "---<br>\n"
+        "Don't have Do Good?<br>\n"
+        "Get it from the App Store: http://www.dogood.mobi/\n\n"
+        "</p>"
+        "<p>"
+        "Cheers,<br>\n"
+        "%@\n\n"
+        "</p>"
+        "<p>"
+        "<a href=\"http://www.dogood.mobi/\"><img src=\"http://www.dogood.mobi/images/logos/dg_logo_tiny_green.png\"></a>\n"
+        "</p>",
+    [DGUser currentUser].userID,
+    [DGUser currentUser].full_name];
+    subjectText = @"Do Good with me!";
 }
 
 - (void)setCustomText:(NSString *)body withSubject:(NSString *)subject {
