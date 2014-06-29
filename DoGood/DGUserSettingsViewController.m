@@ -444,6 +444,7 @@
     cell.heading.text = @"Sign Out";
     cell.heading.textColor = ERRONEOUS;
     cell.textField.enabled = NO;
+    cell.textField.text = @"";
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
 }
