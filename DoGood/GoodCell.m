@@ -19,6 +19,7 @@
 #import "UIImageView+Dimension.h"
 #import "DGEventSaver.h"
 #import "DGMapViewController.h"
+#import "DGNotification.h"
 #import <UIAlertView+Blocks/UIAlertView+Blocks.h>
 
 @implementation GoodCell
@@ -328,6 +329,7 @@
             [self increaseVote];
             [[RKObjectManager sharedManager] postObject:nil path:@"/votes" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                 [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeVoteOnGood object:nil];
+                [DGNotification promptForNotifications];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
                 DebugLog(@"failed to add");
                 [self decreaseVote];

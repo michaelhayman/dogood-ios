@@ -5,7 +5,7 @@
 #import "CommentCell.h"
 #import "DGEntity.h"
 #import "DGTextFieldSearchPeopleTableViewController.h"
-
+#import "DGNotification.h"
 #import "NoResultsCell.h"
 #import "DGEntityHandler.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
@@ -227,6 +227,7 @@
             [self textViewDidChange:commentInputField];
             [self resetTextView];
             [self addComment:[mappingResult.array objectAtIndex:0]];
+            [DGNotification promptForNotifications];
 
             /* Add comment to previous page...
             self.good.comments = comments;

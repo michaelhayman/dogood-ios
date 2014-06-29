@@ -16,6 +16,7 @@
 #import "DGPhotoPickerViewController.h"
 #import "DGGoodListViewController.h"
 #import "DGEntity.h"
+#import "DGNotification.h"
 
 #define kNomineeCell @"nominee"
 #define nomineeCellTag 59
@@ -532,6 +533,7 @@
             NSMutableArray *viewHierarchy =[[NSMutableArray alloc] initWithArray:[self.navigationController viewControllers]];
             [viewHierarchy removeObject:self];
             self.navigationController.viewControllers = viewHierarchy;
+            [DGNotification promptForNotifications];
             [ProgressHUD showSuccess:@"Good posted!"];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [TSMessage showNotificationInViewController:self.navigationController

@@ -18,6 +18,7 @@ NSString* const kDGUserCurrentUserContactable = @"kDGUserCurrentUserContactable"
 NSString* const kDGUserCurrentUserAvatar = @"kDGUserCurrentUserAvatar";
 NSString* const kDGUserCurrentUserTwitterID = @"kDGUserCurrentUserTwitterID";
 NSString* const kDGUserCurrentUserFacebookID = @"kDGUserCurrentUserFacebookID";
+NSString* const kDGUserCurrentUserNotifiable = @"kDGUserCurrentUserNotifiable";
 
 #pragma mark - UITableViewCells -----
 

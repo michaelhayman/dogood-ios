@@ -91,6 +91,7 @@ extern NSString* const kDGUserCurrentUserContactable;
 extern NSString* const kDGUserCurrentUserAvatar;
 extern NSString* const kDGUserCurrentUserTwitterID;
 extern NSString* const kDGUserCurrentUserFacebookID;
+extern NSString* const kDGUserCurrentUserNotifiable;
 #define kDoGoodService @"DoGood"
 #define kDoGoodAccount @"DoGood"
 

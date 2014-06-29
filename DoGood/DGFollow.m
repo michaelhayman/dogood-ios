@@ -1,4 +1,5 @@
 #import "DGFollow.h"
+#import "DGNotification.h"
 
 @implementation DGFollow
 
@@ -6,6 +7,7 @@
     NSDictionary *params = [self buildParamsForType:followableType withID:followableID];
 
     [[RKObjectManager sharedManager] postObject:nil path:@"/follows" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [DGNotification promptForNotifications];
         success(YES, @"User followed.");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);

@@ -4,6 +4,7 @@
 #import "DGExploreViewController.h"
 // global set up
 #import "RestKit.h"
+#import "DGNotification.h"
 #import "URLHandler.h"
 
 @implementation DGAppDelegate
@@ -15,6 +16,8 @@
     [DGAppearance setupAppearance];
     [DGUser setUpUserAuthentication];
     [RestKit setupRestKit];
+
+    [DGNotification reregisterForNotifications];
 
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"2aabe4790ed577f27e56c2d215bb9d3d"
                                                            delegate:self];
@@ -31,6 +34,23 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Explore" bundle:nil];
     DGExploreViewController *goodListController = [storyboard instantiateViewControllerWithIdentifier:@"explore"];
     self.window.rootViewController = [[NavigationViewController alloc] initWithRootViewController:goodListController];
+}
+
+#pragma mark - Remote Notification handling
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    if (!notified) {
+        [DGNotification registerToken:deviceToken];
+        [DGNotification setNotifiable];
+        notified = YES;
+    }
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    DebugLog(@"failed");
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [DGNotification handleNotification:userInfo];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

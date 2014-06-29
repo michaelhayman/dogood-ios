@@ -96,6 +96,7 @@
 		63902CEE1821C6D0003B84A1 /* DGGoodListNearbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63902CED1821C6D0003B84A1 /* DGGoodListNearbyViewController.m */; };
 		6393062D18DF3DBF0058A515 /* DGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6393062C18DF3DBF0058A515 /* DGViewController.m */; };
 		6397318E17C1733D001B96BF /* DGUserTwitterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */; };
+		639ADBD9195B734A00DE78C4 /* DGNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 639ADBD8195B734A00DE78C4 /* DGNotification.m */; };
 		639B09151951240D00C7233F /* DGImageEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639B09121951240D00C7233F /* DGImageEditor.xib */; };
 		639B09161951240D00C7233F /* DGImageEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B09141951240D00C7233F /* DGImageEditor.m */; };
 		639B1232187C0FA3005C9BD9 /* GoodTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B1231187C0FA3005C9BD9 /* GoodTableView.m */; };
@@ -321,6 +322,8 @@
 		6393062C18DF3DBF0058A515 /* DGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGViewController.m; sourceTree = "<group>"; };
 		6397318C17C1733D001B96BF /* DGUserTwitterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserTwitterViewController.h; sourceTree = "<group>"; };
 		6397318D17C1733D001B96BF /* DGUserTwitterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserTwitterViewController.m; sourceTree = "<group>"; };
+		639ADBD7195B734A00DE78C4 /* DGNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGNotification.h; sourceTree = "<group>"; };
+		639ADBD8195B734A00DE78C4 /* DGNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNotification.m; sourceTree = "<group>"; };
 		639B09121951240D00C7233F /* DGImageEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DGImageEditor.xib; sourceTree = "<group>"; };
 		639B09131951240D00C7233F /* DGImageEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGImageEditor.h; sourceTree = "<group>"; };
 		639B09141951240D00C7233F /* DGImageEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGImageEditor.m; sourceTree = "<group>"; };
@@ -480,6 +483,8 @@
 		6319D39017BDF05C0071DA71 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				639ADBD7195B734A00DE78C4 /* DGNotification.h */,
+				639ADBD8195B734A00DE78C4 /* DGNotification.m */,
 				63C00BAB194FA9170093C261 /* UIImageView+Dimension.h */,
 				63C00BAC194FA9170093C261 /* UIImageView+Dimension.m */,
 				63C2DACA194BB1BC00FA3780 /* DGMapViewController.h */,
@@ -1053,6 +1058,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63D358DA194BCAED001E7BE2 /* DGTracker.m in Sources */,
+				639ADBD9195B734A00DE78C4 /* DGNotification.m in Sources */,
 				6386481F17ACEFAE00167F15 /* DGGoodListViewController.m in Sources */,
 				6386481D17ACEF2100167F15 /* DGWelcomeViewController.m in Sources */,
 				638647EE17AC087A00167F15 /* main.m in Sources */,
