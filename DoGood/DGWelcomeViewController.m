@@ -13,12 +13,14 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.navigationController.navigationBar.barTintColor = VIVID;
-    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [[DGTracker sharedTracker] trackScreen:@"Welcome Tour"];
+    if (!iPad) {
+        [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
