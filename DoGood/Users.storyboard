@@ -112,7 +112,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Join" id="KOA-0h-jsG">
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="Pt1-jh-lhg">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Pt1-jh-lhg">
                             <connections>
                                 <action selector="cancel:" destination="7go-rM-I7W" id="l0N-f4-5sW"/>
                             </connections>
