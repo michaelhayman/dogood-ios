@@ -21,8 +21,6 @@
         [collectionView registerNib:nib forCellWithReuseIdentifier:cellName];
 
         collectionView.backgroundColor = [UIColor clearColor];
-
-        collectionView.frame = CGRectMake(10, 11, 290, 95);
     }
     return self;
 }
