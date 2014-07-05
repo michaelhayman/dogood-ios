@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="r2B-cS-g4r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="r2B-cS-g4r">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
@@ -27,7 +27,6 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for people or tags" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eUT-09-Ba1">
                                         <rect key="frame" x="8" y="13" width="237" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="237" id="6Ht-wg-FgJ"/>
                                             <constraint firstAttribute="height" constant="30" id="ygB-2W-mBW"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -61,7 +60,8 @@
                                     <constraint firstItem="DoQ-X7-ekC" firstAttribute="top" secondItem="eUT-09-Ba1" secondAttribute="top" id="1vI-xf-80c"/>
                                     <constraint firstItem="eUT-09-Ba1" firstAttribute="leading" secondItem="X8T-x2-bh9" secondAttribute="leading" constant="8" id="AMb-ns-2IN"/>
                                     <constraint firstAttribute="height" constant="56" id="ZY4-Ua-7sg"/>
-                                    <constraint firstItem="DoQ-X7-ekC" firstAttribute="leading" secondItem="eUT-09-Ba1" secondAttribute="trailing" constant="8" symbolic="YES" id="aHf-CW-oLt"/>
+                                    <constraint firstAttribute="trailing" secondItem="eUT-09-Ba1" secondAttribute="trailing" constant="75" id="enf-se-DuS"/>
+                                    <constraint firstAttribute="trailing" secondItem="DoQ-X7-ekC" secondAttribute="trailing" constant="5" id="uKq-Sz-bF3"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -87,7 +87,7 @@
                         <outlet property="contentView" destination="Yze-Kc-bm4" id="S5p-RM-ZuD"/>
                         <outlet property="searchButton" destination="DoQ-X7-ekC" id="vGn-Kw-b1n"/>
                         <outlet property="searchField" destination="eUT-09-Ba1" id="8CO-oU-scI"/>
-                        <outlet property="searchFieldWidth" destination="6Ht-wg-FgJ" id="wCR-7k-cvv"/>
+                        <outlet property="searchFieldOffsetWidth" destination="enf-se-DuS" id="c1R-Wg-OcH"/>
                         <outlet property="searchFieldWrapper" destination="X8T-x2-bh9" id="qUQ-Yt-moc"/>
                     </connections>
                 </viewController>
@@ -123,7 +123,6 @@
                                         <color key="backgroundColor" red="0.3803921569" green="0.3411764706" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="WaL-Nf-m84"/>
-                                            <constraint firstAttribute="width" constant="145" id="gBM-w6-NcI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" title="  People" image="SearchPeopleIconOff">
@@ -140,7 +139,6 @@
                                         <rect key="frame" x="165" y="0.0" width="145" height="30"/>
                                         <color key="backgroundColor" white="0.89900775550000001" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="145" id="QEt-jH-X22"/>
                                             <constraint firstAttribute="height" constant="30" id="Zk1-Cs-znS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
@@ -157,6 +155,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.89900775550000001" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="5Kp-Ph-KQs" firstAttribute="width" secondItem="gxE-qT-rmk" secondAttribute="width" id="0dC-fU-ZhX"/>
                                     <constraint firstItem="5Kp-Ph-KQs" firstAttribute="top" secondItem="9sJ-xO-V5S" secondAttribute="top" id="8CJ-6L-x1b"/>
                                     <constraint firstItem="gxE-qT-rmk" firstAttribute="top" secondItem="9sJ-xO-V5S" secondAttribute="top" id="Ch7-rv-nXp"/>
                                     <constraint firstItem="gxE-qT-rmk" firstAttribute="leading" secondItem="5Kp-Ph-KQs" secondAttribute="trailing" constant="10" id="Sj1-z3-1CW"/>
