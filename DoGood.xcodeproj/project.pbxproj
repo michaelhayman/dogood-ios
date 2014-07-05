@@ -31,6 +31,7 @@
 		6319D38F17BDED080071DA71 /* DGReward.m in Sources */ = {isa = PBXBuildFile; fileRef = 6319D38E17BDED080071DA71 /* DGReward.m */; };
 		6319D39517BE5A230071DA71 /* DGUserSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6319D39417BE5A220071DA71 /* DGUserSearchViewController.m */; };
 		6321C8611934B265001AAD64 /* DGShareRankPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6321C8601934B265001AAD64 /* DGShareRankPopupViewController.m */; };
+		6325CD00196587BF00CA8CD4 /* AuthenticateiPad@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6325CCFF196587BF00CA8CD4 /* AuthenticateiPad@2x.jpg */; };
 		632A36BC17BCAEE8004EED26 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A36BA17BCAEE8004EED26 /* UserCell.m */; };
 		632A36BD17BCAEE8004EED26 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632A36BB17BCAEE8004EED26 /* UserCell.xib */; };
 		632A36C017BCAF00004EED26 /* DGUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A36BF17BCAF00004EED26 /* DGUserListViewController.m */; };
@@ -205,6 +206,7 @@
 		6319D39417BE5A220071DA71 /* DGUserSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchViewController.m; sourceTree = "<group>"; };
 		6321C85F1934B265001AAD64 /* DGShareRankPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGShareRankPopupViewController.h; sourceTree = "<group>"; };
 		6321C8601934B265001AAD64 /* DGShareRankPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGShareRankPopupViewController.m; sourceTree = "<group>"; };
+		6325CCFF196587BF00CA8CD4 /* AuthenticateiPad@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "AuthenticateiPad@2x.jpg"; sourceTree = "<group>"; };
 		632A36B917BCAEE8004EED26 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
 		632A36BA17BCAEE8004EED26 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
 		632A36BB17BCAEE8004EED26 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
@@ -532,6 +534,14 @@
 			name = Components;
 			sourceTree = "<group>";
 		};
+		6325CCFE196587B600CA8CD4 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				6325CCFF196587BF00CA8CD4 /* AuthenticateiPad@2x.jpg */,
+			);
+			name = Photos;
+			sourceTree = "<group>";
+		};
 		633DBF7F17AE92D20038BC2D /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -753,6 +763,7 @@
 		636AEA6C17AD4B8A002A3494 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				6325CCFE196587B600CA8CD4 /* Photos */,
 				634EA1F41874F66500F9F00D /* Fonts */,
 				6303A33517FE322100E2EACD /* Media.xcassets */,
 			);
@@ -936,6 +947,7 @@
 				633DBF7417ADD5360038BC2D /* GoodShareCell.xib in Resources */,
 				633DBF7917AE02580038BC2D /* RewardsTeaserView.xib in Resources */,
 				6355EC0D17B0D4C300EE91C0 /* CommentCell.xib in Resources */,
+				6325CD00196587BF00CA8CD4 /* AuthenticateiPad@2x.jpg in Resources */,
 				63FBF608180B0C06005686A6 /* RewardMiniCell.xib in Resources */,
 				6355EC1417B0EE1E00EE91C0 /* RewardCell.xib in Resources */,
 				6355EC2417B6723E00EE91C0 /* Users.storyboard in Resources */,

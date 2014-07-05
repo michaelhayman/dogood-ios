@@ -29,6 +29,10 @@
     self.opaque = YES;
     self.contentMode = UIViewContentModeRedraw;
 
+    if (iPad) {
+        self.imageView.image = [UIImage imageNamed:@"AuthenticateiPad.jpg"];
+    }
+
     [self addSubview:self.view];
     [self layoutSubviews];
     // [self.view setTranslatesAutoresizingMaskIntoConstraints:NO];
