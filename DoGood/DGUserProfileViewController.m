@@ -271,7 +271,11 @@
 }
 
 - (IBAction)openActionMenu:(id)sender {
-    [moreOptionsSheet showInView:self.navigationController.view];
+    if (iPad) {
+        [moreOptionsSheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:YES];
+    } else {
+        [moreOptionsSheet showInView:self.navigationController.view];
+    }
 }
 
 - (void)setupOwnProfileButtons {
@@ -326,7 +330,11 @@
 }
 
 - (void)openShareOptions {
-    [shareOptionsSheet showInView:self.navigationController.view];
+    if (iPad) {
+        [shareOptionsSheet showFromBarButtonItem:self.navigationItem.rightBarButtonItem animated:NO];
+    } else {
+        [shareOptionsSheet showInView:self.navigationController.view];
+    }
 }
 
 #pragma mark - UIAlertViewDelegate methods

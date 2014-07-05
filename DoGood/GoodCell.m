@@ -510,7 +510,12 @@
 
 - (void)openMoreOptions {
     [self setupMoreOptions];
-    [moreOptionsSheet showInView:self.navigationController.view];
+    if (iPad) {
+        [moreOptionsSheet showFromRect:self.moreOptions.frame inView:self animated:YES];
+    } else {
+        [moreOptionsSheet showInView:self.navigationController.view];
+    }
+
 }
 
 #pragma mark - Share options
@@ -521,7 +526,11 @@
 }
 
 - (void)openShareOptions {
-    [shareOptionsSheet showInView:self.navigationController.view];
+    if (iPad) {
+        [shareOptionsSheet showFromRect:self.moreOptions.frame inView:self animated:YES];
+    } else {
+        [shareOptionsSheet showInView:self.navigationController.view];
+    }
 }
 
 #define share_button 1
