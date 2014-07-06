@@ -31,13 +31,13 @@
 		6319D38F17BDED080071DA71 /* DGReward.m in Sources */ = {isa = PBXBuildFile; fileRef = 6319D38E17BDED080071DA71 /* DGReward.m */; };
 		6319D39517BE5A230071DA71 /* DGUserSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6319D39417BE5A220071DA71 /* DGUserSearchViewController.m */; };
 		6321C8611934B265001AAD64 /* DGShareRankPopupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6321C8601934B265001AAD64 /* DGShareRankPopupViewController.m */; };
-		6325CD00196587BF00CA8CD4 /* AuthenticateiPad@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6325CCFF196587BF00CA8CD4 /* AuthenticateiPad@2x.jpg */; };
 		632A36BC17BCAEE8004EED26 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A36BA17BCAEE8004EED26 /* UserCell.m */; };
 		632A36BD17BCAEE8004EED26 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 632A36BB17BCAEE8004EED26 /* UserCell.xib */; };
 		632A36C017BCAF00004EED26 /* DGUserListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 632A36BF17BCAF00004EED26 /* DGUserListViewController.m */; };
 		632A36D217BD1157004EED26 /* DGUserSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC3717B8505900EE91C0 /* DGUserSettingsViewController.m */; };
 		6330B69E1812D891005DC78B /* DGEditableTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6330B69D1812D891005DC78B /* DGEditableTextView.m */; };
 		6330B6A11812FC28005DC78B /* DGEntityHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6330B6A01812FC28005DC78B /* DGEntityHandler.m */; };
+		6332C0561969DD30003952D1 /* AuthenticateiPad@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6332C0551969DD30003952D1 /* AuthenticateiPad@2x.jpg */; };
 		63357AFE17C279F2007B5FD7 /* DGUserFindFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63357AFD17C279F2007B5FD7 /* DGUserFindFriendsViewController.m */; };
 		633DBF6117ADA5670038BC2D /* DGCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6017ADA5670038BC2D /* DGCategory.m */; };
 		633DBF6417ADA61D0038BC2D /* DGGood.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF6317ADA61C0038BC2D /* DGGood.m */; };
@@ -208,7 +208,6 @@
 		6319D39417BE5A220071DA71 /* DGUserSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserSearchViewController.m; sourceTree = "<group>"; };
 		6321C85F1934B265001AAD64 /* DGShareRankPopupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGShareRankPopupViewController.h; sourceTree = "<group>"; };
 		6321C8601934B265001AAD64 /* DGShareRankPopupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGShareRankPopupViewController.m; sourceTree = "<group>"; };
-		6325CCFF196587BF00CA8CD4 /* AuthenticateiPad@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "AuthenticateiPad@2x.jpg"; sourceTree = "<group>"; };
 		632A36B917BCAEE8004EED26 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
 		632A36BA17BCAEE8004EED26 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
 		632A36BB17BCAEE8004EED26 /* UserCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
@@ -218,6 +217,7 @@
 		6330B69D1812D891005DC78B /* DGEditableTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEditableTextView.m; sourceTree = "<group>"; };
 		6330B69F1812FC28005DC78B /* DGEntityHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGEntityHandler.h; sourceTree = "<group>"; };
 		6330B6A01812FC28005DC78B /* DGEntityHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEntityHandler.m; sourceTree = "<group>"; };
+		6332C0551969DD30003952D1 /* AuthenticateiPad@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "AuthenticateiPad@2x.jpg"; sourceTree = "<group>"; };
 		63357AFC17C279F2007B5FD7 /* DGUserFindFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserFindFriendsViewController.h; sourceTree = "<group>"; };
 		63357AFD17C279F2007B5FD7 /* DGUserFindFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserFindFriendsViewController.m; sourceTree = "<group>"; };
 		633DBF5F17ADA5670038BC2D /* DGCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCategory.h; sourceTree = "<group>"; };
@@ -544,7 +544,7 @@
 		6325CCFE196587B600CA8CD4 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
-				6325CCFF196587BF00CA8CD4 /* AuthenticateiPad@2x.jpg */,
+				6332C0551969DD30003952D1 /* AuthenticateiPad@2x.jpg */,
 			);
 			name = Photos;
 			sourceTree = "<group>";
@@ -954,8 +954,8 @@
 				6303A33617FE322100E2EACD /* Media.xcassets in Resources */,
 				633DBF7417ADD5360038BC2D /* GoodShareCell.xib in Resources */,
 				633DBF7917AE02580038BC2D /* RewardsTeaserView.xib in Resources */,
+				6332C0561969DD30003952D1 /* AuthenticateiPad@2x.jpg in Resources */,
 				6355EC0D17B0D4C300EE91C0 /* CommentCell.xib in Resources */,
-				6325CD00196587BF00CA8CD4 /* AuthenticateiPad@2x.jpg in Resources */,
 				63FBF608180B0C06005686A6 /* RewardMiniCell.xib in Resources */,
 				6355EC1417B0EE1E00EE91C0 /* RewardCell.xib in Resources */,
 				6355EC2417B6723E00EE91C0 /* Users.storyboard in Resources */,
