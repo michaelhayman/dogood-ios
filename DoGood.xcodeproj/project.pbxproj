@@ -51,6 +51,7 @@
 		633DBF7E17AE25CF0038BC2D /* DGUserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF7D17AE25CF0038BC2D /* DGUserProfileViewController.m */; };
 		633DBF8417AE92E00038BC2D /* NavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 633DBF8117AE92E00038BC2D /* NavigationViewController.m */; };
 		63451D521840E72300B713F0 /* DGNominee.m in Sources */ = {isa = PBXBuildFile; fileRef = 63451D511840E72300B713F0 /* DGNominee.m */; };
+		63459536196761B20051B95B /* DGGood+Dimensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 63459535196761B20051B95B /* DGGood+Dimensions.m */; };
 		634EA1F71874F67000F9F00D /* HandTest.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 634EA1F51874F67000F9F00D /* HandTest.ttf */; };
 		634EA1F81874F67000F9F00D /* MarkusInk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 634EA1F61874F67000F9F00D /* MarkusInk.ttf */; };
 		6355EC0717B0C83100EE91C0 /* DGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 6355EC0617B0C83100EE91C0 /* DGComment.m */; };
@@ -81,6 +82,7 @@
 		636AEAA317AD77F0002A3494 /* DGPostGoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636AEAA217AD77F0002A3494 /* DGPostGoodViewController.m */; };
 		636AEAA717AD79AA002A3494 /* GoodOverviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 636AEAA617AD79AA002A3494 /* GoodOverviewCell.m */; };
 		636AEAA917AD79B1002A3494 /* GoodOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636AEAA817AD79B1002A3494 /* GoodOverviewCell.xib */; };
+		636CA2771966DAC000D8EB42 /* GoodCellWide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636CA2761966DAC000D8EB42 /* GoodCellWide.xib */; };
 		636FF5EF184AA19E003774AE /* DGPostGoodNomineeAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 636FF5EE184AA19E003774AE /* DGPostGoodNomineeAddViewController.m */; };
 		6378AE1E1818BA50001DB9BF /* DGRKObjectRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6378AE1D1818BA50001DB9BF /* DGRKObjectRequestOperation.m */; };
 		6379B821192E388000439ED7 /* DGUserGoodsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6379B820192E388000439ED7 /* DGUserGoodsTableView.m */; };
@@ -240,6 +242,8 @@
 		633DBF8117AE92E00038BC2D /* NavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationViewController.m; sourceTree = "<group>"; };
 		63451D501840E72300B713F0 /* DGNominee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGNominee.h; sourceTree = "<group>"; };
 		63451D511840E72300B713F0 /* DGNominee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNominee.m; sourceTree = "<group>"; };
+		63459534196761B20051B95B /* DGGood+Dimensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DGGood+Dimensions.h"; sourceTree = "<group>"; };
+		63459535196761B20051B95B /* DGGood+Dimensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DGGood+Dimensions.m"; sourceTree = "<group>"; };
 		634EA1F51874F67000F9F00D /* HandTest.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HandTest.ttf; sourceTree = "<group>"; };
 		634EA1F61874F67000F9F00D /* MarkusInk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MarkusInk.ttf; sourceTree = "<group>"; };
 		6355EC0617B0C83100EE91C0 /* DGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGComment.m; sourceTree = "<group>"; };
@@ -293,6 +297,7 @@
 		636AEAA517AD79AA002A3494 /* GoodOverviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodOverviewCell.h; sourceTree = "<group>"; };
 		636AEAA617AD79AA002A3494 /* GoodOverviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GoodOverviewCell.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		636AEAA817AD79B1002A3494 /* GoodOverviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodOverviewCell.xib; sourceTree = "<group>"; };
+		636CA2761966DAC000D8EB42 /* GoodCellWide.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodCellWide.xib; sourceTree = "<group>"; };
 		636FF5ED184AA19E003774AE /* DGPostGoodNomineeAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPostGoodNomineeAddViewController.h; sourceTree = "<group>"; };
 		636FF5EE184AA19E003774AE /* DGPostGoodNomineeAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGPostGoodNomineeAddViewController.m; sourceTree = "<group>"; };
 		6378AE1C1818BA50001DB9BF /* DGRKObjectRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGRKObjectRequestOperation.h; sourceTree = "<group>"; };
@@ -485,6 +490,8 @@
 		6319D39017BDF05C0071DA71 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				63459534196761B20051B95B /* DGGood+Dimensions.h */,
+				63459535196761B20051B95B /* DGGood+Dimensions.m */,
 				639ADBD7195B734A00DE78C4 /* DGNotification.h */,
 				639ADBD8195B734A00DE78C4 /* DGNotification.m */,
 				63C00BAB194FA9170093C261 /* UIImageView+Dimension.h */,
@@ -684,6 +691,7 @@
 				636AEA9D17AD66C8002A3494 /* GoodCell.h */,
 				636AEA9E17AD66C8002A3494 /* GoodCell.m */,
 				636AEA9A17AD63EC002A3494 /* GoodCell.xib */,
+				636CA2761966DAC000D8EB42 /* GoodCellWide.xib */,
 				636AEAA117AD77F0002A3494 /* DGPostGoodViewController.h */,
 				636AEAA217AD77F0002A3494 /* DGPostGoodViewController.m */,
 				63D4BCDD17FFDF7000ACF1B9 /* DGGoodCommentsViewController.h */,
@@ -952,6 +960,7 @@
 				6355EC1417B0EE1E00EE91C0 /* RewardCell.xib in Resources */,
 				6355EC2417B6723E00EE91C0 /* Users.storyboard in Resources */,
 				634EA1F71874F67000F9F00D /* HandTest.ttf in Resources */,
+				636CA2771966DAC000D8EB42 /* GoodCellWide.xib in Resources */,
 				63FDAC49181C61BA00668B15 /* TagCollectionCell.xib in Resources */,
 				6355EC3A17B8680300EE91C0 /* SignUpOverviewCell.xib in Resources */,
 				63E0798817BC59C7006FC42E /* UITextFieldCell.xib in Resources */,
@@ -1163,6 +1172,7 @@
 				63DA645917DC16A2003DFF03 /* DGTag.m in Sources */,
 				63DA645D17DC1715003DFF03 /* TagCell.m in Sources */,
 				63C2DAC9194BA76300FA3780 /* DGEventSaver.m in Sources */,
+				63459536196761B20051B95B /* DGGood+Dimensions.m in Sources */,
 				63A28B681922C6CA008E6AA1 /* NSString+RangeChecker.m in Sources */,
 				63DA646217DC189C003DFF03 /* CategoryCell.m in Sources */,
 				63DBEE8F17DD599600230D81 /* NoResultsCell.m in Sources */,

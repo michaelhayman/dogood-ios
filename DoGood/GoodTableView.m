@@ -1,6 +1,7 @@
 #import "GoodTableView.h"
 #import "GoodCell.h"
 #import "DGGood.h"
+#import "DGGood+Dimensions.h"
 #import "NoResultsCell.h"
 #import "UIScrollView+SVInfiniteScrolling.h"
 #import "DGComment.h"
@@ -21,8 +22,8 @@
 }
 
 - (void)initializeTable {
-    UINib *nib = [UINib nibWithNibName:@"GoodCell" bundle:nil];
-    [self registerNib:nib forCellReuseIdentifier:@"GoodCell"];
+    UINib *nib = [UINib nibWithNibName:[self cellName] bundle:nil];
+    [self registerNib:nib forCellReuseIdentifier:[self cellName]];
     UINib *noResultsNib = [UINib nibWithNibName:kNoResultsCell bundle:nil];
     [self registerNib:noResultsNib forCellReuseIdentifier:kNoResultsCell];
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -32,6 +33,14 @@
 
     loadingView = [[SAMLoadingView alloc] initWithFrame:self.bounds];
     loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+}
+
+- (NSString *)cellName {
+    if (iPad) {
+        return @"GoodCellWide";
+    } else {
+        return @"GoodCell";
+    }
 }
 
 - (void)showTabs {
@@ -209,56 +218,14 @@
 #pragma mark - Cell heights
 - (void)estimateHeightsForGoods:(NSArray *)goodList {
     for (DGGood *good in goodList) {
-        [cellHeights addObject:[self calculateHeightForGood:good]];
+        [cellHeights addObject:[good calculateHeight]];
     }
-}
-
-// move to model
-- (NSNumber *)calculateHeightForGood:(DGGood *)good {
-    CGFloat height = 110;
-
-    NSDictionary *attributes = @{NSFontAttributeName : kGoodCaptionFont};
-
-    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:good.caption attributes:attributes];
-
-    CGFloat captionHeight = [DGAppearance calculateHeightForText:attrString andWidth:kGoodRightColumnWidth];
-    height += captionHeight;
-
-    NSAttributedString *postedByAttrString = [[NSAttributedString alloc] initWithString:[good postedByLine] attributes:attributes];
-    CGFloat postedByHeight = [DGAppearance calculateHeightForText:postedByAttrString andWidth:kGoodRightColumnWidth];
-    height += postedByHeight;
-
-    if (good.evidence) {
-        height+= 320;
-    }
-    if (good.location_name) {
-        height += 20;
-    }
-    if (good.category) {
-        height += 20;
-    }
-    if (good.comments) {
-        height += 40;
-        for (DGComment *comment in good.comments) {
-            NSDictionary *commentAttributes = @{ NSFontAttributeName : kSummaryCommentFont };
-            NSAttributedString *attrCommentString = [[NSAttributedString alloc] initWithString:[comment.user.full_name stringByAppendingString:comment.comment] attributes:commentAttributes];
-            CGFloat commentHeight = [DGAppearance calculateHeightForText:attrCommentString andWidth:kSummaryCommentRightColumnWidth];
-            height += commentHeight;
-        }
-    }
-    if ([good.votes_count intValue] > 0) {
-        height += 30;
-    }
-    if ([good.followers_count intValue] > 0) {
-        height += 30;
-    }
-    return [NSNumber numberWithFloat:height];
 }
 
 #pragma mark - UITableView delegate methods
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        static NSString * reuseIdentifier = @"GoodCell";
+        NSString * reuseIdentifier = [self cellName];
         GoodCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
         DGGood *good = goods[indexPath.row];
         cell.good = good;
@@ -281,7 +248,7 @@
 */
 
 - (void)reloadCellAtIndexPath:(NSIndexPath *)indexPath withGood:(DGGood *)good {
-    cellHeights[indexPath.row] = [self calculateHeightForGood:good];
+    cellHeights[indexPath.row] = [good calculateHeight];
     [self reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 

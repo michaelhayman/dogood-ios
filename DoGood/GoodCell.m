@@ -1,5 +1,6 @@
 #import "GoodCell.h"
 #import "DGGood.h"
+#import "DGGood+Dimensions.h"
 #import "DGCategory.h"
 #import "DGReport.h"
 #import "DGFollow.h"
@@ -242,7 +243,7 @@
     NSString *text = [self.good postedByLine];
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:text attributes:attributes];
     self.postedBy.attributedText = attrString;
-    postedByHeight.constant = [DGAppearance calculateHeightForText:attrString andWidth:kGoodRightColumnWidth];
+    postedByHeight.constant = [DGAppearance calculateHeightForText:attrString andWidth:[self.good captionWidth]];
     self.postedBy.linkAttributes = [DGAppearance linkAttributes];
     self.postedBy.activeLinkAttributes = [DGAppearance activeLinkAttributes];
     self.postedBy.delegate = self;
@@ -452,7 +453,7 @@
         UIFont *font = [UIFont boldSystemFontOfSize:10];
         [CommentCell addUsernameAndLinksToComment:comment withText:text andFont:font inLabel:label];
 
-        CGFloat labelWidth = kSummaryCommentRightColumnWidth;
+        CGFloat labelWidth = [self.good commentBoxWidth];
         CGRect rect = [label.attributedText boundingRectWithSize:CGSizeMake(labelWidth, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin context:nil];
         CGSize size = rect.size;
         CGFloat height = ceilf(size.height);
@@ -475,7 +476,7 @@
     NSDictionary *attributes = @{NSFontAttributeName : self.description.font};
     NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.good.caption attributes:attributes];
     self.description.attributedText = attrString;
-    captionHeight.constant = [DGAppearance calculateHeightForText:attrString andWidth:kGoodRightColumnWidth];
+    captionHeight.constant = [DGAppearance calculateHeightForText:attrString andWidth:[self.good captionWidth]];
     self.description.linkAttributes = [DGAppearance linkAttributes];
     self.description.activeLinkAttributes = [DGAppearance activeLinkAttributes];
 
