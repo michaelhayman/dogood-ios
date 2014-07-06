@@ -8,6 +8,8 @@
     
     UIActionSheet *photoSheet;
 }
+
+@property (nonatomic, weak) UIView *initiatorView;
 @property (nonatomic, weak) UIViewController *parent;
 @property bool hasImage;
 @property (nonatomic, weak) id<DGPhotoPickerViewControllerDelegate> delegate;

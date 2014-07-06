@@ -23,6 +23,7 @@
     photos = [[DGPhotoPickerViewController alloc] init];
     photos.parent = self;
     photos.delegate = self;
+    photos.initiatorView = avatar;
     // [[UITextField appearance] setBorderStyle:UITextBorderStyleNone];
     [name becomeFirstResponder];
 }

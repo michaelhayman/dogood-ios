@@ -216,6 +216,7 @@
         [cell.image addGestureRecognizer:imageGesture];
         cell.tag = good_overview_cell_tag;
         [cell setDoneMode:[self.good.done boolValue]];
+        photos.initiatorView = cell.image;
         return cell;
     } else if (indexPath.section == category) {
         static NSString *CellIdentifier = @"category";

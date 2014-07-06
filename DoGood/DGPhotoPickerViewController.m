@@ -70,7 +70,11 @@
                                        otherButtonTitles:@"Add from camera", @"Add from camera roll", nil];
     [photoSheet setActionSheetStyle:UIActionSheetStyleBlackTranslucent];
     photoSheet.delegate = self;
-    [photoSheet showInView:_parent.view];
+    if (iPad) {
+        [photoSheet showFromRect:self.initiatorView.frame inView:self.parent.view animated:YES];
+    } else {
+        [photoSheet showInView:_parent.view];
+    }
 }
 
 #define remove_button 0
