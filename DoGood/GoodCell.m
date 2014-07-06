@@ -516,7 +516,6 @@
     } else {
         [moreOptionsSheet showInView:self.navigationController.view];
     }
-
 }
 
 #pragma mark - Share options
