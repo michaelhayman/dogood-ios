@@ -1061,7 +1061,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vUA-0D-crd">
-                                        <rect key="frame" x="11" y="80" width="300" height="42"/>
+                                        <rect key="frame" x="10" y="80" width="300" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="2wd-h8-AxV"/>
                                             <constraint firstAttribute="height" constant="42" id="OT3-jg-BWC"/>
@@ -1094,7 +1094,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YLz-Yt-Wt7">
-                                        <rect key="frame" x="11" y="194" width="300" height="42"/>
+                                        <rect key="frame" x="10" y="194" width="300" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="JZu-hi-tAV"/>
                                         </constraints>
@@ -1114,13 +1114,13 @@
                                 <constraints>
                                     <constraint firstItem="YLz-Yt-Wt7" firstAttribute="trailing" secondItem="vUA-0D-crd" secondAttribute="trailing" id="A4F-m8-O8n"/>
                                     <constraint firstItem="YLz-Yt-Wt7" firstAttribute="top" secondItem="3Qa-1X-xAo" secondAttribute="bottom" constant="15" id="C9s-1M-Baz"/>
-                                    <constraint firstItem="vUA-0D-crd" firstAttribute="leading" secondItem="3Qa-1X-xAo" secondAttribute="leading" constant="1" id="KyG-1v-B3t"/>
+                                    <constraint firstItem="vUA-0D-crd" firstAttribute="leading" secondItem="3Qa-1X-xAo" secondAttribute="leading" id="KyG-1v-B3t"/>
                                     <constraint firstItem="vUA-0D-crd" firstAttribute="top" secondItem="9Lh-IF-Fp4" secondAttribute="top" constant="80" id="QYf-JY-4DC"/>
                                     <constraint firstItem="3Qa-1X-xAo" firstAttribute="centerX" secondItem="9Lh-IF-Fp4" secondAttribute="centerX" id="Qx0-VF-c46"/>
-                                    <constraint firstItem="vUA-0D-crd" firstAttribute="leading" secondItem="9Lh-IF-Fp4" secondAttribute="leading" constant="11" id="XEp-XU-fdG"/>
                                     <constraint firstItem="3Qa-1X-xAo" firstAttribute="top" secondItem="vUA-0D-crd" secondAttribute="bottom" constant="15" id="ZiD-3R-Oai"/>
                                     <constraint firstItem="YLz-Yt-Wt7" firstAttribute="leading" secondItem="vUA-0D-crd" secondAttribute="leading" id="dXL-GQ-WZM"/>
-                                    <constraint firstItem="vUA-0D-crd" firstAttribute="trailing" secondItem="3Qa-1X-xAo" secondAttribute="trailing" constant="1" id="icQ-3B-x6a"/>
+                                    <constraint firstItem="vUA-0D-crd" firstAttribute="trailing" secondItem="3Qa-1X-xAo" secondAttribute="trailing" id="icQ-3B-x6a"/>
+                                    <constraint firstAttribute="centerX" secondItem="vUA-0D-crd" secondAttribute="centerX" id="s2M-YM-Vq6"/>
                                 </constraints>
                             </view>
                         </subviews>
