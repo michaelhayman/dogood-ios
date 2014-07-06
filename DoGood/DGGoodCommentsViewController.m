@@ -167,7 +167,7 @@
     DGComment * comment = comments[indexPath.row];
     UIFont *font = [UIFont systemFontOfSize:13];
 
-    CGFloat height = [DGAppearance calculateHeightForString:[comment commentWithUsername] WithFont:font andWidth:kCommentRightColumnWidth];
+    CGFloat height = [DGAppearance calculateHeightForString:[comment commentWithUsername] WithFont:font andWidth:[self.comment commentBoxWidth]];
 
     CGFloat cellHeight = MAX(63, height + 30);
     return cellHeight;

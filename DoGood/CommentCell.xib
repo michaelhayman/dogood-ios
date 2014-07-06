@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -29,7 +29,6 @@
                         <rect key="frame" x="66" y="6" width="248" height="12"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="248" id="357"/>
                             <constraint firstAttribute="height" constant="12" id="Cu8-1l-ZLD"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -49,6 +48,7 @@
                 <constraints>
                     <constraint firstItem="271" firstAttribute="leading" secondItem="296" secondAttribute="trailing" constant="8" id="D9J-Y4-hRb"/>
                     <constraint firstItem="CrA-EP-OhX" firstAttribute="leading" secondItem="271" secondAttribute="leading" id="Ff1-N5-ojb"/>
+                    <constraint firstAttribute="trailing" secondItem="271" secondAttribute="trailing" constant="6" id="Zpw-hz-vBt"/>
                     <constraint firstItem="271" firstAttribute="leading" secondItem="CrA-EP-OhX" secondAttribute="leading" id="eFg-uB-w8z"/>
                     <constraint firstItem="271" firstAttribute="top" secondItem="o7K-gL-xYe" secondAttribute="top" constant="6" id="iL2-Iy-N4s"/>
                     <constraint firstItem="CrA-EP-OhX" firstAttribute="top" secondItem="271" secondAttribute="bottom" id="uj0-1h-ROf"/>

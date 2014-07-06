@@ -32,7 +32,6 @@
 
 #pragma mark - Widths ------
 
-#define kCommentRightColumnWidth 248.0
 #define kNoResultsCellHeight 290
 
 #pragma mark - Colours ------

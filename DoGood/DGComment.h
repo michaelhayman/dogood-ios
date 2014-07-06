@@ -14,5 +14,6 @@
 
 - (NSString *)createdAgoInWords;
 - (NSString *)commentWithUsername;
+- (CGFloat)commentBoxWidth;
 
 @end
