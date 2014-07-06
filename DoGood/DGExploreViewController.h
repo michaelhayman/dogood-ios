@@ -4,7 +4,8 @@
     __weak IBOutlet UIView *searchFieldWrapper;
     __weak IBOutlet UITextField *searchField;
     __weak IBOutlet UIButton *searchButton;
-    __weak IBOutlet NSLayoutConstraint *searchFieldWidth;
+    __weak IBOutlet NSLayoutConstraint *searchFieldOffsetWidth;
+    __weak IBOutlet NSLayoutConstraint *cancelButtonOffsetWidth;
 
     DGUserProfileViewController *userProfileController;
 

@@ -162,14 +162,16 @@
 
 - (void)showCancelButton {
     searchButton.hidden = NO;
-    searchFieldWidth.constant = 237;
+    searchFieldOffsetWidth.constant = 75;
+    cancelButtonOffsetWidth.constant = 5;
 
     [self animateSearchField];
 }
 
 - (void)hideCancelButton {
     [searchField resignFirstResponder];
-    searchFieldWidth.constant = 300;
+    searchFieldOffsetWidth.constant = 10;
+    cancelButtonOffsetWidth.constant = -70;
     searchButton.hidden = YES;
 
     [self animateSearchField];

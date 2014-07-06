@@ -84,6 +84,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButtonOffsetWidth" destination="uKq-Sz-bF3" id="jfl-oV-ocA"/>
                         <outlet property="contentView" destination="Yze-Kc-bm4" id="S5p-RM-ZuD"/>
                         <outlet property="searchButton" destination="DoQ-X7-ekC" id="vGn-Kw-b1n"/>
                         <outlet property="searchField" destination="eUT-09-Ba1" id="8CO-oU-scI"/>
