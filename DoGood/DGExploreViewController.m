@@ -150,7 +150,14 @@
     storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
     DGWelcomeViewController *welcomeViewController = [storyboard instantiateViewControllerWithIdentifier:@"Welcome"];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:welcomeViewController];
+    if (iPad) {
+        navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+        navigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    }
     [self presentViewController:navigationController animated:animated completion:nil];
+    if (iPad) {
+        navigationController.view.superview.bounds = CGRectMake(0, 0, 320, 480);
+    }
 }
 
 - (void)showCancelButton {
