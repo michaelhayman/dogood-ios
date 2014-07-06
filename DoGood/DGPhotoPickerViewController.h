@@ -11,7 +11,7 @@
 
 @property (nonatomic, weak) UIView *initiatorView;
 @property (nonatomic, weak) UIViewController *parent;
-@property bool hasImage;
+@property BOOL hasImage;
 @property (nonatomic, weak) id<DGPhotoPickerViewControllerDelegate> delegate;
 
 - (void)openPhotoSheet:(UIImage *)image;
