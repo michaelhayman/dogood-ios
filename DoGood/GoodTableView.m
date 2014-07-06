@@ -76,6 +76,7 @@
     tabsShowing = YES;
 
     UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
+    tableHeaderView.backgroundColor = color;
     [tableHeaderView addSubview:all];
     [tableHeaderView addSubview:done];
     [tableHeaderView addSubview:todo];
