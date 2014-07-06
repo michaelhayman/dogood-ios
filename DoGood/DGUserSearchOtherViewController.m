@@ -1,7 +1,6 @@
 #import "DGUserSearchOtherViewController.h"
 #import "DGUserInvitesViewController.h"
-#import "DGUserFindFriendsViewController.h"
-
+#import "DGUserSearchViewController.h"
 
 @implementation DGUserSearchOtherViewController
 
@@ -21,7 +20,7 @@
 - (IBAction)searchForPeople:(id)sender {
     UIStoryboard *storyboard;
     storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
-    DGUserFindFriendsViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserSearch"];
+    DGUserSearchViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"UserSearch"];
     [self.navigationController pushViewController:controller animated:YES];
 }
 
