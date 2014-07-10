@@ -275,21 +275,34 @@
     GoodOverviewCell *cell = [self overviewCell];
     [cell.description resignFirstResponder];
 
+    UITableViewCell * selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.section == nominee) {
         if (self.good.nominee != nil) {
-            [nomineeSheet showInView:self.view];
+            if (iPad) {
+                [nomineeSheet showFromRect:selectedCell.frame inView:self.view animated:YES];
+            } else {
+                [nomineeSheet showInView:self.view];
+            }
         } else {
             [self showNomineeChooser];
         }
     } else if (indexPath.section == category) {
         if (self.good.category != nil) {
-            [categorySheet showInView:self.view];
+            if (iPad) {
+                [categorySheet showFromRect:selectedCell.frame inView:self.view animated:YES];
+            } else {
+                [categorySheet showInView:self.view];
+            }
         } else {
             [self showCategoryChooser];
         }
     } else if (indexPath.section == location) {
         if (self.good.location_name != nil) {
-            [locationSheet showInView:self.view];
+            if (iPad) {
+                [locationSheet showFromRect:selectedCell.frame inView:self.view animated:YES];
+            } else {
+                [locationSheet showInView:self.view];
+            }
         } else {
             [self showLocationChooser];
         }
