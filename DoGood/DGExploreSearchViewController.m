@@ -149,4 +149,9 @@
     }
 }
 
+- (void)purgeResults {
+    [searchPeopleTable purge];
+    [searchTagsTable purge];
+}
+
 @end

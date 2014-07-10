@@ -23,4 +23,6 @@
 @property (nonatomic, weak) DGExploreViewController* parent;
 @property (nonatomic, weak) UITextField* searchField;
 
+- (void)purgeResults;
+
 @end

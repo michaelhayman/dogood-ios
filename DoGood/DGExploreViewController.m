@@ -133,6 +133,7 @@
     [self hideCancelButton];
     [self nothingSelected];
     [self showCategories];
+    [self.exploreSearch purgeResults];
 }
 
 - (void)showWelcome {
