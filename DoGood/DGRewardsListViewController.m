@@ -23,6 +23,7 @@
 
     loadingView = [[SAMLoadingView alloc] initWithFrame:collectionView.bounds];
     loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [collectionView addSubview:loadingView];
 
     [self setupTabs];
 
