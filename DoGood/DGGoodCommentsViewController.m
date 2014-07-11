@@ -350,8 +350,21 @@
     return sup;
 }
 
+- (CGFloat)commentInputFieldWidth {
+    if (iPad) {
+        UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+        if (UIInterfaceOrientationIsPortrait(orientation)) {
+            return 704;
+        } else {
+            return 960;
+        }
+    } else {
+        return 256 - 16;
+    }
+}
+
 - (void)setTextViewHeight {
-    CGFloat adjustmentIndex = [DGAppearance calculateHeightForText:commentInputField.attributedText andWidth:240] + 16;
+    CGFloat adjustmentIndex = [DGAppearance calculateHeightForText:commentInputField.attributedText andWidth:[self commentInputFieldWidth]] + 16;
     commentInputFieldHeight.constant = adjustmentIndex;
 }
 

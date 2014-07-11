@@ -81,6 +81,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EDq-ZU-GEV">
                                         <rect key="frame" x="274" y="3" width="37" height="37"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="37" id="AvG-B9-sq3"/>
                                             <constraint firstAttribute="height" constant="37" id="map-H5-YHA"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -100,7 +101,6 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="tintColor" red="0.1058823529" green="0.79215686269999996" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="256" id="JZF-qo-pQa"/>
                                             <constraint firstAttribute="height" constant="30" id="Lem-dG-qGJ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -114,6 +114,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="fSi-6k-2pC" secondAttribute="bottom" constant="7" id="0Ds-Vz-yFC"/>
                                     <constraint firstItem="fSi-6k-2pC" firstAttribute="top" secondItem="xil-Rx-NGQ" secondAttribute="top" constant="7" id="BcO-Vp-S1R"/>
+                                    <constraint firstAttribute="trailing" secondItem="EDq-ZU-GEV" secondAttribute="trailing" constant="9" id="Vub-hE-78Y"/>
                                     <constraint firstItem="EDq-ZU-GEV" firstAttribute="leading" secondItem="fSi-6k-2pC" secondAttribute="trailing" constant="8" id="ZHB-GZ-hXG"/>
                                     <constraint firstItem="fSi-6k-2pC" firstAttribute="leading" secondItem="xil-Rx-NGQ" secondAttribute="leading" constant="10" id="f2h-sQ-wEz"/>
                                     <constraint firstItem="EDq-ZU-GEV" firstAttribute="centerY" secondItem="fSi-6k-2pC" secondAttribute="centerY" id="ruQ-y0-8ws"/>
