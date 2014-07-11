@@ -286,7 +286,13 @@
 
     [UIView setAnimationDuration:animationDuration];
     [UIView setAnimationCurve:animationCurve];
-    commentFieldBottom.constant = keyboardSize.height;
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+
+    if (UIInterfaceOrientationIsPortrait(orientation)) {
+        commentFieldBottom.constant = keyboardSize.height;
+    } else {
+        commentFieldBottom.constant = keyboardSize.width;
+    }
     tableViewBottom.constant = tableViewBottom.constant + keyboardSize.height;
     [self.view layoutIfNeeded];
     [UIView commitAnimations];
