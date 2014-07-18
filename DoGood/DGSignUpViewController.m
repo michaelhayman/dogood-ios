@@ -66,7 +66,7 @@
         }
         [ProgressHUD dismiss];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [TSMessage showNotificationInViewController:self.navigationController title:@"Error" subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
+        [DGMessage showErrorInViewController:self.navigationController title:@"Error" subtitle:[error localizedDescription]];
         [ProgressHUD dismiss];
         [name becomeFirstResponder];
     }];

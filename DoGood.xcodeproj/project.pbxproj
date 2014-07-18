@@ -115,6 +115,7 @@
 		63BFB1EC17C81E11004D990F /* DGUserSearchNetworksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63BFB1EB17C81E11004D990F /* DGUserSearchNetworksViewController.m */; };
 		63C00BAD194FA9170093C261 /* UIImageView+Dimension.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C00BAC194FA9170093C261 /* UIImageView+Dimension.m */; };
 		63C1BA501806026300CB95CF /* RewardsTeaserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C1BA4F1806026300CB95CF /* RewardsTeaserView.m */; };
+		63C1F65F1979C6200094B642 /* DGMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C1F65E1979C6200094B642 /* DGMessage.m */; };
 		63C2DAC9194BA76300FA3780 /* DGEventSaver.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DAC8194BA76300FA3780 /* DGEventSaver.m */; };
 		63C2DACC194BB1BC00FA3780 /* DGMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63C2DACB194BB1BC00FA3780 /* DGMapViewController.m */; };
 		63C2DACE194BB68F00FA3780 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63C2DACD194BB68F00FA3780 /* MapKit.framework */; };
@@ -359,6 +360,8 @@
 		63C00BAC194FA9170093C261 /* UIImageView+Dimension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Dimension.m"; sourceTree = "<group>"; };
 		63C1BA4E1806026300CB95CF /* RewardsTeaserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardsTeaserView.h; sourceTree = "<group>"; };
 		63C1BA4F1806026300CB95CF /* RewardsTeaserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardsTeaserView.m; sourceTree = "<group>"; };
+		63C1F65D1979C6200094B642 /* DGMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGMessage.h; sourceTree = "<group>"; };
+		63C1F65E1979C6200094B642 /* DGMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGMessage.m; sourceTree = "<group>"; };
 		63C2DAC7194BA76300FA3780 /* DGEventSaver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGEventSaver.h; sourceTree = "<group>"; };
 		63C2DAC8194BA76300FA3780 /* DGEventSaver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEventSaver.m; sourceTree = "<group>"; };
 		63C2DACA194BB1BC00FA3780 /* DGMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGMapViewController.h; sourceTree = "<group>"; };
@@ -494,6 +497,8 @@
 				63459535196761B20051B95B /* DGGood+Dimensions.m */,
 				639ADBD7195B734A00DE78C4 /* DGNotification.h */,
 				639ADBD8195B734A00DE78C4 /* DGNotification.m */,
+				63C1F65D1979C6200094B642 /* DGMessage.h */,
+				63C1F65E1979C6200094B642 /* DGMessage.m */,
 				63C00BAB194FA9170093C261 /* UIImageView+Dimension.h */,
 				63C00BAC194FA9170093C261 /* UIImageView+Dimension.m */,
 				63C2DACA194BB1BC00FA3780 /* DGMapViewController.h */,
@@ -1124,6 +1129,7 @@
 				639B88E417B9A25B005E2B62 /* DGVote.m in Sources */,
 				630046D01810E619001529E5 /* URLHandler.m in Sources */,
 				639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */,
+				63C1F65F1979C6200094B642 /* DGMessage.m in Sources */,
 				6379B86F192E407800439ED7 /* UserGoodCell.m in Sources */,
 				63E4424D17BC3010000224E8 /* DGSignUpDetailsViewController.m in Sources */,
 				63E0798B17BC5A6F006FC42E /* UITextFieldCell.m in Sources */,

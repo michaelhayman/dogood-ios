@@ -65,7 +65,7 @@
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     tableView.transform = CGAffineTransformMakeRotation(-M_PI);
-    [TSMessage dismissActiveNotification];
+    [DGMessage dismissActiveNotification];
     entityHandler = nil;
     // [commentInputField resignFirstResponder];
 }
@@ -221,7 +221,7 @@
 
             [commentInputView becomeFirstResponder];
             commentInputField.text = @"";
-            [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Comment Saved!", nil) subtitle:nil type:TSMessageNotificationTypeSuccess];
+            [DGMessage showSuccessInViewController:self.navigationController title:NSLocalizedString(@"Comment Saved!", nil) subtitle:nil];
             [entities removeAllObjects];
             // [self getComments];
             [self textViewDidChange:commentInputField];
@@ -237,7 +237,7 @@
             [self.goodCell reloadCell];
             */
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Couldn't save the comment", nil) subtitle:NSLocalizedString([error localizedDescription], nil) type:TSMessageNotificationTypeError];
+            [DGMessage showErrorInViewController:self.navigationController title:NSLocalizedString(@"Couldn't save the comment", nil) subtitle:NSLocalizedString([error localizedDescription], nil)];
 
             sendButton.enabled = YES;
             DebugLog(@"error %@", [error description]);

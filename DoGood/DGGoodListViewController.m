@@ -146,7 +146,7 @@
 }
 
 - (void)displayPostSuccessMessage {
-    [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Saved!", nil) subtitle:NSLocalizedString(@"You made some points!", nil) type:TSMessageNotificationTypeSuccess];
+    [DGMessage showSuccessInViewController:self.navigationController title:NSLocalizedString(@"Saved!", nil) subtitle:NSLocalizedString(@"You made some points!", nil)];
 }
 
 #pragma mark - Retrieval methods

@@ -11,10 +11,9 @@
         success(YES, @"User followed.");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
-        [TSMessage showNotificationInViewController:controller
+        [DGMessage showErrorInViewController:controller
                                   title:NSLocalizedString(@"Follow not registered.", nil)
-                                subtitle:nil
-                                   type:TSMessageNotificationTypeError];
+                                subtitle:nil];
         failure(error);
     }];
 }
@@ -26,10 +25,9 @@
         success(YES, @"User unfollowed.");
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
-        [TSMessage showNotificationInViewController:controller
+        [DGMessage showErrorInViewController:controller
                                   title:NSLocalizedString(@"Follow not registered.", nil)
-                                subtitle:nil
-                                   type:TSMessageNotificationTypeError];
+                                subtitle:nil];
         failure(error);
     }];
 }

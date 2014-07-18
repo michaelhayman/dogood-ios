@@ -7,16 +7,14 @@
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:reportDict, @"report", nil];
 
     [[RKObjectManager sharedManager] postObject:nil path:@"/reports" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [TSMessage showNotificationInViewController:controller
+        [DGMessage showSuccessInViewController:controller
                                   title:NSLocalizedString(@"Report sent.", nil)
-                                           subtitle:nil
-                                   type:TSMessageNotificationTypeSuccess];
+                                           subtitle:nil];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
-        [TSMessage showNotificationInViewController:controller
+        [DGMessage showErrorInViewController:controller
                                   title:NSLocalizedString(@"Report not sent.", nil)
-                               subtitle:[error localizedDescription]
-                                   type:TSMessageNotificationTypeError];
+                               subtitle:[error localizedDescription]];
     }];
 }
 

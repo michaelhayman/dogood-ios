@@ -152,7 +152,7 @@
 
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
-    [TSMessage dismissActiveNotification];
+    [DGMessage dismissActiveNotification];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -550,19 +550,17 @@
             [DGNotification promptForNotifications];
             [ProgressHUD showSuccess:@"Good posted!"];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            [TSMessage showNotificationInViewController:self.navigationController
+            [DGMessage showErrorInViewController:self.navigationController
                                       title:nil
-                                    subtitle:[error localizedDescription]
-                                       type:TSMessageNotificationTypeError];
+                                    subtitle:[error localizedDescription]];
             [ProgressHUD showError:nil];
         }];
 
         [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
     } else {
-        [TSMessage showNotificationInViewController:self.navigationController
+        [DGMessage showErrorInViewController:self.navigationController
                                   title:nil
-                                subtitle:NSLocalizedString(message, nil)
-                                   type:TSMessageNotificationTypeError];
+                                subtitle:NSLocalizedString(message, nil)];
     }
 }
 

@@ -81,7 +81,7 @@
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
         [ProgressHUD dismiss];
-        [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Reward not claimed.", nil) subtitle:[error localizedDescription] type:TSMessageNotificationTypeError];
+        [DGMessage showErrorInViewController:self.navigationController title:NSLocalizedString(@"Reward not claimed.", nil) subtitle:[error localizedDescription]];
     }];
 }
 

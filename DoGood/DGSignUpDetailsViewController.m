@@ -148,7 +148,7 @@
 
         [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation];
     } else {
-        [TSMessage showNotificationInViewController:self.navigationController title:@"Error" subtitle:message type:TSMessageNotificationTypeError];
+        [DGMessage showErrorInViewController:self.navigationController title:@"Error" subtitle:message];
     }
 }
 

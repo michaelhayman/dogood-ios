@@ -153,7 +153,7 @@
         }
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         avatar.image = currentImage;
-        [TSMessage showNotificationInViewController:self.navigationController title:nil subtitle:NSLocalizedString(@"Avatar upload failed", nil) type:TSMessageNotificationTypeError];
+        [DGMessage showErrorInViewController:self.navigationController title:nil subtitle:NSLocalizedString(@"Avatar upload failed", nil)];
     }];
 
     [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
@@ -165,18 +165,16 @@
         [DGUser currentUser].avatar_url = nil;
         [DGUser currentUser].avatar = nil;
         [DGUser assignDefaults];
-        [TSMessage showNotificationInViewController:self.navigationController
+        [DGMessage showSuccessInViewController:self.navigationController
                               title:NSLocalizedString(@"Profile photo updated", nil)
-                            subtitle:nil
-                               type:TSMessageNotificationTypeSuccess];
+                            subtitle:nil];
         if ([self.delegate respondsToSelector:@selector(childViewControllerDidUpdatePhoto:)]) {
             [self.delegate childViewControllerDidUpdatePhoto:nil];
         }
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [TSMessage showNotificationInViewController:self.navigationController
+        [DGMessage showErrorInViewController:self.navigationController
                               title:NSLocalizedString(@"Oops", nil)
-                            subtitle:NSLocalizedString(@"Couldn't remove your photo.", nil)
-                               type:TSMessageNotificationTypeError];
+                            subtitle:NSLocalizedString(@"Couldn't remove your photo.", nil)];
     }];
 }
 
@@ -195,10 +193,9 @@
                 [DGUser assignDefaults];
                 [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidUpdateAccountNotification object:nil];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                [TSMessage showNotificationInViewController:self.navigationController
+                [DGMessage showErrorInViewController:self.navigationController
                                       title:NSLocalizedString(@"Oops", nil)
-                                    subtitle:NSLocalizedString(@"Couldn't update your name.", nil)
-                                       type:TSMessageNotificationTypeError];
+                                    subtitle:NSLocalizedString(@"Couldn't update your name.", nil)];
             }];
         } else {
             DebugLog(@"don't update full name");
@@ -212,10 +209,9 @@
                 [DGUser currentUser].biography = textField.text;
                 [DGUser assignDefaults];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                [TSMessage showNotificationInViewController:self.navigationController
+                [DGMessage showErrorInViewController:self.navigationController
                                       title:NSLocalizedString(@"Oops", nil)
-                                    subtitle:NSLocalizedString(@"Couldn't update your biography.", nil)
-                                       type:TSMessageNotificationTypeError];
+                                    subtitle:NSLocalizedString(@"Couldn't update your biography.", nil)];
             }];
         } else {
             DebugLog(@"don't update bio");
@@ -229,10 +225,9 @@
                 [DGUser currentUser].location = textField.text;
                 [DGUser assignDefaults];
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                [TSMessage showNotificationInViewController:self.navigationController
+                [DGMessage showErrorInViewController:self.navigationController
                                       title:NSLocalizedString(@"Oops", nil)
-                                    subtitle:NSLocalizedString(@"Couldn't update your biography.", nil)
-                                       type:TSMessageNotificationTypeError];
+                                    subtitle:NSLocalizedString(@"Couldn't update your biography.", nil)];
             }];
         } else {
             DebugLog(@"don't update location");
@@ -248,10 +243,9 @@
             [[RKObjectManager sharedManager] putObject:user path:user_update_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
                 [DGUser currentUser].phone = textField.text;
             } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-                [TSMessage showNotificationInViewController:self.navigationController
+                [DGMessage showErrorInViewController:self.navigationController
                                       title:NSLocalizedString(@"Oops", nil)
-                                    subtitle:NSLocalizedString(@"Couldn't update your biography.", nil)
-                                       type:TSMessageNotificationTypeError];
+                                    subtitle:NSLocalizedString(@"Couldn't update your biography.", nil)];
             }];
         } else {
             DebugLog(@"don't update phone");

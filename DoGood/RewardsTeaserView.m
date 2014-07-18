@@ -127,7 +127,7 @@
 
 - (void)didClaimReward:(NSNotification *)notification {
     DGReward *reward = [[notification userInfo] valueForKey:@"reward"];
-    [TSMessage showNotificationInViewController:self.navigationController title:NSLocalizedString(@"Reward claimed!", nil) subtitle:[NSString stringWithFormat:@"%@ is yours", reward.title] type:TSMessageNotificationTypeSuccess];
+    [DGMessage showSuccessInViewController:self.navigationController title:NSLocalizedString(@"Reward claimed!", nil) subtitle:[NSString stringWithFormat:@"%@ is yours", reward.title]];
 }
 
 @end

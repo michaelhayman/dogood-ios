@@ -335,10 +335,9 @@
                 DebugLog(@"failed to add");
                 [self decreaseVote];
                 DebugLog(@"%@", [error userInfo]);
-                [TSMessage showNotificationInViewController:self.navigationController
+                [DGMessage showErrorInViewController:self.navigationController
                                           title:nil
-                                        subtitle:[error localizedDescription]
-                                           type:TSMessageNotificationTypeError];
+                                        subtitle:[error localizedDescription]];
             }];
         } else {
             [self decreaseVote];
@@ -348,10 +347,9 @@
                 [self increaseVote];
                 DebugLog(@"%@", [error userInfo]);
 
-                [TSMessage showNotificationInViewController:self.navigationController
+                [DGMessage showErrorInViewController:self.navigationController
                                           title:nil
-                                        subtitle:[error localizedDescription]
-                                           type:TSMessageNotificationTypeError];
+                                        subtitle:[error localizedDescription]];
             }];
         }
     }
@@ -584,10 +582,9 @@
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 [ProgressHUD showSuccess:NSLocalizedString(@"Good deleted", nil)];
             } else {
-                [TSMessage showNotificationInViewController:self.parent
+                [DGMessage showErrorInViewController:self.parent
                                           title:NSLocalizedString(@"Good not deleted.", nil)
-                                       subtitle:[error localizedDescription]
-                                           type:TSMessageNotificationTypeError];
+                                       subtitle:[error localizedDescription]];
             }
         }];
     } else {

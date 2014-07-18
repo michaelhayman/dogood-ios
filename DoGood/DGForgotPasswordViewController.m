@@ -69,16 +69,14 @@
         DGUser *user = (mappingResult.array)[0];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSendPasswordNotification object:nil];
         DebugLog(@"password sent %@ %@", self.parentViewController, self.navigationController.parentViewController);
-        [TSMessage showNotificationInViewController:self.parentViewController
+        [DGMessage showSuccessInViewController:self.parentViewController
                                   title:NSLocalizedString(@"Password sent.", nil)
-                                           subtitle:user.message
-                                   type:TSMessageNotificationTypeSuccess];
+                                           subtitle:user.message];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
-        [TSMessage showNotificationInViewController:self.navigationController
+        [DGMessage showErrorInViewController:self.navigationController
                                   title:NSLocalizedString(@"Password not sent.", nil)
-                                subtitle:[error localizedDescription]
-                                   type:TSMessageNotificationTypeError];
+                                subtitle:[error localizedDescription]];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidFailSendPasswordNotification object:nil];
     }];
 }
