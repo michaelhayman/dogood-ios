@@ -264,7 +264,6 @@
 + (void)connectionFailedWithOperation:(NSNotification *)notification {
     RKObjectRequestOperation *operation = (RKObjectRequestOperation *)notification.object;
     DebugLog(@"failed!");
-    UINavigationController *nav = (UINavigationController *)[[UIApplication sharedApplication] keyWindow].rootViewController;
 
     if (operation) {
 
@@ -274,7 +273,6 @@
         switch (statusCode) {
             case 0: // no internet connection
             {
-                [TSMessage showNotificationInViewController:nav title:@"Couldn't connect" subtitle:@"No internet connection" type:TSMessageNotificationTypeError];
             }
                 break;
             case  401: // not authenticated

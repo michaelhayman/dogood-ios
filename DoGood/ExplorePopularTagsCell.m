@@ -1,6 +1,7 @@
 #import "ExplorePopularTagsCell.h"
 #import "TagCollectionCell.h"
 #import "DGGoodListViewController.h"
+#import <ProgressHUD/ProgressHUD.h>
 
 #define cellName @"TagCollectionCell"
 
@@ -35,6 +36,7 @@
         }
         [collectionView reloadData];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        [ProgressHUD showError:[error localizedDescription]];
         DebugLog(@"Hit error: %@", error);
     }];
 }
