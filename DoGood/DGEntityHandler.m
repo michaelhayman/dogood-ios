@@ -141,7 +141,6 @@
     if (accessoryView == nil) {
         accessoryView = [[UIInputView alloc] initWithFrame:CGRectMake(0, 0, 320, kToolbarHeight) inputViewStyle:UIInputViewStyleKeyboard];
     }
-    [entityTextView setInputAccessoryView:accessoryView];
 
     accessoryButtonMention = [UIButton buttonWithType:UIButtonTypeCustom];
     [accessoryButtonMention setFrame:CGRectMake(10.0f, 10.0f, 26.0f, 23.0f)];
@@ -160,8 +159,22 @@
     characterLimitLabel = [[UILabel alloc] initWithFrame:CGRectMake(275, 10, 35, 23)];
     characterLimitLabel.textAlignment = NSTextAlignmentRight;
     characterLimitLabel.backgroundColor = [UIColor clearColor];
-    [self setLimitText];
     [accessoryView addSubview:characterLimitLabel];
+
+    accessoryButtonMention.translatesAutoresizingMaskIntoConstraints = NO;
+    accessoryButtonTag.translatesAutoresizingMaskIntoConstraints = NO;
+    characterLimitLabel.translatesAutoresizingMaskIntoConstraints = NO;
+
+    NSDictionary *views     = @{ @"accessoryButtonMention"  :   accessoryButtonMention,
+                                 @"accessoryButtonTag"      :   accessoryButtonTag,
+                                 @"characterLimitLabel"     :   characterLimitLabel  };
+
+    [accessoryView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[accessoryButtonMention(26)]-14-[accessoryButtonTag(33)]-(>=10)-[characterLimitLabel(35)]-10-|" options:0 metrics:nil views:views]];
+    [accessoryView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[accessoryButtonMention(23)]-11-|" options:0 metrics:nil views:views]];
+    [accessoryView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[accessoryButtonTag(23)]-11-|" options:0 metrics:nil views:views]];
+    [accessoryView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[characterLimitLabel(23)]-11-|" options:0 metrics:nil views:views]];
+
+    [self setLimitText];
     [entityTextView setInputAccessoryView:accessoryView];
 }
 
