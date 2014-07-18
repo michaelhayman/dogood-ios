@@ -27,7 +27,6 @@ pod 'MJPopupViewController', :git => "git@github.com:doPanic/MJPopupViewControll
 pod 'SVPullToRefresh', '~> 0.4.1'
 pod 'CRNavigationController', '~> 0.0.1'
 pod 'SVWebViewController', '~> 1.0'
-pod 'GoogleAnalytics-iOS-SDK', '~> 3.0'
 pod 'ios-image-editor', '~> 1.1'
 
 # social
