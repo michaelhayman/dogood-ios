@@ -9,7 +9,6 @@
     self.title = @"Search";
     [self initTables];
     [self watchKeyboard];
-    [self selectPeople:peopleButton];
     tableView.hidden = YES;
 
     UINib *userNib = [UINib nibWithNibName:@"UserCell" bundle:nil];
@@ -27,6 +26,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     DebugLog(@"1. will appear called each time");
+    [self selectPeople:peopleButton];
     // headerViewToTopConstraint.constant = -30;
     headerViewToTopConstraint.constant = -130;
 }
