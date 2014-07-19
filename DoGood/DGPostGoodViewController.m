@@ -551,16 +551,15 @@
             [ProgressHUD showSuccess:@"Good posted!"];
         } failure:^(RKObjectRequestOperation *operation, NSError *error) {
             [DGMessage showErrorInViewController:self.navigationController
-                                      title:nil
-                                    subtitle:[error localizedDescription]];
-            [ProgressHUD showError:nil];
+                                      title:[error localizedDescription]
+                                    subtitle:nil];
         }];
 
         [[RKObjectManager sharedManager] enqueueObjectRequestOperation:operation]; // NOTE: Must be enqueued rather than started
     } else {
         [DGMessage showErrorInViewController:self.navigationController
-                                  title:nil
-                                subtitle:NSLocalizedString(message, nil)];
+                                  title:NSLocalizedString(message, nil)
+                                subtitle:nil];
     }
 }
 
