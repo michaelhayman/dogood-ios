@@ -161,6 +161,8 @@
 }
 
 - (void)removePhoto {
+    [ProgressHUD show:@"Removing avatar..."];
+
     [[RKObjectManager sharedManager] deleteObject:nil path:user_remove_avatar_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         avatar.image = nil;
         [DGUser currentUser].avatar_url = nil;
