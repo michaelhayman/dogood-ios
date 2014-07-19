@@ -118,23 +118,33 @@
 
     if ([self.good.done boolValue] == YES) {
         if ([self.good.nominee hasAvatar]) {
-            [self.avatar setImageWithURL:[self.good.nominee avatarURL]];
-            self.avatar.hidden = NO;
-            self.avatarHeight.constant = 57;
-            self.avatarHeightSpacing.constant = 8;
+            [self setNomineeImage];
+        } else if ([self.good.user hasAvatar]) {
+            [self setUserImage];
         } else {
-            DebugLog(@"no nominee avatar");
+            DebugLog(@"no nominee or user avatar");
         }
     } else {
         if ([self.good.user hasAvatar]) {
-            [self.avatar setImageWithURL:[self.good.user avatarURL]];
-            self.avatar.hidden = NO;
-            self.avatarHeight.constant = 57;
-            self.avatarHeightSpacing.constant = 8;
+            [self setUserImage];
         } else {
             DebugLog(@"no avatar");
         }
     }
+}
+
+- (void)setUserImage {
+    [self.avatar setImageWithURL:[self.good.user avatarURL]];
+    self.avatar.hidden = NO;
+    self.avatarHeight.constant = 57;
+    self.avatarHeightSpacing.constant = 8;
+}
+
+- (void)setNomineeImage {
+    [self.avatar setImageWithURL:[self.good.nominee avatarURL]];
+    self.avatar.hidden = NO;
+    self.avatarHeight.constant = 57;
+    self.avatarHeightSpacing.constant = 8;
 }
 
 - (void)setValues {
