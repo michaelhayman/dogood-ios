@@ -170,9 +170,9 @@
                                  @"characterLimitLabel"     :   characterLimitLabel  };
 
     [accessoryView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-10-[accessoryButtonMention(26)]-14-[accessoryButtonTag(33)]-(>=10)-[characterLimitLabel(35)]-10-|" options:0 metrics:nil views:views]];
-    [accessoryView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[accessoryButtonMention(23)]-11-|" options:0 metrics:nil views:views]];
-    [accessoryView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[accessoryButtonTag(23)]-11-|" options:0 metrics:nil views:views]];
-    [accessoryView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[characterLimitLabel(23)]-11-|" options:0 metrics:nil views:views]];
+    [accessoryView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[accessoryButtonMention(23)]-7-|" options:0 metrics:nil views:views]];
+    [accessoryView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[accessoryButtonTag(23)]-7-|" options:0 metrics:nil views:views]];
+    [accessoryView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-10-[characterLimitLabel(23)]-7-|" options:0 metrics:nil views:views]];
 
     [self setLimitText];
     [entityTextView setInputAccessoryView:accessoryView];
