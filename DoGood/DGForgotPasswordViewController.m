@@ -1,4 +1,5 @@
 #import "DGForgotPasswordViewController.h"
+#import <ProgressHUD/ProgressHUD.h>
 
 @interface DGForgotPasswordViewController ()
 
@@ -65,15 +66,19 @@
     user.email = email;
     user.password = nil;
 
+    [ProgressHUD show:@"Sending password..."];
+
     [[RKObjectManager sharedManager] postObject:user path:user_password_path parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
         DGUser *user = (mappingResult.array)[0];
         [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidSendPasswordNotification object:nil];
         DebugLog(@"password sent %@ %@", self.parentViewController, self.navigationController.parentViewController);
+        [ProgressHUD dismiss];
         [DGMessage showSuccessInViewController:self.parentViewController
                                   title:NSLocalizedString(@"Password sent.", nil)
                                            subtitle:user.message];
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         DebugLog(@"Operation failed with error: %@", error);
+        [ProgressHUD dismiss];
         [DGMessage showErrorInViewController:self.navigationController
                                   title:NSLocalizedString(@"Password not sent.", nil)
                                 subtitle:[error localizedDescription]];
