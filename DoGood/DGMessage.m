@@ -1,22 +1,30 @@
 #import "DGMessage.h"
-#import "TSMessage.h"
+#import <ProgressHUD/ProgressHUD.h>
 
 @implementation DGMessage
 
 + (void)showSuccessInViewController:(UIViewController *)viewController
                                    title:(NSString *)title
                                 subtitle:(NSString *)subtitle {
-    [TSMessage showNotificationInViewController:viewController title:title subtitle:subtitle type:TSMessageNotificationTypeSuccess];
+    [ProgressHUD showSuccess:[self buildMessage:title withSubmessage:subtitle] Interaction:YES];
 }
 
 + (void)showErrorInViewController:(UIViewController *)viewController
                                    title:(NSString *)title
                                 subtitle:(NSString *)subtitle {
-    [TSMessage showNotificationInViewController:viewController title:title subtitle:subtitle type:TSMessageNotificationTypeError];
+    [ProgressHUD showError:[self buildMessage:title withSubmessage:subtitle] Interaction:YES];
 }
 
 + (void)dismissActiveNotification {
-    [TSMessage dismissActiveNotification];
+    [ProgressHUD dismiss];
+}
+
++ (NSString *)buildMessage:(NSString *)title withSubmessage:(NSString *)subtitle {
+    if (subtitle) {
+        return [NSString stringWithFormat:@"%@\n%@", title, subtitle];
+    } else {
+        return title;
+    }
 }
 
 @end
