@@ -22,6 +22,7 @@
     [super viewDidLoad];
     // one time events
     [self registerNotifications];
+    [self setupMenuTitle:@"Profile"];
     self.view.backgroundColor = [UIColor whiteColor];
 
     loadingView = [[SAMLoadingView alloc] initWithFrame:self.view.bounds];
