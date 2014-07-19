@@ -153,6 +153,7 @@
         }
     } failure:^(RKObjectRequestOperation *operation, NSError *error) {
         avatar.image = currentImage;
+        [ProgressHUD dismiss];
         [DGMessage showErrorInViewController:self.navigationController title:nil subtitle:NSLocalizedString(@"Avatar upload failed", nil)];
     }];
 
