@@ -15,7 +15,7 @@ pod 'RFKeychain', '~> 0.1'
 pod 'Inflections', '~> 1.0.0'
 pod "UINavigationBar+Addition", '~> 1.0.0'
 pod 'SHEmailValidator', '~> 1.0'
-pod 'ProgressHUD', :git => "git@github.com:relatedcode/ProgressHUD.git"
+pod 'ProgressHUD', :git => "git@github.com:relatedcode/ProgressHUD.git", :tag => 'v2.1'
 pod 'UIAlertView+Blocks', '~> 0.8.1'
 pod 'SAMLoadingView', '~> 0.1.0'
 pod 'UIImage-Categories', '~> 0.0.1'
