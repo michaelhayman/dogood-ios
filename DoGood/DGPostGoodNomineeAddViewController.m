@@ -14,6 +14,7 @@
     photos = [[DGPhotoPickerViewController alloc] init];
     photos.parent = self;
     photos.delegate = self;
+    photos.initiatorView = avatarImage;
     UITapGestureRecognizer* imageGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPhotoSheet)];
     [avatarImage setUserInteractionEnabled:YES];
     [avatarImage addGestureRecognizer:imageGesture];
