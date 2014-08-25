@@ -221,26 +221,28 @@
 }
 
 - (void)toggleFollow {
-    if (centralButton.isSelected == NO) {
-        [self increaseFollow];
-
-        [DGFollow followType:@"User" withID:user.userID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
-            DebugLog(@"%@", msg);
-            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeFollowOnUser object:nil];
-        } failure:^(NSError *error) {
-            [self decreaseFollow];
-            DebugLog(@"failed to remove follow");
-        }];
-    } else {
-        [self decreaseFollow];
-
-        [DGFollow unfollowType:@"User" withID:user.userID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeFollowOnUser object:nil];
-            DebugLog(@"%@", msg);
-        } failure:^(NSError *error) {
+    if ([[DGUser currentUser] authorizeAccess:self.navigationController.visibleViewController]) {
+        if (centralButton.isSelected == NO) {
             [self increaseFollow];
-            DebugLog(@"failed to remove follow");
-        }];
+
+            [DGFollow followType:@"User" withID:user.userID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+                DebugLog(@"%@", msg);
+                [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeFollowOnUser object:nil];
+            } failure:^(NSError *error) {
+                [self decreaseFollow];
+                DebugLog(@"failed to remove follow");
+            }];
+        } else {
+            [self decreaseFollow];
+
+            [DGFollow unfollowType:@"User" withID:user.userID inController:self.navigationController withSuccess:^(BOOL success, NSString *msg) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:DGUserDidChangeFollowOnUser object:nil];
+                DebugLog(@"%@", msg);
+            } failure:^(NSError *error) {
+                [self increaseFollow];
+                DebugLog(@"failed to remove follow");
+            }];
+        }
     }
 }
 
