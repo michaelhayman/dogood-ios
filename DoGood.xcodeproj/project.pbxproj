@@ -171,6 +171,7 @@
 /* Begin PBXFileReference section */
 		0150758A9E934060AF039752 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		11FE41B560D84B2CBCCF920E /* libPods-DoGoodTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DoGoodTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		352331413810B7B79597FA08 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		630046CE1810E619001529E5 /* URLHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLHandler.h; sourceTree = "<group>"; };
 		630046CF1810E619001529E5 /* URLHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLHandler.m; sourceTree = "<group>"; };
 		6303A33517FE322100E2EACD /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -424,8 +425,11 @@
 		63FDAC4F181C651400668B15 /* HighlightCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighlightCollectionCell.h; sourceTree = "<group>"; };
 		63FDAC50181C651400668B15 /* HighlightCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighlightCollectionCell.m; sourceTree = "<group>"; };
 		63FDAC51181C651400668B15 /* HighlightCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HighlightCollectionCell.xib; sourceTree = "<group>"; };
-		66189FDD6F34462B8CF25EBA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
-		C887EBE07C4143FEBAED6057 /* Pods-DoGoodTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoGoodTests.xcconfig"; path = "Pods/Pods-DoGoodTests.xcconfig"; sourceTree = "<group>"; };
+		8906A591CFB9C0755783C2F1 /* Pods-DoGoodTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoGoodTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoGoodTests/Pods-DoGoodTests.release.xcconfig"; sourceTree = "<group>"; };
+		9D00C033481BD963E2C0371D /* Pods-DoGoodTests.ad hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoGoodTests.ad hoc.xcconfig"; path = "Pods/Target Support Files/Pods-DoGoodTests/Pods-DoGoodTests.ad hoc.xcconfig"; sourceTree = "<group>"; };
+		9D4C1DC4988BADA948966EA0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A0E187C6E790E25BC8EC5ABF /* Pods-DoGoodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoGoodTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoGoodTests/Pods-DoGoodTests.debug.xcconfig"; sourceTree = "<group>"; };
+		C77C2AA6D72B6895C1C07C2B /* Pods.ad hoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods.ad hoc.xcconfig"; path = "Pods/Target Support Files/Pods/Pods.ad hoc.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,8 +488,12 @@
 			children = (
 				0150758A9E934060AF039752 /* libPods.a */,
 				11FE41B560D84B2CBCCF920E /* libPods-DoGoodTests.a */,
-				66189FDD6F34462B8CF25EBA /* Pods.xcconfig */,
-				C887EBE07C4143FEBAED6057 /* Pods-DoGoodTests.xcconfig */,
+				352331413810B7B79597FA08 /* Pods.debug.xcconfig */,
+				9D4C1DC4988BADA948966EA0 /* Pods.release.xcconfig */,
+				C77C2AA6D72B6895C1C07C2B /* Pods.ad hoc.xcconfig */,
+				A0E187C6E790E25BC8EC5ABF /* Pods-DoGoodTests.debug.xcconfig */,
+				8906A591CFB9C0755783C2F1 /* Pods-DoGoodTests.release.xcconfig */,
+				9D00C033481BD963E2C0371D /* Pods-DoGoodTests.ad hoc.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -880,7 +888,6 @@
 				638647DB17AC087A00167F15 /* Frameworks */,
 				638647DC17AC087A00167F15 /* Resources */,
 				F3D0D79116FB4646BCA44F74 /* Copy Pods Resources */,
-				632FC68318FD72B100AA447D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -898,7 +905,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = DG;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Michael;
 				TargetAttributes = {
 					6304B64518E0DC2600CA0E36 = {
@@ -996,7 +1003,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-DoGoodTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DoGoodTests/Pods-DoGoodTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		436891D47140469292DED439 /* Check Pods Manifest.lock */ = {
@@ -1013,19 +1020,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
-		};
-		632FC68318FD72B100AA447D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/bin/bash -e";
-			shellScript = "mdfind -onlyin \"${SRCROOT}\" \"kMDItemContentTypeTree == public.font\" -0 | sort -z | xargs -0 /usr/local/bin/moarfonts install";
 		};
 		C748F4145C9C4F3192AB0F41 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1054,7 +1048,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1219,7 +1213,7 @@
 /* Begin XCBuildConfiguration section */
 		6304B65618E0DC2600CA0E36 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C887EBE07C4143FEBAED6057 /* Pods-DoGoodTests.xcconfig */;
+			baseConfigurationReference = A0E187C6E790E25BC8EC5ABF /* Pods-DoGoodTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DoGood.app/DoGood";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1245,7 +1239,7 @@
 		};
 		6304B65718E0DC2600CA0E36 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C887EBE07C4143FEBAED6057 /* Pods-DoGoodTests.xcconfig */;
+			baseConfigurationReference = 8906A591CFB9C0755783C2F1 /* Pods-DoGoodTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DoGood.app/DoGood";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1299,19 +1293,18 @@
 		};
 		6377F88E1963711C0070AAAC /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 66189FDD6F34462B8CF25EBA /* Pods.xcconfig */;
+			baseConfigurationReference = C77C2AA6D72B6895C1C07C2B /* Pods.ad hoc.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DoGood/DoGood-Prefix.pch";
 				INFOPLIST_FILE = "DoGood/DoGood-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = DoGood;
-				PROVISIONING_PROFILE = "6B3F5503-3BDA-4A6D-87CD-CC7E664C6FC3";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1319,7 +1312,7 @@
 		};
 		6377F88F1963711C0070AAAC /* Ad Hoc */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C887EBE07C4143FEBAED6057 /* Pods-DoGoodTests.xcconfig */;
+			baseConfigurationReference = 9D00C033481BD963E2C0371D /* Pods-DoGoodTests.ad hoc.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/DoGood.app/DoGood";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1411,13 +1404,12 @@
 		};
 		6386481417AC087A00167F15 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 66189FDD6F34462B8CF25EBA /* Pods.xcconfig */;
+			baseConfigurationReference = 352331413810B7B79597FA08 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DoGood/DoGood-Prefix.pch";
 				INFOPLIST_FILE = "DoGood/DoGood-Info.plist";
@@ -1439,19 +1431,18 @@
 		};
 		6386481517AC087A00167F15 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 66189FDD6F34462B8CF25EBA /* Pods.xcconfig */;
+			baseConfigurationReference = 9D4C1DC4988BADA948966EA0 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DoGood/DoGood-Prefix.pch";
 				INFOPLIST_FILE = "DoGood/DoGood-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = DoGood;
-				PROVISIONING_PROFILE = "2140FE03-F83D-4633-900A-C03BF322D717";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
