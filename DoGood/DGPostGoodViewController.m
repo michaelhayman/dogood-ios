@@ -273,7 +273,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     GoodOverviewCell *cell = [self overviewCell];
-    [cell.description resignFirstResponder];
+    [cell.descriptionText resignFirstResponder];
 
     UITableViewCell * selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.section == nominee) {
@@ -359,7 +359,7 @@
 - (void)openPhotoSheet {
     [photos openPhotoSheet:self.good.image];
     GoodOverviewCell *cell = [self overviewCell];
-    [cell.description resignFirstResponder];
+    [cell.descriptionText resignFirstResponder];
 }
 
 - (GoodOverviewCell *)overviewCell {
@@ -440,7 +440,7 @@
 #pragma mark - actions
 - (IBAction)post:(id)sender {
     GoodOverviewCell *cell = [self overviewCell];
-    self.good.caption = cell.description.text;
+    self.good.caption = cell.descriptionText.text;
 
     UISwitch *twitter = (UISwitch *)[self.tableView viewWithTag:share_twitter_cell_tag];
     self.good.shareTwitter = twitter.on;
@@ -472,7 +472,7 @@
     }
 
     if (!errors) {
-        [cell.description resignFirstResponder];
+        [cell.descriptionText resignFirstResponder];
         [ProgressHUD show:@"Posting good..."];
 
         NSMutableURLRequest *request = [[RKObjectManager sharedManager] multipartFormRequestWithObject:self.good method:RKRequestMethodPOST path:@"/goods.json" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {

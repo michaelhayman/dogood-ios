@@ -6,7 +6,7 @@
     CGFloat totalKeyboardHeight;
 }
 
-@property (weak, nonatomic) IBOutlet UITextView *description;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionText;
 @property (weak, nonatomic) IBOutlet UITextView *placeholder;
 
 @property (strong, nonatomic) DGEntityHandler *entityHandler;

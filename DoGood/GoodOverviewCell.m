@@ -7,13 +7,13 @@
     [super awakeFromNib];
     characterLimit = 500;
     self.entities = [[NSMutableArray alloc] init];
-    self.description.allowsEditingTextAttributes = NO;
-    self.description.delegate = self;
+    self.descriptionText.allowsEditingTextAttributes = NO;
+    self.descriptionText.delegate = self;
     self.placeholder.hidden = NO;
 }
 
 - (void)initEntityHandler {
-    self.entityHandler = [[DGEntityHandler alloc] initWithTextView:self.description andEntities:self.entities inController:self.parent andLinkID:[NSNumber numberWithInt:9] reverseScroll:NO tableOffset:100 secondTableOffset:64 characterLimit:characterLimit];
+    self.entityHandler = [[DGEntityHandler alloc] initWithTextView:self.descriptionText andEntities:self.entities inController:self.parent andLinkID:[NSNumber numberWithInt:9] reverseScroll:NO tableOffset:100 secondTableOffset:64 characterLimit:characterLimit];
 }
 
 - (void)prepareForReuse {

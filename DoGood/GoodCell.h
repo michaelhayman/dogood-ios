@@ -49,7 +49,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *nomineeHeight;
 
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *postedBy;
-@property (weak, nonatomic) IBOutlet TTTAttributedLabel *description;
+@property (weak, nonatomic) IBOutlet TTTAttributedLabel *formattedCaption;
 @property (weak, nonatomic) IBOutlet UIButton *vote;
 @property (weak, nonatomic) IBOutlet UIButton *comment;
 @property (weak, nonatomic) IBOutlet UIButton *follow;
