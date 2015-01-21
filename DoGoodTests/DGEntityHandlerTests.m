@@ -25,7 +25,8 @@
 
     textView = [[UITextView alloc] init];
     textView.text = @"Michael Hayman is a guy who likes to program";
-    entityHandler = [[DGEntityHandler alloc] initWithTextView:textView andEntities:entities inController:mockView withType:@"notsure" reverseScroll:YES tableOffset:5 secondTableOffset:6];
+
+    entityHandler = [[DGEntityHandler alloc] initWithTextView:textView andEntities:entities inController:mockView andLinkID:[NSNumber numberWithInteger:5] reverseScroll:YES tableOffset:5 secondTableOffset:6 characterLimit:YES];
 }
 
 - (void)tearDown {
