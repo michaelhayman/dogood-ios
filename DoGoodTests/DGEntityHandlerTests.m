@@ -16,12 +16,15 @@
 {
     [super setUp];
     entities = [[NSMutableArray alloc] init];
+
     DGEntity *entity = [[DGEntity alloc] init];
     entity.range = [[NSArray alloc] initWithObjects:[NSNumber numberWithInt:5], [NSNumber numberWithInt:6], nil];
     [entities addObject:entity];
+
     UIViewController *mockView = [[UIViewController alloc] init];
+
     textView = [[UITextView alloc] init];
-    textView.text = @"Michael Hayman is a guy who lkes to program";
+    textView.text = @"Michael Hayman is a guy who likes to program";
     entityHandler = [[DGEntityHandler alloc] initWithTextView:textView andEntities:entities inController:mockView withType:@"notsure" reverseScroll:YES tableOffset:5 secondTableOffset:6];
 }
 
