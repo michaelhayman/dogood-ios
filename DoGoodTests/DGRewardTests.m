@@ -21,7 +21,7 @@
 
 - (void)testRewardText {
     reward.cost = [NSNumber numberWithInteger:56];
-    XCTAssertEqualObjects([reward costText], @"56 good", @"the amount of good should be set in readable text");
+    XCTAssertEqualObjects([reward costText], @"56 points", @"the amount of good should be set in readable text");
 }
 
 @end
