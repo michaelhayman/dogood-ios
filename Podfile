@@ -32,21 +32,6 @@ pod 'ios-image-editor', '~> 1.1'
 pod 'SocialAuth', :git => "git@github.com:michaelhayman/SocialAuth.git"
 
 target "DoGoodTests", :exclusive => true do
-    # pod 'RKKiwiMatchers'
     pod 'OHHTTPStubs'
 end
 
-# not used yet
-# pod 'RestKit/Testing', '~> 0.20.0'
-# pod 'ReactiveCocoa'
-# pod 'NSData+Base64'
-# pod 'JMTabView'
-# pod 'SDSegmentedControl'
-# pod 'NUI'
-# pod 'UISS'
-# pod 'Foursquare-API-v2'
-# social
-# pod 'STTwitter'
-# pod 'STTwitter', :head
-# pod 'Facebook-iOS-SDK', '~> 3.7'
-# pod 'Facebook-iOS-SDK', '~> 3.8'
