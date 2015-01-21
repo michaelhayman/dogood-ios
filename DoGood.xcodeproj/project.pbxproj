@@ -13,7 +13,7 @@
 		6304B66318E0DCA200CA0E36 /* DGURLHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65818E0DCA200CA0E36 /* DGURLHandlerTests.m */; };
 		6304B66418E0DCA200CA0E36 /* DGEntityHandlerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65918E0DCA200CA0E36 /* DGEntityHandlerTests.m */; };
 		6304B66618E0DCA200CA0E36 /* DGUserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65B18E0DCA200CA0E36 /* DGUserTests.m */; };
-		6304B66718E0DCA200CA0E36 /* DGComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65C18E0DCA200CA0E36 /* DGComment.m */; };
+		6304B66718E0DCA200CA0E36 /* DGCommentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65C18E0DCA200CA0E36 /* DGCommentTests.m */; };
 		6304B66818E0DCA200CA0E36 /* DGErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65D18E0DCA200CA0E36 /* DGErrorTests.m */; };
 		6304B66918E0DCA200CA0E36 /* DGRewardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65E18E0DCA200CA0E36 /* DGRewardTests.m */; };
 		6304B66A18E0DCA200CA0E36 /* DGBlankTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65F18E0DCA200CA0E36 /* DGBlankTests.m */; };
@@ -181,7 +181,7 @@
 		6304B65818E0DCA200CA0E36 /* DGURLHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGURLHandlerTests.m; sourceTree = "<group>"; };
 		6304B65918E0DCA200CA0E36 /* DGEntityHandlerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEntityHandlerTests.m; sourceTree = "<group>"; };
 		6304B65B18E0DCA200CA0E36 /* DGUserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserTests.m; sourceTree = "<group>"; };
-		6304B65C18E0DCA200CA0E36 /* DGComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGComment.m; sourceTree = "<group>"; };
+		6304B65C18E0DCA200CA0E36 /* DGCommentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCommentTests.m; sourceTree = "<group>"; };
 		6304B65D18E0DCA200CA0E36 /* DGErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGErrorTests.m; sourceTree = "<group>"; };
 		6304B65E18E0DCA200CA0E36 /* DGRewardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRewardTests.m; sourceTree = "<group>"; };
 		6304B65F18E0DCA200CA0E36 /* DGBlankTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGBlankTests.m; sourceTree = "<group>"; };
@@ -458,7 +458,7 @@
 				6304B65818E0DCA200CA0E36 /* DGURLHandlerTests.m */,
 				6304B65918E0DCA200CA0E36 /* DGEntityHandlerTests.m */,
 				6304B65B18E0DCA200CA0E36 /* DGUserTests.m */,
-				6304B65C18E0DCA200CA0E36 /* DGComment.m */,
+				6304B65C18E0DCA200CA0E36 /* DGCommentTests.m */,
 				6304B65D18E0DCA200CA0E36 /* DGErrorTests.m */,
 				6304B65E18E0DCA200CA0E36 /* DGRewardTests.m */,
 				6304B65F18E0DCA200CA0E36 /* DGBlankTests.m */,
@@ -1055,7 +1055,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6304B66718E0DCA200CA0E36 /* DGComment.m in Sources */,
+				6304B66718E0DCA200CA0E36 /* DGCommentTests.m in Sources */,
 				6304B66A18E0DCA200CA0E36 /* DGBlankTests.m in Sources */,
 				6304B66818E0DCA200CA0E36 /* DGErrorTests.m in Sources */,
 				6304B66618E0DCA200CA0E36 /* DGUserTests.m in Sources */,

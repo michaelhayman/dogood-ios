@@ -14,7 +14,7 @@
 
     __weak IBOutlet UITableView *tableView;
     NSMutableArray *comments;
-    int page;
+    NSInteger page;
 
     __weak IBOutlet NSLayoutConstraint *tableViewBottom;
     __weak IBOutlet UIButton *sendButton;

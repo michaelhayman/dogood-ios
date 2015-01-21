@@ -16,4 +16,10 @@
 - (NSString *)commentWithUsername;
 - (CGFloat)commentBoxWidth;
 
+typedef void (^RetrieveCommentsBlock)(NSArray *comments, NSError *error);
++ (void)getCommentsForGood:(DGGood *)good page:(NSInteger)page completion:(RetrieveCommentsBlock)completion;
+
+typedef void (^ManageCommentBlock)(DGComment *comment, NSError *error);
++ (void)postComment:(DGComment *)comment completion:(ManageCommentBlock)completion;
+
 @end

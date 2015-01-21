@@ -88,22 +88,23 @@
 
 #pragma mark - Comment retrieval ----------
 - (void)getComments {
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:page], @"page", self.good.goodID, @"good_id", nil];
+    [DGComment getCommentsForGood:self.good page:page completion:^(NSArray *retrievedComments, NSError *error) {
+        if (error) {
+            loadingStatus = @"Couldn't connect";
 
-    [[RKObjectManager sharedManager] getObjectsAtPath:@"/comments" parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [comments addObjectsFromArray:mappingResult.array];
+            [loadingView removeFromSuperview];
+            DebugLog(@"Operation failed with error: %@", error);
+            [tableView reloadData];
+            return;
+        }
+
+        [comments addObjectsFromArray:retrievedComments];
         loadingStatus = @"No comments posted yet";
 
         [tableView reloadData];
         [tableView.infiniteScrollingView stopAnimating];
         [loadingView removeFromSuperview];
         DebugLog(@"reloading data");
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        loadingStatus = @"Couldn't connect";
-
-        [loadingView removeFromSuperview];
-        DebugLog(@"Operation failed with error: %@", error);
-        [tableView reloadData];
     }];
 }
 
@@ -216,31 +217,28 @@
     newComment.entities = parsedEntities;
 
     if (![commentInputField.text isEqualToString:@""]) {
-        [[RKObjectManager sharedManager] postObject:newComment path:@"/comments" parameters:nil success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        [DGComment postComment:newComment completion:^(DGComment *comment, NSError *error) {
             sendButton.enabled = YES;
+
+            if (error) {
+                DebugLog(@"error %@", [error description]);
+                [DGMessage showErrorInViewController:self.navigationController title:NSLocalizedString(@"Couldn't save the comment", nil) subtitle:NSLocalizedString([error localizedDescription], nil)];
+                return;
+            }
 
             [commentInputView becomeFirstResponder];
+
             commentInputField.text = @"";
+
             [DGMessage showSuccessInViewController:self.navigationController title:NSLocalizedString(@"Comment Saved!", nil) subtitle:nil];
+
             [entities removeAllObjects];
-            // [self getComments];
+
             [self textViewDidChange:commentInputField];
             [self resetTextView];
-            [self addComment:[mappingResult.array objectAtIndex:0]];
+            [self addComment:newComment];
+
             [DGNotification promptForNotifications];
-
-            /* Add comment to previous page...
-            self.good.comments = comments;
-            // use metadata eventually
-            self.good.comments_count = [NSNumber numberWithInt: [comments count]];
-            self.goodCell.good = self.good;
-            [self.goodCell reloadCell];
-            */
-        } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-            [DGMessage showErrorInViewController:self.navigationController title:NSLocalizedString(@"Couldn't save the comment", nil) subtitle:NSLocalizedString([error localizedDescription], nil)];
-
-            sendButton.enabled = YES;
-            DebugLog(@"error %@", [error description]);
         }];
     }
 }
