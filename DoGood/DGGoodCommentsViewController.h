@@ -30,7 +30,6 @@
 
 @property BOOL makeComment;
 @property DGGood *good;
-@property (nonatomic, strong) DGComment *comment;
 @property (nonatomic, weak) GoodCell *goodCell;
 
 @end

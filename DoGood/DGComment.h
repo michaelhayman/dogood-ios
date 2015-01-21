@@ -14,7 +14,7 @@
 
 - (NSString *)createdAgoInWords;
 - (NSString *)commentWithUsername;
-- (CGFloat)commentBoxWidth;
++ (CGFloat)commentBoxWidth;
 
 typedef void (^RetrieveCommentsBlock)(NSArray *comments, NSError *error);
 + (void)getCommentsForGood:(DGGood *)good page:(NSInteger)page completion:(RetrieveCommentsBlock)completion;

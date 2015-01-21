@@ -14,7 +14,7 @@ static NSString * const kCommentsURL = @"/comments";
     return [NSString stringWithFormat:@"%@ %@", self.user.full_name, self.comment];
 }
 
-- (CGFloat)commentBoxWidth {
++ (CGFloat)commentBoxWidth {
     if (iPad) {
         UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
         if (UIInterfaceOrientationIsPortrait(orientation)) {
