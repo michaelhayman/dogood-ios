@@ -33,6 +33,7 @@ pod 'SocialAuth', :git => "git@github.com:michaelhayman/SocialAuth.git"
 
 target "DoGoodTests", :exclusive => true do
     # pod 'RKKiwiMatchers'
+    pod 'OHHTTPStubs'
 end
 
 # not used yet

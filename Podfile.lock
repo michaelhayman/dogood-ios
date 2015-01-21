@@ -12,10 +12,13 @@ PODS:
   - NSDate+TimeAgo (1.0.2)
   - OAuthCore (0.0.1):
     - NSData+Base64
+  - OHHTTPStubs (3.1.10):
+    - OHHTTPStubs/Core (= 3.1.10)
+  - OHHTTPStubs/Core (3.1.10)
   - ProgressHUD (2.1)
   - RegexKitLite (4.0)
   - RestKit (0.21.0):
-    - RestKit/Core
+    - RestKit/Core (= 0.21.0)
   - RestKit/Core (0.21.0):
     - RestKit/CoreData
     - RestKit/Network
@@ -56,6 +59,7 @@ DEPENDENCIES:
   - ios-image-editor (~> 1.1)
   - MJPopupViewController (from `git@github.com:doPanic/MJPopupViewController.git`)
   - NSDate+TimeAgo (~> 1.0.2)
+  - OHHTTPStubs
   - ProgressHUD (from `git@github.com:relatedcode/ProgressHUD.git`, tag `v2.1`)
   - RestKit (~> 0.21.0)
   - RFKeychain (~> 0.1)
@@ -90,6 +94,7 @@ SPEC CHECKSUMS:
   NSData+Base64: aae92a2e3f0bd88b29fe6093551ded3f5c062548
   NSDate+TimeAgo: c01d6ac0b81add41f77f264fa4276d355723fcde
   OAuthCore: 09d3c56dd3f64a61d1ffcbf103f28118ff8ca2e9
+  OHHTTPStubs: 2038e929b6abb94881000524c1cb4aba0a1bb4a2
   ProgressHUD: 107f0266a48b326563096846ae602fd4010578a6
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   RestKit: 02cb6d613048fdb123b51a7fc31542b6414cc08f
