@@ -41,8 +41,8 @@
     XCTAssertTrue(sup, @"should return that we can change the text");
 }
 
-- (void)testDeleteRange {
-    NSRange range = NSMakeRange(5, 1);
+- (void)testUnmatchedRange {
+    NSRange range = NSMakeRange(0, 4);
     BOOL sup = [entityHandler check:textView range:range forEntities:entities completion:^BOOL(BOOL end, NSMutableArray *theseEntities) {
         XCTAssertTrue(end, @"allow editing and delete entity");
         NSMutableArray *emptyArray = [[NSMutableArray alloc] init];
