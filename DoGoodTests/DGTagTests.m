@@ -18,9 +18,9 @@
     [super tearDown];
 }
 
-- (void)testExample {
+- (void)testTagHash {
     tag.name = @"puppies";
-    XCTAssertEqualObjects([tag hashifiedName], @"#puppies", @"name should be hashified");
+    XCTAssertEqualObjects([tag hashifiedName], @"puppies", @"name should be hashified");
 }
 
 @end
