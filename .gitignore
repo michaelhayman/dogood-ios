@@ -4,7 +4,9 @@ DoGood.app.dSYM.zip
 DoGood.ipa
 DoGood.xcodeproj/project.xcworkspace/xcuserdata/
 DoGood.xcodeproj/xcuserdata/
+DoGood.xcodeproj/xcshareddata/
 DoGood.xcworkspace/xcuserdata/
+DoGood.xcworkspace/xcshareddata/
 DoGood/.DS_Store
 DoGood/Base.lproj/
 DoGood/Media.xcassets/.DS_Store
@@ -13,3 +15,4 @@ DoGoodTests/.DS_Store
 Frank/
 Pods/
 build/
+.LSOverride
