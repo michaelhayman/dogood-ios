@@ -7,11 +7,6 @@ PODS:
   - ios-image-editor (1.1.4)
   - ISO8601DateFormatterValueTransformer (0.5.0):
     - RKValueTransformers (~> 1.0.0)
-  - Kiwi/ARC (2.2.2)
-  - Kiwi/NonARC (2.2.2)
-  - Kiwi/XCTest (2.2.2):
-    - Kiwi/ARC
-    - Kiwi/NonARC
   - MJPopupViewController (1.1.1)
   - NSData+Base64 (1.0.0)
   - NSDate+TimeAgo (1.0.2)
@@ -59,7 +54,6 @@ DEPENDENCIES:
   - HockeySDK (~> 3.5.0)
   - Inflections (~> 1.0.0)
   - ios-image-editor (~> 1.1)
-  - Kiwi/XCTest (~> 2.2.2)
   - MJPopupViewController (from `git@github.com:doPanic/MJPopupViewController.git`)
   - NSDate+TimeAgo (~> 1.0.2)
   - ProgressHUD (from `git@github.com:relatedcode/ProgressHUD.git`, tag `v2.1`)
@@ -92,7 +86,6 @@ SPEC CHECKSUMS:
   Inflections: 38689e8c1b1d0064566a865e8a8229f80a4bee87
   ios-image-editor: eb2c5d23814956522aaa2bebbfe09d3e6087f828
   ISO8601DateFormatterValueTransformer: a7e1ecf4380d0b561306ced1a3f01bd5f65d2213
-  Kiwi: 513ec6b10d7545b0cbeeb89f4f3adffe8e5520be
   MJPopupViewController: 89f932b2a44b8348355300c99e8d3d6d5e3ee59a
   NSData+Base64: aae92a2e3f0bd88b29fe6093551ded3f5c062548
   NSDate+TimeAgo: c01d6ac0b81add41f77f264fa4276d355723fcde
@@ -115,4 +108,4 @@ SPEC CHECKSUMS:
   UIImage-Categories: 99245612a4725173db4f0a9ed8ba9dbe2a1e0b4f
   UINavigationBar+Addition: 75b1b709f000aa7de774df19d4fd9098ba939a51
 
-COCOAPODS: 0.34.4
+COCOAPODS: 0.35.0

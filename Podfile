@@ -32,7 +32,6 @@ pod 'ios-image-editor', '~> 1.1'
 pod 'SocialAuth', :git => "git@github.com:michaelhayman/SocialAuth.git"
 
 target "DoGoodTests", :exclusive => true do
-    pod 'Kiwi/XCTest', '~> 2.2.2'
     # pod 'RKKiwiMatchers'
 end
 
