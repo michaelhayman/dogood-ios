@@ -13,8 +13,6 @@
 
 @end
 
-// static NSString * const kCommentCell = @"CommentCell";
-
 @implementation DGCommentCellTests
 
 - (void)setUp {
@@ -39,6 +37,8 @@
 
     NSString *commentBody = [NSString stringWithFormat:@"%@ %@", cell.comment.user.full_name, cell.comment.comment];
     XCTAssertEqualObjects(cell.commentBody.text, commentBody);
+    XCTAssertNil(cell.avatar.image);
+    XCTAssertEqual(16, cell.commentBodyHeight.constant);
 }
 
 - (void)setupComment {
