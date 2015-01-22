@@ -13,6 +13,8 @@
 
 @implementation DGCommentTests
 
+#pragma mark - Set up and tear down
+
 - (void)setUp {
     [super setUp];
     comment = [[DGComment alloc] init];
@@ -24,7 +26,10 @@
 - (void)tearDown {
     [super tearDown];
     comment = nil;
+    [OHHTTPStubs removeAllStubs];
 }
+
+#pragma mark - Tests
 
 - (void)testCreation {
     comment.created_at = [NSDate distantPast];
@@ -43,8 +48,18 @@
 
     XCTestExpectation *exp = [self expectationWithDescription:@"Post Comment"];
 
+    NSString *errorMessage = @"Unauthorized Test";
+
+    [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+        return YES;
+    } withStubResponse:^OHHTTPStubsResponse *(NSURLRequest *request) {
+        NSDictionary* obj = @{ @"errors": @{ @"messages": @[ errorMessage ] } };
+        return [OHHTTPStubsResponse responseWithJSONObject:obj statusCode:401 headers:nil];
+    }];
+
     [DGComment postComment:comment completion:^(DGComment *postedComment, NSError *error) {
         XCTAssertNotNil(error);
+        XCTAssertEqualObjects([error localizedDescription], errorMessage);
         [exp fulfill];
     }];
 
@@ -57,7 +72,7 @@
     DGGood *good = [[DGGood alloc] init];
     good.goodID = [NSNumber numberWithInt:1];
 
-    NSString *commentBody = @"I like comments";
+    NSString *commentBody = @"I like posting comments";
 
     [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
         return YES;
@@ -83,7 +98,7 @@
     DGGood *good = [[DGGood alloc] init];
     good.goodID = [NSNumber numberWithInt:1];
 
-    NSString *commentBody = @"I like comments";
+    NSString *commentBody = @"I like getting comments";
 
     [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
         return YES;
