@@ -24,27 +24,27 @@
     [super viewDidLoad];
 
     [self setupMenuTitle:@"Comments"];
-    sendButton.enabled = NO;
+    self.sendButton.enabled = NO;
 
     // comments list
     UINib *nib = [UINib nibWithNibName:@"CommentCell" bundle:nil];
-    [tableView registerNib:nib forCellReuseIdentifier:@"CommentCell"];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"CommentCell"];
     UINib *noResultsNib = [UINib nibWithNibName:kNoResultsCell bundle:nil];
-    [tableView registerNib:noResultsNib forCellReuseIdentifier:kNoResultsCell];
-    comments = [[NSMutableArray alloc] init];
+    [self.tableView registerNib:noResultsNib forCellReuseIdentifier:kNoResultsCell];
+    self.comments = [[NSMutableArray alloc] init];
 
-    tableView.tableFooterView = [[UIView alloc] init];
+    self.tableView.tableFooterView = [[UIView alloc] init];
 
-    loadingView = [[SAMLoadingView alloc] initWithFrame:self.view.bounds];
-    loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    loadingStatus = @"Loading...";
+    self.loadingView = [[SAMLoadingView alloc] initWithFrame:self.view.bounds];
+    self.loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.loadingStatus = @"Loading...";
 
-    characterLimit = 120;
-    entities = [[NSMutableArray alloc] init];
-    commentInputField.allowsEditingTextAttributes = NO;
-    entityHandler = [[DGEntityHandler alloc] initWithTextView:commentInputField andEntities:entities inController:self andLinkID:self.good.goodID reverseScroll:YES tableOffset:64 secondTableOffset:44 characterLimit:characterLimit];
+    self.characterLimit = 120;
+    self.entities = [[NSMutableArray alloc] init];
+    self.commentInputField.allowsEditingTextAttributes = NO;
+    self.entityHandler = [[DGEntityHandler alloc] initWithTextView:self.commentInputField andEntities:self.entities inController:self andLinkID:self.good.goodID reverseScroll:YES tableOffset:64 secondTableOffset:44 characterLimit:self.characterLimit];
 
-    tableView.transform = CGAffineTransformMakeRotation(-M_PI);
+    self.tableView.transform = CGAffineTransformMakeRotation(-M_PI);
     // [self setupKeyboardBehaviour];
     [self setupInfiniteScroll];
 
@@ -64,10 +64,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    tableView.transform = CGAffineTransformMakeRotation(-M_PI);
+    self.tableView.transform = CGAffineTransformMakeRotation(-M_PI);
     [DGMessage dismissActiveNotification];
-    entityHandler = nil;
-    // [commentInputField resignFirstResponder];
+    self.entityHandler = nil;
+    // [self.commentInputField resignFirstResponder];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -88,49 +88,49 @@
 
 #pragma mark - Comment retrieval ----------
 - (void)getComments {
-    [DGComment getCommentsForGood:self.good page:page completion:^(NSArray *retrievedComments, NSError *error) {
+    [DGComment getCommentsForGood:self.good page:self.page completion:^(NSArray *retrievedComments, NSError *error) {
         if (error) {
-            loadingStatus = @"Couldn't connect";
+            self.loadingStatus = @"Couldn't connect";
 
-            [loadingView removeFromSuperview];
+            [self.loadingView removeFromSuperview];
             DebugLog(@"Operation failed with error: %@", error);
-            [tableView reloadData];
+            [self.tableView reloadData];
             return;
         }
 
-        [comments addObjectsFromArray:retrievedComments];
-        loadingStatus = @"No comments posted yet";
+        [self.comments addObjectsFromArray:retrievedComments];
+        self.loadingStatus = @"No comments posted yet";
 
-        [tableView reloadData];
-        [tableView.infiniteScrollingView stopAnimating];
-        [loadingView removeFromSuperview];
+        [self.tableView reloadData];
+        [self.tableView.infiniteScrollingView stopAnimating];
+        [self.loadingView removeFromSuperview];
         DebugLog(@"reloading data");
     }];
 }
 
 - (void)loadMoreComments {
-    page++;
+    self.page++;
     [self getComments];
 }
 
 - (void)resetComments {
-    page = 1;
-    [comments removeAllObjects];
+    self.page = 1;
+    [self.comments removeAllObjects];
 }
 
 - (void)reloadComments {
-    [self.view addSubview:loadingView];
+    [self.view addSubview:self.loadingView];
     [self resetComments];
     [self getComments];
 }
 
 - (void)setupInfiniteScroll {
-    tableView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+    self.tableView.infiniteScrollingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
 
     __weak DGGoodCommentsViewController *weakSelf = self;
-    __weak UITableView *weakTableView = tableView;
+    __weak UITableView *weakTableView = self.tableView;
 
-    [tableView addInfiniteScrollingWithActionHandler:^{
+    [self.tableView addInfiniteScrollingWithActionHandler:^{
         __strong DGGoodCommentsViewController *strongSelf = weakSelf;
         __strong UITableView *strongTableView = weakTableView;
         [strongTableView.infiniteScrollingView startAnimating];
@@ -140,20 +140,20 @@
 
 #pragma mark - UITableViewDelegate methods
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([comments count] == 0) {
-        tableView.transform = CGAffineTransformMakeRotation(M_PI);
+    if ([self.comments count] == 0) {
+        self.tableView.transform = CGAffineTransformMakeRotation(M_PI);
         static NSString * reuseIdentifier = kNoResultsCell;
         NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        [cell setHeading:nil andExplanation:loadingStatus];
-        [cell setHeading:nil explanation:loadingStatus andImage:[UIImage imageNamed:@"NoComments"]];
+        [cell setHeading:nil andExplanation:self.loadingStatus];
+        [cell setHeading:nil explanation:self.loadingStatus andImage:[UIImage imageNamed:@"NoComments"]];
         cell.transform = CGAffineTransformMakeRotation(-M_PI);
         return cell;
     }
-    tableView.transform = CGAffineTransformMakeRotation(-M_PI);
+    self.tableView.transform = CGAffineTransformMakeRotation(-M_PI);
 
     CommentCell *cell = [aTableView dequeueReusableCellWithIdentifier:@"CommentCell"];
     cell.transform = CGAffineTransformMakeRotation(M_PI);
-    DGComment * comment = comments[indexPath.row];
+    DGComment * comment = self.comments[indexPath.row];
     cell.comment = comment;
     cell.navigationController = self.navigationController;
     [cell setValues];
@@ -161,11 +161,11 @@
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([comments count] == 0) {
+    if ([self.comments count] == 0) {
         return 150;
     }
 
-    DGComment * comment = comments[indexPath.row];
+    DGComment * comment = self.comments[indexPath.row];
     UIFont *font = [UIFont systemFontOfSize:13];
 
     CGFloat height = [DGAppearance calculateHeightForString:[comment commentWithUsername] WithFont:font andWidth:[DGComment commentBoxWidth]];
@@ -175,12 +175,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
-    if ([comments count] == 0) {
-        tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    if ([self.comments count] == 0) {
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         return 1; // a single cell to report no data
     } else {
-        tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        return [comments count];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        return [self.comments count];
     }
 }
 
@@ -194,16 +194,16 @@
 
 #pragma mark - Comment posting
 - (IBAction)postComment:(id)sender {
-    sendButton.enabled = NO;
+    self.sendButton.enabled = NO;
     DGComment *newComment = [DGComment new];
-    newComment.comment = commentInputField.text;
+    newComment.comment = self.commentInputField.text;
     newComment.commentable_id = self.good.goodID;
     newComment.commentable_type = @"Good";
     newComment.user_id = [DGUser currentUser].userID;
 
     // filter out non-user entities
     NSMutableArray *parsedEntities = [[NSMutableArray alloc] init];
-    for (DGEntity *entity in entities) {
+    for (DGEntity *entity in self.entities) {
         if ([entity.link_type isEqualToString:@"user"]) {
             [parsedEntities addObject:entity];
         }
@@ -216,9 +216,9 @@
 
     newComment.entities = parsedEntities;
 
-    if (![commentInputField.text isEqualToString:@""]) {
+    if (![self.commentInputField.text isEqualToString:@""]) {
         [DGComment postComment:newComment completion:^(DGComment *comment, NSError *error) {
-            sendButton.enabled = YES;
+            self.sendButton.enabled = YES;
 
             if (error) {
                 DebugLog(@"error %@", [error description]);
@@ -226,15 +226,15 @@
                 return;
             }
 
-            [commentInputView becomeFirstResponder];
+            [self.commentInputView becomeFirstResponder];
 
-            commentInputField.text = @"";
+            self.commentInputField.text = @"";
 
             [DGMessage showSuccessInViewController:self.navigationController title:NSLocalizedString(@"Comment Saved!", nil) subtitle:nil];
 
-            [entities removeAllObjects];
+            [self.entities removeAllObjects];
 
-            [self textViewDidChange:commentInputField];
+            [self textViewDidChange:self.commentInputField];
             [self resetTextView];
             [self addComment:newComment];
 
@@ -244,9 +244,8 @@
 }
 
 - (void)addComment:(DGComment *)comment {
-    [comments insertObject:comment atIndex:0];
-    // [comments addObject:comment];
-    [tableView reloadData];
+    [self.comments insertObject:comment atIndex:0];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Keyboard management
@@ -257,7 +256,7 @@
         [UIView setAnimationDelay:0.0];
         [UIView setAnimationCurve:UIViewAnimationCurveLinear];
 
-        [commentInputField becomeFirstResponder];
+        [self.commentInputField becomeFirstResponder];
 
         [UIView commitAnimations];
     }
@@ -287,11 +286,11 @@
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
 
     if (UIInterfaceOrientationIsPortrait(orientation)) {
-        commentFieldBottom.constant = keyboardSize.height;
+        self.commentFieldBottom.constant = keyboardSize.height;
     } else {
-        commentFieldBottom.constant = keyboardSize.width;
+        self.commentFieldBottom.constant = keyboardSize.width;
     }
-    tableViewBottom.constant = tableViewBottom.constant + keyboardSize.height;
+    self.tableViewBottom.constant = self.tableViewBottom.constant + keyboardSize.height;
     [self.view layoutIfNeeded];
     [UIView commitAnimations];
 }
@@ -299,8 +298,8 @@
 - (void)keyboardWillHide:(NSNotification *)notification {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
-    commentFieldBottom.constant = 0;
-    tableViewBottom.constant = 44;
+    self.commentFieldBottom.constant = 0;
+    self.tableViewBottom.constant = 44;
     [self.view layoutIfNeeded];
     [UIView commitAnimations];
 }
@@ -325,26 +324,27 @@
         return NO;
     }
 
-    if (characterLimit == range.location) {
+    if (self.characterLimit == range.location) {
         return NO;
     }
 
-    NSInteger length = commentInputField.text.length - range.length + string.length;
+    NSInteger length = self.commentInputField.text.length - range.length + string.length;
 
     [self setTextViewHeight];
-    [entityHandler setLimitText];
+    [self.entityHandler setLimitText];
 
     if (length > 0) {
-        sendButton.enabled = YES;
+        self.sendButton.enabled = YES;
     } else {
-        sendButton.enabled = NO;
+        self.sendButton.enabled = NO;
     }
    
-    BOOL sup = [entityHandler check:textField range:(NSRange)range forEntities:entities completion:^BOOL(BOOL end, NSMutableArray *newEntities) {
-        entities = newEntities;
+    BOOL sup = [self.entityHandler check:textField range:range forEntities:self.entities completion:^BOOL(BOOL end, NSMutableArray *newEntities) {
+        self.entities = newEntities;
         return end;
     }];
-    [entityHandler resetTypingAttributes:commentInputField];
+
+    [self.entityHandler resetTypingAttributes:self.commentInputField];
     return sup;
 }
 
@@ -362,12 +362,12 @@
 }
 
 - (void)setTextViewHeight {
-    CGFloat adjustmentIndex = [DGAppearance calculateHeightForText:commentInputField.attributedText andWidth:[self commentInputFieldWidth]] + 16;
-    commentInputFieldHeight.constant = adjustmentIndex;
+    CGFloat adjustmentIndex = [DGAppearance calculateHeightForText:self.commentInputField.attributedText andWidth:[self commentInputFieldWidth]] + 16;
+    self.commentInputFieldHeight.constant = adjustmentIndex;
 }
 
 - (void)resetTextView {
-    commentInputFieldHeight.constant = 30.0;
+    self.commentInputFieldHeight.constant = 30.0;
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
@@ -380,7 +380,7 @@
 }
 
 - (void)closeComments {
-    [commentInputField resignFirstResponder];
+    [self.commentInputField resignFirstResponder];
 }
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
@@ -388,12 +388,12 @@
 }
 
 - (void)textViewDidChange:(UITextView *)textField {
-    [entityHandler watchForEntities:textField];
-    [entityHandler setLimitText];
-    if ([textField.text length] >= characterLimit || [textField.text isEqualToString:@""]) {
-        sendButton.enabled = NO;
+    [self.entityHandler watchForEntities:textField];
+    [self.entityHandler setLimitText];
+    if ([textField.text length] >= self.characterLimit || [textField.text isEqualToString:@""]) {
+        self.sendButton.enabled = NO;
     } else {
-        sendButton.enabled = YES;
+        self.sendButton.enabled = YES;
     }
 }
 
