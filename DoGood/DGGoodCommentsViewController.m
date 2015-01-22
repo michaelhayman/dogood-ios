@@ -19,7 +19,7 @@
 
 @implementation DGGoodCommentsViewController
 
-#pragma mark - View lifecycle
+#pragma mark - UIViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -27,8 +27,8 @@
     self.sendButton.enabled = NO;
 
     // comments list
-    UINib *nib = [UINib nibWithNibName:@"CommentCell" bundle:nil];
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"CommentCell"];
+    UINib *nib = [UINib nibWithNibName:kCommentCell bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:kCommentCell];
     UINib *noResultsNib = [UINib nibWithNibName:kNoResultsCell bundle:nil];
     [self.tableView registerNib:noResultsNib forCellReuseIdentifier:kNoResultsCell];
     self.comments = [[NSMutableArray alloc] init];
@@ -49,12 +49,6 @@
     [self setupInfiniteScroll];
 
     [self reloadComments];
-
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authenticate) name:DGUserDidFailSilentAuthenticationNotification object:nil];
-}
-
-- (void)authenticate {
-    [[DGUser currentUser] authorizeAccess:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -72,6 +66,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DGUserDidFailSilentAuthenticationNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
@@ -84,9 +79,16 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [[DGTracker sharedTracker] trackScreen:@"Comment List"];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(authenticate) name:DGUserDidFailSilentAuthenticationNotification object:nil];
 }
 
-#pragma mark - Comment retrieval ----------
+#pragma mark - Comment management
+
+- (void)authenticate {
+    [[DGUser currentUser] authorizeAccess:self];
+}
+
 - (void)getComments {
     [DGComment getCommentsForGood:self.good page:self.page completion:^(NSArray *retrievedComments, NSError *error) {
         if (error) {
@@ -138,61 +140,6 @@
     }];
 }
 
-#pragma mark - UITableViewDelegate methods
-- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.comments count] == 0) {
-        self.tableView.transform = CGAffineTransformMakeRotation(M_PI);
-        static NSString * reuseIdentifier = kNoResultsCell;
-        NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        [cell setHeading:nil andExplanation:self.loadingStatus];
-        [cell setHeading:nil explanation:self.loadingStatus andImage:[UIImage imageNamed:@"NoComments"]];
-        cell.transform = CGAffineTransformMakeRotation(-M_PI);
-        return cell;
-    }
-    self.tableView.transform = CGAffineTransformMakeRotation(-M_PI);
-
-    CommentCell *cell = [aTableView dequeueReusableCellWithIdentifier:@"CommentCell"];
-    cell.transform = CGAffineTransformMakeRotation(M_PI);
-    DGComment * comment = self.comments[indexPath.row];
-    cell.comment = comment;
-    cell.navigationController = self.navigationController;
-    [cell setValues];
-    return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.comments count] == 0) {
-        return 150;
-    }
-
-    DGComment * comment = self.comments[indexPath.row];
-    UIFont *font = [UIFont systemFontOfSize:13];
-
-    CGFloat height = [DGAppearance calculateHeightForString:[comment commentWithUsername] WithFont:font andWidth:[DGComment commentBoxWidth]];
-
-    CGFloat cellHeight = MAX(63, height + 30);
-    return cellHeight;
-}
-
-- (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
-    if ([self.comments count] == 0) {
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        return 1; // a single cell to report no data
-    } else {
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-        return [self.comments count];
-    }
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"";
-}
-
-#pragma mark - Comment posting
 - (IBAction)postComment:(id)sender {
     self.sendButton.enabled = NO;
     DGComment *newComment = [DGComment new];
@@ -248,7 +195,76 @@
     [self.tableView reloadData];
 }
 
-#pragma mark - Keyboard management
+- (CGFloat)commentInputFieldWidth {
+    if (iPad) {
+        UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+        if (UIInterfaceOrientationIsPortrait(orientation)) {
+            return 704;
+        } else {
+            return 960;
+        }
+    } else {
+        return 240;
+    }
+}
+
+#pragma mark - UITableViewDelegate
+
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.comments count] == 0) {
+        self.tableView.transform = CGAffineTransformMakeRotation(M_PI);
+        static NSString * reuseIdentifier = kNoResultsCell;
+        NoResultsCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
+        [cell setHeading:nil andExplanation:self.loadingStatus];
+        [cell setHeading:nil explanation:self.loadingStatus andImage:[UIImage imageNamed:@"NoComments"]];
+        cell.transform = CGAffineTransformMakeRotation(-M_PI);
+        return cell;
+    }
+    self.tableView.transform = CGAffineTransformMakeRotation(-M_PI);
+
+    CommentCell *cell = [aTableView dequeueReusableCellWithIdentifier:@"CommentCell"];
+    cell.transform = CGAffineTransformMakeRotation(M_PI);
+    DGComment * comment = self.comments[indexPath.row];
+    cell.comment = comment;
+    cell.navigationController = self.navigationController;
+    [cell setValues];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([self.comments count] == 0) {
+        return 150;
+    }
+
+    DGComment * comment = self.comments[indexPath.row];
+    UIFont *font = [UIFont systemFontOfSize:13];
+
+    CGFloat height = [DGAppearance calculateHeightForString:[comment commentWithUsername] WithFont:font andWidth:[DGComment commentBoxWidth]];
+
+    CGFloat cellHeight = MAX(63, height + 30);
+    return cellHeight;
+}
+
+- (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
+    if ([self.comments count] == 0) {
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        return 1; // a single cell to report no data
+    } else {
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+        return [self.comments count];
+    }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"";
+}
+
+#pragma mark - UIKeyboard
+
 - (void)setupKeyboardBehaviour {
     if (self.makeComment) {
         [UIView beginAnimations:nil context:nil];
@@ -258,6 +274,7 @@
 
         [self.commentInputField becomeFirstResponder];
 
+        NSLog(@"is first responder %d", self.commentInputField.isFirstResponder);
         [UIView commitAnimations];
     }
 
@@ -278,7 +295,7 @@
         animationCurve = 0.0;
         self.makeComment = NO;
     } else {
-        DebugLog(@"bug off");
+        DebugLog(@"not necessary");
     }
 
     [UIView setAnimationDuration:animationDuration];
@@ -302,7 +319,8 @@
     [UIView commitAnimations];
 }
 
-#pragma mark - UITextViewDelegate methods
+#pragma mark - UITextView
+
 - (BOOL)textViewShouldReturn:(UITextView *)textField {
     if (![textField.text isEqualToString:@""]) {
         [self postComment:textField];
@@ -346,19 +364,6 @@
     return sup;
 }
 
-- (CGFloat)commentInputFieldWidth {
-    if (iPad) {
-        UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-        if (UIInterfaceOrientationIsPortrait(orientation)) {
-            return 704;
-        } else {
-            return 960;
-        }
-    } else {
-        return 256 - 16;
-    }
-}
-
 - (void)setTextViewHeight {
     CGFloat adjustmentIndex = [DGAppearance calculateHeightForText:self.commentInputField.attributedText andWidth:[self commentInputFieldWidth]] + 16;
     self.commentInputFieldHeight.constant = adjustmentIndex;
@@ -377,10 +382,6 @@
     self.navigationItem.rightBarButtonItem = hideButton;
 }
 
-- (void)closeComments {
-    [self.commentInputField resignFirstResponder];
-}
-
 - (void)textViewDidEndEditing:(UITextView *)textView {
     self.navigationItem.rightBarButtonItem = nil;
 }
@@ -393,6 +394,10 @@
     } else {
         self.sendButton.enabled = YES;
     }
+}
+
+- (void)closeComments {
+    [self.commentInputField resignFirstResponder];
 }
 
 @end
