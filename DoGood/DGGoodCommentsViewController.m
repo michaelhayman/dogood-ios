@@ -60,7 +60,6 @@
     [super viewWillDisappear:animated];
     self.tableView.transform = CGAffineTransformMakeRotation(-M_PI);
     [DGMessage dismissActiveNotification];
-    self.entityHandler = nil;
     // [self.commentInputField resignFirstResponder];
 }
 
