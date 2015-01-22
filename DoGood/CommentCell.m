@@ -5,6 +5,12 @@
 #import "URLHandler.h"
 #import "NSString+RangeChecker.h"
 
+NSString * const kCommentCell = @"CommentCell";
+
+@interface CommentCell () <TTTAttributedLabelDelegate>
+
+@end
+
 @implementation CommentCell
 
 - (void)awakeFromNib {
@@ -82,10 +88,12 @@
         return mutableAttributedString;
     }];
 
-    NSRange r = [text rangeOfString:comment.user.full_name];
+    if (comment.user.full_name) {
+        NSRange r = [text rangeOfString:comment.user.full_name];
 
-    if ([comment.comment containsRange:r]) {
-        [label addLinkToURL:[NSURL URLWithString:[NSString stringWithFormat:@"dogood://users/%@", comment.user.userID]] withRange:r];
+        if ([comment.comment containsRange:r]) {
+            [label addLinkToURL:[NSURL URLWithString:[NSString stringWithFormat:@"dogood://users/%@", comment.user.userID]] withRange:r];
+        }
     }
 
     for (DGEntity *entity in comment.entities) {

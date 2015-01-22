@@ -1,8 +1,9 @@
 @class DGComment;
-#import <TTTAttributedLabel.h>
+@class TTTAttributedLabel;
 
-@interface CommentCell : UITableViewCell < TTTAttributedLabelDelegate> {
-}
+extern NSString * const kCommentCell;
+
+@interface CommentCell : UITableViewCell 
 
 @property (weak, nonatomic) DGComment *comment;
 @property (weak, nonatomic) IBOutlet TTTAttributedLabel *commentBody;

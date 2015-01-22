@@ -75,6 +75,7 @@
 		6358341917C88F3C00F997F6 /* DGUserSearchOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358341817C88F3C00F997F6 /* DGUserSearchOtherViewController.m */; };
 		6358342E17C8A09700F997F6 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358342D17C8A09700F997F6 /* Arrow.m */; };
 		635A232017CAB5150045C256 /* DGCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 635A231F17CAB5150045C256 /* DGCategories.m */; };
+		635C19831A716B64007ED34D /* DGCommentCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C19821A716B64007ED34D /* DGCommentCellTests.m */; };
 		6360A3911A70699A00AD8C3F /* DGGoodCommentsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6360A3901A70699A00AD8C3F /* DGGoodCommentsViewControllerTests.m */; };
 		636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA5C17AD43CC002A3494 /* Good.storyboard */; };
 		636AEA9B17AD63EC002A3494 /* GoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA9A17AD63EC002A3494 /* GoodCell.xib */; };
@@ -289,6 +290,7 @@
 		6358342D17C8A09700F997F6 /* Arrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arrow.m; sourceTree = "<group>"; };
 		635A231E17CAB5150045C256 /* DGCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCategories.h; sourceTree = "<group>"; };
 		635A231F17CAB5150045C256 /* DGCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCategories.m; sourceTree = "<group>"; };
+		635C19821A716B64007ED34D /* DGCommentCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCommentCellTests.m; sourceTree = "<group>"; };
 		6360A3901A70699A00AD8C3F /* DGGoodCommentsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGGoodCommentsViewControllerTests.m; sourceTree = "<group>"; };
 		636AEA5C17AD43CC002A3494 /* Good.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Good.storyboard; sourceTree = "<group>"; };
 		636AEA9A17AD63EC002A3494 /* GoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodCell.xib; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 		6304B64A18E0DC2600CA0E36 /* DoGoodTests */ = {
 			isa = PBXGroup;
 			children = (
+				635C19821A716B64007ED34D /* DGCommentCellTests.m */,
 				6360A3901A70699A00AD8C3F /* DGGoodCommentsViewControllerTests.m */,
 				6304B66E18E0DCC900CA0E36 /* DoGoodTests.m */,
 				6304B65818E0DCA200CA0E36 /* DGURLHandlerTests.m */,
@@ -1063,6 +1066,7 @@
 				6304B66818E0DCA200CA0E36 /* DGErrorTests.m in Sources */,
 				6304B66618E0DCA200CA0E36 /* DGUserTests.m in Sources */,
 				6304B66918E0DCA200CA0E36 /* DGRewardTests.m in Sources */,
+				635C19831A716B64007ED34D /* DGCommentCellTests.m in Sources */,
 				6304B66D18E0DCA200CA0E36 /* DGRestKitTest.m in Sources */,
 				6304B66B18E0DCA200CA0E36 /* DGEntityTests.m in Sources */,
 				6304B66F18E0DCC900CA0E36 /* DoGoodTests.m in Sources */,
