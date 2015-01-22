@@ -290,7 +290,6 @@
     } else {
         self.commentFieldBottom.constant = keyboardSize.width;
     }
-    self.tableViewBottom.constant = self.tableViewBottom.constant + keyboardSize.height;
     [self.view layoutIfNeeded];
     [UIView commitAnimations];
 }
@@ -299,7 +298,6 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
     self.commentFieldBottom.constant = 0;
-    self.tableViewBottom.constant = 44;
     [self.view layoutIfNeeded];
     [UIView commitAnimations];
 }

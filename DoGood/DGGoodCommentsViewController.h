@@ -17,7 +17,6 @@
 @property (nonatomic, strong) NSMutableArray *comments;
 @property NSInteger page;
 
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *tableViewBottom;
 @property (nonatomic, weak) IBOutlet UIButton *sendButton;
 
 // entities
