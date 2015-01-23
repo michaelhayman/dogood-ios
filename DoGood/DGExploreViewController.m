@@ -156,7 +156,9 @@
         navigationController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     }
     [self presentViewController:navigationController animated:animated completion:nil];
+
     if (iPad) {
+        navigationController.preferredContentSize = CGSizeMake(320, 480);
         navigationController.view.superview.bounds = CGRectMake(0, 0, 320, 480);
     }
 }
