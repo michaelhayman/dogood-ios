@@ -58,6 +58,16 @@
     [DGLocator checkLocationAccessWithSuccess:^(BOOL success, NSString *msg) {
         locationManager = [[CLLocationManager alloc] init];
         locationManager.delegate = self;
+
+        // iOS 8+
+        if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            // Send a message to avoid compile time error
+            [[UIApplication sharedApplication] sendAction:@selector(requestWhenInUseAuthorization)
+                                                       to:locationManager
+                                                     from:self
+                                                 forEvent:nil];
+        }
+
         [locationManager startUpdatingLocation];
 
         if (!initialized) {
