@@ -3,6 +3,7 @@
 @class DGGood;
 @class GoodTableView;
 @class DGNominee;
+@class DGUser;
 @class DGUserInvitesViewController;
 
 @interface DGGoodListViewController : DGViewController {

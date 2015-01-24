@@ -24,6 +24,7 @@
 		6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */; };
 		6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161E17C41E0D004DE5D7 /* DGAppearance.m */; };
 		6308162217C41EA0004DE5D7 /* DGTwitterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308162117C41EA0004DE5D7 /* DGTwitterManager.m */; };
+		630B7A651A733795002B631C /* DGExploreCategoriesViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 630B7A641A733795002B631C /* DGExploreCategoriesViewControllerTests.m */; };
 		630C09CD18F22C2D006B16E3 /* DGLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 630C09CC18F22C2D006B16E3 /* DGLocator.m */; };
 		6311488D180F3CA5008278E5 /* DGFacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6311488C180F3CA5008278E5 /* DGFacebookManager.m */; };
 		6319D38F17BDED080071DA71 /* DGReward.m in Sources */ = {isa = PBXBuildFile; fileRef = 6319D38E17BDED080071DA71 /* DGReward.m */; };
@@ -198,6 +199,7 @@
 		6308161E17C41E0D004DE5D7 /* DGAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DGAppearance.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		6308162017C41EA0004DE5D7 /* DGTwitterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTwitterManager.h; sourceTree = "<group>"; };
 		6308162117C41EA0004DE5D7 /* DGTwitterManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTwitterManager.m; sourceTree = "<group>"; };
+		630B7A641A733795002B631C /* DGExploreCategoriesViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGExploreCategoriesViewControllerTests.m; sourceTree = "<group>"; };
 		630C09CB18F22C2D006B16E3 /* DGLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGLocator.h; sourceTree = "<group>"; };
 		630C09CC18F22C2D006B16E3 /* DGLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGLocator.m; sourceTree = "<group>"; };
 		6311488B180F3CA5008278E5 /* DGFacebookManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFacebookManager.h; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 		6304B64A18E0DC2600CA0E36 /* DoGoodTests */ = {
 			isa = PBXGroup;
 			children = (
+				630B7A641A733795002B631C /* DGExploreCategoriesViewControllerTests.m */,
 				635C19821A716B64007ED34D /* DGCommentCellTests.m */,
 				6360A3901A70699A00AD8C3F /* DGGoodCommentsViewControllerTests.m */,
 				6304B66E18E0DCC900CA0E36 /* DoGoodTests.m */,
@@ -1062,6 +1065,7 @@
 				6304B66818E0DCA200CA0E36 /* DGErrorTests.m in Sources */,
 				6304B66618E0DCA200CA0E36 /* DGUserTests.m in Sources */,
 				6304B66918E0DCA200CA0E36 /* DGRewardTests.m in Sources */,
+				630B7A651A733795002B631C /* DGExploreCategoriesViewControllerTests.m in Sources */,
 				635C19831A716B64007ED34D /* DGCommentCellTests.m in Sources */,
 				6304B66D18E0DCA200CA0E36 /* DGRestKitTest.m in Sources */,
 				6304B66B18E0DCA200CA0E36 /* DGEntityTests.m in Sources */,
