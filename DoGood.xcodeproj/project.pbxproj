@@ -16,7 +16,6 @@
 		6304B66718E0DCA200CA0E36 /* DGCommentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65C18E0DCA200CA0E36 /* DGCommentTests.m */; };
 		6304B66818E0DCA200CA0E36 /* DGErrorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65D18E0DCA200CA0E36 /* DGErrorTests.m */; };
 		6304B66918E0DCA200CA0E36 /* DGRewardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65E18E0DCA200CA0E36 /* DGRewardTests.m */; };
-		6304B66A18E0DCA200CA0E36 /* DGBlankTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65F18E0DCA200CA0E36 /* DGBlankTests.m */; };
 		6304B66B18E0DCA200CA0E36 /* DGEntityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B66018E0DCA200CA0E36 /* DGEntityTests.m */; };
 		6304B66C18E0DCA200CA0E36 /* DGTagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B66118E0DCA200CA0E36 /* DGTagTests.m */; };
 		6304B66D18E0DCA200CA0E36 /* DGRestKitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B66218E0DCA200CA0E36 /* DGRestKitTest.m */; };
@@ -186,7 +185,6 @@
 		6304B65C18E0DCA200CA0E36 /* DGCommentTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCommentTests.m; sourceTree = "<group>"; };
 		6304B65D18E0DCA200CA0E36 /* DGErrorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGErrorTests.m; sourceTree = "<group>"; };
 		6304B65E18E0DCA200CA0E36 /* DGRewardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRewardTests.m; sourceTree = "<group>"; };
-		6304B65F18E0DCA200CA0E36 /* DGBlankTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGBlankTests.m; sourceTree = "<group>"; };
 		6304B66018E0DCA200CA0E36 /* DGEntityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEntityTests.m; sourceTree = "<group>"; };
 		6304B66118E0DCA200CA0E36 /* DGTagTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTagTests.m; sourceTree = "<group>"; };
 		6304B66218E0DCA200CA0E36 /* DGRestKitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRestKitTest.m; sourceTree = "<group>"; };
@@ -467,7 +465,6 @@
 				6304B65C18E0DCA200CA0E36 /* DGCommentTests.m */,
 				6304B65D18E0DCA200CA0E36 /* DGErrorTests.m */,
 				6304B65E18E0DCA200CA0E36 /* DGRewardTests.m */,
-				6304B65F18E0DCA200CA0E36 /* DGBlankTests.m */,
 				6304B66018E0DCA200CA0E36 /* DGEntityTests.m */,
 				6304B66118E0DCA200CA0E36 /* DGTagTests.m */,
 				6304B66218E0DCA200CA0E36 /* DGRestKitTest.m */,
@@ -1062,7 +1059,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6304B66718E0DCA200CA0E36 /* DGCommentTests.m in Sources */,
-				6304B66A18E0DCA200CA0E36 /* DGBlankTests.m in Sources */,
 				6304B66818E0DCA200CA0E36 /* DGErrorTests.m in Sources */,
 				6304B66618E0DCA200CA0E36 /* DGUserTests.m in Sources */,
 				6304B66918E0DCA200CA0E36 /* DGRewardTests.m in Sources */,
