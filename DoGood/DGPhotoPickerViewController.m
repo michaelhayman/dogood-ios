@@ -100,7 +100,11 @@
     imagePicker.delegate = self;
     imagePicker.navigationBar.barTintColor = VIVID;
     imagePicker.navigationItem.backBarButtonItem = [DGAppearance barButtonItemWithNoText];
-    [_parent presentViewController:imagePicker animated:YES completion:nil];
+
+    __weak DGPhotoPickerViewController *weakSelf = self;
+    dispatch_async(dispatch_get_main_queue(), ^ {
+        [weakSelf.parent presentViewController:imagePicker animated:YES completion:nil];
+    });
 }
 
 - (void)showCamera {
@@ -109,7 +113,11 @@
         UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
         imagePicker.delegate = self;
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        [_parent presentViewController:imagePicker animated:YES completion:nil];
+
+        __weak DGPhotoPickerViewController *weakSelf = self;
+        dispatch_async(dispatch_get_main_queue(), ^ {
+            [weakSelf.parent presentViewController:imagePicker animated:YES completion:nil];
+        });
     } else {
         DebugLog(@"Camera not available.");
     }
