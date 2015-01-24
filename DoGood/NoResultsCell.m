@@ -14,7 +14,7 @@
 }
 
 - (void)setHeading:(NSString *)heading explanation:(NSString *)explanation andImage:(UIImage *)image {
-    if (heading == nil || [heading isEqualToString:@""]) {
+    if ([heading length] == 0) {
         self.headingHeight.constant = 0;
         self.headingSpacer.constant = 0;
     } else {
