@@ -5,6 +5,13 @@
 #import "DGComment.h"
 #import <TTTAttributedLabel.h>
 #import "DGUser.h"
+#import "URLHandler.h"
+
+@interface CommentCell (Tests) <TTTAttributedLabelDelegate>
+
+- (void)showGoodUserProfile;
+
+@end
 
 @interface DGCommentCellTests : XCTestCase {
     CommentCell *cell;
@@ -18,12 +25,10 @@
 - (void)setUp {
     [super setUp];
 
-    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:0];
     UITableViewController *controller = [[UITableViewController alloc] init];
     UINib *nib = [UINib nibWithNibName:kCommentCell bundle:nil];
     [controller.tableView registerNib:nib forCellReuseIdentifier:kCommentCell];
 
-    cell = (CommentCell *)[controller tableView:controller.tableView cellForRowAtIndexPath:indexPath];
     cell = (CommentCell *)[controller.tableView dequeueReusableCellWithIdentifier:kCommentCell];
     cellMock = OCMPartialMock(cell);
 }
@@ -32,6 +37,36 @@
     [super tearDown];
 }
 
+- (void)DISABLED_testAttributedLabelDidSelectLinkWithURL {
+    id mockHandler = OCMClassMock([URLHandler class]);
+
+    NSURL *url = [NSURL URLWithString:@"/users/5"];
+
+    [[mockHandler expect] openURL:url andReturn:[OCMArg any]];
+
+    [cell attributedLabel:[OCMArg isNotNil] didSelectLinkWithURL:url];
+
+    [[mockHandler verify] openURL:url andReturn:[OCMArg any]];
+    [mockHandler stopMocking];
+}
+
+- (void)testShowGoodUserProfile {
+    id mockUser = OCMClassMock([DGUser class]);
+
+    [[mockUser expect] openProfilePage:[OCMArg any] inController:[OCMArg any]];
+
+    [cell showGoodUserProfile];
+
+    [[mockUser verify] openProfilePage:[OCMArg any] inController:[OCMArg any]];
+    [mockUser stopMocking];
+}
+
+- (void)testSetSelected {
+    [cell setSelected:YES animated:YES];
+    XCTAssertEqual(UITableViewCellSelectionStyleNone, cell.selectionStyle);
+}
+
+// Also tests awakeFromNib & AddUserNameAndLinksToComment by consequence of the load order
 - (void)testCellValues {
     [cell setValues];
 
