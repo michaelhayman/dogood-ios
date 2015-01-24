@@ -33,6 +33,7 @@ The following classes have close to 100% test coverage for demonstration purpose
 - `DGGoodCommentsViewController`
 - `DGComment`
 - `CommentCell`
+- `DGExploreCategoriesViewController`
 
 Test coverage for the rest of the app is a work-in-progress.  Models have been
 tested first, to be followed shortly by view controllers. Feel free to submit
