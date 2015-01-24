@@ -30,7 +30,7 @@
 }
 
 - (void)dealloc {
-    self.entityHandler = nil;
+    DebugLog(@"dealloc");
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
