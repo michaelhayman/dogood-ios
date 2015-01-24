@@ -108,6 +108,8 @@
 		639B1237187D0CB2005C9BD9 /* AuthenticateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 639B1235187D0CB2005C9BD9 /* AuthenticateView.xib */; };
 		639B88E417B9A25B005E2B62 /* DGVote.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B88E317B9A25A005E2B62 /* DGVote.m */; };
 		639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */ = {isa = PBXBuildFile; fileRef = 639B891017BAEC1D005E2B62 /* DGFollow.m */; };
+		63A152701A73E10B00C15176 /* DGLocatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A1526F1A73E10B00C15176 /* DGLocatorTests.m */; };
+		63A152721A73E1A800C15176 /* DGNoResultsCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A152711A73E1A800C15176 /* DGNoResultsCellTests.m */; };
 		63A28B681922C6CA008E6AA1 /* NSString+RangeChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A28B671922C6CA008E6AA1 /* NSString+RangeChecker.m */; };
 		63A38D84181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A38D83181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m */; };
 		63A819D318F4E8E4006900F3 /* DGActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A819D218F4E8E4006900F3 /* DGActionButton.m */; };
@@ -347,6 +349,8 @@
 		639B88E317B9A25A005E2B62 /* DGVote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGVote.m; sourceTree = "<group>"; };
 		639B890F17BAEC1D005E2B62 /* DGFollow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGFollow.h; sourceTree = "<group>"; };
 		639B891017BAEC1D005E2B62 /* DGFollow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGFollow.m; sourceTree = "<group>"; };
+		63A1526F1A73E10B00C15176 /* DGLocatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGLocatorTests.m; sourceTree = "<group>"; };
+		63A152711A73E1A800C15176 /* DGNoResultsCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNoResultsCellTests.m; sourceTree = "<group>"; };
 		63A28B661922C6CA008E6AA1 /* NSString+RangeChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RangeChecker.h"; sourceTree = "<group>"; };
 		63A28B671922C6CA008E6AA1 /* NSString+RangeChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RangeChecker.m"; sourceTree = "<group>"; };
 		63A38D82181358FD00590D24 /* DGTextFieldSearchTagsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTextFieldSearchTagsTableViewController.h; sourceTree = "<group>"; };
@@ -458,8 +462,10 @@
 		6304B64A18E0DC2600CA0E36 /* DoGoodTests */ = {
 			isa = PBXGroup;
 			children = (
+				63A152711A73E1A800C15176 /* DGNoResultsCellTests.m */,
 				630B7A641A733795002B631C /* DGExploreCategoriesViewControllerTests.m */,
 				635C19821A716B64007ED34D /* DGCommentCellTests.m */,
+				63A1526F1A73E10B00C15176 /* DGLocatorTests.m */,
 				6360A3901A70699A00AD8C3F /* DGGoodCommentsViewControllerTests.m */,
 				6304B66E18E0DCC900CA0E36 /* DoGoodTests.m */,
 				6304B65818E0DCA200CA0E36 /* DGURLHandlerTests.m */,
@@ -1062,11 +1068,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6304B66718E0DCA200CA0E36 /* DGCommentTests.m in Sources */,
+				63A152701A73E10B00C15176 /* DGLocatorTests.m in Sources */,
 				6304B66818E0DCA200CA0E36 /* DGErrorTests.m in Sources */,
 				6304B66618E0DCA200CA0E36 /* DGUserTests.m in Sources */,
 				6304B66918E0DCA200CA0E36 /* DGRewardTests.m in Sources */,
 				630B7A651A733795002B631C /* DGExploreCategoriesViewControllerTests.m in Sources */,
 				635C19831A716B64007ED34D /* DGCommentCellTests.m in Sources */,
+				63A152721A73E1A800C15176 /* DGNoResultsCellTests.m in Sources */,
 				6304B66D18E0DCA200CA0E36 /* DGRestKitTest.m in Sources */,
 				6304B66B18E0DCA200CA0E36 /* DGEntityTests.m in Sources */,
 				6304B66F18E0DCC900CA0E36 /* DoGoodTests.m in Sources */,
