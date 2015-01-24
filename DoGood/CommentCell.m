@@ -48,7 +48,6 @@ NSString * const kCommentCell = @"CommentCell";
 
     CGFloat height = [DGAppearance calculateHeightForString:self.commentBody.text WithFont:self.commentBody.font andWidth:[DGComment commentBoxWidth]];
 
-    self.commentBody.delegate = self;
     self.commentBodyHeight.constant = height;
     [self layoutIfNeeded];
 }
