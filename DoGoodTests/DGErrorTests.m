@@ -18,7 +18,7 @@
     [super tearDown];
 }
 
-- (void)testExample {
+- (void)testMultipleMessages {
     NSString *message = @"An error occurred.";
     NSString *message2 = @"It really did.";
 
