@@ -34,6 +34,9 @@ The following classes have close to 100% test coverage for demonstration purpose
 - `DGComment`
 - `CommentCell`
 - `DGExploreCategoriesViewController`
+- `DGLocator`
+- `GoodTableView`
+- `NoResultsCell`
 
 Test coverage for the rest of the app is a work-in-progress.  Models have been
 tested first, to be followed shortly by view controllers. Feel free to submit
@@ -82,6 +85,7 @@ To do
 ---
 
 * Increase test coverage
+* Stub out all network traffic by creating a subclass of \`XCTestCase\`
 * Add Tab-based layout
 * Activity feed tailored to the user instead of a category listing on homepage
 * Make nomination process more user-friendly
