@@ -18,7 +18,7 @@
 		6304B66918E0DCA200CA0E36 /* DGRewardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B65E18E0DCA200CA0E36 /* DGRewardTests.m */; };
 		6304B66B18E0DCA200CA0E36 /* DGEntityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B66018E0DCA200CA0E36 /* DGEntityTests.m */; };
 		6304B66C18E0DCA200CA0E36 /* DGTagTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B66118E0DCA200CA0E36 /* DGTagTests.m */; };
-		6304B66D18E0DCA200CA0E36 /* DGRestKitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B66218E0DCA200CA0E36 /* DGRestKitTest.m */; };
+		6304B66D18E0DCA200CA0E36 /* DGRestKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B66218E0DCA200CA0E36 /* DGRestKitTests.m */; };
 		6304B66F18E0DCC900CA0E36 /* DoGoodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B66E18E0DCC900CA0E36 /* DoGoodTests.m */; };
 		6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */; };
 		6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */; };
@@ -190,7 +190,7 @@
 		6304B65E18E0DCA200CA0E36 /* DGRewardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRewardTests.m; sourceTree = "<group>"; };
 		6304B66018E0DCA200CA0E36 /* DGEntityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGEntityTests.m; sourceTree = "<group>"; };
 		6304B66118E0DCA200CA0E36 /* DGTagTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTagTests.m; sourceTree = "<group>"; };
-		6304B66218E0DCA200CA0E36 /* DGRestKitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRestKitTest.m; sourceTree = "<group>"; };
+		6304B66218E0DCA200CA0E36 /* DGRestKitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRestKitTests.m; sourceTree = "<group>"; };
 		6304B66E18E0DCC900CA0E36 /* DoGoodTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoGoodTests.m; sourceTree = "<group>"; };
 		6308161017C3BB11004DE5D7 /* DGUserInvitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserInvitesViewController.h; sourceTree = "<group>"; };
 		6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserInvitesViewController.m; sourceTree = "<group>"; };
@@ -476,7 +476,7 @@
 				6304B65E18E0DCA200CA0E36 /* DGRewardTests.m */,
 				6304B66018E0DCA200CA0E36 /* DGEntityTests.m */,
 				6304B66118E0DCA200CA0E36 /* DGTagTests.m */,
-				6304B66218E0DCA200CA0E36 /* DGRestKitTest.m */,
+				6304B66218E0DCA200CA0E36 /* DGRestKitTests.m */,
 				6304B64B18E0DC2600CA0E36 /* Supporting Files */,
 			);
 			path = DoGoodTests;
@@ -1075,7 +1075,7 @@
 				630B7A651A733795002B631C /* DGExploreCategoriesViewControllerTests.m in Sources */,
 				635C19831A716B64007ED34D /* DGCommentCellTests.m in Sources */,
 				63A152721A73E1A800C15176 /* DGNoResultsCellTests.m in Sources */,
-				6304B66D18E0DCA200CA0E36 /* DGRestKitTest.m in Sources */,
+				6304B66D18E0DCA200CA0E36 /* DGRestKitTests.m in Sources */,
 				6304B66B18E0DCA200CA0E36 /* DGEntityTests.m in Sources */,
 				6304B66F18E0DCC900CA0E36 /* DoGoodTests.m in Sources */,
 				6304B66418E0DCA200CA0E36 /* DGEntityHandlerTests.m in Sources */,
