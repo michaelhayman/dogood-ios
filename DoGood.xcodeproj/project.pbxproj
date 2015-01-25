@@ -75,6 +75,7 @@
 		6358341917C88F3C00F997F6 /* DGUserSearchOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358341817C88F3C00F997F6 /* DGUserSearchOtherViewController.m */; };
 		6358342E17C8A09700F997F6 /* Arrow.m in Sources */ = {isa = PBXBuildFile; fileRef = 6358342D17C8A09700F997F6 /* Arrow.m */; };
 		635A232017CAB5150045C256 /* DGCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 635A231F17CAB5150045C256 /* DGCategories.m */; };
+		635A5C1B1A3F4A4E00692281 /* DGTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 635A5C1A1A3F4A4E00692281 /* DGTabBarController.m */; };
 		635C19831A716B64007ED34D /* DGCommentCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 635C19821A716B64007ED34D /* DGCommentCellTests.m */; };
 		6360A3911A70699A00AD8C3F /* DGGoodCommentsViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6360A3901A70699A00AD8C3F /* DGGoodCommentsViewControllerTests.m */; };
 		636AEA5E17AD43CC002A3494 /* Good.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636AEA5C17AD43CC002A3494 /* Good.storyboard */; };
@@ -111,6 +112,7 @@
 		63A152701A73E10B00C15176 /* DGLocatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A1526F1A73E10B00C15176 /* DGLocatorTests.m */; };
 		63A152721A73E1A800C15176 /* DGNoResultsCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A152711A73E1A800C15176 /* DGNoResultsCellTests.m */; };
 		63A152741A7422CB00C15176 /* DGGoodTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A152731A7422CB00C15176 /* DGGoodTableViewTests.m */; };
+		63A1527A1A754F9D00C15176 /* DGToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A152791A754F9D00C15176 /* DGToDoListViewController.m */; };
 		63A28B681922C6CA008E6AA1 /* NSString+RangeChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A28B671922C6CA008E6AA1 /* NSString+RangeChecker.m */; };
 		63A38D84181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A38D83181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m */; };
 		63A819D318F4E8E4006900F3 /* DGActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 63A819D218F4E8E4006900F3 /* DGActionButton.m */; };
@@ -293,6 +295,8 @@
 		6358342D17C8A09700F997F6 /* Arrow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Arrow.m; sourceTree = "<group>"; };
 		635A231E17CAB5150045C256 /* DGCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGCategories.h; sourceTree = "<group>"; };
 		635A231F17CAB5150045C256 /* DGCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCategories.m; sourceTree = "<group>"; };
+		635A5C191A3F4A4E00692281 /* DGTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTabBarController.h; sourceTree = "<group>"; };
+		635A5C1A1A3F4A4E00692281 /* DGTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTabBarController.m; sourceTree = "<group>"; };
 		635C19821A716B64007ED34D /* DGCommentCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGCommentCellTests.m; sourceTree = "<group>"; };
 		6360A3901A70699A00AD8C3F /* DGGoodCommentsViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGGoodCommentsViewControllerTests.m; sourceTree = "<group>"; };
 		636AEA5C17AD43CC002A3494 /* Good.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Good.storyboard; sourceTree = "<group>"; };
@@ -353,6 +357,10 @@
 		63A1526F1A73E10B00C15176 /* DGLocatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGLocatorTests.m; sourceTree = "<group>"; };
 		63A152711A73E1A800C15176 /* DGNoResultsCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNoResultsCellTests.m; sourceTree = "<group>"; };
 		63A152731A7422CB00C15176 /* DGGoodTableViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGGoodTableViewTests.m; sourceTree = "<group>"; };
+		63A152751A754F6700C15176 /* DGToDoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGToDoListViewController.m; sourceTree = "<group>"; };
+		63A152761A754F6700C15176 /* DGToDoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGToDoListViewController.h; sourceTree = "<group>"; };
+		63A152781A754F9D00C15176 /* DGToDoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGToDoListViewController.h; sourceTree = "<group>"; };
+		63A152791A754F9D00C15176 /* DGToDoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGToDoListViewController.m; sourceTree = "<group>"; };
 		63A28B661922C6CA008E6AA1 /* NSString+RangeChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RangeChecker.h"; sourceTree = "<group>"; };
 		63A28B671922C6CA008E6AA1 /* NSString+RangeChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RangeChecker.m"; sourceTree = "<group>"; };
 		63A38D82181358FD00590D24 /* DGTextFieldSearchTagsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGTextFieldSearchTagsTableViewController.h; sourceTree = "<group>"; };
@@ -513,6 +521,8 @@
 		6319D39017BDF05C0071DA71 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				635A5C191A3F4A4E00692281 /* DGTabBarController.h */,
+				635A5C1A1A3F4A4E00692281 /* DGTabBarController.m */,
 				63459534196761B20051B95B /* DGGood+Dimensions.h */,
 				63459535196761B20051B95B /* DGGood+Dimensions.m */,
 				639ADBD7195B734A00DE78C4 /* DGNotification.h */,
@@ -703,6 +713,8 @@
 				63D358DB194E0752001E7BE2 /* NominateExplanationCell.h */,
 				63D358DC194E0752001E7BE2 /* NominateExplanationCell.m */,
 				63D358DD194E0752001E7BE2 /* NominateExplanationCell.xib */,
+				63A152751A754F6700C15176 /* DGToDoListViewController.m */,
+				63A152761A754F6700C15176 /* DGToDoListViewController.h */,
 				639B1230187C0FA3005C9BD9 /* GoodTableView.h */,
 				639B1231187C0FA3005C9BD9 /* GoodTableView.m */,
 				633DBF7017ADC4E50038BC2D /* DGPostGoodNomineeSearchViewController.h */,
@@ -763,6 +775,8 @@
 				63DA644F17DC0F6D003DFF03 /* Explore.storyboard */,
 				63FDAC4A181C630B00668B15 /* ExploreHighlightsCell.h */,
 				63FDAC4B181C630B00668B15 /* ExploreHighlightsCell.m */,
+				63A152781A754F9D00C15176 /* DGToDoListViewController.h */,
+				63A152791A754F9D00C15176 /* DGToDoListViewController.m */,
 				63FDAC4C181C630B00668B15 /* ExploreHighlightsCell.xib */,
 				63FDAC4F181C651400668B15 /* HighlightCollectionCell.h */,
 				63FDAC50181C651400668B15 /* HighlightCollectionCell.m */,
@@ -1113,6 +1127,7 @@
 				633DBF7717ADD57E0038BC2D /* GoodShareCell.m in Sources */,
 				633DBF7E17AE25CF0038BC2D /* DGUserProfileViewController.m in Sources */,
 				6311488D180F3CA5008278E5 /* DGFacebookManager.m in Sources */,
+				635A5C1B1A3F4A4E00692281 /* DGTabBarController.m in Sources */,
 				63C1BA501806026300CB95CF /* RewardsTeaserView.m in Sources */,
 				63C00BAD194FA9170093C261 /* UIImageView+Dimension.m in Sources */,
 				633DBF8417AE92E00038BC2D /* NavigationViewController.m in Sources */,
@@ -1132,6 +1147,7 @@
 				6355EC2B17B690D800EE91C0 /* DGForgotPasswordViewController.m in Sources */,
 				6355EC2E17B69F1E00EE91C0 /* DGSignInViewController.m in Sources */,
 				6355EC3117B69F2800EE91C0 /* DGSignUpViewController.m in Sources */,
+				63A1527A1A754F9D00C15176 /* DGToDoListViewController.m in Sources */,
 				63A38D84181358FE00590D24 /* DGTextFieldSearchTagsTableViewController.m in Sources */,
 				6355EC3317B75EB600EE91C0 /* constants.m in Sources */,
 				639B1232187C0FA3005C9BD9 /* GoodTableView.m in Sources */,

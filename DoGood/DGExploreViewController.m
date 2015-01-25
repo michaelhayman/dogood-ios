@@ -14,6 +14,16 @@
 
 @synthesize searchField;
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        self.title = @"Explore";
+        self.navigationItem.title = self.title;
+        self.tabBarItem.image = [UIImage imageNamed:@"tab_explore"];
+        self.tabBarItem.selectedImage = [UIImage imageNamed:@"tab_explore"];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupMenuImage:[UIImage imageNamed:@"DoGoodLogo"]];
@@ -40,19 +50,6 @@
     [self addChildViewController:vc];
     [self.contentView addSubview:vc.view];
     self.navigationItem.rightBarButtonItem = [DGAppearance postBarButtonItemFor:self];
-
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_menu"] style:UIBarButtonItemStylePlain target:self action:@selector(showProfile)];
-}
-
-- (void)showProfile {
-    if (userProfileController == nil) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Users" bundle:nil];
-        userProfileController = [storyboard instantiateViewControllerWithIdentifier:@"UserProfile"];
-    }
-    userProfileController.userID = [DGUser currentUser].userID;
-    userProfileController.fromMenu = YES;
-
-    [self.navigationController pushViewController:userProfileController animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

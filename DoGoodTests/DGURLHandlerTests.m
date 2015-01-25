@@ -1,8 +1,10 @@
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
 #import "URLHandler.h"
 
 @interface DGURLHandlerTests : XCTestCase {
     URLHandler *handler;
+    id nav;
 }
 
 @end
@@ -12,10 +14,13 @@
 - (void)setUp {
     [super setUp];
     handler = [[URLHandler alloc] init];
+    nav = OCMClassMock([UINavigationController class]);
+    [[nav stub] pushViewController:[OCMArg isNotNil] animated:[OCMArg any]];
 }
 
 - (void)tearDown {
     [super tearDown];
+    [nav stopMocking];
 }
 
 - (void)testCanRejectIncorrectURLs {

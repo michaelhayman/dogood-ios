@@ -13,6 +13,16 @@
 
 @implementation DGRewardsListViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        self.title = @"Rewards";
+        self.navigationItem.title = self.title;
+        self.tabBarItem.image = [UIImage imageNamed:@"tab_rewards"];
+        self.tabBarItem.selectedImage = [UIImage imageNamed:@"tab_rewards"];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupMenuTitle:@"Rewards" withColor:[UIColor whiteColor]];

@@ -17,6 +17,20 @@
 
 @implementation DGUserProfileViewController
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        if ([[DGUser currentUser] isSignedIn]) {
+            self.title = @"Profile";
+        } else {
+            self.title = @"Join Do Good";
+        }
+        self.navigationItem.title = self.title;
+        self.tabBarItem.image = [UIImage imageNamed:@"tab_profile"];
+        self.tabBarItem.selectedImage = [UIImage imageNamed:@"tab_profile"];
+    }
+    return self;
+}
+
 #pragma mark - View lifecycle
 - (void)viewDidLoad {
     [super viewDidLoad];

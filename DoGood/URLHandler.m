@@ -8,7 +8,8 @@
 @implementation URLHandler
 
 - (void)openURL:(NSURL *)url andReturn:(openURLBlock)match {
-    UINavigationController *nav = (UINavigationController *)[[UIApplication sharedApplication] keyWindow].rootViewController;
+    UITabBarController *tabs = (UITabBarController *)[[UIApplication sharedApplication] keyWindow].rootViewController;
+    UINavigationController *nav = [tabs.viewControllers firstObject];
     if ([[url scheme] isEqualToString:@"dogood"]) {
         NSArray *urlComponents = [url pathComponents];
         DebugLog(@"handle dogood");
