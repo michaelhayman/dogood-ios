@@ -38,16 +38,18 @@ The following classes have close to 100% test coverage for demonstration purpose
 - `GoodTableView`
 - `NoResultsCell`
 
-Test coverage for the rest of the app is a work-in-progress.  Models have been
-tested first, to be followed shortly by view controllers. Feel free to submit
-a pull request with tests for existing code.
+Models are also tested.
+
+Test coverage for the rest of the app is a work-in-progress.
+
+Feel free to submit a pull request with tests for existing code.
 
 Press `⌘+u` to run the test suite after the app has been set up in Xcode.
 
 Test methodology
 ---
 
-The following packages are used:
+The following packages are used for testing:
 
 - XCTest is the testing framework provided by Xcode 5+;
 - OCMock is a stub and mocking library;
@@ -55,7 +57,7 @@ The following packages are used:
   minimum amount of method-based stubbing;
 - KIF tests the user interface with acceptance tests (coming soon)
 
-The tests are written by one person so they have been kept simple for maintainability.
+The tests have been kept simple for maintainability.
 As such a minimum of testing packages are used (in contrast with a lot of test packages
 like Specta, Kiwi, etc, which are better suited to larger teams of developers).
 
@@ -122,5 +124,6 @@ explicit permission from Michael Hayman.
 Contact
 ---
 
-Please contact <michael@springbox.ca> if you have any issues installing the app or for licensing permission.
+Please contact <michael@springbox.ca> if you have any issues installing
+the app or if you would like for licensing permission.
 
