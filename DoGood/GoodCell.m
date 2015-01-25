@@ -477,25 +477,28 @@
 
 #pragma mark - Description
 - (void)setCaptionText {
-    self.formattedCaption.enabledTextCheckingTypes = NSTextCheckingTypeLink | NSTextCheckingTypeDate | NSTextCheckingTypeAddress | NSTextCheckingTypePhoneNumber;
     self.formattedCaption.text = self.good.caption;
 
-    NSDictionary *attributes = @{NSFontAttributeName : self.formattedCaption.font};
-    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.good.caption attributes:attributes];
-    self.formattedCaption.attributedText = attrString;
-    captionHeight.constant = [DGAppearance calculateHeightForText:attrString andWidth:[self.good captionWidth]];
-    self.formattedCaption.linkAttributes = [DGAppearance linkAttributes];
-    self.formattedCaption.activeLinkAttributes = [DGAppearance activeLinkAttributes];
+    if (self.good.caption) {
+        self.formattedCaption.enabledTextCheckingTypes = NSTextCheckingTypeLink | NSTextCheckingTypeDate | NSTextCheckingTypeAddress | NSTextCheckingTypePhoneNumber;
 
-    for (DGEntity *entity in self.good.entities) {
-        NSURL *url = [NSURL URLWithString:entity.link];
-        NSRange entityRange = [entity rangeFromArrayWithOffset:0];
-        if ([self.good.caption containsRange:entityRange]) {
-            [self.formattedCaption addLinkToURL:url withRange:entityRange];
+        NSDictionary *attributes = @{NSFontAttributeName : self.formattedCaption.font};
+        NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.good.caption attributes:attributes];
+        self.formattedCaption.attributedText = attrString;
+        captionHeight.constant = [DGAppearance calculateHeightForText:attrString andWidth:[self.good captionWidth]];
+        self.formattedCaption.linkAttributes = [DGAppearance linkAttributes];
+        self.formattedCaption.activeLinkAttributes = [DGAppearance activeLinkAttributes];
+
+        for (DGEntity *entity in self.good.entities) {
+            NSURL *url = [NSURL URLWithString:entity.link];
+            NSRange entityRange = [entity rangeFromArrayWithOffset:0];
+            if ([self.good.caption containsRange:entityRange]) {
+                [self.formattedCaption addLinkToURL:url withRange:entityRange];
+            }
         }
-    }
 
-    self.formattedCaption.delegate = self;
+        self.formattedCaption.delegate = self;
+    }
 }
 
 #pragma mark - More options

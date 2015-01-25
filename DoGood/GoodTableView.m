@@ -27,12 +27,12 @@
     UINib *noResultsNib = [UINib nibWithNibName:kNoResultsCell bundle:nil];
     [self registerNib:noResultsNib forCellReuseIdentifier:kNoResultsCell];
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
-    showNoResultsMessage = NO;
-    goods = [[NSMutableArray alloc] init];
-    cellHeights = [[NSMutableArray alloc] init];
+    self.showNoResultsMessage = NO;
+    self.goods = [[NSMutableArray alloc] init];
+    self.cellHeights = [[NSMutableArray alloc] init];
 
-    loadingView = [[SAMLoadingView alloc] initWithFrame:self.bounds];
-    loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.loadingView = [[SAMLoadingView alloc] initWithFrame:self.bounds];
+    self.loadingView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
 
 - (NSString *)cellName {
@@ -53,38 +53,38 @@
     [button addTarget:self action:@selector(chooseTab:) forControlEvents:UIControlEventTouchUpInside];
     button.userInteractionEnabled = YES;
     [button setTitleColor:MUD forState:UIControlStateSelected];
-    [button setTitleColor:[DGAppearance makeContrastingColorFromColor:tabColor] forState:UIControlStateNormal];
+    [button setTitleColor:[DGAppearance makeContrastingColorFromColor:self.tabColor] forState:UIControlStateNormal];
 
     return button;
 }
 
 - (void)showTabsWithColor:(UIColor *)color {
-    tabColor = color;
+    self.tabColor = color;
 
-    all = [self tabButtonWithWidth:60 andOffset:0];
-    [all setTitle:@"All" forState:UIControlStateNormal];
-    all.tag = 101;
+    self.all = [self tabButtonWithWidth:60 andOffset:0];
+    [self.all setTitle:@"All" forState:UIControlStateNormal];
+    self.all.tag = 101;
 
-    done = [self tabButtonWithWidth:130 andOffset:60];
-    [done setTitle:@"Nominations" forState:UIControlStateNormal];
-    done.tag = 102;
+    self.done = [self tabButtonWithWidth:130 andOffset:60];
+    [self.done setTitle:@"Nominations" forState:UIControlStateNormal];
+    self.done.tag = 102;
 
-    todo = [self tabButtonWithWidth:130 andOffset:190];
-    [todo setTitle:@"Help Wanted" forState:UIControlStateNormal];
-    todo.tag = 103;
+    self.todo = [self tabButtonWithWidth:130 andOffset:190];
+    [self.todo setTitle:@"Help Wanted" forState:UIControlStateNormal];
+    self.todo.tag = 103;
 
-    tabsShowing = YES;
+    self.tabsShowing = YES;
 
     UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
     tableHeaderView.backgroundColor = color;
-    [tableHeaderView addSubview:all];
-    [tableHeaderView addSubview:done];
-    [tableHeaderView addSubview:todo];
+    [tableHeaderView addSubview:self.all];
+    [tableHeaderView addSubview:self.done];
+    [tableHeaderView addSubview:self.todo];
     self.tableHeaderView = tableHeaderView;
 
     [self chooseAll];
 
-    loadingView.frame = CGRectMake(loadingView.frame.origin.x, loadingView.frame.origin.y + self.tableHeaderView.frame.size.height, loadingView.frame.size.width, loadingView.frame.size.height);
+    self.loadingView.frame = CGRectMake(self.loadingView.frame.origin.x, self.loadingView.frame.origin.y + self.tableHeaderView.frame.size.height, self.loadingView.frame.size.width, self.loadingView.frame.size.height);
 }
 
 - (IBAction)chooseTab:(id)sender {
@@ -94,51 +94,51 @@
         if (![button isSelected]) {
             [self chooseDone];
             [self resetGood];
-            [self loadGoodsAtPath:goodsPath];
+            [self loadGoodsAtPath:self.goodsPath];
         }
     } else if (button.tag == 103) {
         if (![button isSelected]) {
             [self chooseTodo];
             [self resetGood];
-            [self loadGoodsAtPath:goodsPath];
+            [self loadGoodsAtPath:self.goodsPath];
         }
     } else {
         if (![button isSelected]) {
             [self chooseAll];
             [self resetGood];
-            [self loadGoodsAtPath:goodsPath];
+            [self loadGoodsAtPath:self.goodsPath];
         }
     }
 }
 
 - (void)resetButtons {
-    all.selected = NO;
-    done.selected = NO;
-    todo.selected = NO;
-    all.backgroundColor = tabColor;
-    done.backgroundColor = tabColor;
-    todo.backgroundColor = tabColor;
+    self.all.selected = NO;
+    self.done.selected = NO;
+    self.todo.selected = NO;
+    self.all.backgroundColor = self.tabColor;
+    self.done.backgroundColor = self.tabColor;
+    self.todo.backgroundColor = self.tabColor;
 }
 
 - (void)chooseAll {
     [self resetButtons];
     self.doneGoods = allTab;
-    all.selected = YES;
-    all.backgroundColor = [UIColor whiteColor];
+    self.all.selected = YES;
+    self.all.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)chooseDone {
     [self resetButtons];
     self.doneGoods = doneTab;
-    done.selected = YES;
-    done.backgroundColor = [UIColor whiteColor];
+    self.done.selected = YES;
+    self.done.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)chooseTodo {
     [self resetButtons];
     self.doneGoods = helpWantedTab;
-    todo.selected = YES;
-    todo.backgroundColor = [UIColor whiteColor];
+    self.todo.selected = YES;
+    self.todo.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)setupRefresh {
@@ -155,53 +155,59 @@
 }
 
 - (void)loadGoodsAtPath:(NSString *)path {
-    goodsPath = path;
+    self.goodsPath = path;
 
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:page], @"page", nil];
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithInt:self.page], @"page", nil];
 
-    if (tabsShowing) {
-        if ([done isSelected]) {
+    if (self.tabsShowing) {
+        if ([self.done isSelected]) {
             [params setObject:[NSNumber numberWithBool:YES] forKey:@"done"];
-        } else if ([todo isSelected]) {
+        } else if ([self.todo isSelected]) {
             [params setObject:[NSNumber numberWithBool:NO] forKey:@"done"];
         }
     }
 
-    [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
-        [goods addObjectsFromArray:mappingResult.array];
-        if ([goods count] == 0)  {
-            showNoResultsMessage = YES;
-        } else {
-            showNoResultsMessage = NO;
-            [self estimateHeightsForGoods:mappingResult.array];
+    [DGGood getGoodsAtPath:path withParams:params completion:^(NSArray *goods, NSError *error) {
+        if (error) {
+            [self.infiniteScrollingView stopAnimating];
+            [ProgressHUD showError:[error localizedDescription]];
+            DebugLog(@"Operation failed with error: %@", error);
+            [self reloadData];
+            [self.loadingView removeFromSuperview];
+
+            return;
         }
+
+        [self.goods addObjectsFromArray:goods];
+
+        if ([self.goods count] == 0)  {
+            self.showNoResultsMessage = YES;
+        } else {
+            self.showNoResultsMessage = NO;
+            [self estimateHeightsForGoods:goods];
+        }
+
         [self reloadData];
         [self.infiniteScrollingView stopAnimating];
-        [loadingView removeFromSuperview];
-    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
-        [self.infiniteScrollingView stopAnimating];
-        [ProgressHUD showError:[error localizedDescription]];
-        DebugLog(@"Operation failed with error: %@", error);
-        [self reloadData];
-        [loadingView removeFromSuperview];
+        [self.loadingView removeFromSuperview];
     }];
 }
 
 - (void)loadMoreGood {
-    page++;
-    [self loadGoodsAtPath:goodsPath];
+    self.page++;
+    [self loadGoodsAtPath:self.goodsPath];
 }
 
 - (void)resetGood {
-    page = 1;
-    [self addSubview:loadingView];
-    [goods removeAllObjects];
-    [cellHeights removeAllObjects];
+    self.page = 1;
+    [self addSubview:self.loadingView];
+    [self.goods removeAllObjects];
+    [self.cellHeights removeAllObjects];
 }
 
 - (void)reloadGood {
     [self resetGood];
-    [self loadGoodsAtPath:goodsPath];
+    [self loadGoodsAtPath:self.goodsPath];
 }
 
 - (void)setupInfiniteScroll {
@@ -219,16 +225,17 @@
 #pragma mark - Cell heights
 - (void)estimateHeightsForGoods:(NSArray *)goodList {
     for (DGGood *good in goodList) {
-        [cellHeights addObject:[good calculateHeight]];
+        [self.cellHeights addObject:[good calculateHeight]];
     }
 }
 
 #pragma mark - UITableView delegate methods
 - (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
     if (indexPath.section == 0) {
         NSString * reuseIdentifier = [self cellName];
         GoodCell *cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier forIndexPath:indexPath];
-        DGGood *good = goods[indexPath.row];
+        DGGood *good = self.goods[indexPath.row];
         cell.good = good;
         cell.navigationController = self.navigationController;
         cell.parent = self.parent;
@@ -249,13 +256,13 @@
 */
 
 - (void)reloadCellAtIndexPath:(NSIndexPath *)indexPath withGood:(DGGood *)good {
-    cellHeights[indexPath.row] = [good calculateHeight];
+    self.cellHeights[indexPath.row] = [good calculateHeight];
     [self reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (CGFloat)tableView:(UITableView *)aTableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        NSNumber *height = [cellHeights objectAtIndex:indexPath.row];
+        NSNumber *height = [self.cellHeights objectAtIndex:indexPath.row];
         return [height floatValue];
     } else {
         return kNoResultsCellHeight;
@@ -264,9 +271,9 @@
 
 - (NSInteger)tableView:(UITableView *)tblView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return [goods count];
+        return [self.goods count];
     } else {
-        if (showNoResultsMessage == YES) {
+        if (self.showNoResultsMessage == YES) {
             return 1;
         } else {
             return 0;

@@ -37,6 +37,7 @@
     [super tearDown];
 }
 
+// TODO: Figure out why this doesn't work
 - (void)DISABLED_testAttributedLabelDidSelectLinkWithURL {
     id mockHandler = OCMClassMock([URLHandler class]);
 

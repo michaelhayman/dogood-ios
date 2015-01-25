@@ -61,14 +61,18 @@
 
     NSDictionary *attributes = @{NSFontAttributeName : kGoodCaptionFont};
 
-    NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.caption attributes:attributes];
+    if ([self.caption length] > 0) {
+        NSAttributedString *attrString = [[NSAttributedString alloc] initWithString:self.caption attributes:attributes];
 
-    CGFloat captionHeight = [DGAppearance calculateHeightForText:attrString andWidth:[self captionWidth]];
-    height += captionHeight;
+        CGFloat captionHeight = [DGAppearance calculateHeightForText:attrString andWidth:[self captionWidth]];
+        height += captionHeight;
+    }
 
-    NSAttributedString *postedByAttrString = [[NSAttributedString alloc] initWithString:[self postedByLine] attributes:attributes];
-    CGFloat postedByHeight = [DGAppearance calculateHeightForText:postedByAttrString andWidth:[self captionWidth]];
-    height += postedByHeight;
+    if ([[self postedByLine] length] > 0) {
+        NSAttributedString *postedByAttrString = [[NSAttributedString alloc] initWithString:[self postedByLine] attributes:attributes];
+        CGFloat postedByHeight = [DGAppearance calculateHeightForText:postedByAttrString andWidth:[self captionWidth]];
+        height += postedByHeight;
+    }
 
     if (self.evidence) {
         height+= 320;

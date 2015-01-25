@@ -53,5 +53,7 @@ typedef void (^DestroyCompletionBlock)(BOOL success, NSError *error);
 - (BOOL)isOwnGood;
 - (void)destroyGoodWithCompletion:(DestroyCompletionBlock)complete;
 - (NSURL *)showURL;
+typedef void (^RetrieveGoodsBlock)(NSArray *goods, NSError *error);
++ (void)getGoodsAtPath:(NSString *)path withParams:(NSDictionary *)params completion:(RetrieveGoodsBlock)completion;
 
 @end

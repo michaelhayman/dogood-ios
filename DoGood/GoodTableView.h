@@ -1,21 +1,22 @@
 @class SAMLoadingView;
+@class DGGood;
 
-@interface GoodTableView : UITableView <UITableViewDataSource, UITableViewDelegate> {
-    int page;
-    NSMutableArray *cellHeights;
-    BOOL showNoResultsMessage;
-    NSMutableArray *goods;
-    NSString *goodsPath;
-    SAMLoadingView *loadingView;
+@interface GoodTableView : UITableView <UITableViewDataSource, UITableViewDelegate>
 
-    BOOL tabsShowing;
-    UIColor *tabColor;
+@property int page;
+@property (nonatomic, strong) NSMutableArray *cellHeights;
+@property (nonatomic, strong) NSMutableArray *goods;
+@property (nonatomic, copy) NSString *goodsPath;
+@property (nonatomic, strong) SAMLoadingView *loadingView;
 
-    UIButton *all;
-    UIButton *done;
-    UIButton *todo;
-}
+@property BOOL tabsShowing;
+@property (nonatomic, retain) UIColor *tabColor;
 
+@property (nonatomic, retain) UIButton *all;
+@property (nonatomic, retain) UIButton *done;
+@property (nonatomic, retain) UIButton *todo;
+
+@property BOOL showNoResultsMessage;
 @property (nonatomic, weak) UINavigationController *navigationController;
 @property (nonatomic, weak) UIViewController *parent;
 @property int doneGoods;
@@ -26,5 +27,6 @@
 - (void)resetGood;
 - (void)setupRefresh;
 - (void)setupInfiniteScroll;
+- (void)reloadCellAtIndexPath:(NSIndexPath *)indexPath withGood:(DGGood *)good;
 
 @end

@@ -57,4 +57,12 @@
     return [NSURL URLWithString:[NSString stringWithFormat:@"dogood://goods/%@", self.goodID]];
 }
 
++ (void)getGoodsAtPath:(NSString *)path withParams:(NSDictionary *)params completion:(RetrieveGoodsBlock)completion {
+    [[RKObjectManager sharedManager] getObjectsAtPath:path parameters:params success:^(RKObjectRequestOperation *operation, RKMappingResult *mappingResult) {
+        completion(mappingResult.array, nil);
+    } failure:^(RKObjectRequestOperation *operation, NSError *error) {
+        completion(nil, error);
+    }];
+}
+
 @end
