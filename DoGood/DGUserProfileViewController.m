@@ -304,6 +304,7 @@
     self.navigationItem.rightBarButtonItem = connectButton;
 
     [DGAppearance styleActionButton:centralButton];
+    [centralButton removeTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
     [centralButton addTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
     [centralButton setTitle:@"Settings" forState:UIControlStateNormal];
 }
@@ -312,6 +313,7 @@
     [DGAppearance styleActionButton:centralButton];
     [centralButton setTitle:@"Follow" forState:UIControlStateNormal];
     [centralButton setTitle:@"Following" forState:UIControlStateSelected];
+    [centralButton removeTarget:self action:@selector(openSettings) forControlEvents:UIControlEventTouchUpInside];
     [centralButton addTarget:self action:@selector(toggleFollow) forControlEvents:UIControlEventTouchUpInside];
 
     UIButton *a1 = [UIButton buttonWithType:UIButtonTypeCustom];
