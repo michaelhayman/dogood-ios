@@ -11,7 +11,6 @@
 typedef enum {
     popular,
     nearby,
-    rewards,
     exploreHighlightRows
 } ExploreDoGoodHighlightsRowType;
 

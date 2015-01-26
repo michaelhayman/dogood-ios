@@ -9,7 +9,7 @@
 @implementation ExploreHighlightsCell
 
 - (id)initWithController:(UINavigationController *)controller {
-    CGRect frame = CGRectMake(0, 0, 320, 95);
+    CGRect frame = CGRectMake(0, 0, 213, 95);
     self = [super initWithFrame:frame];
 
     if (self) {
@@ -42,12 +42,9 @@
     if (indexPath.row == popular) {
         name = @"Popular";
         color = PINEAPPLE;
-    } else if (indexPath.row == nearby) {
+    } else {
         name = @"Nearby";
         color = SKY;
-    } else {
-        name = @"Rewards";
-        color = CRIMSON;
     }
     [cell setName:name backgroundColor:color andIcon:[UIImage imageNamed:name]];
     return cell;
@@ -61,12 +58,8 @@
         controller.titleForPath = @"Popular";
         controller.color = PINEAPPLE;
         [self.navigationController pushViewController:controller animated:YES];
-    } else if (indexPath.row == nearby) {
-        DGGoodListNearbyViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodListNearby"];
-        [self.navigationController pushViewController:controller animated:YES];
     } else {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
-        DGRewardsListViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"rewardList"];
+        DGGoodListNearbyViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"GoodListNearby"];
         [self.navigationController pushViewController:controller animated:YES];
     }
 }
