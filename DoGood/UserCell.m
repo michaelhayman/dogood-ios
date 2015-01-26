@@ -65,7 +65,10 @@
 }
 
 - (void)userProfile {
-    [DGUser openProfilePage:self.user.userID inController:(UINavigationController *)self.window.rootViewController];
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UINavigationController *navigationController = (UINavigationController *)tabBarController.selectedViewController;
+
+    [DGUser openProfilePage:self.user.userID inController:navigationController];
 }
 
 - (void)followUser {
