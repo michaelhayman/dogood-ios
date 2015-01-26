@@ -13,11 +13,9 @@
 }
 
 - (void)initEntityHandler {
-    self.entityHandler = [[DGEntityHandler alloc] initWithTextView:self.descriptionText andEntities:self.entities inController:self.parent andLinkID:[NSNumber numberWithInt:9] reverseScroll:NO tableOffset:100 secondTableOffset:64 characterLimit:characterLimit];
-}
-
-- (void)prepareForReuse {
-    self.entityHandler = nil;
+    if (self.entityHandler == nil) {
+        self.entityHandler = [[DGEntityHandler alloc] initWithTextView:self.descriptionText andEntities:self.entities inController:self.parent andLinkID:[NSNumber numberWithInt:9] reverseScroll:NO tableOffset:100 secondTableOffset:64 characterLimit:characterLimit];
+    }
 }
 
 - (void)setDoneMode:(BOOL)done {
