@@ -4,7 +4,7 @@
 #import "DGToDoListViewController.h"
 #import "DGExploreViewController.h"
 
-@interface DGTabBarController () <UITabBarControllerDelegate>
+@interface DGTabBarController ()
 
 @end
 
@@ -30,9 +30,11 @@
     DGExploreViewController *exploreController = [explore instantiateViewControllerWithIdentifier:@"explore"];
     [self addController:exploreController toArray:localControllersArray];
 
+    /*
     UIStoryboard *goodStoryboard = [UIStoryboard storyboardWithName:@"Good" bundle:nil];
     DGToDoListViewController *todoController = [goodStoryboard instantiateViewControllerWithIdentifier:@"DGToDoListViewController"];
     [self addController:todoController toArray:localControllersArray];
+    */
 
     UIStoryboard *rewards = [UIStoryboard storyboardWithName:@"Rewards" bundle:nil];
     DGRewardsListViewController *rewardsController = [rewards instantiateViewControllerWithIdentifier:@"rewardList"];

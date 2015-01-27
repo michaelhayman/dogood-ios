@@ -1,5 +1,3 @@
-#import <UIKit/UIKit.h>
-
-@interface DGTabBarController : UITabBarController
+@interface DGTabBarController : UITabBarController <UITabBarControllerDelegate>
 
 @end
