@@ -27,6 +27,8 @@ pod 'SVPullToRefresh', '~> 0.4.1'
 pod 'SVWebViewController', '~> 1.0'
 pod 'ios-image-editor', '~> 1.1'
 
+pod 'Raven', '~> 0.3.0'
+
 # social
 pod 'SocialAuth', :git => "git@github.com:michaelhayman/SocialAuth.git"
 

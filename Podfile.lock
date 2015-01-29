@@ -16,6 +16,7 @@ PODS:
     - OHHTTPStubs/Core (= 3.1.10)
   - OHHTTPStubs/Core (3.1.10)
   - ProgressHUD (2.1)
+  - Raven (0.3.0)
   - RegexKitLite (4.0)
   - RestKit (0.21.0):
     - RestKit/Core (= 0.21.0)
@@ -61,6 +62,7 @@ DEPENDENCIES:
   - OCMock (= 3.0)
   - OHHTTPStubs
   - ProgressHUD (from `git@github.com:relatedcode/ProgressHUD.git`, tag `v2.1`)
+  - Raven (~> 0.3.0)
   - RestKit (~> 0.21.0)
   - RFKeychain (~> 0.1)
   - SAMLoadingView (~> 0.1.0)
@@ -96,6 +98,7 @@ SPEC CHECKSUMS:
   OCMock: 6e6041173cf801f458ef66ec1a8fa3d974947335
   OHHTTPStubs: 2038e929b6abb94881000524c1cb4aba0a1bb4a2
   ProgressHUD: 107f0266a48b326563096846ae602fd4010578a6
+  Raven: ae464df6d875b64d2b2c7ccfad28622974507b0a
   RegexKitLite: c0e4c12e6e7de0769f3a3ed679f0f61604170661
   RestKit: 02cb6d613048fdb123b51a7fc31542b6414cc08f
   RFKeychain: b86238477be053f540916c5e69da625a4adf6951
