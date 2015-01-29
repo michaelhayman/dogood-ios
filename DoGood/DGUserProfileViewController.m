@@ -20,7 +20,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
         if ([[DGUser currentUser] isSignedIn]) {
-            self.title = @"Profile";
+            self.title = @"Your Profile";
         } else {
             self.title = @"Join Do Good";
         }
