@@ -74,7 +74,7 @@
 }
 
 - (BOOL)isOwnProfile {
-    return [[DGUser currentUser] isSignedIn] && [self.userID isEqualToNumber:[DGUser currentUser].userID];
+    return ([[DGUser currentUser] isSignedIn] && [self.userID isEqualToNumber:[DGUser currentUser].userID]) || ([[DGUser currentUser] isSignedIn] && self.fromMenu);
 }
 
 - (void)setupOwnProfile {
