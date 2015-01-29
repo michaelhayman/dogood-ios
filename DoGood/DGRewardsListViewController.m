@@ -57,7 +57,6 @@
         [self reselect:rewardsButton];
     }
 
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshVisibleRewards) name:DGUserDidUpdatePointsNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePointsText) name:DGUserDidUpdatePointsNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatePoints) name:DGUserUpdatePointsNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didClaimReward:) name:DGUserDidClaimRewardNotification object:nil];
@@ -98,7 +97,11 @@
 
 - (void)updatePointsText {
     if ([[DGUser currentUser] isSignedIn]) {
-        points.text = [NSString stringWithFormat:@"%@ %@",  [[DGUser currentUser] pointsText], [DGAppearance pluralizeString:@"point" basedOnNumber:[DGUser currentUser].points]];
+        NSString *newPointsText = [NSString stringWithFormat:@"%@ %@",  [[DGUser currentUser] pointsText], [DGAppearance pluralizeString:@"point" basedOnNumber:[DGUser currentUser].points]];
+        if (![points.text isEqualToString:newPointsText]) {
+            points.text = [NSString stringWithFormat:@"%@ %@",  [[DGUser currentUser] pointsText], [DGAppearance pluralizeString:@"point" basedOnNumber:[DGUser currentUser].points]];
+            [self refreshVisibleRewards];
+        }
     } else {
         points.text = @"Join and earn points!";
     }
