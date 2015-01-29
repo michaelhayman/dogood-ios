@@ -5,6 +5,7 @@
 #import "RestKit.h"
 #import "DGNotification.h"
 #import "URLHandler.h"
+#import "DGNotifier.h"
 
 @implementation DGAppDelegate
 
@@ -16,14 +17,17 @@
     [DGUser setUpUserAuthentication];
     [RestKit setupRestKit];
 
+    [self setupViewsForUser];
+    [self.window makeKeyAndVisible];
+
     [DGNotification reregisterForNotifications];
+
+    [[DGNotifier sharedManager] start];
 
     [[BITHockeyManager sharedHockeyManager] configureWithIdentifier:@"2aabe4790ed577f27e56c2d215bb9d3d"
                                                            delegate:self];
     [[BITHockeyManager sharedHockeyManager] startManager];
 
-    [self setupViewsForUser];
-    [self.window makeKeyAndVisible];
     return YES;
 }
 

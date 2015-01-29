@@ -8,8 +8,10 @@
 #define DEVELOPMENT 0
 #if DEVELOPMENT
     #define JSON_API_HOST_ADDRESS @"http://0.0.0.0:3003/"
+    static NSString * const kRavenDevelopmentDSN = @"https://af6980b65a654174a3d5f2d6636992a1:be249483814f4c319ea071c3cc280f8a@app.getsentry.com/34347";
 #else
     #define JSON_API_HOST_ADDRESS @"https://api.dogood.mobi/"
+    static NSString * const kRavenDevelopmentDSN = @"https://af6980b65a654174a3d5f2d6636992a1:be249483814f4c319ea071c3cc280f8a@app.getsentry.com/34347";
 #endif
 
 #pragma mark - Convenience Methods -----

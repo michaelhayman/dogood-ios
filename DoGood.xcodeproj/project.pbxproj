@@ -22,6 +22,7 @@
 		6304B66F18E0DCC900CA0E36 /* DoGoodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6304B66E18E0DCC900CA0E36 /* DoGoodTests.m */; };
 		63069D881A7848B000114818 /* DGTabBarControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63069D871A7848B000114818 /* DGTabBarControllerTests.m */; };
 		63069D8A1A784C1500114818 /* DGRewardsListViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63069D891A784C1500114818 /* DGRewardsListViewControllerTests.m */; };
+		63069D8F1A79E2C700114818 /* DGNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 63069D8E1A79E2C700114818 /* DGNotifier.m */; };
 		6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */; };
 		6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */; };
 		6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161E17C41E0D004DE5D7 /* DGAppearance.m */; };
@@ -196,6 +197,8 @@
 		6304B66E18E0DCC900CA0E36 /* DoGoodTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoGoodTests.m; sourceTree = "<group>"; };
 		63069D871A7848B000114818 /* DGTabBarControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGTabBarControllerTests.m; sourceTree = "<group>"; };
 		63069D891A784C1500114818 /* DGRewardsListViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRewardsListViewControllerTests.m; sourceTree = "<group>"; };
+		63069D8D1A79E2C700114818 /* DGNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGNotifier.h; sourceTree = "<group>"; };
+		63069D8E1A79E2C700114818 /* DGNotifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNotifier.m; sourceTree = "<group>"; };
 		6308161017C3BB11004DE5D7 /* DGUserInvitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserInvitesViewController.h; sourceTree = "<group>"; };
 		6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserInvitesViewController.m; sourceTree = "<group>"; };
 		6308161317C3C19F004DE5D7 /* DGPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPhotoPickerViewController.h; sourceTree = "<group>"; };
@@ -520,6 +523,8 @@
 			children = (
 				635A5C191A3F4A4E00692281 /* DGTabBarController.h */,
 				635A5C1A1A3F4A4E00692281 /* DGTabBarController.m */,
+				63069D8D1A79E2C700114818 /* DGNotifier.h */,
+				63069D8E1A79E2C700114818 /* DGNotifier.m */,
 				63459534196761B20051B95B /* DGGood+Dimensions.h */,
 				63459535196761B20051B95B /* DGGood+Dimensions.m */,
 				639ADBD7195B734A00DE78C4 /* DGNotification.h */,
@@ -1137,6 +1142,7 @@
 				6355EC3D17B86B8400EE91C0 /* SignUpOverviewCell.m in Sources */,
 				639B88E417B9A25B005E2B62 /* DGVote.m in Sources */,
 				630046D01810E619001529E5 /* URLHandler.m in Sources */,
+				63069D8F1A79E2C700114818 /* DGNotifier.m in Sources */,
 				639B891117BAEC1E005E2B62 /* DGFollow.m in Sources */,
 				63C1F65F1979C6200094B642 /* DGMessage.m in Sources */,
 				6379B86F192E407800439ED7 /* UserGoodCell.m in Sources */,
