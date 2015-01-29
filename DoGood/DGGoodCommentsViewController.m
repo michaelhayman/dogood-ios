@@ -264,6 +264,10 @@
 
 #pragma mark - UIKeyboard
 
+- (void)setCommentFieldBottomToDefault {
+    self.commentFieldBottom.constant = 49;
+}
+
 - (void)setupKeyboardBehaviour {
     if (self.makeComment) {
         [UIView beginAnimations:nil context:nil];
@@ -275,6 +279,8 @@
 
         NSLog(@"is first responder %d", self.commentInputField.isFirstResponder);
         [UIView commitAnimations];
+    } else {
+        [self setCommentFieldBottomToDefault];
     }
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -313,7 +319,7 @@
 - (void)keyboardWillHide:(NSNotification *)notification {
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.3];
-    self.commentFieldBottom.constant = 0;
+    [self setCommentFieldBottomToDefault];
     [self.view layoutIfNeeded];
     [UIView commitAnimations];
 }

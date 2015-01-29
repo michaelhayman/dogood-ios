@@ -21,7 +21,7 @@
 - (void)resetComments;
 - (void)setupInfiniteScroll;
 - (IBAction)postComment:(id)sender;
-- (void)testCommentFieldInputWidth;
+- (void)setCommentFieldBottomToDefault;
 - (CGFloat)commentInputFieldWidth;
 
 // UITextView
@@ -83,6 +83,8 @@
 }
 
 - (void)testViewWillAppear {
+    OCMExpect([commentControllerMock setupKeyboardBehaviour]);
+
     [commentControllerMock viewWillAppear:YES];
 
     OCMVerify([commentControllerMock setupKeyboardBehaviour]);
@@ -244,7 +246,14 @@
     [self loadView];
     [commentControllerMock keyboardWillHide:nil];
 
-    XCTAssertEqual(commentControllerMock.commentFieldBottom.constant, 0);
+    XCTAssertEqual(49, commentControllerMock.commentFieldBottom.constant);
+}
+
+- (void)testCommentFieldBottomDefault {
+    [self loadView];
+    [controller setCommentFieldBottomToDefault];
+
+    XCTAssertEqual(49, commentControllerMock.commentFieldBottom.constant);
 }
 
 - (void)testSetupKeyboardBehaviourShowNotification {
