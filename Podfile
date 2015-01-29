@@ -24,7 +24,6 @@ pod 'TPKeyboardAvoiding', '~> 1.2.1'
 pod 'TTTAttributedLabel', '~> 1.10'
 pod 'MJPopupViewController', :git => "git@github.com:doPanic/MJPopupViewController.git"
 pod 'SVPullToRefresh', '~> 0.4.1'
-pod 'CRNavigationController', '~> 0.0.1'
 pod 'SVWebViewController', '~> 1.0'
 pod 'ios-image-editor', '~> 1.1'
 
