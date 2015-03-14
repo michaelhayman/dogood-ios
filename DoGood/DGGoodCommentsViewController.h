@@ -15,20 +15,20 @@
 
 @property (nonatomic, weak) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *comments;
-@property NSInteger page;
+@property (nonatomic) NSInteger page;
 
 @property (nonatomic, weak) IBOutlet UIButton *sendButton;
 
 // entities
-@property int characterLimit;
-@property CGFloat totalKeyboardHeight;
+@property (nonatomic) int characterLimit;
+@property (nonatomic) CGFloat totalKeyboardHeight;
 @property (nonatomic, strong) NSMutableArray *entities;
 @property (nonatomic, strong) DGEntityHandler *entityHandler;
 @property (nonatomic, strong) SAMLoadingView *loadingView;
 @property (nonatomic, copy) NSString *loadingStatus;
 
-@property BOOL makeComment;
-@property DGGood *good;
+@property (nonatomic) BOOL makeComment;
+@property (nonatomic) DGGood *good;
 @property (nonatomic, weak) GoodCell *goodCell;
 
 @end
