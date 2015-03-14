@@ -13,7 +13,7 @@ and honorable things.  In turn it is hoped this will inspire more people to do g
 
 It consists of a Web site, an iOS app and an API.  It was written over a
 period from June 2013 to July 2014.  Recently the app was updated with more test
-coverage and to fix a few changes that came with the iOS SDK, notably
+coverage and to fix a few changes that came with the iOS 8 SDK, notably
 around location permissions.
 
 Installation instructions
