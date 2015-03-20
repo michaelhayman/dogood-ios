@@ -23,6 +23,9 @@
 		63069D881A7848B000114818 /* DGTabBarControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63069D871A7848B000114818 /* DGTabBarControllerTests.m */; };
 		63069D8A1A784C1500114818 /* DGRewardsListViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63069D891A784C1500114818 /* DGRewardsListViewControllerTests.m */; };
 		63069D8F1A79E2C700114818 /* DGNotifier.m in Sources */ = {isa = PBXBuildFile; fileRef = 63069D8E1A79E2C700114818 /* DGNotifier.m */; };
+		63069D911A7B187700114818 /* DGNotificationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63069D901A7B187700114818 /* DGNotificationTests.m */; };
+		63069D931A7B189100114818 /* DGNotifierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63069D921A7B189100114818 /* DGNotifierTests.m */; };
+		63069D951A7B18D500114818 /* DGUserProfileViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 63069D941A7B18D500114818 /* DGUserProfileViewControllerTests.m */; };
 		6308161217C3BB11004DE5D7 /* DGUserInvitesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */; };
 		6308161517C3C19F004DE5D7 /* DGPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161417C3C19F004DE5D7 /* DGPhotoPickerViewController.m */; };
 		6308161F17C41E0D004DE5D7 /* DGAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 6308161E17C41E0D004DE5D7 /* DGAppearance.m */; };
@@ -199,6 +202,9 @@
 		63069D891A784C1500114818 /* DGRewardsListViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGRewardsListViewControllerTests.m; sourceTree = "<group>"; };
 		63069D8D1A79E2C700114818 /* DGNotifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGNotifier.h; sourceTree = "<group>"; };
 		63069D8E1A79E2C700114818 /* DGNotifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNotifier.m; sourceTree = "<group>"; };
+		63069D901A7B187700114818 /* DGNotificationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNotificationTests.m; sourceTree = "<group>"; };
+		63069D921A7B189100114818 /* DGNotifierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGNotifierTests.m; sourceTree = "<group>"; };
+		63069D941A7B18D500114818 /* DGUserProfileViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserProfileViewControllerTests.m; sourceTree = "<group>"; };
 		6308161017C3BB11004DE5D7 /* DGUserInvitesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGUserInvitesViewController.h; sourceTree = "<group>"; };
 		6308161117C3BB11004DE5D7 /* DGUserInvitesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGUserInvitesViewController.m; sourceTree = "<group>"; };
 		6308161317C3C19F004DE5D7 /* DGPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGPhotoPickerViewController.h; sourceTree = "<group>"; };
@@ -470,7 +476,10 @@
 		6304B64A18E0DC2600CA0E36 /* DoGoodTests */ = {
 			isa = PBXGroup;
 			children = (
+				63069D901A7B187700114818 /* DGNotificationTests.m */,
+				63069D921A7B189100114818 /* DGNotifierTests.m */,
 				63069D891A784C1500114818 /* DGRewardsListViewControllerTests.m */,
+				63069D941A7B18D500114818 /* DGUserProfileViewControllerTests.m */,
 				63069D871A7848B000114818 /* DGTabBarControllerTests.m */,
 				63A152731A7422CB00C15176 /* DGGoodTableViewTests.m */,
 				63A152711A73E1A800C15176 /* DGNoResultsCellTests.m */,
@@ -1074,6 +1083,8 @@
 			files = (
 				6304B66718E0DCA200CA0E36 /* DGCommentTests.m in Sources */,
 				63069D881A7848B000114818 /* DGTabBarControllerTests.m in Sources */,
+				63069D931A7B189100114818 /* DGNotifierTests.m in Sources */,
+				63069D951A7B18D500114818 /* DGUserProfileViewControllerTests.m in Sources */,
 				63A152701A73E10B00C15176 /* DGLocatorTests.m in Sources */,
 				6304B66818E0DCA200CA0E36 /* DGErrorTests.m in Sources */,
 				63069D8A1A784C1500114818 /* DGRewardsListViewControllerTests.m in Sources */,
@@ -1086,6 +1097,7 @@
 				6304B66B18E0DCA200CA0E36 /* DGEntityTests.m in Sources */,
 				6304B66F18E0DCC900CA0E36 /* DoGoodTests.m in Sources */,
 				63A152741A7422CB00C15176 /* DGGoodTableViewTests.m in Sources */,
+				63069D911A7B187700114818 /* DGNotificationTests.m in Sources */,
 				6304B66418E0DCA200CA0E36 /* DGEntityHandlerTests.m in Sources */,
 				6304B66318E0DCA200CA0E36 /* DGURLHandlerTests.m in Sources */,
 				6360A3911A70699A00AD8C3F /* DGGoodCommentsViewControllerTests.m in Sources */,
