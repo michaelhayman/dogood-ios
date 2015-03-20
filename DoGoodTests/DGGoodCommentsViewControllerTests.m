@@ -41,6 +41,7 @@
 @interface DGGoodCommentsViewControllerTests : XCTestCase {
     DGGoodCommentsViewController *controller;
     DGGoodCommentsViewController *commentControllerMock;
+    // id commentControllerMock;
     UINavigationController *nav;
 }
 
@@ -122,6 +123,7 @@
 
 - (void)testLoadMoreComments {
     commentControllerMock.page = 5;
+    OCMExpect([commentControllerMock getComments]);
 
     [commentControllerMock loadMoreComments];
 
@@ -130,23 +132,27 @@
 }
 
 - (void)testGetComments {
-
     id commentMock = OCMClassMock([DGComment class]);
     DGGood *good = [[DGGood alloc] init];
-    OCMExpect([DGComment getCommentsForGood:good page:1 completion:[OCMArg any]]);
-    [[commentMock stub] getCommentsForGood:good page:1 completion:[OCMArg any]];
+    good.goodID = @5;
+    NSInteger page = 1;
+
+    [[commentMock expect] getCommentsForGood:good page:page completion:[OCMArg any]];
+    [[commentMock stub] getCommentsForGood:good page:page completion:[OCMArg any]];
+    commentControllerMock.page = page;
+    commentControllerMock.good = good;
 
     [commentControllerMock getComments];
 
-    OCMVerify([DGComment getCommentsForGood:good page:1 completion:[OCMArg any]]);
+    [commentMock verify];
 }
 
 - (void)testReloadComments {
     [commentControllerMock loadView];
+    OCMExpect([commentControllerMock resetComments]);
+    OCMExpect([commentControllerMock getComments]);
 
     [commentControllerMock reloadComments];
-
-    // assert loading view
 
     OCMVerify([commentControllerMock resetComments]);
     OCMVerify([commentControllerMock getComments]);
@@ -264,6 +270,7 @@
 
 - (void)testSetupKeyboardBehaviourShowNotification {
     [commentControllerMock loadView];
+    OCMExpect([commentControllerMock keyboardWillShow:[OCMArg any]]);
     [commentControllerMock setupKeyboardBehaviour];
 
     [[NSNotificationCenter defaultCenter] postNotificationName:UIKeyboardWillShowNotification object:nil];
