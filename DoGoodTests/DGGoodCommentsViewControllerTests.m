@@ -66,6 +66,11 @@
 #pragma mark - UIViewController tests
 
 - (void)testViewDidLoad {
+    OCMExpect([commentControllerMock setupInfiniteScroll]);
+    OCMExpect([commentControllerMock reloadComments]);
+    OCMStub([commentControllerMock setupInfiniteScroll]);
+    OCMStub([commentControllerMock reloadComments]);
+
     [commentControllerMock viewDidLoad];
 
     XCTAssertFalse([commentControllerMock.sendButton isEnabled]);
@@ -128,6 +133,7 @@
 
     id commentMock = OCMClassMock([DGComment class]);
     DGGood *good = [[DGGood alloc] init];
+    OCMExpect([DGComment getCommentsForGood:good page:1 completion:[OCMArg any]]);
     [[commentMock stub] getCommentsForGood:good page:1 completion:[OCMArg any]];
 
     [commentControllerMock getComments];
@@ -265,6 +271,7 @@
 }
 
 - (void)testSetupKeyboardBehaviourHideNotification {
+    OCMExpect([commentControllerMock keyboardWillHide:[OCMArg any]]);
     [commentControllerMock loadView];
     [commentControllerMock setupKeyboardBehaviour];
 
