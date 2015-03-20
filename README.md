@@ -16,6 +16,13 @@ period from June 2013 to July 2014.  Recently the app was updated with more test
 coverage and to fix a few changes that came with the iOS 8 SDK, notably
 around location permissions.
 
+Downloading the App
+---
+
+[App Store](https://itunes.apple.com/app/do-good/id884588564)
+
+[Web Site](http://www.dogood.mobi)
+
 Installation instructions
 ---
 
