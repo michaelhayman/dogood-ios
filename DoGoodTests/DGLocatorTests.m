@@ -41,8 +41,6 @@
     } failure:^(NSError *error) {
         XCTAssertNotNil(error);
     }];
-
-    [locationManagerMock stopMocking];
 }
 
 - (void)testLocationServicesDisabled {
@@ -53,8 +51,6 @@
     } failure:^(NSError *error) {
         XCTAssertNotNil(error);
     }];
-
-    [locationManagerMock stopMocking];
 }
 
 @end
